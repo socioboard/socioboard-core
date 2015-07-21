@@ -746,8 +746,15 @@ namespace Socioboard.Controllers
         }
 
 
-        public ActionResult test()
+        public async System.Threading.Tasks.Task<ActionResult> test()
         {
+            Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider("http://localhost:6361");
+            try
+            {
+                Dictionary<string, string> re = await ac.GetTokenDictionary("bandisuresh@globussoft.com", "asd123");
+            }
+            catch (Exception e)
+            { }
             return View();
         }
 

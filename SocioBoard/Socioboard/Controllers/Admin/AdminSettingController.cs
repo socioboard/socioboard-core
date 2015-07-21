@@ -43,7 +43,7 @@ namespace Socioboard.Controllers.Admin
             {
                 if (NewPassword != OldPaswrd)
                 {
-                    string ChngePasswordMessage = ApiobjUser.ChangePassword(ObjUser.EmailId.ToString(), OldPassword, NewPassword);
+                    string ChngePasswordMessage = ApiobjUser.ChangePassword(ObjUser.EmailId.ToString(), OldPassword, NewPassword, Session["access_token"].ToString());
                     returnmsg = ChngePasswordMessage;
                     if (ChngePasswordMessage == "Password Changed Successfully")
                     {

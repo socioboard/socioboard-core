@@ -264,10 +264,33 @@ namespace Api.Socioboard.Services
                         _GooglePlusActivities.AttachmentType = item["object"]["attachments"][0]["objectType"].ToString();
                         if (_GooglePlusActivities.AttachmentType == "video") 
                         {
-                            _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["url"].ToString();
+                            _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["embed"]["url"].ToString();
                         }
                         else if (_GooglePlusActivities.AttachmentType == "photo") {
                             _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["image"]["url"].ToString();
+                        }
+                        else if (_GooglePlusActivities.AttachmentType == "article")
+                        {
+                            try
+                            {
+                                _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["image"]["url"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                _GooglePlusActivities.ArticleDisplayname = item["object"]["attachments"][0]["displayName"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                _GooglePlusActivities.ArticleContent = item["object"]["attachments"][0]["content"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                _GooglePlusActivities.Link = item["object"]["attachments"][0]["url"].ToString();
+                            }
+                            catch { }
                         }
                     }
                     catch (Exception ex)
@@ -286,7 +309,14 @@ namespace Api.Socioboard.Services
                 logger.Error("GetUserActivities => "+ex.Message);
             }
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetGPusData(string UserId, string ProfileId)
+        {
 
+
+            return "";
+        }
 
     }
 }

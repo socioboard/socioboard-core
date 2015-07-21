@@ -140,6 +140,33 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetInstagramFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objInsAccount" type="tns:InstagramAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FeedId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCommentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -198,6 +225,18 @@
   <wsdl:message name="UpdateInstagramAccountByAdminSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateInstagramAccountByAdminResponse" />
   </wsdl:message>
+  <wsdl:message name="GetInstagramFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddComment" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
   <wsdl:message name="getInstagramDataHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="InstagramId" type="s:string" />
@@ -250,6 +289,15 @@
     <wsdl:part name="ObjInstagram" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateInstagramAccountByAdminHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="FeedId" type="s:string" />
+    <wsdl:part name="Text" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramDataHttpPostIn">
@@ -306,6 +354,15 @@
   <wsdl:message name="UpdateInstagramAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddCommentHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="FeedId" type="s:string" />
+    <wsdl:part name="Text" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="InstagramSoap">
     <wsdl:operation name="getInstagramData">
       <wsdl:input message="tns:getInstagramDataSoapIn" />
@@ -339,6 +396,14 @@
       <wsdl:input message="tns:UpdateInstagramAccountByAdminSoapIn" />
       <wsdl:output message="tns:UpdateInstagramAccountByAdminSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetInstagramFeeds">
+      <wsdl:input message="tns:GetInstagramFeedsSoapIn" />
+      <wsdl:output message="tns:GetInstagramFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input message="tns:AddCommentSoapIn" />
+      <wsdl:output message="tns:AddCommentSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpGet">
     <wsdl:operation name="getInstagramData">
@@ -369,6 +434,10 @@
       <wsdl:input message="tns:UpdateInstagramAccountByAdminHttpGetIn" />
       <wsdl:output message="tns:UpdateInstagramAccountByAdminHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input message="tns:AddCommentHttpGetIn" />
+      <wsdl:output message="tns:AddCommentHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpPost">
     <wsdl:operation name="getInstagramData">
@@ -398,6 +467,10 @@
     <wsdl:operation name="UpdateInstagramAccountByAdmin">
       <wsdl:input message="tns:UpdateInstagramAccountByAdminHttpPostIn" />
       <wsdl:output message="tns:UpdateInstagramAccountByAdminHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input message="tns:AddCommentHttpPostIn" />
+      <wsdl:output message="tns:AddCommentHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InstagramSoap" type="tns:InstagramSoap">
@@ -467,6 +540,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateInstagramAccountByAdmin">
       <soap:operation soapAction="http://tempuri.org/UpdateInstagramAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://tempuri.org/AddComment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -549,6 +640,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetInstagramFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap12:operation soapAction="http://tempuri.org/AddComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InstagramHttpGet" type="tns:InstagramHttpGet">
     <http:binding verb="GET" />
@@ -608,6 +717,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateInstagramAccountByAdmin">
       <http:operation location="/UpdateInstagramAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <http:operation location="/AddComment" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -681,19 +799,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <http:operation location="/AddComment" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Instagram">
     <wsdl:port name="InstagramSoap" binding="tns:InstagramSoap">
-      <soap:address location="http://localhost:6361/services/Instagram.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramSoap12" binding="tns:InstagramSoap12">
-      <soap12:address location="http://localhost:6361/services/Instagram.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpGet" binding="tns:InstagramHttpGet">
-      <http:address location="http://localhost:6361/services/Instagram.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpPost" binding="tns:InstagramHttpPost">
-      <http:address location="http://localhost:6361/services/Instagram.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Instagram.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

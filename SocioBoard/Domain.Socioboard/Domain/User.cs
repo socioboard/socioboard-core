@@ -31,6 +31,7 @@ namespace Domain.Socioboard.Domain
         public string Ewallet { get; set; }
         public string UserCode { get; set; }
         public string SocialLogin { get; set; }
+        public DateTime LastLoginTime { get; set; }
         public static List<User> lstUser = new List<User>();
     }
 }

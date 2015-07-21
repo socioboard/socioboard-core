@@ -2832,11 +2832,11 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.wsdl" />
-    <None Include="Web References\Api.DiscoverySearch\Reference.map">
+    <None Include="Web References\Api.DiscoverySearch\discoverysearch.wsdl" />
+    <Content Include="Web References\Api.DiscoverySearch\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.Drafts\Drafts.wsdl" />
     <None Include="Web References\Api.Drafts\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2848,6 +2848,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.EwalletWithdrawRequest\EwalletWithdrawRequest.wsdl" />
+    <None Include="Web References\Api.DiscoverySearch\discoverysearch.disco" />
     <Content Include="Web References\Api.EwalletWithdrawRequest\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -3227,6 +3228,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_CompanyDashboard_CompanyDashboard</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/services/discoverysearch.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.DiscoverySearch\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/services/discoverysearch.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.EwalletWithdrawRequest\</RelPath>
@@ -3457,17 +3469,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_BusinessSetting_BusinessSetting</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.DiscoverySearch\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/Services/Drafts.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>

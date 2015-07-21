@@ -550,7 +550,7 @@ namespace Socioboard.Controllers
             if (objbsns.TaskNotification == true)
             {
                 Api.User.User ObjApiUser = new Api.User.User();
-                Domain.Socioboard.Domain.User UsertoSendMail = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ObjApiUser.getUsersById(idtoassign.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                Domain.Socioboard.Domain.User UsertoSendMail = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ObjApiUser.getUsersById(idtoassign.ToString(), Session["access_token"].ToString()), typeof(Domain.Socioboard.Domain.User)));
                 Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
                 string mailsender = "";
                 try
@@ -1236,7 +1236,10 @@ namespace Socioboard.Controllers
                 {
                     try
                     {
-                        AllProfileId += item.Key.ProfileId + ',';
+                        if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "twitter")
+                        {
+                            AllProfileId += item.Key.ProfileId + ",";
+                        }
                     }
                     catch (Exception Err)
                     {

@@ -40,6 +40,10 @@ namespace Socioboard.Controllers
             string mailsender = "";
             try
             {
+                if (objuser == null) 
+                {
+                    mailsender = "IdNOtExist";
+                }
                 //Generate a random unique string
                 string strRandomUnique = SBUtils.GenerateRandomUniqueString();
 

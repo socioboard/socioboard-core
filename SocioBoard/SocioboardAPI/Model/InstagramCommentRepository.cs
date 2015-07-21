@@ -59,11 +59,9 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action to get Instagram Comment of user from Database.
                         // And Set the reuired paremeters to find the specific values.
-                        List<Domain.Socioboard.Domain.InstagramComment> alst = session.CreateQuery("from InstagramComment where UserId = :userid and FeedId=:feedid")
+                        List<Domain.Socioboard.Domain.InstagramComment> alst = session.CreateQuery("from InstagramComment where UserId = :userid and FeedId=:feedid Order By CommentDate DESC")
                         .SetParameter("userid", UserId)
                         .SetParameter("feedid", feedid)
-                        .SetFirstResult(1)
-                        .SetMaxResults(3)
                         .List<Domain.Socioboard.Domain.InstagramComment>()
                         .ToList<Domain.Socioboard.Domain.InstagramComment>();
                         #region Oldcode

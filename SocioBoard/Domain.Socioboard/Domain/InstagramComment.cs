@@ -9,7 +9,7 @@ namespace Domain.Socioboard.Domain
     {
 
         public Guid Id { get; set; }
-        public string EntryDate { get; set; }
+        public DateTime EntryDate { get; set; }
         public string InstagramId { get; set; }
         public Guid UserId { get; set; }
         public string FeedId { get; set; }

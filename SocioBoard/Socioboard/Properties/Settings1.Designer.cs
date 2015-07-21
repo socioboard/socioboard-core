@@ -176,7 +176,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/InstagramFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramFeed.asmx")]
         public string Socioboard_Api_InstagramFeed_InstagramFeed {
             get {
                 return ((string)(this["Socioboard_Api_InstagramFeed_InstagramFeed"]));
@@ -256,16 +256,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DiscoverySearch.asmx")]
-        public string Socioboard_Api_DiscoverySearch_DiscoverySearch {
-            get {
-                return ((string)(this["Socioboard_Api_DiscoverySearch_DiscoverySearch"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/LinkedinCompanyPage.asmx")]
         public string Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage {
             get {
@@ -306,7 +296,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/User.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/User.asmx")]
         public string Socioboard_Api_User_User {
             get {
                 return ((string)(this["Socioboard_Api_User_User"]));
@@ -556,7 +546,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/Instagram.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Instagram.asmx")]
         public string Socioboard_Api_Instagram_Instagram {
             get {
                 return ((string)(this["Socioboard_Api_Instagram_Instagram"]));
@@ -660,6 +650,16 @@ namespace Socioboard.Properties {
         public string Socioboard_Api_LinkedinMessage_LinkedinMessage {
             get {
                 return ((string)(this["Socioboard_Api_LinkedinMessage_LinkedinMessage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/services/discoverysearch.asmx")]
+        public string Socioboard_Api_DiscoverySearch_DiscoverySearch {
+            get {
+                return ((string)(this["Socioboard_Api_DiscoverySearch_DiscoverySearch"]));
             }
         }
     }

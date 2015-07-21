@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Model
 {
@@ -216,7 +217,7 @@ namespace Api.Socioboard.Model
                 }
             }
         }
-      
+
         public bool IsUserExist(string Emailid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -335,7 +336,7 @@ namespace Api.Socioboard.Model
 
             return user;
         }
-      
+
         public void UpdatePassword(string emailid, string password, Guid id, string username, string accounttype)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -549,7 +550,7 @@ namespace Api.Socioboard.Model
                         .List<User>().ToList<User>();
 
                         Domain.Socioboard.Domain.User ObjUser = alstUser.Single(U => U.UserType == "SuperAdmin");
-                        if (ObjUser!=null)
+                        if (ObjUser != null)
                         {
                             alstUser.Remove(ObjUser);
                         }
@@ -575,7 +576,7 @@ namespace Api.Socioboard.Model
                     try
                     {
                         List<User> alstUser = session.CreateQuery("from User")
-                        .List<User>().Where(U=>U.ActivationStatus=="2").ToList<User>();
+                        .List<User>().Where(U => U.ActivationStatus == "2").ToList<User>();
 
                         return alstUser;
 
@@ -588,7 +589,7 @@ namespace Api.Socioboard.Model
                 }
             }
         }
-       
+
         public User getUsersById(Guid userId)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -611,7 +612,7 @@ namespace Api.Socioboard.Model
                 }
             }
         }
-       
+
         public int changePaymentStatus(Guid UserId, string status)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -637,7 +638,7 @@ namespace Api.Socioboard.Model
                 }
             }
         }
-      
+
         public ArrayList UserCountByMonth()
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -843,12 +844,13 @@ namespace Api.Socioboard.Model
                             i = session.CreateQuery("Update User set PaymentStatus=:paymentStatus, Ewallet=:ewallet, AccountType=:accounttype where Id = :userid")
                                      .SetParameter("userid", userid)
                                      .SetParameter("paymentStatus", paymentstatus)
-                                     .SetParameter("ewallet",ewallet)
-                                     .SetParameter("accounttype",accounttype)
+                                     .SetParameter("ewallet", ewallet)
+                                     .SetParameter("accounttype", accounttype)
                                      .ExecuteUpdate();
                             transaction.Commit();
                         }
-                        catch {
+                        catch
+                        {
                         }
                     }
                 }
@@ -1003,7 +1005,7 @@ namespace Api.Socioboard.Model
             }
         }
 
-        public int UpdateUserById(Guid Userid,string username,string timezone, string picurl)
+        public int UpdateUserById(Guid Userid, string username, string timezone, string picurl)
         {
             int i = 0;
             try
@@ -1019,7 +1021,7 @@ namespace Api.Socioboard.Model
                                      .SetParameter("userid", Userid)
                                      .SetParameter("tz", timezone)
                                      .SetParameter("username", username)
-                                     .SetParameter("ProfileUrl",picurl)
+                                     .SetParameter("ProfileUrl", picurl)
                                      .ExecuteUpdate();
                             transaction.Commit();
 
@@ -1040,7 +1042,7 @@ namespace Api.Socioboard.Model
 
 
         // Edited by Hozefa[17/12/2014]
-        public int UpdateAdminUserById(Guid Userid, string username, string timezone,string ProfileUrl)
+        public int UpdateAdminUserById(Guid Userid, string username, string timezone, string ProfileUrl)
         {
             int i = 0;
             try
@@ -1272,7 +1274,8 @@ namespace Api.Socioboard.Model
                                   .ExecuteUpdate();
                         transaction.Commit();
                     }
-                    catch(Exception ex) {
+                    catch (Exception ex)
+                    {
                         i = 0;
                     }
                 }
@@ -1380,6 +1383,48 @@ namespace Api.Socioboard.Model
             }
 
             return user;
+        }
+
+        public int UpdateLastLoginTime(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    int i = 0;
+                    try
+                    {
+                        i = session.CreateQuery("Update User Set LastLoginTime = : LastLoginTime where Id=: UserId")
+                            .SetParameter("LastLoginTime", DateTime.Now)
+                            .SetParameter("UserId", UserId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        return i;
+                    }
+                    return i;
+                }
+            }
+            
+        }
+        public List<Domain.Socioboard.Domain.User> InactiveUser() {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.User> lstuser = session.Query<Domain.Socioboard.Domain.User>()
+                                .Where(x => x.LastLoginTime <= DateTime.Now.AddDays(-7)).ToList();
+                    return lstuser;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.User>();
+                }
+            }
         }
 
     }

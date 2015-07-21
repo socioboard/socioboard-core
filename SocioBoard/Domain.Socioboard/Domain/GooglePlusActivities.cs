@@ -24,5 +24,9 @@ namespace Domain.Socioboard.Domain
 	    public DateTime EntryDate { get; set; }
         public string Attachment { get; set; }
         public string AttachmentType { get; set; }
+        public string Link { get; set; }
+        public string ArticleContent { get; set; }
+        public string ArticleDisplayname { get; set; }
+
     }
 }

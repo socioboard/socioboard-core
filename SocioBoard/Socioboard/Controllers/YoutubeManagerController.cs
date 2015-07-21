@@ -67,6 +67,7 @@ namespace Socioboard.Controllers
                                 Session["Paid_User"] = "Unpaid";
                             }
                             FormsAuthentication.SetAuthCookie(objUser.UserName, false);
+                            ApiobjUser.UpdateLastLoginTime(checkuserexist.Id.ToString());
                             return RedirectToAction("Index", "Home");
                         }
                         else

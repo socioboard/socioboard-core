@@ -101,7 +101,7 @@ namespace Api.Socioboard.Services
                 List<FacebookAccount> _facebookAccount = new List<FacebookAccount>();
                 List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMember = teammemberrepo.getAllTeamMemberProfilesOfTeam(Guid.Parse(TeamId));
 
-
+               // _GroupStatDetails.ProfilesByUser = lstTeamMember.Count();
                 foreach (Domain.Socioboard.Domain.TeamMemberProfile TeamMemberProfile in lstTeamMember)
                 {
 
@@ -214,7 +214,7 @@ namespace Api.Socioboard.Services
                 {
                     FacebookInboxMessagecount = (0).ToString();
                 }
-               
+
                 if (!string.IsNullOrEmpty(TwitterprofileId))
                 {
                     try
@@ -233,7 +233,7 @@ namespace Api.Socioboard.Services
                 {
                     TwitterInboxMessagecount = (0).ToString();
                 }
-               
+
                 _GroupStatDetails.IncommingMessage = (Convert.ToInt32(FacebookInboxMessagecount) + Convert.ToInt32(TwitterInboxMessagecount));
                 #endregion
 
@@ -289,6 +289,7 @@ namespace Api.Socioboard.Services
                     TwitterMessage _TwitterMessage = new TwitterMessage();
                     _GroupStatDetails.MentionGraph = string.Empty;
                     string graphdetails = _TwitterMessage.GetAllRetweetMentionBydays(userid, TwitterprofileId, days);
+                    //string graphdetails = inboxmsgrepo.GetAllRetweetMentionBydays(userid, TwitterprofileId, days);
 
                     string[] data = graphdetails.Split('@');
                     foreach (var item in data)
@@ -313,16 +314,12 @@ namespace Api.Socioboard.Services
                         {
                             _GroupStatDetails.Retweet = Convert.ToInt32(item.Replace("retwet", ""));
                         }
-
-
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
-                } 
+                }
                 #endregion
 
                 try
@@ -334,14 +331,14 @@ namespace Api.Socioboard.Services
                     foreach (var item in data)
                     {
                         if (item.Contains("plaintext_"))
-                        { 
-                        _GroupStatDetails.PlainText = Convert.ToInt32(item.Replace("plaintext_",""));
-                        
+                        {
+                            _GroupStatDetails.PlainText = Convert.ToInt32(item.Replace("plaintext_", ""));
+
                         }
 
                         else
                         {
-                          _GroupStatDetails.PhotoLink = Convert.ToInt32(item);
+                            _GroupStatDetails.PhotoLink = Convert.ToInt32(item);
                         }
                     }
 
@@ -360,8 +357,7 @@ namespace Api.Socioboard.Services
 
             return new JavaScriptSerializer().Serialize(_GroupStatDetails);
 
-           
-        }
 
+        }
     }
 }

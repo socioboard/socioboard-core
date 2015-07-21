@@ -70,6 +70,15 @@ namespace Socioboard.Controllers
             return PartialView("_SearchTwitterPartial", lstDiscoverySearch);
         }
 
+        public ActionResult SearchGplus(string keyword)
+        {
+            keyword = Uri.EscapeDataString(keyword);
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+            List<Domain.Socioboard.Domain.DiscoverySearch> GplusDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            GplusDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.DiscoverySearchGplus(objUser.Id.ToString(), keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+            return PartialView("_SearchGplusPartial", GplusDiscoverySearch);
+        }
 
         public ActionResult GetUrls(string keywords)
         {

@@ -363,7 +363,7 @@ namespace Socioboard.Controllers
         public ActionResult LoadRegistration(string teamid)
         {
             string ss = Request.QueryString["teamid"];
-            User objUser = (User)Session["User"];
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             if (!String.IsNullOrEmpty(teamid))
             {
                 objUser = new Domain.Socioboard.Domain.User();

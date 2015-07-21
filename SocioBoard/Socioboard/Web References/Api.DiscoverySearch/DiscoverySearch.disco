@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://localhost:6361/Services/DiscoverySearch.asmx?wsdl" docRef="http://localhost:6361/Services/DiscoverySearch.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://localhost:6361/Services/DiscoverySearch.asmx" xmlns:q1="http://tempuri.org/" binding="q1:DiscoverySearchSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://localhost:6361/Services/DiscoverySearch.asmx" xmlns:q2="http://tempuri.org/" binding="q2:DiscoverySearchSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <contractRef ref="http://api.socioboard.com/services/discoverysearch.asmx?wsdl" docRef="http://api.socioboard.com/services/discoverysearch.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://api.socioboard.com/services/discoverysearch.asmx" xmlns:q1="http://tempuri.org/" binding="q1:DiscoverySearchSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://api.socioboard.com/services/discoverysearch.asmx" xmlns:q2="http://tempuri.org/" binding="q2:DiscoverySearchSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
 </discovery>

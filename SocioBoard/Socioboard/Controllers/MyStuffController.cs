@@ -79,7 +79,7 @@ namespace Socioboard.Controllers
             ViewBag.datetime = datetime;
             Api.User.User ApiobjUser = new Api.User.User();
             User _User = (User)Session["User"];
-            _User = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_User.Id.ToString()), typeof(User)));
+            _User = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_User.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
             Api.PaymentTransaction.PaymentTransaction ApiPaymentTransaction = new Api.PaymentTransaction.PaymentTransaction();
             Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
             List<Domain.Socioboard.Domain.PaymentTransaction> lsttransactions = (List<Domain.Socioboard.Domain.PaymentTransaction>)(new JavaScriptSerializer().Deserialize(ApiPaymentTransaction.GetPaymentDataByUserId(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.PaymentTransaction>)));
@@ -98,7 +98,7 @@ namespace Socioboard.Controllers
                 string pay = string.Empty;
                 Api.User.User ApiobjUser = new Api.User.User();
                 User objUser = (User)Session["User"];
-                objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString()), typeof(User)));
+                objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
                 Helper.Payment payme = new Payment();
                 Session["RechrgeAmount"] = amount;
                 string UpgradeAccountSuccessURL = ConfigurationManager.AppSettings["RechargeEwalletSuccessURL"];
@@ -122,14 +122,14 @@ namespace Socioboard.Controllers
             Api.PaymentTransaction.PaymentTransaction ApiPaymentTransaction = new Api.PaymentTransaction.PaymentTransaction();
             Api.User.User ApiobjUser = new Api.User.User();
             User objUser = (User)Session["User"];
-            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString()), typeof(User)));
+            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
             try
             {
                 if (Session["RechrgeAmount"] != null)
                 {
                     string RechargeAmount = Session["RechrgeAmount"].ToString();
                     objUser.Ewallet = (float.Parse(objUser.Ewallet) + float.Parse(RechargeAmount)).ToString();
-                    string IsUpdated = ApiobjUser.UpdateEwalletAmount(objUser.Id.ToString(), objUser.Ewallet);
+                    string IsUpdated = ApiobjUser.UpdateEwalletAmount(objUser.Id.ToString(), objUser.Ewallet, Session["access_token"].ToString());
                     Session["User"] = objUser;
                     ApiPaymentTransaction.SavePayPalTransaction(objUser.Id.ToString(), RechargeAmount);
                 }
@@ -191,7 +191,7 @@ namespace Socioboard.Controllers
             ViewBag.datetime = datetime;
             User _User = (User)Session["User"];
             Api.User.User Apiuser = new Api.User.User();
-            User NewUser = (User)new JavaScriptSerializer().Deserialize(Apiuser.getUsersById(FriendId), typeof(User));
+            User NewUser = (User)new JavaScriptSerializer().Deserialize(Apiuser.getUsersById(FriendId, Session["access_token"].ToString()), typeof(User));
             List<Affiliates> lstAffiliate = SBUtils.GetAffiliatesData(_User.Id, Guid.Parse(FriendId));
             ViewBag.FriendsEmail = NewUser.EmailId;
             return PartialView("_SummaryPartial", lstAffiliate);
@@ -221,7 +221,7 @@ namespace Socioboard.Controllers
                 Api.User.User ApiobjUser = new Api.User.User();
                 User _User;
                 _User = (User)Session["User"];
-                _User = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_User.Id.ToString()), typeof(User)));
+                _User = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_User.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
                 string amount = Request.Form["Amount"];
                 string paypalemail = Request.Form["PayPalEmail"];
                 string ibancode = Request.Form["IbnaCode"];

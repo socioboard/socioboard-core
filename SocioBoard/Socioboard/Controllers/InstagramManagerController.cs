@@ -32,7 +32,7 @@ namespace Socioboard.Controllers
             Api.Instagram.Instagram apiobjInstagram = new Api.Instagram.Instagram();
             try
             {
-                AddTwitterAccount = apiobjInstagram.AddInstagramAccount(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"], objUser.Id.ToString(), Session["group"].ToString(), code);
+                AddTwitterAccount = apiobjInstagram.AddInstagramAccount(ConfigurationManager.AppSettings["InstagramClientKey"], ConfigurationManager.AppSettings["InstagramClientSec"], ConfigurationManager.AppSettings["InstagramCallBackURL"], objUser.Id.ToString(), Session["group"].ToString(), code);
                 Session["SocialManagerInfo"] = AddTwitterAccount;
             }
             catch (Exception ex)

@@ -59,6 +59,11 @@ namespace Api.Socioboard.Services
                         int retint = userrepo.UpdateCode(user.Id, code);
                         user = userrepo.getUsersById(user.Id);
                     }
+                    try
+                    {
+                        userrepo.UpdateLastLoginTime(user.Id);
+                    }
+                    catch { }
                     return new JavaScriptSerializer().Serialize(user);
 
                 }
@@ -159,6 +164,7 @@ namespace Api.Socioboard.Services
                     user.ActivationStatus = ActivationStatus;//"0"; 
                     user.Id = Guid.NewGuid();
                     user.UserCode = Utility.GenerateRandomUniqueString();
+                    user.LastLoginTime = DateTime.Now;
                     UserRepository.Add(user);
 
                     ////add value in UserActivation
@@ -995,6 +1001,18 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
                 return "something went wrong";
             }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateLastLoginTime(string UserId)
+        {
+            return Convert.ToString(userrepo.UpdateLastLoginTime(Guid.Parse(UserId)));
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string InactiveUser()
+        {
+            return new JavaScriptSerializer().Serialize(userrepo.InactiveUser());
         }
 
     }

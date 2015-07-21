@@ -18,5 +18,9 @@ namespace Domain.Socioboard.Domain
         public int CommentCount { get; set; }
         public int IsLike { get; set; }
         public string AdminUser { get; set; }
+        public string Feed { get; set; }
+        public string ImageUrl { get; set; }
+        public string FeedUrl { get; set; }
+        public string FromId { get; set; }
     }
 }

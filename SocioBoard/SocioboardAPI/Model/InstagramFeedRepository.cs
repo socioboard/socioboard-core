@@ -164,7 +164,7 @@ namespace Api.Socioboard.Services
         /// <param name="profileid">Profile id of instagram(String)</param>
         /// <param name="count">Get the toral numbert of data(int)</param>
         /// <returns>Return a object of InstagramFeed Class with  value of each member in form of List type.(List<InstagramFeed>)</returns>
-        public List<Domain.Socioboard.Domain.InstagramFeed> getAllInstagramFeedsOfUser(Guid UserId, string profileid, int count)
+        public List<Domain.Socioboard.Domain.InstagramFeed> getAllInstagramFeedsOfUser(Guid UserId, string profileid, int noOfDataToSkip, int noOfDataFromTop)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -175,11 +175,11 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to get feeds
-                        List<Domain.Socioboard.Domain.InstagramFeed> alst = session.CreateQuery("from InstagramFeed where UserId = :userid and InstagramId = :profileId")
+                        List<Domain.Socioboard.Domain.InstagramFeed> alst = session.CreateQuery("from InstagramFeed where UserId = :userid and InstagramId = :profileId Order By FeedDate DESC")
                         .SetParameter("userid", UserId)
                         .SetParameter("profileId", profileid)
-                        .SetFirstResult(count)
-                        .SetMaxResults(10)
+                        .SetFirstResult(noOfDataToSkip)
+                        .SetMaxResults(noOfDataFromTop)
                         .List<Domain.Socioboard.Domain.InstagramFeed>()
                         .ToList<Domain.Socioboard.Domain.InstagramFeed>();
 

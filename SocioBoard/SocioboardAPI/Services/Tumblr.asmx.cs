@@ -58,6 +58,7 @@ namespace Api.Socioboard.Services
                 oAuthTumbler.TumblrConsumerSecret = consumerSecret;
                 requestHelper.CallBackUrl = CallBackUrl;
                 ret = requestHelper.GetAuthorizationLink();
+                logger.Error("GetTumblrRedirectUrl => " + ret);
             }
             catch (Exception ex)
             {

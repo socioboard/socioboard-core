@@ -32,6 +32,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DiscoverySearchGplus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchGplusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DiscoverySearchGplusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="contactSearchFacebook">
         <s:complexType>
           <s:sequence>
@@ -117,6 +132,12 @@
   <wsdl:message name="DiscoverySearchTwitterSoapOut">
     <wsdl:part name="parameters" element="tns:DiscoverySearchTwitterResponse" />
   </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusSoapIn">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchGplus" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusSoapOut">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchGplusResponse" />
+  </wsdl:message>
   <wsdl:message name="contactSearchFacebookSoapIn">
     <wsdl:part name="parameters" element="tns:contactSearchFacebook" />
   </wsdl:message>
@@ -159,6 +180,13 @@
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DiscoverySearchTwitterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="contactSearchFacebookHttpGetIn">
@@ -205,6 +233,13 @@
   <wsdl:message name="DiscoverySearchTwitterHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="contactSearchFacebookHttpPostIn">
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
@@ -244,6 +279,10 @@
       <wsdl:input message="tns:DiscoverySearchTwitterSoapIn" />
       <wsdl:output message="tns:DiscoverySearchTwitterSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusSoapIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookSoapIn" />
       <wsdl:output message="tns:contactSearchFacebookSoapOut" />
@@ -274,6 +313,10 @@
       <wsdl:input message="tns:DiscoverySearchTwitterHttpGetIn" />
       <wsdl:output message="tns:DiscoverySearchTwitterHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusHttpGetIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookHttpGetIn" />
       <wsdl:output message="tns:contactSearchFacebookHttpGetOut" />
@@ -303,6 +346,10 @@
     <wsdl:operation name="DiscoverySearchTwitter">
       <wsdl:input message="tns:DiscoverySearchTwitterHttpPostIn" />
       <wsdl:output message="tns:DiscoverySearchTwitterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusHttpPostIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookHttpPostIn" />
@@ -338,6 +385,15 @@
     </wsdl:operation>
     <wsdl:operation name="DiscoverySearchTwitter">
       <soap:operation soapAction="http://tempuri.org/DiscoverySearchTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <soap:operation soapAction="http://tempuri.org/DiscoverySearchGplus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -411,6 +467,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <soap12:operation soapAction="http://tempuri.org/DiscoverySearchGplus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <soap12:operation soapAction="http://tempuri.org/contactSearchFacebook" style="document" />
       <wsdl:input>
@@ -470,6 +535,15 @@
     </wsdl:operation>
     <wsdl:operation name="DiscoverySearchTwitter">
       <http:operation location="/DiscoverySearchTwitter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <http:operation location="/DiscoverySearchGplus" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -543,6 +617,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <http:operation location="/DiscoverySearchGplus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <http:operation location="/contactSearchFacebook" />
       <wsdl:input>
@@ -591,16 +674,16 @@
   </wsdl:binding>
   <wsdl:service name="DiscoverySearch">
     <wsdl:port name="DiscoverySearchSoap" binding="tns:DiscoverySearchSoap">
-      <soap:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <soap:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchSoap12" binding="tns:DiscoverySearchSoap12">
-      <soap12:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <soap12:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpGet" binding="tns:DiscoverySearchHttpGet">
-      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <http:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpPost" binding="tns:DiscoverySearchHttpPost">
-      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <http:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

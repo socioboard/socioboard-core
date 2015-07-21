@@ -44,6 +44,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -54,23 +55,13 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddTeamMembers">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="teamid" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddTeamMembersResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="ChangePassword">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -101,6 +92,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -115,6 +107,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -174,6 +167,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ActivationStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -191,13 +185,14 @@
             <s:element minOccurs="0" maxOccurs="1" name="AccountType" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
             <s:element minOccurs="0" maxOccurs="1" name="PaymentStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="UpdateUserAccountInfoByUserIdResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdateUserAccountInfoByUserIdResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserAccountInfoByUserIdResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -339,13 +334,14 @@
             <s:element minOccurs="0" maxOccurs="1" name="ewallet" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="accounttype" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="paymentstatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="UpdatePaymentandEwalletStatusByUserIdResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdatePaymentandEwalletStatusByUserIdResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePaymentandEwalletStatusByUserIdResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -355,6 +351,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NewEmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -370,6 +367,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="updatedamount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -448,6 +446,69 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="CompareDateWithclientlocal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clientdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="datetime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompareDateWithclientlocalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompareDateWithclientlocalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DifferenceBetweenServerandLocalTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clientdate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DifferenceBetweenServerandLocalTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DifferenceBetweenServerandLocalTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DifferenceBetweenServerandUtc">
+        <s:complexType />
+      </s:element>
+      <s:element name="DifferenceBetweenServerandUtcResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DifferenceBetweenServerandUtcResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLastLoginTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLastLoginTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateLastLoginTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InactiveUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="InactiveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InactiveUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="int" type="s:int" />
     </s:schema>
@@ -476,12 +537,6 @@
   </wsdl:message>
   <wsdl:message name="UpdateUserSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddTeamMembersSoapIn">
-    <wsdl:part name="parameters" element="tns:AddTeamMembers" />
-  </wsdl:message>
-  <wsdl:message name="AddTeamMembersSoapOut">
-    <wsdl:part name="parameters" element="tns:AddTeamMembersResponse" />
   </wsdl:message>
   <wsdl:message name="ChangePasswordSoapIn">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
@@ -645,6 +700,36 @@
   <wsdl:message name="RegisterbyTwitterSoapOut">
     <wsdl:part name="parameters" element="tns:RegisterbyTwitterResponse" />
   </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalSoapIn">
+    <wsdl:part name="parameters" element="tns:CompareDateWithclientlocal" />
+  </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalSoapOut">
+    <wsdl:part name="parameters" element="tns:CompareDateWithclientlocalResponse" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:DifferenceBetweenServerandLocalTime" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:DifferenceBetweenServerandLocalTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandUtcSoapIn">
+    <wsdl:part name="parameters" element="tns:DifferenceBetweenServerandUtc" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandUtcSoapOut">
+    <wsdl:part name="parameters" element="tns:DifferenceBetweenServerandUtcResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLastLoginTime" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLastLoginTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="InactiveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:InactiveUser" />
+  </wsdl:message>
+  <wsdl:message name="InactiveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:InactiveUserResponse" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
@@ -668,19 +753,16 @@
     <wsdl:part name="lname" type="s:string" />
     <wsdl:part name="timezone" type="s:string" />
     <wsdl:part name="picurl" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddTeamMembersHttpGetIn">
-    <wsdl:part name="groupid" type="s:string" />
-    <wsdl:part name="teamid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="AddTeamMembersHttpGetOut" />
   <wsdl:message name="ChangePasswordHttpGetIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
     <wsdl:part name="NewPassword" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ChangePasswordHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -695,12 +777,14 @@
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getUsersByIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getUsersByIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -721,6 +805,7 @@
   <wsdl:message name="changePaymentStatusHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ActivationStatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="changePaymentStatusHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -730,9 +815,10 @@
     <wsdl:part name="AccountType" type="s:string" />
     <wsdl:part name="ExpiryDate" type="s:string" />
     <wsdl:part name="PaymentStatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserAccountInfoByUserIdHttpGetOut">
-    <wsdl:part name="Body" element="tns:int" />
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserCountByMonthHttpGetIn" />
   <wsdl:message name="UserCountByMonthHttpGetOut">
@@ -798,14 +884,16 @@
     <wsdl:part name="ewallet" type="s:string" />
     <wsdl:part name="accounttype" type="s:string" />
     <wsdl:part name="paymentstatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpGetOut">
-    <wsdl:part name="Body" element="tns:int" />
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpGetIn">
     <wsdl:part name="Id" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
     <wsdl:part name="NewEmailId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -813,6 +901,7 @@
   <wsdl:message name="UpdateEwalletAmountHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="updatedamount" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEwalletAmountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -849,6 +938,33 @@
   <wsdl:message name="RegisterbyTwitterHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalHttpGetIn">
+    <wsdl:part name="clientdate" type="s:string" />
+    <wsdl:part name="datetime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeHttpGetIn">
+    <wsdl:part name="clientdate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandUtcHttpGetIn" />
+  <wsdl:message name="DifferenceBetweenServerandUtcHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InactiveUserHttpGetIn" />
+  <wsdl:message name="InactiveUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpPostIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
@@ -872,19 +988,16 @@
     <wsdl:part name="lname" type="s:string" />
     <wsdl:part name="timezone" type="s:string" />
     <wsdl:part name="picurl" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddTeamMembersHttpPostIn">
-    <wsdl:part name="groupid" type="s:string" />
-    <wsdl:part name="teamid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="AddTeamMembersHttpPostOut" />
   <wsdl:message name="ChangePasswordHttpPostIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
     <wsdl:part name="NewPassword" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ChangePasswordHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -899,12 +1012,14 @@
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getUsersByIdHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getUsersByIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -925,6 +1040,7 @@
   <wsdl:message name="changePaymentStatusHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ActivationStatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="changePaymentStatusHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -934,9 +1050,10 @@
     <wsdl:part name="AccountType" type="s:string" />
     <wsdl:part name="ExpiryDate" type="s:string" />
     <wsdl:part name="PaymentStatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserAccountInfoByUserIdHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserCountByMonthHttpPostIn" />
   <wsdl:message name="UserCountByMonthHttpPostOut">
@@ -1002,14 +1119,16 @@
     <wsdl:part name="ewallet" type="s:string" />
     <wsdl:part name="accounttype" type="s:string" />
     <wsdl:part name="paymentstatus" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpPostIn">
     <wsdl:part name="Id" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
     <wsdl:part name="NewEmailId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -1017,6 +1136,7 @@
   <wsdl:message name="UpdateEwalletAmountHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="updatedamount" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEwalletAmountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -1053,6 +1173,33 @@
   <wsdl:message name="RegisterbyTwitterHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalHttpPostIn">
+    <wsdl:part name="clientdate" type="s:string" />
+    <wsdl:part name="datetime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CompareDateWithclientlocalHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeHttpPostIn">
+    <wsdl:part name="clientdate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandLocalTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DifferenceBetweenServerandUtcHttpPostIn" />
+  <wsdl:message name="DifferenceBetweenServerandUtcHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastLoginTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InactiveUserHttpPostIn" />
+  <wsdl:message name="InactiveUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="UserSoap">
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
@@ -1066,10 +1213,6 @@
     <wsdl:operation name="UpdateUser">
       <wsdl:input message="tns:UpdateUserSoapIn" />
       <wsdl:output message="tns:UpdateUserSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <wsdl:input message="tns:AddTeamMembersSoapIn" />
-      <wsdl:output message="tns:AddTeamMembersSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordSoapIn" />
@@ -1179,6 +1322,26 @@
       <wsdl:input message="tns:RegisterbyTwitterSoapIn" />
       <wsdl:output message="tns:RegisterbyTwitterSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <wsdl:input message="tns:CompareDateWithclientlocalSoapIn" />
+      <wsdl:output message="tns:CompareDateWithclientlocalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <wsdl:input message="tns:DifferenceBetweenServerandLocalTimeSoapIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandLocalTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <wsdl:input message="tns:DifferenceBetweenServerandUtcSoapIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandUtcSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <wsdl:input message="tns:UpdateLastLoginTimeSoapIn" />
+      <wsdl:output message="tns:UpdateLastLoginTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <wsdl:input message="tns:InactiveUserSoapIn" />
+      <wsdl:output message="tns:InactiveUserSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpGet">
     <wsdl:operation name="Login">
@@ -1193,10 +1356,6 @@
     <wsdl:operation name="UpdateUser">
       <wsdl:input message="tns:UpdateUserHttpGetIn" />
       <wsdl:output message="tns:UpdateUserHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <wsdl:input message="tns:AddTeamMembersHttpGetIn" />
-      <wsdl:output message="tns:AddTeamMembersHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordHttpGetIn" />
@@ -1302,6 +1461,26 @@
       <wsdl:input message="tns:RegisterbyTwitterHttpGetIn" />
       <wsdl:output message="tns:RegisterbyTwitterHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <wsdl:input message="tns:CompareDateWithclientlocalHttpGetIn" />
+      <wsdl:output message="tns:CompareDateWithclientlocalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <wsdl:input message="tns:DifferenceBetweenServerandLocalTimeHttpGetIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandLocalTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <wsdl:input message="tns:DifferenceBetweenServerandUtcHttpGetIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandUtcHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <wsdl:input message="tns:UpdateLastLoginTimeHttpGetIn" />
+      <wsdl:output message="tns:UpdateLastLoginTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <wsdl:input message="tns:InactiveUserHttpGetIn" />
+      <wsdl:output message="tns:InactiveUserHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpPost">
     <wsdl:operation name="Login">
@@ -1316,10 +1495,6 @@
     <wsdl:operation name="UpdateUser">
       <wsdl:input message="tns:UpdateUserHttpPostIn" />
       <wsdl:output message="tns:UpdateUserHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <wsdl:input message="tns:AddTeamMembersHttpPostIn" />
-      <wsdl:output message="tns:AddTeamMembersHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordHttpPostIn" />
@@ -1425,6 +1600,26 @@
       <wsdl:input message="tns:RegisterbyTwitterHttpPostIn" />
       <wsdl:output message="tns:RegisterbyTwitterHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <wsdl:input message="tns:CompareDateWithclientlocalHttpPostIn" />
+      <wsdl:output message="tns:CompareDateWithclientlocalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <wsdl:input message="tns:DifferenceBetweenServerandLocalTimeHttpPostIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandLocalTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <wsdl:input message="tns:DifferenceBetweenServerandUtcHttpPostIn" />
+      <wsdl:output message="tns:DifferenceBetweenServerandUtcHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <wsdl:input message="tns:UpdateLastLoginTimeHttpPostIn" />
+      <wsdl:output message="tns:UpdateLastLoginTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <wsdl:input message="tns:InactiveUserHttpPostIn" />
+      <wsdl:output message="tns:InactiveUserHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UserSoap" type="tns:UserSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1448,15 +1643,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap:operation soapAction="http://tempuri.org/UpdateUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <soap:operation soapAction="http://tempuri.org/AddTeamMembers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1707,6 +1893,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <soap:operation soapAction="http://tempuri.org/CompareDateWithclientlocal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <soap:operation soapAction="http://tempuri.org/DifferenceBetweenServerandLocalTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <soap:operation soapAction="http://tempuri.org/DifferenceBetweenServerandUtc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <soap:operation soapAction="http://tempuri.org/UpdateLastLoginTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <soap:operation soapAction="http://tempuri.org/InactiveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserSoap12" type="tns:UserSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1730,15 +1961,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap12:operation soapAction="http://tempuri.org/UpdateUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <soap12:operation soapAction="http://tempuri.org/AddTeamMembers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1989,6 +2211,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <soap12:operation soapAction="http://tempuri.org/CompareDateWithclientlocal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <soap12:operation soapAction="http://tempuri.org/DifferenceBetweenServerandLocalTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <soap12:operation soapAction="http://tempuri.org/DifferenceBetweenServerandUtc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLastLoginTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <soap12:operation soapAction="http://tempuri.org/InactiveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserHttpGet" type="tns:UserHttpGet">
     <http:binding verb="GET" />
@@ -2018,13 +2285,6 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <http:operation location="/AddTeamMembers" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <http:operation location="/ChangePassword" />
@@ -2253,6 +2513,51 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterbyTwitter">
       <http:operation location="/RegisterbyTwitter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <http:operation location="/CompareDateWithclientlocal" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <http:operation location="/DifferenceBetweenServerandLocalTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <http:operation location="/DifferenceBetweenServerandUtc" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <http:operation location="/UpdateLastLoginTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <http:operation location="/InactiveUser" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -2290,13 +2595,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddTeamMembers">
-      <http:operation location="/AddTeamMembers" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <http:operation location="/ChangePassword" />
       <wsdl:input>
@@ -2531,19 +2829,64 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CompareDateWithclientlocal">
+      <http:operation location="/CompareDateWithclientlocal" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandLocalTime">
+      <http:operation location="/DifferenceBetweenServerandLocalTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DifferenceBetweenServerandUtc">
+      <http:operation location="/DifferenceBetweenServerandUtc" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastLoginTime">
+      <http:operation location="/UpdateLastLoginTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InactiveUser">
+      <http:operation location="/InactiveUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="User">
     <wsdl:port name="UserSoap" binding="tns:UserSoap">
-      <soap:address location="http://localhost:6361/services/User.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
-      <soap12:address location="http://localhost:6361/services/User.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
-      <http:address location="http://localhost:6361/services/User.asmx" />
+      <http:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
-      <http:address location="http://localhost:6361/services/User.asmx" />
+      <http:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

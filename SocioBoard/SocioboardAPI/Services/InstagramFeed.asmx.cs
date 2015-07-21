@@ -40,11 +40,11 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetFeedsOfProfileWithRange(string UserId, string LinkedInId, string noOfDataToSkip)
+        public string GetFeedsOfProfileWithRange(string UserId, string LinkedInId, string noOfDataToSkip, string noOfDataFromTop)
         {
             try
             {
-                List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = objInstagramFeedRepository.getAllInstagramFeedsOfUser(Guid.Parse(UserId), LinkedInId, Convert.ToInt32(noOfDataToSkip));
+                List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = objInstagramFeedRepository.getAllInstagramFeedsOfUser(Guid.Parse(UserId), LinkedInId, Convert.ToInt32(noOfDataToSkip), Convert.ToInt32(noOfDataFromTop));
                 return new JavaScriptSerializer().Serialize(lstInstagramFeed);
             }
             catch (Exception ex)

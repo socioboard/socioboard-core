@@ -48,7 +48,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/InstagramAccount.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_InstagramFeed_InstagramFeed" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/InstagramFeed.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/InstagramFeed.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_BusinessSetting_BusinessSetting" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/BusinessSetting.asmx</Value>
@@ -71,9 +71,6 @@
     <Setting Name="Socioboard_Api_InstagramComment_InstagramComment" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/InstagramComment.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/DiscoverySearch.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/LinkedinCompanyPage.asmx</Value>
     </Setting>
@@ -87,7 +84,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/ArchiveMessage.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_User_User" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/User.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/User.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/TicketAssigneeStatus.asmx</Value>
@@ -162,7 +159,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/ScheduledMessage.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/Instagram.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Instagram.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Affiliates_Affiliates" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/Affiliates.asmx</Value>
@@ -193,6 +190,9 @@
     </Setting>
     <Setting Name="Socioboard_Api_LinkedinMessage_LinkedinMessage" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://api.socioboard.com/services/LinkedinMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/services/discoverysearch.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

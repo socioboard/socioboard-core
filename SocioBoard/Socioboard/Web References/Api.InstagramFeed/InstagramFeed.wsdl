@@ -23,6 +23,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="LinkedInId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataFromTop" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -59,6 +60,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedInId" type="s:string" />
     <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfDataFromTop" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetFeedsOfProfileWithRangeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -74,6 +76,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedInId" type="s:string" />
     <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfDataFromTop" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetFeedsOfProfileWithRangeHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -194,16 +197,16 @@
   </wsdl:binding>
   <wsdl:service name="InstagramFeed">
     <wsdl:port name="InstagramFeedSoap" binding="tns:InstagramFeedSoap">
-      <soap:address location="http://localhost:6361/services/InstagramFeed.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedSoap12" binding="tns:InstagramFeedSoap12">
-      <soap12:address location="http://localhost:6361/services/InstagramFeed.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpGet" binding="tns:InstagramFeedHttpGet">
-      <http:address location="http://localhost:6361/services/InstagramFeed.asmx" />
+      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpPost" binding="tns:InstagramFeedHttpPost">
-      <http:address location="http://localhost:6361/services/InstagramFeed.asmx" />
+      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

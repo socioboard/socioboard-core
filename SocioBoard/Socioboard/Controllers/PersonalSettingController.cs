@@ -71,7 +71,7 @@ namespace Socioboard.Controllers
             }
               User objUser = (User)Session["User"];
               Api.User.User ApiobjUser = new Api.User.User();
-              string ret = ApiobjUser.UpdateUser(id, fname, lname, dt, file);
+              string ret = ApiobjUser.UpdateUser(id, fname, lname, dt, file,Session["access_token"].ToString());
               if (ret == "1")
               {
                   objUser.UserName = fname + " " + lname;
@@ -171,7 +171,7 @@ namespace Socioboard.Controllers
                 string IskeyUsed = string.Empty;
                 if (objUser.IsKeyUsed == 0 || objUser.IsKeyUsed == null)
                 {
-                    ret = ApiobjUser.UpdateEmailId(objUser.Id.ToString(), groupid, newEmailId);
+                    ret = ApiobjUser.UpdateEmailId(objUser.Id.ToString(), groupid, newEmailId, Session["access_token"].ToString());
                     if (ret == "Updated Successfully")
                     {
                         IskeyUsed = ApiobjUser.UpdateIsEmailKeyUsed(objUser.Id.ToString(), code);
@@ -285,14 +285,14 @@ namespace Socioboard.Controllers
             }
 
             //Change Payment status to 1
-            ApiobjUser.changePaymentStatus(objUser.Id.ToString(), "paid");
+            ApiobjUser.changePaymentStatus(objUser.Id.ToString(), "paid",Session["access_token"].ToString());
 
             //Update Paymenttransaction table
             Api.PaymentTransaction.PaymentTransaction objApiPaymentTransaction = new Api.PaymentTransaction.PaymentTransaction();
 
             string res_PaymentTransaction = objApiPaymentTransaction.SavePayPalTransaction(objUser.Id.ToString(), paidamount);
 
-            int ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), Session["Ewallet"].ToString(), objUser.AccountType, "paid");
+            string ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), Session["Ewallet"].ToString(), objUser.AccountType, "paid", Session["access_token"].ToString());
             objUser.Ewallet = Session["Ewallet"].ToString();
             objUser.ActivationStatus = "paid";
             Session["User"] = objUser;
@@ -302,10 +302,10 @@ namespace Socioboard.Controllers
                 Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)(new JavaScriptSerializer().Deserialize(ApiInvitation.UserInvitedInfo(objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Invitation)));
                 if (_Invitation != null)
                 {
-                    User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString()),typeof(User)));
+                    User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString(), Session["access_token"].ToString()), typeof(User)));
                     float bonus = (float.Parse(paidamount) * Payment.ReferedAmountDetails(objUser.AccountType)) / 100;
                     newUser.Ewallet = (float.Parse(newUser.Ewallet) + bonus).ToString();
-                    int ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus);
+                    string ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus, Session["access_token"].ToString());
                     Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
                     ApiAffiliates.AddAffiliateDetail(newUser.Id.ToString(), objUser.Id.ToString(), DateTime.Now, bonus.ToString());
                 }
@@ -330,7 +330,7 @@ namespace Socioboard.Controllers
             string pay = string.Empty;
             Api.User.User ApiobjUser = new Api.User.User();
             User objUser = (User)Session["User"];
-            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString()), typeof(User)));
+            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
             Helper.Payment payme = new Payment();
             string amount = price.Replace("$", "").Trim();
             Session["PaymentAmount"] = amount;
@@ -348,7 +348,7 @@ namespace Socioboard.Controllers
                 {
                     objUser.ExpiryDate = DateTime.Now.AddDays(30);
                 }
-                int i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), "Free", objUser.ExpiryDate, objUser.PaymentStatus);
+                string i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), "Free", objUser.ExpiryDate, objUser.PaymentStatus, Session["access_token"].ToString());
                 Session["Paid_User"] = "Paid";
             }
             string UserName = objUser.UserName;
@@ -405,9 +405,9 @@ namespace Socioboard.Controllers
             {
                 objUser.ExpiryDate = DateTime.Now.AddDays(30);
             }
-            int i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), objUser.AccountType, objUser.ExpiryDate, objUser.PaymentStatus);
+            string i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), objUser.AccountType, objUser.ExpiryDate, objUser.PaymentStatus, Session["access_token"].ToString());
             string res_PaymentTransaction = objApiPaymentTransaction.SavePayPalTransaction(objUser.Id.ToString(), paidamount);
-            int ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), Session["Ewallet"].ToString(), accountType, "paid");
+            string ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), Session["Ewallet"].ToString(), accountType, "paid", Session["access_token"].ToString());
             objUser.Ewallet = Session["Ewallet"].ToString();
             objUser.ActivationStatus = "paid";
             Session["User"] = objUser;
@@ -417,10 +417,10 @@ namespace Socioboard.Controllers
                 Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)(new JavaScriptSerializer().Deserialize(ApiInvitation.UserInvitedInfo(objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Invitation)));
                 if (_Invitation != null)
                 {
-                    User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString()), typeof(User)));
+                    User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString(), Session["access_token"].ToString()), typeof(User)));
                     decimal bonus = (decimal.Parse(paidamount, CultureInfo.InvariantCulture.NumberFormat) * Payment.ReferedAmountDetails(accountType)) / 100;
                     newUser.Ewallet = (decimal.Parse(newUser.Ewallet, CultureInfo.InvariantCulture.NumberFormat) + bonus).ToString();
-                    int ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus);
+                    string ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus, Session["access_token"].ToString());
                     Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
                     ApiAffiliates.AddAffiliateDetail(newUser.Id.ToString(), objUser.Id.ToString(), DateTime.Now, bonus.ToString());
                 }

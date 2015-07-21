@@ -64,15 +64,6 @@
     <Compile Include="Domain\ArchiveMessage.cs" />
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
-    <Compile Include="Domain\Boardfbfeeds.cs" />
-    <Compile Include="Domain\Boardfbpage.cs" />
-    <Compile Include="Domain\Boardgplusaccount.cs" />
-    <Compile Include="Domain\Boardgplusfeeds.cs" />
-    <Compile Include="Domain\Boardinstagramaccount.cs" />
-    <Compile Include="Domain\Boardinstagramfeeds.cs" />
-    <Compile Include="Domain\Boards.cs" />
-    <Compile Include="Domain\Boardtwitteraccount.cs" />
-    <Compile Include="Domain\Boardtwitterfeeds.cs" />
     <Compile Include="Domain\BusinessSetting.cs" />
     <Compile Include="Domain\CompanyProfiles.cs" />
     <Compile Include="Domain\CompanySocialProfiles.cs" />

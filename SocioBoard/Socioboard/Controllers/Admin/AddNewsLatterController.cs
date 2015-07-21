@@ -39,7 +39,7 @@ namespace Socioboard.Controllers.Admin
             foreach (var item in UsersId)
             {
                 Api.User.User ApiObjUser=new Api.User.User();
-                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiObjUser.getUsersById(item.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiObjUser.getUsersById(item.ToString(), Session["access_token"].ToString()), typeof(Domain.Socioboard.Domain.User)));
                 Domain.Socioboard.Domain.NewsLetter ObjNewsLatter = new NewsLetter();
                 if (dt == DateTime.Now.Date)
                 {

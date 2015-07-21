@@ -96,6 +96,7 @@ namespace Socioboard.Controllers
                         {
                             Session["Paid_User"] = "Unpaid";
                         }
+                        ApiobjUser.UpdateLastLoginTime(checkuserexist.Id.ToString());
                         return RedirectToAction("Index", "Home");
                     }
                     else

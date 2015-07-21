@@ -21,6 +21,7 @@ namespace Socioboard.Controllers
         public static int twtfeedcount = 0;
         public static int linkedinfeedcount = 0;
         public static int tumblerimagecount = 0;
+        public static int instagramfeedcount = 0;
         //
         // GET: /Feeds/
 
@@ -29,7 +30,7 @@ namespace Socioboard.Controllers
         {
             if (Session["User"] != null)
             {
-                
+
                 if (Session["Paid_User"].ToString() == "Unpaid")
                 {
                     return RedirectToAction("Billing", "PersonalSetting");
@@ -46,7 +47,7 @@ namespace Socioboard.Controllers
             // return View();
         }
 
-        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore=true)]
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadaccount()
         {
 
@@ -479,7 +480,7 @@ namespace Socioboard.Controllers
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
             //List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
-            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), profileid,"0"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), profileid, "0","8"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
 
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
@@ -523,7 +524,7 @@ namespace Socioboard.Controllers
         //    //List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
         //    //GetFeedsOfProfileWithRange
         //    List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, "0"), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
-            
+
         //    foreach (var item_lstTumblrFeed in lstTumblrFeed)
         //    {
         //        lstComment = new List<object>();
@@ -1343,16 +1344,16 @@ namespace Socioboard.Controllers
             //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             bool isUserFeedsCalled = false;
-            if (type!=null)
+            if (type != null)
             {
                 if (type.Equals("userfeeds") && !string.IsNullOrEmpty(type))
                 {
                     isUserFeedsCalled = true;
-                } 
+                }
             }
 
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
-            
+
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
@@ -1377,10 +1378,10 @@ namespace Socioboard.Controllers
                 //}
                 //else
                 //{
-                    lstobject.Add(item);
+                lstobject.Add(item);
                 //}
             }
-           
+
             dictwallposts.Add("facebook", lstobject);
 
             //if (isUserFeedsCalled)
@@ -1389,9 +1390,9 @@ namespace Socioboard.Controllers
             //}
             //else
             //{
-                return PartialView("_Panel1Partial", dictwallposts);
+            return PartialView("_Panel1Partial", dictwallposts);
             //}
-            
+
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
@@ -1404,9 +1405,84 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_GplusActivityPartial", lstGooglePlusActivities);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
         }
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult Instagram(string id)
+        {
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            ViewBag.Id = id;
+            if (_User != null)
+            {
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+        }
+         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult ShowInstagramFeeds(string load, string id)
+        {
+
+            if (load == "first")
+            {
+                Session["InsragramIdForFeeds"] = id;
+                instagramfeedcount = 0;
+            }
+            else
+            {
+                id = (string)Session["InsragramIdForFeeds"];
+                instagramfeedcount = instagramfeedcount + 4;
+            }
+
+            object lstobject = new object();
+            List<object> lstComment = null;
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            Dictionary<string, Dictionary<object, List<object>>> dictwallposts = new Dictionary<string, Dictionary<object, List<object>>>();
+            Dictionary<object, List<object>> dic_InstgramImg = new Dictionary<object, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.InstagramFeed.InstagramFeed ApiobjInstagramFeed = new Api.InstagramFeed.InstagramFeed();
+            Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
+
+
+            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), id, instagramfeedcount.ToString(), "4"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            foreach (var item_lstInstagramfeed in lstInstagramFeed)
+            {
+                lstComment = new List<object>();
+                List<Domain.Socioboard.Domain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.Domain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramComment>)));
+                foreach (var item in lstInstagramComment)
+                {
+                    lstComment.Add(item);
+                }
+                lstobject = (object)item_lstInstagramfeed;
+                dic_InstgramImg.Add(lstobject, lstComment);
+            }
+            dictwallposts.Add("instagram", dic_InstgramImg);
+            return PartialView("_InstagramPartial", dictwallposts);
+        }
+
+         public ActionResult AddInstagramComment(string FeedId, string Text, string InstagramId)
+         {
+             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+
+             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+             Api.Instagram.Instagram ApiObjInstagram = new Api.Instagram.Instagram();
+             string ret = ApiObjInstagram.AddComment(objGroups.UserId.ToString(),FeedId, Text, InstagramId);
+            return Content("");
+         }
+
+
     }
 }
