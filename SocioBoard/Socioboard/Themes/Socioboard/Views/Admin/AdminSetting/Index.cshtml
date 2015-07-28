@@ -1,8 +1,11 @@
-﻿<div id="page-wrapper">
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+<div id="page-wrapper">
 </div>
 
 
-<script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-2.0.1.min.js"></script>
 
 <script type="text/javascript">
     

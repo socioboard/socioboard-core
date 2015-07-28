@@ -41,7 +41,7 @@
 
                 $('#page-wrapper').html('').append(msg);
             },
-            async: true,
+            async: false
         });
     }
 
@@ -59,7 +59,7 @@
 
                 $('#page-wrapper').html(msg);
             },
-            async: true,
+            async: false
         });
     }
 
@@ -69,8 +69,7 @@
             url: "../Report/FbPagePostDetails?FbUserId=" + FbUserId + "&UserId=" + UserId,
             success: function (msg) {
                 $('#page-wrapper').html('').append(msg);
-            },
-			 async: true,
+            }
 
         });
 
@@ -92,7 +91,7 @@
                 $('#page-wrapper').html('').append(msg);
                 // loadChart();
             },
-             async: true,
+            async: false
         });
     }
 
@@ -107,7 +106,7 @@
                 //alert(msg);
                 $('#reports').html('').append(msg);
             },
-             async: true,
+            async: false
         });
     }
 
@@ -118,7 +117,7 @@
             success: function (msg) {
                 $('#loadpostdetails').html(msg);
             },
-             async: true,
+            async: false
         });
         // jQuery.noConflict();
         $('#CommentDetailsModall').modal('show');
@@ -177,7 +176,7 @@
                     loadChart();
                     piechart();
                 },
-                 async: true,
+                async: false
             });
         }
 
@@ -197,7 +196,7 @@
                     //loadMentionChart();
                     //loadTweetChart();
                 },
-                 async: true,
+                async: true
             });
         }
 
@@ -252,7 +251,7 @@
                         alert(e);
                     }
                 },
-                 async: true,
+                async: false
             });
             //try {
             //    loadChart();
@@ -400,7 +399,7 @@
                     $('#reports').html('').append(msg);
                     $("#reports").metisMenu();
                 },
-                async: true,
+                async: false
             });
         }
 
@@ -411,7 +410,7 @@
                 success: function (msg) {
                     $('#loadpostdetails').html(msg);
                 },
-                 async: true,
+                async: false
             });
 
             $('#CommentDetailsModall').modal('show');

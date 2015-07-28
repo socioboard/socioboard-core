@@ -34,7 +34,7 @@
 <div class="col-md-12">
 <div class="col-md-9">
     <div class="row">
-        <h2>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_SentMessages</h2>
+        <h2>Sent Messages</h2>
         <div class="col-xs-12">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -133,16 +133,16 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Close</span></button>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                     <img src="Contents/img/photo.png" class="img-circle">
                                     <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">
                                 </div>
                                 <div class="modal-body">
-                                    <h4>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_LeaveAComment</h4>
+                                    <h4>LEAVE A COMMENT</h4>
                                     <textarea class="form-control" rows="3" placeholder="Write your message here"></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default " data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Comment</button>
+                                    <button type="button" class="btn btn-default " data-dismiss="modal">Comment</button>
                                 </div>
                             </div>
                         </div>
@@ -199,25 +199,25 @@
 </div>
 
     <div class="col-md-3" style="padding-top: 20px">
-        <div class="col-md-12 btn btn-success" style="margin-bottom:7px" data-target="#Eport_sent_message" data-toggle="modal">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ExportToCSV</div>
+        <div class="col-md-12 btn btn-success" style="margin-bottom:7px" data-target="#Eport_sent_message" data-toggle="modal">Export to CSV</div>
         <div class="col-md-12" style="border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(248, 248, 248); padding: 4%;">
         <div class="list-group">
-            <a href="#" class="list-group-item btn btn-default report_today" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('0')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Today</strong></a>
-            <a href="#" class="list-group-item btn btn-default report_yesterday" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('1')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Yesterday</strong></a>
-            <a href="#" class="list-group-item btn btn-default report_7_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('7')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Last7Days</strong></a>
-            <a href="#" class="list-group-item btn btn-default report_30_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('30')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Last30Days</strong></a>
-            <a href="#" class="list-group-item btn btn-default report_this_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('0')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ThisMonth</strong></a>
-            <a href="#" class="list-group-item btn btn-default report_last_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('1')"><strong>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_LastMonth</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_today" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('0')"><strong>Today</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_yesterday" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('1')"><strong>Yesterday</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_7_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('7')"><strong>Last 7 Days</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_30_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('30')"><strong>Last 30 Days</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_this_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('0')"><strong>This Month</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_last_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('1')"><strong>Last Month</strong></a>
             <a href="#" class="list-group-item btn btn-default report_range" style="background: #e4e3e4; margin-bottom: 4%;" onclick="Show_range()"><strong>Custom Range</strong></a>
            <div class="range_inputs" style="padding-top: 1%; display:none">
                 <div style="margin-left: 2%; padding-bottom: 5%;" class="input-group col-md-5 pull-left">
-                    <label for="dates">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_From</label><input id="fromdate" type="text" class="form-control">
+                    <label for="dates">From</label><input id="fromdate" type="text" class="form-control">
                 </div>
                 <div style="margin-left: 13%; padding-bottom: 5%;" class="input-group col-md-5 pull-left">
-                    <label for="dates">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_To</label><input id="todate" type="text" class="form-control">
+                    <label for="dates">To</label><input id="todate" type="text" class="form-control">
                 </div>
-                <button class="btn btn-default btn-success clearBtn col-md-5 customrange_submit" style="margin-left: 5%" onclick="loadsentmessagesforCustomrange()">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Submit</button>
-                <button class="btn btn-default clearBtn btn-danger col-md-5" style="margin-left: 4%" onclick="clearbutton()">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Clear</button>
+                <button class="btn btn-default btn-success clearBtn col-md-5 customrange_submit" style="margin-left: 5%" onclick="loadsentmessagesforCustomrange()">Submit</button>
+                <button class="btn btn-default clearBtn btn-danger col-md-5" style="margin-left: 4%" onclick="clearbutton()">Clear</button>
             </div>
         </div> 
          </div>
@@ -231,31 +231,31 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <h4>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ExportSentMessageData</h4>
+                                    <h4>Export sent message data</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div id="export_sent_inner">
                                         <div class="intro">
-                                            <p>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_CSVDescription</p>
+                                            <p>Messages will be exported in CSV format - Comma Separated Values. This data can be opened and analyzed in applications such as Microsoft Excel, Apple Numbers or Google Docs.</p>
                                             <div class=""></div></div>
                                         <div class="row">
-                                        <div class="col-md-4" id=""><label>@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ChooseDataRange</label>
+                                        <div class="col-md-4" id=""><label>Choose Date Range</label>
                                             <ul class="" style="list-style: outside none none;padding-left:10px">
-                                                <li><a class="btn active border-radius" id="export_to_csv_0" onclick="eporttocsv('0')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Today</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_1" onclick="eporttocsv('1')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Yesterday</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_2" onclick="eporttocsv('2')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Last7Days</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_3" onclick="eporttocsv('3')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_Last30Days</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_4" onclick="eporttocsv('4')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ThisMonth</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_5" onclick="eporttocsv('5')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_LastMonth</a></li>
-                                                <li><a class="btn border-radius" id="export_to_csv_6" onclick="eporttocsv('6')">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_CustomRange</a></li>
+                                                <li><a class="btn active border-radius" id="export_to_csv_0" onclick="eporttocsv('0')">Today</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_1" onclick="eporttocsv('1')">Yesterday</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_2" onclick="eporttocsv('2')">Last 7 Days</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_3" onclick="eporttocsv('3')">Last 30 Days</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_4" onclick="eporttocsv('4')">This Month</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_5" onclick="eporttocsv('5')">Last Month</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_6" onclick="eporttocsv('6')">Custom</a></li>
                                             </ul>
                                         </div>
                                         <div id="date_range_div" style="display:none;margin-left:-40px" class="col-md-8">
                                             <div style="float:left">
-                                                 <label for="dates">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_From</label><input type="text" id="cal_left" class="form-control">
+                                                 <label for="dates">From</label><input type="text" id="cal_left" class="form-control">
                                             </div>
                                             <div style="float:right;margin-right:-35px">
-                                                <label for="dates">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_To</label><input type="text" id="cal_right" class="form-control">
+                                                <label for="dates">To</label><input type="text" id="cal_right" class="form-control">
                                             </div>
                                         </div>
                                       </div>
@@ -263,7 +263,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a class="btn btn-default" data-dismiss="modal">Cancel</a>
-                                    <a id="export_btn" class="btn btn-success" href="../Messages/ExportSentmsgByDay?day=0" data-dismiss="">@GlobusMultiLanguageLib.Resources.Messages_sentmsgPartial_ExportToCSV</a>
+                                    <a id="export_btn" class="btn btn-success" href="../Messages/ExportSentmsgByDay?day=0" data-dismiss="">Export to CSV</a>
                                 </div>
                             </div>
                         </div>

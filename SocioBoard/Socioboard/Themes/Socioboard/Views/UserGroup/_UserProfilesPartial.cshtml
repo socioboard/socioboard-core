@@ -7,7 +7,7 @@
 <h4>Profiles available for connection</h4>
 @foreach (var item in (Dictionary<SocialProfile, object>)Model)
 {
-    if (item.Key.ProfileType == "facebook")
+    if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
     {
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
         string profileimage = string.Empty;

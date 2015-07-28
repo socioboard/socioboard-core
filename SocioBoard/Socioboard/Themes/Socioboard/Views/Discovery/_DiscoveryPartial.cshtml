@@ -1,4 +1,7 @@
-﻿<div class="container-fluid">
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+<div class="container-fluid">
     <div class="col-md-12">
         <h1 class="page-header">Discovery allows you to find new customers by searching with keywords around your business.</h1>
         <div class="input-group custom-search-form">
@@ -46,6 +49,16 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-google-plus fa-fw"></i>GooglePlus Posts</h3>
+            </div>
+            <div class="panel-body">
+                <ul id="gplusdiscovery" class="chat">
+                </ul>
+                <div>
+                </div>
+            </div></div>
     </div>
 
     <div style="border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(248, 248, 248); padding: 0%; border-color: #428bca;" class="col-md-3">
@@ -87,22 +100,31 @@
       //  alert("success");
         $('#txtsearch').val(keyword);
 
-        $('#facebookdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
-        $('#twitterdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
-        $.ajax({
-            type: 'GET',
-            url: '../Discovery/SearchFacebook?keyword=' + keyword,
-            success: function (msg) {
-                //alert(msg);
-                $('#facebookdiscovery').html(msg);
-            }
-        });
+       // $('#facebookdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
+        $('#twitterdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
+        $('#gplusdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
+        //$.ajax({
+        //    type: 'GET',
+        //    url: '../Discovery/SearchFacebook?keyword=' + keyword,
+        //    success: function (msg) {
+        //        //alert(msg);
+        //        $('#facebookdiscovery').html(msg);
+        //    }
+        //});
         $.ajax({
             type: 'GET',
             url: '../Discovery/SearchTwitter?keyword=' + keyword,
             success: function (msg) {
                 //alert(msg);
                 $('#twitterdiscovery').html(msg);
+            }
+        });
+        $.ajax({
+            type: 'GET',
+            url: '../Discovery/SearchGplus?keyword=' + keyword,
+            success: function (msg) {
+                //alert(msg);
+                $('#gplusdiscovery').html(msg);
             }
         });
 

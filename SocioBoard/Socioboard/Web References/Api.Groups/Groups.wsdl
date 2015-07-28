@@ -89,6 +89,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetGroupDeUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupDeUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupDeUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -128,6 +142,12 @@
   <wsdl:message name="DeleteGroupByIdSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteGroupByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupDeUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupDeUserIdResponse" />
+  </wsdl:message>
   <wsdl:message name="AddGroupHttpGetIn">
     <wsdl:part name="GroupName" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -165,6 +185,12 @@
     <wsdl:part name="Userid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteGroupByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddGroupHttpPostIn">
@@ -206,6 +232,12 @@
   <wsdl:message name="DeleteGroupByIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupDeUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="GroupsSoap">
     <wsdl:operation name="AddGroup">
       <wsdl:input message="tns:AddGroupSoapIn" />
@@ -230,6 +262,10 @@
     <wsdl:operation name="DeleteGroupById">
       <wsdl:input message="tns:DeleteGroupByIdSoapIn" />
       <wsdl:output message="tns:DeleteGroupByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <wsdl:input message="tns:GetGroupDeUserIdSoapIn" />
+      <wsdl:output message="tns:GetGroupDeUserIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GroupsHttpGet">
@@ -257,6 +293,10 @@
       <wsdl:input message="tns:DeleteGroupByIdHttpGetIn" />
       <wsdl:output message="tns:DeleteGroupByIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <wsdl:input message="tns:GetGroupDeUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetGroupDeUserIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GroupsHttpPost">
     <wsdl:operation name="AddGroup">
@@ -282,6 +322,10 @@
     <wsdl:operation name="DeleteGroupById">
       <wsdl:input message="tns:DeleteGroupByIdHttpPostIn" />
       <wsdl:output message="tns:DeleteGroupByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <wsdl:input message="tns:GetGroupDeUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetGroupDeUserIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="GroupsSoap" type="tns:GroupsSoap">
@@ -333,6 +377,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteGroupById">
       <soap:operation soapAction="http://tempuri.org/DeleteGroupById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <soap:operation soapAction="http://tempuri.org/GetGroupDeUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -397,6 +450,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupDeUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GroupsHttpGet" type="tns:GroupsHttpGet">
     <http:binding verb="GET" />
@@ -447,6 +509,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteGroupById">
       <http:operation location="/DeleteGroupById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <http:operation location="/GetGroupDeUserId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -511,19 +582,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGroupDeUserId">
+      <http:operation location="/GetGroupDeUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Groups">
     <wsdl:port name="GroupsSoap" binding="tns:GroupsSoap">
-      <soap:address location="http://localhost:6361/services/Groups.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Groups.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupsSoap12" binding="tns:GroupsSoap12">
-      <soap12:address location="http://localhost:6361/services/Groups.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Groups.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupsHttpGet" binding="tns:GroupsHttpGet">
-      <http:address location="http://localhost:6361/services/Groups.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Groups.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupsHttpPost" binding="tns:GroupsHttpPost">
-      <http:address location="http://localhost:6361/services/Groups.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Groups.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using log4net;
 using Socioboard.App_Start;
 using System.Web.Security;
+using System.Text.RegularExpressions;
 
 namespace Socioboard.Controllers
 {
@@ -39,7 +40,12 @@ namespace Socioboard.Controllers
                 {
                     if (Session["googlepluslogin"].ToString() == "googlepluslogin")
                     {
-                        objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                        //objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                        string Googleloginreturn = apiobjYoutube.GoogleLogin(code);
+                        string[] arrgoogleloginreturn = Regex.Split(Googleloginreturn, "_#_");
+                        objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(arrgoogleloginreturn[0], typeof(Domain.Socioboard.Domain.User)));
+                        Session["AccesstokenFblogin"] = arrgoogleloginreturn[1];
+                        Session["googlepluslogin"] = "googlelogin";
                         checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
                         if (checkuserexist != null)
                         {

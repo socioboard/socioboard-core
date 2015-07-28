@@ -106,6 +106,25 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddYoutubeAccountwithLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client_secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirect_uri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddYoutubeAccountwithLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddYoutubeAccountwithLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -150,6 +169,12 @@
   </wsdl:message>
   <wsdl:message name="UpdateYouTubeAccountByAdminSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateYouTubeAccountByAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:AddYoutubeAccountwithLogin" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:AddYoutubeAccountwithLoginResponse" />
   </wsdl:message>
   <wsdl:message name="AddYoutubeAccountHttpGetIn">
     <wsdl:part name="client_id" type="s:string" />
@@ -199,6 +224,17 @@
     <wsdl:part name="ObjYouTube" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateYouTubeAccountByAdminHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginHttpGetIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddYoutubeAccountHttpPostIn">
@@ -251,6 +287,17 @@
   <wsdl:message name="UpdateYouTubeAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginHttpPostIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountwithLoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="YoutubeSoap">
     <wsdl:operation name="AddYoutubeAccount">
       <wsdl:input message="tns:AddYoutubeAccountSoapIn" />
@@ -279,6 +326,10 @@
     <wsdl:operation name="UpdateYouTubeAccountByAdmin">
       <wsdl:input message="tns:UpdateYouTubeAccountByAdminSoapIn" />
       <wsdl:output message="tns:UpdateYouTubeAccountByAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <wsdl:input message="tns:AddYoutubeAccountwithLoginSoapIn" />
+      <wsdl:output message="tns:AddYoutubeAccountwithLoginSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeHttpGet">
@@ -310,6 +361,10 @@
       <wsdl:input message="tns:UpdateYouTubeAccountByAdminHttpGetIn" />
       <wsdl:output message="tns:UpdateYouTubeAccountByAdminHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <wsdl:input message="tns:AddYoutubeAccountwithLoginHttpGetIn" />
+      <wsdl:output message="tns:AddYoutubeAccountwithLoginHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeHttpPost">
     <wsdl:operation name="AddYoutubeAccount">
@@ -339,6 +394,10 @@
     <wsdl:operation name="UpdateYouTubeAccountByAdmin">
       <wsdl:input message="tns:UpdateYouTubeAccountByAdminHttpPostIn" />
       <wsdl:output message="tns:UpdateYouTubeAccountByAdminHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <wsdl:input message="tns:AddYoutubeAccountwithLoginHttpPostIn" />
+      <wsdl:output message="tns:AddYoutubeAccountwithLoginHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="YoutubeSoap" type="tns:YoutubeSoap">
@@ -399,6 +458,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateYouTubeAccountByAdmin">
       <soap:operation soapAction="http://tempuri.org/UpdateYouTubeAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <soap:operation soapAction="http://tempuri.org/AddYoutubeAccountwithLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -472,6 +540,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <soap12:operation soapAction="http://tempuri.org/AddYoutubeAccountwithLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="YoutubeHttpGet" type="tns:YoutubeHttpGet">
     <http:binding verb="GET" />
@@ -529,6 +606,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateYouTubeAccountByAdmin">
       <http:operation location="/UpdateYouTubeAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <http:operation location="/AddYoutubeAccountwithLogin" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -600,19 +686,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddYoutubeAccountwithLogin">
+      <http:operation location="/AddYoutubeAccountwithLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Youtube">
     <wsdl:port name="YoutubeSoap" binding="tns:YoutubeSoap">
-      <soap:address location="http://localhost:6361/services/Youtube.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeSoap12" binding="tns:YoutubeSoap12">
-      <soap12:address location="http://localhost:6361/services/Youtube.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpGet" binding="tns:YoutubeHttpGet">
-      <http:address location="http://localhost:6361/services/Youtube.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpPost" binding="tns:YoutubeHttpPost">
-      <http:address location="http://localhost:6361/services/Youtube.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

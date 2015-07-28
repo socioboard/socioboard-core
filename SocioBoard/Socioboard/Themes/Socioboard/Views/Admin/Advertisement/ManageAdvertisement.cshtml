@@ -1,4 +1,7 @@
-﻿<div id="page-wrapper">
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+<div id="page-wrapper">
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
@@ -31,11 +34,11 @@
 
 </div>
 
-<script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-2.0.1.min.js"></script>
 <script type="text/javascript">
 
     function bindmanageAdvertisement() {
-        $('#ManageAdvertisementTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
+        $('#ManageAdvertisementTable').html('<center><img src="../Themes/@path/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../Advertisement/LoadAdvertisement',

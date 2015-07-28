@@ -73,9 +73,10 @@
 
    <!--  <script src="/Themes/@path/Contents/js/clickDesk.js" type="text/javascript"></script>-->
     <!--Edit by Vikas-->
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
-   
+    @*<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>*@
+    <script src="/Themes/Socioboard/Contents/js/jasny-bootstrap.min.js"></script>
+    <link href="/Themes/Socioboard/Contents/css/jasny-bootstrap.min.css" rel="stylesheet" />
     @*<script type="text/javascript" src="/Themes/Socioboard/Contents/js/exporting.js"></script>*@
 </head>
 
@@ -137,13 +138,24 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                        @if (!string.IsNullOrEmpty(objUser.ProfileUrl))
                        {
-                           string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-                           string imgurl = "/Themes/Socioboard" + profileUrl[1];
-                        <strong> @User.Identity.Name </strong><img src="@imgurl" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
+                           string imgurl = "";
+
+                           try
+                           {
+                               string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                               imgurl = "/Themes/Socioboard" + profileUrl[2];
+                               //imgurl=profileUrl[1];
+                           }
+                           catch (Exception ex)
+                           {
+                               imgurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+                           }
+
+                        <strong> @User.Identity.Name </strong><img src="@imgurl" class=" headerProfilePic" /><i class="fa fa-fw fa-caret-down fa-2x"></i>
                        }
                        else
                        {
-                        <strong> @User.Identity.Name </strong><img src="" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
+                        <strong> @User.Identity.Name </strong><img src="..\Themes\Socioboard\Contents\img\anonymousUser.jpg" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
                        }
                     </a>
                     @*<ul class="dropdown-menu dropdown-user">
@@ -249,11 +261,26 @@
                             </ul>*@
                             <!-- /.nav-second-level -->
                         </li>
-                        <li id="group">
-                            <a href="../Group/Index"><i class="fa fa-fw fa-users fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_SocialGroups</span></a>
 
-                            <!-- /.nav-second-level -->
-                        </li>
+                        @*<li id="rssfeed1">
+                            <a href="../RssFeed/Index"><i class="fa fa-users fa-2x"></i><span class="tweaked-margin">Auto RssFeed</span></a>
+                            <ul class="nav nav-second-level">
+                                <li id="rssfeed">
+                                    <a href="../RssFeed/Index">RssFeed</a>
+                                </li>
+                                <li id="rssqueue">
+                                    <a href="../RssFeed/RssQueue">RssQueue</a>
+                                </li>
+                                <li id="rssfeedinfo">
+                                    <a href="../RssFeed/RssFeedInfo">RssFeedInfo</a>
+                                </li>
+                            </ul>
+                        </li>*@
+                     @*   <li id="group">
+        <a href="../Group/Index"><i class="fa fa-fw fa-users fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_SocialGroups</span></a>
+
+        <!-- /.nav-second-level -->
+    </li>*@
 						  <li id="ewallet">
                             <a href="../MyStuff/Ewallet"><i class="fa fa-google-wallet fa-2x fa-fw"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Ewallet</span></a>
                         </li>
@@ -347,7 +374,7 @@
                                 </div>
                                 <div>
                                     <input type="file" id="fileuploadImage" name="" onchange="AddImageComposeMessage()" class="btn btn-default col-md-6" accept="image/*">
-                                    @*<button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Site_DropBox</button>*@
+                                   @* <button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Site_DropBox</button>*@
                                 </div>
                             </div>
                         </div>
@@ -483,7 +510,7 @@
     <script src="/Themes/@path/Contents/js/feeds.js"></script>
 
 <!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
+@*<script type="text/javascript">
 var sc_project=9930597; 
 var sc_invisible=1; 
 var sc_security="3850c63d"; 
@@ -497,7 +524,7 @@ scJsHost+
 analytics" href="http://statcounter.com/shopify/"
 target="_blank"><img class="statcounter"
 src="http://c.statcounter.com/9930597/0/3850c63d/1/"
-alt="shopify site analytics"></a></div></noscript>
+alt="shopify site analytics"></a></div></noscript>*@
 <!-- End of StatCounter Code for Default Guide -->
 
     <script type="text/javascript">
@@ -563,6 +590,7 @@ alt="shopify site analytics"></a></div></noscript>
                 $('#binduserprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof userpictiny" onclick="removebindfrofilesmaster(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><div class="delet_icon" onclick="removebindfrofilesmaster(\'' + profileid + '\',\'' + network + '\')" style="margin-left: 83px;"></div><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
                 $('#' + profileid).fadeIn(250);
                 totalmessagewords = BindChracterAccordingProfile(network);
+                totalmessagewords = totalmessagewords - $("#textareavaluetosendmessage").val().length;
                 $('#messageCount').html(totalmessagewords);
 
 
@@ -1680,8 +1708,31 @@ alt="shopify site analytics"></a></div></noscript>
     @RenderSection("Scripts", false)
       
  <script src="/Themes/@path/Contents/js/GA.js" type="text/javascript"></script>
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project = 9930597;
+        var sc_invisible = 1;
+        var sc_security = "3850c63d";
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+        document.write("<sc" + "ript type='text/javascript' src='" +
+        scJsHost +
+        "statcounter.com/counter/counter.js'></" + "script>");
+    </script>
+    <noscript>
+        <div class="statcounter">
+            <a title="shopify site
+analytics" href="http://statcounter.com/shopify/"
+               target="_blank">
+                <img class="statcounter"
+                     src="http://c.statcounter.com/9930597/0/3850c63d/1/"
+                     alt="shopify site analytics" />
+            </a>
+        </div>
+    </noscript>
+    <!-- End of StatCounter Code for Default Guide -->
       <!-- Google Analytics Socioboard -->
-@*<script>
+<script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
             (i[r].q = i[r].q || []).push(arguments)
@@ -1692,7 +1743,47 @@ alt="shopify site analytics"></a></div></noscript>
     ga('create', 'UA-58515856-3', 'auto');
     ga('send', 'pageview');
 
-</script>*@
+</script>
+    <script src="/Themes/Socioboard/Contents/js/arrow24.js"></script>
+    <script src="/Themes/Socioboard/Contents/js/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var timezone_cookie = "timezoneoffset";
+            // jQuery.noConflict();
+            if (!$.cookie(timezone_cookie)) { // if the timezone cookie not exists create one.
+
+                // check if the browser supports cookie
+                var test_cookie = 'test cookie';
+                $.cookie(test_cookie, true);
+
+                if ($.cookie(test_cookie)) { // browser supports cookie
+
+                    // delete the test cookie.
+                    $.cookie(test_cookie, null);
+
+                    // create a new cookie
+                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
+
+                    location.reload(); // re-load the page
+                }
+            }
+            else { // if the current timezone and the one stored in cookie are different then
+                // store the new timezone in the cookie and refresh the page.
+
+                var storedOffset = parseInt($.cookie(timezone_cookie));
+                var currentOffset = new Date().getTimezoneOffset();
+
+                if (storedOffset !== currentOffset) { // user may have changed the timezone
+                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
+                    location.reload();
+                }
+            }
+        });
+
+
+
+    </script>
 </body>
 
 

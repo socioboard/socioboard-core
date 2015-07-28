@@ -4,9 +4,10 @@
 @using System.Web.Script.Serialization;
 @{
     Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }    
 
-<link href="~/Themes/Socioboard/Contents/css/smartinbox.css" rel="stylesheet" />
+<link href="~/Themes/@path/Contents/css/smartinbox.css" rel="stylesheet" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
@@ -18,7 +19,7 @@
                     <ul id="ul-inbox-chat">
                         <div>
                             <center>
-                                <img src="~/Themes/Socioboard/Contents/img/43px_on_transparent.gif" />
+                                <img src="~/Themes/@path/Contents/img/43px_on_transparent.gif" />
                             </center>
                         </div>
                     </ul>
@@ -37,7 +38,7 @@
                             <div id="div-user-profiles">
                                 <div>
                                     <center>
-                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif"/>
                                     </center>
                                 </div>
                             </div>
@@ -168,8 +169,8 @@
      	</div>
 
 
-<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+<script src="~/Themes/@path/Contents/js/Helper.js"></script>
+<script src="~/Themes/@path/Contents/js/underscore.js"></script>
 <script>
 
     $(document).ready(function () {

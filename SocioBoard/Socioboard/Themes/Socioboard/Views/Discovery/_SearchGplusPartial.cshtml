@@ -1,0 +1,49 @@
+﻿@{
+    bool check = true;
+}
+
+@foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
+{
+    if (check == true)
+    {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@item.ProfileImageUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                   <strong class="primary-font"><a href="http://plus.google.com/@item.FromId" target="_blank">@item.FromName</a></strong>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@item.CreatedTime
+                    </small>
+                </div>
+                <p>
+                    <a href="@item.MessageId" target="_blank">@item.Message</a>
+
+                </p>
+            </div>
+        </li>
+        check = false;
+    }
+    else
+    {
+        <li class="right clearfix">
+            <span class="chat-img pull-right">
+                <img src="@item.ProfileImageUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <strong class="primary-font pull-right"><a href="http://plus.google.com/@item.FromId" target="_blank">@item.FromName</a></strong>
+                    <small class="pull-left text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@item.CreatedTime
+                    </small>
+                </div><br />
+                <p class="pull-right">
+                    <a href="@item.MessageId" target="_blank">@item.Message</a>
+
+                </p>
+            </div>
+        </li>
+        check = true;
+    }
+}

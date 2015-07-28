@@ -123,7 +123,7 @@
         }
 
         if (!validateEmail(emailId)) {
-            alert('not valid email');
+            alert('Incorrect Email ID');
             return false;
         }
             //$('body').click(function (e){
@@ -139,7 +139,7 @@
                 data: '',
                 success: function (msg) {
                     if (msg == "Success") {
-                        alertify.success('Mail has been send Successfully!!');
+                        alertify.success('Mail has been sent Successfully!!');
                     }
                     else {
                         alertify.error("failure");

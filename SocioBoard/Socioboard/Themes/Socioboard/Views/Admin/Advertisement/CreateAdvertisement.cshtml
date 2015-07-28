@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
 <div style="min-height: 382px;" id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -72,7 +74,7 @@
         <!-- /.panel-body -->
     </div>
 </div>
-<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>
 <script>
     function AddAdvertisement(Id) {
         var advertisement = $('#Advsdtl').val();

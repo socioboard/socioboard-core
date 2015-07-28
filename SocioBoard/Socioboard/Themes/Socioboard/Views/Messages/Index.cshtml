@@ -3,11 +3,12 @@
 @using System.Web.Script.Serialization;
 @{
     Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
 @*<script src="/Themes/socioboard/Contents/js/jquery-1.11.0.js"></script>*@
-<link href="~/Themes/Socioboard/Contents/css/smartinbox.css" rel="stylesheet" />
+<link href="~/Themes/@path/Contents/css/smartinbox.css" rel="stylesheet" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
- <link href="~/Themes/Socioboard/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+ <link href="~/Themes/@path/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
     
 
 
@@ -19,7 +20,7 @@
                     <ul id="ul-inbox-message">
                         <div>
                             <center>
-                                <img src="~/Themes/Socioboard/Contents/img/43px_on_transparent.gif" />
+                                <img src="~/Themes/@path/Contents/img/43px_on_transparent.gif" />
                             </center>
                         </div>
                     </ul>
@@ -38,7 +39,7 @@
                             <div id="div-user-profiles">
                                 <div>
                                     <center>
-                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif"/>
                                     </center>
                                 </div>
                             </div>
@@ -89,7 +90,7 @@
                             <div id="div-user-message">
                                 <div>
                                     <center>
-                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif"/>
                                     </center>
                                 </div>
                             </div>
@@ -171,11 +172,11 @@
 </div>
 
 @*<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>*@
-<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+<script src="~/Themes/@path/Contents/js/Helper.js"></script>
+<script src="~/Themes/@path/Contents/js/underscore.js"></script>
 
-<script src="/Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="/Themes/Socioboard/Contents/js/jquD97C.js"></script>
+<script src="/Themes/@path/Contents/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/Themes/@path/Contents/js/jquD97C.js"></script>
 
 
 @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>*@

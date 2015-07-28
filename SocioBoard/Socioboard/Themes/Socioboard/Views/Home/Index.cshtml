@@ -1,8 +1,8 @@
 ﻿@{
-                    //ViewBag.Title = "Home Page";
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
 
-<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+<script src="~/Themes/@path/Contents/js/underscore.js"></script>
 
 @* Modal Fb/Tweet Popup *@
 @*<script src="~/Themes/Socioboard/Contents/js/jquery-1.9.1.min.js"></script>
@@ -20,13 +20,12 @@
             <div class="modal-body col-md-12">
                 <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
                     @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
-                    <textarea id="twtNotes" class="form-control" rows="4" style="resize: none">hey guys am using this amazing software &#64;socioboard for managing my twitter account</textarea>
+                    <textarea id="twtNotes" class="form-control" rows="4" style="resize: none">Hey guys am using this amazing software &#64;socioboard for managing my twitter account</textarea>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="Reset()">RESET</button>
-                <button type="button" class="btn btn-primary" onclick="SendTweet()">Tweet</button>
+                 <button type="button" class="btn btn-primary" onclick="SendTweet()">Tweet</button>
             </div>
         </div>
     </div>
@@ -46,12 +45,11 @@
             <div class="modal-body col-md-12">
                 <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
                     @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
-                    <textarea id="fbNotes" class="form-control" rows="4" style="resize: none">hey guys am using this amazing software #socioboard for managing my facebook account</textarea>
+                    <textarea id="fbNotes" class="form-control" rows="4" style="resize: none">Hey guys am using this amazing software #socioboard for managing my facebook account</textarea>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="Reset()">RESET</button>
                 <button type="button" class="btn btn-primary" onclick="SendFacebookMessage()">Post on Wall</button>
             </div>
         </div>
@@ -214,7 +212,7 @@
                             <a onclick="AddTwitterProfile()" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
                         </div>
                         <div class="col-md-12">
-                            <p style="color: white; padding-left: 45px; margin-top: 3%;">Attach Your Social Network Profile for Beginning With Socioboard</p>
+                            <p style="color: white; padding-left: 45px; margin-top: 3%;">Attach Your Social Network Profile's to Kick Start  With Socioboard‏</p>
                         </div>
                         <div class="col-md-6 col-xs-offset-2">
                             <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">Attach Your Profile</a>
@@ -238,7 +236,7 @@
     }
 
     function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
-$('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />').append('       plaese wait while we are fetching page data');
+$('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').append('       plaese wait while we are fetching page data');
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
@@ -347,7 +345,7 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
         $("#AttachProfile").attr('href', '../YoutubeManager/AuthenticateYoutube');
     }
 	
-	@*function LoadMoreProfileSnapshot() {
+	function LoadMoreProfileSnapshot() {
         debugger;
         //$('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
         $('#img-loader-profile').css("display", "block");
@@ -361,34 +359,6 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
             },
 			//async: false
         });
-    }*@
-	var isProcessing = false;
-    function LoadMoreProfileSnapshot() {
-        debugger;
-        //$('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
-        if (!isProcessing) {
-            isProcessing = true;
-            $('#img-loader-profile').css("display", "block");
-            $.ajax({
-                type: 'GET',
-                url: '../Home/ProfileSnapshot?op=scroll',
-                success: function (msg) {
-                    isProcessing = false;
-                    //$('#ldr-home-profile').remove();
-                    $('#img-loader-profile').css("display", "none");
-                    $('#div_Home_ProfileSnapshot').append(msg);
-                },
-				error:function (msg) {
-                    isProcessing = false;
-                    //$('#ldr-home-profile').remove();
-                    $('#img-loader-profile').css("display", "none");
-                    $('#div_Home_ProfileSnapshot').append(msg);
-                },
-				timeout: 10000
-                //async: false
-            });
-        }
-       
     }
 
     $(document).ready(function (e) {
@@ -406,14 +376,18 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
                     url: '../FacebookManager/GetFBPage',
                     success: function (msg) {
 
-                        var fbpagearr = msg.split('~');
-                        for (var i = 0; i < fbpagearr.length; i++) {
-                            var fbpageinfoarr = fbpagearr[i].split('`');
-                            try {
-							var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
-                                $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
-                            } catch (e) {
+                        if (msg==null || msg=="") {
+                            $('#fbpagebind').append("<center>No page found</center>");
+                        }else{
+                            var fbpagearr = msg.split('~');
+                            for (var i = 0; i < fbpagearr.length; i++) {
+                                var fbpageinfoarr = fbpagearr[i].split('`');
+                                try {
+                                    var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
+                                    $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
+                                } catch (e) {
 
+                                }
                             }
                         }
                         $('#facebookpageinfo').css({ 'display': 'block' });
@@ -639,7 +613,7 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
     //*****************************Facebook Start***********************************//
 
       @if (ViewBag.FacebookAccount != null)
-       {
+      {
             <text>
     allprofiles = @ViewBag.FacebookAccount.FbUserId
         //alert('allprofiles = ' + allprofiles);

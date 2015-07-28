@@ -1,5 +1,9 @@
 ﻿ @using Domain.Socioboard.Domain;
 @{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+@{
+    
     User objUser = (User)Model;
     string[] fnamelname = objUser.UserName.Split(' ');
     string fname = fnamelname[0];
@@ -9,7 +13,7 @@
         lname += fnamelname[i];
     }
     string profileurl = string.Empty;
-    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    //string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
     if (!string.IsNullOrEmpty(objUser.ProfileUrl))
     {
         try{
@@ -203,8 +207,16 @@
             showRemove: false,
             @if(!string.IsNullOrEmpty(objUser.ProfileUrl))
             {
-                string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-                string imgurl = "/Themes/Socioboard" + profileUrl[1];
+                string[] profileUrl = objUser.ProfileUrl.Split(new string[] { path }, StringSplitOptions.None);
+                string imgurl=string.Empty; 
+                try 
+	            {	        
+		            imgurl = "/Themes/"+ path +"/"+ profileUrl[1];
+	            }
+	            catch (Exception)
+	            {
+                    imgurl = objUser.ProfileUrl;
+	            }
                <text>  initialPreview: [
 "<img src='@imgurl' class='file-preview-image' >",
             ],</text>

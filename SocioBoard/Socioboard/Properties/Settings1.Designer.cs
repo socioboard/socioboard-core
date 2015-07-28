@@ -76,7 +76,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/Facebook.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Facebook.asmx")]
         public string Socioboard_Api_Facebook_Facebook {
             get {
                 return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
@@ -206,7 +206,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/Youtube.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Youtube.asmx")]
         public string Socioboard_Api_Youtube_Youtube {
             get {
                 return ((string)(this["Socioboard_Api_Youtube_Youtube"]));
@@ -446,7 +446,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/Groups.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Groups.asmx")]
         public string Socioboard_Api_Groups_Groups {
             get {
                 return ((string)(this["Socioboard_Api_Groups_Groups"]));

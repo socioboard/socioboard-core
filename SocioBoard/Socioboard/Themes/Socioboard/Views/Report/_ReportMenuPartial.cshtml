@@ -7,8 +7,7 @@
 <a href="#"><i class="fa fa-file-excel-o fa-fw fa-2x"></i><span class="tweaked-margin">Reports</span><i class="fa arrow"></i></a>
 <ul class="nav nav-second-level">
 
-    <li>
-        <a onclick="loadgroupstat(7)" href="#">GroupReport@*<span class="fa arrow"></span>*@</a></li>
+  
 
     @foreach (var item in (Dictionary<string, List<object>>)Model)
     {
@@ -65,7 +64,9 @@
             }
         }
     }
-
+    <li>
+        <a onclick="loadgroupstat(7)" href="#">GroupReport@*<span class="fa arrow"></span>*@</a>
+    </li>
     <li>
         <a onclick="TeamReportDetails(7);" href="#">TeamReport@*<span class="fa arrow"></span>*@</a></li>
 

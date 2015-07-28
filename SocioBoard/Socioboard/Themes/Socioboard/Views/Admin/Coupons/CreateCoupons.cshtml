@@ -1,5 +1,6 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     int CouponNo=(int)Model;
 }
 
@@ -77,7 +78,7 @@
         <!-- /.panel-body -->
     </div>
 </div>
-<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>
 <script>
     function AddCoupon() {
         debugger;

@@ -1,0 +1,159 @@
+﻿@using Domain.Socioboard.Domain;
+
+@{List<GooglePlusActivities> lstgplusactivity = (List<GooglePlusActivities>)Model;}
+@foreach (GooglePlusActivities item in lstgplusactivity)
+{
+    string[] str = new string[] { };
+    if (!string.IsNullOrEmpty(item.Content))
+    {
+        str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Content);
+    }
+    @*<li class="left clearfix">
+        <span class="chat-img pull-left">
+            <img src="@item.FromProfileImage" class="img-circle profilePic" alt="User Avatar" onclick="getGplusProfiles('@item.FromId')">
+        </span>
+        <div class="chat-body clearfix">
+            <div>
+                <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromUserName</strong></a><br />
+                <small class="text-muted">
+                    @item.PublishedDate
+                </small>
+            </div>
+            @foreach (string substritem in str)
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(substritem))
+                    {
+                        if (substritem.Contains("http"))
+                        {
+                            <a target="_blank" href="@substritem ">@substritem</a>
+                        }
+                        else
+                        {
+                            string hrefPost = string.Empty;
+
+                            try
+                            {
+                                hrefPost = item.ActivityUrl;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error : " + ex.StackTrace);
+                            }
+                            if (!string.IsNullOrEmpty(hrefPost))
+                            {
+                                <a target="_blank" href="@hrefPost">@substritem</a>
+                            }
+                            else
+                            {
+                                @substritem;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            <br />
+            @if (item.AttachmentType == "photo")
+            {
+                <img src="@item.Attachment">
+            }
+            else if (item.AttachmentType == "video")
+            {
+                <video width="320" height="240" controls> <source src="@item.Attachment" class="embed-responsive-item" type="video/mp4"></video>
+                <iframe width="420" height="315" src="http://www.youtube.com/embed/NXsBPit6LwY?autoplay=0"></iframe>
+            }
+        </div>
+    </li>*@
+    <div class="panel panel-default">
+        <div class="panel-body" style="padding:0;">
+            <div class="row" style="padding:3%;">
+                <div class="col-md-2">
+                    <img src="@item.FromProfileImage" class="img-responsive img-circle" />
+                </div>
+                <div class="col-md-8" style="margin-top: 2%;">
+                    <a href="https://plus.google.com/@item.GpUserId/posts" target="_blank"><b>@item.FromUserName</b></a><br />
+                    <span><a href="@item.ActivityUrl" target="_blank">@item.PublishedDate</a></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="padding: 0 4% 1%;">
+                    @foreach (string substritem in str)
+                    {
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(substritem))
+                            {
+                                if (substritem.Contains("http"))
+                                {
+                                    <a target="_blank" href="@substritem ">@substritem</a>
+                                }
+                                else
+                                {
+                                    string hrefPost = string.Empty;
+
+                                    try
+                                    {
+                                        hrefPost = item.ActivityUrl;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("Error : " + ex.StackTrace);
+                                    }
+                                    if (!string.IsNullOrEmpty(hrefPost))
+                                    {
+                                        <a target="_blank" href="@hrefPost">@substritem</a>
+                                    }
+                                    else
+                                    {
+                                        @substritem;
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                    }
+                </div>
+                @if (item.AttachmentType == "photo" || item.AttachmentType == "article")
+                {
+                    <div class="col-md-12">
+                        <img src="@item.Attachment" class="img-responsive" />
+                    </div>
+                }
+                else if (item.AttachmentType == "video")
+                {
+                    //string video=item.Attachment+"?autoplay=0";
+                    <div class="col-md-12">
+                        <iframe width="420" height="315" src="@item.Attachment?autoplay=0"></iframe>
+                    </div>
+                }
+            </div>
+            @if (item.AttachmentType == "article")
+            {
+                <div class="row" style="padding:2%;">
+                    <div class="col-md-12">
+                        @if (!string.IsNullOrEmpty(item.ArticleDisplayname))
+                        {
+                            <h4><a href="@item.Link" target="_blank">@item.ArticleDisplayname</a></h4>
+                        }
+                        @if (!string.IsNullOrEmpty(item.Link))
+                        {
+                            <small><a href="@item.Link" target="_blank">@item.Link</a></small>
+                        }
+                    </div>
+                    @if (!string.IsNullOrEmpty(item.ArticleContent))
+                    {
+                        <div class="col-md-12" style="margin-top:2%;">
+                            <p>@item.ArticleContent</p>
+                        </div>}
+                </div>
+            }
+        </div>
+    </div>
+
+}

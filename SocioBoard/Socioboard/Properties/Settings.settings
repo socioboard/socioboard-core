@@ -18,7 +18,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/Dropbox.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/Facebook.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Facebook.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/Linkedin.asmx</Value>
@@ -57,7 +57,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/Drafts.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Youtube_Youtube" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/Youtube.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Youtube.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_TwitterStats_TwitterStats" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/TwitterStats.asmx</Value>
@@ -129,7 +129,7 @@
       <Value Profile="(Default)">http://localhost:6361/services/FbPagePost.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Groups_Groups" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/Groups.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Groups.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_FacebookFeed_FacebookFeed" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/FacebookFeed.asmx</Value>

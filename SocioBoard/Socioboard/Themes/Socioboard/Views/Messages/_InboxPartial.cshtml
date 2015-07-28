@@ -23,7 +23,7 @@
             }
          
         <div class="message1">
-            <p id="msg_@msg.Id"><a href="#">@msg.FromName</a> is now following <a href="#">@msg.RecipientName</a> on Twitter.</p>
+            <p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="@msg.FromName">@msg.FromName</a> is now following <a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="@msg.RecipientName">@msg.RecipientName</a> on Twitter.</p>
            
             <p>Followers @msg.FollowerCount / Following @msg.FollowingCount</p>
             <small>Bio: @msg.Message
@@ -43,9 +43,9 @@
         <a href="#" class="user">
             <img src="@msg.RecipientImageUrl" alt="">
         </a>
-        <div class="date"><a href="#" data-toggle="tooltip" title="">@msg.RecipientName</a> @msg.CreatedTime, retweeted by <a href="#" data-toggle="tooltip" title="">@msg.FromName</a></div>
+        <div class="date"><a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="@msg.RecipientName">@msg.RecipientName</a> @msg.CreatedTime, retweeted by <a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="@msg.FromName">@msg.FromName</a></div>
         <div class="message">
-            <p id="msg_@msg.Id">@msg.Message</p>
+            <p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName/status/@msg.MessageId" target="_blank" style="color: #fff; text-decoration: none">@msg.Message</a></p>
             <div class="pull-right chatLinks col-md-2">
                 @*<a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
@@ -53,10 +53,7 @@
                 <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
             </div>
         </div>
-
-
-
-    </li>}
+     </li>}
     else if (msg.MessageType == "fb_notification")
     {
     <li class="you">
@@ -83,9 +80,9 @@
         <a href="#" class="user">
             <img src="@msg.FromImageUrl" alt="">
         </a>
-        <div class="date"><a href="#" data-toggle="tooltip" title="">@msg.FromName</a> @msg.CreatedTime, mention <a href="#" data-toggle="tooltip" title="">@msg.RecipientName</a></div>
+        <div class="date"><a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="">@msg.FromName</a> @msg.CreatedTime, mention <a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="">@msg.RecipientName</a></div>
         <div class="message">
-            <p id="msg_@msg.Id">@msg.Message</p>
+            <p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName/status/@msg.MessageId" target="_blank" style="color: #fff; text-decoration: none">@msg.Message</a></p>
             <div class="pull-right chatLinks col-md-2">
                 @*<a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@

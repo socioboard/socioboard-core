@@ -12,7 +12,7 @@ namespace Socioboard.App_Start
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             bool authorize = false;
-            if (httpContext.Session["User"] != null || httpContext.Session["fblogin"] != null) 
+            if ((httpContext.Session["User"] != null && httpContext.Session["access_token"] != null) || httpContext.Session["fblogin"] != null) 
             {
                 authorize = true;
             }

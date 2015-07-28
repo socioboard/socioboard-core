@@ -1,15 +1,19 @@
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+
 <div id="page-wrapper" style="min-height: 385px;">
 
    
 </div>
 
 
-<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
+<script src="~/Themes/@path/Contents/js/Message.js"></script>
+<script src="~/Themes/@path/Contents/js/Helper.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#page-wrapper').load('../Messages/loadtask');
+       $('#page-wrapper').load('../Messages/loadtask');
         $('#side-menu a').removeClass('active');
         $("#message").addClass('active');
         $("#message").children().addClass('active');
@@ -17,6 +21,7 @@
         $("#msg-index").removeClass('active');
         $("#msg-sentmsg").removeClass('active');
         $("#msg-archive").removeClass('active');
+        
     });
 
     function hideTask(divId) {

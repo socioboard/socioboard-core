@@ -497,6 +497,40 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="FacebookComposeMessageRss">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookComposeMessageRssResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookComposeMessageRssResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountWithlogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountWithloginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountWithloginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -685,6 +719,18 @@
   </wsdl:message>
   <wsdl:message name="GetFacebookPageDataSoapOut">
     <wsdl:part name="parameters" element="tns:GetFacebookPageDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssSoapIn">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessageRss" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssSoapOut">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessageRssResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountWithlogin" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountWithloginResponse" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -913,6 +959,24 @@
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPageDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="link" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginHttpGetIn">
+    <wsdl:part name="accessToken" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
@@ -1144,6 +1208,24 @@
   <wsdl:message name="GetFacebookPageDataHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="link" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageRssHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginHttpPostIn">
+    <wsdl:part name="accessToken" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithloginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
@@ -1269,6 +1351,14 @@
       <wsdl:input message="tns:GetFacebookPageDataSoapIn" />
       <wsdl:output message="tns:GetFacebookPageDataSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <wsdl:input message="tns:FacebookComposeMessageRssSoapIn" />
+      <wsdl:output message="tns:FacebookComposeMessageRssSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <wsdl:input message="tns:AddFacebookAccountWithloginSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithloginSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
     <wsdl:operation name="AddFacebookAccount">
@@ -1387,6 +1477,14 @@
       <wsdl:input message="tns:GetFacebookPageDataHttpGetIn" />
       <wsdl:output message="tns:GetFacebookPageDataHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <wsdl:input message="tns:FacebookComposeMessageRssHttpGetIn" />
+      <wsdl:output message="tns:FacebookComposeMessageRssHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <wsdl:input message="tns:AddFacebookAccountWithloginHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithloginHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
     <wsdl:operation name="AddFacebookAccount">
@@ -1504,6 +1602,14 @@
     <wsdl:operation name="GetFacebookPageData">
       <wsdl:input message="tns:GetFacebookPageDataHttpPostIn" />
       <wsdl:output message="tns:GetFacebookPageDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <wsdl:input message="tns:FacebookComposeMessageRssHttpPostIn" />
+      <wsdl:output message="tns:FacebookComposeMessageRssHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <wsdl:input message="tns:AddFacebookAccountWithloginHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithloginHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
@@ -1780,6 +1886,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPageData">
       <soap:operation soapAction="http://tempuri.org/GetFacebookPageData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <soap:operation soapAction="http://tempuri.org/FacebookComposeMessageRss" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccountWithlogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2069,6 +2193,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <soap12:operation soapAction="http://tempuri.org/FacebookComposeMessageRss" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccountWithlogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
@@ -2326,6 +2468,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPageData">
       <http:operation location="/GetFacebookPageData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <http:operation location="/FacebookComposeMessageRss" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <http:operation location="/AddFacebookAccountWithlogin" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -2597,19 +2757,37 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageRss">
+      <http:operation location="/FacebookComposeMessageRss" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithlogin">
+      <http:operation location="/AddFacebookAccountWithlogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://localhost:6361/services/Facebook.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://localhost:6361/services/Facebook.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://localhost:6361/services/Facebook.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://localhost:6361/services/Facebook.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1,5 +1,6 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     int divcount = 0;
     string picurl = string.Empty;
 }
@@ -139,7 +140,7 @@
                         <div class="panel panel-default">
                             @if (string.IsNullOrEmpty(item))
                             {
-                                picurl = "/Themes/Socioboard/Contents/img/blankimg.png";
+                                picurl = "/Themes/"+path+"/Contents/img/blankimg.png";
                             }
                             else
                             {

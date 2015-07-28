@@ -4,7 +4,7 @@
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];              // Edited by Antima
     var Id = ViewBag.id;
 }
-@if (networktype == "instagram" || networktype == "tumblr" || networktype == "youtube")
+@if (networktype == "tumblr" || networktype == "youtube")
 {
     <div class="container-fluid" style="margin-top: 25px">
         <div id="feedimages1" class="row">
@@ -19,27 +19,38 @@
         </div>
     </div>
 }
+else if(networktype == "instagram")
+{
+<div class="container-fluid">
+    <div class="row" style="margin-top: 6%;">
+        <div class="col-md-6 col-md-offset-3" id="instafeeds" onscroll="feedonscroll()">
+            <div>
+                <center>
+                    <img src="~/Themes/@path/Contents/img/43px_on_transparent.gif" />
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+}
 else if (networktype == "gplus")
 {
     <div class="container-fluid" style="margin-top: 25px">
-        <div class="row">
-             <div class="col-md-12">
-                <h1 class="page-header">User Feeds</h1>
-            </div>
-                <div class="chat">
-                    <div id="glusfeed" onscroll="" class="panel-body">
-                        <div style="margin-top: 50px">
-                             <center>
-                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
-                            </center>
-                        </div>
+        <div class="row" style="margin-top:3%;">
+            <div class="col-md-6 col-md-offset-3" id="gplusfeed">
+                
+                    <div style="margin-top: 50px">
+                        <center>
+                            <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                        </center>
                     </div>
-                </div>
+                
+            </div>
         </div>
     </div>
 }
 else
-{ 
+{
     <div class="container-fluid" style="margin-top: 25px">
 
         @*Edited by Antima*@
@@ -148,7 +159,7 @@ else
     </div>
     
     
-    @*<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>*@
+    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
     
     <script type="text/javascript">
         $(document).ready(function () {

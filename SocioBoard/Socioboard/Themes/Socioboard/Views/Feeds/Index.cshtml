@@ -1,11 +1,14 @@
-﻿<link href="../Themes/Socioboard/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-<script src="../Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
-<script src="../Themes/Socioboard/Contents/js/jquery.lazyscrollloading-src.js" type="text/javascript"></script>
-<script src="../Themes/Socioboard/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
-<script src="../Themes/Socioboard/Contents/js/Feeds.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
- <script src="/Themes/Socioboard/Contents/js/Message.js"></script>
- <script src="/Themes/Socioboard/Contents/js/Helper.js"></script>
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
+<link href="../Themes/@path/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="../Themes/@path/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+<script src="../Themes/@path/Contents/js/jquery.lazyscrollloading-src.js" type="text/javascript"></script>
+<script src="../Themes/@path/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="../Themes/@path/Contents/js/Feeds.js"></script>
+<script src="~/Themes/@path/Contents/js/underscore.js"></script>
+ <script src="/Themes/@path/Contents/js/Message.js"></script>
+ <script src="/Themes/@path/Contents/js/Helper.js"></script>
 
  <style>
         .badge.pull-right {
@@ -26,7 +29,6 @@
             },
             async: false
         });
-
 
     }
 
@@ -57,45 +59,7 @@
 
     }
 
-    function LikeUnlikeInstagramPost(LikeCount, IsLike, FeedId, InstagramId) {
-        debugger;
-        var fd = new FormData();
-        fd.append("LikeCount", LikeCount);
-        fd.append("IsLike", IsLike);
-        fd.append("FeedId", FeedId);
-        fd.append("InstagramId", InstagramId);
-
-        $.ajax({
-
-            type: 'POST',
-            url: '../Feeds/LikeUnlikeInstagramPost',
-            data: fd,
-            processData: false,
-            contentType: false,
-            dataType: "html",
-            success: function (msg) {
-                if (msg == 'unlike') {
-
-                    //var count = +($("#" + FeedId + "_count").html()) + +1;
-                    var count = +LikeCount + +1;
-                    $("#count_" + FeedId).html(count);
-                    //$("#" + FeedId + "_count").html(count);
-                    $("#" + FeedId).attr("title", "unlike");
-                    $("#" + FeedId).removeClass().addClass('fa fa-heart fa-fw')
-                }
-                else {
-                    //var count = +($("#" + FeedId + "_count").html()) - +1;
-                    var count = +LikeCount - +1;
-                    $("#count_" + FeedId).html(count);
-                    $("#" + FeedId).attr("title", "like");
-                    $("#" + FeedId).removeClass().addClass('fa fa-heart-o fa-fw')
-                }
-
-            },
-            async: false
-        });
-
-    }
+  
     function opnReply(messageid, ProfileId) {
         debugger;
         var buttonhtm = "<button type=\"button\" class=\"btn btn-primary\" onclick=\"saveCommentReply('twitter','" + messageid + "','" + ProfileId + "')\">Reply</button>";
@@ -108,7 +72,7 @@
         $("#feeds").addClass('active');
         $("#feeds").children().addClass('active');
         //$("#first-profile-load_0").click();
-        DisplayDefaultFeed();
+        //DisplayDefaultFeed();
 
         //To Load News feeds data every 15 seconds
         try {
@@ -136,12 +100,6 @@
 
 
 <div id="page-wrapper" style="min-height: 278px;">
-  
-  <div style="margin-top:150px">
-                            <center>
-                                <img src="~/Themes/Socioboard/Contents/img/43px_on_transparent.gif" />
-                            </center>
-                        </div>
 </div>
 
 <div class="modal fade" id="Reply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -171,7 +129,8 @@
 @*<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>*@
 <script>
 $(document).ready(function () {
-        $(window).scroll(imagebind);
+    $(window).scroll(imagebind);
+    $(window).scroll(feedonscroll);
     });
     var facebookfeed = _.throttle(facebookfeedscrolldata, 3000);
     var twittertweet = _.throttle(Twitterfeedscrolldata, 3000);
@@ -180,7 +139,8 @@ $(document).ready(function () {
     var facebookwall = _.throttle(facebookwallscrolldata, 3000);
     var twitterfeed = _.throttle(Twitterscrolldata, 3000);
     var linkedinnetworkupdate = _.throttle(LinkedInscrolldata, 3000);
-	var tumblrimages = _.throttle(Tumblrscrolldata, 3000);
+    var tumblrimages = _.throttle(Tumblrscrolldata, 3000);
+    var feedonscroll = _.throttle(loadinstagramfeedonscroll, 3000);
     function ccc() {
         // alert("ccc");
         debugger;
@@ -301,8 +261,54 @@ function imagebind() {
         });
     }
 
-   
+    function LikeUnlikeInstagramPost(LikeCount, FeedId, InstagramId) {
+        debugger;
+        var IsLike = $("#myImage_" + FeedId).attr('status');
+        var fd = new FormData();
+        fd.append("LikeCount", LikeCount);
+        fd.append("IsLike", IsLike);
+        fd.append("FeedId", FeedId);
+        fd.append("InstagramId", InstagramId);
 
+        $.ajax({
+
+            type: 'POST',
+            url: '../Feeds/LikeUnlikeInstagramPost',
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "html",
+            success: function (msg) {
+                if (msg == 'unlike') {
+                    var count = +LikeCount + +1;
+                    $("#count_" + FeedId).html(count + " likes");
+                    $("#myImage_" + FeedId).attr("src", "http://i.imgur.com/Kt5N68n.png");
+                    $("#myImage_" + FeedId).attr('status', '1');
+                }
+                else {
+                    var count = +LikeCount - +1;
+                    $("#count_" + FeedId).html(count + " likes");
+                    $("#myImage_" + FeedId).attr("src", "http://i.imgur.com/5VSlTqW.png");
+                    $("#myImage_" + FeedId).attr('status', '0');
+                }
+            },
+        });
+
+    }
+    function loadinstagramfeedonscroll() {
+        $.ajax({
+            url: "../Feeds/ShowInstagramFeeds?load=scroll",
+            type: "Post",
+            success: function (msg) {
+                if (msg == "no_data") {
+
+                }
+                else {
+                    $("#instafeeds").append(msg);
+                }
+            }
+        });
+    }
 
 
 </script>

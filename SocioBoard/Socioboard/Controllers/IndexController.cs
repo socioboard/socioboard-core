@@ -311,6 +311,24 @@ namespace Socioboard.Controllers
                         Api.User.User obj = new Api.User.User();
                         user = (User)(new JavaScriptSerializer().Deserialize(obj.Login(user.EmailId, user.Password), typeof(User)));
                         Session["User"] = user;
+                        if (Session["fblogin"] != null)
+                        {
+                            string accesstoken = (string)Session["AccesstokenFblogin"];
+                            Api.Facebook.Facebook objfacebook = new Api.Facebook.Facebook();
+                            Api.Groups.Groups objgroup = new Api.Groups.Groups();
+                            //Domain.Socioboard.Domain.Groups group = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(objgroup.GetGroupDetailsByUserId(user.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+                            Groups obpgrp = (Groups)(new JavaScriptSerializer().Deserialize(objgroup.GetGroupDeUserId(user.Id.ToString()), typeof(Groups)));
+                            objfacebook.AddFacebookAccountWithloginAsync(accesstoken, user.Id.ToString(), obpgrp.Id.ToString());
+                        }
+                        if (Session["googlepluslogin"] != null)
+                        {
+                            string accesstoken = (string)Session["AccesstokenFblogin"];
+                            Api.Youtube.Youtube objYoutube = new Api.Youtube.Youtube();
+                            Api.Groups.Groups objgroup = new Api.Groups.Groups();
+                            //Domain.Socioboard.Domain.Groups group = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(objgroup.GetGroupDetailsByUserId(user.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+                            Groups grp = (Groups)(new JavaScriptSerializer().Deserialize(objgroup.GetGroupDeUserId(user.Id.ToString()), typeof(Groups)));
+                            objYoutube.AddYoutubeAccountwithLoginAsync(ConfigurationManager.AppSettings["YtconsumerKey"], ConfigurationManager.AppSettings["YtconsumerSecret"], ConfigurationManager.AppSettings["Ytredirect_uri"], user.Id.ToString(), grp.Id.ToString(), accesstoken);
+                        }
                         retmsg = "user";
                     }
 

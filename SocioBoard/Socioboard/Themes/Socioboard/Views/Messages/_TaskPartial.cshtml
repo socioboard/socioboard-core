@@ -1,6 +1,7 @@
 ﻿@using System.Data;
 @using Socioboard.Helper;
 @using System.Web.Script.Serialization;
+
 @{
     //Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)Session["User"];
 
@@ -11,7 +12,7 @@
     Socioboard.Api.Tasks.Tasks objApiTasks = new Socioboard.Api.Tasks.Tasks();
     Domain.Socioboard.Domain.User LoggedUser = (Domain.Socioboard.Domain.User)Session["User"];
     string TaskType = ViewBag.Task;
-    
+
 }
 
 <div class="container-fluid">
@@ -25,18 +26,18 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Tasks
-                       
+
                             </div>
                             <!-- .panel-heading -->
                             <div class="panel-body">
                                 <div id="accordion" class="panel-group">
                                     @{
-                                        if (lstTasks.Count > 0)
+                                        if(lstTasks.Count > 0)
                                         {
                                             foreach (var item in lstTasks)
                                             {
-                                                Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString()), typeof(Domain.Socioboard.Domain.User));
-                                                Domain.Socioboard.Domain.User objAssignUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.UserId.ToString()), typeof(Domain.Socioboard.Domain.User));
+                                                Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString(), Session["access_token"].ToString()), typeof(Domain.Socioboard.Domain.User));
+                                                Domain.Socioboard.Domain.User objAssignUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.UserId.ToString(), Session["access_token"].ToString()), typeof(Domain.Socioboard.Domain.User));
                                                 string imgpath = string.Empty;
                                                 if (string.IsNullOrEmpty(objdetails.ProfileUrl))
                                                 {
@@ -53,383 +54,385 @@
                                                     {
                                                         imgpath = objdetails.ProfileUrl;
                                                     }
-                                                    
+
                                                 }
 
                                                 if (item.ReadStatus == 1)
                                                 {
-                                        @:<div class="panel panel-default" id="Section_@item.Id">
-                                        }
+                                                    @:<div class="panel panel-default" id="Section_@item.Id">
+                                                  }
+
                                                 else
                                                 {
-                                        @:<div class="panel panel-default" id="Section_@item.Id" style="opacity:0.4;">
+                                                    @:<div class="panel panel-default" id="Section_@item.Id" style="opacity:0.4;">
                                             string ret = (string)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiTasks.UpdateTaskReadStatus(item.Id.ToString(), item.UserId.ToString(), item.GroupId.ToString()), typeof(string)));
 
                                                 }
-                                        
-                                            <div class="panel-heading">
-                                             <h4 class="panel-title">
-                                         @* <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">*@<i class="fa fa-thumb-tack fa-fw"></i>@*</a>*@<span>
-                                            @objdetails.UserName</span>
 
-                                                 <span class="pull-right"><i class="fa fa-clock-o"></i> @item.TaskMessageDate</span>
-                                                 <p>
-                                                     <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse" @*onclick="Show_task('@item.Id')"*@>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a>
-                                                 </p>
-                                                                                                <br>
-                                                                                                <span>@Html.Raw(item.TaskMessage)</span>
-                                                                                                @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
-                                                 @if (item.TaskStatus==true)
-                                                 {
-                                                    @:<div class="pull-right"> 
-                                                        if(objAssignUserDetails.UserName==LoggedUser.UserName)
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        @* <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">*@<i class="fa fa-thumb-tack fa-fw"></i>@*</a>*@<span>
+                                                            @objdetails.UserName
+                                                        </span>
+
+                                                        <span class="pull-right"><i class="fa fa-clock-o"></i> @item.TaskMessageDate</span>
+                                                        <p>
+                                                            <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse" @*onclick="Show_task('@item.Id')"*@>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a>
+                                                        </p>
+                                                        <br>
+                                                        <span>@Html.Raw(item.TaskMessage)</span>
+                                                        @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
+                                                        @if (item.TaskStatus == true)
                                                         {
-                                                            @:<span>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ClosedByYou</span>  
+                                                            @:<div class="pull-right">
+                                                        if (objAssignUserDetails.UserName == LoggedUser.UserName)
+                                                        {
+                                                            @:<span>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ClosedByYou</span>
                                                         }
                                                         else
                                                         {
                                                             @:<span>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ClosedBy  @objAssignUserDetails.UserName</span>
                                                         }
-                                                                                              
-                                                    @:<span>Completed</span>
+
+                                                        @:<span>Completed</span>
                                                      if (LoggedUser.Id == objAssignUserDetails.Id)
                                                      {
-                                                    @:<i id="@item.Id+_@item.TaskStatus"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                        @:<i id="@item.Id+_@item.TaskStatus" onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
                                                     }
 
-                                                 }
-                                                 else
-                                                 {
-                                                    @:<div class="pull-right">
-                                                    <span>Pending</span>
-                                                     if (LoggedUser.Id == objAssignUserDetails.Id)
-                                                     {
-                                                    @:<i id="@item.Id+_@item.TaskStatus"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
-                                                    }
-
-                                                 }
-                                            
-                                                
-                                                    </h4>
-                                                
-                                                   </div>
-                                            
-                                                 List<Domain.Socioboard.Domain.TaskComment> pretask = (List<Domain.Socioboard.Domain.TaskComment>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksCommentOfUser(item.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TaskComment>));
-                                                 if (pretask.Count > 0 && pretask != null)
-                                                 {
-                                                    <div style="height: 0px;" class="panel-collapse collapse" id="@item.Id">
-                                                    <div class="panel-body">
-                                                      <ul class="list-group">
-
-                                                    @foreach (Domain.Socioboard.Domain.TaskComment taskComment in pretask)
-                                                    {
-
-                                                        Domain.Socioboard.Domain.User objcomntUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(taskComment.UserId.ToString()), typeof(Domain.Socioboard.Domain.User));
-                                                        @:<li id="task_comment_@item.Id" + "_" + @taskComment.Id" class="list-group-item assign_comments">
-                                                        <img class="commentsmallsize" src="
-                                                        @imgpath"><span class="commentmargin">@taskComment.Comment</span>
-                                                        <span class="pull-right">By @objcomntUserDetails.UserName at @taskComment.CommentDate</span>
-                                                        @:</li>
-                                                    }
-
-                                        @*  <li class="list-group-item">
-                                                            <img class="commentsmallsize" src="Contents/img/photo.png"><span class="commentmargin">Hello all chanchal</span>
-                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                        </li>*@
-                                        @* <li class="list-group-item">
-                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
-                                                            hit http://t. like
-                                                    
-                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
-                                                            Hi everyone
-                                                    
-                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                        </li>*@
-                                        </ul>
-
-                                                    <div class="col-md-3">
-                                                        <img class="img-responsive img-circle profilePic" src="@imgpath">
-                                                        @*<img src="../Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">*@
-                                                        <span>@objdetails.UserName</span>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
-                                                        <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
-                                                        <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
-                                                    </div>
-                                                        @if (item.UserId == LoggedUser.Id)
-                                                        {
-                                                            <div>
-                                                                 <a style="cursor:pointer" onclick="DeleteTask('@item.Id')">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_DeleteTask</a>
-                                                            </div>
                                                         }
-                                                        
+                                                        else
+                                                        {
+                                                            @:<div class="pull-right">
+                                                                <span>Pending</span>
+                                                            if (LoggedUser.Id == objAssignUserDetails.Id)
+                                                            {
+                                                                @:<i id="@item.Id+_@item.TaskStatus" onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                    }
+
+                                                        }
+
+
+                                            </h4>
+
+                                        </div>
+
+                                                        List<Domain.Socioboard.Domain.TaskComment> pretask = (List<Domain.Socioboard.Domain.TaskComment>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksCommentOfUser(item.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TaskComment>));
+                                                        if (pretask.Count > 0 && pretask != null)
+                                                        {
+                                                            <div style="height: 0px;" class="panel-collapse collapse" id="@item.Id">
+                                                                <div class="panel-body">
+                                                                    <ul class="list-group">
+
+                                                                        @foreach (Domain.Socioboard.Domain.TaskComment taskComment in pretask)
+                                                                        {
+
+                                                                            Domain.Socioboard.Domain.User objcomntUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(taskComment.UserId.ToString(), Session["access_token"].ToString()), typeof(Domain.Socioboard.Domain.User));
+                                                                        @:
+                                                                        <li id="task_comment_@item.Id" + "_" + @taskComment.Id " class=" list-group-item assign_comments">
+                                                                            <img class="commentsmallsize" src="
+                                                                                 @imgpath "><span class=" commentmargin">@taskComment.Comment</span>
+                                                                                <span class="pull-right">By @objcomntUserDetails.UserName at @taskComment.CommentDate</span>
+                                                                                @:
+                                                                            </li>
+                                                                            }
+
+                                                                            @*  <li class="list-group-item">
+                                                                                    <img class="commentsmallsize" src="Contents/img/photo.png"><span class="commentmargin">Hello all chanchal</span>
+                                                                                    <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                                                </li>*@
+                                                                            @* <li class="list-group-item">
+                                                                                    <img class=" commentsmallsize" src="Contents/img/photo.png">
+                                                                                    hit http://t. like
+
+                                                                                    <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                                                </li>
+                                                                                <li class="list-group-item">
+                                                                                    <img class=" commentsmallsize" src="Contents/img/photo.png">
+                                                                                    Hi everyone
+
+                                                                                    <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                                                </li>*@
+                                                                        </ul>
+
+                                                                        <div class="col-md-3">
+                                                                            <img class="img-responsive img-circle profilePic" src="@imgpath">
+                                                                            @*<img src="../Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">*@
+                                                                            <span>@objdetails.UserName</span>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                                                            <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
+                                                                            <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
+                                                                        </div>
+                                                                        @if (item.UserId == LoggedUser.Id)
+                                                                    {
+                                                                    <div>
+                                                                        <a style="cursor:pointer" onclick="DeleteTask('@item.Id')">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_DeleteTask</a>
+                                                                    </div>
+                                                                    }
+
+                                                                    </div>
+                                                                </div>
+                                                                }
+
+
+                                                            </div>
+
+
+                                                            }
+                                                            }
+
+                                                            else
+                                                            {
+                                                            <div>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_NoTaskInThisGroup</div>
+                                                            }
+                                                            }
+
+
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a class="collapsed" href="#collapseTwo" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i>Sumit Ghosh Assigned by Sumit Ghosh</a>
+                                                                    <i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>
+                                                                </h4>
+                                                            </div>
+                                                            <div style="height: 0px;" class="panel-collapse collapse" id="collapseTwo">
+                                                                <div class="panel-body">
+                                                                    <p data-target="#ActivityModal" data-toggle="modal"><i class="fa fa-expand fa-fw"></i>Now that's an awesome Growth Hack! Awesome job Gaurav Dahake riding on MI's demand!</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>*@
+                                                    </div>
+                                                </div>
+                                                <!-- .panel-body -->
+                                            </div>
+                                            <!-- /.panel -->
+                                            <!-- Edit Modal -->
+                                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
+                                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_EditStatus</h4>
+                                                        </div>
+                                                        <div class="modal-body col-md-12">
+                                                            <p>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AreYouSureValidationStatus</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
+                                                            <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                                 }
-                                            
-                                        @:</div> 
-                                       
-                                            }
-                                        }
-                                        else
-                                        {
-                                            @:<div>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_NoTaskInThisGroup</div>
-                                        }
-                                    }
+                                            <!--end of editmodel-->
+                                            <!-- TASK ACTIVITY Modal -->
+                                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="ActivityModal" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
+                                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TaskActivity</h4>
+                                                        </div>
+                                                        <div class="modal-body col-md-12">
+                                                            <div class="col-xs-3">
+                                                                <img data-target="#profileModal" data-toggle="modal" class="img-circle profilePic" src="Contents/img/photo.png">
+                                                                <img src="Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">
+                                                                <span>Chanchal</span>
+                                                            </div>
+                                                                    <div class="col-md-9">
+                                                                        <p>Hey check this out.</p>
+                                                                        <span>By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                                        <textarea placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Save</button>
+                                                                    <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        <!--end of TASK ACTIVITY model-->
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
 
-                                    @*<div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" href="#collapseTwo" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i>Sumit Ghosh Assigned by Sumit Ghosh</a>
-                                                <i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>
-                                            </h4>
-                                        </div>
-                                        <div style="height: 0px;" class="panel-collapse collapse" id="collapseTwo">
-                                            <div class="panel-body">
-                                                <p data-target="#ActivityModal" data-toggle="modal"><i class="fa fa-expand fa-fw"></i>Now that's an awesome Growth Hack! Awesome job Gaurav Dahake riding on MI's demand!</p>
-                                            </div>
-                                        </div>
-                                    </div>*@
-                                </div>
-                                </div>
-                                <!-- .panel-body -->
-                            </div>
-                            <!-- /.panel -->
+                                                                            <div class="col-md-3">
+                                                                                <div style="margin-top: 65px;" class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        <i class="fa fa-bell fa-fw"></i>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ManageTasks
+
+                                                                                    </div>
+                                                                                    <!-- /.panel-heading -->
+                                                                                    <div class="panel-body">
+                                                                                        <ul class="list-group">
+                                                                                            @*<li class="list-group-item">
+                                                                                                    <div class="checkbox">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            Check me out
+
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                                <li class="list-group-item">
+                                                                                                    <div class="checkbox">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            Check me out
+
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </li>*@
+
+                                                                                            <li class="list-group-item">
+                                                                                                <div class="radio">
+                                                                                                    <label class="radio">
+                                                                                                        <input type="radio" value="option1" id="rdMyTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                                                                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_MyTask
+
+                                                                                                    </label>
+                                                                                                    <div class="divder"></div>
+                                                                                                    <label class="radio">
+                                                                                                        <input type="radio" value="option2" id="rdTeamTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                                                                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TeamTask
+
+                                                                                                    </label>
+                                                                                                    <div class="divder"></div>
+                                                                                                    <label class="radio">
+                                                                                                        <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                                                                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_PendingTask
+
+                                                                                                    </label>
+                                                                                                    <div class="divder"></div>
+                                                                                                    <label class="radio">
+                                                                                                        <input type="radio" value="option2" id="rdCompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                                                                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_CompleteTask
+
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                    <!-- /.panel-body -->
+                                                                                </div>
 
 
+                                                                            </div>
+                                                                        </div>
 
-                            <!-- Edit Modal -->
-                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
-                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_EditStatus</h4>
-                                        </div>
-                                        <div class="modal-body col-md-12">
-                                            <p>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AreYouSureValidationStatus</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
-                                            <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end of editmodel-->
+                                                                    </div>
+                                                                </div>
+                                                                            <script type="text/javascript">
 
-                            <!-- TASK ACTIVITY Modal -->
-                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="ActivityModal" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
-                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TaskActivity</h4>
-                                        </div>
-                                        <div class="modal-body col-md-12">
-                                            <div class="col-xs-3">
-                                                <img data-target="#profileModal" data-toggle="modal" class="img-circle profilePic" src="Contents/img/photo.png">
-                                                <img src="Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">
-                                                <span>Chanchal</span>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <p>Hey check this out.</p>
-                                                <span>By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                <textarea placeholder="Leave a comment" rows="3" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Save</button>
-                                            <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end of TASK ACTIVITY model-->
+                                                                    function PerformClick(id) {
+                                                                        debugger;
+                                                                        taskid = id.split('_')[0];
+                                                                        var status = id.split('_')[1];
+                                                                        checkStatusInfo(status, taskid);
+                                                                    }
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                                    function checkStatusInfo(status, taskid) {
+                                                                        debugger;
+                                                                        alertify.confirm('Do you want to really change status?', function (e) {
+                                                                            if (e) {
+                                                                                $.ajax({
+                                                                                    type: "POST",
+                                                                                    url: "../Messages/ChangeTaskStatus?Taskid=" + taskid + "&Status=" + status,
+                                                                                    data: '',
+                                                                                    contentType: "application/json; charset=utf-8",
+                                                                                    dataType: "html",
+                                                                                    success: function (msg) {
+                                                                                        debugger;
+                                                                                        location.reload();
 
+                                                                                    },
 
-            <div class="col-md-3">
-                <div style="margin-top: 65px;" class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-bell fa-fw"></i>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ManageTasks
-                       
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            @*<li class="list-group-item">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        Check me out
-                                               
-                                    </label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        Check me out
-                                               
-                                    </label>
-                                </div>
-                            </li>*@
+                                                                                });
 
-                            <li class="list-group-item">
-                                <div class="radio">
-                                    <label class="radio">
-                                        <input type="radio" value="option1" id="rdMyTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_MyTask
-                                           
-                                    </label>
-                                    <div class="divder"></div>
-                                    <label class="radio">
-                                        <input type="radio" value="option2" id="rdTeamTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TeamTask
-                                           
-                                    </label>
-                                    <div class="divder"></div>
-                                    <label class="radio">
-                                        <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_PendingTask
-                                           
-                                    </label>
-                                    <div class="divder"></div>
-                                    <label class="radio">
-                                        <input type="radio" value="option2" id="rdCompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_CompleteTask
-                                           
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- /.panel-body -->
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>
-
-    <script type="text/javascript">
-
-        function PerformClick(id) {
-            debugger;
-            taskid = id.split('_')[0];
-            var status = id.split('_')[1];
-            checkStatusInfo(status, taskid);
-        }
-
-        function checkStatusInfo(status, taskid) {
-            debugger;
-            alertify.confirm('Do you want to really change status?', function (e) {
-                if (e) {
-                    $.ajax({
-                        type: "POST",
-                        url: "../Messages/ChangeTaskStatus?Taskid=" + taskid + "&Status=" + status,
-                        data: '',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "html",
-                        success: function (msg) {
-                            debugger;
-                            location.reload();
-
-                        },
-
-                    });
-
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            });
-        }
+                                                                                return true;
+                                                                            }
+                                                                            else {
+                                                                                return false;
+                                                                            }
+                                                                        });
+                                                                    }
 
 
 
-        function DeleteTask(id) {
-            debugger;
-            alertify.confirm('Deleting this task will completely remove the associated audit trail.', function (e) {
-                if (e) {
-                    debugger;
-                    $.ajax({
-                        type: "POST",
-                        url: "../Messages/DeleteTask?Taskid=" + id,
-                        data: '',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "html",
-                        success: function (msg) {
-                            debugger;
-                            if (msg == "Success") {
+                                                                    function DeleteTask(id) {
+                                                                        debugger;
+                                                                        alertify.confirm('Deleting This Task Will Remove Permanently.', function (e) {
+                                                                            if (e) {
+                                                                                debugger;
+                                                                                $.ajax({
+                                                                                    type: "POST",
+                                                                                    url: "../Messages/DeleteTask?Taskid=" + id,
+                                                                                    data: '',
+                                                                                    contentType: "application/json; charset=utf-8",
+                                                                                    dataType: "html",
+                                                                                    success: function (msg) {
+                                                                                        debugger;
+                                                                                        if (msg == "Success") {
 
-                                $('#' + 'Section_' + id).fadeOut(900);
-                            }
-                            //location.reload();
+                                                                                            $('#' + 'Section_' + id).fadeOut(900);
+                                                                                        }
+                                                                                        //location.reload();
 
-                        },
+                                                                                    },
 
-                    });
+                                                                                });
 
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            });
-        }
+                                                                                return true;
+                                                                            }
+                                                                            else {
+                                                                                return false;
+                                                                            }
+                                                                        });
+                                                                    }
 
 
 
-        //$("#rdMyTask").change(function () {
-        //    debugger;
-        //    window.location.href = "../Messages/Task";
-        //    //$("#rdMyTask").attr("checked", true);
-        //});
-        //$("#").change(function () {completed
-        //    debugger;
-        //    //alert("clicked");
-        //});
-        //$("#rdIncompleteTask").change(function () {
-        //    debugger;
-        //    //alert("clicked");
-        //});
-        //$("#rdIncompleteTask").change(function () {
-        //    debugger;
-        //    //alert("clicked");
-        //});
+                                                                    //$("#rdMyTask").change(function () {
+                                                                    //    debugger;
+                                                                    //    window.location.href = "../Messages/Task";
+                                                                    //    //$("#rdMyTask").attr("checked", true);
+                                                                    //});
+                                                                    //$("#").change(function () {completed
+                                                                    //    debugger;
+                                                                    //    //alert("clicked");
+                                                                    //});
+                                                                    //$("#rdIncompleteTask").change(function () {
+                                                                    //    debugger;
+                                                                    //    //alert("clicked");
+                                                                    //});
+                                                                    //$("#rdIncompleteTask").change(function () {
+                                                                    //    debugger;
+                                                                    //    //alert("clicked");
+                                                                    //});
 
-        $(document).ready(function () {
+                                                                    $(document).ready(function () {
 
-            var TaskType = "@TaskType";
-            if (TaskType == "MyTask") {
-                $("#rdMyTask").attr("checked", true);
-            }
-            if (TaskType == "MyTask") {
-                $("#rdMyTask").attr("checked", true);
-            }
-            if (TaskType == "PendingTask") {
-                $("#rdIncompleteTask").attr("checked", true);
-            }
-            if (TaskType == "CompleteTask") {
-                $("#rdCompleteTask").attr("checked", true);
-            }
-            if (TaskType == "TeamTask") {
-                $("#rdTeamTask").attr("checked", true);
-            }
-        });
-    </script>
+                                                                        var TaskType = "@TaskType";
+                                                                        if (TaskType == "MyTask") {
+                                                                            $("#rdMyTask").attr("checked", true);
+                                                                        }
+                                                                        if (TaskType == "MyTask") {
+                                                                            $("#rdMyTask").attr("checked", true);
+                                                                        }
+                                                                        if (TaskType == "PendingTask") {
+                                                                            $("#rdIncompleteTask").attr("checked", true);
+                                                                        }
+                                                                        if (TaskType == "CompleteTask") {
+                                                                            $("#rdCompleteTask").attr("checked", true);
+                                                                        }
+                                                                        if (TaskType == "TeamTask") {
+                                                                            $("#rdTeamTask").attr("checked", true);
+                                                                        }
+                                                                    });
+                                                                            </script>

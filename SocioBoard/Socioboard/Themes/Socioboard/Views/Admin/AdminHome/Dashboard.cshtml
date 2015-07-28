@@ -1,4 +1,5 @@
 ﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     string pm = @ViewBag.PaidMonth;
     string PaidMonth = pm.Replace("'", "");
 
@@ -14,8 +15,8 @@
 
     </div>
 </div>
-<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/highcharts.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>
+<script src="~/Themes/@path/Contents/js/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript">
 

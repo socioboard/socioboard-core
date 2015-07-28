@@ -13,22 +13,32 @@
         {
     <li onclick="bindfrofilesmaster('@item.Key.ProfileType','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
         <a href="#">
-            @*<i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName*@
-            <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-circle profilePics" >
-            <img src
-                ="/Themes/@path/Contents/img/fb_icon.png" class="icon_share">@objFacebookAccount.FbUserName
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">
+                    <i @*<i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName*@
+                    <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-circle profilePics" >
+                    <img src="/Themes/@path/Contents/img/fb_icon.png" class="icon_share">@objFacebookAccount.FbUserName
+                </label>
+            </div>
+           
         </a>
     </li>
-}
+        }
     }
     if (item.Key.ProfileType == "twitter")
     {
         TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
     <li onclick="bindfrofilesmaster('twitter','@objTwitterAccount.TwitterScreenName','@objTwitterAccount.TwitterUserId')">
         <a href="#">
-            @*<i class="fa fa-twitter  fa-fw"></i>@objTwitterAccount.TwitterScreenName*@
-            <img src="@objTwitterAccount.ProfileImageUrl" class="img-circle profilePics" >
-            <img src="/Themes/@path/Contents/img/twticon.png" class="icon_share">@objTwitterAccount.TwitterScreenName
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">
+                    @*<i class="fa fa-twitter  fa-fw"></i>@objTwitterAccount.TwitterScreenName*@
+                    <img src="@objTwitterAccount.ProfileImageUrl" class="img-circle profilePics">
+                    <img src="/Themes/@path/Contents/img/twticon.png" class="icon_share">@objTwitterAccount.TwitterScreenName
+                </label>
+            </div>
         </a>
     </li>
     }

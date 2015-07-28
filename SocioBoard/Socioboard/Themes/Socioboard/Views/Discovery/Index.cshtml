@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    }
 <script type="text/javascript">
     function LoadDiscoveryPage() {
        // $('#page-wrapper').load('../Discovery/LoadDiscovery');
@@ -27,15 +29,32 @@
                 alertify.error('Please Enter A Keyword');
                 return;
             }
-            $('#facebookdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
-            $('#twitterdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+            $('#facebookdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
+            $('#twitterdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
+            $('#gplusdiscovery').html('<img src="../Themes/@path/Contents/img/360.gif" />');
             
+            $.ajax({
+                type: 'GET',
+                url: '../Discovery/SearchFacebook?keyword=' + keyword,
+                success: function (msg) {
+                    //alert(msg);
+                    $('#facebookdiscovery').html(msg);
+                }
+            });
             $.ajax({
                 type: 'GET',
                 url: '../Discovery/SearchTwitter?keyword=' + keyword,
                 success: function (msg) {
                     //alert(msg);
                     $('#twitterdiscovery').html(msg);
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: '../Discovery/SearchGplus?keyword=' + keyword,
+                success: function (msg) {
+                    //alert(msg);
+                    $('#gplusdiscovery').html(msg);
                 }
             });
         });
@@ -48,7 +67,7 @@
     
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="~/Themes/Socioboard/Contents/js/arrow24.js"></script>
+<script src="~/Themes/@path/Contents/js/arrow24.js"></script>
 <noscript>Not seeing a <a href="http://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
 
 

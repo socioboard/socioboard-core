@@ -10,7 +10,16 @@
     //List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
     
     Socioboard.Api.Team.Team ApiobjTeam = new Socioboard.Api.Team.Team();
-    List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
+    List<Domain.Socioboard.Domain.Groups> lstgroup = new List<Domain.Socioboard.Domain.Groups>();
+    try
+    {
+        lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
+
+    }
+    catch (Exception e) 
+    {
+        lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));        
+    }
     string groupname = string.Empty;
     string groupId = string.Empty;
 }
@@ -27,7 +36,7 @@
         {
             try
             {
-                if (item.GroupName.Equals("Socioboard"))
+                if (item.GroupName.Equals(System.Configuration.ConfigurationManager.AppSettings["DefaultGroupName"].ToString()))
             {
                 groupname = @item.GroupName;
             <li>

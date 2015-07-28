@@ -77,7 +77,7 @@
                             string hrefPost = string.Empty;
                             try
                             {
-                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
                             }
                             catch (Exception ex)
                             {
@@ -180,7 +180,7 @@
                         @messagedate
                     </small>
                 </div>
-                   @if(str!=null){ 
+                   @if(str != null && str.Length>0){
                 foreach (string substritem in str)
                 {
                     try
@@ -220,7 +220,8 @@
                     catch (Exception ex)
                     {
                     }
-                }}
+                }
+                }
 
                 @*@try
                 {
@@ -308,7 +309,7 @@
                 string picurl = string.Empty;
                 if (string.IsNullOrEmpty(_LinkedInAccount.ProfileImageUrl))
                 {
-                    picurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+                    picurl = "../Themes/"+ path +"/Contents/img/anonymousUser.jpg";
                 }
                 else
                 {
@@ -320,7 +321,7 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                     <a href="@_LinkedInAccount.ProfileUrl" target="_blank"><strong class="primary-font">@item.ProfileName</strong></a><br />
+                     <a href="@item.ProfileUrl" target="_blank"><strong class="primary-font">@item.ProfileName</strong></a><br />
                     <small class="text-muted">
                         @*<i class="fa fa-clock-o fa-fw"></i>*@
                        @{
@@ -329,8 +330,7 @@
                         @messagedate
                     </small>
                 </div>
-               @if(str!=null){
-			   foreach (string substritem in str)
+               @foreach (string substritem in str)
                 {
                     try
                     {
@@ -362,7 +362,6 @@
                     {
                     }
                 }
-				}
                 @if (!string.IsNullOrEmpty(item.ImageUrl))
                 {
                     <br />

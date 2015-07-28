@@ -1,3 +1,4 @@
 ﻿@{
-    Layout = "~/Themes/Socioboard/Views/Shared/_AdminSite.cshtml";
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    Layout = "~/Themes/" + path + "/Views/Shared/_AdminSite.cshtml";
 }

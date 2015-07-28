@@ -1,5 +1,6 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     Ads ObjAds = (Ads)Model;   
 }
 
@@ -89,7 +90,7 @@
         <!-- /.panel-body -->
     </div>
 </div>
-<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script src="~/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>
 <script>
     function UpdateAds(Id) {
         debugger;

@@ -13,6 +13,7 @@ using System.Net;
 using System.Web.Security;
 using Socioboard.Helper;
 using Socioboard.App_Start;
+using System.Text.RegularExpressions;
 
 namespace Socioboard.Controllers
 {
@@ -48,8 +49,13 @@ namespace Socioboard.Controllers
                     string facebookcode = code;
                     Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
                     Api.User.User ApiobjUser = new Api.User.User();
-                    objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                    string fbloginreturn = apiobjFacebook.FacebookLogin(code);
+                    string[] arrfbloginreturn = Regex.Split(fbloginreturn, "_#_");
 
+                    //objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                    objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(arrfbloginreturn[0], typeof(Domain.Socioboard.Domain.User)));
+                    Session["AccesstokenFblogin"] = arrfbloginreturn[1];
+                    Session["fblogin"] = "fblogin";
                     try
                     {
                         Response.Write("Facebook Returned email : " + objUser.EmailId);
@@ -433,6 +439,8 @@ namespace Socioboard.Controllers
 
         }
 
+
+        
 
 
     }

@@ -214,7 +214,7 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@objTwitterAccount.FollowersCount</strong>
-                            Follower</h4></div>
+                            Followers</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
                             Post Per Day</span>
@@ -350,7 +350,10 @@
                 var dic_profileinfo = item.Value.ElementAt(counter);
                 //  var item = dictionary.ElementAt(index);
                 Domain.Socioboard.Domain.InstagramAccount objInstagramAccount = (Domain.Socioboard.Domain.InstagramAccount)dic_profileinfo.Key;
-
+                if(string.IsNullOrEmpty(objInstagramAccount.ProfileUrl))
+                {
+                    objInstagramAccount.ProfileUrl = "/Themes/" + path + "/Contents/img/anonymousUser.jpg"; 
+                }
                 <div id="mid_@objInstagramAccount.InstagramId" class="col-lg-4 col-md-9">
             <div class="panel panel-primary">
                 <div class="panel-heading">

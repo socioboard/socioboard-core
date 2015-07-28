@@ -2,573 +2,573 @@
 @{
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
-      int i=0;
+    int i = 0;
     GroupStatDetails _GroupStatDetails = (GroupStatDetails)Model;
     string _UserTweets = _GroupStatDetails.UserTweetGraph;
     string _UserMention = _GroupStatDetails.MentionGraph;
-    
+
 }
 
 
 @*<script src="/Themes/@path/Contents/js/highcharts.js"></script>
-<script src="/Themes/@path/Contents/js/exporting.js"></script>*@
+    <script src="/Themes/@path/Contents/js/exporting.js"></script>*@
 
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupReports</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupReports</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-users fa-fw"></i>
+                <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GeneralStatsInterGroup
+                <div class="btn-group pull-right">
+                    <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu slidedown">
+                        <li>
+                            <a onclick="loadgroupstat(15)" href="#">
+                                <i class="fa fa-refresh fa-fw"></i> 15
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="loadgroupstat(30)" href="#">
+                                <i class="fa fa-refresh fa-fw"></i> 30
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="loadgroupstat(60)" href="#">
+                                <i class="fa fa-refresh fa-fw"></i> 60
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="loadgroupstat(90)" href="#">
+                                <i class="fa fa-refresh fa-fw"></i> 90
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-users fa-fw"></i>
-                            <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GeneralStatsInterGroup
-                            <div class="btn-group pull-right">
-                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a onclick="loadgroupstat(15)" href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> 15
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onclick="loadgroupstat(30)" href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> 30
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onclick="loadgroupstat(60)" href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> 60
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onclick="loadgroupstat(90)" href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> 90
-                                        </a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="col-md-6">
-                                <ul class="list-group">
-                                  <li class="list-group-item">
-                                    <span class="badge">@_GroupStatDetails.IncommingMessage</span>
-                                   @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Incomingmessages
-                                  </li>
-                                  <li class="list-group-item">
-                                    <span class="badge">@_GroupStatDetails.SentMessage</span>
-                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_SentMessages
-                                  </li>
-                                  <li class="list-group-item">
-                                    <span class="badge">@_GroupStatDetails.TwitterFollower</span>
-                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewTwitterFollower
-                                  </li>
-                                  <li class="list-group-item">
-                                    <span class="badge">@_GroupStatDetails.FacebookFan</span>
-                                  @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFacebookFan
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@_GroupStatDetails.IncommingMessage</span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Incomingmessages
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@_GroupStatDetails.SentMessage</span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_SentMessages
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@_GroupStatDetails.TwitterFollower</span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewTwitterFollower
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@_GroupStatDetails.FacebookFan</span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFacebookFan
 
-                                  </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                            <ul class="list-group">
-                                  <li class="list-group-item">
-                                      @*i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)*@
-                                    <span class="badge">@(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)</span>
-                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Interactions
-                                  </li>
-                                  <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ProfilesByUser
-
-                                  </li>
-                                  <li class="list-group-item">
-                                    <span class="badge">1</span>
-                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Impressions
-                                  </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
+                        </li>
+                    </ul>
                 </div>
-               
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_EngagementReport</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_MetricsDescription</h3>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body" >
-                           <div >
-                     @*  <div id="container" usertweets="@_GroupStatDetails.UserTweetGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>*@
-                                 <div id="container" usertweets="@_GroupStatDetails.UserTweetGraph"  style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                       
-                           <div >
-                             @*<div usermention="@_GroupStatDetails.MentionGraph" id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                               </div>*@
-                               <div  id="container1" usermention="@_GroupStatDetails.MentionGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                               </div>
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            @*i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)*@
+                            <span class="badge">@(_GroupStatDetails.Retweet + _GroupStatDetails.Mention)</span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Interactions
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge"></span>
+                            @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ProfilesByUser
 
-                        </div>
+                        </li>
+                        @*   <li class="list-group-item">
+                              <span class="badge">@_GroupStatDetails.PageImpession</span>
+                              @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Impressions
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
 
-                   
-                        <!-- /.panel-body -->
+    <!-- /.col-lg-12 -->
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_EngagementReport</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_MetricsDescription</h3>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div>
+                    @*  <div id="container" usertweets="@_GroupStatDetails.UserTweetGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>*@
+                    <div id="container" usertweets="@_GroupStatDetails.UserTweetGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                    <div>
+                        @*<div usermention="@_GroupStatDetails.MentionGraph" id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>*@
+                        <div id="container1" usermention="@_GroupStatDetails.MentionGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                     </div>
-                    <!-- /.panel -->
+
                 </div>
 
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                   
-                        <div class="panel panel-primary">
+
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <!-- /.col-lg-12 -->
+        <div class="col-lg-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Statsfor2Twitteraccount</h3>
+                </div>
+                <div class="panel-body">
+                    <!--collapes-->
+                    <div id="accordion" class="panel-group">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Statsfor2Twitteraccount</h3>
+                                <h4 class="panel-title">
+                                    <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
+                                        <i class="fa fa-male fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PlainText
+                                    </a>
+                                </h4>
                             </div>
-                            <div class="panel-body">
-                                <!--collapes-->
-                                <div id="accordion" class="panel-group">
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h4 class="panel-title">
-                                        <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
-                                         <i class="fa fa-male fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PlainText
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div class="panel-collapse collapse in" id="collapseOne">
-                                      <div class="panel-body">
-                                       @_GroupStatDetails.PlainText
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h4 class="panel-title">
-                                        <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-female fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PhotoLink
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div class="panel-collapse collapse" id="collapseTwo">
-                                      <div class="panel-body">
-                                       @_GroupStatDetails.PhotoLink
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h4 class="panel-title">
-                                        <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-twitter fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div class="panel-collapse collapse" id="collapseThree">
-                                      <div class="panel-body">
-                                        <strong>@_GroupStatDetails.TwitterFollower</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFollowerTimePeriod
-                                      </div>
-                                    </div>
-                                  </div>
-                            
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h4 class="panel-title">
-                                        <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-eye fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Mentioned
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div class="panel-collapse collapse" id="collapseFive">
-                                      <div class="panel-body">
-                                       @_GroupStatDetails.Mention
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h4 class="panel-title">
-                                        <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-exchange fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ReTweets
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div class="panel-collapse collapse" id="collapseSix">
-                                      <div class="panel-body">
-                                         @_GroupStatDetails.Retweet
-                                      </div>
-                                    </div>
-                                  </div>
+                            <div class="panel-collapse collapse in" id="collapseOne">
+                                <div class="panel-body">
+                                    @_GroupStatDetails.PlainText
                                 </div>
-                                <!--collapsible-->
                             </div>
                         </div>
-               </div>
-                
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
+                                        <i class="fa fa-female fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PhotoLink
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseTwo">
+                                <div class="panel-body">
+                                    @_GroupStatDetails.PhotoLink
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse">
+                                        <i class="fa fa-twitter fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseThree">
+                                <div class="panel-body">
+                                    <strong>@_GroupStatDetails.TwitterFollower</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFollowerTimePeriod
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse">
+                                        <i class="fa fa-eye fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Mentioned
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseFive">
+                                <div class="panel-body">
+                                    @_GroupStatDetails.Mention
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse">
+                                        <i class="fa fa-exchange fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ReTweets
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="collapseSix">
+                                <div class="panel-body">
+                                    @_GroupStatDetails.Retweet
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--collapsible-->
+                </div>
             </div>
-            <!-- /.row -->
-      
+        </div>
+
+    </div>
+    <!-- /.row -->
 
 
-                <script type="text/javascript">
-                    
-                    function getddatesort(dt) {
 
-                        var arrmsg1 = dt.getMonth();
-                        var arrmsg = dt.getDate();
+    <script type="text/javascript">
 
-                        var month = new Array();
-                        month[0] = "Jan";
-                        month[1] = "Feb";
-                        month[2] = "Mar";
-                        month[3] = "Apr";
-                        month[4] = "May";
-                        month[5] = "June";
-                        month[6] = "July";
-                        month[7] = "Aug";
-                        month[8] = "Sept";
-                        month[9] = "Oct";
-                        month[10] = "Nov";
-                        month[11] = "Dec";
-                        // var n = month[parseInt(arrmsg1[1])];
-                        arrmsg += " " + month[arrmsg1];
-                        //alert(arrmsg);
-                        return arrmsg;
-                    }
+        function getddatesort(dt) {
 
-                    $(document).ready(function () {
-                        loadMentionChart();
-                        loadTweetChart();
+            var arrmsg1 = dt.getMonth();
+            var arrmsg = dt.getDate();
+
+            var month = new Array();
+            month[0] = "Jan";
+            month[1] = "Feb";
+            month[2] = "Mar";
+            month[3] = "Apr";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "Aug";
+            month[8] = "Sept";
+            month[9] = "Oct";
+            month[10] = "Nov";
+            month[11] = "Dec";
+            // var n = month[parseInt(arrmsg1[1])];
+            arrmsg += " " + month[arrmsg1];
+            //alert(arrmsg);
+            return arrmsg;
+        }
+
+        $(document).ready(function () {
+            loadMentionChart();
+            loadTweetChart();
+        });
+
+        function loadMentionChart() {
+            debugger;
+            var data = $('#container1').attr('usermention');
+            if (typeof (data) != 'undefined') {
+                data = data.split("^");
+                data = jQuery.grep(data, function (n, i) {
+                    return (n !== "" && n != null);
+                });
+            }
+            else {
+                data = "0,^3/13/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,3/7/2015 8:26:18 AM,";
+                data = data.split("^");
+                data = jQuery.grep(data, function (n, i) {
+                    return (n !== "" && n != null);
+                });
+            }
+            //alert(typeof (data));
+            //alert(data.length);
+            //alert($.isEmptyObject(data));
+            //console.log(data);
+            //debugger;
+            if (data.length != 0 && $.isEmptyObject(data) == false) {
+                var tweet = data[0];
+                var tweet1 = tweet.split(',');
+
+                var tweet2 = [];
+                for (var i = 0; i < tweet1.length; i++) {
+                    tweet2.push(parseInt(tweet1[i]));
+                }
+                var date = data[1];
+                var date1 = date.split(',');
+                var date2 = [];
+                for (var i = 0; i < date1.length; i++) {
+                    var dtt = new Date(date1[i]);
+                    date2.push(getddatesort(dtt));
+                }
+                // console.log(typeOf(tweet2));
+                //alert(typeof (date2));
+                // alert(date2);
+                // alert(typeof (tweet2));
+                // alert(tweet2);
+                if (typeof (date2) != 'undefined' && typeof (tweet2) != 'undefined') {
+                    //alert(date2);
+
+                    $('#container1').highcharts({
+                        title: {
+                            text: 'Mention',
+                            x: -20 //center
+                        },
+                        //subtitle: {
+                        //    text: 'Source: WorldClimate.com',
+                        //    x: -20
+                        //},
+                        xAxis: {
+                            categories: date2
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Num Of Mention'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#808080'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: ''
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: [{
+                            name: 'Mention',
+                            data: tweet2
+                        }]
                     });
+                }
+            }
+        }
 
-                    function loadMentionChart() {
-                        debugger;
-                        var data = $('#container1').attr('usermention');
-                        if (typeof (data) != 'undefined') {
-                            data = data.split("^");
-                            data = jQuery.grep(data, function (n, i) {
-                                return (n !== "" && n != null);
-                            });
-                        }
-                        else {
-                            data = "0,^3/13/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,3/7/2015 8:26:18 AM,";
-                            data = data.split("^");
-                            data = jQuery.grep(data, function (n, i) {
-                                return (n !== "" && n != null);
-                            });
-                        }
-                        //alert(typeof (data));
-                        //alert(data.length);
-                        //alert($.isEmptyObject(data));
-                        //console.log(data);
-                        //debugger;
-                        if (data.length != 0 && $.isEmptyObject(data) == false) {
-                            var tweet = data[0];
-                            var tweet1 = tweet.split(',');
+        function loadTweetChart() {
+            debugger;
+            var data = $('#container').attr('usertweets');
+            if (typeof (data) != 'undefined') {
+                data = data.split("^");
+                data = jQuery.grep(data, function (n, i) {
+                    return (n !== "" && n != null);
+                });
+            }
 
-                            var tweet2 = [];
-                            for (var i = 0; i < tweet1.length; i++) {
-                                tweet2.push(parseInt(tweet1[i]));
-                            }
-                            var date = data[1];
-                            var date1 = date.split(',');
-                            var date2 = [];
-                            for (var i = 0; i < date1.length; i++) {
-                                var dtt = new Date(date1[i]);
-                                date2.push(getddatesort(dtt));
-                            }
-                            // console.log(typeOf(tweet2));
-                            //alert(typeof (date2));
-                            // alert(date2);
-                            // alert(typeof (tweet2));
-                            // alert(tweet2);
-                            if (typeof (date2) != 'undefined' && typeof (tweet2) != 'undefined') {
-                                //alert(date2); 
-                                
-                                $('#container1').highcharts({
-                                    title: {
-                                        text: 'Mention',
-                                        x: -20 //center
-                                    },
-                                    //subtitle: {
-                                    //    text: 'Source: WorldClimate.com',
-                                    //    x: -20
-                                    //},
-                                    xAxis: {
-                                        categories: date2
-                                    },
-                                    yAxis: {
-                                        title: {
-                                            text: 'Num Of Mention'
-                                        },
-                                        plotLines: [{
-                                            value: 0,
-                                            width: 1,
-                                            color: '#808080'
-                                        }]
-                                    },
-                                    tooltip: {
-                                        valueSuffix: ''
-                                    },
-                                    legend: {
-                                        layout: 'vertical',
-                                        align: 'right',
-                                        verticalAlign: 'middle',
-                                        borderWidth: 0
-                                    },
-                                    series: [{
-                                        name: 'Mention',
-                                        data: tweet2
-                                    }]
-                                });
-                            }
-                        }
-                    }
+            else {
+                data = "0,^3/13/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,3/7/2015 8:26:18 AM,";
+                data = data.split("^");
+                data = jQuery.grep(data, function (n, i) {
+                    return (n !== "" && n != null);
+                });
 
-                    function loadTweetChart() {
-                        debugger;
-                        var data = $('#container').attr('usertweets');
-                        if (typeof (data) != 'undefined') {
-                            data = data.split("^");
-                            data = jQuery.grep(data, function (n, i) {
-                                return (n !== "" && n != null);
-                            });
-                        }
-                       
-                        else {
-                            data = "0,^3/13/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,0,^3/13/2015 8:26:18 AM,3/12/2015 8:26:18 AM,3/11/2015 8:26:18 AM,3/10/2015 8:26:18 AM,3/9/2015 8:26:18 AM,3/8/2015 8:26:18 AM,3/7/2015 8:26:18 AM,";
-                            data = data.split("^");
-                            data = jQuery.grep(data, function (n, i) {
-                                return (n !== "" && n != null);
-                            });
-                       
-                        }
-                        // alert(data);
-                        if (data.length != 0 && $.isEmptyObject(data) == false) {
-                            var tweet = data[0];
-                            var tweet1 = tweet.split(',');
-                            //debugger;
-                            var tweet2 = [];
-                            for (var i = 0; i < tweet1.length; i++) {
-                                tweet2.push(parseInt(tweet1[i]));
-                            }
-                            var date = data[1];
-                            var date1 = date.split(',');
-                            var date2 = [];
-                            for (var i = 0; i < date1.length; i++) {
-                                var dtt = new Date(date1[i]);
-                                date2.push(getddatesort(dtt));
-                            }
-                        
-                            //alert(typeof (date2));
-                            //alert(date2);
-                            //alert(typeof (tweet2));
-                            //alert(tweet2);
-                            if (typeof (date2) != 'undefined' && typeof (tweet2) != 'undefined') {
-                                $('#container').highcharts({
-                                    title: {
-                                        text: 'User Tweets',
-                                        x: -20 //center
-                                    },
-                                    //subtitle: {
-                                    //    text: 'Source: WorldClimate.com',
-                                    //    x: -20
-                                    //},
-                                    xAxis: {
-                                        categories: date2
-                                    },
-                                    yAxis: {
-                                        title: {
-                                            text: 'Num Of Tweet'
-                                        },
-                                        plotLines: [{
-                                            value: 0,
-                                            width: 1,
-                                            color: '#808080'
-                                        }]
-                                    },
-                                    tooltip: {
-                                        valueSuffix: ''
-                                    },
-                                    legend: {
-                                        layout: 'vertical',
-                                        align: 'right',
-                                        verticalAlign: 'middle',
-                                        borderWidth: 0
-                                    },
-                                    series: [{
-                                        name: 'Tweets',
-                                        data: tweet2
+            }
+            // alert(data);
+            if (data.length != 0 && $.isEmptyObject(data) == false) {
+                var tweet = data[0];
+                var tweet1 = tweet.split(',');
+                //debugger;
+                var tweet2 = [];
+                for (var i = 0; i < tweet1.length; i++) {
+                    tweet2.push(parseInt(tweet1[i]));
+                }
+                var date = data[1];
+                var date1 = date.split(',');
+                var date2 = [];
+                for (var i = 0; i < date1.length; i++) {
+                    var dtt = new Date(date1[i]);
+                    date2.push(getddatesort(dtt));
+                }
 
-                                    }]
-                                });
-                            }
-                        }
-                    }
+                //alert(typeof (date2));
+                //alert(date2);
+                //alert(typeof (tweet2));
+                //alert(tweet2);
+                if (typeof (date2) != 'undefined' && typeof (tweet2) != 'undefined') {
+                    $('#container').highcharts({
+                        title: {
+                            text: 'User Tweets',
+                            x: -20 //center
+                        },
+                        //subtitle: {
+                        //    text: 'Source: WorldClimate.com',
+                        //    x: -20
+                        //},
+                        xAxis: {
+                            categories: date2
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Num Of Tweet'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#808080'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: ''
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: [{
+                            name: 'Tweets',
+                            data: tweet2
+
+                        }]
+                    });
+                }
+            }
+        }
     </script>
 
-                @*<script type="text/javascript">
+    @*<script type="text/javascript">
 
 
-                    function getddatesort(dt) {
+                        function getddatesort(dt) {
 
-                        var arrmsg1 = dt.getMonth();
-                        var arrmsg = dt.getDate();
+                            var arrmsg1 = dt.getMonth();
+                            var arrmsg = dt.getDate();
 
-                        var month = new Array();
-                        month[1] = "Jan";
-                        month[2] = "Feb";
-                        month[3] = "Mar";
-                        month[4] = "Apr";
-                        month[5] = "May";
-                        month[6] = "June";
-                        month[7] = "July";
-                        month[8] = "Aug";
-                        month[9] = "Sept";
-                        month[10] = "Oct";
-                        month[11] = "Nov";
-                        month[12] = "Dec";
-                        // var n = month[parseInt(arrmsg1[1])];
-                        arrmsg += " " + month[arrmsg1];
-                        //alert(arrmsg);
-                        return arrmsg;
-                    }
+                            var month = new Array();
+                            month[1] = "Jan";
+                            month[2] = "Feb";
+                            month[3] = "Mar";
+                            month[4] = "Apr";
+                            month[5] = "May";
+                            month[6] = "June";
+                            month[7] = "July";
+                            month[8] = "Aug";
+                            month[9] = "Sept";
+                            month[10] = "Oct";
+                            month[11] = "Nov";
+                            month[12] = "Dec";
+                            // var n = month[parseInt(arrmsg1[1])];
+                            arrmsg += " " + month[arrmsg1];
+                            //alert(arrmsg);
+                            return arrmsg;
+                        }
 
-                    //$(document).ready(function ()
-                    //{
-                    loadMentionChart();
-                    loadTweetChart();
-                    ////});
+                        //$(document).ready(function ()
+                        //{
+                        loadMentionChart();
+                        loadTweetChart();
+                        ////});
 
-                    function loadMentionChart() {
+                        function loadMentionChart() {
 
-                        debugger;
-                        //var data = $('#container1').attr('usermention');
-                        var data = "@_UserMention";
-        data = data.split("^");
+                            debugger;
+                            //var data = $('#container1').attr('usermention');
+                            var data = "@_UserMention";
+            data = data.split("^");
 
-        var tweet = data[0];
-        var tweet1 = tweet.split(',');
-        debugger;
-        var tweet2 = [];
-        for (var i = 0; i < tweet1.length; i++) {
-            tweet2.push(parseInt(tweet1[i]));
-        }
-        var date = data[1];
-        var date1 = date.split(',');
-        var date2 = [];
-        for (var i = 0; i < date1.length; i++) {
-            var dtt = new Date(date1[i]);
-            date2.push(getddatesort(dtt));
-        }
+            var tweet = data[0];
+            var tweet1 = tweet.split(',');
+            debugger;
+            var tweet2 = [];
+            for (var i = 0; i < tweet1.length; i++) {
+                tweet2.push(parseInt(tweet1[i]));
+            }
+            var date = data[1];
+            var date1 = date.split(',');
+            var date2 = [];
+            for (var i = 0; i < date1.length; i++) {
+                var dtt = new Date(date1[i]);
+                date2.push(getddatesort(dtt));
+            }
 
 
-        $(document.body).find('#container1').highcharts({
-            title: {
-                text: 'Mention',
-                x: -20 //center
-            },
-            //subtitle: {
-            //    text: 'Source: WorldClimate.com',
-            //    x: -20
-            //},
-            xAxis: {
-                categories: date2
-            },
-            yAxis: {
+            $(document.body).find('#container1').highcharts({
                 title: {
-                    text: 'Number of Mentions'
+                    text: 'Mention',
+                    x: -20 //center
                 },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
+                //subtitle: {
+                //    text: 'Source: WorldClimate.com',
+                //    x: -20
+                //},
+                xAxis: {
+                    categories: date2
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of Mentions'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Mention',
+                    data: tweet2
                 }]
-            },
-            tooltip: {
-                valueSuffix: ''
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: 'Mention',
-                data: tweet2
-            }]
-        });
-    }
-
-    function loadTweetChart() {
-
-        //var data = $('#container').attr('usertweets');
-        var data = "@_UserTweets";
-        data = data.split("^");
-
-        var tweet = data[0];
-        var tweet1 = tweet.split(',');
-        debugger;
-        var tweet2 = [];
-        for (var i = 0; i < tweet1.length; i++) {
-            tweet2.push(parseInt(tweet1[i]));
-        }
-        var date = data[1];
-        var date1 = date.split(',');
-        var date2 = [];
-        for (var i = 0; i < date1.length; i++) {
-            var dtt = new Date(date1[i]);
-            date2.push(getddatesort(dtt));
+            });
         }
 
+        function loadTweetChart() {
 
-        $(document.body).find('#container').highcharts({
-            title: {
-                text: 'User Tweets',
-                x: -20 //center
-            },
-            //subtitle: {
-            //    text: 'Source: WorldClimate.com',
-            //    x: -20
-            //},
-            xAxis: {
-                categories: date2
-            },
-            yAxis: {
+            //var data = $('#container').attr('usertweets');
+            var data = "@_UserTweets";
+            data = data.split("^");
+
+            var tweet = data[0];
+            var tweet1 = tweet.split(',');
+            debugger;
+            var tweet2 = [];
+            for (var i = 0; i < tweet1.length; i++) {
+                tweet2.push(parseInt(tweet1[i]));
+            }
+            var date = data[1];
+            var date1 = date.split(',');
+            var date2 = [];
+            for (var i = 0; i < date1.length; i++) {
+                var dtt = new Date(date1[i]);
+                date2.push(getddatesort(dtt));
+            }
+
+
+            $(document.body).find('#container').highcharts({
                 title: {
-                    text: 'Number of Tweets'
+                    text: 'User Tweets',
+                    x: -20 //center
                 },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
+                //subtitle: {
+                //    text: 'Source: WorldClimate.com',
+                //    x: -20
+                //},
+                xAxis: {
+                    categories: date2
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of Tweets'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'Tweets',
+                    data: tweet2
                 }]
-            },
-            tooltip: {
-                valueSuffix: ''
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: 'Tweets',
-                data: tweet2
-            }]
-        });
-    }
-    </script>*@
+            });
+        }
+        </script>*@

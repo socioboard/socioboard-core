@@ -1,0 +1,495 @@
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    
+    //Layout = "~/Themes/" + path + "/Views/Shared/_Site.cshtml";
+    Layout = null;
+}
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Reports  
+                        <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#" onclick="GetFbPageReportDetails('@ViewBag.FbUserId','@ViewBag.UserId','@ViewBag.AccessToken','15')" >15 days</a>
+                                        </li>
+                                         <li class="divider"></li>
+                                        <li><a href="#" onclick="GetFbPageReportDetails('@ViewBag.FbUserId','@ViewBag.UserId','@ViewBag.AccessToken','30')">30 days</a>
+                                        </li>
+                                         <li class="divider"></li>
+                                        <li><a href="#" onclick="GetFbPageReportDetails('@ViewBag.FbUserId','@ViewBag.UserId','@ViewBag.AccessToken','60')">60 days</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" onclick="GetFbPageReportDetails('@ViewBag.FbUserId','@ViewBag.UserId','@ViewBag.AccessToken','89')">90 days</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+            <div class="col-md-12">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-facebook-square fa-fw"></i>FACEBOOK STATS 
+                            
+                        </div>
+                        <div class="panel-body">
+                            <div id="facebook_status" class="chart" style="height: 200px;">
+                                    </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-md-12">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-street-view fa-fw"></i>  PAGE IMPRESSIONS
+                            
+                        </div>
+                        <div class="panel-body">
+                            <div id="page_impression" class="chart" style="height: 200px;">
+                                    </div>
+                        </div>
+                    </div>
+            </div>
+
+          
+              <div class="col-md-12">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-pie-chart fa-fw"></i>IMPRESSIONS BREAKDOWN
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="BREAKDOWN_1" class="chart" style="height: 525px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="BREAKDOWN_2" class="chart" style="height: 525px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+         @*   <div class="col-md-6">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-male fa-fw"></i>IMPRESSIONS BY AGE & GENDER
+                        </div>
+                        <div class="panel-body">
+                            <div id="male_female" class="chart" style="height: 200px;">
+                                    </div>
+                        </div>
+                    </div>
+            </div>*@
+
+             <div class="col-md-12">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-male fa-fw"></i>IMPRESSIONS BY LOCATION
+                        </div>
+                        <div class="panel-body">
+                            <div id="world" class="chart" style="height: 200px;">
+                                    </div>
+                        </div>
+                    </div>
+            </div>
+
+
+ @{
+     Dictionary<DateTime, int> like = ViewBag.Likes;
+     Dictionary<DateTime, int> unlikes = ViewBag.Unlikes;
+     Dictionary<DateTime, int> Impressions = ViewBag.Impressions;
+     //Dictionary<string, int> Impressionsbyage = ViewBag.PageImpressionByGender;
+     Dictionary<string, int> ImpressionsbyCountry = ViewBag.ImpressionsByCountry;
+     Dictionary<string, int> ImpressionsbyCity = ViewBag.ImpressionsByCity;
+
+     var sortedDict = from entry in ImpressionsbyCity orderby entry.Value descending select entry;
+
+
+     string ImressionsCityString = "[";
+     int i = 0;
+     foreach (var item in sortedDict)
+     {
+         if (i > 10) { break; }
+         ImressionsCityString = ImressionsCityString + "{'country': '" + item.Key.Split(',')[0] + "',  'visits':'" + item.Value + "'},";
+         i++;
+     }
+     ImressionsCityString = ImressionsCityString + "]";
+
+
+     var sortedCountryDict = from entry in ImpressionsbyCountry orderby entry.Value descending select entry;
+
+
+     string ImressionsCountryString = "[";
+      i = 0;
+     foreach (var item in sortedCountryDict)
+     {
+         if (i > 10) { break; }
+         ImressionsCountryString = ImressionsCountryString + "{'country': '" + item.Key + "',  'visits':'" + item.Value + "'},";
+         i++;
+     }
+     ImressionsCountryString = ImressionsCountryString + "]";
+     
+     
+     
+     
+     string ImressionsString = "[";
+     foreach (var item in Impressions)
+     {
+         ImressionsString = ImressionsString + "{'date': '" + item.Key.ToString("yyyy-MM-dd") + "',  'impressions':'" + item.Value + "','color': '#FF0F00'},";
+
+     }
+     ImressionsString = ImressionsString + "]";
+     
+     
+   
+        string graphstring = "[";
+        foreach (var item in like) 
+        {
+            int likes = item.Value;
+            if (unlikes[item.Key]>0)
+            {
+                likes = item.Value + unlikes[item.Key];
+            }
+
+            graphstring = graphstring + "{'date': '" + item.Key.ToString("yyyy-MM-dd") + "',  'likes':'" + likes + "','unlikes':'" + unlikes[item.Key] + "'},";
+           
+        }
+        graphstring = graphstring + "]";
+    }
+
+
+  
+
+
+    <!-- facebook_status -->
+    <script type="text/javascript">
+        var data = JSON.parse(JSON.stringify(@Html.Raw(graphstring)));
+        var chart = AmCharts.makeChart("facebook_status", {
+            "type": "serial",
+            "path": "http://www.amcharts.com/lib/3",
+            "theme": "light",
+            "legend": {
+                "equalWidths": false,
+                "useGraphSettings": true,
+                "valueAlign": "left",
+                "valueWidth": 120
+            },
+            "dataProvider": data,
+            "graphs": [{
+                "alphaField": "alpha",
+                "balloonText": "[[value]] likes",
+                "dashLengthField": "dashLength",
+                "fillAlphas": 0.7,
+                "legendPeriodValueText": "total: [[value.sum]] likes",
+                "legendValueText": "[[value]] likes",
+                "title": "likes",
+                "type": "column",
+                "valueField": "likes",
+                "valueAxis": "likesAxis"
+            }, {
+                "balloonText": "unlikes:[[value]]",
+                "bullet": "round",
+                "bulletBorderAlpha": 1,
+                "useLineColorForBulletBorder": true,
+                "bulletColor": "#FFFFFF",
+                "bulletSizeField": "townSize",
+                "dashLengthField": "dashLength",
+                "descriptionField": "townName",
+                "labelPosition": "right",
+                "labelText": "[[townName2]]",
+                "legendValueText": "[[description]]/[[value]]",
+                "title": "unlikes",
+                "fillAlphas": 0,
+                "valueField": "unlikes",
+                "valueAxis": "unlikesAxis"
+            }],
+            "chartCursor": {
+                "categoryBalloonDateFormat": "DD",
+                "cursorAlpha": 0.1,
+                "cursorColor": "#000000",
+                "fullWidth": true,
+                "valueBalloonsEnabled": false,
+                "zoomable": false
+            },
+            "dataDateFormat": "YYYY-MM-DD",
+            "categoryField": "date",
+            "categoryAxis": {
+                "dateFormats": [{
+                    "period": "DD",
+                    "format": "DD"
+                }, {
+                    "period": "WW",
+                    "format": "MMM DD"
+                }, {
+                    "period": "MM",
+                    "format": "MMM"
+                }, {
+                    "period": "YYYY",
+                    "format": "YYYY"
+                }],
+                "parseDates": true,
+                "autoGridCount": false,
+                "axisColor": "#555555",
+                "gridAlpha": 0.1,
+                "gridColor": "#FFFFFF",
+                "gridCount": 50
+            },
+            "export": {
+                "enabled": true
+            }
+        });
+    </script>
+
+    <!-- page_impression -->
+    <script type="text/javascript">
+        var data = JSON.parse(JSON.stringify(@Html.Raw(ImressionsString)));
+        var chart = AmCharts.makeChart("page_impression", {
+            "type": "serial",
+            "theme": "light",
+            "path": "http://www.amcharts.com/lib/3/",
+            "dataProvider": data,
+            "valueAxes": [{
+                "gridColor": "#FFFFFF",
+                "gridAlpha": 0.2,
+                "dashLength": 0
+            }],
+            "gridAboveGraphs": true,
+            "startDuration": 1,
+            "graphs": [{
+                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "fillAlphas": 0.8,
+                "lineAlpha": 0.2,
+                "type": "column",
+                "valueField": "impressions"
+            }],
+            "chartCursor": {
+                "categoryBalloonEnabled": false,
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "categoryField": "date",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "gridAlpha": 0,
+                "tickPosition": "start",
+                "tickLength": 20
+            },
+            "export": {
+                "enabled": true
+            }
+
+        });
+    </script>
+<!-- BREAKDOWN -->
+<script type="text/javascript">
+    var organic = parseInt(@ViewBag.ImpressionsOrganic);
+    var paid = parseInt(@ViewBag.ImpressionsPaid);
+    var viral = parseInt(@ViewBag.ImpressionsViral);
+    var chart = AmCharts.makeChart("BREAKDOWN_1", {
+        "type": "pie",
+        "theme": "light",
+        "path": "http://www.amcharts.com/lib/3/",
+        "legend": {
+            "markerType": "circle",
+            "position": "right",
+            "marginRight": 80,
+            "autoMargins": false
+        },
+        "dataProvider": [{
+            "country": "Organic",
+            "litres": organic
+        }, {
+            "country": "Paid",
+            "litres": paid
+        }, {
+            "country": "viral",
+            "litres": viral
+        }],
+        "valueField": "litres",
+        "titleField": "country",
+        "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+        "export": {
+            "enabled": true
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    var dataCountry = JSON.parse(JSON.stringify(@Html.Raw(ImressionsCountryString)));
+
+    var chart = AmCharts.makeChart("BREAKDOWN_2", {
+        "type": "pie",
+        "theme": "light",
+        "path": "http://www.amcharts.com/lib/3/",
+        "legend": {
+            "markerType": "circle",
+            "position": "right",
+            "marginRight": 80,
+            "autoMargins": false
+        },
+        "dataProvider": dataCountry,
+        "valueField": "visits",
+        "titleField": "country",
+        "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+        "export": {
+            "enabled": true
+        }
+    });
+</script>
+
+
+<!-- male & female -->
+@*<script type="text/javascript">
+    var M1824 = parseInt(@Impressionsbyage["M1824"]);
+    var F1824 = parseInt(@Impressionsbyage["F1824"]);
+    var M2534 = parseInt(@Impressionsbyage["M2534"]);
+    var F2534 = parseInt(@Impressionsbyage["F2534"]);
+    var M3544 = parseInt(@Impressionsbyage["M3544"]);
+    var F3544 = parseInt(@Impressionsbyage["F3544"]);
+    var M4554 = parseInt(@Impressionsbyage["M4554"]);
+    var F4554 = parseInt(@Impressionsbyage["F4554"]);
+    var M5564 = parseInt(@Impressionsbyage["M5564"]);
+    var F5564 = parseInt(@Impressionsbyage["F5564"]);
+    var M65plus = parseInt(@Impressionsbyage["M65plus"]);
+    var F65plus = parseInt(@Impressionsbyage["F65plus"]);
+
+
+    var chart = AmCharts.makeChart("male_female", {
+        "type": "serial",
+        "theme": "light",
+        "path": "http://www.amcharts.com/lib/3/",
+        "legend": {
+            "horizontalGap": 10,
+            "maxColumns": 1,
+            "position": "right",
+            "useGraphSettings": true,
+            "markerSize": 10
+        },
+        "dataProvider": [{
+            "year": "18-24",
+            "Male": M1824,
+            "Female": F1824,
+        }, {
+            "year": "25-34",
+            "Male": M2534,
+            "Female": F2534,
+        }, {
+            "year": "35-44",
+            "Male": M3544,
+            "Female": F3544,
+        }, {
+            "year": "45-54",
+            "Male": M4554,
+            "Female": F4554,
+        }, {
+            "year": "55-64",
+            "Male": M5564,
+            "Female": F5564,
+        }, {
+            "year": "65 +",
+            "Male": M65plus,
+            "Female": F65plus,
+        }],
+        "valueAxes": [{
+            "stackType": "regular",
+            "axisAlpha": 0.5,
+            "gridAlpha": 0
+        }],
+        "graphs": [{
+            "balloonText": "<b>[[title]]</b><br><span style='font-size:24px'>[[category]]: <b>[[value]]</b></span>",
+            "fillAlphas": 0.8,
+            "labelText": "[[value]]",
+            "lineAlpha": 0.3,
+            "title": "Male (100)",
+            "type": "column",
+            "color": "#000000",
+            "valueField": "Male"
+        }, {
+            "balloonText": "<b>[[title]]</b><br><span style='font-size:24px'>[[category]]: <b>[[value]]</b></span>",
+            "fillAlphas": 0.8,
+            "labelText": "[[value]]",
+            "lineAlpha": 0.3,
+            "title": "Female (99)",
+            "type": "column",
+            "color": "#000000",
+            "valueField": "Female"
+        }],
+        "rotate": true,
+        "categoryField": "year",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "axisAlpha": 0,
+            "gridAlpha": 0,
+            "position": "left"
+        },
+        "export": {
+            "enabled": true
+        }
+    });</script>*@
+
+
+<!-- world -->
+<script type="text/javascript">
+    var datacity = JSON.parse(JSON.stringify(@Html.Raw(ImressionsCityString)));
+    var chart = AmCharts.makeChart("world", {
+        "theme": "light",
+        "type": "serial",
+        "startDuration": 2,
+        "path": "http://www.amcharts.com/lib/3/",
+        "dataProvider": datacity,
+        "valueAxes": [{
+            "position": "left",
+            "title": "Visitors"
+        }],
+        "graphs": [{
+            "balloonText": "[[category]]: <b>[[value]]</b>",
+            "fillColorsField": "color",
+            "fillAlphas": 1,
+            "lineAlpha": 0.1,
+            "type": "column",
+            "valueField": "visits"
+        }],
+        "depth3D": 20,
+        "angle": 30,
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "country",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 90
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
+    jQuery('.chart-input').off().on('input change', function () {
+        var property = jQuery(this).data('property');
+        var target = chart;
+        chart.startDuration = 0;
+
+        if (property == 'topRadius') {
+            target = chart.graphs[0];
+            if (this.value == 0) {
+                this.value = undefined;
+            }
+        }
+
+        target[property] = this.value;
+        chart.validateNow();
+    });</script>
+    

@@ -1,0 +1,107 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string picurl = string.Empty;
+}
+@foreach (var dicitem in (Dictionary<string, Dictionary<object, List<object>>>)Model)
+{
+    if (dicitem.Key == "instagram")
+    {
+        foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
+        {
+            object obj = (object)items.Key;
+
+            InstagramFeed item = (InstagramFeed)obj;
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @if (!string.IsNullOrEmpty(item.ImageUrl)) { 
+                            <img src="@item.ImageUrl" class="img-responsive img-circle" />
+                            }
+                            else
+                            {
+                                <img src="..\Themes\Socioboard\Contents\img\anonymousUser.png" class="img-responsive img-circle" />
+                            }
+                                
+                        </div>
+                        <div class="col-md-6" style="margin-top: 4%;">
+                            <a href="#"><b>@item.AdminUser</b></a>
+                        </div>
+                        <div class="col-md-4" style="margin-top: 4%;">
+                            @Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate))
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" style="padding:0;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="@item.FeedImageUrl" class="img-responsive" width="100%" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <b id="count_@item.FeedId">@item.LikeCount likes</b>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 3%;">
+                            <a href="#"><b>@item.AdminUser</b></a><p>@item.Feed</p>
+                        </div>
+                        @if (items.Value.Count > 0)
+                        {
+                            <div class="col-md-12" style="margin-top: 2%;">
+                                <a data-toggle="collapse" data-target="#collapseExample_@item.FeedId" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;">view all comments</a>
+                                <div class="collapse" id="collapseExample_@item.FeedId">
+                                    @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <b><a href="#">@item_value.FromName</a></b> @item_value.Comment
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                @*<div class="">
+                                    @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <b><a href="#">@item_value.FromName</a></b> @item_value.Comment
+                                            </div>
+                                        </div>
+                                    }
+                                    </div>*@
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-1" style="padding: 10px;">
+                            <div style="cursor:pointer;">
+                                @if (item.IsLike == 0)
+                                {
+                                    <img id="myImage_@item.FeedId" status="0" class="img-responsive" onclick="LikeUnlikeInstagramPost('@item.LikeCount', '@item.FeedId', '@item.InstagramId')" src="http://i.imgur.com/5VSlTqW.png" width="50" height="50">
+                                }
+                                else
+                                {
+                                    <img id="myImage_@item.FeedId" status="1" class="img-responsive" onclick="LikeUnlikeInstagramPost('@item.LikeCount', '@item.FeedId', '@item.InstagramId')" src="http://i.imgur.com/Kt5N68n.png" width="50" height="50">
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-10" style="padding-left: 0px; padding-right: 0px;">
+                            <textarea class="form-control" placeholder="Add a comment..."></textarea>
+                        </div>
+                        <div class="col-md-1" style="padding: 10px;">
+                            <a href="#">
+                                <img src="http://i.imgur.com/yo2Sfns.png" class="img-responsive" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
