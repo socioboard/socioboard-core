@@ -350,7 +350,7 @@ namespace Api.Socioboard.Services
                 }
 
             }
-            return new JavaScriptSerializer().Serialize(objuser);
+            return (new JavaScriptSerializer().Serialize(objuser)) + "_#_" + access_token;
         }
 
 
@@ -512,5 +512,177 @@ namespace Api.Socioboard.Services
                 return new JavaScriptSerializer().Serialize("Something went Wrong");
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddYoutubeAccountwithLogin(string client_id, string client_secret, string redirect_uri, string UserId, string GroupId, string access_token)
+        {
+            #region Local variables Inisitalisation
+            string ret = string.Empty;
+            string objRefresh = string.Empty;
+            string refreshToken = string.Empty;
+            oAuthTokenYoutube ObjoAuthTokenYoutube = new oAuthTokenYoutube();
+            oAuthToken objToken = new oAuthToken();
+            Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = new Domain.Socioboard.Domain.YoutubeAccount();
+            Domain.Socioboard.Domain.YoutubeChannel objYoutubeChannel;
+            YoutubeChannelRepository objYoutubeChannelRepository = new YoutubeChannelRepository();
+            YoutubeAccountRepository objYoutubeAccountRepository = new YoutubeAccountRepository();
+            #endregion
+            #region Get user Profile and Add Youtube Account
+            JArray userinfo = new JArray();
+            try
+            {
+                userinfo = objToken.GetUserInfo("me", access_token.ToString());
+            }
+            catch (Exception ex)
+            {
+            }
+            foreach (var itemEmail in userinfo)
+            {
+                try
+                {
+                    objYoutubeAccount.Id = Guid.NewGuid();
+                    objYoutubeAccount.Ytuserid = itemEmail["id"].ToString();
+                    objYoutubeAccount.Emailid = itemEmail["email"].ToString();
+                    try
+                    {
+                        objYoutubeAccount.Ytusername = itemEmail["given_name"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        objYoutubeAccount.Ytusername = itemEmail["name"].ToString();
+                    }
+                    objYoutubeAccount.Ytprofileimage = itemEmail["picture"].ToString();
+                    objYoutubeAccount.Accesstoken = access_token;
+                    objYoutubeAccount.Refreshtoken = refreshToken;
+                    objYoutubeAccount.Isactive = 1;
+                    objYoutubeAccount.Entrydate = DateTime.Now;
+                    objYoutubeAccount.UserId = Guid.Parse(UserId);
+                    if (!objYoutubeAccountRepository.checkYoutubeUserExists(objYoutubeAccount))
+                    {
+                        YoutubeAccountRepository.Add(objYoutubeAccount);
+                        ret = "Account Added Successfully";
+                    }
+                    else
+                    {
+                        ret = "Account already Exist !";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+            }
+
+
+            #endregion
+            #region Add Youtube Channels
+            GlobusGooglePlusLib.Youtube.Core.Channels ObjChannel = new GlobusGooglePlusLib.Youtube.Core.Channels();
+            JArray objarray = new JArray();
+            try
+            {
+                string part = (oAuthTokenYoutube.Parts.contentDetails.ToString() + "," + oAuthTokenYoutube.Parts.statistics.ToString());
+                string Value = ObjChannel.Get_Channel_List(access_token, part, 50, true);
+                JObject UserChannels = JObject.Parse(@Value);
+                objarray = (JArray)UserChannels["items"];
+            }
+            catch (Exception ex)
+            {
+            }
+
+            foreach (var item in objarray)
+            {
+                objYoutubeChannel = new Domain.Socioboard.Domain.YoutubeChannel();
+                try
+                {
+                    objYoutubeChannel.Id = Guid.NewGuid();
+                    objYoutubeChannel.Channelid = item["id"].ToString();
+                    objYoutubeChannel.Likesid = item["contentDetails"]["relatedPlaylists"]["likes"].ToString();
+                    objYoutubeChannel.Favoritesid = item["contentDetails"]["relatedPlaylists"]["favorites"].ToString();
+                    objYoutubeChannel.Uploadsid = item["contentDetails"]["relatedPlaylists"]["uploads"].ToString();
+                    objYoutubeChannel.Watchhistoryid = item["contentDetails"]["relatedPlaylists"]["watchHistory"].ToString();
+                    objYoutubeChannel.Watchlaterid = item["contentDetails"]["relatedPlaylists"]["watchLater"].ToString();
+                    objYoutubeChannel.Googleplususerid = objYoutubeAccount.Ytuserid;
+                    objYoutubeChannel.UserId = Guid.Parse(UserId);
+                    try
+                    {
+                        string viewcnt = item["statistics"]["viewCount"].ToString();
+                        objYoutubeChannel.ViewCount = Convert.ToInt32(viewcnt);
+                        string videocnt = item["statistics"]["videoCount"].ToString();
+                        objYoutubeChannel.VideoCount = Convert.ToInt32(videocnt);
+                        string commentcnt = item["statistics"]["commentCount"].ToString();
+                        objYoutubeChannel.CommentCount = Convert.ToInt32(commentcnt);
+                        string Subscribercnt = item["statistics"]["subscriberCount"].ToString();
+                        objYoutubeChannel.SubscriberCount = Convert.ToInt32(Subscribercnt);
+                        try
+                        {
+                            string str = item["statistics"]["hiddenSubscriberCount"].ToString();
+                            if (str == "false")
+                            {
+                                objYoutubeChannel.HiddenSubscriberCount = 0;
+                            }
+                            else
+                            {
+                                objYoutubeChannel.HiddenSubscriberCount = 1;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                if (!objYoutubeChannelRepository.checkYoutubeChannelExists(objYoutubeChannel.Channelid, Guid.Parse(UserId)))
+                {
+                    YoutubeChannelRepository.Add(objYoutubeChannel);
+                }
+            }
+            #endregion
+            #region Add TeamMemberProfile
+            Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+            objTeamMemberProfile.Id = Guid.NewGuid();
+            objTeamMemberProfile.TeamId = objTeam.Id;
+            objTeamMemberProfile.Status = 1;
+            objTeamMemberProfile.ProfileType = "youtube";
+            objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+            objTeamMemberProfile.ProfileId = objYoutubeAccount.Ytuserid;
+
+            objTeamMemberProfile.ProfileName = objYoutubeAccount.Ytusername;
+            objTeamMemberProfile.ProfilePicUrl = objYoutubeAccount.Ytprofileimage;
+
+            if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objYoutubeAccount.Ytuserid))
+            {
+                objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+            }
+            #endregion
+            #region SocialProfile
+            Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+            objSocialProfile.Id = Guid.NewGuid();
+            objSocialProfile.ProfileType = "youtube";
+            objSocialProfile.ProfileId = objYoutubeAccount.Ytuserid;
+            objSocialProfile.UserId = Guid.Parse(UserId);
+            objSocialProfile.ProfileDate = DateTime.Now;
+            objSocialProfile.ProfileStatus = 1;
+            if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+            {
+                objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+            }
+            #endregion
+            return ret;
+        }
+
+    
+    
+    
     }
 }

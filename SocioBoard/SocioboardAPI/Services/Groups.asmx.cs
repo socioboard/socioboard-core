@@ -196,5 +196,24 @@ namespace Api.Socioboard.Services
             return "";
         }
 
+
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetGroupDeUserId(string UserId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.Groups> lstGroups = grouprepo.getAllGroups(Guid.Parse(UserId));
+                return new JavaScriptSerializer().Serialize(lstGroups[0]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
     }
 }

@@ -1563,6 +1563,7 @@ namespace Api.Socioboard.Services
         public string FacebookLogin(string code)
         {
             string ret = string.Empty;
+            string accessToken = string.Empty;
             Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
             string client_id = ConfigurationManager.AppSettings["ClientId"];
             string redirect_uri = ConfigurationManager.AppSettings["RedirectUrl"];
@@ -1579,7 +1580,7 @@ namespace Api.Socioboard.Services
                 parameters.Add("code", code);
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
                 JsonObject fbaccess_token = (JsonObject)fb.Get("/oauth/access_token", parameters);
-                string accessToken = fbaccess_token["access_token"].ToString();
+                 accessToken = fbaccess_token["access_token"].ToString();
                 if (accessToken != null)
                 {
                     string fname = string.Empty;
@@ -1594,7 +1595,7 @@ namespace Api.Socioboard.Services
             {
                 Console.WriteLine(ex.Message);
             }
-            return new JavaScriptSerializer().Serialize(objUser);
+            return (new JavaScriptSerializer().Serialize(objUser)) + "_#_" + accessToken;
         }
 
 
@@ -4159,6 +4160,190 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string FacebookComposeMessageRss(string message, string profileid, string userid, string title, string link)
+        {
+            string ret = "";
+            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
+            FacebookClient fb = new FacebookClient();
 
+            try
+            {
+                fb.AccessToken = objFacebookAccount.AccessToken;
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+                var args = new Dictionary<string, object>();
+                args["message"] = message;
+                args["description"] = title;
+                args["link"] = link;
+                ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+                RssFeedsRepository objrssfeed = new RssFeedsRepository();
+                objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+                return ret = "Messages Posted Successfully";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return ret = "Message Could Not Posted";
+            }
+        }
+
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddFacebookAccountWithlogin(string accessToken, string UserId, string GroupId)
+        {
+            string ret = string.Empty;
+            string client_id = ConfigurationManager.AppSettings["ClientId"];
+            string redirect_uri = ConfigurationManager.AppSettings["RedirectUrl"];
+            string client_secret = ConfigurationManager.AppSettings["ClientSecretKey"];
+            long friendscount = 0;
+            try
+            {
+                FacebookClient fb = new FacebookClient();
+                string profileId = string.Empty;
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("client_id", client_id);
+                parameters.Add("redirect_uri", redirect_uri);
+                parameters.Add("client_secret", client_secret);
+                if (accessToken != null)
+                {
+                    fb.AccessToken = accessToken;
+                    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+                    dynamic profile = fb.Get("v2.0/me");
+                    dynamic friends = fb.Get("v2.0/me/friends");
+                    try
+                    {
+                        friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        //try
+                        //{
+                        //    dynamic frndscount = fb.Get("fql", new { q = "SELECT friend_count FROM user WHERE uid=me()" });
+
+                        //    foreach (var friend in frndscount.data)
+                        //    {
+                        //        frndscount = friend.friend_count;
+                        //    }
+                        //    friendscount = Convert.ToInt16(frndscount);
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    friendscount = 0;
+                        //    logger.Error(ex.Message);
+                        //    logger.Error(ex.StackTrace);
+                        //}
+
+                        friendscount = 0;
+                        logger.Error("friendscount >> " + ex.Message);
+                        logger.Error("friendscount >> " + ex.StackTrace);
+                        logger.Error("friendscount >> " + friends.ToString());
+                        logger.Error("friendscount >> " + friends["paging"]["next"].ToString());
+                    }
+                    if (!objFacebookAccountRepository.checkFacebookUserExists(Convert.ToString(profile["id"]), Guid.Parse(UserId)))
+                    {
+                        #region Add FacebookAccount
+                        objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+                        objFacebookAccount.Id = Guid.NewGuid();
+                        objFacebookAccount.FbUserId = (Convert.ToString(profile["id"]));
+                        objFacebookAccount.FbUserName = (Convert.ToString(profile["name"]));
+                        objFacebookAccount.AccessToken = accessToken;
+                        objFacebookAccount.Friends = Convert.ToInt16(friendscount);
+                        try
+                        {
+                            objFacebookAccount.EmailId = (Convert.ToString(profile["email"]));
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        objFacebookAccount.Type = "account";
+                        objFacebookAccount.ProfileUrl = (Convert.ToString(profile["link"]));
+                        objFacebookAccount.IsActive = 1;
+                        objFacebookAccount.UserId = Guid.Parse(UserId);
+                        objFacebookAccountRepository.addFacebookUser(objFacebookAccount);
+                        #endregion
+                        #region Add TeamMemberProfile
+                        Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                        objTeamMemberProfile.Id = Guid.NewGuid();
+                        objTeamMemberProfile.TeamId = objTeam.Id;
+                        objTeamMemberProfile.Status = 1;
+                        objTeamMemberProfile.ProfileType = "facebook";
+                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        objTeamMemberProfile.ProfileId = Convert.ToString(profile["id"]);
+                        objTeamMemberProfile.ProfileName = (Convert.ToString(profile["name"]));
+                        objTeamMemberProfile.ProfilePicUrl = "http://graph.facebook.com/" + objTeamMemberProfile.ProfileId + "/picture?type=small";
+                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                        #endregion
+                        #region SocialProfile
+                        Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                        objSocialProfile.Id = Guid.NewGuid();
+                        objSocialProfile.ProfileType = "facebook";
+                        objSocialProfile.ProfileId = (Convert.ToString(profile["id"]));
+                        objSocialProfile.UserId = Guid.Parse(UserId);
+                        objSocialProfile.ProfileDate = DateTime.Now;
+                        objSocialProfile.ProfileStatus = 1;
+                        #endregion
+                        if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                        {
+                            objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+                        }
+                        #region Add Facebook Feeds
+                        AddFacebookFeeds(UserId, fb, profile);
+                        #endregion
+                        #region Add Facebook User Home
+                        AddFacebookUserHome(UserId, fb, profile);
+                        #endregion
+                        #region Add Facebook User Inbox Message
+                        //AddFacebookMessage(UserId, fb, profile);
+                        AddFacebookMessageWithPagination(UserId, fb, profile);
+                        #endregion
+                        #region Add Facebook Stats
+                        AddFacebookStats(UserId, fb, profile);
+                        #endregion
+                        //getUserNotifications(UserId, fb, profile);
+                        ret = "Account Added Successfully";
+
+                        ret = new JavaScriptSerializer().Serialize(objFacebookAccount);
+
+                    }
+                    else
+                    {
+                        objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(Convert.ToString(profile["id"]), Guid.Parse(UserId));
+                        if (objFacebookAccount.IsActive == 2)
+                        {
+                            objFacebookAccount.IsActive = 1;
+                            objFacebookAccount.AccessToken = accessToken;
+                            objFacebookAccountRepository.updateFacebookUser(objFacebookAccount);
+
+                            Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                            objSocialProfile.Id = Guid.NewGuid();
+                            objSocialProfile.ProfileType = "facebook";
+                            objSocialProfile.ProfileId = objFacebookAccount.FbUserId;
+                            objSocialProfile.UserId = Guid.Parse(UserId);
+                            objSocialProfile.ProfileDate = DateTime.Now;
+                            objSocialProfile.ProfileStatus = 1;
+                            objSocialProfilesRepository.updateSocialProfileStatus(objSocialProfile);
+                            ret = "Account Updated successfully !";
+                        }
+                        else
+                        {
+                            ret = "Account already Exist !";
+                        }
+
+                    }
+                }
+                //return new JavaScriptSerializer().Serialize(ret);
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
     }
 }
