@@ -231,8 +231,6 @@
     <Compile Include="Helper\AddlinkedinCompanyPage.cs" />
     <Compile Include="Helper\ChilkatHttpHelpr.cs" />
     <Compile Include="Helper\FacebookUser.cs" />
-    <Compile Include="Helper\FbDiscoverySearchHelper.cs" />
-    <Compile Include="Helper\GlobusHttpHelper.cs" />
     <Compile Include="Helper\GoogleAnaltyicsReportingHelper.cs" />
     <Compile Include="Helper\GoogleAnalyticsAuthenticationHelper.cs" />
     <Compile Include="Helper\GoogleAnalyticsRealTimeHelper.cs" />
@@ -245,7 +243,6 @@
     <Compile Include="Helper\UserManager\User.cs" />
     <Compile Include="Helper\UserManager\UserManager.cs" />
     <Compile Include="Helper\Utility.cs" />
-    <Compile Include="Helper\Utils.cs" />
     <Compile Include="Model\AdminRepository.cs" />
     <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\AffiliatesRepository.cs" />

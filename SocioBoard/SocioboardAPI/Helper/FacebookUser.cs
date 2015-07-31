@@ -17,7 +17,7 @@ namespace Api.Socioboard.Helper
         public string proxypassword;
         public string proxytype; //http or socks
 
-        public GlobusHttpHelper globusHttpHelper;
+       // public GlobusHttpHelper globusHttpHelper;
 
         public enum AccountStatus { 
         AccountCreated,AccountEmailVerified,AccountPhoneVerified,AccountIncorrectEmail,AccountPhoneEmailVerified,

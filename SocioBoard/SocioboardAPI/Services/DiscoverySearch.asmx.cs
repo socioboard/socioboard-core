@@ -145,7 +145,7 @@ namespace Api.Socioboard.Services
                 //        catch { }
                 //    }
                 //}
-                List<Domain.Socioboard.Domain.DiscoverySearch> fb_data = FbDiscoverySearchHelper.ScraperHasTage(keyword);
+                List<Domain.Socioboard.Domain.DiscoverySearch> fb_data = null;
 
                 return new JavaScriptSerializer().Serialize(fb_data);
             }
