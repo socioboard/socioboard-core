@@ -2668,7 +2668,6 @@
     <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\run.sh" />
     <Content Include="Themes\Socioboard\Views\Boards\analytics.cshtml" />
     <Content Include="Themes\Socioboard\Views\Boards\boardsList.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Shared\_SocialSuiteBoardMe.cshtml" />
     <Content Include="Themes\Socioboard\Views\Feeds\_GplusActivityPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Report\_FbPageReports.cshtml" />
     <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\README.md" />
