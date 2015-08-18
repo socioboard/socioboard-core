@@ -36,7 +36,7 @@ namespace Api.Socioboard.Services
                 {
 
                     List<Domain.Socioboard.Domain.User> lstUser = objUserRepo.getAllUsersByAdmin();
-                    if (lstUser != null)
+                    if (lstUser.Count > 0)
                     {
                         return new JavaScriptSerializer().Serialize(lstUser);
                     }
@@ -52,8 +52,9 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error("GetAllUsers => "+ex.Message);
                 Console.WriteLine(ex.StackTrace);
-                return null;
+                return new JavaScriptSerializer().Serialize(new List<User>());
             }
 
         }

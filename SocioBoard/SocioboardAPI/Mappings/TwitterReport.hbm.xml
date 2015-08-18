@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="TwitterReport" table="twitterreport" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="twitterprofileid">
+      <column name="twitterprofileid" />
+    </property>
+    <property name="totalfollower">
+      <column name="totalfollower" />
+    </property>
+    <property name="totalconnection">
+      <column name="totalconnection"  />
+    </property>
+    <property name="newfollower_15">
+      <column name="newfollower_15"  />
+    </property>
+    <property name="perday_newfollower_15">
+      <column name="perday_newfollower_15"  />
+    </property>
+
+    <property name="newfollower_30">
+      <column name="newfollower_30"  />
+    </property>
+    <property name="perday_newfollower_30">
+      <column name="perday_newfollower_30"  />
+    </property>
+
+    <property name="newfollower_60">
+      <column name="newfollower_60"  />
+    </property>
+    <property name="perday_newfollower_60">
+      <column name="perday_newfollower_60"  />
+    </property>
+
+    <property name="following_15">
+      <column name="following_15"  />
+    </property>
+    <property name="perday_following_15">
+      <column name="perday_following_15"  />
+    </property>
+
+   
+    <property name="following_30">
+      <column name="following_30"  />
+    </property>
+    <property name="perday_following_30">
+      <column name="perday_following_30"  />
+    </property>
+
+    <property name="following_60">
+      <column name="following_60"  />
+    </property>
+    <property name="perday_following_60">
+      <column name="perday_following_60"  />
+    </property>
+
+    <property name="following_90">
+      <column name="following_90"  />
+    </property>
+    <property name="perday_following_90">
+      <column name="perday_following_90"  />
+    </property>
+
+    <property name="directmessage_15">
+      <column name="directmessage_15"  />
+    </property>
+    <property name="perday_directmessage_15">
+      <column name="perday_directmessage_15"  />
+    </property>
+
+    <property name="directmessage_30">
+      <column name="directmessage_30"  />
+    </property>
+    <property name="perday_directmessage_30">
+      <column name="perday_directmessage_30"  />
+    </property>
+
+    <property name="directmessage_60">
+      <column name="directmessage_60"  />
+    </property>
+    <property name="perday_directmessage_60">
+      <column name="perday_directmessage_60"  />
+    </property>
+
+
+    <property name="directmessage_90">
+      <column name="directmessage_90"  />
+    </property>
+    <property name="perday_directmessage_90">
+      <column name="perday_directmessage_90"  />
+    </property>
+
+    <property name="mention_15">
+      <column name="mention_15"  />
+    </property>
+    <property name="perday_mention_15">
+      <column name="perday_mention_15"  />
+    </property>
+
+    <property name="mention_30">
+      <column name="mention_30"  />
+    </property>
+    <property name="perday_mention_30">
+      <column name="perday_mention_30"  />
+    </property>
+
+    <property name="mention_60">
+      <column name="mention_60"  />
+    </property>
+    <property name="perday_mention_60">
+      <column name="perday_mention_60"  />
+    </property>
+
+    <property name="mention_90">
+      <column name="mention_90"  />
+    </property>
+    <property name="perday_mention_90">
+      <column name="perday_mention_90"  />
+    </property>
+
+
+    <property name="messagesent_15">
+      <column name="messagesent_15"  />
+    </property>
+    <property name="perday_messagesent_15">
+      <column name="perday_messagesent_15"  />
+    </property>
+
+    <property name="messagesent_30">
+      <column name="messagesent_30"  />
+    </property>
+    <property name="perday_messagesent_30">
+      <column name="perday_messagesent_30"  />
+    </property>
+
+    <property name="messagesent_60">
+      <column name="messagesent_60"  />
+    </property>
+    <property name="perday_messagesent_60">
+      <column name="perday_messagesent_60"  />
+    </property>
+
+    <property name="messagesent_90">
+      <column name="messagesent_90"  />
+    </property>
+    <property name="perday_messagesent_90">
+      <column name="perday_messagesent_90"  />
+    </property>
+
+    <property name="messagerecieved_15">
+      <column name="messagerecieved_15"  />
+    </property>
+    <property name="perday_messagerecieved_15">
+      <column name="perday_messagerecieved_15"  />
+    </property>
+
+    <property name="messagerecieved_30">
+      <column name="messagerecieved_30"  />
+    </property>
+    <property name="perday_messagerecieved_30">
+      <column name="perday_messagerecieved_30"  />
+    </property>
+
+    <property name="messagerecieved_60">
+      <column name="messagerecieved_60"  />
+    </property>
+    <property name="perday_messagerecieved_60">
+      <column name="perday_messagerecieved_60"  />
+    </property>
+
+
+    <property name="messagerecieved_90">
+      <column name="messagerecieved_90"  />
+    </property>
+    <property name="perday_messagerecieved_90">
+      <column name="perday_messagerecieved_90"  />
+    </property>
+
+    <property name="click_15">
+      <column name="click_15"  />
+    </property>
+    <property name="perday_click_15">
+      <column name="perday_click_15"  />
+    </property>
+
+    <property name="click_30">
+      <column name="click_30"  />
+    </property>
+    <property name="perday_click_30">
+      <column name="perday_click_30"  />
+    </property>
+
+    <property name="click_60">
+      <column name="click_60"  />
+    </property>
+    <property name="perday_click_60">
+      <column name="perday_click_60"  />
+    </property>
+
+    <property name="click_90">
+      <column name="click_90"  />
+    </property>
+    <property name="perday_click_90">
+      <column name="perday_click_90"  />
+    </property>
+
+    <property name="retweets_15">
+      <column name="retweets_15"  />
+    </property>
+    <property name="perday_retweets_15">
+      <column name="perday_retweets_15"  />
+    </property>
+
+    <property name="retweets_30">
+      <column name="retweets_30"  />
+    </property>
+    <property name="perday_retweets_30">
+      <column name="perday_retweets_30"  />
+    </property>
+
+    <property name="retweets_60">
+      <column name="retweets_60"  />
+    </property>
+    <property name="perday_retweets_60">
+      <column name="perday_retweets_60"  />
+    </property>
+
+    <property name="retweets_90">
+      <column name="retweets_90"  />
+    </property>
+    <property name="perday_retweets_90">
+      <column name="perday_retweets_90"  />
+    </property>
+
+    <property name="directmessagesent_15">
+      <column name="directmessagesent_15"  />
+    </property>
+    <property name="perday_directmessagesent_15">
+      <column name="perday_directmessagesent_15"  />
+    </property>
+
+    <property name="directmessagesent_30">
+      <column name="directmessagesent_30"  />
+    </property>
+    <property name="perday_directmessagesent_30">
+      <column name="perday_directmessagesent_30"  />
+    </property>
+    <property name="directmessagesent_60">
+      <column name="directmessagesent_60"  />
+    </property>
+    
+    <property name="perday_directmessagesent_60">
+      <column name="perday_directmessagesent_60"  />
+    </property>
+
+    <property name="directmessagesent_90">
+      <column name="directmessagesent_90"  />
+    </property>
+    <property name="perday_directmessagesent_90">
+      <column name="perday_directmessagesent_90"  />
+    </property>
+    
+  </class>
+</hibernate-mapping>

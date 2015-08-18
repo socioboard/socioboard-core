@@ -111,16 +111,16 @@
   </wsdl:binding>
   <wsdl:service name="LinkedinMessage">
     <wsdl:port name="LinkedinMessageSoap" binding="tns:LinkedinMessageSoap">
-      <soap:address location="http://api.socioboard.com/services/LinkedinMessage.asmx" />
+      <soap:address location="http://localhost:6361/services/linkedinmessage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinMessageSoap12" binding="tns:LinkedinMessageSoap12">
-      <soap12:address location="http://api.socioboard.com/services/LinkedinMessage.asmx" />
+      <soap12:address location="http://localhost:6361/services/linkedinmessage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinMessageHttpGet" binding="tns:LinkedinMessageHttpGet">
-      <http:address location="http://api.socioboard.com/services/LinkedinMessage.asmx" />
+      <http:address location="http://localhost:6361/services/linkedinmessage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinMessageHttpPost" binding="tns:LinkedinMessageHttpPost">
-      <http:address location="http://api.socioboard.com/services/LinkedinMessage.asmx" />
+      <http:address location="http://localhost:6361/services/linkedinmessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

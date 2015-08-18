@@ -3386,4 +3386,10 @@ Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBo
   <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
     <value>Il periodo di prova</value>
   </data>
+  <data name="UserGroup_UserGroupPartial_AddedSucessfully" xml:space="preserve">
+    <value>Aggiunto con successo</value>
+  </data>
+  <data name="UserGroup_UserGroup_GroupAlreadyExists" xml:space="preserve">
+    <value>Gruppo già esistente</value>
+  </data>
 </root>

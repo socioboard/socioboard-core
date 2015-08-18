@@ -376,6 +376,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public void getTwitterFeeds(string UserId, oAuthTwitter OAuth)
         {
+            int J = 0;
+
             TwitterUser twtuser;
             #region Add Twitter User Feed
 
@@ -489,7 +491,9 @@ namespace Api.Socioboard.Services
                     {
                         try
                         {
+                            J++;
                             objTwitterFeedRepository.addTwitterFeed(objTwitterFeed);
+                            logger.Error("getTwitterFeedsCount>>>"+J);
                         }
                         catch (Exception ex)
                         {
@@ -503,14 +507,14 @@ namespace Api.Socioboard.Services
                     FeedSentimentalAnalysisRepository _FeedSentimentalAnalysisRepository = new FeedSentimentalAnalysisRepository();
                     try
                     {
-                        if (_FeedSentimentalAnalysisRepository.checkFeedExists(objTwitterFeed.ProfileId.ToString(), Guid.Parse(UserId), objTwitterFeed.Id.ToString()))
-                        {
-                            if (!string.IsNullOrEmpty(objTwitterFeed.Feed))
-                            {
-                                string Network = "twitter";
-                                _SentimentalAnalysis.GetPostSentimentsFromUclassify(Guid.Parse(UserId), objTwitterFeed.ProfileId, objTwitterFeed.MessageId, objTwitterFeed.Feed, Network);
-                            }
-                        }
+                        //if (_FeedSentimentalAnalysisRepository.checkFeedExists(objTwitterFeed.ProfileId.ToString(), Guid.Parse(UserId), objTwitterFeed.Id.ToString()))
+                        //{
+                        //    if (!string.IsNullOrEmpty(objTwitterFeed.Feed))
+                        //    {
+                        //        string Network = "twitter";
+                        //        _SentimentalAnalysis.GetPostSentimentsFromUclassify(Guid.Parse(UserId), objTwitterFeed.ProfileId, objTwitterFeed.MessageId, objTwitterFeed.Feed, Network);
+                        //    }
+                        //}
                     }
                     catch (Exception)
                     {
@@ -847,6 +851,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public void  getTwitterMessages(string UserId, oAuthTwitter OAuth)
         {
+            int I = 0;
             TwitterUser twtuser;
 
             #region Add Twitter Messages
@@ -968,7 +973,9 @@ namespace Api.Socioboard.Services
                     }
                     if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
                     {
+                        I++;
                         objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
+                        logger.Error("getTwitterMessagesCount>>>"+I);
                     }
 
                 }
@@ -1015,7 +1022,7 @@ namespace Api.Socioboard.Services
                     getUserMentions(OAuth, itemTwt.TwitterUserId, Guid.Parse(UserId));
                     getUserFollowersData(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, Guid.Parse(UserId));
                     getUserRetweet(OAuth, itemTwt.TwitterUserId, Guid.Parse(UserId));
-
+                    getTwitterFollowerData(OAuth, itemTwt.TwitterUserId);
                     #region UpdateTeammemberprofile
                     Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
                     objTeamMemberProfile.ProfileName = itemTwt.TwitterScreenName;
@@ -1934,7 +1941,7 @@ namespace Api.Socioboard.Services
             bool rt = false;
             string ret = "";
             string str = "";
-
+            int Twtsc = 0;
             Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
             oAuthTwitter OAuthTwt = new oAuthTwitter();
             OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
@@ -1964,9 +1971,11 @@ namespace Api.Socioboard.Services
             {
                 if (isScheduled)
                 {
+                    Twtsc++;
                     str = "Message post on twitter for Id :" + objTwitterAccount.TwitterUserId + " and Message: " + objScheduledMessage.ShareMessage;
                     ScheduledMessage schmsg = new ScheduledMessage();
                     schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                    logger.Error("PostTwitterMessageCount>>>"+Twtsc);
                 }
             }
             else
@@ -2945,6 +2954,62 @@ namespace Api.Socioboard.Services
             #endregion
         }
 
+        public void getTwitterFollowerData(oAuthTwitter OAuth, string TwitterUserId) 
+        {
+            try
+            {
+                TimeLine _TimeLine = new TimeLine();
+                JArray jdata = _TimeLine.Get_User_Followers(OAuth);
+                JArray user_data = JArray.Parse(jdata[0]["users"].ToString());
+                Domain.Socioboard.Domain.TwitterFollowerNames _TwitterFollowerNames;
+                TwitterFollowerNamesRepository objTwitterFollowerNamesRepository = new TwitterFollowerNamesRepository();
+                foreach (var item in user_data)
+                {
+                    try
+                    {
+                        _TwitterFollowerNames = new Domain.Socioboard.Domain.TwitterFollowerNames();
+                        _TwitterFollowerNames.Id = Guid.NewGuid();
+                        _TwitterFollowerNames.TwitterProfileId = TwitterUserId;
+                        try
+                        {
+                            _TwitterFollowerNames.FollowerId = item["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                             _TwitterFollowerNames.FollowerId = item["id"].ToString();
+                        }
+                        try
+                        {
+                            _TwitterFollowerNames.Followerscrname = item["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        try
+                        {
+                            _TwitterFollowerNames.Name = item["name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        if (!objTwitterFollowerNamesRepository.IsFollowerExist(_TwitterFollowerNames.TwitterProfileId, _TwitterFollowerNames.FollowerId))
+                        {
+                            objTwitterFollowerNamesRepository.addTwitterAccountFollower(_TwitterFollowerNames);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Twitter.asmx => getTwitterFollowerData => " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Twitter.asmx => getTwitterFollowerData => " + ex.Message);
+            }
+        }
 
     }
 }

@@ -469,6 +469,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                        objFacebookAccount.Friends = Convert.ToInt32(friendscount);
                     }
                     catch (Exception ex)
                     {
@@ -492,6 +493,13 @@ namespace Api.Socioboard.Services
                         logger.Error(ex.Message);
                         logger.Error(ex.StackTrace);
                     }
+
+                    try
+                    {
+                        objFacebookAccount.FbUserName = (Convert.ToString(profile["name"]));
+                    }
+                    catch { }
+
                     if (objFacebookAccountRepository.checkFacebookUserExists(Convert.ToString(profile["id"]), Guid.Parse(UserId)))
                     {
                         #region Update FacebookAccount
@@ -603,6 +611,7 @@ namespace Api.Socioboard.Services
         //Added by Sumit Gupta [02-02-15]
         private void AddFacebookMessageWithPagination(string UserId, FacebookClient fb, dynamic profile)
         {
+            int J = 0;
             objFacebookMessage = new Domain.Socioboard.Domain.FacebookMessage();
             try
             {
@@ -643,7 +652,9 @@ namespace Api.Socioboard.Services
                                     objFacebookMessage.UserId = Guid.Parse(UserId);
                                     if (!objFacebookMessageRepository.checkFacebookMessageExists(objFacebookMessage.MessageId))
                                     {
+                                        J++;
                                         objFacebookMessageRepository.addFacebookMessage(objFacebookMessage);
+                                        logger.Error("AddFacebookMessageWithPaginationCount>>>>"+J);
                                     }
 
                                 }
@@ -668,6 +679,7 @@ namespace Api.Socioboard.Services
 
         private void AddFacebookUserHome(string UserId, FacebookClient fb, dynamic profile)
         {
+            int K = 0;
 
             objFacebookMessage = new Domain.Socioboard.Domain.FacebookMessage();
             try
@@ -809,7 +821,9 @@ namespace Api.Socioboard.Services
 
                         if (!objFacebookMessageRepository.checkFacebookMessageExists(objFacebookMessage.MessageId))
                         {
+                            K++;
                             objFacebookMessageRepository.addFacebookMessage(objFacebookMessage);
+                            logger.Error("AddFacebookUserHomeCount>>>"+K);
                         }
                     }
                 }
@@ -1018,6 +1032,7 @@ namespace Api.Socioboard.Services
         //Added by Avinash Verma & Sumit Gupta [30-01-15]
         private void AddFacebookFeedsWithPagination(string UserId, FacebookClient fb, dynamic profile)
         {
+            int I = 0;
             try
             {
                 objFacebookFeed = new Domain.Socioboard.Domain.FacebookFeed();
@@ -1162,7 +1177,9 @@ namespace Api.Socioboard.Services
 
                             if (!objFacebookFeedRepository.checkFacebookFeedExists(objFacebookFeed.FeedId))
                             {
+                                I++;
                                 objFacebookFeedRepository.addFacebookFeed(objFacebookFeed);
+                                logger.Error("AddFacebookFeedsWithPaginationCount>>>"+I);
                             }
                         }
                     }
@@ -1482,23 +1499,32 @@ namespace Api.Socioboard.Services
             var args = new Dictionary<string, object>();
             args["message"] = message;
             args["privacy"] = SetPrivacy("Public", fb);//"{\"description\": \"Public\",\"value\": \"EVERYONE\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
-            if (!string.IsNullOrEmpty(imagepath))
+            try
             {
-                var media = new FacebookMediaObject
+                if (!string.IsNullOrEmpty(imagepath))
                 {
-                    FileName = "filename",
-                    ContentType = "image/jpeg"
-                };
-                byte[] img = System.IO.File.ReadAllBytes(imagepath);
-                media.SetValue(img);
-                args["source"] = media;
-                ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
-            }
-            else
-            {
-                ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
-                //   ret = fb.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
+                    var media = new FacebookMediaObject
+                    {
+                        FileName = "filename",
+                        ContentType = "image/jpeg"
+                    };
+                    byte[] img = System.IO.File.ReadAllBytes(imagepath);
+                    media.SetValue(img);
+                    args["source"] = media;
+                    ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
+                }
+                else
+                {
+                    ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+                    //   ret = fb.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
 
+                }
+                ret = "success";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                ret = "failure";
             }
 
 
@@ -1700,6 +1726,7 @@ namespace Api.Socioboard.Services
         public string SheduleFacebookGroupMessage(string FacebookId, string UserId, string sscheduledmsgguid)
         {
             string str = string.Empty;
+            int facint = 0;
             try
             {
                 objScheduledMessage = objScheduledMessageRepository.GetScheduledMessageDetails(Guid.Parse(sscheduledmsgguid));
@@ -1761,9 +1788,11 @@ namespace Api.Socioboard.Services
 
                     if (!string.IsNullOrEmpty(facebookpost))
                     {
+                        facint++;
                         str = "Message post on facebook for Id :" + objFacebookAccount.FbUserId + " and Message: " + objScheduledMessage.ShareMessage;
                         ScheduledMessage schmsg = new ScheduledMessage();
                         schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                        logger.Error("SheduleFacebookGroupMessageCount"+facint);
                     }
                 }
                 else
@@ -2514,7 +2543,8 @@ namespace Api.Socioboard.Services
             string ret = string.Empty;
             FacebookAccount _FacebookAccount = new FacebookAccount();
             // string token = _FacebookAccount.getFbToken();
-            string token = "CAAKYvwDVmnUBACyqUsvADWoAfBYTxi0kbz2gcw0sDWbBVJCXmIUG6rGez4BFSCE4hKV8eNE86eCD2iOwEWADvYuNlYupZCL4WUAGhFmRIZA6nTkdUOFeiUVHuri571QxhZA3YfSk5YkjhYy81pYtPj9FNM2mENtjCWRr5tN9zWZAKpUkw3gzsXRuEH9ZBTBwZD";
+            //string token = "CAAKYvwDVmnUBACyqUsvADWoAfBYTxi0kbz2gcw0sDWbBVJCXmIUG6rGez4BFSCE4hKV8eNE86eCD2iOwEWADvYuNlYupZCL4WUAGhFmRIZA6nTkdUOFeiUVHuri571QxhZA3YfSk5YkjhYy81pYtPj9FNM2mENtjCWRr5tN9zWZAKpUkw3gzsXRuEH9ZBTBwZD";
+            string token = ConfigurationManager.AppSettings["AccessToken1"].ToString();
             try
             {
                 #region fancount
@@ -2539,7 +2569,8 @@ namespace Api.Socioboard.Services
                 catch (Exception)
                 {
                     fancountPage = 0;
-                    fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                    //fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                    fb.AccessToken = ConfigurationManager.AppSettings["AccessToken2"].ToString();
                     try
                     {
                         System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
@@ -2601,6 +2632,8 @@ namespace Api.Socioboard.Services
                 objTeamMemberProfile.ProfileType = "facebook_page";
                 objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
                 objTeamMemberProfile.ProfileId = profileId;
+                objTeamMemberProfile.ProfilePicUrl = "http://graph.facebook.com/" + objTeamMemberProfile.ProfileId + "/picture?type=small"; ;
+                objTeamMemberProfile.ProfileName = name;
                 if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeamMemberProfile.TeamId, objTeamMemberProfile.ProfileId))
                 {
                     objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
@@ -2629,7 +2662,8 @@ namespace Api.Socioboard.Services
                             Console.WriteLine(ex.StackTrace);
                             try
                             {
-                                fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                                //fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                                fb.AccessToken = ConfigurationManager.AppSettings["AccessToken2"].ToString();
                                 profile = fb.Get("v2.0/" + profileId);
                                 logger.Error("AddFacebookPagesByUrl Token 2");
                             }
@@ -2637,7 +2671,8 @@ namespace Api.Socioboard.Services
                             {
                                 try
                                 {
-                                    fb.AccessToken = "CAAKYvwDVmnUBAAR2O9hxFkHzfNG8H6KbQLaiGFMRshJkbttdzhDeprklcb1yaV0rwtC7N8Xz1rsL1cykiRv2ouXtBUFxvOZCNnpFELnQGFV8jGUWjm1GYsZA40IKAORLGoAcSaa2lJkuuSoLBksB8LFPHI4cqW7VVqxgDwZCRwObxqR4Qp9QEDHxa7j1yoZD";
+                                    //fb.AccessToken = "CAAKYvwDVmnUBAAR2O9hxFkHzfNG8H6KbQLaiGFMRshJkbttdzhDeprklcb1yaV0rwtC7N8Xz1rsL1cykiRv2ouXtBUFxvOZCNnpFELnQGFV8jGUWjm1GYsZA40IKAORLGoAcSaa2lJkuuSoLBksB8LFPHI4cqW7VVqxgDwZCRwObxqR4Qp9QEDHxa7j1yoZD";
+                                    fb.AccessToken = ConfigurationManager.AppSettings["AccessToken3"].ToString();
                                     profile = fb.Get("v2.0/" + profileId);
                                     logger.Error("AddFacebookPagesByUrl Token 3");
                                 }
@@ -2645,24 +2680,17 @@ namespace Api.Socioboard.Services
                                 {
                                     try
                                     {
-                                        fb.AccessToken = "CAAKYvwDVmnUBAFtZB8pvVrqYQonmq7MD90oNdoipDc0Te4onP2XlbZAYT4bzOZAKTr8jdhw0P1PclgLOtVxJ9g2qx4vxZAzh2CXqXAZBZAZBwkgWIVjc2B4rcXAp6O5B3gXqd8Ko5ITL9VCZCMOkMZCPc1hBsp0n8zgPt6e3Dd0vaodPBS8nMz7RD";
+                                        //fb.AccessToken = "CAAKYvwDVmnUBAFtZB8pvVrqYQonmq7MD90oNdoipDc0Te4onP2XlbZAYT4bzOZAKTr8jdhw0P1PclgLOtVxJ9g2qx4vxZAzh2CXqXAZBZAZBwkgWIVjc2B4rcXAp6O5B3gXqd8Ko5ITL9VCZCMOkMZCPc1hBsp0n8zgPt6e3Dd0vaodPBS8nMz7RD";
+                                        fb.AccessToken = ConfigurationManager.AppSettings["AccessToken4"].ToString();
                                         profile = fb.Get("v2.0/" + profileId);
                                         logger.Error("AddFacebookPagesByUrl Token 4");
                                     }
                                     catch (Exception ex4)
                                     {
-                                        try
-                                        {
-                                            fb.AccessToken = "CAAKYvwDVmnUBALvjTAKIrVKnL719aVDB7BmMRn7e08ySJQwHYtLDZBBjx5yBZBaMeJ04lIT8bCzX2A685YLXR9d8PukZCBZA2LiwZAmj6qhMZC8F0od7NBircdMZAOZAD1xukXDhd24RQRvVk9GyJNRmmGTiZAhMJzXBVczH3TlYb37qi8FRXfTGDRTZAyxjyYSt8ZD";
-                                            profile = fb.Get("v2.0/" + profileId);
-                                            logger.Error("AddFacebookPagesByUrl Token 5");
-                                        }
-                                        catch (Exception ex5)
-                                        {
                                             logger.Error("Finally :" + fb.AccessToken);
-                                            logger.Error(ex5.Message);
-                                            logger.Error(ex5.Message);
-                                        }
+                                            logger.Error(ex4.Message);
+                                            logger.Error(ex4.Message);
+                                       
                                     }
                                 }
                             }
@@ -2713,10 +2741,12 @@ namespace Api.Socioboard.Services
             {
                 FacebookClient fb = new FacebookClient();
                 FacebookAccount _FacebookAccount = new FacebookAccount();
-                string token = _FacebookAccount.getFbToken();
-                fb.AccessToken = "CAAKYvwDVmnUBACyqUsvADWoAfBYTxi0kbz2gcw0sDWbBVJCXmIUG6rGez4BFSCE4hKV8eNE86eCD2iOwEWADvYuNlYupZCL4WUAGhFmRIZA6nTkdUOFeiUVHuri571QxhZA3YfSk5YkjhYy81pYtPj9FNM2mENtjCWRr5tN9zWZAKpUkw3gzsXRuEH9ZBTBwZD";
+                //string token = _FacebookAccount.getFbToken();
+                //fb.AccessToken = "CAAKYvwDVmnUBACyqUsvADWoAfBYTxi0kbz2gcw0sDWbBVJCXmIUG6rGez4BFSCE4hKV8eNE86eCD2iOwEWADvYuNlYupZCL4WUAGhFmRIZA6nTkdUOFeiUVHuri571QxhZA3YfSk5YkjhYy81pYtPj9FNM2mENtjCWRr5tN9zWZAKpUkw3gzsXRuEH9ZBTBwZD";
                 //fb.AccessToken = token;
                 // logger.Error(" GetFbPageDetails: " + fb.AccessToken);
+
+                fb.AccessToken = ConfigurationManager.AppSettings["AccessToken1"].ToString();
                 dynamic pageinfo = null;
                 try
                 {
@@ -2727,7 +2757,8 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                        //fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
+                        fb.AccessToken = ConfigurationManager.AppSettings["AccessToken2"].ToString();
                         pageinfo = fb.Get(url);
                         logger.Error("Token 2");
                     }
@@ -2735,7 +2766,8 @@ namespace Api.Socioboard.Services
                     {
                         try
                         {
-                            fb.AccessToken = "CAAKYvwDVmnUBAAR2O9hxFkHzfNG8H6KbQLaiGFMRshJkbttdzhDeprklcb1yaV0rwtC7N8Xz1rsL1cykiRv2ouXtBUFxvOZCNnpFELnQGFV8jGUWjm1GYsZA40IKAORLGoAcSaa2lJkuuSoLBksB8LFPHI4cqW7VVqxgDwZCRwObxqR4Qp9QEDHxa7j1yoZD";
+                            //fb.AccessToken = "CAAKYvwDVmnUBAAR2O9hxFkHzfNG8H6KbQLaiGFMRshJkbttdzhDeprklcb1yaV0rwtC7N8Xz1rsL1cykiRv2ouXtBUFxvOZCNnpFELnQGFV8jGUWjm1GYsZA40IKAORLGoAcSaa2lJkuuSoLBksB8LFPHI4cqW7VVqxgDwZCRwObxqR4Qp9QEDHxa7j1yoZD";
+                            fb.AccessToken = ConfigurationManager.AppSettings["AccessToken3"].ToString();
                             pageinfo = fb.Get(url);
                             logger.Error("Token 3");
                         }
@@ -2743,24 +2775,18 @@ namespace Api.Socioboard.Services
                         {
                             try
                             {
-                                fb.AccessToken = "CAAKYvwDVmnUBAFtZB8pvVrqYQonmq7MD90oNdoipDc0Te4onP2XlbZAYT4bzOZAKTr8jdhw0P1PclgLOtVxJ9g2qx4vxZAzh2CXqXAZBZAZBwkgWIVjc2B4rcXAp6O5B3gXqd8Ko5ITL9VCZCMOkMZCPc1hBsp0n8zgPt6e3Dd0vaodPBS8nMz7RD";
+                                //fb.AccessToken = "CAAKYvwDVmnUBAFtZB8pvVrqYQonmq7MD90oNdoipDc0Te4onP2XlbZAYT4bzOZAKTr8jdhw0P1PclgLOtVxJ9g2qx4vxZAzh2CXqXAZBZAZBwkgWIVjc2B4rcXAp6O5B3gXqd8Ko5ITL9VCZCMOkMZCPc1hBsp0n8zgPt6e3Dd0vaodPBS8nMz7RD";
+                                fb.AccessToken = ConfigurationManager.AppSettings["AccessToken4"].ToString();
                                 pageinfo = fb.Get(url);
                                 logger.Error("Token 4");
                             }
                             catch (Exception ex4)
                             {
-                                try
-                                {
-                                    fb.AccessToken = "CAAKYvwDVmnUBALvjTAKIrVKnL719aVDB7BmMRn7e08ySJQwHYtLDZBBjx5yBZBaMeJ04lIT8bCzX2A685YLXR9d8PukZCBZA2LiwZAmj6qhMZC8F0od7NBircdMZAOZAD1xukXDhd24RQRvVk9GyJNRmmGTiZAhMJzXBVczH3TlYb37qi8FRXfTGDRTZAyxjyYSt8ZD";
-                                    pageinfo = fb.Get(url);
-                                    logger.Error("Token 5");
-                                }
-                                catch (Exception ex5)
-                                {
+                               
                                     logger.Error("Finally :" + fb.AccessToken);
-                                    logger.Error(ex5.Message);
-                                    logger.Error(ex5.Message);
-                                }
+                                    logger.Error(ex4.Message);
+                                    logger.Error(ex4.Message);
+                                
                             }
                         }
                     }
@@ -4132,6 +4158,16 @@ namespace Api.Socioboard.Services
                         #region Update FacebookAccount
                         UpdateFacebookAccount(objFacebookAccount);
                         #endregion
+                        #region AddFacebook FanPge
+                        Domain.Socioboard.Domain.FacebookFanPage objFacebookFanPage = new Domain.Socioboard.Domain.FacebookFanPage();
+                        FacebookFanPageRepository objFacebookFanPageRepository = new FacebookFanPageRepository();
+                        objFacebookFanPage.Id = Guid.NewGuid();
+                        objFacebookFanPage.UserId = Guid.Parse(UserId);
+                        objFacebookFanPage.ProfilePageId = (Convert.ToString(profile["id"]));
+                        objFacebookFanPage.FanpageCount = fancountPage.ToString();
+                        objFacebookFanPage.EntryDate = DateTime.Now;
+                        objFacebookFanPageRepository.addFacebookUser(objFacebookFanPage);
+                        #endregion
                         #region UpdateTeammemberprofile
                         Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
                         objTeamMemberProfile.ProfileName = objFacebookAccount.FbUserName;
@@ -4148,6 +4184,7 @@ namespace Api.Socioboard.Services
                     {
                         ret = "Account already Exist !";
                     }
+                   
                 }
                 return new JavaScriptSerializer().Serialize(ret);
             }

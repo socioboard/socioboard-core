@@ -41,5 +41,8 @@
     <property name="Entrydate">
       <column name="EntryDate" sql-type="datetime" not-null="false" />
     </property>
+    <property name="Ispreviousloaded">
+      <column name="IsPreviousLoaded" sql-type="int(11)" not-null="true" />
+    </property>
   </class>
 </hibernate-mapping>

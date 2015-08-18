@@ -16,6 +16,11 @@ using System.Globalization;
 
 namespace Api.Socioboard.Services
 {
+   
+
+
+
+
     /// <summary>
     /// Summary description for UserService
     /// </summary>
@@ -26,6 +31,7 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class User : System.Web.Services.WebService
     {
+
         ILog logger = LogManager.GetLogger(typeof(User));
         TeamRepository objTeamRepository = new TeamRepository();
         UserRepository userrepo = new UserRepository();
@@ -153,7 +159,22 @@ namespace Api.Socioboard.Services
                     user.AccountType = AccountType;
                     user.EmailId = EmailId;
                     user.CreateDate = DateTime.Now;
-                    user.ExpiryDate = DateTime.Now.AddMonths(1);
+                    try
+                    {
+                        if (ConfigurationManager.AppSettings["expiryindays"].ToString() != "")
+                        {
+                            double expiryindays = double.Parse(ConfigurationManager.AppSettings["expiryindays"].ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                            user.ExpiryDate = DateTime.Now.AddDays(expiryindays);
+                        }
+                        else
+                        {
+                            user.ExpiryDate = DateTime.Now.AddDays(30);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        user.ExpiryDate = DateTime.Now.AddDays(30);
+                    }
                     user.Password = Utility.MD5Hash(Password);
                     user.PaymentStatus = "unpaid";
                     user.ProfileUrl = string.Empty;
@@ -772,7 +793,7 @@ namespace Api.Socioboard.Services
             }
             try
             {
-                int ret = userrepo.UpdateEwalletAmount(Guid.Parse(UserId), updatedamount);
+                int ret = userrepo.UpdateEwalletAmount(Guid.Parse(User.Identity.Name), updatedamount);
                 return "success";
             }
             catch (Exception ex)
@@ -800,8 +821,12 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetAllExpiredUser()
+        public string GetAllExpiredUser(string access_token)
         {
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
+            {
+                return "Unauthorized access";
+            }
             try
             {
                 List<Domain.Socioboard.Domain.User> lstUser = userrepo.GetAllExpiredUser();
@@ -814,8 +839,12 @@ namespace Api.Socioboard.Services
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetAllUsers()
+        public string GetAllUsers(string access_token)
         {
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
+            {
+                return "Unauthorized access";
+            }
             try
             {
                 List<Domain.Socioboard.Domain.User> lstUser = userrepo.getAllUsers();
@@ -823,7 +852,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
-                return "";
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
             }
         }
 
@@ -852,7 +881,22 @@ namespace Api.Socioboard.Services
                     user.AccountType = AccountType;
                     user.EmailId = EmailId;
                     user.CreateDate = DateTime.Now;
-                    user.ExpiryDate = DateTime.Now.AddMonths(1);
+                    try
+                    {
+                        if (ConfigurationManager.AppSettings["expiryindays"].ToString() != "")
+                        {
+                            double expiryindays = double.Parse(ConfigurationManager.AppSettings["expiryindays"].ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                            user.ExpiryDate = DateTime.Now.AddDays(expiryindays);
+                        }
+                        else
+                        {
+                            user.ExpiryDate = DateTime.Now.AddDays(30);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        user.ExpiryDate = DateTime.Now.AddDays(30);
+                    }
                     user.Password = Utility.MD5Hash(Password);
                     user.PaymentStatus = "unpaid";
                     user.ProfileUrl = string.Empty;

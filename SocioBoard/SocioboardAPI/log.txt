@@ -1,0 +1,32 @@
+ERROR2015-08-18 11:15:27 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:15:27 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:35 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:35 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:40 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:40 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:40 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:40 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:19:41 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-08-18 11:20:34 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-08-18 11:20:34 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74

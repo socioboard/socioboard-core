@@ -604,14 +604,23 @@ namespace Api.Socioboard.Services
              Linkedin_oauth.FirstName = LinkedAccount.LinkedinUserName;
              SocialStream sociostream = new SocialStream();
 
-             if (!string.IsNullOrEmpty(picurl))
+             try
              {
-                 picurl = ConfigurationManager.AppSettings["DomainName"].ToString() + Regex.Split(picurl, "wwwroot")[1].Replace("\\", "/");
-                 string res = sociostream.SetImageStatusUpdate(Linkedin_oauth, message, picurl);
+                 if (!string.IsNullOrEmpty(picurl))
+                 {
+                     picurl = ConfigurationManager.AppSettings["DomainName"].ToString() + Regex.Split(picurl, "wwwroot")[1].Replace("\\", "/");
+                     string res = sociostream.SetImageStatusUpdate(Linkedin_oauth, message, picurl);
+                 }
+                 else
+                 {
+                     string res = sociostream.SetStatusUpdate(Linkedin_oauth, message);
+                 }
+                 ret = "success";
              }
-             else
+             catch (Exception ex)
              {
-                 string res = sociostream.SetStatusUpdate(Linkedin_oauth, message);
+                 logger.Error(ex.Message);
+                 ret = "failuer";
              }
 
              //string res = sociostream.SetStatusUpdate(Linkedin_oauth, message);
@@ -1000,6 +1009,46 @@ namespace Api.Socioboard.Services
              {
                  Console.WriteLine(ex.StackTrace);
                  return new JavaScriptSerializer().Serialize("Something went Wrong");
+             }
+         }
+
+
+
+         [WebMethod]
+         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+         public string LinkedinComposeMessageRss(string message, string profileid, string userid)
+         {
+             string ret = "";
+             LinkedInAccount LinkedAccount;
+             string authLink = string.Empty;
+             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
+             if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(userid)))
+             {
+                 LinkedAccount = linkedinAccRepo.getUserInformation(Guid.Parse(userid), profileid);
+             }
+             else
+             {
+                 LinkedAccount = linkedinAccRepo.getUserInformation(profileid);
+             }
+             oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
+             Linkedin_oauth.Verifier = LinkedAccount.OAuthVerifier;
+             Linkedin_oauth.TokenSecret = LinkedAccount.OAuthSecret;
+             Linkedin_oauth.Token = LinkedAccount.OAuthToken;
+             Linkedin_oauth.Id = LinkedAccount.LinkedinUserId;
+             Linkedin_oauth.FirstName = LinkedAccount.LinkedinUserName;
+             SocialStream sociostream = new SocialStream();
+
+             try
+             {
+                 ret = sociostream.SetStatusUpdate(Linkedin_oauth, message);
+                 RssFeedsRepository objrssfeed = new RssFeedsRepository();
+                 objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+                 return ret = "Messages Posted Successfully";
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.Message);
+                 return ret = "Message Could Not Posted";
              }
          }
 

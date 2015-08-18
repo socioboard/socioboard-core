@@ -29,7 +29,6 @@
     <property name="LikeCount">
       <column name="LikeCount"  />
     </property>
-
     <property name="IsLike">
       <column name="IsLike"  />
     </property>
@@ -39,12 +38,18 @@
     <property name="AdminUser">
       <column name="AdminUser"  />
     </property>
-    
-    
-    
-    
-    
-    
+    <property name="Feed">
+      <column name="Feed"  />
+    </property>
+    <property name="ImageUrl">
+      <column name="ImageUrl"  />
+    </property>
+    <property name="FeedUrl">
+      <column name="FeedUrl"  />
+    </property>
+    <property name="FromId">
+      <column name="FromId"  />
+    </property>
     
   </class>
 </hibernate-mapping>

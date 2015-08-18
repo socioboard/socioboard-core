@@ -206,11 +206,6 @@ namespace Api.Socioboard.Services
                     NHibernate.IQuery query = session.CreateQuery("from GooglePlusAccount where GpUserId = :gpuserid and UserId=:userId");
                     query.SetParameter("gpuserid", gpuserid);
                     query.SetParameter("userId", userId);
-                    ArrayList alstFBAccounts = new ArrayList();
-                    foreach (var item in query.Enumerable())
-                    {
-                        alstFBAccounts.Add(item);
-                    }
                     Domain.Socioboard.Domain.GooglePlusAccount result = (Domain.Socioboard.Domain.GooglePlusAccount)query.UniqueResult();
                     return result;
                 }//End Transaction
@@ -329,6 +324,51 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public Domain.Socioboard.Domain.GooglePlusAccount GetGooglePlusAccount(Guid UserId, string GpUserId)
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    NHibernate.IQuery query = session.CreateQuery("from GooglePlusAccount where GpUserId = :gpuserid and UserId =: Userid")
+                               .SetParameter("GpUserId", GpUserId)
+                               .SetParameter("UserId", UserId);
+                    return (Domain.Socioboard.Domain.GooglePlusAccount)query.UniqueResult();
+                }
+                catch (Exception ex)
+                {
+                    return new Domain.Socioboard.Domain.GooglePlusAccount();
+                }
+
+            }
+        }
+
+        public int UpdateGooglePlusAccount(Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update GooglePlusAccount set InYourCircles =: InYourCircles, HaveYouInCircles =: HaveYouInCircles where UserId =: UserId and GpUserId =: GpUserId")
+                            .SetParameter("InYourCircles", _GooglePlusAccount.InYourCircles)
+                            .SetParameter("HaveYouInCircles", _GooglePlusAccount.HaveYouInCircles)
+                            .SetParameter("UserId", _GooglePlusAccount.UserId)
+                            .SetParameter("GpUserId", _GooglePlusAccount.GpUserId)
+                        .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+                    }
+                    catch (Exception ex){
+                        return 0;
+                    }
+                }
+            }
+        
+        }
 
     }
 }

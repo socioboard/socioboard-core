@@ -3482,4 +3482,82 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
     <value>Your trial</value>
   </data>
+  <data name="Documantal_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>Jordan, Amman</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_AddedSucessfully" xml:space="preserve">
+    <value>Added Sucessfully</value>
+  </data>
+  <data name="UserGroup_UserGroup_GroupAlreadyExists" xml:space="preserve">
+    <value>Group Already Exists</value>
+  </data>
+  <data name="Documantal_Home_Index_AttachProfile" xml:space="preserve">
+    <value>Attach Your Social Network Profile for Beginning With Documantal</value>
+  </data>
+  <data name="Home_Index_AttachFacebookProfile" xml:space="preserve">
+    <value>Attach Facebook Profile</value>
+  </data>
+  <data name="Home_Index_AttachInstagramProfile" xml:space="preserve">
+    <value>Attach Instagram Profile</value>
+  </data>
+  <data name="Home_Index_AttachLinkedInProfile" xml:space="preserve">
+    <value>Attach LinkedIn Profile</value>
+  </data>
+  <data name="Home_Index_AttachTumblrProfile" xml:space="preserve">
+    <value>Attach Tumbler Profile</value>
+  </data>
+  <data name="Home_Index_AttachTwitterProfile" xml:space="preserve">
+    <value>Attach Twitter Profile</value>
+  </data>
+  <data name="Home_Index_AttachYouTubeProfile" xml:space="preserve">
+    <value>Attach YouTube Profile</value>
+  </data>
+  <data name="Index_index_BrandRelatedKeyword" xml:space="preserve">
+    <value>Brand Related Keywords real-time monitoring</value>
+  </data>
+  <data name="Index_Index_ContentAndIndividual" xml:space="preserve">
+    <value>Content and individual social media management collaboration among team members</value>
+  </data>
+  <data name="Index_Index_ManagedFromOnePlatform" xml:space="preserve">
+    <value>Managed from one platform to leverage social media for marketing</value>
+  </data>
+  <data name="Index_Index_TheconrentOnAfacebookPage" xml:space="preserve">
+    <value>The content on a Facebook page and Twitter profile and post at once</value>
+  </data>
+  <data name="Index_UserActivationByEmail_ConfirmUserActivation" xml:space="preserve">
+    <value>Confirm User Activation</value>
+  </data>
+  <data name="Index_UserActivationByEmail_FirstActivateyour" xml:space="preserve">
+    <value>First Activate your Account. For this please check your mail. OR For again sending Mail. Please click here....</value>
+  </data>
+  <data name="Socialplex_Index_Index_WorldNo1" xml:space="preserve">
+    <value>Powerful social media management tools</value>
+  </data>
+  <data name="Socialplex_Index_Index_WorldNo1H3" xml:space="preserve">
+    <value>A MANAGEMENT &amp; ENGAGEMENT PLATFORM FOR SOCIAL BUSINESS</value>
+  </data>
+  <data name="Socialsuit_Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Socialsuit_Howitwork" xml:space="preserve">
+    <value>How it work</value>
+  </data>
+  <data name="Socialsuit_SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Home_Index_accountwillexpirein" xml:space="preserve">
+    <value>account will expire in</value>
+  </data>
+  <data name="Home_Index_accountwillexpireToday" xml:space="preserve">
+    <value>account will expire Today</value>
+  </data>
+  <data name="Home_Index_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>days, please upgrade to paid plan.</value>
+  </data>
+  <data name="Home_Index_YourTrial" xml:space="preserve">
+    <value>Your </value>
+  </data>
+  <data name="Socialplex_Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>Contents/img/signup-butn.png</value>
+  </data>
 </root>

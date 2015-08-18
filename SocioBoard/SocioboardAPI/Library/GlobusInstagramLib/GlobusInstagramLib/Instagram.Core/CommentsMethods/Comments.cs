@@ -20,7 +20,7 @@ namespace GlobusInstagramLib.Instagram.Core.CommentsMethods
         /// <returns></returns>
         public InstagramResponse<Comment[]> GetComments(string mediaid, string accessToken)
         {
-            string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?access_token=" + accessToken;
+            string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?access_token=" + accessToken+"&count=20";
             if (string.IsNullOrEmpty(accessToken))
                 url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?client_id=" + oAuthIns.Configuration.ClientId;
 

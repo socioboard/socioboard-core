@@ -426,6 +426,11 @@ namespace Api.Socioboard.Services
                 {
                     YoutubeChannelRepository.Add(objYoutubeChannel);
                 }
+                else
+                {
+                    objYoutubeChannelRepository.UpdateYouTubechannel(objYoutubeChannel);
+                }
+               
             }
 
         }

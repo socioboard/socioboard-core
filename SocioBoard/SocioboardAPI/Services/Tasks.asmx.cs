@@ -32,7 +32,8 @@ namespace Api.Socioboard.Services
 
             Domain.Socioboard.Domain.Tasks objTask = task;
             TaskRepository objTaskRepo = new TaskRepository();
-            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            //objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignDate = DateTime.Now;
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
@@ -67,7 +68,8 @@ namespace Api.Socioboard.Services
 
             Domain.Socioboard.Domain.Tasks objTask = new Domain.Socioboard.Domain.Tasks();
             TaskRepository objTaskRepo = new TaskRepository();
-            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            //objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignDate = DateTime.Now;
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
@@ -120,7 +122,8 @@ namespace Api.Socioboard.Services
                 //var Completion_Date = String.Format("{0:yyyy-M-d HH:mm:ss}", DateTime.Now);
                 objTask.Id = Guid.Parse(taskId);
                 objTask.UserId = Guid.Parse(userId);
-                objTask.AssignDate = Convert.ToString(Assign_Date);
+                //objTask.AssignDate = Convert.ToString(Assign_Date);
+                objTask.AssignDate = assignDate;
                 //objTask.CompletionDate = DateTime.Parse(String.Format("{0:yyyy-M-d HH:mm:ss}", DateTime.Now));
                 objTask.AssignTaskTo = Guid.Parse(assignTaskTo);
                 objTask.TaskMessage = taskMessage;
@@ -246,7 +249,8 @@ namespace Api.Socioboard.Services
 
             Domain.Socioboard.Domain.Tasks objTask = task;
             TaskRepository objTaskRepo = new TaskRepository();
-            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            //objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignDate = DateTime.Now;
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
@@ -282,7 +286,8 @@ namespace Api.Socioboard.Services
 
             Domain.Socioboard.Domain.Tasks objTask = task;
             TaskRepository objTaskRepo = new TaskRepository();
-            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            //objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignDate = DateTime.Now;
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
@@ -320,7 +325,8 @@ namespace Api.Socioboard.Services
 
             Domain.Socioboard.Domain.Tasks objTask = new Domain.Socioboard.Domain.Tasks();
             TaskRepository objTaskRepo = new TaskRepository();
-            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            //objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignDate = DateTime.Now;
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;

@@ -6,223 +6,263 @@
 
 @if (Request.QueryString["op"] == "faq")
 {
-    <section class="services bg-primary">
+    <section class="callout portfolio margin-top-50 ">
         <div class="container">
-            <div class="post" id="post-75">
-                <h1 id="page-title">FAQs</h1>
-                <p>
-                    <strong>
-                        Is Socioboard Multilinhgual?<br>
-                    </strong>Yes
-                </p>
-                <p>
-                    <strong>
-                        can it run on linux?<br>
-                    </strong>Yes, using Mono
-                </p>
-                <p>
-                    <strong>
-                        Is it customizable?<br>
-                    </strong>Yes, it is very flexible and can be customized easily
-                </p>
-                <p>
-                    <strong>
-                        Can I get a refund if I change my mind?<br>
-                    </strong>Refunds are not available following purchase
-                </p>
-
-
-                <p>
-                    <strong>What social media sites do you work with?</strong><br>
-                    Facebook, Twitter, YouTube, Linkedin, Instagram, and more.
-                </p>
-                <p><strong>Will social media work for my business?</strong>Yes. Social media can work for any company. Social media allows end consumer connections to be made and maintained like no other advertising outlet. It enhances customer relations and creates a portal to reach out to new potential clientele and disseminate information while promoting positive feedback and combating the negative.</p>
-                <p>
-                    <strong>How many more Facebook Likes will I get?</strong><br>
-                    The Facebook Like component is an important aspect of the Facebook Page, but engaging the target audience is our main focus. It does not benefit a company to have 1,000,000 fans if they are unable to stimulate those fans. Even worse, if the fans are hiding posts from their News Feeds, then no one is seeing any of your content. We do not promise any specific number of fans, as we are interested in the quality of fans over the quantity. We strive to build our Pages through organic means, creating a strong brand and loyal fan base. This in turn will expand the reach of the word of mouth, or in the case of Facebook, word of News Feed.
-                </p>
-                <p>
-                    <strong>What makes Socioboard’s Social Media Management different?</strong><br>
-                    We pride ourselves on our knowledge of the social networks and keeping up with their ever-changing layouts, rules, engagement tactics, and more. We rely on our marketing experience to deliver fresh engagements that truly connect with fans.
-                </p>
-            </div>
-        </div>
-    </section>
-}
-else if (Request.QueryString["op"] == "products")
-{
-    <!-- About -->
-    <section class="margin-top-50 ">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 margin-top-30">
-                    <div class="panel panel-default" style="padding: 16px 20px 20px 15px; box-shadow: 1px 2px 10px gray;">
+            <div class="row margin-top-50">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-question-circle"></i> FAQs
+                        </div>
+                        <!-- .panel-heading -->
                         <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#1"><i class="fa fa-dot-circle-o fa-fw"></i>Can I post on Facebook Page from Socioboard?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="1" class="panel-collapse collapse in">
+                                        <div class="panel-body textBlack">
+                                            Yes!!! You can post using compose feature in Socioboard, also you can schedule the post as per your convenient time.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#2"><i class="fa fa-dot-circle-o fa-fw"></i>How are the Trending topics on Twitter determined?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="2" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Socioboard discovery Quick Search lists topics trending as created by Twitter using an algorithm that identifies immediately popular topics, based on a user’s location and who they follow.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#3"><i class="fa fa-dot-circle-o fa-fw"></i>How does the Facebook Page Reports stream work?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="3" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            The Activity Facebook Page reports shows recent activity on the Page. Recent activity includes new posts, new comments on old posts, no of likes, no of shares and also you can export the data of all the post according to the date wise into a CSV file.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#4"><i class="fa fa-dot-circle-o fa-fw"></i>Is there any limitation in features when you compare with the different plans?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="4" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            No, all the features are enabled for all the plans, it is restrained with no of profiles.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#5"><i class="fa fa-dot-circle-o fa-fw"></i>Why is my Facebook post not appearing in Socioboard?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="5" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Third-party apps or websites (such as Socioboard) are prevented from integrating with your Facebook account if Platform is turned off in Facebook. Platform is a Facebook authentication feature that boosts security and site integrity.<br>
+                                            Solution: Go to Setting ->Apps -> Click on edit -> Enable Platform
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#6"><i class="fa fa-dot-circle-o fa-fw"></i>Why didn’t my edit to my scheduled message apply to all my social networks?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="6" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            When a scheduled message is edited in the Publisher section of the dashboard, the edit will apply to all the social networks publishing the message. However, when a message is edited from the socioqueue section of the dashboard, in a Scheduled Messages for example, this will only change the message being published to that social network.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#7"><i class="fa fa-dot-circle-o fa-fw"></i>How do I post in multiple groups in Social Groups?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="7" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Tick all the check box to the groups you need to post, and look to top right corner for a downward arrow button, click on it and you are good to go.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#8"><i class="fa fa-dot-circle-o fa-fw"></i>What does the license constitute?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="8" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            It’s an open source.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#9"><i class="fa fa-dot-circle-o fa-fw"></i>Can I resell the software code? Can I build my own product on Socioboard?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="9" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            No, but you can customize and edit it for your usage. If you are looking to create your own marketing software using Socioboard Pro, please contact us for enterprise license and pricing.
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-12 text-left">
-                                                    <blockquote>
-                                                        <h1>
-                                                            <img src="http://i.imgur.com/rgYcpDH.png" class="img-responsive company_img_size">
-                                                            Socioboard Core <br>
-                                                            <small>(Commercial and Open Source)</small>
-                                                        </h1>
-                                                        <p>
-                                                            Socioboard Core is an open source social media management, analytics and reporting platform. It supports nine social media networks. Using Socioboard Core you can monitor and manage multiple social media accounts and create useful reports and take business decisions based on them.<br>
-                                                            Socioboard Core is available as a web app and mobile apps on iOS and Android. Its completely open source and fully customizable and extensible in the form of plugins. It has a commercial SAAS version at - www.socioboard.com and open source version at - <a href="http://www.socioboard.org" target="_blank">www.socioboard.org</a>
-                                                        </p>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img src="http://i.imgur.com/Al3G7fo.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">Socioboard BoardMe</h1>
-                                                    <p>
-                                                        BoardMe is a self service platform which helps you to create Social Boards and stream them everywhere like web, desktop, mobile or any other screen.<br>
-                                                        Using Boardme, you can connect Social Feeds or Hastags into 1 place from all your social networks.
-                                                    </p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img src="http://i.imgur.com/6zQYkYc.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">BrandBuzzPro</h1>
-                                                    <p>BrandBuzzpro is a SAAS based Socioboard product which helps brands to recruits its employees and customers as its marketing crew. The best form of marketing is word of mouth marketing and those brands which can get their customers to as their brand ambassadors are the best brands out there.</p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img src="http://i.imgur.com/Kl4WJl3.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">BrandHit</h1>
-                                                    <p>BrandHit is a SAAS based influencer marketing product to reach influencers in your niche and get them to tweet or share on facebook, instagram or linkedin about your brand on your product. Influencers come to the platform, sign up and post a price per tweet or post on various networks</p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h1>Socioboard Desktop Applications for Social Media Marketers</h1>
-                                                    <blockquote>
-                                                        <p>
-                                                            Socioboard desktop apps are the swiss knife of Social Media Marketing Industry.<br>
-                                                            Socioboard desktop applications are not completely restricted by the various APIs of the social networks like Socioboard Web and Mobile apps. Rather they give you a complete competeting user experience with the original network but as a desktop application. The Desktop apps are a collective effort of the socioboard community spread globally.<br>
-                                                            Socioboard desktop apps must be used with utmost care to make sure you remain within the social network usage limits and don’t over do something. It’s best to use them under trained guidance from experts.
-                                                        </p>
-                                                    </blockquote>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/U8fuYhk.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        inBoardPro<br>
-                                                        <small>
-                                                            <a href="http://www.inboardpro.com" target="_blank">http://www.inboardpro.com</a>
-                                                        </small>
-                                                    </h1>
-                                                    <p>
-                                                        inBoardPro is linkedin marketing on Steroids. Its a desktop application which helps you to automate everything you can
-                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#inBoardPro">Read More +</button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/mR7o8pT.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        faceboardPro<br>
-                                                        <small>
-                                                            <a href="http://faceboardpro.com" target="_blank">http://faceboardpro.com</a>
-                                                        </small>
-                                                    </h1>
-                                                    <p>
-                                                        faceBoardPro is an automated facebook marketing software. It helps you to automate your regular facebook tasks with
-                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#faceboardPro">Read More +</button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/ROLgDCv.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        gramBoardPro<br>
-                                                        <small>
-                                                            <a href="http://gramboardpro.com/" target="_blank">http://gramboardpro.com</a>
-                                                        </small>
-                                                    </h1>
-                                                    <p>
-                                                        gramBoardPro is an instagram automation power-house. It can manage all your instagram tasks , likes, comments
-                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#gramBoardPro">Read More +</button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/0Y3tfqk.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        twtBoardPro<br>
-                                                        <small>
-                                                            <a href="http://twtboardpro.com" target="_blank">http://twtboardpro.com</a>
-                                                        </small>
-                                                    </h1>
-                                                    <p>
-                                                        twtBoardPro is an twitter marketing platform. It helps you manage multiple twitter accounts and automate your tweets,
-                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#twtBoardPro">Read More +</button>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h1>Socioboard Mobile Apps for Social Media Marketers</h1>
-                                                    <blockquote>
-                                                        <p>
-                                                            <strong>Socioboard Official App</strong><br>
-                                                            The official app is an extension of Socioboard Core app on iOS and Android. It helps you manage all your social media accounts you have connected to Socioboard Web Core via mobile apps.
-                                                        </p>
-                                                    </blockquote>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/J79ZeBr.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        t-boardpro
-                                                    </h1>
-                                                    <p>t-boardpro is a multiple twitter account management app, it helps you to login to multiple twitter accounts from your iOS or Android device and do various twitter activities like tweeting, re-tweeting, favorites, follow, unfollow, scheduling tweets etc. Its a a very powerful twitter marketing automation app. The open source version is called t-board is available on github - <a href="#">https://github.com/socioboard/t-board</a></p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/j138jlV.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        f-boardpro
-                                                    </h1>
-                                                    <p>f-boardpro is a multiple facebook account management app, it helps you to login to multiple facebook accounts from your iOS or Android device and do various facebook activities like post, like, comment, managing pages, groups and much more. The open source version is called f-board is hosted here - <a href="#">https://github.com/socioboard/f-board</a></p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/QLgWDPa.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        l-boardpro<br>
-                                                    </h1>
-                                                    <p>l-boardpro is a multiple LinkedIn account management app. It helps you to login multiple LinkedIn accounts from you iOS or Android device and do LinkedIn activities like share comments, see user following companies details and user can see latest jobs in following company. The open source version of l-boardpro is hosted here - <a href="#">https://github.com/socioboard/l-board</a></p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <img src="http://i.imgur.com/xUr1F8B.png" class="img-responsive company_img_size">
-                                                    <h1 class="text-center" style="font-size: x-large;">
-                                                        i-boardpro
-                                                    </h1>
-                                                    <p>i-boardpro is a multiple instagram account management app, it helps you to login to multiple instagram accounts from your iOS or Android device and do various instagram activities like follow, unfollow, comment, like, scheduling posts etc. Its a a very powerful instagram marketing automation app. The opensource version of i-boardpro is hosted here - <a href="#">https://github.com/socioboard/i-board</a></p>
-                                                    <div class="text-center">
-                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#10"><i class="fa fa-dot-circle-o fa-fw"></i>How to install the software? Where to host it?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="10" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            We provide you an installation guide in download section, we host on your own cloud and we assist you if any pro and cons.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#11"><i class="fa fa-dot-circle-o fa-fw"></i>I have more questions, how to contact you?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="11" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Please fill the form below, use the chat widget or contact us through support@sociobaord.com
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#12"><i class="fa fa-dot-circle-o fa-fw"></i>How do I know present activities of my business and circle?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="12" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            We have discovery section which solves you all the issues in a single click
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#13"><i class="fa fa-dot-circle-o fa-fw"></i>How I market using this?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="13" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Through Socioboard you can manage all your social profiles at a place and we got scheduling features to reduce your work load and get you free, where you can enrich your business keeping your audience busy all the while and converts leads into sales and so on
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#14"><i class="fa fa-dot-circle-o fa-fw"></i>Can I provide colleagues with access to my Analytics and Social profiles account?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="14" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Yes, if you want a colleague to have access your Analytics and Social profiles then it can be accessed through User and Groups under that find for Invite Team Member and put his respective E-mail ID
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#15"><i class="fa fa-dot-circle-o fa-fw"></i>How can I change my billing information?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="15" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Click on the “Profile Image” section in the top right corner of the dashboard, then click on settings to update your billing information.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#16"><i class="fa fa-dot-circle-o fa-fw"></i>Why am I receiving an error message when trying to add a new page?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="16" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            There are three types of error messages for adding a new page:<br>Non-existing URL: Check for typos and make sure the page exists.<br>Profile: You are attempting to add a personal profile instead of a fan page.<br>
+                                            Targeted fan page: This is a fan page with regional restrictions. Contact us at support@socioboard.com for further instructions.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#17"><i class="fa fa-dot-circle-o fa-fw"></i>I added a Twitter/Facebook profile to my dashboard but I am unable to see historical data. Why?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="17" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            This is a Twitter/Facebook feature. We start acquiring data about a Twitter Profile at the moment the first person ever wanted to monitor it. If you are the first one to monitor that specific profile, there will only be data available since the day you added it to your dashboard.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#18"><i class="fa fa-dot-circle-o fa-fw"></i>Are my colleagues seeing all the same data and graphs as myself?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="18" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Yes. Every user with access to your group account will see the same data and graphs. The only exception is that labels in the dashboard are user specific.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#19"><i class="fa fa-dot-circle-o fa-fw"></i>My emails are received in the junk folder?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="19" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            Gmail and Outlook have changed their policies, and most of the times it depends on your setting on your account in this case mails will be directed to Spam folder
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#20"><i class="fa fa-dot-circle-o fa-fw"></i>Can I edit content after it has been published to Facebook in the platform?</a>
+                                        </h4>
+                                    </div>
+                                    <div id="20" class="panel-collapse collapse">
+                                        <div class="panel-body textBlack">
+                                            No, it is not possible to post-edit published content in the platform due to Facebook's API. Facebook's API only allows the creation and deletion of posts.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- .panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
@@ -232,236 +272,8 @@ else if (Request.QueryString["op"] == "products")
         </div>
         <!-- /.container -->
     </section>
-
-    //Product modals start
-
-    <!-- inBoardPro Modal -->
-    <div class="modal fade" id="inBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">inBoardPro</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="http://i.imgur.com/U8fuYhk.png" class="img-responsive company_img_size">
-                    <h1 class="text-center">
-                        inBoardPro<br>
-                        <small>
-                            <a href="http://www.inboardpro.com" target="_blank">http://www.inboardpro.com</a>
-                        </small>
-                    </h1>
-                    <p class="text-justify">inBoardPro is linkedin marketing on Steroids. Its a desktop application which helps you to automate everything you can do on linkedin. It helps you to manage multiple linkedin accounts, connect with new members in the linked community, post automated updates , manage all your linkedin groups and do a whole lot of things on linkedin. The open source version of inboardpro is hosted here -<a href="https://github.com/socioboard/inboard" target="_blank">https://github.com/socioboard/inboard</a></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- faceboardPro Modal -->
-    <div class="modal fade" id="faceboardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">faceboardPro</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="http://i.imgur.com/mR7o8pT.png" class="img-responsive company_img_size">
-                    <h1 class="text-center">
-                        faceboardPro<br>
-                        <small>
-                            <a href="http://faceboardpro.com" target="_blank">http://faceboardpro.com</a>
-                        </small>
-                    </h1>
-                    <p class="text-justify">faceBoardPro is an automated facebook marketing software. It helps you to automate your regular facebook tasks with few clicks. It helps to you manage multiple facebook accounts, manage your friends, groups, pages, apps etc. Basically it can automate all your day to day facebook management tasks and save a lot of your time. The open source version of faceboardpro is hosted here -<a href="https://github.com/socioboard/faceboard" target="_blank">https://github.com/socioboard/faceboard</a></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- gramBoardPro Modal -->
-    <div class="modal fade" id="gramBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">gramBoardPro</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="http://i.imgur.com/ROLgDCv.png" class="img-responsive company_img_size">
-                    <h1 class="text-center">
-                        gramBoardPro<br>
-                        <small>
-                            <a href="http://gramboardpro.com/" target="_blank">http://gramboardpro.com</a>
-                        </small>
-                    </h1>
-                    <p class="text-justify">gramBoardPro is an instagram automation power-house. It can manage all your instagram tasks , likes, comments etc. Very useful software for instagram marketers. The open source version is hosted here -<a href="https://github.com/socioboard/gramboard" target="_blank">https://github.com/socioboard/gramboard</a></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- twtBoardPro Modal -->
-    <div class="modal fade" id="twtBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">twtBoardPro</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="http://i.imgur.com/0Y3tfqk.png" class="img-responsive company_img_size">
-                    <h1 class="text-center">
-                        twtBoardPro<br>
-                        <small>
-                            <a href="http://twtboardpro.com" target="_blank">http://twtboardpro.com</a>
-                        </small>
-                    </h1>
-                    <p class="text-justify">twtBoardPro is an twitter marketing platform. It helps you manage multiple twitter accounts and automate your tweets, re-tweets, favorites etc. You can do a whole lot of stuff on twitter and get ultra productive on twitter by using this software. The open source version of twtboardpro is hosted here -<a href="https://github.com/socioboard/twtboard" target="_blank"> https://github.com/socioboard/twtboard</a></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    //product modals end
-
-    <!--pricing-->
-    
-
-    <!-- Modal -->
-    <div class="modal fade" id="DemoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content col-md-10">
-                <div class="modal-header">
-                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <img src="http://wiki.socioboard.com/skins/common/images/logo.png" style="height: 40px; float: left; margin-top: -6px">
-                    <h4 style="margin-left: 60px" id="DemoModalLabel" class="modal-title">Request a Demo </h4>
-                </div>
-                <div class="modal-body col-md-11">
-
-                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
-                        <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
-                        <input type="text" class="form-control" id="FName">
-                    </div>
-                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
-                        <label for="username-email">Last Name</label><span class="pull-right text-danger"></span>
-                        <input type="text" class="form-control" id="LName">
-                    </div>
-                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
-                        <label for="username-email">Email ID</label><span class="pull-right text-danger">*</span>
-                        <input type="text" class="form-control" id="Email">
-                    </div>
-
-
-                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
-                        <label for="username-email">Phone Number</label><span class="pull-right text-danger"></span>
-                        <input type="text" class="form-control" id="PhoneNo">
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button onclick="Reset()" class="btn btn-default" type="button">RESET</button>
-                    <button id="id_btnSendDemoRequest" url="" onclick="SendDemoRequest(this)" class="btn btn-primary" type="button">SEND REQUEST</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End of Modal -->
-
-    <script>
-
-        function OpenDialog(url) {
-
-            $('#id_btnSendDemoRequest').attr('url', url);
-            $('#DemoModal').modal('show');
-
-        }
-
-        function SendDemoRequest(element) {
-            debugger;
-            var attr_href = $(element).attr('url');
-            var fname = $('#FName').val();
-            var lname = $('#LName').val();
-            var email = $('#Email').val();
-            //var company = $('#CName').val();
-            var phone = $('#PhoneNo').val();
-            var Subject = 'Get Started';
-            //var notes = $('#Notes').val();
-            //var SkypeId = $('#SkypeId').val();
-            debugger;
-            if (fname == "" || email == "") {
-                alert('Please fill all requered fields')
-                return false;
-            }
-            {
-                if (!validateFName(fname)) {
-                    alert('Please enter valid First Name');
-                    return false;
-                }
-                else if (!validateLName(lname)) {
-                    alert('Please enter valid Last Name');
-                    return false;
-                }
-                else if (!validateEmail(email)) {
-                    alert('not valid email');
-                    return false;
-                }
-                    //else if (!validatePhone(phone)) {
-                    //    alert('not valid phone number');
-                    //    return false;
-                    //}
-                else {
-                    $.ajax({
-                        url: "../Index/SendRequestForDemo?fname=" + fname + "&lname=" + lname + "&email=" + email + "&Subject=" + Subject + "&phone=" + phone,
-                        type: "post",
-                        data: '',
-                        processData: false,
-                        contentType: false,
-                        success: function (msg) {
-                            debugger;
-                            if (msg == "Success") {
-                                alertify.success('Mail has been sent successfully!');
-                                $('#FName').val('');
-                                $('#LName').val('');
-                                $('#Email').val('');
-                                $('#PhoneNo').val('');
-                                $('.close').click();
-
-                                if (attr_href != '' || attr_href != null) {
-                                    window.document.location = attr_href;
-                                }
-
-
-                            }
-                            else {
-                                alertify.error("Email Sending Failed! Please try again");
-                                return false;
-                            }
-                        },
-                        error: function () {
-                            alert("failure");
-                        }
-                    });
-                }
-            }
-        }
-    </script>
-
 }
+
 else
 {
     if (ViewBag.Isaccountactivatedfirsttime == "true" || Request["ReturnUrl"] != null)
@@ -496,99 +308,7 @@ else
                 </div>
             </div>
         </header>
-        <section class="about" id="about">
-            <div class="container-fluid">
-                <div class="row text-center">
-
-                    <div class="col-lg-12">
-                        <h2 style="margin: 22px;" class="hr_shadow">Our Products</h2>
-                        <div class="row">
-
-                            @* <div class="col-md-3 col-sm-6 col-lg-offset-1">*@
-                            <div class="col-md-3 col-sm-6">
-                                <div class="service-item">
-                                    <span class="fa-stack fa-3x">
-                                        @* <i class="fa fa-circle fa-stack-1x"></i>
-                                            <i style="font-size:22px;" class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>*@
-                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/logo.png" style="height: 64px; width: 64px;" />
-                                    </span>
-                                    <h4>
-                                        <strong>Socioboard Core</strong>
-                                    </h4>
-                                    <p style="font-size: 15px;">World's #1 Open source social media management, analytics & reporting platform. Manage multiple social media accounts, create useful reports & take business decisions based on them. It's fully customizable & extensible in the form of plugins.</p>
-                                    @*<a href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_2.0.pdf" class="btn btn-dark" target="_blank">Download Guide Book
-                                        </a>*@
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="service-item">
-                                    <span class="fa-stack fa-3x">
-                                        @*<i class="fa fa-circle fa-stack-1x"></i>
-                                            <i style="font-size:22px;" class="fa fa-eye fa-stack-1x text-primary"></i>*@
-                                        <img src="~/Themes/Socioboard/Contents/img/boardme_icon.png" />
-                                    </span>
-                                    <h4>
-                                        <strong>BoardMe</strong>
-                                    </h4>
-                                    <p style="font-size: 15px;">Self service platform which helps you to create Social Boards & stream them everywhere like web, desktop, mobile or any other screen. Connect Social Feeds or Hastags into 1 place from all your social networks & create social tiles in minutes.</p>
-                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="service-item">
-                                    <span class="fa-stack fa-3x">
-                                        @* <i class="fa fa-circle fa-stack-1x"></i>
-                                            <i style="font-size:22px;" class="fa fa-spinner fa-stack-1x text-primary"></i>*@
-                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/brandbuzz_icon.png" />
-                                    </span>
-                                    <h4>
-                                        <strong>BrandBuzz</strong>
-                                    </h4>
-                                    <p style="font-size: 15px;">Engage with your employees and loyal customers and engage with them in a unique way to make them your social brand ambassadors. Leverage the power of Word of Mouth marketing to recruit employees and customers as your marketing crew.</p>
-                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="service-item">
-                                    <span class="fa-stack fa-3x">
-                                        @*  <i class="fa fa-circle fa-stack-1x"></i>
-                                            <i style="font-size:22px;" class="fa fa-sign-in fa-stack-1x text-primary"></i>*@
-                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/brandhit_icon.png" />
-                                    </span>
-                                    <h4>
-                                        <strong>BrandHit</strong>
-                                    </h4>
-                                    <p style="font-size: 15px;">Reach influencers in your niche and get them to tweet or share on facebook, instagram or linkedin about your brand or your product. Get personalized recommendation from top influencers in the industry and build up a successful brand.</p>
-                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
-                                </div>
-                            </div>
-                            @*
-                                <div class="col-md-2 col-sm-6">
-                                    <div class="service-item">
-                                        <span class="fa-stack fa-3x">
-                                            <i class="fa fa-circle fa-stack-1x"></i>
-                                            <i style="font-size:22px;" class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>
-                                        </span>
-                                        <h4>
-                                            <strong>Get Kickoff Manual</strong>
-                                        </h4>
-                                        <p style="font-size:12px;">To learn about white labeling,download Kickoff Manual</p>
-                                        <a href="/Themes/socioboard/Contents/common/Socioboard_Kickoff_Manual.pdf" class="btn btn-dark" target="_blank">Download Guide Book
-                                            </a>
-                                    </div>
-                                </div>*@
-                        </div>
-                        <!-- /.row (nested) -->
-
-
-                    </div>
-                    <!-- /.col-lg-10 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-
-        </section>
+        
 
         <section class="bg-primary" id="services">
             <div class="container">
@@ -714,7 +434,7 @@ else
         <!-- /.container -->
     </section>
     <!-- Supported Apps -->
-    <div class="hosts-wrapper">
+    @*<div class="hosts-wrapper">
         <div class="supported-hosts no-border-bottom text-center">
             <small class="hr_shadow">Our Apps</small>
             <a href="https://play.google.com/store/apps/details?id=com.socioboard" target="_blank">
@@ -724,65 +444,9 @@ else
                 <img src="~/Themes/Socioboard/Contents/img/app_store.png" alt="Socioboard_apple" style="width: 300px" />
             </a>
         </div>
-    </div>
+    </div>*@
     <!-- End of Supported Apps -->
-    <div class="hosts-wrapper">
-        <div class="supported-hosts no-border-bottom text-center">
-            <small class="hr_shadow">Agencies that use our Product</small>
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/Socialboard_logo.png" alt="Socialboard" />
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialpour_logo.png" alt="socialscoup" />
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialscoup_logo.png" alt="socialpour" />
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/Sonager_Logo.png" alt="Sonager" />
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/tribeNautix.png" alt="tribeNautix" />
-            <img src="~/Themes/Socioboard/Contents/img/clients/logo/viptable_logo.png" alt="viptable" />
-        </div>
-    </div>
-    <!-- End of Supported Hosts -->
-
-
-
-    <!-- As Seen On -->
-    <div class="hosts-wrapper">
-        <div class="supported-hosts no-border-bottom text-center">
-            <small class="hr_shadow">As Seen On</small>
-            <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/42logo.png" alt="42logo">
-            </a>
-            <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/YS_Pages.png" alt="YS_Pages">
-            </a>
-            <a href="http://lighthouseinsights.in/review-socioboard-app-open-source-social-media-management-dashboard.html/" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/LI_logo.png" alt="LI">
-            </a>
-            <a href="http://www.nextbigwhat.com/socioboard-social-media-management-297/" target="_blank">
-                <img src="http://i.imgur.com/RQx90t5.png" alt="nextbigwhat">
-            </a>
-            <a href="http://www.socialsamosa.com/2014/04/social-media-platform-feature-socioboard/" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/social_samosa_logo.png" alt="social_samosa">
-            </a>
-
-        </div>
-    </div>
-    <!-- End of As Seen On -->
-
-    <!-- Competition Success Snapshots -->
-    <div class="hosts-wrapper">
-        <div class="supported-hosts no-border-bottom text-center">
-            <small class="hr_shadow">Competition Success Snapshots</small>
-            <a href="http://productconclave.in/?p=1041" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/productconclave.png" alt="productconclave">
-            </a>
-            <a href="http://eximius-iimb.com/2014/competition/disrupt-it/#tab-results" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/iimb_logo.jpg" alt="iimb">
-            </a>
-            <a href="http://10000startups.com/disruptit/" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/10000startups.jpg" alt="10000startups">
-            </a>
-            <a href="http://events.vccircle.com/content/techcircle-startup-2014#tab5" target="_blank">
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/vccircle_logo.png" alt="vccircle">
-            </a>
-        </div>
-    </div>
+    
 
     <aside class="call-to-action bg-primary">
         <div class="container">

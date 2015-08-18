@@ -160,6 +160,35 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public int UpdateYouTubechannel(Domain.Socioboard.Domain.YoutubeChannel _YoutubeChannel)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update YoutubeChannel set ViewCount =:ViewCount,CommentCount =:CommentCount,SubscriberCount =: SubscriberCount,HiddenSubscriberCount =: HiddenSubscriberCount, VideoCount =: VideoCount where ChannelId =:ChannelId and UserId =:UserId")
+                                            .SetParameter("ViewCount", _YoutubeChannel.VideoCount)
+                                            .SetParameter("CommentCount", _YoutubeChannel.CommentCount)
+                                            .SetParameter("SubscriberCount", _YoutubeChannel.SubscriberCount)
+                                            .SetParameter("HiddenSubscriberCount", _YoutubeChannel.HiddenSubscriberCount)
+                                            .SetParameter("VideoCount", _YoutubeChannel.VideoCount)
+                                            .SetParameter("ChannelId", _YoutubeChannel.Channelid)
+                                            .SetParameter("UserId", _YoutubeChannel.UserId)
+                                            .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
 
+        }
     }
 }

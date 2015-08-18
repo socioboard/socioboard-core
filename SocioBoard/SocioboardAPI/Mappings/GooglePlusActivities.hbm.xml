@@ -55,5 +55,15 @@
     <property name="AttachmentType">
       <column name="AttachmentType"  />
     </property>
+
+    <property name="Link">
+      <column name="Link"  />
+    </property>
+    <property name="ArticleContent">
+      <column name="ArticleContent"  />
+    </property>
+    <property name="ArticleDisplayname">
+      <column name="ArticleDisplayname"  />
+    </property>
   </class>
 </hibernate-mapping>

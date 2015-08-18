@@ -2925,4 +2925,28 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   <data name="Index_Index_OurApps" xml:space="preserve">
     <value>تطبيقات لدينا</value>
   </data>
+  <data name="Documantal_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>Jordan, Amman</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_AddedSucessfully" xml:space="preserve">
+    <value>واضاف بنجاح</value>
+  </data>
+  <data name="UserGroup_UserGroup_GroupAlreadyExists" xml:space="preserve">
+    <value>موجود المجموعة إذا</value>
+  </data>
+  <data name="Documantal_Home_Index_AttachProfile" xml:space="preserve">
+    <value>إرفاق شبكتك الإجتماعية الملف الشخصي للبداية مع Documantal SM</value>
+  </data>
+  <data name="Home_Index_accountwillexpirein" xml:space="preserve">
+    <value>الحساب سوف تنتهي في</value>
+  </data>
+  <data name="Home_Index_accountwillexpireToday" xml:space="preserve">
+    <value>حساب ستنتهي اليوم</value>
+  </data>
+  <data name="Home_Index_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>أيام، يرجى الترقية إلى خطة المدفوعة.</value>
+  </data>
+  <data name="Home_Index_YourTrial" xml:space="preserve">
+    <value>محاكمة بك</value>
+  </data>
 </root>

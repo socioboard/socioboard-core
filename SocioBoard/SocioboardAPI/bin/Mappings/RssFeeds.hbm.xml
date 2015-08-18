@@ -23,8 +23,23 @@
     <property name="CreatedDate">
       <column name="CreatedDate"  />
     </property>
+    <property name="Title">
+      <column name="Title"  />
+    </property>
+    <property name="PublishingDate">
+      <column name="PublishingDate"  />
+    </property>
     <property name="Status">
       <column name="Status"  />
+    </property>
+    <property name="Link">
+      <column name="Link"  />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="Profiletype">
+      <column name="Profiletype"  />
     </property>
 
     <property name="UserId">

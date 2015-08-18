@@ -16,6 +16,7 @@ using GlobusInstagramLib.App.Core;
 using log4net;
 using System.Collections;
 using GlobusInstagramLib.Instagram.Core.CommentsMethods;
+using Microsoft.Security.Application;
 
 namespace Api.Socioboard.Services
 {
@@ -94,10 +95,12 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetInstagramRedirectUrl(string consumerKey, string consumerSecret, string CallBackUrl)
         {
+            logger.Error("GetInstagramRedirectUrl");
             string rest = string.Empty;
             GlobusInstagramLib.Authentication.ConfigurationIns config = new GlobusInstagramLib.Authentication.ConfigurationIns("https://instagram.com/oauth/authorize/", consumerKey, consumerSecret, CallBackUrl, "https://api.instagram.com/oauth/access_token", "https://api.instagram.com/v1/", "");
             oAuthInstagram _api = oAuthInstagram.GetInstance(config);
             rest = _api.AuthGetUrl("likes+comments+basic+relationships");
+            logger.Error("GetInstagramRedirectUrl => " + rest);
             return rest;
         }
 
@@ -551,6 +554,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public void GetInstagramFeeds(Domain.Socioboard.Domain.InstagramAccount objInsAccount)
         {
+            int I = 0;
             try
             {
                 GlobusInstagramLib.Instagram.Core.UsersMethods.Users userInstagram = new GlobusInstagramLib.Instagram.Core.UsersMethods.Users();
@@ -614,7 +618,7 @@ namespace Api.Socioboard.Services
                             catch { }
                             try
                             {
-                                objInstagramFeed.Feed = userinf2.data[j].caption.text;
+                                objInstagramFeed.Feed =Encoder.HtmlEncode(userinf2.data[j].caption.text);
                             }
                             catch { }
                             try
@@ -649,7 +653,7 @@ namespace Api.Socioboard.Services
                                 {
                                     try
                                     {
-                                        objInstagramComment.Comment = usercmts.data[cmt].text;
+                                        objInstagramComment.Comment =Encoder.HtmlEncode(usercmts.data[cmt].text);
                                     }
                                     catch { }
                                     try
@@ -699,7 +703,9 @@ namespace Api.Socioboard.Services
                                     catch { }
                                     if (!objInstagramCommentRepository.checkInstagramCommentExists(usercmts.data[cmt].id, objInsAccount.UserId))
                                     {
+                                        I++;
                                         objInstagramCommentRepository.addInstagramComment(objInstagramComment);
+                                        logger.Error("GetInstagramFeedsCount>>>>"+I);
                                     }
                                 }
                                 catch (Exception ex)

@@ -57,8 +57,9 @@ namespace Api.Socioboard.Services
                 oAuthTumbler.TumblrConsumerKey = consumerKey;
                 oAuthTumbler.TumblrConsumerSecret = consumerSecret;
                 requestHelper.CallBackUrl = CallBackUrl;
+                logger.Error("GetTumblrRedirectUrl");
                 ret = requestHelper.GetAuthorizationLink();
-                logger.Error("GetTumblrRedirectUrl => " + ret);
+              
             }
             catch (Exception ex)
             {
@@ -167,6 +168,7 @@ namespace Api.Socioboard.Services
 
         private void AddTunblrFeeds(string UserId, KeyValuePair<string, string> LoginDetails, string username)
         {
+            int I = 0;
             JObject UserDashboard = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersDashboardUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
             JArray objJarray = (JArray)UserDashboard["response"]["posts"];
             foreach (var item in objJarray)
@@ -353,7 +355,9 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
+                        I++;
                         TumblrFeedRepository.Add(objTumblrFeed);
+                        logger.Error("AddTunblrFeedsCount>>>>"+I);
                     }
                     catch (Exception ex)
                     {
@@ -486,13 +490,21 @@ namespace Api.Socioboard.Services
             oAuthTumbler.TumblrToken = objTumblrAccount.tblrAccessToken;
             oAuthTumbler.TumblrTokenSecret = objTumblrAccount.tblrAccessTokenSecret;
             PublishedPosts objPublishedPosts = new PublishedPosts();
-            if (!string.IsNullOrEmpty(picurl))
+            try
             {
-                objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, profileid, message, picurl, "photo");
+                if (!string.IsNullOrEmpty(picurl))
+                {
+                    objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, profileid, message, picurl, "photo");
+                }
+                else
+                {
+                    objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, profileid, message, "", "text");
+                }
+                ret = "success";
             }
-            else
+            catch (Exception ex)
             {
-                objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, profileid, message, "", "text");
+                ret = "failuer";
             }
             return ret;
         }

@@ -13,7 +13,7 @@ namespace Domain.Socioboard.Domain
         public Guid UserId { get; set; }
         public Guid AssignTaskTo { get; set; }
         public bool TaskStatus { get; set; }
-        public string AssignDate { get; set; }
+        public DateTime AssignDate { get; set; }
         public DateTime CompletionDate { get; set; }
         public int ReadStatus { get; set; }
         public DateTime TaskMessageDate { get; set; }
@@ -25,7 +25,7 @@ namespace Domain.Socioboard.Domain
         public Guid UserId { get; set; }
         public Guid AssignTaskTo { get; set; }
         public bool TaskStatus { get; set; }
-        public string AssignDate { get; set; }
+        public DateTime AssignDate { get; set; }
         public DateTime CompletionDate { get; set; }
         public Guid Uid { get; set; }
         public string UserName { get; set; }

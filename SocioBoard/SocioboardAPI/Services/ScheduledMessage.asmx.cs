@@ -58,8 +58,8 @@ namespace Api.Socioboard.Services
                     ms.Close();
                     fs.Close();
                     fs.Dispose();
-                    //ret = Server.MapPath("~/Contents/img/upload/") + fileName;
-                    ret = "http://api.socioboard.com/Contents/img/upload/" + fileName;
+                    ret = Server.MapPath("~/Contents/img/upload/") + fileName;
+                    //ret = "http://api.socioboard.com/Contents/img/upload/" + fileName;
                 }
                 else
                 {
@@ -613,7 +613,7 @@ namespace Api.Socioboard.Services
                     objScheduledMessage.PicUrl = PicUrl;
                     DateTime client = Convert.ToDateTime(ClientTime); 
                     objScheduledMessage.ClientTime = client;
-                    objScheduledMessage.ScheduleTime = scheduleddatetime.ToLocalTime();
+                    objScheduledMessage.ScheduleTime = scheduleddatetime;
                     objScheduledMessage.ShareMessage = ShareMessage;
                     objScheduledMessage.UserId = Guid.Parse(UserId);
                     objScheduledMessage.Status = false;

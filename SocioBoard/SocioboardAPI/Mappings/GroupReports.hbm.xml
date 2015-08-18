@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+	<class name="GroupReports" table="groupreports" lazy="false">
+		<id name="Id" column="Id" >
+			<generator class="guid"/>
+		</id>
+		<property name="GroupId" >
+			<column name="GroupId"/>
+		</property>
+		<property name="inbox_15">
+			<column name="inbox_15" />
+		</property>
+
+		<property name="perday_inbox_15">
+			<column name="perday_inbox_15" />
+		</property>
+
+		<property name="inbox_30">
+			<column name="inbox_30"  />
+		</property>
+		<property name="perday_inbox_30">
+			<column name="perday_inbox_30" />
+		</property>
+
+		<property name="inbox_60">
+			<column name="inbox_60"  />
+		</property>
+		<property name="perday_inbox_60">
+			<column name="perday_inbox_60" />
+		</property>
+
+		<property name="inbox_90">
+			<column name="inbox_90"  />
+		</property>
+		<property name="perday_inbox_90">
+			<column name="perday_inbox_90" />
+		</property>
+
+		<property name="sent_15">
+			<column name="sent_15"  />
+		</property>
+		<property name="perday_sent_15">
+			<column name="perday_sent_15"  />
+		</property>
+
+		<property name="sent_30">
+			<column name="sent_30"  />
+		</property>
+		<property name="perday_sent_30">
+			<column name="perday_sent_30"  />
+		</property>
+
+		<property name="sent_60">
+			<column name="sent_60"  />
+		</property>
+		<property name="perday_sent_60">
+			<column name="perday_sent_60"  />
+		</property>
+
+		<property name="sent_90">
+			<column name="sent_90"  />
+		</property>
+		<property name="perday_sent_90">
+			<column name="perday_sent_90"  />
+		</property>
+
+		<property name="twitterfollower_15">
+			<column name="twitterfollower_15"  />
+		</property>
+		<property name="perday_twitterfollower_15">
+			<column name="perday_twitterfollower_15"  />
+		</property>
+
+		<property name="twitterfollower_30">
+			<column name="twitterfollower_30"  />
+		</property>
+		<property name="perday_twitterfollower_30">
+			<column name="perday_twitterfollower_30"  />
+		</property>
+
+		<property name="twitterfollower_60">
+			<column name="twitterfollower_60"  />
+		</property>
+		<property name="perday_twitterfollower_60">
+			<column name="perday_twitterfollower_60"  />
+		</property>
+
+		<property name="twitterfollower_90">
+			<column name="twitterfollower_90"  />
+		</property>
+		<property name="perday_twitterfollower_90">
+			<column name="perday_twitterfollower_90"  />
+		</property>
+
+
+		<property name="fbfan_15">
+			<column name="fbfan_15"  />
+		</property>
+		<property name="perday_fbfan_15">
+			<column name="perday_fbfan_15"  />
+		</property>
+
+		<property name="fbfan_30">
+			<column name="fbfan_30"  />
+		</property>
+		<property name="perday_fbfan_30">
+			<column name="perday_fbfan_30"  />
+		</property>
+
+		<property name="fbfan_60">
+			<column name="fbfan_60"  />
+		</property>
+		<property name="perday_fbfan_60">
+			<column name="perday_fbfan_60"  />
+		</property>
+
+		<property name="fbfan_90">
+			<column name="fbfan_90"  />
+		</property>
+		<property name="perday_fbfan_90">
+			<column name="perday_fbfan_90"  />
+		</property>
+
+
+		<property name="interaction_15">
+			<column name="interaction_15"  />
+		</property>
+		<property name="perday_interaction_15">
+			<column name="perday_interaction_15"  />
+		</property>
+
+
+		<property name="interaction_30">
+			<column name="interaction_30"  />
+		</property>
+			<property name="perday_interaction_30">
+				<column name="perday_interaction_30"  />
+			</property>
+
+		
+		<property name="interaction_60">
+			<column name="interaction_60"  />
+		</property>
+		
+		<property name="perday_interaction_60">
+			<column name="perday_interaction_60"  />
+		</property>
+
+		<property name="interaction_90">
+			<column name="interaction_90"  />
+		</property>
+		
+		<property name="perday_interaction_90">
+			<column name="perday_interaction_90"  />
+		</property>
+
+		<property name="twtmentions_15">
+			<column name="twtmentions_15"  />
+		</property>
+    <property name="perday_twtmentions_15">
+      <column name="perday_twtmentions_15"  />
+    </property>
+		<property name="twtmentions_30">
+			<column name="twtmentions_30"  />
+		</property>
+    <property name="perday_twtmentions_30">
+      <column name="perday_twtmentions_30"  />
+    </property>
+
+    <property name="twtmentions_60">
+			<column name="twtmentions_60"  />
+		</property>
+    <property name="perday_twtmentions_60">
+      <column name="perday_twtmentions_60"  />
+    </property>
+
+    <property name="twtmentions_90">
+			<column name="twtmentions_90"  />
+		</property>
+    <property name="perday_twtmentions_90">
+      <column name="perday_twtmentions_90"  />
+    </property>
+
+    <property name="twtretweets_15">
+			<column name="twtretweets_15"  />
+		</property>
+    <property name="perday_twtretweets_15">
+      <column name="perday_twtretweets_15"  />
+    </property>
+
+
+    <property name="twtretweets_30">
+			<column name="twtretweets_30"  />
+		</property>
+    <property name="perday_twtretweets_30">
+      <column name="perday_twtretweets_30"  />
+    </property>
+
+    <property name="twtretweets_60">
+			<column name="twtretweets_60"  />
+		</property>
+    <property name="perday_twtretweets_60">
+      <column name="perday_twtretweets_60"  />
+    </property>
+
+    <property name="twtretweets_90">
+			<column name="twtretweets_90"  />
+		</property>
+    <property name="perday_twtretweets_90">
+      <column name="perday_twtretweets_90"  />
+    </property>
+    <property name="sexratio">
+      <column name="sexratio"  />
+    </property>
+
+
+  </class>
+</hibernate-mapping>

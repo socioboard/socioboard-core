@@ -59,7 +59,8 @@ namespace Api.Socioboard.Services
                     ObjBsnsStng.EntryDate=DateTime.Now;
                     string ObjBsnsStg=(new JavaScriptSerializer().Serialize(ObjBsnsStng));
                     string BsnsMessage = ApiobjBusinesssSetting.AddBusinessByUser(ObjBsnsStg);
-                    return new JavaScriptSerializer().Serialize(group);
+                    //return new JavaScriptSerializer().Serialize(group);
+                    return "Added Sucessfully";
                 }
                 else
                 {

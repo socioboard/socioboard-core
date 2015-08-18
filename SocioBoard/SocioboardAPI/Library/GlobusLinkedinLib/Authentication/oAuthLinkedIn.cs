@@ -29,7 +29,7 @@ namespace GlobusLinkedinLib.Authentication
         //public const string REQUEST_TOKEN = "https://api.linkedin.com/uas/oauth/requestToken?scope=r_fullprofile%20r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
         //public const string AUTHORIZE = "https://api.linkedin.com/uas/oauth/authorize";
         //public const string ACCESS_TOKEN = "https://api.linkedin.com/uas/oauth/accessToken";
-        public const string REQUEST_TOKEN = "https://linkedin.com/uas/oauth2/requestToken?scope=r_fullprofile%20r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
+        public const string REQUEST_TOKEN = "https://linkedin.com/uas/oauth2/requestToken?scope=r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
         public const string AUTHORIZE = "https://linkedin.com/uas/oauth2/authorize";
         public const string ACCESS_TOKEN = "https://linkedin.com/uas/oauth2/accessToken";
 

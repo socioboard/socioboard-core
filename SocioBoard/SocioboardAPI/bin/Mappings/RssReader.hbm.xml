@@ -31,6 +31,16 @@
     <property name="FeedsUrl">
       <column name="FeedsUrl"/>
     </property>
-
+    <property name="UserId">
+      <column name="UserId"/>
+    </property>
+    <property name="ProfileType">
+      <column name="ProfileType"/>
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"/>
+    </property>
+  
+    
   </class>
 </hibernate-mapping>

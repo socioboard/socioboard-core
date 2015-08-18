@@ -92,6 +92,10 @@
     <property name="SocialLogin">
       <column name="SocialLogin"  />
     </property>
+
+    <property name="LastLoginTime">
+      <column name="LastLoginTime"  />
+    </property>
     
   </class>
 </hibernate-mapping>

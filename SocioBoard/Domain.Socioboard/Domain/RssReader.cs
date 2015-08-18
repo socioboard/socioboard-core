@@ -15,6 +15,8 @@ namespace Domain.Socioboard.Domain
         public bool Status { get; set; }
         public string Link { get; set; }
         public string FeedsUrl { get; set; }
-
+        public string UserId { get; set; }
+        public string ProfileType { get; set; }
+        public string ProfileId { get; set; }
     }
 }

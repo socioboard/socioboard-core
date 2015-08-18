@@ -44,7 +44,7 @@ namespace GlobusInstagramLib.Instagram.Core.LikesMethods
         /// <returns></returns>
         public bool PostLike(string mediaid, string accessToken)
         {
-            string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/likes?access_token=" + accessToken;
+            string url = "https://api.instagram.com/v1/media/" + mediaid + "/likes?access_token=" + accessToken;
             NameValueCollection post = new NameValueCollection
                                        {
                                                {"access_token", accessToken}
@@ -68,7 +68,7 @@ namespace GlobusInstagramLib.Instagram.Core.LikesMethods
         /// <returns></returns>
         public bool LikeDelete(string mediaid,  string accessToken)
         {
-            string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/likes?access_token=" + accessToken;
+            string url = "https://api.instagram.com/v1/media/" + mediaid + "/likes?access_token=" + accessToken;
 
             string json = oAuthIns.RequestDeleteToUrl(url, oAuthIns.Configuration.Proxy);
             if (string.IsNullOrEmpty(json))

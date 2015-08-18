@@ -110,12 +110,6 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GlobusWordpressLib\GlobusWordpressLib.csproj">
-      <Project>{3d576d77-1b85-4e2c-a643-47fe4899e88b}</Project>
-      <Name>GlobusWordpressLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

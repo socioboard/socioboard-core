@@ -313,9 +313,51 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetGPusData(string UserId, string ProfileId)
         {
+            Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount = objGooglePlusAccountRepository.GetGooglePlusAccount(Guid.Parse(UserId), ProfileId);
+            GetGoogleplusCircles(UserId, ProfileId);
+            GetUserActivities(_GooglePlusAccount.UserId.ToString(), _GooglePlusAccount.GpUserId, _GooglePlusAccount.AccessToken);
+            return "Gplus Account Updated Successfully";
+        }
 
+        public void GetGoogleplusCircles(string UserId, string ProfileId)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount = objGooglePlusAccountRepository.GetGooglePlusAccount(Guid.Parse(UserId), ProfileId);
+                oAuthTokenGPlus ObjoAuthTokenGPlus = new oAuthTokenGPlus();
+                oAuthToken objToken = new oAuthToken();
 
-            return "";
+                #region Get_InYourCircles
+                try
+                {
+                    string _InyourCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleList.Replace("[userId]", _GooglePlusAccount.GpUserId).Replace("[collection]", "visible") + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), _GooglePlusAccount.AccessToken);
+                    JObject J_InyourCircles = JObject.Parse(_InyourCircles);
+                    _GooglePlusAccount.InYourCircles = Convert.ToInt32(J_InyourCircles["totalItems"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    _GooglePlusAccount.InYourCircles = 0;
+                }
+                #endregion
+
+                #region Get_HaveYouInCircles
+                try
+                {
+                    string _HaveYouInCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleProfile + _GooglePlusAccount.GpUserId + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), _GooglePlusAccount.AccessToken);
+                    JObject J_HaveYouInCircles = JObject.Parse(_HaveYouInCircles);
+                    _GooglePlusAccount.HaveYouInCircles = Convert.ToInt32(J_HaveYouInCircles["circledByCount"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    _GooglePlusAccount.HaveYouInCircles = 0;
+                }
+                #endregion
+                objGooglePlusAccountRepository.UpdateGooglePlusAccount(_GooglePlusAccount);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
         }
 
     }
