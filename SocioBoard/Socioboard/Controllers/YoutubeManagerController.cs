@@ -78,6 +78,7 @@ namespace Socioboard.Controllers
                         }
                         else
                         {
+                            objUser.ActivationStatus = "1";
                             Session["User"] = objUser;
                             return RedirectToAction("Registration", "Index");
                         }

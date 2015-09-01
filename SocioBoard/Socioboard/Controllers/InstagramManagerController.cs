@@ -37,9 +37,11 @@ namespace Socioboard.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error("Instagram =>" + ex.StackTrace);
+                logger.Error("Instagram =>" + ex.Message);
                 Console.WriteLine(ex.Message);
             }
-
+            logger.Error("Instagram =>" + AddTwitterAccount);
             if (Session["SocialManagerInfo"] == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -67,13 +69,15 @@ namespace Socioboard.Controllers
                         logger.Error("ex.Message : " + ex.Message);
                         logger.Error("ex.StackTrace : " + ex.StackTrace);
                     }
-
+                    logger.Error("AuthenticateInstagram => " + Convert.ToString(group["GroupName"]) + ConfigurationManager.AppSettings["DefaultGroupName"].ToString());
                     if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
                         if (profilecount < totalaccount)
                         {
+                            logger.Error("AuthenticateInstagram => " + profilecount.ToString());
                             Api.Instagram.Instagram ApiobjInstagram = new Api.Instagram.Instagram();
                             string redirecturl = ApiobjInstagram.GetInstagramRedirectUrl(ConfigurationManager.AppSettings["InstagramClientKey"], ConfigurationManager.AppSettings["InstagramClientSec"], ConfigurationManager.AppSettings["InstagramCallBackURL"]);
+                            logger.Error("AuthenticateInstagram => redirect uri =>" + redirecturl);
                             if (redirecturl.Contains("FacebookManager") || redirecturl.Contains("Facebook"))
                             {
                                 redirecturl = redirecturl.Replace("FacebookManager", "InstagramManager").Replace("Facebook", "Instagram");
@@ -89,6 +93,7 @@ namespace Socioboard.Controllers
                         {
                             Api.Instagram.Instagram ApiobjInstagram = new Api.Instagram.Instagram();
                             string redirecturl = ApiobjInstagram.GetInstagramRedirectUrl(ConfigurationManager.AppSettings["InstagramClientKey"], ConfigurationManager.AppSettings["InstagramClientSec"], ConfigurationManager.AppSettings["InstagramCallBackURL"]);
+                            logger.Error("AuthenticateInstagram => redirect uri =>" + redirecturl);
                             if (redirecturl.Contains("FacebookManager") || redirecturl.Contains("Facebook"))
                             {
                                 redirecturl = redirecturl.Replace("FacebookManager","InstagramManager").Replace("Facebook","Instagram");
@@ -103,20 +108,26 @@ namespace Socioboard.Controllers
                         else
                         {
                             //return JavaScript("alert(\"You can't add more than "+ totalaccount +" account!\")");
+                            logger.Error("AuthenticateInstagram => profilecount issue");
                             return RedirectToAction("Index", "Home");
                         }
                     }
                     else
                     {
+                        logger.Error("AuthenticateInstagram => groupIssue");
                         return RedirectToAction("Index", "Home");
                     }
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("AuthenticateInstagram =>" +ex.StackTrace);
+                    logger.Error("AuthenticateInstagram =>" + ex.Message);
                 }
             }
             catch (Exception ex)
             {
+                logger.Error("AuthenticateInstagram =>" + ex.StackTrace);
+                logger.Error("AuthenticateInstagram =>" + ex.Message);
             }
             return RedirectToAction("Index", "Home");
         }

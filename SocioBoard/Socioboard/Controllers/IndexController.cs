@@ -12,6 +12,8 @@ using System.Net;
 using System.Text;
 using System.Web.Security;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 namespace Socioboard.Controllers
 {
@@ -23,6 +25,8 @@ namespace Socioboard.Controllers
        // [OutputCache(Duration = 604800)]
         public ActionResult Index()
         {
+           
+
             if (Session["User"] != null)
             {
                 if (!string.IsNullOrEmpty(((User)Session["User"]).EmailId) && !string.IsNullOrEmpty(((User)Session["User"]).Password))
@@ -84,7 +88,7 @@ namespace Socioboard.Controllers
             }
             else if (str.Equals("Email Not Exist")) 
             {
-                returnmsg = "Sorry, Socioboard doesn't recognize that username.";
+                returnmsg = "Sorry, " + ConfigurationManager.AppSettings["domain"] + " doesn't recognize that username.";
                 return Content(returnmsg);
             }
             else
@@ -248,19 +252,10 @@ namespace Socioboard.Controllers
                 line = sr.ReadToEnd();
                 JObject jo = JObject.Parse(line);
                 user.PaymentStatus = "unpaid";
-                //if (!string.IsNullOrEmpty(Request.QueryString["type"]))
-                //{
-                //    user.AccountType = Request.QueryString["type"];
-
-                //    ViewBag.DropDownList1 = Request.QueryString["type"];
-                //}
-                //else
-                //{
-                //    user.AccountType = "Free";
-                //}
+               
                 user.AccountType = Server.UrlDecode((string)jo["package"]);
                 user.CreateDate = DateTime.Now;
-                user.ExpiryDate = DateTime.Now.AddMonths(1);
+                user.ExpiryDate = DateTime.Now.AddDays(30);
                 user.Id = Guid.NewGuid();
                 user.UserName = Server.UrlDecode((string)jo["firstname"]) + " " + Server.UrlDecode((string)jo["lastname"]);
                 user.EmailId = Server.UrlDecode((string)jo["email"]);
@@ -440,12 +435,13 @@ namespace Socioboard.Controllers
                     }
                     else if (daysremaining == 0)
                     {
-                        remainingday = "Your trial " + objUser.AccountType.ToString() + " account will expire Today please upgrade to paid plan.";
+                        //remainingday = "Your trial " + objUser.AccountType.ToString() + " account will expire Today please upgrade to paid plan.";
+                        remainingday = objUser.AccountType.ToString() + "##" + daysremaining.ToString();
                     }
                     else
                     {
-                        remainingday = "Your trial " + objUser.AccountType.ToString() + " account will expire in " + daysremaining + " days, please upgrade to paid plan.";
-
+                        //remainingday = "Your trial " + objUser.AccountType.ToString() + " account will expire in " + daysremaining + " days, please upgrade to paid plan.";
+                        remainingday = objUser.AccountType.ToString() + "##" + daysremaining.ToString();
                     }
                 }
             }

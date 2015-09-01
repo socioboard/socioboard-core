@@ -392,7 +392,11 @@ function facebookdetails(id, li_id) {
                 } catch (e) {
                 }
                 try {
-                    $("#data_paneltab1").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab1").html('<div><center><h4 class="alert alert-danger" role="alert">Your account is not authorized to use this network feeds feature due to API changes. Only Testers, Developers and App admins are authorized. To become a Tester, please send a friend request/Follow to the following FB Id<a href="https://www.facebook.com/sumit.ghosh"> https://www.facebook.com/sumit.ghosh <a> with message "please add me to Socioboard App".</h4></center></div>');
+                    } else {
+                        $("#data_paneltab1").html(msg);
+                    }
                 } catch (e) {
                 }
                 try {
@@ -489,7 +493,11 @@ function facebookdetails(id, li_id) {
 
                 }
                 try {
-                    $("#data_paneltab2").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab2").html("<div><center><h4>No data found</h4></center></div>");
+                    } else {
+                        $("#data_paneltab2").html(msg);
+                    }
                 } catch (e) {
 
                 }
@@ -807,7 +815,11 @@ function twitterdetails(id, li_id) {
                 } catch (e) {
                 }
                 try {
-                    $("#data_paneltab1").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab1").html("<div><center><h4>No data found</h4></center></div>");
+                    } else {
+                        $("#data_paneltab1").html(msg);
+                    }
                 } catch (e) {
 
                 }
@@ -875,7 +887,11 @@ function twitterdetails(id, li_id) {
                 }
 
                 try {
-                    $("#data_paneltab2").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab2").html("<div><center><h4>No data found</h4></center></div>");
+                    } else {
+                        $("#data_paneltab2").html(msg);
+                    }
                 } catch (e) {
 
                 }
@@ -1137,7 +1153,11 @@ function linkedindetails(id, li_id) {
                 }
 
                 try {
-                    $("#data_paneltab1").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab1").html("<div><cenrter><h4>No data found</h4></center></div>");
+                    } else {
+                        $("#data_paneltab1").html(msg);
+                    }
                 } catch (e) {
 
                 }
@@ -1182,7 +1202,11 @@ function linkedindetails(id, li_id) {
 
                 }
                 try {
-                    $("#data_paneltab2").html(msg);
+                    if (msg == "no_data") {
+                        $("#data_paneltab2").html("<div><center><h4>No data found</h4></center></div>");
+                    } else {
+                        $("#data_paneltab2").html(msg);
+                    }
                 } catch (e) {
 
                 }
@@ -1456,7 +1480,8 @@ function tumblrdetails(id, li_id) {
                 $("#feedimages").attr("network", "tumblr");
             } catch (e) {
             }
-        }
+        },
+        async:false
     });
 
     $.ajax({
@@ -1896,7 +1921,8 @@ function youtubedetails(id, li_id) {
                 $("#page-wrapper").html(msg);
             } catch (e) {
             }
-        }
+        },
+        async:false
     });
 
 
@@ -1989,12 +2015,12 @@ function Instagramdetails(id) {
     //instagramidforlazyload = id;
     $.ajax({
         type: "POST",
-        url: "../Feeds/InstagramImages?profileid=" + id,
+        url: "../Feeds/ShowInstagramFeeds?load=first&id=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
-            $("#feedimages").html(msg);
+            $("#instafeeds").html(msg);
             //$(document).on('scroll', instagramimages);
         }
     });
@@ -2760,9 +2786,10 @@ function SpamUserPopup(FromScreenName, ProfileId) {
 
 }
 
-function QuoteMessagePopup(ProfileId, Feed) {
+function QuoteMessagePopup(ProfileId, id) {
     debugger;
     $(".hidden_menu").hide();
+    var Feed = $("#QuoteMessagePopup_" + id).attr("status");
     var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"SendQuoteCompose('" + ProfileId + "')\">Post</button>";
     buttonhtm += "<button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">Close</button>";
     $("#leaveQuotecompose").html(buttonhtm);
@@ -3423,10 +3450,10 @@ function gplusdetails(gplusrid) {
         success: function (msg) {
             try {
                 if (msg == "no_data") {
-                    $("#glusfeed").html("<div><center><h3>No Messages Found.</h3></center></div>");
+                    $("#gplusfeed").html("<div><center><h3>No Messages Found.</h3></center></div>");
                 }
                 else {
-                    $("#glusfeed").html(msg);
+                    $("#gplusfeed").html(msg);
                 }
             } catch (e) {
             }

@@ -629,7 +629,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string AddComposeMessage(string UserId, string ProfileId, string ProfileType, string Message)
+        public string AddComposeMessage(string UserId, string ProfileId, string ProfileType, string Message, string Imageurl)
         {
             ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
 
@@ -642,8 +642,9 @@ namespace Api.Socioboard.Services
             objScheduledMessage.UserId = Guid.Parse(UserId);
             objScheduledMessage.ProfileType = ProfileType;
             objScheduledMessage.ProfileId = ProfileId;
+            objScheduledMessage.PicUrl = Imageurl;
             objScheduledMessageRepository.addNewMessage(objScheduledMessage);
-            return "";
+            return "success";
         }
         //vikash
         [WebMethod]
@@ -788,7 +789,34 @@ namespace Api.Socioboard.Services
         }
 
 
+        //vikash 20-08-2015
 
+        [WebMethod]
+        public string GetSentMessageCount(string Userid, string profileids, string days)
+        {
+            try
+            {
+                int sentmessage = objScheduledMessageRepository.GetSentMessageCount(Guid.Parse(Userid), profileids, Int32.Parse(days));
+                return sentmessage.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
+        [WebMethod]
+        public string GetClickCount(string UserId, string profileids, string days)
+        {
+            try
+            {
+                int clicks = objScheduledMessageRepository.GetClickCount(Guid.Parse(UserId), profileids, Int32.Parse(days));
+                return clicks.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
 
 
     }

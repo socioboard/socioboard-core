@@ -3126,7 +3126,6 @@
     </None>
     <None Include="Web References\Api.Youtube\Youtube.disco" />
     <None Include="Web References\Api.DropboxAccount\DropboxAccount.disco" />
-    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
     <None Include="Web References\Api.Facebook\Facebook.disco">
       <SubType>Designer</SubType>
     </None>
@@ -3137,6 +3136,7 @@
     <None Include="Web References\Api.Admin\admin.disco" />
     <None Include="Web References\Api.User\user.disco" />
     <None Include="Web References\Api.LinkedinMessage\linkedinmessage.disco" />
+    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3338,17 +3338,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/ScheduledMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/ScheduledMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/DropboxAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.DropboxAccount\</RelPath>
@@ -3491,6 +3480,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Dropbox_Dropbox</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/services/ScheduledMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
+      <UpdateFromURL>http://localhost:6361/services/ScheduledMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/TwitterAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

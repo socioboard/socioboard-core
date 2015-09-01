@@ -101,7 +101,13 @@ namespace Socioboard.Controllers
                 lstobject.Add(item);
             }
             dictwallposts.Add("facebook", lstobject);
-            return PartialView("_Panel1Partial", dictwallposts);
+            if (lstFacebookMessage.Count > 0)
+            {
+                return PartialView("_Panel1Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
         }
 
         // Commented By Antima
@@ -149,7 +155,14 @@ namespace Socioboard.Controllers
                 lstobject.Add(twittermsg);
             }
             dictwallposts.Add("facebook", lstobject);
-            return PartialView("_Panel2Partial", dictwallposts);
+            if (lstFacebookFeed.Count > 0)
+            {
+                return PartialView("_Panel2Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
+            
         }
 
         //Edited by Sumit Gupta
@@ -299,7 +312,13 @@ namespace Socioboard.Controllers
                 lstobject.Add(twitterfeed);
             }
             dictwallposts.Add("twitter", lstobject);
-            return PartialView("_Panel1Partial", dictwallposts);
+            if (lstTwitterFeed.Count > 0)
+            {
+                return PartialView("_Panel1Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
         }
 
         // Commented By Antima
@@ -348,7 +367,13 @@ namespace Socioboard.Controllers
                 lstobject.Add(twittermsg);
             }
             dictwallposts.Add("twitter", lstobject);
-            return PartialView("_Panel2Partial", dictwallposts);
+            if (lstTwitterMessage.Count > 0)
+            {
+                return PartialView("_Panel2Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
         }
 
         // Commented By Antima
@@ -398,7 +423,14 @@ namespace Socioboard.Controllers
                 lstobject.Add(item);
             }
             dictwallposts.Add("linkedin", lstobject);
-            return PartialView("_Panel1Partial", dictwallposts);
+            if (lstLinkedInFeed.Count > 0)
+            {
+                return PartialView("_Panel1Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
+            
         }
         //Vikash[03-04-2015]
         //public ActionResult LinkedinFeeds(string profileid)
@@ -448,7 +480,14 @@ namespace Socioboard.Controllers
                 lstobject.Add(linkledinfeed);
             }
             dictwallposts.Add("linkedin", lstobject);
-            return PartialView("_Panel2Partial", dictwallposts);
+            if (lstLinkedInMessage.Count > 0)
+            {
+                return PartialView("_Panel2Partial", dictwallposts);
+            }
+            else {
+                return Content("no_data");
+            }
+            
         }
 
 
@@ -619,12 +658,13 @@ namespace Socioboard.Controllers
                 {
                     lstComment = new List<object>();
                     lstobject = (object)item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                    dic_youtube.Add(lstobject, lstComment);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
                 }
-                dic_youtube.Add(lstobject, lstComment);
+               
             }
             dictwallposts.Add("youtube", dic_youtube);
             return PartialView("_ImagePartial", dictwallposts);

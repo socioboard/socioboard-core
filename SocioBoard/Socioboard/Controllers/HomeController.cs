@@ -128,7 +128,7 @@ namespace Socioboard.Controllers
                         return View(User);
                     }
                     else {
-                        return RedirectToAction("Index", "Index");
+                        return RedirectToAction("UserActivationByEmail", "Index", new { email = objUser.EmailId });
                     }
                 }
             }
@@ -418,7 +418,7 @@ namespace Socioboard.Controllers
 
 
                     Api.ScheduledMessage.ScheduledMessage objAddComposeSentMessage = new Api.ScheduledMessage.ScheduledMessage();
-                    objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message);
+                    objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message, file);
                 }
                 catch (Exception ex)
                 {
@@ -518,7 +518,7 @@ namespace Socioboard.Controllers
                 Api.TwitterMessage.TwitterMessage objTwitterMessage = new Api.TwitterMessage.TwitterMessage();
                 objTwitterMessage.Timeout = 300000;
                 //twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
-                twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
+                twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), TwtProfileId);
             }
             catch (Exception ex)
             {
@@ -529,7 +529,7 @@ namespace Socioboard.Controllers
                 Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
                 objScheduledMessage.Timeout = 300000;
                 //allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId, objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
-                allsentmsgcount = objScheduledMessage.GetSentMessageCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
+                allsentmsgcount = objScheduledMessage.GetSentMessageCountByProfileIdAndUserId(objUser.Id.ToString(), AllProfileId);
 
             }
             catch (Exception ex)

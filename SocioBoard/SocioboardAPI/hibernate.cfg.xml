@@ -6,13 +6,10 @@
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="connection.connection_string">
       
-<<<<<<< HEAD
+
       Data Source=localhost;User ID=root;Password=;persist security info=False;initial catalog=testdb;pooling=false; pooling=false;charset=utf8;
     </property>
-=======
-      Data Source=localhost;User ID=root;Password=1234;persist security info=False;initial catalog=testdb;pooling=false; pooling=false;charset=utf8;
-     </property>
->>>>>>> origin/master
+
     <property name="show_sql">true</property>
   </session-factory>
  

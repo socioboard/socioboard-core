@@ -959,7 +959,7 @@ namespace Api.Socioboard.Services
                             str += "'" + (sstr) + "'" + ",";
                         }
                         str = str.Substring(0, str.Length - 1);
-                        str += ")";
+                        str += ") order by ScheduleTime desc";
                         List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
                        .List<Domain.Socioboard.Domain.ScheduledMessage>()
                        .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
@@ -1364,6 +1364,29 @@ namespace Api.Socioboard.Services
             }// End se
         }
 
+        //vikash 20-08-2015
+        public int GetSentMessageCount(Guid UserId, string profileids, int days)
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                string[] arrsrt = profileids.Split(',');
+                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now.AddDays(1).Date.AddSeconds(1) && U.ScheduleTime > DateTime.Now.AddDays(days + 1).Date.AddSeconds(-1)).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                return Int16.Parse(results.ToString());
 
+            }
+        }
+
+        public int GetClickCount(Guid UserId, string profileids, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                string[] arrsrt = profileids.Split(',');
+                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now.AddDays(1).Date.AddSeconds(1) && U.ScheduleTime > DateTime.Now.AddDays(days + 1).Date.AddSeconds(-1) && U.ShareMessage.Contains("bit.ly")).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                return Int16.Parse(results.ToString());
+
+            }
+        }
     }
 }
