@@ -3,6 +3,7 @@ using Api.Socioboard.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
@@ -20,12 +21,29 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class GooglePlusActivities : System.Web.Services.WebService
     {
-        GooglePlusActivitiesRepository objGooglePlusActivitiesRepository = new GooglePlusActivitiesRepository(); 
+        GooglePlusActivitiesRepository objGooglePlusActivitiesRepository = new GooglePlusActivitiesRepository();
+        MongoRepository gplusFeedRepo = new MongoRepository("GoogleplusFeed");
         [WebMethod]
         public string getgoogleplusActivity(string UserId, string ProfileId)
         {
-            List<Domain.Socioboard.Domain.GooglePlusActivities> lstGooglePlusActivities = objGooglePlusActivitiesRepository.getgoogleplusActivity(Guid.Parse(UserId),ProfileId);
-            return new JavaScriptSerializer().Serialize(lstGooglePlusActivities);
+            List<Domain.Socioboard.MongoDomain.GoogleplusFeed> lstGoogleplusFeed;
+
+            try
+            {
+                var ret = gplusFeedRepo.Find<Domain.Socioboard.MongoDomain.GoogleplusFeed>(t => t.GpUserId.Equals(ProfileId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+                });
+                IList<Domain.Socioboard.MongoDomain.GoogleplusFeed> _lstGoogleplusFeed = task.Result;
+                lstGoogleplusFeed = _lstGoogleplusFeed.OrderByDescending(t => t.PublishedDate).ToList();
+            }
+            catch (Exception ex)
+            {
+                lstGoogleplusFeed = new List<Domain.Socioboard.MongoDomain.GoogleplusFeed>();
+            }
+            //List<Domain.Socioboard.Domain.GooglePlusActivities> lstGooglePlusActivities = objGooglePlusActivitiesRepository.getgoogleplusActivity(Guid.Parse(UserId),ProfileId);
+            return new JavaScriptSerializer().Serialize(lstGoogleplusFeed);
         }
     }
 }

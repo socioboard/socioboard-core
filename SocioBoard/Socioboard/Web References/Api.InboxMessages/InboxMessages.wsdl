@@ -35,6 +35,132 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getInboxMessageCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInboxMessageCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInboxMessageCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFollowersOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFollowersOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFollowersOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterMentionCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterMentionCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterMentionCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterRetweetCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterRetweetCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterRetweetCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterFollowersCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterFollowersCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterFollowersCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterFollowers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterFollowersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterFollowersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramFollower">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramFollowerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramFollowerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramFollowing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramFollowingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramFollowingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -49,6 +175,54 @@
   </wsdl:message>
   <wsdl:message name="getInboxMessageByMessageIdSoapOut">
     <wsdl:part name="parameters" element="tns:getInboxMessageByMessageIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageCountSoapIn">
+    <wsdl:part name="parameters" element="tns:getInboxMessageCount" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageCountSoapOut">
+    <wsdl:part name="parameters" element="tns:getInboxMessageCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFollowersOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFollowersOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterMentionCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterMentionCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterRetweetCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterRetweetCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterFollowersCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterFollowersCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterFollowers" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterFollowersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramFollower" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramFollowerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramFollowing" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramFollowingResponse" />
   </wsdl:message>
   <wsdl:message name="GetInboxMessageHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -65,6 +239,68 @@
     <wsdl:part name="MessageId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getInboxMessageByMessageIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetInboxMessageHttpPostIn">
@@ -84,6 +320,68 @@
   <wsdl:message name="getInboxMessageByMessageIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getInboxMessageCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFollowersOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterMentionCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRetweetCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFollowersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowerHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramFollowingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="InboxMessagesSoap">
     <wsdl:operation name="GetInboxMessage">
       <wsdl:input message="tns:GetInboxMessageSoapIn" />
@@ -92,6 +390,38 @@
     <wsdl:operation name="getInboxMessageByMessageId">
       <wsdl:input message="tns:getInboxMessageByMessageIdSoapIn" />
       <wsdl:output message="tns:getInboxMessageByMessageIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <wsdl:input message="tns:getInboxMessageCountSoapIn" />
+      <wsdl:output message="tns:getInboxMessageCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <wsdl:input message="tns:GetAllFollowersOfUserSoapIn" />
+      <wsdl:output message="tns:GetAllFollowersOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <wsdl:input message="tns:GetTwitterMentionCountSoapIn" />
+      <wsdl:output message="tns:GetTwitterMentionCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <wsdl:input message="tns:GetTwitterRetweetCountSoapIn" />
+      <wsdl:output message="tns:GetTwitterRetweetCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <wsdl:input message="tns:GetTwitterFollowersCountSoapIn" />
+      <wsdl:output message="tns:GetTwitterFollowersCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <wsdl:input message="tns:GetTwitterFollowersSoapIn" />
+      <wsdl:output message="tns:GetTwitterFollowersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <wsdl:input message="tns:GetInstagramFollowerSoapIn" />
+      <wsdl:output message="tns:GetInstagramFollowerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <wsdl:input message="tns:GetInstagramFollowingSoapIn" />
+      <wsdl:output message="tns:GetInstagramFollowingSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InboxMessagesHttpGet">
@@ -103,6 +433,38 @@
       <wsdl:input message="tns:getInboxMessageByMessageIdHttpGetIn" />
       <wsdl:output message="tns:getInboxMessageByMessageIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <wsdl:input message="tns:getInboxMessageCountHttpGetIn" />
+      <wsdl:output message="tns:getInboxMessageCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <wsdl:input message="tns:GetAllFollowersOfUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllFollowersOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <wsdl:input message="tns:GetTwitterMentionCountHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterMentionCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <wsdl:input message="tns:GetTwitterRetweetCountHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterRetweetCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <wsdl:input message="tns:GetTwitterFollowersCountHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterFollowersCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <wsdl:input message="tns:GetTwitterFollowersHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterFollowersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <wsdl:input message="tns:GetInstagramFollowerHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramFollowerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <wsdl:input message="tns:GetInstagramFollowingHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramFollowingHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InboxMessagesHttpPost">
     <wsdl:operation name="GetInboxMessage">
@@ -112,6 +474,38 @@
     <wsdl:operation name="getInboxMessageByMessageId">
       <wsdl:input message="tns:getInboxMessageByMessageIdHttpPostIn" />
       <wsdl:output message="tns:getInboxMessageByMessageIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <wsdl:input message="tns:getInboxMessageCountHttpPostIn" />
+      <wsdl:output message="tns:getInboxMessageCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <wsdl:input message="tns:GetAllFollowersOfUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllFollowersOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <wsdl:input message="tns:GetTwitterMentionCountHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterMentionCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <wsdl:input message="tns:GetTwitterRetweetCountHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterRetweetCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <wsdl:input message="tns:GetTwitterFollowersCountHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterFollowersCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <wsdl:input message="tns:GetTwitterFollowersHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterFollowersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <wsdl:input message="tns:GetInstagramFollowerHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramFollowerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <wsdl:input message="tns:GetInstagramFollowingHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramFollowingHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InboxMessagesSoap" type="tns:InboxMessagesSoap">
@@ -127,6 +521,78 @@
     </wsdl:operation>
     <wsdl:operation name="getInboxMessageByMessageId">
       <soap:operation soapAction="http://tempuri.org/getInboxMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <soap:operation soapAction="http://tempuri.org/getInboxMessageCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllFollowersOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterMentionCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterRetweetCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterFollowersCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterFollowers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramFollower" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramFollowing" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -155,6 +621,78 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <soap12:operation soapAction="http://tempuri.org/getInboxMessageCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFollowersOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterMentionCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterRetweetCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterFollowersCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterFollowers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramFollower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramFollowing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InboxMessagesHttpGet" type="tns:InboxMessagesHttpGet">
     <http:binding verb="GET" />
@@ -169,6 +707,78 @@
     </wsdl:operation>
     <wsdl:operation name="getInboxMessageByMessageId">
       <http:operation location="/getInboxMessageByMessageId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <http:operation location="/getInboxMessageCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <http:operation location="/GetAllFollowersOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <http:operation location="/GetTwitterMentionCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <http:operation location="/GetTwitterRetweetCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <http:operation location="/GetTwitterFollowersCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <http:operation location="/GetTwitterFollowers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <http:operation location="/GetInstagramFollower" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <http:operation location="/GetInstagramFollowing" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -197,19 +807,91 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getInboxMessageCount">
+      <http:operation location="/getInboxMessageCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFollowersOfUser">
+      <http:operation location="/GetAllFollowersOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterMentionCount">
+      <http:operation location="/GetTwitterMentionCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterRetweetCount">
+      <http:operation location="/GetTwitterRetweetCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowersCount">
+      <http:operation location="/GetTwitterFollowersCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFollowers">
+      <http:operation location="/GetTwitterFollowers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollower">
+      <http:operation location="/GetInstagramFollower" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramFollowing">
+      <http:operation location="/GetInstagramFollowing" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="InboxMessages">
     <wsdl:port name="InboxMessagesSoap" binding="tns:InboxMessagesSoap">
-      <soap:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+      <soap:address location="http://localhost:6361/Services/InboxMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="InboxMessagesSoap12" binding="tns:InboxMessagesSoap12">
-      <soap12:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InboxMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="InboxMessagesHttpGet" binding="tns:InboxMessagesHttpGet">
-      <http:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+      <http:address location="http://localhost:6361/Services/InboxMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="InboxMessagesHttpPost" binding="tns:InboxMessagesHttpPost">
-      <http:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+      <http:address location="http://localhost:6361/Services/InboxMessages.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

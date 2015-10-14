@@ -5,6 +5,8 @@
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
     //string hrefPost = string.Empty;
+    System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
+    string formate = "yyyy/MM/dd HH:mm:ss";
 }
 <ul class="chat">
     @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
@@ -14,7 +16,7 @@
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var facebookmsg in lstdic)
             {
-                FacebookFeed item = (FacebookFeed)facebookmsg;
+                MongoFacebookFeed item = (MongoFacebookFeed)facebookmsg;
                 string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.FeedDescription);
         <li class="left clearfix">
             <span class="chat-img pull-left">
@@ -25,7 +27,7 @@
                      <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
                     <small class="text-muted">
                          @{
-                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.FeedDate,formate,provider).ToString());
                         }
                         @messagedate
                     </small>
@@ -115,7 +117,7 @@
                     if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                     {
                         <br />
-                    <img src="@item.Picture" style="margin-top: 3%;"> </img>
+                    <img src="@item.Picture" style="margin-top: 3%;"/> 
                     }
                 }
                 catch (Exception ex)
@@ -163,9 +165,9 @@
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var twittermsg in lstdic)
             {
-                TwitterMessage item = (TwitterMessage)twittermsg;
+                Domain.Socioboard.MongoDomain.TwitterMessage item = (Domain.Socioboard.MongoDomain.TwitterMessage)twittermsg;
                 string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.TwitterMsg);
-        <li class="left clearfix">
+        <li class="left clearfix" >
             <span class="chat-img pull-left">
                 <img id="user_avtar" alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl"/>
             </span>
@@ -175,7 +177,7 @@
                     <small class="text-muted">
                        
                         @{
-                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime,DateTime.ParseExact(item.MessageDate,formate,provider).ToString());
                         }
                         @messagedate
                     </small>

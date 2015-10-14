@@ -6,6 +6,8 @@ using Domain.Socioboard.Domain;
 using System.Collections;
 using Api.Socioboard.Helper;
 using NHibernate.Linq;
+using System.Web.Script.Serialization;
+using NHibernate.Criterion;
 namespace Api.Socioboard.Services
 {
     public class InstagramAccountRepository : IInstagramAccountRepository
@@ -345,7 +347,6 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-
                         //Proceed action to delete Instagram Account from database.
                         NHibernate.IQuery query = session.CreateQuery("delete from InstagramAccount where UserId = :userid")
                                         .SetParameter("userid", userid);
@@ -362,6 +363,144 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public bool IsInstagramAccountExistsFirst(string Profileid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.InstagramUserDetails>().Any(x => x.Profile_Id == Profileid && x.Created_Time >= DateTime.Now.Date.AddSeconds(1) && x.Created_Time <= DateTime.Now.Date.AddHours(12));
+                return exist;
+            }
+        }
 
+        public bool IsInstagramAccountExistsSecond(string Profileid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.InstagramUserDetails>().Any(x => x.Profile_Id == Profileid && x.Created_Time >= DateTime.Now.Date.AddHours(12).AddSeconds(1) && x.Created_Time <= DateTime.Now.AddDays(1).Date.AddSeconds(-1));
+                return exist;
+            }
+        }
+
+        public void UpdateInstagramAccountFollowerFirst(Domain.Socioboard.Domain.InstagramUserDetails insert)
+        {
+            //Domain.Socioboard.Domain.InstagramUserDetails insert = (Domain.Socioboard.Domain.InstagramUserDetails)new JavaScriptSerializer().Deserialize(_Insta, typeof(Domain.Socioboard.Domain.InstagramUserDetails));
+         
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    string str = "Update InstagramUserDetails set Follower=:FollowingsCount, Following=:FollowersCount,Media_Count=:MediaCount where Profile_Id=:ProfileId and Created_Time>=:EntryDate1 and Created_Time<=:EntryDate2";
+                    int i = session.CreateQuery(str)
+                        .SetParameter("FollowingsCount", insert.Follower)
+                        .SetParameter("FollowersCount", insert.Following)
+                        .SetParameter("MediaCount", insert.Media_Count)
+                        .SetParameter("ProfileId", insert.Profile_Id)
+                        .SetParameter("EntryDate1", DateTime.Now.Date.AddSeconds(1))
+                        .SetParameter("EntryDate2", DateTime.Now.Date.AddHours(12))
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public void UpdateInstagramAccountFollowerSecond(Domain.Socioboard.Domain.InstagramUserDetails insert)
+        {
+            //Domain.Socioboard.Domain.InstagramUserDetails insert = (Domain.Socioboard.Domain.InstagramUserDetails)new JavaScriptSerializer().Deserialize(_Insta, typeof(Domain.Socioboard.Domain.InstagramUserDetails));
+
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    string str = "Update InstagramUserDetails set Follower=:FollowingsCount, Following=:FollowersCount,Media_Count=:MediaCount where Profile_Id=:ProfileId and Created_Time>=:EntryDate1 and Created_Time<=:EntryDate2";
+                    int i = session.CreateQuery(str)
+                        .SetParameter("FollowingsCount", insert.Follower)
+                        .SetParameter("FollowersCount", insert.Following)
+                        .SetParameter("MediaCount", insert.Media_Count)
+                        .SetParameter("ProfileId", insert.Profile_Id)
+                        .SetParameter("EntryDate1", DateTime.Now.Date.AddHours(12).AddSeconds(1))
+                        .SetParameter("EntryDate2", DateTime.Now.AddDays(1).Date.AddSeconds(-1))
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public int GetInstagramVideosCount(string ProfileIds, int days)
+        { 
+             //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = ProfileIds.Split(',');
+                    var videocount = session.QueryOver<Domain.Socioboard.Domain.InstagramSelfFeed>().Where(U => U.Type == "video" && U.Created_Time < DateTime.Now && U.Created_Time > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int32.Parse(videocount.ToString());
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        
+        }
+
+        public int GetInstagramImagesCount(string ProfileIds, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = ProfileIds.Split(',');
+                    var imagecount = session.QueryOver<Domain.Socioboard.Domain.InstagramSelfFeed>().Where(U => U.Type == "image" && U.Created_Time < DateTime.Now && U.Created_Time > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int32.Parse(imagecount.ToString());
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public int GetInstagramLikesCount(string ProfileIds, int days)
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = ProfileIds.Split(',');
+                    var likecount = session.QueryOver<Domain.Socioboard.Domain.InstagramPostLikes>().Where(U => U.Status == 0 && U.Created_Date < DateTime.Now && U.Created_Date > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.Profile_Id).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int32.Parse(likecount.ToString());
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int GetInstagramCommentCount(string ProfileIds, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = ProfileIds.Split(',');
+                    var likecount = session.QueryOver<Domain.Socioboard.Domain.InstagramPostComments>().Where(U => U.Created_Time < DateTime.Now && U.Created_Time > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.Profile_Id).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int32.Parse(likecount.ToString());
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }

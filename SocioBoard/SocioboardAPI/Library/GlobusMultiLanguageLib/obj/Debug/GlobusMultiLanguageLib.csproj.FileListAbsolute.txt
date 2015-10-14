@@ -98,4 +98,3 @@ C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Libra
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\it\GlobusMultiLanguageLib.resources.dll
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.dll
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.pdb
-C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.csprojResolveAssemblyReference.cache

@@ -3,6 +3,8 @@
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     int divcount = 0;
     string picurl = string.Empty;
+    System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
+    string formate = "yyyy/MM/dd HH:mm:ss";
 }
 @*<h2 class="page-header">Live Feeds</h2>
 <div class="col-xs-12">*@
@@ -15,7 +17,7 @@
             {
                 object obj = (object)items.Key;
 
-                InstagramFeed item = (InstagramFeed)obj;
+                Domain.Socioboard.MongoDomain.InstagramFeed item = (Domain.Socioboard.MongoDomain.InstagramFeed)obj;
                 if (divcount == 0)
                 { 
                     
@@ -49,7 +51,7 @@
                             </div>
                             <div style="height:100px;overflow-y:scroll;"  class="panel-footer">
 
-           @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
+           @foreach (Domain.Socioboard.MongoDomain.InstagramComment item_value in (List<object>)items.Value)
            {
                                 <div class="row">
                                     <div style="float: left;">
@@ -81,7 +83,7 @@
             foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
             {
                 object obj = (object)items.Key;
-                TumblrFeed item = (TumblrFeed)obj;
+                Domain.Socioboard.MongoDomain.TumblrFeed item = (Domain.Socioboard.MongoDomain.TumblrFeed)obj;
                 if (divcount == 0)
                 { 
         @:<div class="row">
@@ -146,8 +148,8 @@
                             {
                                 picurl = item;
                             }
-                            <div class="panel-heading" onclick="ytvideo('@picurl')";>
-                                 
+                            <div class="panel-heading" onclick="ytvideo('@picurl')" data-toggle="modal" data-target="#profileModal">
+
                                 <img class="img-rounded img-responsive galleryImgSize" src="@picurl">
                             </div>
                             

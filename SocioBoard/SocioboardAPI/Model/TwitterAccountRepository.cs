@@ -85,7 +85,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to update Account details.
-                        int i = session.CreateQuery("Update TwitterAccount set TwitterScreenName =:twtScreenName,OAuthToken=:twtToken,OAuthSecret=:tokenSecret,FollowersCount=:followerscount,FollowingCount=:followingcount,ProfileImageUrl=:imageurl where TwitterUserId = :id and UserId =:userid")
+                        int i = session.CreateQuery("Update TwitterAccount set TwitterScreenName =:twtScreenName,OAuthToken=:twtToken,OAuthSecret=:tokenSecret,FollowersCount=:followerscount,FollowingCount=:followingcount,ProfileImageUrl=:imageurl where TwitterUserId = :id")
                                    .SetParameter("twtScreenName", TwtAccount.TwitterScreenName)
                                    .SetParameter("twtToken", TwtAccount.OAuthToken)
                                    .SetParameter("tokenSecret", TwtAccount.OAuthSecret)
@@ -93,7 +93,7 @@ namespace Api.Socioboard.Services
                                    .SetParameter("followingcount", TwtAccount.FollowingCount)
                                    .SetParameter("imageurl", TwtAccount.ProfileImageUrl)
                                    .SetParameter("id", TwtAccount.TwitterUserId)
-                                   .SetParameter("userid", TwtAccount.UserId)
+                                   
                                    .ExecuteUpdate();
                         transaction.Commit();
                         return i;
@@ -158,6 +158,7 @@ namespace Api.Socioboard.Services
         }
 
 
+        
 
 
         public List<Domain.Socioboard.Domain.TwitterAccount> getAllAccountDetail(string profileid, Guid userid)
@@ -477,9 +478,46 @@ namespace Api.Socioboard.Services
             }
         }
 
+        public void InsertTwitterRecentDetails(Domain.Socioboard.Domain.TwitterRecentDetails data)
+        {
+
+            bool exists = false;
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                exists = session.Query<Domain.Socioboard.Domain.TwitterRecentDetails>()
+                              .Any(x => x.TwitterId == data.TwitterId);
+            }
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    if (exists)
+                    {
+                        session.CreateQuery("Update twitterrecentdetails set AccountCreationDate = : AccountCreationDate , LastActivityDate = : LastActivityDate , LastFeed = : LastFeed , FeedId = : FeedId , FeedRetweetCount = : FeedRetweetCount , FeedFavoriteCount = : FeedFavoriteCount where TwitterId = : TwitterId")
+                           .SetParameter("AccountCreationDate", data.AccountCreationDate)
+                           .SetParameter("LastActivityDate", data.LastActivityDate)
+                           .SetParameter("LastFeed", data.LastFeed)
+                           .SetParameter("FeedId", data.FeedId)
+                           .SetParameter("FeedRetweetCount", data.FeedRetweetCount)
+                           .SetParameter("FeedFavoriteCount", data.FeedFavoriteCount)
+                           .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    else
+                    {
+                        session.Save(data);
+                        transaction.Commit();
+                    }
+                }
+
+            }
 
 
-
+        }
+        
         ArrayList ITwitterAccountRepository.getAllTwitterAccountsOfUser(Guid UserId)
         {
             throw new NotImplementedException();

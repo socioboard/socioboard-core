@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NHibernate.Linq;
+using log4net;
 
 namespace Api.Socioboard.Model
 {
     public class UserRepository : IUserRepository
     {
+        ILog logger = LogManager.GetLogger(typeof(UserRepository));
         public static ICollection<User> GetAllUsers()
         {
 
@@ -519,20 +521,22 @@ namespace Api.Socioboard.Model
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateQuery("from User where Id !=null");
-                        List<User> alstUser = new List<User>();
-                        foreach (User item in query.Enumerable())
-                        {
-                            alstUser.Add(item);
-                        }
-
+                        //NHibernate.IQuery query = session.CreateQuery("from User where Id !=null");
+                        //List<User> alstUser = new List<User>();
+                        //foreach (User item in query.Enumerable())
+                        //{
+                        //    alstUser.Add(item);
+                        //}
+                        List<User> alstUser = session.CreateQuery("from User").List<User>().ToList();
                         return alstUser;
 
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
-                        return null;
+                        logger.Error("UserRepository => getAllUsers => "+ex.Message);
+                        logger.Error("UserRepository => getAllUsers => " + ex.StackTrace);
+                                               
+                        return new List<User>();
                     }
                 }
             }
@@ -560,8 +564,10 @@ namespace Api.Socioboard.Model
                     }
                     catch (Exception ex)
                     {
+                        logger.Error("getAllUsersByAdmin => " +ex.StackTrace);
+                        logger.Error("getAllUsersByAdmin => " + ex.Message);
                         Console.WriteLine(ex.StackTrace);
-                        return null;
+                        return new List<User>();
                     }
                 }
             }
@@ -749,15 +755,16 @@ namespace Api.Socioboard.Model
                 {
                     try
                     {
-                        int i = session.CreateQuery("Update User set ProfileUrl =:profileurl, UserName =: username , EmailId=:emailid,AccountType=:accounttype,UserStatus=:userstatus,ExpiryDate=:expirydate,TimeZone=:timezone where Id = :twtuserid")
-                                  .SetParameter("twtuserid", user.Id)
-                                  .SetParameter("profileurl", user.ProfileUrl)
+                        int i = session.CreateQuery("Update User set UserName =: username, EmailId=:emailid, AccountType=:accounttype, UserStatus=:userstatus, PaymentStatus=:paymentstatus where Id = :userid")
+                                  .SetParameter("userid", user.Id)
+                                  //.SetParameter("profileurl", user.ProfileUrl)
                                   .SetParameter("username", user.UserName)
                                   .SetParameter("emailid", user.EmailId)
-                                .SetParameter("accounttype", user.AccountType)
+                                  .SetParameter("accounttype", user.AccountType)
                                   .SetParameter("userstatus", user.UserStatus)
-                                  .SetParameter("expirydate", user.ExpiryDate)
-                                  .SetParameter("timezone", user.TimeZone)
+                                  //.SetParameter("expirydate", user.ExpiryDate)
+                                  //.SetParameter("timezone", user.TimeZone)
+                                  .SetParameter("paymentstatus", user.PaymentStatus)
                                   .ExecuteUpdate();
                         transaction.Commit();
                     }
@@ -1424,6 +1431,16 @@ namespace Api.Socioboard.Model
                 {
                     return new List<Domain.Socioboard.Domain.User>();
                 }
+            }
+        }
+
+        public bool IsUserExist(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.User>()
+                                 .Any(x => x.Id == UserId);
+                return exist;
             }
         }
 

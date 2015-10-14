@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Domain.Socioboard</RootNamespace>
     <AssemblyName>Domain.Socioboard</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,11 +30,24 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\SocioboardAPI\lib\Newtonsoft.Json.dll</HintPath>
@@ -79,6 +93,7 @@
     <Compile Include="Domain\FacebookInsightPostStats.cs" />
     <Compile Include="Domain\FacebookInsightStats.cs" />
     <Compile Include="Domain\FacebookMessage.cs" />
+    <Compile Include="Domain\FacebookPagePost.cs" />
     <Compile Include="Domain\FacebookStats.cs" />
     <Compile Include="Domain\FbPageComment.cs" />
     <Compile Include="Domain\FbPageLiker.cs" />
@@ -91,6 +106,8 @@
     <Compile Include="Domain\GoogleAnalyticsStats.cs" />
     <Compile Include="Domain\GooglePlusAccount.cs" />
     <Compile Include="Domain\GooglePlusActivities.cs" />
+    <Compile Include="Domain\GoogleplusComments.cs" />
+    <Compile Include="Domain\GoogleplusLike.cs" />
     <Compile Include="Domain\GroupProfile.cs" />
     <Compile Include="Domain\GroupReports.cs" />
     <Compile Include="Domain\Groups.cs" />
@@ -127,6 +144,10 @@
     <Compile Include="Domain\InstagramAccount.cs" />
     <Compile Include="Domain\InstagramComment.cs" />
     <Compile Include="Domain\InstagramFeed.cs" />
+    <Compile Include="Domain\InstagramPostComments.cs" />
+    <Compile Include="Domain\InstagramPostLikes.cs" />
+    <Compile Include="Domain\InstagramSelfFeed.cs" />
+    <Compile Include="Domain\InstagramUserDetails.cs" />
     <Compile Include="Domain\Invitation.cs" />
     <Compile Include="Domain\IPackageRepository.cs" />
     <Compile Include="Domain\IScheduledMessageRepository.cs" />
@@ -159,6 +180,7 @@
     <Compile Include="Domain\LoginLogs.cs" />
     <Compile Include="Domain\MandrillAccount.cs" />
     <Compile Include="Domain\Messages.cs" />
+    <Compile Include="Domain\MongoFacebookFeed.cs" />
     <Compile Include="Domain\News.cs" />
     <Compile Include="Domain\NewsLetter.cs" />
     <Compile Include="Domain\Package.cs" />
@@ -186,6 +208,7 @@
     <Compile Include="Domain\TwitterFollowerNames.cs" />
     <Compile Include="Domain\TwitterMessage.cs" />
     <Compile Include="Domain\TwitterNameTable.cs" />
+    <Compile Include="Domain\TwitterRecentDetails.cs" />
     <Compile Include="Domain\TwitterReport.cs" />
     <Compile Include="Domain\TwitterStats.cs" />
     <Compile Include="Domain\TwitterStatsReport.cs" />
@@ -199,9 +222,18 @@
     <Compile Include="Helper\ScheduledTracker.cs" />
     <Compile Include="Helper\TwitterProfileDetails.cs" />
     <Compile Include="Helper\TwitterRecentFollower.cs" />
+    <Compile Include="MongoDomain\FacebookMessage.cs" />
+    <Compile Include="MongoDomain\GoogleplusComments.cs" />
+    <Compile Include="MongoDomain\GooglePlusFeed.cs" />
+    <Compile Include="MongoDomain\InstagramComment.cs" />
+    <Compile Include="MongoDomain\InstagramFeed.cs" />
+    <Compile Include="MongoDomain\TumblrFeed.cs" />
+    <Compile Include="MongoDomain\TwitterFeed.cs" />
+    <Compile Include="MongoDomain\TwitterMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

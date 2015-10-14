@@ -43,15 +43,15 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
                         // And Set the reuired paremeters to find the specific values.
-                       // List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where UserId = :userid and ProfileId = :fbuserid")
-                       // .SetParameter("userid", Userid)
-                       // .SetParameter("fbuserid", ProfileId)
-                       // .List<Domain.Socioboard.Domain.FacebookFeed>()
-                       //.ToList<Domain.Socioboard.Domain.FacebookFeed>();
-                       // if (alst.Count == 0 || alst == null)
-                       //     return false;
-                       // else
-                       //     return true;
+                        // List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where UserId = :userid and ProfileId = :fbuserid")
+                        // .SetParameter("userid", Userid)
+                        // .SetParameter("fbuserid", ProfileId)
+                        // .List<Domain.Socioboard.Domain.FacebookFeed>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookFeed>();
+                        // if (alst.Count == 0 || alst == null)
+                        //     return false;
+                        // else
+                        //     return true;
 
                         bool exist = session.Query<Domain.Socioboard.Domain.FacebookFeed>()
                             .Any(x => x.UserId == Userid && x.ProfileId == ProfileId);
@@ -132,7 +132,7 @@ namespace Api.Socioboard.Services
                         return null;
                     }
 
-                  
+
 
                 }//End Trasaction
             }//End session
@@ -858,14 +858,14 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to get all facebook feeds of profile by facebook profile id  
-                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.Query<Domain.Socioboard.Domain.FacebookFeed>().Where(x => x.FeedDescription.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId))).OrderByDescending(x=>x.FeedDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
-                         //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.Query<Domain.Socioboard.Domain.FacebookFeed>().Where(x => x.FeedDescription.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId))).OrderByDescending(x => x.FeedDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
                         .ToList<Domain.Socioboard.Domain.FacebookFeed>();
                         //    .SetParameter("UserId", UserId)
                         //.SetParameter("keyword", keyword)
                         //  .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
                         //.SetMaxResults(20)
-                        
+
                         //.List<Domain.Socioboard.Domain.FacebookFeed>()
                         //.ToList<Domain.Socioboard.Domain.FacebookFeed>();
 
@@ -904,7 +904,7 @@ namespace Api.Socioboard.Services
                         List<Domain.Socioboard.Domain.FacebookFeed> alst = session.Query<Domain.Socioboard.Domain.FacebookFeed>().Where(x => x.FeedDescription.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileId)).OrderByDescending(x => x.FeedDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
                             //.List<Domain.Socioboard.Domain.FacebookFeed>()
                         .ToList<Domain.Socioboard.Domain.FacebookFeed>();
-                       
+
 
                         return alst;
 
@@ -937,7 +937,7 @@ namespace Api.Socioboard.Services
                         //Proceed action, to get all facebook feeds of profile by facebook profile id  
                         List<Domain.Socioboard.Domain.FacebookFeed> alst = session.Query<Domain.Socioboard.Domain.FacebookFeed>().Where(x => x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileId)).OrderByDescending(x => x.FeedDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop))//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
                         .ToList<Domain.Socioboard.Domain.FacebookFeed>();
-                     
+
                         return alst;
 
                     }
@@ -986,7 +986,7 @@ namespace Api.Socioboard.Services
 
         public int GetFeedCountByProfileIdAndUserId(Guid UserId, string profileids)
         {
-           //Creates a database connection and opens up a session
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 //Begin session trasaction and opens up.
@@ -995,7 +995,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         string[] arrsrt = profileids.Split(',');
-                        var results = session.QueryOver<Domain.Socioboard.Domain.FacebookFeed>().Where(U => U.UserId==UserId).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                        var results = session.QueryOver<Domain.Socioboard.Domain.FacebookFeed>().Where(U => U.UserId == UserId).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
                         return Int16.Parse(results.ToString());
                     }
                     catch (Exception ex)
@@ -1007,6 +1007,89 @@ namespace Api.Socioboard.Services
             }// End se
         }
 
+        public void AddFacebookPagePost(Domain.Socioboard.Domain.FacebookPagePost _FacebookPagePost)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        bool exist = session.Query<Domain.Socioboard.Domain.FacebookPagePost>()
+                               .Any(x => x.PostId == _FacebookPagePost.PostId);
+                        if (exist)
+                        {
+                            int i = session.CreateQuery("Update FacebookPagePost set PageName =:PageName, Message =: Message, Link=:Link, Name=: Name, Description=:Description,Likes=:Likes, Comments=:Comments,Shares=:Shares,Reach=:Reach, Talking=:Talking,EngagedUsers=:EngagedUsers where PostId=:PostId")
+                                .SetParameter("PageName", _FacebookPagePost.PageName)
+                                .SetParameter("Message", _FacebookPagePost.Message)
+                                .SetParameter("Link", _FacebookPagePost.Link)
+                                .SetParameter("Name", _FacebookPagePost.Name)
+                                .SetParameter("Name", _FacebookPagePost.Name)
+                                .SetParameter("Description", _FacebookPagePost.Description)
+                                .SetParameter("Likes", _FacebookPagePost.Likes)
+                                .SetParameter("Comments", _FacebookPagePost.Comments)
+                                .SetParameter("Shares", _FacebookPagePost.Shares)
+                                .SetParameter("Reach", _FacebookPagePost.Reach)
+                                .SetParameter("Talking", _FacebookPagePost.Talking)
+                                .SetParameter("EngagedUsers", _FacebookPagePost.EngagedUsers)
+                                .SetParameter("PostId", _FacebookPagePost.PostId)
+                                .ExecuteUpdate();
+                            transaction.Commit();
 
+                        }
+                        else 
+                        {
+                            session.Save(_FacebookPagePost);
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }//End Transaction
+            }// End se
+        }
+        public List<Domain.Socioboard.Domain.FacebookPagePost> GetFacebookPagePostByDay(string ProfileId, int days)
+        { 
+            using(NHibernate.ISession session=SessionFactory.GetNewSession())
+            {
+                //List<Domain.Socioboard.Domain.FacebookPagePost> lstfacebookpost = session.Query<Domain.Socioboard.Domain.FacebookPagePost>().Where(x => x.PageId == ProfileId && x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime > DateTime.Now.AddDays(-days).Date).ToList();
+                List<Domain.Socioboard.Domain.FacebookPagePost> lstfacebookpost = session.CreateQuery("from FacebookPagePost where PageId=:PageId")
+                    .SetParameter("PageId", ProfileId).List<Domain.Socioboard.Domain.FacebookPagePost>().Where(x=> x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime > DateTime.Now.AddDays(-days).Date).ToList();
+                return lstfacebookpost;
+            }
+        }
+
+        public List<Domain.Socioboard.Domain.FacebookFeed> getAllFeedDetailForMongo()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // string str = "from FacebookFeed ";
+                        // List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery(str)
+                        //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookFeed>();
+
+                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.Query<Domain.Socioboard.Domain.FacebookFeed>().ToList<Domain.Socioboard.Domain.FacebookFeed>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
     }
 }

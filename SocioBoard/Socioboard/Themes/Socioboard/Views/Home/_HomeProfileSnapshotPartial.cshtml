@@ -4,6 +4,8 @@
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     int PostCount = 0;
     int LikesCount = 0;
+    System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
+    string formate = "yyyy/MM/dd HH:mm:ss";
 }
 
 <div class="row">
@@ -56,8 +58,8 @@
                 feedcount = lstdic.Count;
                 if (feedcount != 0)
                 {
-                    Domain.Socioboard.Domain.FacebookFeed objFacebookFeeds = (Domain.Socioboard.Domain.FacebookFeed)lstdic[feedcount - 1];
-                    days = (DateTime.Now.Date - objFacebookFeeds.FeedDate.Date).Days;
+                    Domain.Socioboard.Domain.MongoFacebookFeed objFacebookFeeds = (Domain.Socioboard.Domain.MongoFacebookFeed)lstdic[feedcount - 1];
+                    days = (DateTime.Now.Date - DateTime.ParseExact(objFacebookFeeds.FeedDate,formate,provider).Date).Days;
                     if (days == 0)
                     {
                         days = 1;
@@ -90,7 +92,7 @@
                    <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
-                            Domain.Socioboard.Domain.FacebookFeed objFacebookFeed = ((Domain.Socioboard.Domain.FacebookFeed)lstdic[i]);
+                            Domain.Socioboard.Domain.MongoFacebookFeed objFacebookFeed = ((Domain.Socioboard.Domain.MongoFacebookFeed)lstdic[i]);
                             string ms = string.Empty;
                             if (objFacebookFeed.FeedDescription.Length > 23)
                             {
@@ -193,8 +195,8 @@
                 feedcount = lstdic.Count;
                 if (feedcount != 0)
                 {
-                    Domain.Socioboard.Domain.TwitterFeed objTwtFeed = (Domain.Socioboard.Domain.TwitterFeed)lstdic[feedcount - 1];
-                    days = (DateTime.Now.Date - objTwtFeed.FeedDate.Date).Days;
+                    Domain.Socioboard.MongoDomain.TwitterFeed objTwtFeed = (Domain.Socioboard.MongoDomain.TwitterFeed)lstdic[feedcount - 1];
+                    days = (DateTime.Now.Date - DateTime.ParseExact(objTwtFeed.FeedDate,formate,provider).Date).Days;
                     if (days == 0)
                     {
                         days = 1;
@@ -202,7 +204,7 @@
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
-                List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed = new List<Domain.Socioboard.Domain.TwitterFeed>();
+                List<Domain.Socioboard.MongoDomain.TwitterFeed> lstTwitterFeed = new List<Domain.Socioboard.MongoDomain.TwitterFeed>();
                 <div id="mid_@objTwitterAccount.TwitterUserId" class="col-lg-4 col-md-9">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -226,7 +228,7 @@
                     <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
-                            Domain.Socioboard.Domain.TwitterFeed objTwitterFeed = ((Domain.Socioboard.Domain.TwitterFeed)lstdic[i]);
+                            Domain.Socioboard.MongoDomain.TwitterFeed objTwitterFeed = ((Domain.Socioboard.MongoDomain.TwitterFeed)lstdic[i]);
                             string ms = string.Empty;
                             if (objTwitterFeed.Feed.Length > 23)
                             {

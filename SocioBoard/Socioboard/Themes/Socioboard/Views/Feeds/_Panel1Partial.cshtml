@@ -4,6 +4,8 @@
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
+    System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
+    string formate = "yyyy/MM/dd HH:mm:ss";
 }
 
 <ul class="chat">
@@ -14,7 +16,7 @@
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var facebookmsg in lstdic)
             {
-                FacebookMessage item = (FacebookMessage)facebookmsg;
+                Domain.Socioboard.MongoDomain.FacebookMessage item = (Domain.Socioboard.MongoDomain.FacebookMessage)facebookmsg;
                 try
                 {
                     string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Message);
@@ -29,7 +31,7 @@
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.MessageDate,formate,provider).ToString());
                         }
                         @messagedate
                     </small>
@@ -139,7 +141,7 @@
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.MessageDate,formate,provider).ToString());
                         }
                         <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
@@ -227,7 +229,7 @@
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var twitterfeed in lstdic)
             {
-                TwitterFeed item = (TwitterFeed)twitterfeed;
+                Domain.Socioboard.MongoDomain.TwitterFeed item = (Domain.Socioboard.MongoDomain.TwitterFeed)twitterfeed;
                 try
                 {
                     string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Feed);
@@ -248,7 +250,7 @@
                             <ul class="dropdown-menu slidedown" style="display: block; margin-left: -140px">
                                 @*<li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>*@
                                 @*<li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-star fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>*@
-                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'", "")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-comment fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
+                                <li><a onclick="QuoteMessagePopup('@item.ProfileId','@item.MessageId');" data-target="#QuoteCompose" data-toggle="modal" id="QuoteMessagePopup_@item.MessageId" status="@item.Feed"><i class="fa fa-comment fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
                                 <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-envelope fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
                                 <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-ban fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
                             </ul>
@@ -257,7 +259,7 @@
                     <br />
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime,DateTime.ParseExact(item.FeedDate,formate,provider).ToString());
                         }
                         @messagedate
                     </small>
@@ -345,7 +347,7 @@
                     </div>
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime,DateTime.ParseExact(item.FeedDate,formate,provider).ToString());
                         }
                         @messagedate<i class="fa fa-clock-o fa-fw"></i>
                     </small>

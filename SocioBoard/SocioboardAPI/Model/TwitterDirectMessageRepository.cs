@@ -7,10 +7,12 @@ using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using NHibernate.Linq;
 using NHibernate.Criterion;
+using log4net;
 namespace Api.Socioboard.Services
 {
     public class TwitterDirectMessageRepository : ITwitterDirectMessagesRepository
     {
+        ILog logger = LogManager.GetLogger(typeof(TwitterDirectMessageRepository));
         /// <addNewDirectMessage>
         /// Add New Direct Message
         /// </summary>
@@ -441,6 +443,43 @@ namespace Api.Socioboard.Services
                     }
                 }//End Transaction
             }//End session
+        }
+
+        public int GetTwitterDirectMessageSentCount(Guid UserId, string profileids, int days)
+        { 
+          //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = profileids.Split(',');
+                    var results = session.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && U.Type == "twt_directmessages_sent" && U.CreatedDate < DateTime.Now && U.CreatedDate > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.SenderId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int16.Parse(results.ToString());
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("GetTwitterDirectMessageSentCount => "+ ex.Message);
+                    return 0;
+                }
+            }
+        }
+        public int GetTwitterDirectMessageRecievedCount(Guid UserId, string profileids, int days)
+         { 
+          //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    string[] arrsrt = profileids.Split(',');
+                    var results = session.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && U.Type == "twt_directmessages_received" && U.CreatedDate < DateTime.Now && U.CreatedDate > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.RecipientId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    return Int16.Parse(results.ToString());
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("GetTwitterDirectMessageRecievedCount => "+ex.Message);
+                    return 0;
+                }
+            }
         }
     }
 }

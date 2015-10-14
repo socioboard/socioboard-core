@@ -451,7 +451,7 @@ namespace Socioboard.Controllers
         {
             string AllProfileId = string.Empty;
             string FbProfileId = string.Empty;
-            string TwtProfileId = string.Empty;
+            string TwtProfileId = string.Empty; 
             int fbmsgcount = 0;
             int twtmsgcount = 0;
             int allsentmsgcount = 0;
@@ -502,28 +502,28 @@ namespace Socioboard.Controllers
             {
                 Console.Write(Err.StackTrace);
             }
-            try
-            {
-                Api.FacebookFeed.FacebookFeed objFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-                objFacebookFeed.Timeout = 300000;
-                //fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
-                fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            try
-            {
-                Api.TwitterMessage.TwitterMessage objTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-                objTwitterMessage.Timeout = 300000;
-                //twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
-                twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), TwtProfileId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
+            //try
+            //{
+            //    Api.FacebookFeed.FacebookFeed objFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+            //    objFacebookFeed.Timeout = 300000;
+            //    //fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
+            //    fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //}
+            //try
+            //{
+            //    Api.TwitterMessage.TwitterMessage objTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            //    objTwitterMessage.Timeout = 300000;
+            //    //twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
+            //    twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), TwtProfileId);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //}
             try
             {
                 Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
@@ -540,14 +540,26 @@ namespace Socioboard.Controllers
             string _totalSentMessage = "0";
             string _totalTwitterFollowers = "0";
             string _totalFacebookFan = "0";
+
             try
             {
-                _totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
+                //_totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
+                Api.InboxMessages.InboxMessages _InboxMessages = new Api.InboxMessages.InboxMessages();
+                _totalIncomingMessage = _InboxMessages.getInboxMessageCount(objUser.Id.ToString(), AllProfileId);
             }
             catch (Exception ex)
             {
+                _totalIncomingMessage = "0";
                 Console.WriteLine(ex.StackTrace);
             }
+            //try
+            //{
+            //    _totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //}
             try
             {
                 _totalSentMessage = allsentmsgcount.ToString();

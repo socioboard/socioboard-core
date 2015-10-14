@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
-
+using Api.Socioboard.Model;
 namespace Api.Socioboard.Services
 {
     /// <summary>
@@ -26,6 +26,7 @@ namespace Api.Socioboard.Services
         SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
         TeamRepository objTeamRepository = new TeamRepository();
         GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
+        UserRepository objUserRepository = new UserRepository();
         Domain.Socioboard.Domain.FacebookAccount objFacebook;
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -317,6 +318,7 @@ namespace Api.Socioboard.Services
                 FacebookAccountRepository objFbRepo = new FacebookAccountRepository();
                 ArrayList lstFBAcc = objFbRepo.getAllFacebookAccounts();
                 return new JavaScriptSerializer().Serialize(lstFBAcc);
+                
             }
             catch (Exception ex)
             {
@@ -325,7 +327,345 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        public string AddFacebookAccountFromTweetBoard(string UserId, string GroupId, string ProfileId, string AccessToken, string FriendsCount, string Name, string EmailId)
+        {
+            if (objUserRepository.IsUserExist(Guid.Parse(UserId)))
+            {
 
+                if (!objFacebookAccountRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+
+                    Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+                    _FacebookAccount.Id = Guid.NewGuid();
+                    _FacebookAccount.ProfileType = "account";
+                    _FacebookAccount.IsActive = 1;
+                    _FacebookAccount.AccessToken = AccessToken;
+                    _FacebookAccount.EmailId = EmailId;
+                    _FacebookAccount.FbUserId = ProfileId;
+                    _FacebookAccount.FbUserName = Name;
+                    _FacebookAccount.Friends = Int32.Parse(FriendsCount);
+                    objFacebookAccountRepository.addFacebookUser(_FacebookAccount);
+
+                    #region Add TeamMemberProfile
+                    Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    if (objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, ProfileId))
+                    {
+                        objTeamMemberProfile.Id = Guid.NewGuid();
+                        objTeamMemberProfile.TeamId = objTeam.Id;
+                        objTeamMemberProfile.Status = 1;
+                        objTeamMemberProfile.ProfileType = "facebook";
+                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        objTeamMemberProfile.ProfileId = ProfileId;
+                        objTeamMemberProfile.ProfileName = Name;
+                        objTeamMemberProfile.ProfilePicUrl = "http://graph.facebook.com/" + objTeamMemberProfile.ProfileId + "/picture?type=small";
+                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    }
+                    #endregion
+                    #region SocialProfile
+                    Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                    objSocialProfile.Id = Guid.NewGuid();
+                    objSocialProfile.ProfileType = "facebook";
+                    objSocialProfile.ProfileId = ProfileId;
+                    objSocialProfile.UserId = Guid.Parse(UserId);
+                    objSocialProfile.ProfileDate = DateTime.Now;
+                    objSocialProfile.ProfileStatus = 1;
+                    #endregion
+                    if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                    {
+                        objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+                    }
+                    return "account added";
+                }
+                else
+                {
+                    return "account already exist";
+                }
+            }
+            else {
+                return "user not exist";
+            }
+        }
+        [WebMethod]
+        public string AllFacebookPageDetails()
+        {
+            try
+            {
+                return new JavaScriptSerializer().Serialize(objFacebookAccountRepository.GetAllFacebookPages());
+            }
+            catch (Exception ex)
+            {
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.FacebookAccount>());
+            }
+        }
+
+
+
+
+
+
+
+        [WebMethod]
+        public string MovefbFeedsToMongo() 
+        {
+            string output = string.Empty;
+            List<Domain.Socioboard.Domain.FacebookFeed> fbfeeds = objFacebookFeedRepository.getAllFeedDetailForMongo();
+            MongoRepository mongorepo = new MongoRepository("MongoFacebookFeed");
+
+            foreach (var item in fbfeeds) 
+            {
+                Domain.Socioboard.Domain.MongoFacebookFeed Mongofbfeed = new Domain.Socioboard.Domain.MongoFacebookFeed();
+                Mongofbfeed.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                Mongofbfeed.EntryDate = item.EntryDate.ToString("yyyy/MM/dd HH:mm:ss");
+                Mongofbfeed.FbComment = item.FbComment;
+                Mongofbfeed.FbLike = item.FbLike;
+                Mongofbfeed.FeedDate = item.FeedDate.ToString("yyyy/MM/dd HH:mm:ss");
+                Mongofbfeed.FeedDescription = item.FeedDescription;
+                Mongofbfeed.FeedId = item.FeedId;
+                Mongofbfeed.FromId = item.FromId;
+                Mongofbfeed.FromName = item.FromName;
+                Mongofbfeed.FromProfileUrl = item.FromProfileUrl;
+                Mongofbfeed.FromScreenName = item.FromScreenName;
+                Mongofbfeed.InReplyToStatusUserId = item.InReplyToStatusUserId;
+                Mongofbfeed.MessageDate = item.MessageDate.ToString();
+                Mongofbfeed.MessageId = item.MessageId;
+                Mongofbfeed.Picture = item.Picture;
+                Mongofbfeed.ProfileId = item.ProfileId;
+                Mongofbfeed.ProfileType = item.ProfileType;
+                Mongofbfeed.ReadStatus = item.ReadStatus;
+                Mongofbfeed.ScreenName = item.ScreenName;
+                Mongofbfeed.SourceUrl = item.SourceUrl;
+                Mongofbfeed.TwitterMsg = item.TwitterMsg;
+                Mongofbfeed.Type = item.Type;
+                Mongofbfeed.UserId = item.UserId.ToString();
+               mongorepo.Add<Domain.Socioboard.Domain.MongoFacebookFeed>(Mongofbfeed);
+        
+            }
+
+            return output;
+        
+        }
+
+        [WebMethod]
+        public string MoveFbMessageToMongo() 
+        {
+            string output = string.Empty;
+            bool exit = true;
+            int skip = 0;
+                    MongoRepository mongorepo = new MongoRepository("FacebookMessage");
+
+            while(exit)
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> fbmsgs = objFacebookMessageRepository.getAllFacebookMessagesMongo(skip);
+                if (fbmsgs.Count() == 0) 
+                {
+                    exit = false;
+                }
+
+                foreach (var item in fbmsgs)
+                {
+                    Domain.Socioboard.MongoDomain.FacebookMessage mfbmsg = new Domain.Socioboard.MongoDomain.FacebookMessage();
+                    mfbmsg.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                    mfbmsg.EntryDate = item.EntryDate.ToString("yyyy/MM/dd HH:mm:ss");
+                    mfbmsg.FbComment = item.FbComment;
+                    mfbmsg.FbLike = item.FbLike;
+                    mfbmsg.FromId = item.FromId;
+                    mfbmsg.FromName = item.FromName;
+                    mfbmsg.FromProfileUrl = item.FromProfileUrl;
+                    mfbmsg.IsArchived = item.IsArchived.ToString();
+                    mfbmsg.Message = item.Message;
+                    mfbmsg.MessageDate = item.MessageDate.ToString("yyyy/MM/dd HH:mm:ss");
+                    mfbmsg.MessageId = item.MessageId;
+                    mfbmsg.Picture = item.Picture;
+                    mfbmsg.ProfileId = item.ProfileId;
+                    mfbmsg.Type = item.Type;
+                    mfbmsg.UserId = item.UserId.ToString();
+                    mongorepo.Add<Domain.Socioboard.MongoDomain.FacebookMessage>(mfbmsg);
+                }
+                skip = skip + 50;
+            }
+          
+            return output;
+        }
+
+        [WebMethod]
+        public string MoveTwitterFeedTOMOngo() 
+        {
+            TwitterFeedRepository twtfeedrepo = new TwitterFeedRepository();
+            string output = string.Empty;
+            bool exit = true;
+            int skip = 0;
+            MongoRepository mongorepo = new MongoRepository("TwitterFeed");
+
+            while (exit)
+            {
+                List<Domain.Socioboard.Domain.TwitterFeed> fbmsgs = twtfeedrepo.getAllTwitterFeedsMongo(skip);
+                if (fbmsgs.Count() == 0)
+                {
+                    exit = false;
+                }
+
+                foreach (var item in fbmsgs)
+                {
+                    Domain.Socioboard.MongoDomain.TwitterFeed mfbmsg = new Domain.Socioboard.MongoDomain.TwitterFeed();
+                    mfbmsg.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                  //  mfbmsg.EntryDate = item.EntryDate.ToString();
+                    mfbmsg.Feed = item.Feed;
+                    mfbmsg.FeedDate = item.FeedDate.ToString("yyyy/MM/dd HH:mm:ss");
+                    mfbmsg.FromId = item.FromId;
+                    mfbmsg.FromName = item.FromName;
+                    mfbmsg.FromProfileUrl = item.FromProfileUrl;
+                    mfbmsg.FromScreenName = item.FromScreenName;
+                    mfbmsg.MessageId = item.MessageId;
+                    mfbmsg.InReplyToStatusUserId = item.InReplyToStatusUserId;
+                    mfbmsg.MessageId = item.MessageId;
+                    mfbmsg.MediaUrl = string.Empty ;
+                    mfbmsg.ProfileId = item.ProfileId;
+                    mfbmsg.Type = item.Type;
+                    mfbmsg.ScreenName = item.ScreenName;
+                    mfbmsg.SourceUrl = item.SourceUrl;
+                    mfbmsg.strId = mfbmsg.Id.ToString();
+                   // mfbmsg.UserId = item.UserId.ToString();
+                    mongorepo.Add<Domain.Socioboard.MongoDomain.TwitterFeed>(mfbmsg);
+                }
+                skip = skip + 50;
+            }
+
+            return output;
+        }
+
+        [WebMethod]
+        public string MoveTwitterMessagesTOMOngo()
+        {
+            TwitterMessageRepository twtfeedrepo = new TwitterMessageRepository();
+            string output = string.Empty;
+            bool exit = true;
+            int skip = 0;
+            MongoRepository mongorepo = new MongoRepository("TwitterMessage");
+
+            while (exit)
+            {
+                List<Domain.Socioboard.Domain.TwitterMessage> fbmsgs = twtfeedrepo.getAllTwitterMessagesMongo(skip);
+                if (fbmsgs.Count() == 0)
+                {
+                    exit = false;
+                }
+
+                foreach (var item in fbmsgs)
+                {
+                    Domain.Socioboard.MongoDomain.TwitterMessage mfbmsg = new Domain.Socioboard.MongoDomain.TwitterMessage();
+                    mfbmsg.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                    //  mfbmsg.EntryDate = item.EntryDate.ToString();
+                    mfbmsg.FromId = item.FromId;
+                    mfbmsg.FromName = item.FromName;
+                    mfbmsg.FromProfileUrl = item.FromProfileUrl;
+                    mfbmsg.FromScreenName = item.FromScreenName;
+                    mfbmsg.MessageId = item.MessageId;
+                    mfbmsg.InReplyToStatusUserId = item.InReplyToStatusUserId;
+                    mfbmsg.MessageDate = item.MessageDate.ToString("yyyy/MM/dd HH:mm:ss");
+                    mfbmsg.IsArchived = item.IsArchived;
+                    mfbmsg.ProfileId = item.ProfileId;
+                    mfbmsg.Type = item.Type;
+                    mfbmsg.ScreenName = item.ScreenName;
+                    mfbmsg.SourceUrl = item.SourceUrl;
+                    mfbmsg.ReadStatus = mfbmsg.ReadStatus;
+                    mfbmsg.ProfileType = item.ProfileType;
+                    mfbmsg.TwitterMsg = item.TwitterMsg;
+                    mongorepo.Add<Domain.Socioboard.MongoDomain.TwitterMessage>(mfbmsg);
+                }
+                skip = skip + 50;
+            }
+
+            return output;
+        }
+
+        [WebMethod]
+        public string MoveInstagramCommentToMongo()
+        {
+            InstagramCommentRepository twtfeedrepo = new InstagramCommentRepository();
+            string output = string.Empty;
+            bool exit = true;
+            int skip = 0;
+            MongoRepository mongorepo = new MongoRepository("InstagramComment");
+
+            while (exit)
+            {
+                List<Domain.Socioboard.Domain.InstagramComment> fbmsgs = twtfeedrepo.getAllInstagramCommentMongo(skip);
+                if (fbmsgs.Count() == 0)
+                {
+                    exit = false;
+                }
+
+                foreach (var item in fbmsgs)
+                {
+                    Domain.Socioboard.MongoDomain.InstagramComment mfbmsg = new Domain.Socioboard.MongoDomain.InstagramComment();
+                    mfbmsg.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                    //  mfbmsg.EntryDate = item.EntryDate.ToString();
+                    mfbmsg.Comment = item.Comment;
+                    mfbmsg.CommentDate = item.CommentDate;
+                    mfbmsg.CommentId = item.CommentId;
+                    mfbmsg.FeedId = item.FeedId;
+                    mfbmsg.FromName = item.FromName;
+                    mfbmsg.FromProfilePic = item.FromProfilePic;
+                    mfbmsg.InstagramId = item.InstagramId;
+                    mfbmsg.strId = item.Id.ToString();
+
+                    mongorepo.Add<Domain.Socioboard.MongoDomain.InstagramComment>(mfbmsg);
+                }
+                skip = skip + 50;
+            }
+
+            return output;
+        }
+
+
+
+        [WebMethod]
+        public string MoveInstagramFeedToMongo()
+        {
+            InstagramFeedRepository twtfeedrepo = new InstagramFeedRepository();
+            string output = string.Empty;
+            bool exit = true;
+            int skip = 0;
+            MongoRepository mongorepo = new MongoRepository("InstagramFeed");
+
+            while (exit)
+            {
+                List<Domain.Socioboard.Domain.InstagramFeed> fbmsgs = twtfeedrepo.getAllInstagramFeedMongo(skip);
+                if (fbmsgs.Count() == 0)
+                {
+                    exit = false;
+                }
+
+                foreach (var item in fbmsgs)
+                {
+                    Domain.Socioboard.MongoDomain.InstagramFeed mfbmsg = new Domain.Socioboard.MongoDomain.InstagramFeed();
+                    mfbmsg.Id = MongoDB.Bson.ObjectId.GenerateNewId();
+                    //  mfbmsg.EntryDate = item.EntryDate.ToString();
+                    mfbmsg.AdminUser = item.AdminUser;
+                    mfbmsg.CommentCount = item.CommentCount;
+                    mfbmsg.Feed = item.Feed;
+                    mfbmsg.FeedId = item.FeedId;
+                    mfbmsg.FeedDate = item.FeedDate;
+                    mfbmsg.FeedId = item.FeedId;
+                    mfbmsg.InstagramId = item.InstagramId;
+                    mfbmsg.strId = item.Id.ToString();
+                    mfbmsg.FeedImageUrl = item.FeedImageUrl;
+                    mfbmsg.FeedUrl = item.FeedUrl;
+                    mfbmsg.FromId = item.FromId;
+                    mfbmsg.ImageUrl = item.ImageUrl;
+                    mfbmsg.InstagramId = item.InstagramId;
+                    mfbmsg.IsLike = item.IsLike;
+                    mfbmsg.LikeCount = item.LikeCount;
+                    mfbmsg.strId = item.Id.ToString();
+                    mongorepo.Add<Domain.Socioboard.MongoDomain.InstagramFeed>(mfbmsg);
+                }
+                skip = skip + 50;
+            }
+
+            return output;
+        }
 
 
     }

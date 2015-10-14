@@ -3,10 +3,13 @@ using Api.Socioboard.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using System.Globalization;
+using MongoDB.Driver;
 
 namespace Api.Socioboard.Services
 {
@@ -20,21 +23,41 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class TumblrFeed : System.Web.Services.WebService
     {
-        TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
+        //TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
+        MongoRepository tumblrFeedRepo = new MongoRepository("TumblrFeed");
+        private CultureInfo provider = CultureInfo.InvariantCulture;
+        private string format = "yyyy/MM/dd HH:mm:ss";
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllTumblrFeedOfUsers(string UserId, string ProfileId)
         {
+            List<Domain.Socioboard.MongoDomain.TumblrFeed> lstTumblrFeed;
+            var ret = tumblrFeedRepo.Find<Domain.Socioboard.MongoDomain.TumblrFeed>(t => t.ProfileId.Equals(ProfileId));
             try
             {
-                List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = objTumblrFeedRepository.GetFeedsOfProfile(ProfileId, Guid.Parse(UserId));
-                return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+                var task = Task.Run(async () =>
+                   {
+                       return await ret;
+                   });
+
+                IList<Domain.Socioboard.MongoDomain.TumblrFeed> _lstTumblrFeed = task.Result;
+                lstTumblrFeed = _lstTumblrFeed.ToList();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                lstTumblrFeed = new List<Domain.Socioboard.MongoDomain.TumblrFeed>();
             }
+            return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+            //try
+            //{
+            //    List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = objTumblrFeedRepository.GetFeedsOfProfile(ProfileId, Guid.Parse(UserId));
+            //    return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //    return "Something Went Wrong";
+            //}
         }
 
         //
@@ -42,16 +65,37 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllTumblrFeedOfUsersWithRange(string UserId, string ProfileId, string noOfDataToSkip)
         {
+            List<Domain.Socioboard.MongoDomain.TumblrFeed> lstTumblrFeed;
             try
             {
-                List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = objTumblrFeedRepository.GetFeedsOfProfileWithRange(ProfileId, Guid.Parse(UserId), Convert.ToInt32(noOfDataToSkip));
-                return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+                var builder = Builders<Domain.Socioboard.MongoDomain.TumblrFeed>.Sort;
+                var sort = builder.Descending(t => t.date);
+                var ret = tumblrFeedRepo.FindWithRange<Domain.Socioboard.MongoDomain.TumblrFeed>(t => t.ProfileId.Equals(ProfileId), sort, Int32.Parse(noOfDataToSkip), 6);
+
+                var task = Task.Run(async () =>
+                   {
+                       return await ret;
+                   });
+
+                IList<Domain.Socioboard.MongoDomain.TumblrFeed> _lstTumblrFeed = task.Result;
+                lstTumblrFeed = _lstTumblrFeed.ToList();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                lstTumblrFeed = new List<Domain.Socioboard.MongoDomain.TumblrFeed>();
             }
+
+            return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+            //try
+            //{
+            //    List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = objTumblrFeedRepository.GetFeedsOfProfileWithRange(ProfileId, Guid.Parse(UserId), Convert.ToInt32(noOfDataToSkip));
+            //    return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //    return "Something Went Wrong";
+            //}
         }
     }
 }

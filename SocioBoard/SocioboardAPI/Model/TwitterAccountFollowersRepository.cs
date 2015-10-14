@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using NHibernate.Linq;
 namespace Api.Socioboard.Services
 {
     public class TwitterAccountFollowersRepository
@@ -173,9 +173,67 @@ namespace Api.Socioboard.Services
         }
 
 
+        public bool IsTwitterAccountExistsFirst(Guid UserId, string Profileid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.TwitterAccountFollowers>().Any(x => x.UserId == UserId && x.ProfileId == Profileid && x.EntryDate>=DateTime.Now.Date.AddSeconds(1) && x.EntryDate<=DateTime.Now.Date.AddHours(12));
+                return exist;
+            }
+        }
 
+        public bool IsTwitterAccountExistsSecond(Guid UserId, string Profileid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.TwitterAccountFollowers>().Any(x => x.UserId == UserId && x.ProfileId == Profileid && x.EntryDate >= DateTime.Now.Date.AddHours(12).AddSeconds(1) && x.EntryDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1));
+                return exist;
+            }
+        }
 
-    
+        public void UpdateTwitterAccountFollowerFirst(Domain.Socioboard.Domain.TwitterAccountFollowers _TwitterAccountFollowers)
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    string str = "Update TwitterAccountFollowers set FollowingsCount=:FollowingsCount, FollowersCount=:FollowersCount where UserId=:UserId and ProfileId=:ProfileId and EntryDate>=:EntryDate1 and EntryDate<=:EntryDate2";
+                    int i = session.CreateQuery(str)
+                        .SetParameter("FollowingsCount", _TwitterAccountFollowers.FollowingsCount)
+                        .SetParameter("FollowersCount", _TwitterAccountFollowers.FollowersCount)
+                        .SetParameter("UserId", _TwitterAccountFollowers.UserId)
+                        .SetParameter("ProfileId",_TwitterAccountFollowers.ProfileId)
+                        .SetParameter("EntryDate1", DateTime.Now.Date.AddSeconds(1))
+                        .SetParameter("EntryDate2", DateTime.Now.Date.AddHours(12))
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public void UpdateTwitterAccountFollowerSecond(Domain.Socioboard.Domain.TwitterAccountFollowers _TwitterAccountFollowers)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    string str = "Update TwitterAccountFollowers set FollowingsCount=:FollowingsCount, FollowersCount=:FollowersCount where UserId=:UserId and ProfileId=:ProfileId and EntryDate>=:EntryDate1 and EntryDate<=:EntryDate2";
+                    int i = session.CreateQuery(str)
+                        .SetParameter("FollowingsCount", _TwitterAccountFollowers.FollowingsCount)
+                        .SetParameter("FollowersCount", _TwitterAccountFollowers.FollowersCount)
+                        .SetParameter("UserId", _TwitterAccountFollowers.UserId)
+                        .SetParameter("ProfileId", _TwitterAccountFollowers.ProfileId)
+                         .SetParameter("EntryDate1", DateTime.Now.Date.AddHours(12).AddSeconds(1))
+                        .SetParameter("EntryDate2", DateTime.Now.AddDays(1).Date.AddSeconds(-1))
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                }
+            }
+        }
 
     }
 }

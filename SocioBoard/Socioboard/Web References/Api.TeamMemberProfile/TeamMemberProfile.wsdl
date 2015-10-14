@@ -63,6 +63,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTeamMemberTwitterProfilesByTeamId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamMemberTwitterProfilesByTeamIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamMemberTwitterProfilesByTeamIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -89,6 +103,12 @@
   </wsdl:message>
   <wsdl:message name="GetTeamMembeDetailsForGroupReportSoapOut">
     <wsdl:part name="parameters" element="tns:GetTeamMembeDetailsForGroupReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamMemberTwitterProfilesByTeamId" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamMemberTwitterProfilesByTeamIdResponse" />
   </wsdl:message>
   <wsdl:message name="AddTeamMemberProfileHttpGetIn">
     <wsdl:part name="TeamId" type="s:string" />
@@ -117,6 +137,12 @@
     <wsdl:part name="days" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdHttpGetIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddTeamMemberProfileHttpPostIn">
@@ -148,6 +174,12 @@
   <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdHttpPostIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberTwitterProfilesByTeamIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TeamMemberProfileSoap">
     <wsdl:operation name="AddTeamMemberProfile">
       <wsdl:input message="tns:AddTeamMemberProfileSoapIn" />
@@ -164,6 +196,10 @@
     <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
       <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportSoapIn" />
       <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberTwitterProfilesByTeamIdSoapIn" />
+      <wsdl:output message="tns:GetTeamMemberTwitterProfilesByTeamIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TeamMemberProfileHttpGet">
@@ -183,6 +219,10 @@
       <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportHttpGetIn" />
       <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberTwitterProfilesByTeamIdHttpGetIn" />
+      <wsdl:output message="tns:GetTeamMemberTwitterProfilesByTeamIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TeamMemberProfileHttpPost">
     <wsdl:operation name="AddTeamMemberProfile">
@@ -200,6 +240,10 @@
     <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
       <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportHttpPostIn" />
       <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberTwitterProfilesByTeamIdHttpPostIn" />
+      <wsdl:output message="tns:GetTeamMemberTwitterProfilesByTeamIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TeamMemberProfileSoap" type="tns:TeamMemberProfileSoap">
@@ -233,6 +277,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
       <soap:operation soapAction="http://tempuri.org/GetTeamMembeDetailsForGroupReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <soap:operation soapAction="http://tempuri.org/GetTeamMemberTwitterProfilesByTeamId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -279,6 +332,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamMemberTwitterProfilesByTeamId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TeamMemberProfileHttpGet" type="tns:TeamMemberProfileHttpGet">
     <http:binding verb="GET" />
@@ -311,6 +373,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
       <http:operation location="/GetTeamMembeDetailsForGroupReport" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <http:operation location="/GetTeamMemberTwitterProfilesByTeamId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -357,19 +428,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberTwitterProfilesByTeamId">
+      <http:operation location="/GetTeamMemberTwitterProfilesByTeamId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="TeamMemberProfile">
     <wsdl:port name="TeamMemberProfileSoap" binding="tns:TeamMemberProfileSoap">
-      <soap:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
+      <soap:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileSoap12" binding="tns:TeamMemberProfileSoap12">
-      <soap12:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileHttpGet" binding="tns:TeamMemberProfileHttpGet">
-      <http:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
+      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileHttpPost" binding="tns:TeamMemberProfileHttpPost">
-      <http:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
+      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

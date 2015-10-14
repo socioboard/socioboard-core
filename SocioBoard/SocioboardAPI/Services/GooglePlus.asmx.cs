@@ -10,7 +10,10 @@ using log4net;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Web.Script.Serialization;
-
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Api.Socioboard.Model;
+using System.Threading.Tasks;
 
 namespace Api.Socioboard.Services
 {
@@ -30,6 +33,11 @@ namespace Api.Socioboard.Services
         TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
         SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
         GooglePlusActivitiesRepository objGooglePlusActivitiesRepository = new GooglePlusActivitiesRepository();
+        GoogleplusCommentsRepository objGoogleplusCommentsRepository = new GoogleplusCommentsRepository();
+        
+        MongoRepository gplusFeedRepo = new MongoRepository("GoogleplusFeed");
+        MongoRepository gplusCommentRepo = new MongoRepository("GoogleplusComments");
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string AddGPlusAccount(string client_id, string client_secret, string redirect_uri, string UserId, string GroupId, string code)
@@ -178,7 +186,7 @@ namespace Api.Socioboard.Services
                 }
 
                 #endregion
-                GetUserActivities(UserId, _GooglePlusAccount.GpUserId, access_token);
+                GetUserActivities(UserId, _GooglePlusAccount.GpUserId, access_token,1);
                 return new JavaScriptSerializer().Serialize(_GooglePlusAccount);
             }
             catch (Exception ex)
@@ -186,22 +194,23 @@ namespace Api.Socioboard.Services
                 logger.Error(ex.Message);
                 return "";
             }
-            
+
         }
 
-        public void GetUserActivities(string UserId, string ProfileId, string AcessToken)
+        public void GetUserActivities(string UserId, string ProfileId, string AcessToken, int status)
         {
             oAuthTokenGPlus ObjoAuthTokenGPlus = new oAuthTokenGPlus();
             try
             {
-                Domain.Socioboard.Domain.GooglePlusActivities _GooglePlusActivities = null;
+                //Domain.Socioboard.Domain.GooglePlusActivities _GooglePlusActivities = null;
+                Domain.Socioboard.MongoDomain.GoogleplusFeed _GooglePlusActivities;
                 string _Activities = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetActivitiesList.Replace("[ProfileId]", ProfileId) + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), AcessToken);
                 JObject J_Activities = JObject.Parse(_Activities);
                 foreach (var item in J_Activities["items"])
                 {
-                    _GooglePlusActivities = new Domain.Socioboard.Domain.GooglePlusActivities();
-                    _GooglePlusActivities.Id = Guid.NewGuid();
-                    _GooglePlusActivities.UserId = Guid.Parse(UserId);
+                    _GooglePlusActivities = new Domain.Socioboard.MongoDomain.GoogleplusFeed();
+                    _GooglePlusActivities.Id = ObjectId.GenerateNewId();
+                    //_GooglePlusActivities.UserId = Guid.Parse(UserId);
                     _GooglePlusActivities.GpUserId = ProfileId;
                     try
                     {
@@ -228,7 +237,6 @@ namespace Api.Socioboard.Services
                         _GooglePlusActivities.Title = item["title"].ToString();
                     }
                     catch { }
-                    _GooglePlusActivities.EntryDate = DateTime.Now;
                     try
                     {
                         _GooglePlusActivities.FromProfileImage = item["actor"]["image"]["url"].ToString();
@@ -241,7 +249,7 @@ namespace Api.Socioboard.Services
                     catch { }
                     try
                     {
-                        _GooglePlusActivities.PublishedDate = Convert.ToDateTime(item["published"].ToString());
+                        _GooglePlusActivities.PublishedDate = Convert.ToDateTime(item["published"].ToString()).ToString("yyyy/MM/dd HH:mm:ss");
                     }
                     catch { }
                     try
@@ -262,12 +270,17 @@ namespace Api.Socioboard.Services
                     try
                     {
                         _GooglePlusActivities.AttachmentType = item["object"]["attachments"][0]["objectType"].ToString();
-                        if (_GooglePlusActivities.AttachmentType == "video") 
+                        if (_GooglePlusActivities.AttachmentType == "video")
                         {
                             _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["embed"]["url"].ToString();
                         }
-                        else if (_GooglePlusActivities.AttachmentType == "photo") {
+                        else if (_GooglePlusActivities.AttachmentType == "photo")
+                        {
                             _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["image"]["url"].ToString();
+                        }
+                        else if (_GooglePlusActivities.AttachmentType == "album")
+                        {
+                            _GooglePlusActivities.Attachment = item["object"]["attachments"][0]["thumbnails"][0]["image"]["url"].ToString();
                         }
                         else if (_GooglePlusActivities.AttachmentType == "article")
                         {
@@ -298,15 +311,35 @@ namespace Api.Socioboard.Services
                         _GooglePlusActivities.AttachmentType = "note";
                         _GooglePlusActivities.Attachment = "";
                     }
-                    if (!objGooglePlusActivitiesRepository.checkgoogleplusActivityExists(_GooglePlusActivities.ActivityId, Guid.Parse(UserId)))
+                    //if (!objGooglePlusActivitiesRepository.checkgoogleplusActivityExists(_GooglePlusActivities.ActivityId, Guid.Parse(UserId)))
+                    //{
+                    //    objGooglePlusActivitiesRepository.addgoogleplusActivity(_GooglePlusActivities);
+                    //}
+
+                    var ret = gplusFeedRepo.Find<Domain.Socioboard.MongoDomain.GoogleplusFeed>(t => t.ActivityId.Equals(_GooglePlusActivities.ActivityId));
+                    var task = Task.Run(async () => {
+                        return await ret;
+                    });
+                    int count = task.Result.Count;
+                    if (count < 1)
                     {
-                        objGooglePlusActivitiesRepository.addgoogleplusActivity(_GooglePlusActivities);
+                        gplusFeedRepo.Add(_GooglePlusActivities);
+                    
                     }
+                    else
+                    {
+                        FilterDefinition<BsonDocument> filter = new BsonDocument("ActivityId", _GooglePlusActivities.ActivityId);
+                        var update = Builders<BsonDocument>.Update.Set("PlusonersCount", _GooglePlusActivities.PlusonersCount).Set("RepliesCount", _GooglePlusActivities.RepliesCount).Set("ResharersCount", _GooglePlusActivities.ResharersCount);
+                        gplusFeedRepo.Update<Domain.Socioboard.MongoDomain.GoogleplusFeed>(update, filter);
+                    }
+
+                    GetGooglePlusComments(_GooglePlusActivities.ActivityId, AcessToken, ProfileId);
+                    GetGooglePlusLikes(_GooglePlusActivities.ActivityId, AcessToken, ProfileId, status);
                 }
             }
             catch (Exception ex)
             {
-                logger.Error("GetUserActivities => "+ex.Message);
+                logger.Error("GetUserActivities => " + ex.Message);
             }
         }
         [WebMethod]
@@ -315,7 +348,7 @@ namespace Api.Socioboard.Services
         {
             Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount = objGooglePlusAccountRepository.GetGooglePlusAccount(Guid.Parse(UserId), ProfileId);
             GetGoogleplusCircles(UserId, ProfileId);
-            GetUserActivities(_GooglePlusAccount.UserId.ToString(), _GooglePlusAccount.GpUserId, _GooglePlusAccount.AccessToken);
+            GetUserActivities(_GooglePlusAccount.UserId.ToString(), _GooglePlusAccount.GpUserId, _GooglePlusAccount.AccessToken,0);
             return "Gplus Account Updated Successfully";
         }
 
@@ -359,6 +392,97 @@ namespace Api.Socioboard.Services
                 logger.Error(ex.Message);
             }
         }
+        [WebMethod]
+        public void GetGooglePlusComments(string feedId, string AccessToken, string profileId)
+        {
+            oAuthTokenGPlus ObjoAuthTokenGPlus = new oAuthTokenGPlus();
 
+            Domain.Socioboard.MongoDomain.GoogleplusComments _GoogleplusComments = new Domain.Socioboard.MongoDomain.GoogleplusComments();
+            try
+            {
+                string _Comments = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetCommentListByActivityId.Replace("[ActivityId]", feedId) + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), AccessToken);
+                JObject J_Comments = JObject.Parse(_Comments);
+                List<Domain.Socioboard.MongoDomain.GoogleplusComments> lstGoogleplusComments = new List<Domain.Socioboard.MongoDomain.GoogleplusComments>();
+                foreach (var item in J_Comments["items"])
+                {
+                    try
+                    {
+                        _GoogleplusComments.Id = ObjectId.GenerateNewId();
+                        _GoogleplusComments.Comment = item["object"]["content"].ToString();
+                        _GoogleplusComments.CommentId = item["id"].ToString();
+                        _GoogleplusComments.CreatedDate = Convert.ToDateTime(item["published"]).ToString("yyyy/MM/dd HH:mm:ss");
+                        _GoogleplusComments.FeedId = feedId;
+                        _GoogleplusComments.FromId = item["actor"]["id"].ToString();
+                        _GoogleplusComments.FromImageUrl = item["actor"]["image"]["url"].ToString();
+                        _GoogleplusComments.FromName = item["actor"]["url"].ToString();
+                        _GoogleplusComments.FromUrl = item["actor"]["url"].ToString();
+                        _GoogleplusComments.GplusUserId = profileId;
+
+                        lstGoogleplusComments.Add(_GoogleplusComments);
+
+                        //if (!objGoogleplusCommentsRepository.IsExist(_GoogleplusComments.CommentId))
+                        //{
+                        //    objGoogleplusCommentsRepository.Add(_GoogleplusComments);
+                        //}
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+                }
+
+                gplusCommentRepo.AddList(lstGoogleplusComments);
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        public void GetGooglePlusLikes(string feedId, string AccessToken, string ProfileId, int Status)
+        {
+            oAuthTokenGPlus ObjoAuthTokenGPlus = new oAuthTokenGPlus();
+
+            Domain.Socioboard.Domain.GoogleplusLike _GoogleplusLike = new Domain.Socioboard.Domain.GoogleplusLike();
+            try
+            {
+                string _Likes = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strLike.Replace("[ActivityId]", feedId) + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), AccessToken);
+                JObject J_Likes = JObject.Parse(_Likes);
+
+                foreach (var item in J_Likes["items"])
+                {
+                    try
+                    {
+                        _GoogleplusLike.Id = Guid.NewGuid();
+                        _GoogleplusLike.FromId = item["id"].ToString();
+                        _GoogleplusLike.FromImageUrl = item["image"]["url"].ToString();
+                        _GoogleplusLike.FromName = item["displayName"].ToString();
+                        _GoogleplusLike.ProfileId = ProfileId;
+                        _GoogleplusLike.FromUrl = item["url"].ToString();
+                        _GoogleplusLike.FeedId = feedId;
+
+                        if (!objGoogleplusCommentsRepository.IsLikeExist(_GoogleplusLike.FromId, feedId))
+                        {
+                            objGoogleplusCommentsRepository.AddLikes(_GoogleplusLike);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        public void GetGooglePlushReshare(string FeedId, string AccessToken, string ProfileId, int Status)
+        {
+
+        }
     }
 }

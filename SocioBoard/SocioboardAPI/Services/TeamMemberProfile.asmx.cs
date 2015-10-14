@@ -359,5 +359,22 @@ namespace Api.Socioboard.Services
 
 
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetTeamMemberTwitterProfilesByTeamId(string TeamId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMember = teammemberrepo.getTwtTeamMemberProfileData(Guid.Parse(TeamId));
+                return new JavaScriptSerializer().Serialize(lstTeamMember);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
     }
 }

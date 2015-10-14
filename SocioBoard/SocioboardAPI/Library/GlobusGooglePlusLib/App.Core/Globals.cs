@@ -26,7 +26,7 @@ namespace GlobusGooglePlusLib.App.Core
         #endregion
 
         #region Comments
-        public static string strGetCommentListByActivityId = "https://www.googleapis.com/plus/v1/activities/";
+        public static string strGetCommentListByActivityId = "https://www.googleapis.com/plus/v1/activities/[ActivityId]/comments";
         public static string strGetCommentByCommentId = "https://www.googleapis.com/plus/v1/comments/"; 
         #endregion
 
@@ -35,6 +35,10 @@ namespace GlobusGooglePlusLib.App.Core
         public static string strRemoveMoments = "https://www.googleapis.com/plus/v1/moments/"; 
         #endregion
 
+        #region Like_reshare
+        public static string strLike = "https://www.googleapis.com/plus/v1/activities/[activityId]/people/plusoners";
+        public static string strReshare = "https://www.googleapis.com/plus/v1/activities/[activityId]/people/resharers";
+        #endregion
 
         #region Google Analytics
         public static string strgetGaAccounts = "https://www.googleapis.com/analytics/v2.4/management/accounts/";

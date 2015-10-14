@@ -1023,6 +1023,16 @@ namespace Api.Socioboard.Services
             }
         }
 
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetAllFacebookPages()
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(x => (x.AccessToken != "") && (x.Type == "Page" || x.Type == "page")).ToList();
+
+                return lstFacebookAccount;
+            }
+        }
 
     }
 }

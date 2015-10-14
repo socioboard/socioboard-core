@@ -327,5 +327,10 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        public string GetAllActiveTeam()
+        {
+            return new JavaScriptSerializer().Serialize(teamrepo.GetAllActiveTeam());
+        }
     }
 }

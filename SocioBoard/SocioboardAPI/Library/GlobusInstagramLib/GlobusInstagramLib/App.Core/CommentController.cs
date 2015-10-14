@@ -42,7 +42,7 @@ namespace GlobusInstagramLib.App.Core
         /// <param name="text"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public bool PostCommentAdd(string mediaid, string text, string accessToken)
+        public string PostCommentAdd(string mediaid, string text, string accessToken)
         {
             Comments objComments = new Comments();
             return objComments.CommentAdd(mediaid, text, accessToken);

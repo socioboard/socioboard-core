@@ -48,6 +48,32 @@ namespace Api.Socioboard.Services
             List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = objTwitterDirectMessageRepository.GetConversation(Guid.Parse(UserId), SenderId, RecipientId);
             return new JavaScriptSerializer().Serialize(lstTDM);
         }
+        [WebMethod]
+        public string GetTwitterDirectMessageSentCount(string UserId, string profileids, string days)
+        {
+            try
+            {
+                int dmsent = objTwitterDirectMessageRepository.GetTwitterDirectMessageSentCount(Guid.Parse(UserId), profileids, Int32.Parse(days));
+                return dmsent.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
 
+        [WebMethod]
+        public string GetTwitterDirectMessageRecievedCount(string UserId, string profileids, string days)
+        {
+            try
+            {
+                int dmrecieved = objTwitterDirectMessageRepository.GetTwitterDirectMessageRecievedCount(Guid.Parse(UserId), profileids, Int32.Parse(days));
+                return dmrecieved.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+        }
     }
 }

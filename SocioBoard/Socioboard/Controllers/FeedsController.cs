@@ -94,7 +94,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroup(profileid, facebookwallcount, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookMessage = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroup(profileid, facebookwallcount, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
             {
@@ -105,7 +105,8 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel1Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
         }
@@ -149,7 +150,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-            List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1(objGroups.UserId.ToString(), profileid, facebookfeedcount), typeof(List<FacebookFeed>)));
+            List<MongoFacebookFeed> lstFacebookFeed = (List<MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1(objGroups.UserId.ToString(), profileid, facebookfeedcount), typeof(List<MongoFacebookFeed>)));
             foreach (var twittermsg in lstFacebookFeed)
             {
                 lstobject.Add(twittermsg);
@@ -159,10 +160,11 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel2Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
-            
+
         }
 
         //Edited by Sumit Gupta
@@ -304,7 +306,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
-            List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId1((objGroups.UserId.ToString()), profileid, twtwallcount), typeof(List<TwitterFeed>)));
+            List<Domain.Socioboard.MongoDomain.TwitterFeed> lstTwitterFeed = (List<Domain.Socioboard.MongoDomain.TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId1((objGroups.UserId.ToString()), profileid, twtwallcount), typeof(List<Domain.Socioboard.MongoDomain.TwitterFeed>)));
 
             //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objGroups.UserId.ToString(), profileid), typeof(List<TwitterFeed>)));
             foreach (var twitterfeed in lstTwitterFeed)
@@ -316,7 +318,8 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel1Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
         }
@@ -361,7 +364,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterMessage = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1(profileid, objGroups.UserId.ToString(), twtfeedcount), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMessage = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1(profileid, objGroups.UserId.ToString(), twtfeedcount), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twittermsg in lstTwitterMessage)
             {
                 lstobject.Add(twittermsg);
@@ -371,7 +374,8 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel2Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
         }
@@ -427,10 +431,11 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel1Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
-            
+
         }
         //Vikash[03-04-2015]
         //public ActionResult LinkedinFeeds(string profileid)
@@ -484,16 +489,18 @@ namespace Socioboard.Controllers
             {
                 return PartialView("_Panel2Partial", dictwallposts);
             }
-            else {
+            else
+            {
                 return Content("no_data");
             }
-            
+
         }
 
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult InstagramImages(string profileid)
         {
+            
             //List<object> lstobject = new List<object>();
             //Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             //Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -519,12 +526,12 @@ namespace Socioboard.Controllers
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
             //List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
-            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), profileid, "0","8"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), profileid, "0", "8"), typeof(List<Domain.Socioboard.MongoDomain.InstagramFeed>)));
 
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
                 lstComment = new List<object>();
-                List<Domain.Socioboard.Domain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.Domain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramComment>)));
+                List<Domain.Socioboard.MongoDomain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.MongoDomain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.MongoDomain.InstagramComment>)));
 
                 foreach (var item in lstInstagramComment)
                 {
@@ -600,7 +607,7 @@ namespace Socioboard.Controllers
             Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
             //List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
             //GetFeedsOfProfileWithRange
-            List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, tumblerimagecount.ToString()), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+            List<Domain.Socioboard.MongoDomain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.MongoDomain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, tumblerimagecount.ToString()), typeof(List<Domain.Socioboard.MongoDomain.TumblrFeed>)));
             foreach (var item_lstTumblrFeed in lstTumblrFeed)
             {
                 lstComment = new List<object>();
@@ -664,7 +671,7 @@ namespace Socioboard.Controllers
                 {
                     Console.WriteLine(ex.StackTrace);
                 }
-               
+
             }
             dictwallposts.Add("youtube", dic_youtube);
             return PartialView("_ImagePartial", dictwallposts);
@@ -766,7 +773,7 @@ namespace Socioboard.Controllers
         {
 
             Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
-            Domain.Socioboard.Domain.TwitterFeed twtfeed = (Domain.Socioboard.Domain.TwitterFeed)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetTwitterFeedById(Id), typeof(Domain.Socioboard.Domain.TwitterFeed)));
+            Domain.Socioboard.MongoDomain.TwitterFeed twtfeed = (Domain.Socioboard.MongoDomain.TwitterFeed)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetTwitterFeedById(Id), typeof(Domain.Socioboard.MongoDomain.TwitterFeed)));
             Dictionary<string, object> twtinfo = new Dictionary<string, object>();
             twtinfo.Add("twt", twtfeed);
             return PartialView("_MailSendingPartial", twtinfo);
@@ -853,7 +860,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterUsertweet = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterUsertweetOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterUsertweet = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterUsertweetOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterUsertweet in lstTwitterUsertweet)
             {
                 lstobject.Add(twitterUsertweet);
@@ -871,7 +878,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterRetweets = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterRetweetOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterRetweets = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterRetweetOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterRetweets in lstTwitterRetweets)
             {
                 lstobject.Add(twitterRetweets);
@@ -889,7 +896,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterMentions = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterMentionsOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMentions = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterMentionsOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterMentions in lstTwitterMentions)
             {
                 lstobject.Add(twitterMentions);
@@ -907,7 +914,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<FacebookMessage> lstFacebookUserFeeds = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookUserFeeds = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             foreach (var FacebookUserFeeds in lstFacebookUserFeeds)
             {
                 lstobject.Add(FacebookUserFeeds);
@@ -925,7 +932,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<FacebookMessage> lstFacebookStatus = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookstatusOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookStatus = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookstatusOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             foreach (var FacebookStatus in lstFacebookStatus)
             {
                 lstobject.Add(FacebookStatus);
@@ -943,7 +950,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<FacebookMessage> lstFacebookTag = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookTagOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookTag = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookTagOfUsers(objGroups.UserId.ToString(), ProfileId), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             foreach (var FacebookTag in lstFacebookTag)
             {
                 lstobject.Add(FacebookTag);
@@ -956,7 +963,7 @@ namespace Socioboard.Controllers
         //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult SearchFacebookFeeds(string keyword)
         {
-            List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeedsSearch = new List<Domain.Socioboard.Domain.FacebookFeed>();
+            List<Domain.Socioboard.Domain.MongoFacebookFeed> lstFacebookFeedsSearch = new List<Domain.Socioboard.Domain.MongoFacebookFeed>();
             try
             {
                 Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -964,7 +971,7 @@ namespace Socioboard.Controllers
 
                 int noOfDataToSkip = 0;
 
-                lstFacebookFeedsSearch = (List<Domain.Socioboard.Domain.FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.getAllFacebookFeedsByUserIdWithRange(objUser.Id.ToString(), keyword, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookFeed>)));
+                lstFacebookFeedsSearch = (List<Domain.Socioboard.Domain.MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.getAllFacebookFeedsByUserIdWithRange(objUser.Id.ToString(), keyword, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.Domain.MongoFacebookFeed>)));
 
             }
             catch (Exception ex)
@@ -1006,11 +1013,11 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<FacebookMessage>();
-            lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
+            lstFacebookMessage = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             if (lstFacebookMessage == null)
             {
-                lstFacebookMessage = new List<FacebookMessage>();
+                lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
             }
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
@@ -1042,11 +1049,11 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
-            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<FacebookFeed>)));
+            List<MongoFacebookFeed> lstFacebookFeed = new List<MongoFacebookFeed>();
+            lstFacebookFeed = (List<MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<MongoFacebookFeed>)));
             if (lstFacebookFeed == null)
             {
-                lstFacebookFeed = new List<FacebookFeed>();
+                lstFacebookFeed = new List<MongoFacebookFeed>();
             }
             foreach (var twittermsg in lstFacebookFeed)
             {
@@ -1071,11 +1078,11 @@ namespace Socioboard.Controllers
             int noOfDataToSkip = 0;
 
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<FacebookMessage> lstFacebookUserFeeds = new List<FacebookMessage>();
-            lstFacebookUserFeeds = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookUserFeeds = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
+            lstFacebookUserFeeds = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             if (lstFacebookUserFeeds == null)
             {
-                lstFacebookUserFeeds = new List<FacebookMessage>();
+                lstFacebookUserFeeds = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
             }
             foreach (var FacebookUserFeeds in lstFacebookUserFeeds)
             {
@@ -1105,11 +1112,11 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<FacebookMessage>();
-            lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
+            lstFacebookMessage = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             if (lstFacebookMessage == null)
             {
-                lstFacebookMessage = new List<FacebookMessage>();
+                lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
             }
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
@@ -1141,11 +1148,11 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
-            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<FacebookFeed>)));
+            List<MongoFacebookFeed> lstFacebookFeed = new List<MongoFacebookFeed>();
+            lstFacebookFeed = (List<MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<MongoFacebookFeed>)));
             if (lstFacebookFeed == null)
             {
-                lstFacebookFeed = new List<FacebookFeed>();
+                lstFacebookFeed = new List<MongoFacebookFeed>();
             }
             foreach (var twittermsg in lstFacebookFeed)
             {
@@ -1170,11 +1177,11 @@ namespace Socioboard.Controllers
             int noOfDataToSkip = 0;
 
             Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
-            List<FacebookMessage> lstFacebookUserFeeds = new List<FacebookMessage>();
-            lstFacebookUserFeeds = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>)));
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookUserFeeds = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
+            lstFacebookUserFeeds = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             if (lstFacebookUserFeeds == null)
             {
-                lstFacebookUserFeeds = new List<FacebookMessage>();
+                lstFacebookUserFeeds = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
             }
             foreach (var FacebookUserFeeds in lstFacebookUserFeeds)
             {
@@ -1198,7 +1205,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterUsertweet = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterUsertweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterUsertweet = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterUsertweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterUsertweet in lstTwitterUsertweet)
             {
                 lstobject.Add(twitterUsertweet);
@@ -1219,7 +1226,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterRetweets = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterRetweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterRetweets = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterRetweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterRetweets in lstTwitterRetweets)
             {
                 lstobject.Add(twitterRetweets);
@@ -1240,7 +1247,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
 
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterMentions = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterMentionsOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMentions = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterMentionsOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twitterMentions in lstTwitterMentions)
             {
                 lstobject.Add(twitterMentions);
@@ -1271,7 +1278,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterMessage = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1ByKeyword(profileid, objGroups.UserId.ToString(), keyword, twtfeedcount), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMessage = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1ByKeyword(profileid, objGroups.UserId.ToString(), keyword, twtfeedcount), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twittermsg in lstTwitterMessage)
             {
                 lstobject.Add(twittermsg);
@@ -1302,7 +1309,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
-            List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword((objGroups.UserId.ToString()), profileid, keyword, twtwallcount), typeof(List<TwitterFeed>)));
+            List<Domain.Socioboard.MongoDomain.TwitterFeed> lstTwitterFeed = (List<Domain.Socioboard.MongoDomain.TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword((objGroups.UserId.ToString()), profileid, keyword, twtwallcount), typeof(List<Domain.Socioboard.MongoDomain.TwitterFeed>)));
 
             //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objGroups.UserId.ToString(), profileid), typeof(List<TwitterFeed>)));
             foreach (var twitterfeed in lstTwitterFeed)
@@ -1331,11 +1338,11 @@ namespace Socioboard.Controllers
 
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
 
-            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
+            List<MongoFacebookFeed> lstFacebookFeed = new List<MongoFacebookFeed>();
 
             try
             {
-                lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookFeeds(profileid, objGroups.UserId.ToString()), typeof(List<FacebookFeed>)));
+                lstFacebookFeed = (List<MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookFeeds(profileid, objGroups.UserId.ToString()), typeof(List<MongoFacebookFeed>)));
             }
             catch (Exception ex)
             {
@@ -1343,7 +1350,7 @@ namespace Socioboard.Controllers
             }
             if (lstFacebookFeed == null)
             {
-                lstFacebookFeed = new List<FacebookFeed>();
+                lstFacebookFeed = new List<MongoFacebookFeed>();
             }
             foreach (var FacebookFeed in lstFacebookFeed)
             {
@@ -1367,7 +1374,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            List<TwitterMessage> lstTwitterMessage = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1(profileid, objGroups.UserId.ToString(), twtfeedcount), typeof(List<TwitterMessage>)));
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMessage = (List<Domain.Socioboard.MongoDomain.TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1(profileid, objGroups.UserId.ToString(), twtfeedcount), typeof(List<Domain.Socioboard.MongoDomain.TwitterMessage>)));
             foreach (var twittermsg in lstTwitterMessage)
             {
                 lstobject.Add(twittermsg);
@@ -1397,14 +1404,14 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage;
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookMessage;
             try
             {
-                lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookWallPosts(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+                lstFacebookMessage = (List<Domain.Socioboard.MongoDomain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookWallPosts(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.MongoDomain.FacebookMessage>)));
             }
             catch (Exception ex)
             {
-                lstFacebookMessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+                lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
             }
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
@@ -1440,7 +1447,7 @@ namespace Socioboard.Controllers
         {
             Api.GooglePlusActivities.GooglePlusActivities ApiGooglePlusActivities = new Api.GooglePlusActivities.GooglePlusActivities();
             Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
-            List<Domain.Socioboard.Domain.GooglePlusActivities> lstGooglePlusActivities = (List<Domain.Socioboard.Domain.GooglePlusActivities>)new JavaScriptSerializer().Deserialize(ApiGooglePlusActivities.getgoogleplusActivity(_User.Id.ToString(), Id), typeof(List<Domain.Socioboard.Domain.GooglePlusActivities>));
+            List<Domain.Socioboard.MongoDomain.GoogleplusFeed> lstGooglePlusActivities = (List<Domain.Socioboard.MongoDomain.GoogleplusFeed>)new JavaScriptSerializer().Deserialize(ApiGooglePlusActivities.getgoogleplusActivity(_User.Id.ToString(), Id), typeof(List<Domain.Socioboard.MongoDomain.GoogleplusFeed>));
             if (lstGooglePlusActivities.Count > 0)
             {
                 return PartialView("_GplusActivityPartial", lstGooglePlusActivities);
@@ -1471,7 +1478,7 @@ namespace Socioboard.Controllers
                 return RedirectToAction("Index", "Index");
             }
         }
-         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ShowInstagramFeeds(string load, string id)
         {
 
@@ -1497,11 +1504,11 @@ namespace Socioboard.Controllers
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
 
-            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), id, instagramfeedcount.ToString(), "4"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), id, instagramfeedcount.ToString(), "4"), typeof(List<Domain.Socioboard.MongoDomain.InstagramFeed>)));
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
                 lstComment = new List<object>();
-                List<Domain.Socioboard.Domain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.Domain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramComment>)));
+                List<Domain.Socioboard.MongoDomain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.MongoDomain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.MongoDomain.InstagramComment>)));
                 foreach (var item in lstInstagramComment)
                 {
                     lstComment.Add(item);
@@ -1513,15 +1520,25 @@ namespace Socioboard.Controllers
             return PartialView("_InstagramPartial", dictwallposts);
         }
 
-         public ActionResult AddInstagramComment(string FeedId, string Text, string InstagramId)
-         {
-             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+        public ActionResult AddInstagramComment(string FeedId, string Text, string InstagramId)
+        {
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
 
-             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-             Api.Instagram.Instagram ApiObjInstagram = new Api.Instagram.Instagram();
-             string ret = ApiObjInstagram.AddComment(objGroups.UserId.ToString(),FeedId, Text, InstagramId);
-            return Content("");
-         }
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.Instagram.Instagram ApiObjInstagram = new Api.Instagram.Instagram();
+            string ret = ApiObjInstagram.AddComment(objGroups.UserId.ToString(), FeedId, Text, InstagramId);
+            if (!string.IsNullOrEmpty(ret))
+            {
+
+                Domain.Socioboard.MongoDomain.InstagramComment _InstagramComment = (Domain.Socioboard.MongoDomain.InstagramComment)new JavaScriptSerializer().Deserialize(ret, typeof(Domain.Socioboard.MongoDomain.InstagramComment));
+                return Content(_InstagramComment.FromName);
+            }
+            else
+            {
+                return Content("");
+            }
+
+        }
 
 
     }

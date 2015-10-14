@@ -750,5 +750,46 @@ namespace Api.Socioboard.Services
         }
 
 
+
+
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterFeedsMongo(int skip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        //Proceed action to get all Facebook Message of User.
+                        //List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery("from TwitterFeed")
+                        // .List<Domain.Socioboard.Domain.TwitterFeed>().Skip(skip).Take(50)
+                        // .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.Query<Domain.Socioboard.Domain.TwitterFeed>().Skip(Convert.ToInt32(skip)).Take(50).ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+
+                        #region oldcode
+                        //List<FacebookMessage> alst = new List<FacebookMessage>();
+                        //foreach (FacebookMessage item in query.Enumerable<FacebookMessage>().OrderByDescending(x => x.MessageDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
     }
 }

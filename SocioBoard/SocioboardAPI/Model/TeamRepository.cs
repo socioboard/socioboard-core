@@ -884,5 +884,22 @@ namespace Api.Socioboard.Services
             return i;
         }
 
+        public List<Domain.Socioboard.Domain.Team> GetAllActiveTeam()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.Team> lstTeam = session.CreateQuery("from Team where InviteStatus=1").List<Domain.Socioboard.Domain.Team>().ToList();
+                    return lstTeam;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.Team>();
+                }
+            }
+        }
+
+
     }
 }

@@ -15,6 +15,10 @@ using GlobusTumblerLib.App.Core;
 using System.Text.RegularExpressions;
 using GlobusTumblerLib.Tumblr.Core.BlogMethods;
 using log4net;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Api.Socioboard.Model;
+using System.Threading.Tasks;
 
 namespace Api.Socioboard.Services
 {
@@ -39,10 +43,12 @@ namespace Api.Socioboard.Services
 
         TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
         Domain.Socioboard.Domain.TumblrAccount objTumblrAccount;
-        TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
-        Domain.Socioboard.Domain.TumblrFeed objTumblrFeed;
+        //TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
+        Domain.Socioboard.MongoDomain.TumblrFeed objTumblrFeed;
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
+        MongoRepository tumblrFeedRepo = new MongoRepository("TumblrFeed");
+
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -59,11 +65,11 @@ namespace Api.Socioboard.Services
                 requestHelper.CallBackUrl = CallBackUrl;
                 logger.Error("GetTumblrRedirectUrl");
                 ret = requestHelper.GetAuthorizationLink();
-              
+
             }
             catch (Exception ex)
             {
-                logger.Error("GetTumblrRedirectUrl => "+ex.StackTrace);
+                logger.Error("GetTumblrRedirectUrl => " + ex.StackTrace);
             }
             return ret;
         }
@@ -148,7 +154,7 @@ namespace Api.Socioboard.Services
                 }
                 #endregion
 
-              
+
                 //if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objTumblrAccount.tblrUserName))
                 //{
                 //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
@@ -161,7 +167,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
-                logger.Error("AddTumblrAccount => "+ex.StackTrace);
+                logger.Error("AddTumblrAccount => " + ex.StackTrace);
             }
             return ret;
         }
@@ -173,9 +179,10 @@ namespace Api.Socioboard.Services
             JArray objJarray = (JArray)UserDashboard["response"]["posts"];
             foreach (var item in objJarray)
             {
-                objTumblrFeed = new Domain.Socioboard.Domain.TumblrFeed();
-                objTumblrFeed.Id = Guid.NewGuid();
-                objTumblrFeed.UserId = Guid.Parse(UserId);
+                objTumblrFeed = new Domain.Socioboard.MongoDomain.TumblrFeed();
+                //objTumblrFeed.Id = Guid.NewGuid();
+                //objTumblrFeed.UserId = Guid.Parse(UserId);
+                objTumblrFeed.Id = ObjectId.GenerateNewId();
                 try
                 {
                     objTumblrFeed.ProfileId = username;
@@ -242,16 +249,16 @@ namespace Api.Socioboard.Services
                 try
                 {
                     string test = item["date"].ToString();
-                    DateTime dt;
+                    string dt;
                     if (test.Contains("GMT"))
                     {
                         test = test.Replace("GMT", "").Trim().ToString();
-                        dt = Convert.ToDateTime(test);
+                        dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
                     }
                     else
                     {
                         test = test.Replace("GMT", "").Trim().ToString();
-                        dt = Convert.ToDateTime(test);
+                        dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
                     }
                     objTumblrFeed.date = dt;
                 }
@@ -349,20 +356,43 @@ namespace Api.Socioboard.Services
                 {
                     Console.WriteLine(ex.Message);
                 }
-
-                objTumblrFeed.timestamp = DateTime.Now;
-                if (!objTumblrFeedRepository.checkTumblrMessageExists(objTumblrFeed))
+                try
                 {
-                    try
-                    {
-                        I++;
-                        TumblrFeedRepository.Add(objTumblrFeed);
-                        logger.Error("AddTunblrFeedsCount>>>>"+I);
-                    }
-                    catch (Exception ex)
-                    {
-                    }
+                    string content = item["trail"][0]["content"].ToString();
+                    objTumblrFeed.content = content;
                 }
+                catch { }
+                try
+                {
+                    string postId = item["trail"][0]["post"]["id"].ToString();
+                    objTumblrFeed.postId = postId;
+                }
+                catch { }
+
+                var ret = tumblrFeedRepo.Find<Domain.Socioboard.MongoDomain.TumblrFeed>(t => t.postId.Equals(objTumblrFeed.postId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+                });
+                int count = task.Result.Count;
+                if (count < 1)
+                {
+                    tumblrFeedRepo.Add(objTumblrFeed);
+                }
+
+                //objTumblrFeed.timestamp = DateTime.Now;
+                //if (!objTumblrFeedRepository.checkTumblrMessageExists(objTumblrFeed))
+                //{
+                //    try
+                //    {
+                //        I++;
+                //        TumblrFeedRepository.Add(objTumblrFeed);
+                //        logger.Error("AddTunblrFeedsCount>>>>" + I);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //    }
+                //}
             }
 
         }
@@ -389,8 +419,8 @@ namespace Api.Socioboard.Services
             oAuthTumbler.TumblrTokenSecret = ObjTumblrAccount.tblrAccessTokenSecret;
             KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret);
             AddTunblrFeeds(UserId, LoginDetails, ObjTumblrAccount.tblrUserName);
-            Domain.Socioboard.Domain.TumblrFeed tumblrTumblrFeed = new Domain.Socioboard.Domain.TumblrFeed();
-            TumblrFeedRepository.Add(tumblrTumblrFeed);
+            //Domain.Socioboard.Domain.TumblrFeed tumblrTumblrFeed = new Domain.Socioboard.Domain.TumblrFeed();
+            //TumblrFeedRepository.Add(tumblrTumblrFeed);
             return "Tumblr info is updated successfully";
             //Obj_oAuthTumbler.TumblrOAuthVerifier=ObjTumblrAccount.tbl
 

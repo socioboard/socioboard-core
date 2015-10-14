@@ -8,7 +8,8 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
-
+using Api.Socioboard.Model;
+using log4net;
 namespace Api.Socioboard.Services
 {
     /// <summary>
@@ -19,7 +20,7 @@ namespace Api.Socioboard.Services
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [ScriptService]
-
+    
     public class TwitterAccount : System.Web.Services.WebService
     {
         SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
@@ -30,12 +31,14 @@ namespace Api.Socioboard.Services
         TwitterStatsRepository objTwtstats = new TwitterStatsRepository();
         TwitterMessageRepository objTwitterMessageRepository = new TwitterMessageRepository();
         TwitterDirectMessageRepository objTwitterDirectMessageRepository = new TwitterDirectMessageRepository();
-
+        UserRepository objUserRepository = new Model.UserRepository();
+        ILog logger = LogManager.GetLogger(typeof(TwitterAccount));
+      
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetTwitterAccountDetailsById(string UserId, string ProfileId)
         {
-             Domain.Socioboard.Domain.TwitterAccount objTwitterAccount=new Domain.Socioboard.Domain.TwitterAccount ();
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = new Domain.Socioboard.Domain.TwitterAccount();
             try
             {
                 if (objTwitterAccountRepository.checkTwitterUserExists(ProfileId, Guid.Parse(UserId)))
@@ -124,7 +127,7 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
- 
+
         //vikash
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -143,7 +146,7 @@ namespace Api.Socioboard.Services
             }
 
         }
-     
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getUserInformation(string TwtUserId)
@@ -191,6 +194,103 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+        [WebMethod]
+        public string AddTwitterAccountFromTweetBoard(string UserId, string GroupId, string OAuthToken, string OAuthSecret, string ProfileId, string ScreenName, string FollowingCount, string FollowerCount, string ProfilePicUrl)
+        {
+            if (objUserRepository.IsUserExist(Guid.Parse(UserId)))
+            {
+                if (objTwitterAccountRepository.checkTwitterUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    Domain.Socioboard.Domain.TwitterAccount _TwitterAccount = new Domain.Socioboard.Domain.TwitterAccount();
+                    _TwitterAccount.Id = Guid.NewGuid();
+                    _TwitterAccount.IsActive = true;
+                    _TwitterAccount.UserId = Guid.Parse(UserId);
+                    _TwitterAccount.TwitterUserId = ProfileId;
+                    _TwitterAccount.TwitterScreenName = ScreenName;
+                    _TwitterAccount.OAuthToken = OAuthToken;
+                    _TwitterAccount.OAuthSecret = OAuthSecret;
+                    _TwitterAccount.ProfileImageUrl = ProfilePicUrl;
+                    objTwitterAccountRepository.addTwitterkUser(_TwitterAccount);
+
+                    Domain.Socioboard.Domain.Team _Team = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    Domain.Socioboard.Domain.TeamMemberProfile _TeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    if (objTeamMemberProfileRepository.checkTeamMemberProfile(_Team.Id, ProfileId))
+                    {
+                        _TeamMemberProfile.Id = Guid.NewGuid();
+                        _TeamMemberProfile.TeamId = _Team.Id;
+                        _TeamMemberProfile.ProfileId = ProfileId;
+                        _TeamMemberProfile.ProfileName = ScreenName;
+                        _TeamMemberProfile.Status = 1;
+                        _TeamMemberProfile.ProfileType = "twitter";
+                        _TeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        _TeamMemberProfile.ProfilePicUrl = ProfilePicUrl;
+                        objTeamMemberProfileRepository.addNewTeamMember(_TeamMemberProfile);
+                    }
+
+                    Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                    objSocialProfile.Id = Guid.NewGuid();
+                    objSocialProfile.ProfileType = "twitter";
+                    objSocialProfile.ProfileId = ProfileId;
+                    objSocialProfile.UserId = Guid.Parse(UserId);
+                    objSocialProfile.ProfileDate = DateTime.Now;
+                    objSocialProfile.ProfileStatus = 1;
+                    if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                    {
+                        objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+                    }
+                    return "account added";
+                }
+                else
+                {
+
+                    return "account already exist";
+                }
+
+            }
+            else {
+                return "user not exist";
+            }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string retrievetwitterdata(string id)
+        {
+            string ret_string = string.Empty;
+            Domain.Socioboard.Domain.TwitterRecentDetails ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+
+                try
+                {
+
+                    NHibernate.IQuery retrieve = session.CreateQuery("from TwitterRecentDetails where TwitterId =: id").SetParameter("id", id);
+                    ret = (Domain.Socioboard.Domain.TwitterRecentDetails)retrieve.UniqueResult();
+                    if (ret == null)
+                    {
+                        ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
+                    }
+                    ret_string = new JavaScriptSerializer().Serialize(ret);
+
+                }
+                catch (Exception e)
+                {
+                    logger.Error("noretrievedata>>");
+                    Console.WriteLine(e.StackTrace);
+                    logger.Error(e.Message);
+                    logger.Error(e.StackTrace);
+                    ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
+                    ret_string = new JavaScriptSerializer().Serialize(ret);
+                }
+
+            }
+            return ret_string;
+        }
+
+
+
 
 
 

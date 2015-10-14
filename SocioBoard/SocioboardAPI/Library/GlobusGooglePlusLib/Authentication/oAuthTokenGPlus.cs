@@ -99,7 +99,6 @@ namespace GlobusGooglePlusLib.Authentication
             catch (Exception ex)
             {
 
-                throw;
             }
             return pageContent;
         }

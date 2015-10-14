@@ -126,8 +126,6 @@ namespace Socioboard.Helper
             {
                 using (Api.InstagramAccount.InstagramAccount ApiobjInstagramAccount = new Api.InstagramAccount.InstagramAccount())
                 {
-
-                    ApiobjInstagramAccount.Timeout = 300000;
                     objSocialSiteAccount = (InstagramAccount)(new JavaScriptSerializer().Deserialize(ApiobjInstagramAccount.UserInformation(objUserid.ToString(), objTeamMemberProfile.ProfileId.ToString()), typeof(InstagramAccount)));
 
                 }
@@ -209,6 +207,86 @@ namespace Socioboard.Helper
             return lstTeamMemberProfile;
 
 
+        }
+
+
+        public static List<Domain.Socioboard.Domain.FacebookAccount> GetUserTeamMemberFbProfiles()
+        {
+
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
+            Api.FacebookAccount.FacebookAccount ApiFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+            List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+            List<Domain.Socioboard.Domain.FacebookAccount> ret_lstFacebookProfile = new List<Domain.Socioboard.Domain.FacebookAccount>();
+            Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+         
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            objApiTeam.Timeout = 300000;
+            JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
+
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            objApiTeamMemberProfile.Timeout = 300000;
+            lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+
+            foreach (Domain.Socioboard.Domain.TeamMemberProfile team_member in lstTeamMemberProfile)
+            {
+                _FacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(ApiFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), team_member.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
+             
+                if(team_member.ProfileType == "facebook_page" && !string.IsNullOrEmpty(_FacebookAccount.AccessToken))
+                {
+                    ret_lstFacebookProfile.Add(_FacebookAccount);
+                }
+            }
+            return ret_lstFacebookProfile;
+        
+        }
+
+
+        public static List<Domain.Socioboard.Domain.InstagramAccount> GetUserTeamMemberInstaProfiles()
+        {
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
+            Api.InstagramAccount.InstagramAccount ApiInstaAccount = new Api.InstagramAccount.InstagramAccount();
+            List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+            List<Domain.Socioboard.Domain.InstagramAccount> ret_InstaProfile = new List<Domain.Socioboard.Domain.InstagramAccount>();
+            Domain.Socioboard.Domain.InstagramAccount _InstaAccount = new Domain.Socioboard.Domain.InstagramAccount();
+
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            objApiTeam.Timeout = 300000;
+            JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            objApiTeamMemberProfile.Timeout = 300000;
+            lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+
+            foreach (Domain.Socioboard.Domain.TeamMemberProfile team_member in lstTeamMemberProfile)
+            {
+                _InstaAccount = (Domain.Socioboard.Domain.InstagramAccount)new JavaScriptSerializer().Deserialize(ApiInstaAccount.UserInformation(objUser.Id.ToString(), team_member.ProfileId), typeof(Domain.Socioboard.Domain.InstagramAccount));
+
+                if (team_member.ProfileType == "instagram" && !string.IsNullOrEmpty(_InstaAccount.AccessToken))
+                {
+                    ret_InstaProfile.Add(_InstaAccount);
+                }
+            }
+            return ret_InstaProfile;
+
+        }
+
+        public static List<Domain.Socioboard.Domain.TeamMemberProfile> GetUserTeamMemberTwitterProfiles()
+        {
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
+
+            List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            objApiTeam.Timeout = 300000;
+            JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
+
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            objApiTeamMemberProfile.Timeout = 300000;
+            lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberTwitterProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+
+            return lstTeamMemberProfile;
         }
 
         public static List<object> check(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile)
@@ -410,7 +488,7 @@ namespace Socioboard.Helper
                         Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
                         ApiobjFacebookFeed.Timeout = 300000;
                         //List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<FacebookFeed>)));
-                        List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<FacebookFeed>)));
+                        List<MongoFacebookFeed> lstFacebookFeed = (List<MongoFacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<MongoFacebookFeed>)));
 
                         foreach (var facebookfeed in lstFacebookFeed)
                         {
@@ -435,7 +513,7 @@ namespace Socioboard.Helper
                         Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
                         ApiobjTwitterFeed.Timeout = 300000;
                         //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<TwitterFeed>)));
-                        List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.getAllFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<TwitterFeed>)));
+                        List<Domain.Socioboard.MongoDomain.TwitterFeed> lstTwitterFeed = (List<Domain.Socioboard.MongoDomain.TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.getAllFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<Domain.Socioboard.MongoDomain.TwitterFeed>)));
                         foreach (var twitterfeed in lstTwitterFeed)
                         {
                             feeds.Add(twitterfeed);
@@ -584,11 +662,11 @@ namespace Socioboard.Helper
             if (accounttype.ToString().ToLower() == AccountType.Deluxe.ToString().ToLower())
                 tot_acc = 50;
             else if (accounttype.ToString().ToLower() == AccountType.Standard.ToString().ToLower())
-                tot_acc = 10;
+                tot_acc = 20;
             else if (accounttype.ToString().ToLower() == AccountType.Premium.ToString().ToLower())
                 tot_acc = 20;
             else if (accounttype.ToString().ToLower() == AccountType.Free.ToString().ToLower())
-                tot_acc = 5;
+                tot_acc = 20;
 
             else if (accounttype.ToString().ToLower() == AccountType.SocioBasic.ToString().ToLower())
                 tot_acc = 100;
@@ -1522,22 +1600,15 @@ namespace Socioboard.Helper
             GroupStatDetails _GroupStatDetails = new GroupStatDetails();
             try
             {
-
                 User objUser = (User)System.Web.HttpContext.Current.Session["User"];
                 List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
                 Api.Team.Team objApiTeam = new Api.Team.Team();
-                objApiTeam.Timeout = 300000;
                 string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
                 JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
                 Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
-                objApiTeamMemberProfile.Timeout = 300000;
                 //JArray TeamMemberProfiles = JArray.Parse(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])));
-
                 //  var asd=  objApiTeamMemberProfile.GetTeamMembeDetailsForGroupReport(Convert.ToString(team["Id"]), objUser.Id.ToString(), days.ToString());
-
                 _GroupStatDetails = (GroupStatDetails)(new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMembeDetailsForGroupReport(Convert.ToString(team["Id"]), objUser.Id.ToString(), days.ToString()), typeof(GroupStatDetails)));
-
-
             }
             catch (Exception ex)
             {

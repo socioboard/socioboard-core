@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
-
+using NHibernate.Linq;
 namespace Api.Socioboard.Services
 {
     public class InstagramCommentRepository : IInstagramComment
@@ -191,5 +191,46 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+
+
+
+
+
+        public List<Domain.Socioboard.Domain.InstagramComment> getAllInstagramCommentMongo(int skip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.InstagramComment> alst = session.Query<Domain.Socioboard.Domain.InstagramComment>().Skip(Convert.ToInt32(skip)).Take(50).ToList<Domain.Socioboard.Domain.InstagramComment>();
+                        ////Proceed action to get all Facebook Message of User.
+                        //List<Domain.Socioboard.Domain.InstagramComment> alst = session.CreateQuery("from InstagramComment")
+                        // .List<Domain.Socioboard.Domain.InstagramComment>().Skip(skip).Take(50)
+                        // .ToList<Domain.Socioboard.Domain.InstagramComment>();
+
+                        #region oldcode
+                        //List<FacebookMessage> alst = new List<FacebookMessage>();
+                        //foreach (FacebookMessage item in query.Enumerable<FacebookMessage>().OrderByDescending(x => x.MessageDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
     }
 }

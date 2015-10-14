@@ -53,7 +53,7 @@ namespace GlobusInstagramLib.Instagram.Core.CommentsMethods
         /// <param name="text"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public bool CommentAdd(string mediaid, string text, string accessToken)
+        public string CommentAdd(string mediaid, string text, string accessToken)
         {
             string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?access_token=" + accessToken;
             NameValueCollection post = new NameValueCollection
@@ -63,10 +63,10 @@ namespace GlobusInstagramLib.Instagram.Core.CommentsMethods
                                        };
             string json = oAuthIns.RequestPostToUrl(url, post, oAuthIns.Configuration.Proxy);
             if (string.IsNullOrEmpty(json))
-                return true;
+                return "";
 
             InstagramResponse<Comment> res = Base.DeserializeObject<InstagramResponse<Comment>>(json);
-            return res.meta.code == "200";
+            return json;
         }
 
         /// <summary>

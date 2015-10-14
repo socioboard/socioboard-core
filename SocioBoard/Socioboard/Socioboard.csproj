@@ -96,9 +96,9 @@
     <Reference Include="MongoDB.Driver.Legacy">
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\SocioboardAPI\lib\Recaptcha.dll</HintPath>
@@ -2608,7 +2608,6 @@
     <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyTumblrPageInfoPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyTwitterPageInfoPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyYoutubePageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Home\test.cshtml" />
     <Content Include="Themes\Socioboard\Views\BusinessSetting\Index.cshtml" />
     <Content Include="Themes\Socioboard\Views\BusinessSetting\_ViewStart.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\About.cshtml">
@@ -2658,6 +2657,8 @@
     <Content Include="Themes\Socioboard\Contents\plugins\jquery-slimscroll\README.md" />
     <Content Include="Themes\Socioboard\Contents\plugins\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Themes\Socioboard\Views\Messages\sentmsg.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Feeds\_GplusActivityPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Feeds\_InstagramPartial.cshtml" />
     <None Include="Web References\Api.AdminNews\AdminNews.disco" />
     <None Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.disco" />
     <None Include="Web References\Api.AdminUserDetails\AdminUserDetails.disco" />

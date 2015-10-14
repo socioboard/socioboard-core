@@ -58,8 +58,7 @@
 
 
     }
-
-  
+    
     function opnReply(messageid, ProfileId) {
         debugger;
         var buttonhtm = "<button type=\"button\" class=\"btn btn-primary\" onclick=\"saveCommentReply('twitter','" + messageid + "','" + ProfileId + "')\">Reply</button>";
@@ -121,6 +120,7 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="twtmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
@@ -143,7 +143,7 @@ $(document).ready(function () {
     var feedonscroll = _.throttle(loadinstagramfeedonscroll, 3000);
     function ccc() {
         // alert("ccc");
-        debugger;
+       // debugger;
         var network = $("#data_paneltab1").attr('network');
         if (network == "facebook") {
             facebookwall();
@@ -157,7 +157,7 @@ $(document).ready(function () {
     }
 
     function feedbind() {
-        debugger;
+       // debugger;
         var network = $("#data_paneltab2").attr('network');
         if (network == "facebook") {
             facebookfeed();
@@ -170,7 +170,7 @@ $(document).ready(function () {
         }
     }
 function imagebind() {
-        debugger;
+       // debugger;
         var nwt = $("#feedimages").attr("network");
         if (nwt == "tumblr") {
             tumblrimages();
@@ -309,7 +309,31 @@ function imagebind() {
             }
         });
     }
+    function addinstagramcomment(feedid, instagramid)
+    {
+        debugger;
+        var text = $("#" + feedid).val();
+        $.ajax({
+            url: "../Feeds/AddInstagramComment?FeedId=" + feedid + "&Text=" + encodeURIComponent(text) + "&InstagramId=" + instagramid,
+            type: "Get",
+            success: function (msg)
+            {
+                $("#" + feedid).val('');
 
+                if (msg != "")
+                {
+                    var _div = document.getElementById("collapseFeed__" + feedid);
+                    if (_div.style.display == 'none')
+                    {
+                        _div.style.display = 'block';
+                    }
+                    var comment='<div class="row"><div class="col-md-12"><b><a href="#">'+msg+'</a></b> '+text+'</div></div>';
+                    $("#collapseExample_" + feedid).append(comment);
+                }
+            }
+        });
+        
+    }
 
 </script>
 @*<script src="/Themes/Socioboard/Contents/js/plugins/morris/morris-data.js"></script>*@
