@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SendGridMail;
+using SendGridMail.Transport;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace GlobusMailLib
 {
     public class MailSenderGmail : IMailSender
     {
-        
+
 
         public string SendMail(string from, string passsword, string to, string bcc, string cc, string subject, string body, string UserName = "", string Password = "")
         {
@@ -43,6 +45,8 @@ namespace GlobusMailLib
 
             return response;
         }
+
+    
 
         public string SendMailWithAttachment(string from, string passsword, string to, string bcc, string cc, string subject, string body, string file, string filename, string filetype, string UserName = "", string Password = "")
         {

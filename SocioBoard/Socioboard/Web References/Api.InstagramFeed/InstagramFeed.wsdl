@@ -2,18 +2,18 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="GetLinkedInFeeds">
+      <s:element name="GetInstagramFeeds">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LinkedInId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLinkedInFeedsResponse">
+      <s:element name="GetInstagramFeedsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedInFeedsResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramFeedsResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -37,11 +37,11 @@
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetLinkedInFeedsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetLinkedInFeeds" />
+  <wsdl:message name="GetInstagramFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramFeeds" />
   </wsdl:message>
-  <wsdl:message name="GetLinkedInFeedsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
+  <wsdl:message name="GetInstagramFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramFeedsResponse" />
   </wsdl:message>
   <wsdl:message name="GetFeedsOfProfileWithRangeSoapIn">
     <wsdl:part name="parameters" element="tns:GetFeedsOfProfileWithRange" />
@@ -49,11 +49,11 @@
   <wsdl:message name="GetFeedsOfProfileWithRangeSoapOut">
     <wsdl:part name="parameters" element="tns:GetFeedsOfProfileWithRangeResponse" />
   </wsdl:message>
-  <wsdl:message name="GetLinkedInFeedsHttpGetIn">
+  <wsdl:message name="GetInstagramFeedsHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetLinkedInFeedsHttpGetOut">
+  <wsdl:message name="GetInstagramFeedsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetFeedsOfProfileWithRangeHttpGetIn">
@@ -65,11 +65,11 @@
   <wsdl:message name="GetFeedsOfProfileWithRangeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetLinkedInFeedsHttpPostIn">
+  <wsdl:message name="GetInstagramFeedsHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetLinkedInFeedsHttpPostOut">
+  <wsdl:message name="GetInstagramFeedsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetFeedsOfProfileWithRangeHttpPostIn">
@@ -82,9 +82,9 @@
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="InstagramFeedSoap">
-    <wsdl:operation name="GetLinkedInFeeds">
-      <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
-      <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <wsdl:input message="tns:GetInstagramFeedsSoapIn" />
+      <wsdl:output message="tns:GetInstagramFeedsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFeedsOfProfileWithRange">
       <wsdl:input message="tns:GetFeedsOfProfileWithRangeSoapIn" />
@@ -92,9 +92,9 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramFeedHttpGet">
-    <wsdl:operation name="GetLinkedInFeeds">
-      <wsdl:input message="tns:GetLinkedInFeedsHttpGetIn" />
-      <wsdl:output message="tns:GetLinkedInFeedsHttpGetOut" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <wsdl:input message="tns:GetInstagramFeedsHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramFeedsHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFeedsOfProfileWithRange">
       <wsdl:input message="tns:GetFeedsOfProfileWithRangeHttpGetIn" />
@@ -102,9 +102,9 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramFeedHttpPost">
-    <wsdl:operation name="GetLinkedInFeeds">
-      <wsdl:input message="tns:GetLinkedInFeedsHttpPostIn" />
-      <wsdl:output message="tns:GetLinkedInFeedsHttpPostOut" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <wsdl:input message="tns:GetInstagramFeedsHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramFeedsHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFeedsOfProfileWithRange">
       <wsdl:input message="tns:GetFeedsOfProfileWithRangeHttpPostIn" />
@@ -113,8 +113,8 @@
   </wsdl:portType>
   <wsdl:binding name="InstagramFeedSoap" type="tns:InstagramFeedSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetLinkedInFeeds">
-      <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramFeeds" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -134,8 +134,8 @@
   </wsdl:binding>
   <wsdl:binding name="InstagramFeedSoap12" type="tns:InstagramFeedSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetLinkedInFeeds">
-      <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramFeeds" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -155,8 +155,8 @@
   </wsdl:binding>
   <wsdl:binding name="InstagramFeedHttpGet" type="tns:InstagramFeedHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="GetLinkedInFeeds">
-      <http:operation location="/GetLinkedInFeeds" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <http:operation location="/GetInstagramFeeds" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -176,8 +176,8 @@
   </wsdl:binding>
   <wsdl:binding name="InstagramFeedHttpPost" type="tns:InstagramFeedHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="GetLinkedInFeeds">
-      <http:operation location="/GetLinkedInFeeds" />
+    <wsdl:operation name="GetInstagramFeeds">
+      <http:operation location="/GetInstagramFeeds" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -197,16 +197,16 @@
   </wsdl:binding>
   <wsdl:service name="InstagramFeed">
     <wsdl:port name="InstagramFeedSoap" binding="tns:InstagramFeedSoap">
-      <soap:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <soap:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedSoap12" binding="tns:InstagramFeedSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpGet" binding="tns:InstagramFeedHttpGet">
-      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpPost" binding="tns:InstagramFeedHttpPost">
-      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

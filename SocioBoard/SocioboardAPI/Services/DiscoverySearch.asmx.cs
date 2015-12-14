@@ -18,6 +18,8 @@ using GlobusTwitterLib.Twitter.Core.UserMethods;
 using log4net;
 using Ionic.Zlib;
 using Facebook;
+using GlobusInstagramLib.Instagram.Core.MediaMethods;
+using System.Configuration;
 //using System.IO.Compression;
 
 namespace Api.Socioboard.Services
@@ -35,6 +37,8 @@ namespace Api.Socioboard.Services
         ILog logger = LogManager.GetLogger(typeof(DiscoverySearch)); 
         Domain.Socioboard.Domain.DiscoverySearch objDiscoverySearch = new Domain.Socioboard.Domain.DiscoverySearch();
         DiscoverySearchRepository dissearchrepo = new DiscoverySearchRepository();
+        InstagramAccountRepository _InstagramAccountRepository = new InstagramAccountRepository();
+       
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string DiscoverySearchFacebook(string UserId, string keyword)
@@ -145,7 +149,7 @@ namespace Api.Socioboard.Services
                 //        catch { }
                 //    }
                 //}
-                List<Domain.Socioboard.Domain.DiscoverySearch> fb_data = null;
+                List<Domain.Socioboard.Domain.DiscoverySearch> fb_data = FbDiscoverySearchHelper.ScraperHasTage(keyword);
 
                 return new JavaScriptSerializer().Serialize(fb_data);
             }
@@ -425,81 +429,93 @@ namespace Api.Socioboard.Services
             catch { }
             return new JavaScriptSerializer().Serialize(GplusDiscoverySearch);
         }
+        [WebMethod]
+        public string DiscoverySearchinstagram(string Keyword)
+        {
+            Domain.Socioboard.MongoDomain.InstagramFeed _InstagramFeed;
+            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = new List<Domain.Socioboard.MongoDomain.InstagramFeed>();
+            //Domain.Socioboard.Domain.InstagramAccount _InstagramAccount = _InstagramAccountRepository.GetInstagramAccount();
+            Media _Media = new Media();
+            string Client_id = ConfigurationManager.AppSettings["InstagramClientKey"].ToString();
+            string ret = _Media.ActivitySearchByTag(Keyword, "", Client_id);
+            JObject Jdata = JObject.Parse(ret);
+            foreach (var item in Jdata["data"])
+            {
+                try
+                {
+                    _InstagramFeed = new Domain.Socioboard.MongoDomain.InstagramFeed();
+                    try
+                    {
+                        _InstagramFeed.Type = item["type"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.FeedDate = item["created_time"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.FeedUrl = item["link"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.LikeCount = Int32.Parse(item["likes"]["count"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.CommentCount = Int32.Parse(item["comments"]["count"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.FeedImageUrl = item["images"]["thumbnail"]["url"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.Feed = item["caption"]["text"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.FeedId = item["caption"]["id"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.FromId = item["caption"]["from"]["id"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.ImageUrl = item["caption"]["from"]["profile_picture"].ToString();
+                    }
+                    catch { }
+                    try
+                    {
+                        _InstagramFeed.AdminUser = item["caption"]["from"]["username"].ToString();
+                    }
+                    catch { }
+                    if (_InstagramFeed.Type == "video")
+                    {
+                        try
+                        {
+                            _InstagramFeed.VideoUrl = item["videos"]["low_resolution"]["url"].ToString();
+                        }
+                        catch { }
+                    }
+                    lstInstagramFeed.Add(_InstagramFeed);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
 
-        #region Commented by Antima
-        //public string DiscoverySearchTwitter(string UserId, string keyword)
-        //{
-        //    List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
-        //    string profileid = string.Empty;
-        //    try
-        //    {
-
-        //        oAuthTwitter oauth = new oAuthTwitter();
-        //        Twitter obj = new Twitter();
-
-        //        TwitterAccountRepository twtAccRepo = new TwitterAccountRepository();
-        //        ArrayList alst = twtAccRepo.getAllTwitterAccounts();
-        //        foreach (Domain.Socioboard.Domain.TwitterAccount item in alst)
-        //        {
-        //            oauth.AccessToken = item.OAuthToken;
-        //            oauth.AccessTokenSecret = item.OAuthSecret;
-        //            oauth.TwitterUserId = item.TwitterUserId;
-        //            oauth.TwitterScreenName = item.TwitterScreenName;
-        //            obj.SetCofigDetailsForTwitter(oauth);
-        //            if (this.CheckTwitterToken(oauth, keyword))
-        //            {
-        //                break;
-        //            }
-        //        }
-
-        //        Search search = new Search();
-        //        JArray twitterSearchResult = search.Get_Search_Tweets(oauth, keyword);
-        //        foreach (var item in twitterSearchResult)
-        //        {
-        //            var results = item["statuses"];
-        //            foreach (var chile in results)
-        //            {
-        //                try
-        //                {
-        //                    objDiscoverySearch = new Domain.Socioboard.Domain.DiscoverySearch();
-        //                    objDiscoverySearch.CreatedTime = Utility.ParseTwitterTime(chile["created_at"].ToString().TrimStart('"').TrimEnd('"')); ;
-        //                    objDiscoverySearch.EntryDate = DateTime.Now;
-        //                    objDiscoverySearch.FromId = chile["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-        //                    objDiscoverySearch.FromName = chile["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-        //                    objDiscoverySearch.ProfileImageUrl = chile["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-        //                    objDiscoverySearch.SearchKeyword = keyword;
-        //                    objDiscoverySearch.Network = "twitter";
-        //                    objDiscoverySearch.Message = chile["text"].ToString().TrimStart('"').TrimEnd('"');
-        //                    objDiscoverySearch.MessageId = chile["id_str"].ToString().TrimStart('"').TrimEnd('"');
-        //                    objDiscoverySearch.Id = Guid.NewGuid();
-        //                    objDiscoverySearch.UserId = Guid.Parse(UserId);
-
-        //                    string postID = chile["id"].ToString();
-        //                    string postURL = "https://twitter.com/" + objDiscoverySearch.FromName + "/status/" + postID;
-
-        //                    if (!dissearchrepo.isKeywordPresent(objDiscoverySearch.SearchKeyword, objDiscoverySearch.MessageId))
-        //                    {
-        //                        dissearchrepo.addNewSearchResult(objDiscoverySearch);
-        //                    }
-        //                    lstDiscoverySearch.Add(objDiscoverySearch);
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    Console.WriteLine(ex.StackTrace);
-        //                }
-        //            }
-        //        }
-
-        //        return new JavaScriptSerializer().Serialize(lstDiscoverySearch);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.StackTrace);
-        //        return new JavaScriptSerializer().Serialize("Please try Again");
-        //    }
-        //}
-        #endregion
+            return new JavaScriptSerializer().Serialize(lstInstagramFeed); ;
+        }
 
         public bool CheckTwitterToken(oAuthTwitter objoAuthTwitter, string txtvalue)
         {
@@ -663,8 +679,25 @@ namespace Api.Socioboard.Services
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
         }
-
-        // Edited by Antima
+        [WebMethod]
+        public string ContactSearchInstagram(string keyword)
+        {
+            List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            //Domain.Socioboard.Domain.InstagramAccount _InstagramAccount = _InstagramAccountRepository.GetInstagramAccount();
+            GlobusInstagramLib.Instagram.Core.UsersMethods.Users _user = new GlobusInstagramLib.Instagram.Core.UsersMethods.Users();
+            string Client_id = ConfigurationManager.AppSettings["InstagramClientKey"].ToString();
+            string ret = _user.UsersSearch(keyword,"","",Client_id);
+            JObject _JObject = JObject.Parse(ret);
+            foreach (var item in _JObject["data"])
+            {
+                objDiscoverySearch = new Domain.Socioboard.Domain.DiscoverySearch();
+                objDiscoverySearch.FromId = item["id"].ToString();
+                objDiscoverySearch.FromName = item["username"].ToString();
+                objDiscoverySearch.ProfileImageUrl = item["profile_picture"].ToString();
+                lstDiscoverySearch.Add(objDiscoverySearch);
+            }
+            return new JavaScriptSerializer().Serialize(lstDiscoverySearch);
+        }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

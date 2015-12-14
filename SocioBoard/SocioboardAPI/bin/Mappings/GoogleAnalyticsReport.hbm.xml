@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="GoogleAnalyticsReport" table="GoogleAnalyticsReport" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="GaProfileId">
+      <column name="GaProfileId" />
+    </property>
+    <property name="Visits">
+      <column name="Visits"  />
+    </property>
+    <property name="Views">
+      <column name="Views"  />
+    </property>
+    <property name="TwitterMention">
+      <column name="TwitterMention"  />
+    </property>
+    <property name="Article_Blogs">
+      <column name="Article_Blogs"  />
+    </property>
+
+
+  </class>
+</hibernate-mapping>

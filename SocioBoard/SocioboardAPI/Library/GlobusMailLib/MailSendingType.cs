@@ -9,6 +9,8 @@ namespace GlobusMailLib
     {
         Mandrill,
         Sendgrid,
-        Gmail
+        Gmail,
+        Zoho
+       
     }
 }

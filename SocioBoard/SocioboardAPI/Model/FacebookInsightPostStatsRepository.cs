@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections;
-using SocioBoard.Helper;
-using SocioBoard.Domain; 
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
+
 
 namespace SocioBoard.Model
 {
-    public class FacebookInsightPostStatsRepository : IFacebookInsightPostStats
+    public class FacebookInsightPostStatsRepository 
     {
 
         /// <addFacebookInsightPostStats>

@@ -68,6 +68,8 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
+            Session["addfbaccount"] = null;
+           // Session["fblogin"] = null;            
             if (Session["User"] != null)
             {
                 User objUser = (User)Session["User"];
@@ -621,6 +623,43 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
             lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
             return PartialView("_TwitterContactPartial", lstDiscoverySearch);
+        }
+
+        public ActionResult ContactSearchInstagram(string keyword)
+        {
+            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+            List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.ContactSearchInstagram(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+            return PartialView("_InstagramContactPartial", lstDiscoverySearch);
+        }
+        public ActionResult InstagramProfile()
+        {
+            Session["AllInstagramAccount"] = SBUtils.GetUserTeamMemberInstaProfiles();
+            return PartialView("_InstagramProfilePartial");
+        }
+
+        public ActionResult FollowInstagramUser(string fromId, string toId, string toName)
+        {
+            Api.Instagram.Instagram ApiInstagram = new Api.Instagram.Instagram();
+            string[] arrId = fromId.Split(',');
+            List<Domain.Socioboard.Domain.InstagramAccount> lstInstaAccount = ((List<Domain.Socioboard.Domain.InstagramAccount>)Session["AllInstagramAccount"]).Where(t => arrId.Contains(t.InstagramId)).ToList();
+            foreach (var item in lstInstaAccount)
+            {
+                string ret = ApiInstagram.PostFollow(toId, toName, item.InstagramId, item.AccessToken);
+            }
+            return Content("success");
+        }
+
+        public ActionResult UnfollowInstagramUser(string fromId, string toId, string toName)
+        {
+            Api.Instagram.Instagram ApiInstagram = new Api.Instagram.Instagram();
+            string[] arrId = fromId.Split(',');
+            List<Domain.Socioboard.Domain.InstagramAccount> lstInstaAccount = ((List<Domain.Socioboard.Domain.InstagramAccount>)Session["AllInstagramAccount"]).Where(t => arrId.Contains(t.InstagramId)).ToList();
+            foreach (var item in lstInstaAccount)
+            {
+                string ret = ApiInstagram.PostUnfollow(toId, toName, item.InstagramId, item.AccessToken);
+            }
+            return Content("success");
         }
 
         public ActionResult pagenotfound()

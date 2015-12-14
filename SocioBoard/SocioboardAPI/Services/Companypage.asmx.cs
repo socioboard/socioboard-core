@@ -21,6 +21,7 @@ using System.Xml;
 using Api.Socioboard.Helper;
 using System.Text.RegularExpressions;
 using System.Threading;
+using MongoDB.Bson;
 
 namespace Api.Socioboard.Services
 {
@@ -255,7 +256,8 @@ namespace Api.Socioboard.Services
         {
             //FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
             //ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccounts();
-            string accesstoken = "Your access token";
+            string accesstoken = "CAAKYvwDVmnUBAJtKlQvRNTf3ACcN2loYYae5jhBuR6xwQeD6YY6psMoRKo6HBChX1O3Ec5Hf6hI9Hsn4PwGefwZCbbQmVbHX7JlspLYs6eSQfFU9rx7kOOlXdcvSOnx65TjwRCKPTElgov8Hv90wQu83OivXc9bbqDii4u583mKZA59runloi16ZBqF82W1pT7vnjbb8ZB0g7Bt6AXm2";
+            //string accesstoken = "CAACZB5L4uuV8BACXwWhgpnE6lrSuIz0vdr6HtMQM8rUEKFPBVfhuYr56OCvPmRqsWPoYaMtYmaRGPZCqRqa562eaoSXaa1xScB5zKtE5jHFw07wI0GENjFOnluGrduNhHRqJT1iNUCFnTh5GXmZAtc4AiZAPMvVXS9EidsDo9PNVQwd262eSFapVZCFvxJpIZD";
             //foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
             //{
             //    accesstoken = item.AccessToken;
@@ -292,6 +294,7 @@ namespace Api.Socioboard.Services
         {
             HashTag = Uri.EscapeUriString(HashTag);
             HashTag = HashTag.Replace("%20%E2%80%8E", string.Empty);
+            //string accesstoken = "CAAKYvwDVmnUBAJtKlQvRNTf3ACcN2loYYae5jhBuR6xwQeD6YY6psMoRKo6HBChX1O3Ec5Hf6hI9Hsn4PwGefwZCbbQmVbHX7JlspLYs6eSQfFU9rx7kOOlXdcvSOnx65TjwRCKPTElgov8Hv90wQu83OivXc9bbqDii4u583mKZA59runloi16ZBqF82W1pT7vnjbb8ZB0g7Bt6AXm2";
             //string facebookSearchUrl = "https://graph.facebook.com/search?type=post&q=%23" + HashTag + "&access_token=" + accesstoken;
             //var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
             //facebooklistpagerequest.Method = "GET";
@@ -323,6 +326,54 @@ namespace Api.Socioboard.Services
 
             //GlobusHttpHelper HttpHelper = fbUser.globusHttpHelper;
 
+            //ScraperHasTage(ref fbUser, HashTag, BoardfbPageId);
+        //    ScraperHasTage(HashTag, BoardfbPageId);
+
+            return "";
+
+        }
+
+
+
+
+        public string getFacebookMongoTagFeeds(string HashTag, string BoardfbPageId)
+        {
+            HashTag = Uri.EscapeUriString(HashTag);
+            HashTag = HashTag.Replace("%20%E2%80%8E", string.Empty);
+            //string accesstoken = "CAAKYvwDVmnUBAJtKlQvRNTf3ACcN2loYYae5jhBuR6xwQeD6YY6psMoRKo6HBChX1O3Ec5Hf6hI9Hsn4PwGefwZCbbQmVbHX7JlspLYs6eSQfFU9rx7kOOlXdcvSOnx65TjwRCKPTElgov8Hv90wQu83OivXc9bbqDii4u583mKZA59runloi16ZBqF82W1pT7vnjbb8ZB0g7Bt6AXm2";
+            //string facebookSearchUrl = "https://graph.facebook.com/search?type=post&q=%23" + HashTag + "&access_token=" + accesstoken;
+            //var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+            //facebooklistpagerequest.Method = "GET";
+            //facebooklistpagerequest.Credentials = CredentialCache.DefaultCredentials;
+            //facebooklistpagerequest.AllowWriteStreamBuffering = true;
+            //facebooklistpagerequest.ServicePoint.Expect100Continue = false;
+            //facebooklistpagerequest.PreAuthenticate = false;
+            //string outputface = string.Empty;
+            //try
+            //{
+            //    using (var response = facebooklistpagerequest.GetResponse())
+            //    {
+            //        using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+            //        {
+            //            outputface = stream.ReadToEnd();
+            //        }
+            //    }
+            //}
+            //catch (Exception e) { }
+            //return outputface;
+            //GlobusHttpHelper objGlobusHttpHelper = new GlobusHttpHelper();
+            //FacebookUser fbUser = new FacebookUser();
+            //fbUser.username = ConfigurationManager.AppSettings["fb_userid"];
+            //fbUser.password = ConfigurationManager.AppSettings["fb_pass"];
+
+
+            //fbUser.globusHttpHelper = objGlobusHttpHelper;
+            //LoginUsingGlobusHttp(ref fbUser);
+
+            //GlobusHttpHelper HttpHelper = fbUser.globusHttpHelper;
+
+            //ScraperHasTage(ref fbUser, HashTag, BoardfbPageId);
+          //  ScraperHasTageNongo(HashTag, BoardfbPageId);
 
             return "";
 
@@ -528,9 +579,12 @@ namespace Api.Socioboard.Services
         public string Twitterapponlykey()
         {
             string retvalu = string.Empty;
-          
-            var oauth_consumer_key = "Your Consumerkey";
-            var oauth_consumer_secret = "YOur Secret key";
+           // var oauth_consumer_key = "yNt3tISGJji5poVSgSO1Og";
+            //var oauth_consumer_secret = "BvJQlpnjBxN7rtiGF6fIbcGlTgmRac8O3cOamwmr8X4";
+            //var oauth_consumer_key = "TiECZTnrqkQe512mcL15fYqMR";
+            //var oauth_consumer_secret = "zk3t6YPUi6JBXd4b2mwhBhtCbZI06uYunAZydoc3i3NCs2iHMc";
+            var oauth_consumer_key = "BHtypfc3BLlCB4RYw6ADKtPVr";
+            var oauth_consumer_secret = "t6ns5bjb0WMcGmR3r0SBxUPMe1MnLimMdia2H0JKD6PN9ZYooP";
             //Token URL
             var oauth_url = "https://api.twitter.com/oauth2/token";
             var headerFormat = "Basic {0}";
@@ -581,7 +635,7 @@ namespace Api.Socioboard.Services
                 //Token URL
                 var oauth_url = "https://api.twitter.com/1.1/users/show.json";
                 var headerFormat = "Bearer {0}";
-                var authHeader = string.Format(headerFormat, "YOur app only key");
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAKFPggAAAAAArwWHS2FBX%2FkwQQa40yoy3yLxP0Y%3DQW1M1gGoVK1b4WLdQ8gg0lMB7m4gPnAzDTNijQENJrKVocyBfX");
 
                 var postBody = requestParameters.ToWebString();
                 ServicePointManager.Expect100Continue = false;
@@ -620,7 +674,7 @@ namespace Api.Socioboard.Services
                 // Token URL
                 var oauth_url = "https://api.twitter.com/1.1/statuses/show.json";
                 var headerFormat = "Bearer {0}";
-                var authHeader = string.Format(headerFormat, "YOur app only key");
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAKFPggAAAAAArwWHS2FBX%2FkwQQa40yoy3yLxP0Y%3DQW1M1gGoVK1b4WLdQ8gg0lMB7m4gPnAzDTNijQENJrKVocyBfX");
 
                 var postBody = requestParameters.ToWebString();
                 ServicePointManager.Expect100Continue = false;
@@ -664,11 +718,96 @@ namespace Api.Socioboard.Services
 
             return response;
         }
+        public string TwitterBoardUserPreviousTimeLine(string ScreenName, string LastTweetId)
+        {
+            JArray output = new JArray();
+            try
+            {
+                SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+                //requestParameters.Add("user_id", UserId);
+                requestParameters.Add("screen_name", ScreenName);
+                if (!string.IsNullOrEmpty(LastTweetId))
+                {
+                    requestParameters.Add("max_id", LastTweetId);
 
+                }
+                requestParameters.Add("count", "95");
 
+                //Token URL
+                var oauth_url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+                var headerFormat = "Bearer {0}";
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAEB7gwAAAAAA2Jk7qBC%2BWVA5tHGEoNn2Z9bayGU%3DNn0MsaxfRaMIsZ0b5UeHymBwl61Sc9TjBR0FokROqonw5a1t3F");
 
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+                var postBody = requestParameters.ToWebString();
+                ServicePointManager.Expect100Continue = false;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+                       + requestParameters.ToWebString());
+
+                request.Headers.Add("Authorization", authHeader);
+                request.Method = "GET";
+                request.Headers.Add("Accept-Encoding", "gzip");
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+                using (var reader = new StreamReader(responseStream))
+                {
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    output = JArray.Parse(objText);
+
+                }
+            }
+            catch (Exception ee) { }
+
+            return output.ToString();
+        }
+
+        public string TwitterBoardUserTimeLine(string ScreenName, string LastTweetId)
+        {
+            JArray output = new JArray();
+            try
+            {
+                SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+                //requestParameters.Add("user_id", UserId);
+                requestParameters.Add("screen_name", ScreenName);
+                if (!string.IsNullOrEmpty(LastTweetId))
+                {
+                    requestParameters.Add("since_id", LastTweetId);
+
+                }
+                requestParameters.Add("count", "95");
+                requestParameters.Add("exclude_replies", "false");
+                //Token URL
+                var oauth_url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+                var headerFormat = "Bearer {0}";
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAKFPggAAAAAArwWHS2FBX%2FkwQQa40yoy3yLxP0Y%3DQW1M1gGoVK1b4WLdQ8gg0lMB7m4gPnAzDTNijQENJrKVocyBfX");
+
+                var postBody = requestParameters.ToWebString();
+                ServicePointManager.Expect100Continue = false;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+                       + requestParameters.ToWebString());
+
+                request.Headers.Add("Authorization", authHeader);
+                request.Method = "GET";
+                request.Headers.Add("Accept-Encoding", "gzip");
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+                using (var reader = new StreamReader(responseStream))
+                {
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    output = JArray.Parse(objText);
+
+                }
+            }
+            catch (Exception ee) { }
+
+            return output.ToString();
+        }
+      
         public string TwitterUserTimeLine(string ScreenName, string LastTweetId)
         {
             JArray output = new JArray();
@@ -684,7 +823,7 @@ namespace Api.Socioboard.Services
                 //Token URL
                 var oauth_url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
                 var headerFormat = "Bearer {0}";
-                var authHeader = string.Format(headerFormat, "YOur app only key");
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAOZyVwAAAAAAgI0VcykgJ600le2YdR4uhKgjaMs%3D0MYOt4LpwCTAIi46HYWa85ZcJ81qi0D9sh8avr1Zwf7BDzgdHT");
 
                 var postBody = requestParameters.ToWebString();
                 ServicePointManager.Expect100Continue = false;
@@ -735,6 +874,100 @@ namespace Api.Socioboard.Services
             return response;
         }
 
+        public string TwitterBoardHashTagSearch(string Hashtag, string LastTweetId)
+        {
+            Hashtag = Uri.EscapeUriString(Hashtag);
+            Hashtag = Hashtag.Replace("%20%E2%80%8E", string.Empty);
+            JArray output = new JArray();
+            try
+            {
+                SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+                //requestParameters.Add("user_id", UserId);
+                //requestParameters.Add("screen_name", Hashtag);
+                //requestParameters.Add("count", "198");
+                //Token URL
+                var oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=mixed&count=95";
+                if (!string.IsNullOrEmpty(LastTweetId))
+                {
+                    oauth_url = oauth_url + "&since_id=" + LastTweetId;
+                }
+                var headerFormat = "Bearer {0}";
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAKFPggAAAAAArwWHS2FBX%2FkwQQa40yoy3yLxP0Y%3DQW1M1gGoVK1b4WLdQ8gg0lMB7m4gPnAzDTNijQENJrKVocyBfX");
+
+                var postBody = requestParameters.ToWebString();
+                ServicePointManager.Expect100Continue = false;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+                       + requestParameters.ToWebString());
+
+                request.Headers.Add("Authorization", authHeader);
+                request.Method = "GET";
+                request.Headers.Add("Accept-Encoding", "gzip");
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+                using (var reader = new StreamReader(responseStream))
+                {
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    output = JArray.Parse(JObject.Parse(objText)["statuses"].ToString());
+
+                }
+            }
+            catch (Exception ee) { }
+
+            return output.ToString();
+        }
+
+        public string TwitterHashTagSearchWithMaxTweetId(string Hashtag, string MaxTweetId)
+        {
+            Hashtag = Uri.EscapeUriString(Hashtag);
+            Hashtag = Hashtag.Replace("%20%E2%80%8E", string.Empty);
+            JArray output = new JArray();
+            try
+            {
+                SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+                //requestParameters.Add("user_id", UserId);
+                //requestParameters.Add("screen_name", Hashtag);
+                //requestParameters.Add("count", "198");
+                //Token URL
+                var oauth_url = string.Empty;
+                if (!string.IsNullOrEmpty(MaxTweetId))
+                {
+                    oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=mixed&count=95&max_id=" + MaxTweetId.ToString();
+                }
+                else 
+                {
+                    oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=mixed";
+                }
+              
+                var headerFormat = "Bearer {0}";
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAEB7gwAAAAAA2Jk7qBC%2BWVA5tHGEoNn2Z9bayGU%3DNn0MsaxfRaMIsZ0b5UeHymBwl61Sc9TjBR0FokROqonw5a1t3F");
+
+                var postBody = requestParameters.ToWebString();
+                ServicePointManager.Expect100Continue = false;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+                       + requestParameters.ToWebString());
+
+                request.Headers.Add("Authorization", authHeader);
+                request.Method = "GET";
+                request.Headers.Add("Accept-Encoding", "gzip");
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+                using (var reader = new StreamReader(responseStream))
+                {
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    output = JArray.Parse(JObject.Parse(objText)["statuses"].ToString());
+
+                }
+            }
+            catch (Exception ee) { }
+
+            return output.ToString();
+        }
 
         public string TwitterHashTagSearch(string Hashtag, string LastTweetId)
         {
@@ -748,13 +981,13 @@ namespace Api.Socioboard.Services
                 //requestParameters.Add("screen_name", Hashtag);
                 //requestParameters.Add("count", "198");
                 //Token URL
-                var oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=recent&count=30";
+                var oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=recent&count=90";
                 if (!string.IsNullOrEmpty(LastTweetId))
                 {
                     oauth_url = oauth_url + "&since_id=" + LastTweetId;
                 }
                 var headerFormat = "Bearer {0}";
-                var authHeader = string.Format(headerFormat, "YOur app only key");
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAOZyVwAAAAAAgI0VcykgJ600le2YdR4uhKgjaMs%3D0MYOt4LpwCTAIi46HYWa85ZcJ81qi0D9sh8avr1Zwf7BDzgdHT");
 
                 var postBody = requestParameters.ToWebString();
                 ServicePointManager.Expect100Continue = false;
@@ -797,11 +1030,14 @@ namespace Api.Socioboard.Services
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                 oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
-                
-                oauth.Token = "Token";
-                oauth.TokenSecret = "Token Scecret";
-                oauth.Verifier = "verifier";
-               
+                //oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
+                //oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
+                //oauth.Verifier = "52921";
+                oauth.Token = "b82db6bb-21bb-44d2-a298-0b093708ddbf";
+                oauth.TokenSecret = "f7c9b7b8-9295-46fe-8cb4-914c1c52820f";
+                oauth.Verifier = "23836";
+                //oauth.AccessTokenGet(linkacc.OAuthToken);
+                //TODO: access Token Logic
                 oauth.AccessTokenGet("b82db6bb-21bb-44d2-a298-0b093708ddbf");
                 //oauth.AccessTokenGet();
 
@@ -852,7 +1088,9 @@ namespace Api.Socioboard.Services
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                 oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
-              
+                oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
+                oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
+                oauth.Verifier = "52921";
                 oauth.AccessTokenGet(linkacc.OAuthToken);
 
                 //oauth.AccessTokenGet();
@@ -880,9 +1118,9 @@ namespace Api.Socioboard.Services
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                 oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
-                oauth.Token = "Token";
-                oauth.TokenSecret = "Your Token Secret";
-                oauth.Verifier = "Your verifier";
+                oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
+                oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
+                oauth.Verifier = "52921";
                 oauth.AccessTokenGet(linkacc.OAuthToken);
 
                 //oauth.AccessTokenGet();
@@ -1044,8 +1282,34 @@ namespace Api.Socioboard.Services
             return outputface;
         }
 
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getInstagramUserPreviousFeeds(string UserId, string MaxId, string AccessToken)
+        {
+            string InstagramUrl = string.Empty;
+            if (!string.IsNullOrEmpty(MaxId)) 
+            {
+                InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?access_token=" + AccessToken + "&MAX_ID="+ MaxId;
+            }
+            var Instagramlistpagerequest = (HttpWebRequest)WebRequest.Create(InstagramUrl);
+            Instagramlistpagerequest.Method = "GET";
+            Instagramlistpagerequest.Credentials = CredentialCache.DefaultCredentials;
+            Instagramlistpagerequest.AllowWriteStreamBuffering = true;
+            Instagramlistpagerequest.ServicePoint.Expect100Continue = false;
+            Instagramlistpagerequest.PreAuthenticate = false;
+            string outputface = string.Empty;
+            try
+            {
+                using (var response = Instagramlistpagerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception e) { }
+            return outputface;
+        }
+      
         public string getInstagramUserRecentActivities(string UserId)
         {
             string InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?client_id=" + ConfigurationManager.AppSettings["InstagramClientKey"];
@@ -1069,6 +1333,7 @@ namespace Api.Socioboard.Services
             catch (Exception e) { }
             return outputface;
         }
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getInstagramUserDetails(string UserId)
@@ -1098,7 +1363,7 @@ namespace Api.Socioboard.Services
 
         public string InstagramTagSearch(string TagName)
         {
-            string accesstoken = "Your access token";
+            string accesstoken = "1045136815.0a58814.28e2a364a96544c4b40f6caa17672e89";
             TagName = Uri.EscapeUriString(TagName);
             TagName = TagName.Replace("%E2%80%AA%E2%80%8E", string.Empty);
             string instagrmHastagSearchURL = "https://api.instagram.com/v1/tags/" + TagName.TrimStart() + "/media/recent?access_token=" + accesstoken;
@@ -1122,6 +1387,44 @@ namespace Api.Socioboard.Services
             catch (Exception e) { }
             return outputface;
         }
+
+
+
+        public string InstagramTagPreviousFeesSearch(string TagName, string MaxId)
+        {
+            string accesstoken = "1045136815.0a58814.28e2a364a96544c4b40f6caa17672e89";
+            TagName = Uri.EscapeUriString(TagName);
+            TagName = TagName.Replace("%E2%80%AA%E2%80%8E", string.Empty);
+            string instagrmHastagSearchURL = string.Empty;
+            if (!string.IsNullOrEmpty(instagrmHastagSearchURL))
+            {
+                instagrmHastagSearchURL = "https://api.instagram.com/v1/tags/" + TagName.TrimStart() + "/media/recent?access_token=" + accesstoken + "COUNT=95&MaxId=" + MaxId;
+            }
+            else 
+            {
+                instagrmHastagSearchURL = "https://api.instagram.com/v1/tags/" + TagName.TrimStart() + "/media/recent?access_token=" + accesstoken + "&COUNT=95";
+            }
+            var Instagramsearchreq = (HttpWebRequest)WebRequest.Create(instagrmHastagSearchURL);
+            Instagramsearchreq.Method = "GET";
+            Instagramsearchreq.Credentials = CredentialCache.DefaultCredentials;
+            Instagramsearchreq.AllowWriteStreamBuffering = true;
+            Instagramsearchreq.ServicePoint.Expect100Continue = false;
+            Instagramsearchreq.PreAuthenticate = false;
+            string outputface = string.Empty;
+            try
+            {
+                using (var response = Instagramsearchreq.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception e) { }
+            return outputface;
+        }
+
         #endregion
 
         #region tumblr Logic
@@ -1191,7 +1494,7 @@ namespace Api.Socioboard.Services
         public string YoutubeSearch(string keyword)
         {
             string response = string.Empty;
-            string Key = ConfigurationManager.AppSettings["Api_Key"];
+            string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
             // YoutubeAccountRepository ytAccrepo = new YoutubeAccountRepository();
             //Domain.Socioboard.Domain.YoutubeAccount ytAccount = ytAccrepo.getYoutubeAccountDetailsByUserName(keyword);
             //if (ytAccount != null && !string.IsNullOrEmpty(ytAccount.Ytusername))
@@ -1265,7 +1568,7 @@ namespace Api.Socioboard.Services
         public string YoutubeSearchList(string keyword)
         {
             string response = string.Empty;
-            string Key = ConfigurationManager.AppSettings["Api_Key"];
+            string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
 
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet,id&maxResults=20&q=" + keyword + "&key=" + Key;
@@ -1291,7 +1594,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string YoutubeChannelPlayList(string ChannelId)
         {
-            string Key = ConfigurationManager.AppSettings["Api_Key"];
+            string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet,id&maxResults=20&q=" + keyword + "&key=" + Key;
             string RequestUrl = "https://www.googleapis.com/youtube/v3/playlists?part=+id,snippet,status,contentDetails&channelId=" + ChannelId + "&key=" + Key;
@@ -1320,8 +1623,8 @@ namespace Api.Socioboard.Services
             string ret = string.Empty;
             try
             {
-                string Key = ConfigurationManager.AppSettings["Api_Key"];
-                
+                string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
+                //AIzaSyCvTBnEDnr5DEpvlVDCuxz9K9TK84rX0fE
                 //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
                 string RequestUrl = "https://www.googleapis.com/plus/v1/people?query=" + keyword + "&key=" + Key;
 
@@ -1428,7 +1731,8 @@ namespace Api.Socioboard.Services
             string ret = string.Empty;
             try
             {
-                string Key = ConfigurationManager.AppSettings["Api_Key"];
+                string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
+                //AIzaSyCvTBnEDnr5DEpvlVDCuxz9K9TK84rX0fE
                 //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
                 string RequestUrl = "https://www.googleapis.com/plus/v1/people?query=" + keyword + "&key=" + Key;
 
@@ -1468,7 +1772,8 @@ namespace Api.Socioboard.Services
 
             try
             {
-                string Key = ConfigurationManager.AppSettings["Api_Key"];
+                string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
+                //AIzaSyCvTBnEDnr5DEpvlVDCuxz9K9TK84rX0fE
                 //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
                 string RequestUrl = "https://www.googleapis.com/plus/v1/people/" + UserId + "?key=" + Key;
 
@@ -1505,7 +1810,8 @@ namespace Api.Socioboard.Services
 
             try
             {
-                string Key = ConfigurationManager.AppSettings["Api_Key"];
+                string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
+                //AIzaSyCvTBnEDnr5DEpvlVDCuxz9K9TK84rX0fE
                 //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
                 string RequestUrl = "https://www.googleapis.com/plus/v1/people/" + UserId + "/activities/public/?key=" + Key;
 
@@ -1575,7 +1881,292 @@ namespace Api.Socioboard.Services
         }
         #endregion
 
+        #region facebook login
 
+        public void LoginUsingGlobusHttp(ref FacebookUser facebookUser)
+        {
+            ///Sign In
+            try
+            {
+                GlobusHttpHelper objGlobusHttpHelper = facebookUser.globusHttpHelper;
+                #region Post variable
+
+                string fbpage_id = string.Empty;
+                string fb_dtsg = string.Empty;
+                string __user = string.Empty;
+                string xhpc_composerid = string.Empty;
+                string xhpc_targetid = string.Empty;
+                string xhpc_composerid12 = string.Empty;
+                #endregion
+
+                int intProxyPort = 80;
+
+                if (!string.IsNullOrEmpty(facebookUser.proxyport) && Utils.IdCheck.IsMatch(facebookUser.proxyport))
+                {
+                    intProxyPort = int.Parse(facebookUser.proxyport);
+                }
+                Console.WriteLine("Logging in with " + facebookUser.username);
+                Console.WriteLine("Logging in with " + facebookUser.username);
+                string pageSource = string.Empty;
+                try
+                {
+                    pageSource = objGlobusHttpHelper.getHtmlfromUrl(new Uri("https://www.facebook.com/login.php"));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error : " + ex.StackTrace);
+                }
+
+                if (pageSource == null || string.IsNullOrEmpty(pageSource))
+                {
+                    pageSource = objGlobusHttpHelper.getHtmlfromUrl(new Uri("https://www.facebook.com/login.php"));
+                }
+
+                if (pageSource == null)
+                {
+                    pageSource = objGlobusHttpHelper.getHtmlfromUrl(new Uri("https://www.facebook.com/login.php"));
+                    return;
+                }
+
+                string valueLSD = GlobusHttpHelper.GetParamValue(pageSource, "lsd");
+                string ResponseLogin = string.Empty;
+                try
+                {
+                    ResponseLogin = objGlobusHttpHelper.postFormData(new Uri("https://www.facebook.com/login.php?login_attempt=1"), "charset_test=%E2%82%AC%2C%C2%B4%2C%E2%82%AC%2C%C2%B4%2C%E6%B0%B4%2C%D0%94%2C%D0%84&lsd=" + valueLSD + "&locale=en_US&email=" + facebookUser.username.Split('@')[0].Replace("+", "%2B") + "%40" + facebookUser.username.Split('@')[1] + "&pass=" + Uri.EscapeDataString(facebookUser.password) + "&persistent=1&default_persistent=1&charset_test=%E2%82%AC%2C%C2%B4%2C%E2%82%AC%2C%C2%B4%2C%E6%B0%B4%2C%D0%94%2C%D0%84&lsd=" + valueLSD + "");           //"https://www.facebook.com/login.php?login_attempt=1"
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error : " + ex.StackTrace);
+                }
+                if (string.IsNullOrEmpty(ResponseLogin))
+                {
+                    ResponseLogin = objGlobusHttpHelper.postFormData(new Uri("https://www.facebook.com/login.php?login_attempt=1"), "charset_test=%E2%82%AC%2C%C2%B4%2C%E2%82%AC%2C%C2%B4%2C%E6%B0%B4%2C%D0%94%2C%D0%84&lsd=" + valueLSD + "&locale=en_US&email=" + facebookUser.username.Split('@')[0].Replace("+", "%2B") + "%40" + facebookUser.username.Split('@')[1] + "&pass=" + Uri.EscapeDataString(facebookUser.password) + "&persistent=1&default_persistent=1&charset_test=%E2%82%AC%2C%C2%B4%2C%E2%82%AC%2C%C2%B4%2C%E6%B0%B4%2C%D0%94%2C%D0%84&lsd=" + valueLSD + "");           //"https://www.facebook.com/login.php?login_attempt=1"
+                }
+                if (ResponseLogin == null)
+                {
+                    return;
+                }
+
+                string loginStatus = "";
+                if (CheckLogin(ResponseLogin, facebookUser.username, facebookUser.password, facebookUser.proxyip, facebookUser.proxyport, facebookUser.proxyusername, facebookUser.proxypassword, ref loginStatus))
+                {
+                    Console.WriteLine("Logged in with Username : " + facebookUser.username);
+                    Console.WriteLine("Logged in with Username : " + facebookUser.username);
+
+                    facebookUser.isloggedin = true;
+
+                }
+                else
+                {
+                    Console.WriteLine("Couldn't login with Username : " + facebookUser.username);
+                    facebookUser.isloggedin = false;
+
+
+                    if (loginStatus == "account has been disabled")
+                    {
+                        // GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_DisabledAccount);
+                    }
+
+                    if (loginStatus == "Please complete a security check")
+                    {
+                        //GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_SecurityCheckAccounts);
+                    }
+
+
+                    if (loginStatus == "Your account is temporarily locked")
+                    {
+                        //GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_TemporarilyLockedAccount);
+
+                    }
+                    if (loginStatus == "have been blocked")
+                    {
+                        //GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_havebeenblocked);
+
+                    }
+                    if (loginStatus == "For security reasons your account is temporarily locked")
+                    {
+                        // GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_SecurityCheckAccountsforsecurityreason);
+                    }
+
+                    if (loginStatus == "Account Not Confirmed")
+                    {
+                        //GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_AccountNotConfirmed);
+                    }
+                    if (loginStatus == "Temporarily Blocked for 30 Days")
+                    {
+                        // GlobusFileHelper.AppendStringToTextfileNewLine(Username + ":" + Password + ":" + proxyAddress + ":" + proxyPort + ":" + proxyUsername + ":" + proxyPassword, Globals.path_30daysBlockedAccount);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
+
+            }
+        }
+
+        public bool CheckLogin(string response, string username, string password, string proxyAddress, string proxyPort, string proxyUsername, string proxyPassword, ref string loginStatus)
+        {
+
+            try
+            {
+                if (!string.IsNullOrEmpty(response))
+                {
+
+
+                    if (response.ToLower().Contains("unusual login activity"))
+                    {
+                        loginStatus = "unusual login activity";
+                        Console.WriteLine("Unusual Login Activity: " + username);
+                        return false;
+                    }
+                    if (response.ToLower().Contains("incorrect username"))
+                    {
+                        loginStatus = "incorrect username";
+                        Console.WriteLine("Incorrect username: " + username);
+                        return false;
+                    }
+                    if (response.ToLower().Contains("Choose a verification method".ToLower()))
+                    {
+                        loginStatus = "Choose a verification method";
+                        Console.WriteLine("Choose a verification method: " + username);
+                        return false;
+                    }
+                    if (response.ToLower().Contains("not logged in".ToLower()))
+                    {
+                        loginStatus = "not logged in";
+                        Console.WriteLine("not logged in: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Please log in to continue".ToLower()))
+                    {
+                        loginStatus = "Please log in to continue";
+                        Console.WriteLine("Please log in to continue: " + username);
+                        return false;
+                    }
+                    if (response.Contains("re-enter your password"))
+                    {
+                        loginStatus = "re-enter your password";
+                        Console.WriteLine("Wrong password for: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Incorrect Email"))
+                    {
+                        loginStatus = "Incorrect Email";
+                        Console.WriteLine("Incorrect email: " + username);
+
+                        try
+                        {
+                            ///Write Incorrect Emails in text file
+                            //GlobusFileHelper.AppendStringToTextfileNewLine(username + ":" + password, incorrectEmailFilePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
+
+                        return false;
+                    }
+                    if (response.Contains("have been blocked"))
+                    {
+                        loginStatus = "have been blocked";
+                        Console.WriteLine("you have been blocked: " + username);
+                        return false;
+                    }
+                    if (response.Contains("account has been disabled"))
+                    {
+                        loginStatus = "account has been disabled";
+                        Console.WriteLine("your account has been disabled: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Please complete a security check"))
+                    {
+                        loginStatus = "Please complete a security check";
+                        Console.WriteLine("Please complete a security check: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Please complete a security check"))
+                    {
+                        loginStatus = "Please complete a security check";
+                        Console.WriteLine("You must log in to see this page: " + username);
+                        return false;
+                    }
+                    if (response.Contains("<input value=\"Sign Up\" onclick=\"RegistrationBootloader.bootloadAndValidate();"))
+                    {
+                        loginStatus = "RegistrationBootloader.bootloadAndValidate()";
+                        Console.WriteLine("Not logged in with: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Account Not Confirmed"))
+                    {
+                        loginStatus = "Account Not Confirmed";
+                        Console.WriteLine("Account Not Confirmed " + username);
+                        return false;
+                    }
+                    if (response.Contains("Your account is temporarily locked"))
+                    {
+                        loginStatus = "Your account is temporarily locked";
+                        Console.WriteLine("Your account is temporarily locked: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Your account has been temporarily suspended"))
+                    {
+                        loginStatus = "Your account has been temporarily suspended";
+                        Console.WriteLine("Your account has been temporarily suspended: " + username);
+                        return false;
+                    }
+                    if (response.Contains("You must log in to see this page"))
+                    {
+                        Console.WriteLine("You must log in to see this page: " + username);
+                        return false;
+                    }
+                    if (response.ToLower().Contains("you must log in to see this page"))
+                    {
+                        Console.WriteLine("You must log in to see this page: " + username);
+                        return false;
+                    }
+                    if (response.ToLower().Contains("you entered an old password"))
+                    {
+                        loginStatus = "you entered an old password";
+                        Console.WriteLine("You Entered An Old Password: " + username);
+                        return false;
+                    }
+                    if (response.Contains("For security reasons your account is temporarily locked"))
+                    {
+                        loginStatus = "For security reasons your account is temporarily locked";
+                        Console.WriteLine("For security reasons your account is temporarily locked: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Please Verify Your Identity") || response.Contains("please Verify Your Identity"))
+                    {
+                        loginStatus = "Please Verify Your Identity";
+                        Console.WriteLine("Please Verify Your Identity: " + username);
+                        return false;
+                    }
+                    if (response.Contains("Temporarily Blocked for 30 Days"))
+                    {
+                        loginStatus = "Temporarily Blocked for 30 Days";
+                        Console.WriteLine("You're Temporarily Blocked for 30 Days: " + username);
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+            return true;
+        }
+
+        #endregion
+        
 
     }
 }

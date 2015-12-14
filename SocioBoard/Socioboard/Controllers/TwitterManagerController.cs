@@ -87,6 +87,15 @@ namespace Socioboard.Controllers
                     apiobjTwitter.Timeout = 120 * 1000;
                     //AddTwitterAccount = apiobjTwitter.AddTwitterAccount(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"], objUser.Id.ToString(), Session["group"].ToString(), requestToken, requestSecret, requestVerifier);
                     Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)new JavaScriptSerializer().Deserialize(apiobjTwitter.AddTwitterAccount(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"], objUser.Id.ToString(), Session["group"].ToString(), requestToken, requestSecret, requestVerifier), typeof(Domain.Socioboard.Domain.TwitterAccount));
+                    
+                    //code to follow socioboard
+                    if (Session["FollowTwitter"] != null && Session["FollowTwitter"].ToString().Equals("true")) 
+                    {
+                        Session["FollowTwitter"] = null;
+                        Socioboard.Helper.TwitterHelper.FollowAccount(objTwitterAccount.OAuthToken, objTwitterAccount.OAuthSecret, "Socioboard", "");
+                    }
+                    //follow socioboard code end
+                    
                     AddTwitterAccount = objTwitterAccount.TwitterUserId;
                     Session["SocialManagerInfo"] = AddTwitterAccount;
 
@@ -106,8 +115,12 @@ namespace Socioboard.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult AuthenticateTwitter(string op)
+        public ActionResult AuthenticateTwitter(string op, string follow)
         {
+            if (!string.IsNullOrEmpty(follow) && follow.Equals("true")) 
+            {
+                Session["FollowTwitter"] = "true";
+            }
             logger.Error("Abhay twittermanager");
             try
             {

@@ -20,7 +20,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LinkedinId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -62,6 +62,90 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddInstagramAccountFromInstaBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FriendsCount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfilePicUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TotalImage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Followers" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Followings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInstagramAccountFromInstaBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddInstagramAccountFromInstaBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramVideosCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramVideosCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramVideosCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramImageCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramImageCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramImageCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramLikesCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramLikesCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramLikesCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramCommentCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramCommentCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramCommentCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -89,6 +173,36 @@
   <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllInstagramAccountsByUserIdAndGroupIdResponse" />
   </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInstagramAccountFromInstaBoard" />
+  </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInstagramAccountFromInstaBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramVideosCount" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramVideosCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramImageCount" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramImageCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramLikesCount" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramLikesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramCommentCount" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramCommentCountResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllInstagramAccountsHttpGetIn">
     <wsdl:part name="Userid" type="s:string" />
   </wsdl:message>
@@ -97,7 +211,7 @@
   </wsdl:message>
   <wsdl:message name="UserInformationHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="LinkedinId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UserInformationHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -117,6 +231,50 @@
   <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="ProfilePicUrl" type="s:string" />
+    <wsdl:part name="TotalImage" type="s:string" />
+    <wsdl:part name="Followers" type="s:string" />
+    <wsdl:part name="Followings" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountHttpGetIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountHttpGetIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountHttpGetIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountHttpGetIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllInstagramAccountsHttpPostIn">
     <wsdl:part name="Userid" type="s:string" />
   </wsdl:message>
@@ -125,7 +283,7 @@
   </wsdl:message>
   <wsdl:message name="UserInformationHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="LinkedinId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UserInformationHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -145,6 +303,50 @@
   <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="ProfilePicUrl" type="s:string" />
+    <wsdl:part name="TotalImage" type="s:string" />
+    <wsdl:part name="Followers" type="s:string" />
+    <wsdl:part name="Followings" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddInstagramAccountFromInstaBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountHttpPostIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramVideosCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountHttpPostIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramImageCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountHttpPostIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramLikesCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountHttpPostIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramCommentCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="InstagramAccountSoap">
     <wsdl:operation name="GetAllInstagramAccounts">
       <wsdl:input message="tns:GetAllInstagramAccountsSoapIn" />
@@ -161,6 +363,26 @@
     <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
       <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdSoapIn" />
       <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <wsdl:input message="tns:AddInstagramAccountFromInstaBoardSoapIn" />
+      <wsdl:output message="tns:AddInstagramAccountFromInstaBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <wsdl:input message="tns:GetInstagramVideosCountSoapIn" />
+      <wsdl:output message="tns:GetInstagramVideosCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <wsdl:input message="tns:GetInstagramImageCountSoapIn" />
+      <wsdl:output message="tns:GetInstagramImageCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <wsdl:input message="tns:GetInstagramLikesCountSoapIn" />
+      <wsdl:output message="tns:GetInstagramLikesCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <wsdl:input message="tns:GetInstagramCommentCountSoapIn" />
+      <wsdl:output message="tns:GetInstagramCommentCountSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramAccountHttpGet">
@@ -180,6 +402,26 @@
       <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpGetIn" />
       <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <wsdl:input message="tns:AddInstagramAccountFromInstaBoardHttpGetIn" />
+      <wsdl:output message="tns:AddInstagramAccountFromInstaBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <wsdl:input message="tns:GetInstagramVideosCountHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramVideosCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <wsdl:input message="tns:GetInstagramImageCountHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramImageCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <wsdl:input message="tns:GetInstagramLikesCountHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramLikesCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <wsdl:input message="tns:GetInstagramCommentCountHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramCommentCountHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramAccountHttpPost">
     <wsdl:operation name="GetAllInstagramAccounts">
@@ -197,6 +439,26 @@
     <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
       <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpPostIn" />
       <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <wsdl:input message="tns:AddInstagramAccountFromInstaBoardHttpPostIn" />
+      <wsdl:output message="tns:AddInstagramAccountFromInstaBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <wsdl:input message="tns:GetInstagramVideosCountHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramVideosCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <wsdl:input message="tns:GetInstagramImageCountHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramImageCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <wsdl:input message="tns:GetInstagramLikesCountHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramLikesCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <wsdl:input message="tns:GetInstagramCommentCountHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramCommentCountHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InstagramAccountSoap" type="tns:InstagramAccountSoap">
@@ -230,6 +492,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
       <soap:operation soapAction="http://tempuri.org/GetAllInstagramAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <soap:operation soapAction="http://tempuri.org/AddInstagramAccountFromInstaBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramVideosCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramImageCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramLikesCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramCommentCount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -276,6 +583,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <soap12:operation soapAction="http://tempuri.org/AddInstagramAccountFromInstaBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramVideosCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramImageCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramLikesCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramCommentCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InstagramAccountHttpGet" type="tns:InstagramAccountHttpGet">
     <http:binding verb="GET" />
@@ -308,6 +660,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
       <http:operation location="/GetAllInstagramAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <http:operation location="/AddInstagramAccountFromInstaBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <http:operation location="/GetInstagramVideosCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <http:operation location="/GetInstagramImageCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <http:operation location="/GetInstagramLikesCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <http:operation location="/GetInstagramCommentCount" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -354,19 +751,64 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddInstagramAccountFromInstaBoard">
+      <http:operation location="/AddInstagramAccountFromInstaBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramVideosCount">
+      <http:operation location="/GetInstagramVideosCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramImageCount">
+      <http:operation location="/GetInstagramImageCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramLikesCount">
+      <http:operation location="/GetInstagramLikesCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramCommentCount">
+      <http:operation location="/GetInstagramCommentCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="InstagramAccount">
     <wsdl:port name="InstagramAccountSoap" binding="tns:InstagramAccountSoap">
-      <soap:address location="http://localhost:6361/services/InstagramAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountSoap12" binding="tns:InstagramAccountSoap12">
-      <soap12:address location="http://localhost:6361/services/InstagramAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountHttpGet" binding="tns:InstagramAccountHttpGet">
-      <http:address location="http://localhost:6361/services/InstagramAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountHttpPost" binding="tns:InstagramAccountHttpPost">
-      <http:address location="http://localhost:6361/services/InstagramAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

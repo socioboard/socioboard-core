@@ -45,7 +45,10 @@ namespace GlobusMailLib
             }
             return sendMailBySendGrid;
         }
+        //public string SendMail(string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName = "", string sendgridPassword = "") {
 
+        //    return "";
+        //}
         public string SendMailWithAttachment(string from, string passsword, string to, string bcc, string cc, string subject, string body, string file, string filename, string filetype, string sendgridUserName = "", string sendgridPassword = "")
         {
             string sendMailBySendGrid = string.Empty;

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FacebookGroupReport_30" table="facebookgroupreport_30" lazy="false">
+
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+
+    <property name="GroupId" >
+      <column name="GroupId"/>
+    </property>
+    <property name="TotalLikes" >
+      <column name="TotalLikes"/>
+    </property>
+    <property name="TalkingAbout" >
+      <column name="TalkingAbout"/>
+    </property>
+    <property name="Likes" >
+      <column name="Likes"/>
+    </property>
+    <property name="PerDayLikes" >
+      <column name="PerDayLikes"/>
+    </property>
+
+
+    <property name="Unlikes" >
+      <column name="Unlikes"/>
+    </property>
+    <property name="PerDayUnlikes" >
+      <column name="PerDayUnlikes"/>
+    </property>
+    <property name="Impression" >
+      <column name="Impression"/>
+    </property>
+    <property name="PerDayImpression" >
+      <column name="PerDayImpression"/>
+    </property>
+    <property name="UniqueUser" >
+      <column name="UniqueUser"/>
+    </property>
+
+    <property name="StoryShare" >
+      <column name="StoryShare"/>
+    </property>
+    <property name="PerDayStoryShare" >
+      <column name="PerDayStoryShare"/>
+    </property>
+    <property name="ImpressionFans" >
+      <column name="ImpressionFans"/>
+    </property>
+    <property name="ImpressionPagePost" >
+      <column name="ImpressionPagePost"/>
+    </property>
+    <property name="ImpressionuserPost" >
+      <column name="ImpressionuserPost"/>
+    </property>
+
+
+    <property name="ImpressionCoupn" >
+      <column name="ImpressionCoupn"/>
+    </property>
+    <property name="ImpressionOther" >
+      <column name="ImpressionOther"/>
+    </property>
+    <property name="ImpressionMention" >
+      <column name="ImpressionMention"/>
+    </property>
+    <property name="ImpressionCheckin" >
+      <column name="ImpressionCheckin"/>
+    </property>
+    <property name="ImpressionQuestion" >
+      <column name="ImpressionQuestion"/>
+    </property>
+
+
+    <property name="ImpressionEvent" >
+      <column name="ImpressionEvent"/>
+    </property>
+    <property name="Organic" >
+      <column name="Organic"/>
+    </property>
+    <property name="Viral" >
+      <column name="Viral"/>
+    </property>
+    <property name="Paid" >
+      <column name="Paid"/>
+    </property>
+    <property name="M_13_17" >
+      <column name="M_13_17"/>
+    </property>
+
+
+    <property name="M_18_24" >
+      <column name="M_18_24"/>
+    </property>
+    <property name="M_25_34" >
+      <column name="M_25_34"/>
+    </property>
+    <property name="M_35_44" >
+      <column name="M_35_44"/>
+    </property>
+    <property name="M_45_54" >
+      <column name="M_45_54"/>
+    </property>
+    <property name="M_55_64" >
+      <column name="M_55_64"/>
+    </property>
+
+    <property name="M_65" >
+      <column name="M_65"/>
+    </property>
+    <property name="F_13_17" >
+      <column name="F_13_17"/>
+    </property>
+    <property name="F_18_24" >
+      <column name="F_18_24"/>
+    </property>
+    <property name="F_25_34" >
+      <column name="F_25_34"/>
+    </property>
+    <property name="F_35_44" >
+      <column name="F_35_44"/>
+    </property>
+
+    <property name="F_45_54" >
+      <column name="F_45_54"/>
+    </property>
+    <property name="F_55_64" >
+      <column name="F_55_64"/>
+    </property>
+    <property name="F_65" >
+      <column name="F_65"/>
+    </property>
+    <property name="Sharing_M_13_17" >
+      <column name="Sharing_M_13_17"/>
+    </property>
+    <property name="Sharing_M_18_24" >
+      <column name="Sharing_M_18_24"/>
+    </property>
+
+    <property name="Sharing_M_25_34" >
+      <column name="Sharing_M_25_34"/>
+    </property>
+    <property name="Sharing_M_35_44" >
+      <column name="Sharing_M_35_44"/>
+    </property>
+    <property name="Sharing_M_45_54" >
+      <column name="Sharing_M_45_54"/>
+    </property>
+    <property name="Sharing_M_55_64" >
+      <column name="Sharing_M_55_64"/>
+    </property>
+    <property name="Sharing_M_65" >
+      <column name="Sharing_M_65"/>
+    </property>
+    <property name="Sharing_F_13_17" >
+      <column name="Sharing_F_13_17"/>
+    </property>
+    <property name="Sharing_F_18_24" >
+      <column name="Sharing_F_18_24"/>
+    </property>
+    <property name="Sharing_F_25_34" >
+      <column name="Sharing_F_25_34"/>
+    </property>
+    <property name="Sharing_F_35_44" >
+      <column name="Sharing_F_35_44"/>
+    </property>
+
+    <property name="Sharing_F_45_54" >
+      <column name="Sharing_F_45_54"/>
+    </property>
+    <property name="Sharing_F_55_64" >
+      <column name="Sharing_F_55_64"/>
+    </property>
+    <property name="Sharing_F_65" >
+      <column name="Sharing_F_65"/>
+    </property>
+
+    <property name="total_fb_accounts">
+      <column name="total_fb_accounts"/>
+    </property>
+
+
+  </class>
+</hibernate-mapping>

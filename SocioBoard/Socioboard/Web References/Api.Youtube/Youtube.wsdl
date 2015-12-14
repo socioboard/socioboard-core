@@ -698,16 +698,16 @@
   </wsdl:binding>
   <wsdl:service name="Youtube">
     <wsdl:port name="YoutubeSoap" binding="tns:YoutubeSoap">
-      <soap:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+      <soap:address location="http://localhost:6361/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeSoap12" binding="tns:YoutubeSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpGet" binding="tns:YoutubeHttpGet">
-      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+      <http:address location="http://localhost:6361/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpPost" binding="tns:YoutubeHttpPost">
-      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+      <http:address location="http://localhost:6361/Services/Youtube.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

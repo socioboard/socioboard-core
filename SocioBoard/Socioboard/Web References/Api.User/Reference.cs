@@ -1073,22 +1073,24 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllExpiredUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllExpiredUser() {
-            object[] results = this.Invoke("GetAllExpiredUser", new object[0]);
+        public string GetAllExpiredUser(string access_token) {
+            object[] results = this.Invoke("GetAllExpiredUser", new object[] {
+                        access_token});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllExpiredUserAsync() {
-            this.GetAllExpiredUserAsync(null);
+        public void GetAllExpiredUserAsync(string access_token) {
+            this.GetAllExpiredUserAsync(access_token, null);
         }
         
         /// <remarks/>
-        public void GetAllExpiredUserAsync(object userState) {
+        public void GetAllExpiredUserAsync(string access_token, object userState) {
             if ((this.GetAllExpiredUserOperationCompleted == null)) {
                 this.GetAllExpiredUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllExpiredUserOperationCompleted);
             }
-            this.InvokeAsync("GetAllExpiredUser", new object[0], this.GetAllExpiredUserOperationCompleted, userState);
+            this.InvokeAsync("GetAllExpiredUser", new object[] {
+                        access_token}, this.GetAllExpiredUserOperationCompleted, userState);
         }
         
         private void OnGetAllExpiredUserOperationCompleted(object arg) {
@@ -1100,22 +1102,24 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllUsers() {
-            object[] results = this.Invoke("GetAllUsers", new object[0]);
+        public string GetAllUsers(string access_token) {
+            object[] results = this.Invoke("GetAllUsers", new object[] {
+                        access_token});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllUsersAsync() {
-            this.GetAllUsersAsync(null);
+        public void GetAllUsersAsync(string access_token) {
+            this.GetAllUsersAsync(access_token, null);
         }
         
         /// <remarks/>
-        public void GetAllUsersAsync(object userState) {
+        public void GetAllUsersAsync(string access_token, object userState) {
             if ((this.GetAllUsersOperationCompleted == null)) {
                 this.GetAllUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllUsersOperationCompleted);
             }
-            this.InvokeAsync("GetAllUsers", new object[0], this.GetAllUsersOperationCompleted, userState);
+            this.InvokeAsync("GetAllUsers", new object[] {
+                        access_token}, this.GetAllUsersOperationCompleted, userState);
         }
         
         private void OnGetAllUsersOperationCompleted(object arg) {

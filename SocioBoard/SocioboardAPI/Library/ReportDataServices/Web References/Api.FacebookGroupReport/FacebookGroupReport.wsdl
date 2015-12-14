@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FacebookGroupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookGroupDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="retrieve_15">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_15Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrieve_15Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_30">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_30Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrieve_30Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_60">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_60Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrieve_60Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_90">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrieve_90Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrieve_90Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FacebookGroupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:FacebookGroupData" />
+  </wsdl:message>
+  <wsdl:message name="FacebookGroupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:FacebookGroupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_15SoapIn">
+    <wsdl:part name="parameters" element="tns:retrieve_15" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_15SoapOut">
+    <wsdl:part name="parameters" element="tns:retrieve_15Response" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30SoapIn">
+    <wsdl:part name="parameters" element="tns:retrieve_30" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30SoapOut">
+    <wsdl:part name="parameters" element="tns:retrieve_30Response" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60SoapIn">
+    <wsdl:part name="parameters" element="tns:retrieve_60" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60SoapOut">
+    <wsdl:part name="parameters" element="tns:retrieve_60Response" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90SoapIn">
+    <wsdl:part name="parameters" element="tns:retrieve_90" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90SoapOut">
+    <wsdl:part name="parameters" element="tns:retrieve_90Response" />
+  </wsdl:message>
+  <wsdl:message name="FacebookGroupDataHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookGroupDataHttpGetOut" />
+  <wsdl:message name="retrieve_15HttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_15HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30HttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60HttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90HttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookGroupDataHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookGroupDataHttpPostOut" />
+  <wsdl:message name="retrieve_15HttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_15HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30HttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_30HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60HttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_60HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90HttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrieve_90HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="FacebookGroupReportSoap">
+    <wsdl:operation name="FacebookGroupData">
+      <wsdl:input message="tns:FacebookGroupDataSoapIn" />
+      <wsdl:output message="tns:FacebookGroupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <wsdl:input message="tns:retrieve_15SoapIn" />
+      <wsdl:output message="tns:retrieve_15SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <wsdl:input message="tns:retrieve_30SoapIn" />
+      <wsdl:output message="tns:retrieve_30SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <wsdl:input message="tns:retrieve_60SoapIn" />
+      <wsdl:output message="tns:retrieve_60SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <wsdl:input message="tns:retrieve_90SoapIn" />
+      <wsdl:output message="tns:retrieve_90SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookGroupReportHttpGet">
+    <wsdl:operation name="FacebookGroupData">
+      <wsdl:input message="tns:FacebookGroupDataHttpGetIn" />
+      <wsdl:output message="tns:FacebookGroupDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <wsdl:input message="tns:retrieve_15HttpGetIn" />
+      <wsdl:output message="tns:retrieve_15HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <wsdl:input message="tns:retrieve_30HttpGetIn" />
+      <wsdl:output message="tns:retrieve_30HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <wsdl:input message="tns:retrieve_60HttpGetIn" />
+      <wsdl:output message="tns:retrieve_60HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <wsdl:input message="tns:retrieve_90HttpGetIn" />
+      <wsdl:output message="tns:retrieve_90HttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookGroupReportHttpPost">
+    <wsdl:operation name="FacebookGroupData">
+      <wsdl:input message="tns:FacebookGroupDataHttpPostIn" />
+      <wsdl:output message="tns:FacebookGroupDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <wsdl:input message="tns:retrieve_15HttpPostIn" />
+      <wsdl:output message="tns:retrieve_15HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <wsdl:input message="tns:retrieve_30HttpPostIn" />
+      <wsdl:output message="tns:retrieve_30HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <wsdl:input message="tns:retrieve_60HttpPostIn" />
+      <wsdl:output message="tns:retrieve_60HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <wsdl:input message="tns:retrieve_90HttpPostIn" />
+      <wsdl:output message="tns:retrieve_90HttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacebookGroupReportSoap" type="tns:FacebookGroupReportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FacebookGroupData">
+      <soap:operation soapAction="http://tempuri.org/FacebookGroupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <soap:operation soapAction="http://tempuri.org/retrieve_15" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <soap:operation soapAction="http://tempuri.org/retrieve_30" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <soap:operation soapAction="http://tempuri.org/retrieve_60" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <soap:operation soapAction="http://tempuri.org/retrieve_90" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookGroupReportSoap12" type="tns:FacebookGroupReportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FacebookGroupData">
+      <soap12:operation soapAction="http://tempuri.org/FacebookGroupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <soap12:operation soapAction="http://tempuri.org/retrieve_15" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <soap12:operation soapAction="http://tempuri.org/retrieve_30" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <soap12:operation soapAction="http://tempuri.org/retrieve_60" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <soap12:operation soapAction="http://tempuri.org/retrieve_90" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookGroupReportHttpGet" type="tns:FacebookGroupReportHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="FacebookGroupData">
+      <http:operation location="/FacebookGroupData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <http:operation location="/retrieve_15" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <http:operation location="/retrieve_30" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <http:operation location="/retrieve_60" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <http:operation location="/retrieve_90" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookGroupReportHttpPost" type="tns:FacebookGroupReportHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="FacebookGroupData">
+      <http:operation location="/FacebookGroupData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_15">
+      <http:operation location="/retrieve_15" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_30">
+      <http:operation location="/retrieve_30" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_60">
+      <http:operation location="/retrieve_60" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve_90">
+      <http:operation location="/retrieve_90" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FacebookGroupReport">
+    <wsdl:port name="FacebookGroupReportSoap" binding="tns:FacebookGroupReportSoap">
+      <soap:address location="http://localhost:6361/Services/FacebookGroupReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookGroupReportSoap12" binding="tns:FacebookGroupReportSoap12">
+      <soap12:address location="http://localhost:6361/Services/FacebookGroupReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookGroupReportHttpGet" binding="tns:FacebookGroupReportHttpGet">
+      <http:address location="http://localhost:6361/Services/FacebookGroupReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookGroupReportHttpPost" binding="tns:FacebookGroupReportHttpPost">
+      <http:address location="http://localhost:6361/Services/FacebookGroupReport.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

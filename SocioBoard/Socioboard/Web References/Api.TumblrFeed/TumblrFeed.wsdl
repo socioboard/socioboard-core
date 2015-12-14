@@ -194,16 +194,16 @@
   </wsdl:binding>
   <wsdl:service name="TumblrFeed">
     <wsdl:port name="TumblrFeedSoap" binding="tns:TumblrFeedSoap">
-      <soap:address location="http://localhost:6361/services/TumblrFeed.asmx" />
+      <soap:address location="http://localhost:6361/Services/TumblrFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrFeedSoap12" binding="tns:TumblrFeedSoap12">
-      <soap12:address location="http://localhost:6361/services/TumblrFeed.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TumblrFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrFeedHttpGet" binding="tns:TumblrFeedHttpGet">
-      <http:address location="http://localhost:6361/services/TumblrFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/TumblrFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrFeedHttpPost" binding="tns:TumblrFeedHttpPost">
-      <http:address location="http://localhost:6361/services/TumblrFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/TumblrFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

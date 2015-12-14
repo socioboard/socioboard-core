@@ -238,10 +238,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdateUser(string UserId, string fname, string lname, string timezone, string picurl, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             int ret = userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone, picurl);
             return ret.ToString();
         }
@@ -320,10 +320,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string ChangePassword(string EmailId, string Password, string NewPassword, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
                 User user = new User();
@@ -378,14 +378,14 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string ProfilesConnected(string UserId, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
 
-                Guid userid = Guid.Parse(User.Identity.Name);
+                Guid userid = Guid.Parse(UserId);
                 SocialProfilesRepository socialRepo = new SocialProfilesRepository();
                 List<Domain.Socioboard.Domain.SocialProfile> lstsocioprofile = socialRepo.getAllSocialProfilesOfUser(userid);
                 List<profileConnected> lstProfile = new List<profileConnected>();
@@ -512,10 +512,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getUsersById(string UserId, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
             objUser = userrepo.getUsersById(Guid.Parse(UserId));
 
@@ -556,11 +556,11 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string changePaymentStatus(string UserId, string ActivationStatus, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
-            int ret = userrepo.changePaymentStatus(Guid.Parse(User.Identity.Name), ActivationStatus);
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
+            int ret = userrepo.changePaymentStatus(Guid.Parse(UserId), ActivationStatus);
             return new JavaScriptSerializer().Serialize(ret);//ret;
         }
         //vikash [20/11/2014]
@@ -568,10 +568,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdateUserAccountInfoByUserId(string userid, string AccountType, DateTime ExpiryDate, string PaymentStatus, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             int ret = userrepo.UpdateUserAccountInfoByUserId(userid, AccountType, ExpiryDate, PaymentStatus);
             return ret.ToString();
         }
@@ -731,13 +731,13 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdatePaymentandEwalletStatusByUserId(string userid, string ewallet, string accounttype, string paymentstatus, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
-                int i = userrepo.UpdatePaymentandEwalletStatusByUserId(Guid.Parse(User.Identity.Name), ewallet, accounttype, paymentstatus);
+                int i = userrepo.UpdatePaymentandEwalletStatusByUserId(Guid.Parse(userid), ewallet, accounttype, paymentstatus);
                 return new JavaScriptSerializer().Serialize(i);
             }
             catch (Exception)
@@ -750,10 +750,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdateEmailId(string Id, string GroupId, string NewEmailId, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
                 int ret = 0;
@@ -787,13 +787,13 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdateEwalletAmount(string UserId, string updatedamount, string access_token)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
-                int ret = userrepo.UpdateEwalletAmount(Guid.Parse(User.Identity.Name), updatedamount);
+                int ret = userrepo.UpdateEwalletAmount(Guid.Parse(UserId), updatedamount);
                 return "success";
             }
             catch (Exception ex)
@@ -823,10 +823,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllExpiredUser(string access_token)
         {
-            if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
                 List<Domain.Socioboard.Domain.User> lstUser = userrepo.GetAllExpiredUser();
@@ -841,10 +841,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllUsers(string access_token)
         {
-            if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
-            {
-                return "Unauthorized access";
-            }
+            //if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
+            //{
+            //    return "Unauthorized access";
+            //}
             try
             {
                 List<Domain.Socioboard.Domain.User> lstUser = userrepo.getAllUsers();

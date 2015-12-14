@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="dailymotionpost" table="dailymotionpost" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="VideoId">
+      <column name="VideoId" />
+    </property>
+    <property name="Title">
+      <column name="Title" />
+    </property>
+    <property name="Url">
+      <column name="Url"  />
+    </property>
+    <property name="Description">
+      <column name="Description"  />
+    </property>
+    <property name="Created_Time">
+      <column name="Created_Time"  />
+    </property>
+    <property name="VideoUrl">
+      <column name="VideoUrl"  />
+    </property>
+    <property name="Entry_Time">
+      <column name="Entry_Time"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

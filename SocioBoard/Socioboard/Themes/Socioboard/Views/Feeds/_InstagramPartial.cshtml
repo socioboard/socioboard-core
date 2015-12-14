@@ -1,4 +1,5 @@
 ﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Helper;
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     string picurl = string.Empty;
@@ -27,18 +28,27 @@
                             }
 
                         </div>
-                        <div class="col-md-6" style="margin-top: 4%;">
-                            <a href="#"><b>@item.AdminUser</b></a>
+                        <div class="col-md-7" style="margin-top: 4%;">
+                            <a href="http://instagram.com/@item.AdminUser" target="_blank"><b>@item.AdminUser</b></a>
                         </div>
-                        <div class="col-md-4" style="margin-top: 4%;">
-                            @Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate))
+                        <div class="col-md-3" style="margin-top: 4%;">
+                            @Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate)).CalculateTimeDiff()
                         </div>
                     </div>
                 </div>
                 <div class="panel-body" style="padding:0;">
                     <div class="row">
                         <div class="col-md-12">
-                            <img src="@item.FeedImageUrl" class="img-responsive" width="100%" />
+                            @if (item.Type == "video")
+                            {
+                                <video width="100%" poster="@item.FeedImageUrl" controls>
+                                    <source type="video/mp4" src="@item.VideoUrl" />
+                                </video>
+                            }
+                            else
+                            {
+                                <img src="@item.FeedImageUrl" class="img-responsive" width="100%" />
+                            }
                         </div>
                     </div>
                 </div>
@@ -48,11 +58,12 @@
                             <b id="count_@item.FeedId">@item.LikeCount likes</b>
                         </div>
                         <div class="col-md-12" style="margin-top: 3%;">
-                            <a href="#"><b>@item.AdminUser</b></a><p>@HttpUtility.HtmlDecode(item.Feed)</p>
+                            <a href="http://instagram.com/@item.AdminUser" target="_blank"><b>@item.AdminUser</b></a><p>@HttpUtility.HtmlDecode(item.Feed)</p>
                         </div>
-                        
+
                         @if (items.Value.Count > 0)
                         {
+
                             <div class="col-md-12" style="margin-top: 2%;" id="collapseFeed__@item.FeedId">
                                 <a data-toggle="collapse" data-target="#collapseExample_@item.FeedId" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;">view all comments</a>
                                 <div class="collapse" id="collapseExample_@item.FeedId">
@@ -60,28 +71,21 @@
                                     {
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <b><a href="#">@item_value.FromName</a></b> @HttpUtility.HtmlDecode(item_value.Comment)
+                                                <b><a href="http://instagram.com/@item_value.FromName" target="_blank">@item_value.FromName</a></b> @HttpUtility.HtmlDecode(item_value.Comment)
                                             </div>
                                         </div>
                                     }
                                 </div>
-                                @*<div class="">
-                                    @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
-                                    {
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <b><a href="#">@item_value.FromName</a></b> @item_value.Comment
-                                            </div>
-                                        </div>
-                                    }
-                                    </div>*@
+
                             </div>
-                        }else{
-                        <div class="col-md-12" style="margin-top: 2%;display:none" id="collapseFeed__@item.FeedId">
-                            <a data-toggle="collapse" data-target="#collapseExample_@item.FeedId" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;">view all comments</a>
-                            <div class="collapse" id="collapseExample_@item.FeedId">
+                        }
+                        else
+                        {
+                            <div class="col-md-12" style="margin-top: 2%;display:none" id="collapseFeed__@item.FeedId">
+                                <a data-toggle="collapse" data-target="#collapseExample_@item.FeedId" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;">view all comments</a>
+                                <div class="collapse" id="collapseExample_@item.FeedId">
+                                </div>
                             </div>
-                        </div>
                         }
                     </div>
                 </div>

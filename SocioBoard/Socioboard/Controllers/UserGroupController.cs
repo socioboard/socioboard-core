@@ -65,8 +65,9 @@ namespace Socioboard.Controllers
         {
             User objUser = (User)Session["User"];
             Socioboard.Api.Groups.Groups objApiGroups = new Socioboard.Api.Groups.Groups();
-            Domain.Socioboard.Domain.Groups objgroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.AddGroup(groupname, objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            return Content(objgroup.Id.ToString());
+            //Domain.Socioboard.Domain.Groups objgroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.AddGroup(groupname, objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            string ret = objApiGroups.AddGroup(groupname, objUser.Id.ToString());
+            return Content(ret);
         }
         public ActionResult connectedprofilestothisgroup(string selectedgroupid)
         {

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="TwitterRecentDetails" table="twitterrecentdetails" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="TwitterId">
+      <column name="TwitterId" />
+    </property>
+    <property name="AccountCreationDate">
+      <column name="AccountCreationDate"  />
+    </property>
+    <property name="LastActivityDate">
+      <column name="LastActivityDate"  />
+    </property>
+    <property name="LastFeed">
+      <column name="LastFeed"  />
+    </property>
+
+
+    <property name="FeedId">
+      <column name="FeedId"  />
+    </property>
+
+    <property name="FeedRetweetCount">
+      <column name="FeedRetweetCount"  />
+    </property>
+
+    <property name="FeedFavoriteCount">
+      <column name="FeedFavoriteCount"  />
+    </property>
+
+    <property name="MediaType">
+      <column name="MediaType"  />
+    </property>
+
+    <property name="MediaUrl">
+      <column name="MediaUrl"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

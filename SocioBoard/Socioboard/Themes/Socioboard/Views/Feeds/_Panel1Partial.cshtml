@@ -420,7 +420,7 @@
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var linkedfeed in lstdic)
             {
-                LinkedInFeed item = (LinkedInFeed)linkedfeed;
+                Domain.Socioboard.MongoDomain.LinkedInFeed item = (Domain.Socioboard.MongoDomain.LinkedInFeed)linkedfeed;
                 try
                 {
                     string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Feeds);
@@ -445,7 +445,7 @@
 
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime,DateTime.ParseExact(item.FeedsDate, formate, provider).ToString());
                         }
                         @*<i class="fa fa-clock-o fa-fw"></i>*@@messagedate
                     </small>
@@ -509,11 +509,11 @@
                     <a target="_blank" href="@item.FromUrl" style="text-decoration:none;cursor:pointer;" ><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
                         @{
-                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.FeedsDate,formate,provider).ToString());
                         }
                         <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
-                    <div id="sendMailright" onclick="#mail">
+                    <div id="sendMailright" onclick="mail('@item.ProfileId', '@item.Id')">
                         <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
                             <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span>
                     </div>

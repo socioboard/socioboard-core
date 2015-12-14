@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getgroups">
+        <s:complexType />
+      </s:element>
+      <s:element name="getgroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getgroupsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getinboxcount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getinboxcountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getinboxcountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getsentmessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getsentmessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getsentmessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwitterfollowers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwitterfollowersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettwitterfollowersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getfbfans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getfbfansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getfbfansResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="i" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getinteractions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getinteractionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getinteractionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievedata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievedataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrievedataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwtmentions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwtmentionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettwtmentionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwtretweets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwtretweetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettwtretweetsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="uniquetwitteruser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="uniquetwitteruserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uniquetwitteruserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="total_twitter_accounts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="total_twitter_accountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="total_twitter_accountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwittersexdivision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwittersexdivisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettwittersexdivisionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSexRatio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSexRatioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSexRatioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getgroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:getgroups" />
+  </wsdl:message>
+  <wsdl:message name="getgroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:getgroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountSoapIn">
+    <wsdl:part name="parameters" element="tns:getinboxcount" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountSoapOut">
+    <wsdl:part name="parameters" element="tns:getinboxcountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageSoapIn">
+    <wsdl:part name="parameters" element="tns:getsentmessage" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageSoapOut">
+    <wsdl:part name="parameters" element="tns:getsentmessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersSoapIn">
+    <wsdl:part name="parameters" element="tns:gettwitterfollowers" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersSoapOut">
+    <wsdl:part name="parameters" element="tns:gettwitterfollowersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansSoapIn">
+    <wsdl:part name="parameters" element="tns:getfbfans" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansSoapOut">
+    <wsdl:part name="parameters" element="tns:getfbfansResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapIn">
+    <wsdl:part name="parameters" element="tns:insertdata" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapOut">
+    <wsdl:part name="parameters" element="tns:insertdataResponse" />
+  </wsdl:message>
+  <wsdl:message name="getinteractionsSoapIn">
+    <wsdl:part name="parameters" element="tns:getinteractions" />
+  </wsdl:message>
+  <wsdl:message name="getinteractionsSoapOut">
+    <wsdl:part name="parameters" element="tns:getinteractionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapIn">
+    <wsdl:part name="parameters" element="tns:retrievedata" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapOut">
+    <wsdl:part name="parameters" element="tns:retrievedataResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsSoapIn">
+    <wsdl:part name="parameters" element="tns:gettwtmentions" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsSoapOut">
+    <wsdl:part name="parameters" element="tns:gettwtmentionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsSoapIn">
+    <wsdl:part name="parameters" element="tns:gettwtretweets" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsSoapOut">
+    <wsdl:part name="parameters" element="tns:gettwtretweetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserSoapIn">
+    <wsdl:part name="parameters" element="tns:uniquetwitteruser" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserSoapOut">
+    <wsdl:part name="parameters" element="tns:uniquetwitteruserResponse" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsSoapIn">
+    <wsdl:part name="parameters" element="tns:total_twitter_accounts" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsSoapOut">
+    <wsdl:part name="parameters" element="tns:total_twitter_accountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionSoapIn">
+    <wsdl:part name="parameters" element="tns:gettwittersexdivision" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionSoapOut">
+    <wsdl:part name="parameters" element="tns:gettwittersexdivisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSexRatio" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSexRatioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getgroupsHttpGetIn" />
+  <wsdl:message name="getgroupsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetOut" />
+  <wsdl:message name="getinteractionsHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getinteractionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioHttpGetIn">
+    <wsdl:part name="profileids" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getgroupsHttpPostIn" />
+  <wsdl:message name="getgroupsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getinboxcountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getsentmessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwitterfollowersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getfbfansHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostOut" />
+  <wsdl:message name="getinteractionsHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getinteractionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtmentionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwtretweetsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="uniquetwitteruserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="total_twitter_accountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioHttpPostIn">
+    <wsdl:part name="profileids" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSexRatioHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="GroupReportsSoap">
+    <wsdl:operation name="getgroups">
+      <wsdl:input message="tns:getgroupsSoapIn" />
+      <wsdl:output message="tns:getgroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <wsdl:input message="tns:getinboxcountSoapIn" />
+      <wsdl:output message="tns:getinboxcountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <wsdl:input message="tns:getsentmessageSoapIn" />
+      <wsdl:output message="tns:getsentmessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <wsdl:input message="tns:gettwitterfollowersSoapIn" />
+      <wsdl:output message="tns:gettwitterfollowersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <wsdl:input message="tns:getfbfansSoapIn" />
+      <wsdl:output message="tns:getfbfansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataSoapIn" />
+      <wsdl:output message="tns:insertdataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <wsdl:input message="tns:getinteractionsSoapIn" />
+      <wsdl:output message="tns:getinteractionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataSoapIn" />
+      <wsdl:output message="tns:retrievedataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <wsdl:input message="tns:gettwtmentionsSoapIn" />
+      <wsdl:output message="tns:gettwtmentionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <wsdl:input message="tns:gettwtretweetsSoapIn" />
+      <wsdl:output message="tns:gettwtretweetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <wsdl:input message="tns:uniquetwitteruserSoapIn" />
+      <wsdl:output message="tns:uniquetwitteruserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <wsdl:input message="tns:total_twitter_accountsSoapIn" />
+      <wsdl:output message="tns:total_twitter_accountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionSoapIn" />
+      <wsdl:output message="tns:gettwittersexdivisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <wsdl:input message="tns:GetSexRatioSoapIn" />
+      <wsdl:output message="tns:GetSexRatioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GroupReportsHttpGet">
+    <wsdl:operation name="getgroups">
+      <wsdl:input message="tns:getgroupsHttpGetIn" />
+      <wsdl:output message="tns:getgroupsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <wsdl:input message="tns:getinboxcountHttpGetIn" />
+      <wsdl:output message="tns:getinboxcountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <wsdl:input message="tns:getsentmessageHttpGetIn" />
+      <wsdl:output message="tns:getsentmessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <wsdl:input message="tns:gettwitterfollowersHttpGetIn" />
+      <wsdl:output message="tns:gettwitterfollowersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <wsdl:input message="tns:getfbfansHttpGetIn" />
+      <wsdl:output message="tns:getfbfansHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpGetIn" />
+      <wsdl:output message="tns:insertdataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <wsdl:input message="tns:getinteractionsHttpGetIn" />
+      <wsdl:output message="tns:getinteractionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpGetIn" />
+      <wsdl:output message="tns:retrievedataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <wsdl:input message="tns:gettwtmentionsHttpGetIn" />
+      <wsdl:output message="tns:gettwtmentionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <wsdl:input message="tns:gettwtretweetsHttpGetIn" />
+      <wsdl:output message="tns:gettwtretweetsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <wsdl:input message="tns:uniquetwitteruserHttpGetIn" />
+      <wsdl:output message="tns:uniquetwitteruserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <wsdl:input message="tns:total_twitter_accountsHttpGetIn" />
+      <wsdl:output message="tns:total_twitter_accountsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionHttpGetIn" />
+      <wsdl:output message="tns:gettwittersexdivisionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <wsdl:input message="tns:GetSexRatioHttpGetIn" />
+      <wsdl:output message="tns:GetSexRatioHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GroupReportsHttpPost">
+    <wsdl:operation name="getgroups">
+      <wsdl:input message="tns:getgroupsHttpPostIn" />
+      <wsdl:output message="tns:getgroupsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <wsdl:input message="tns:getinboxcountHttpPostIn" />
+      <wsdl:output message="tns:getinboxcountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <wsdl:input message="tns:getsentmessageHttpPostIn" />
+      <wsdl:output message="tns:getsentmessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <wsdl:input message="tns:gettwitterfollowersHttpPostIn" />
+      <wsdl:output message="tns:gettwitterfollowersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <wsdl:input message="tns:getfbfansHttpPostIn" />
+      <wsdl:output message="tns:getfbfansHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpPostIn" />
+      <wsdl:output message="tns:insertdataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <wsdl:input message="tns:getinteractionsHttpPostIn" />
+      <wsdl:output message="tns:getinteractionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpPostIn" />
+      <wsdl:output message="tns:retrievedataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <wsdl:input message="tns:gettwtmentionsHttpPostIn" />
+      <wsdl:output message="tns:gettwtmentionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <wsdl:input message="tns:gettwtretweetsHttpPostIn" />
+      <wsdl:output message="tns:gettwtretweetsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <wsdl:input message="tns:uniquetwitteruserHttpPostIn" />
+      <wsdl:output message="tns:uniquetwitteruserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <wsdl:input message="tns:total_twitter_accountsHttpPostIn" />
+      <wsdl:output message="tns:total_twitter_accountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionHttpPostIn" />
+      <wsdl:output message="tns:gettwittersexdivisionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <wsdl:input message="tns:GetSexRatioHttpPostIn" />
+      <wsdl:output message="tns:GetSexRatioHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GroupReportsSoap" type="tns:GroupReportsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getgroups">
+      <soap:operation soapAction="http://tempuri.org/getgroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <soap:operation soapAction="http://tempuri.org/getinboxcount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <soap:operation soapAction="http://tempuri.org/getsentmessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <soap:operation soapAction="http://tempuri.org/gettwitterfollowers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <soap:operation soapAction="http://tempuri.org/getfbfans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <soap:operation soapAction="http://tempuri.org/getinteractions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <soap:operation soapAction="http://tempuri.org/gettwtmentions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <soap:operation soapAction="http://tempuri.org/gettwtretweets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <soap:operation soapAction="http://tempuri.org/uniquetwitteruser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <soap:operation soapAction="http://tempuri.org/total_twitter_accounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <soap:operation soapAction="http://tempuri.org/gettwittersexdivision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <soap:operation soapAction="http://tempuri.org/GetSexRatio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupReportsSoap12" type="tns:GroupReportsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getgroups">
+      <soap12:operation soapAction="http://tempuri.org/getgroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <soap12:operation soapAction="http://tempuri.org/getinboxcount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <soap12:operation soapAction="http://tempuri.org/getsentmessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <soap12:operation soapAction="http://tempuri.org/gettwitterfollowers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <soap12:operation soapAction="http://tempuri.org/getfbfans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap12:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <soap12:operation soapAction="http://tempuri.org/getinteractions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap12:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <soap12:operation soapAction="http://tempuri.org/gettwtmentions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <soap12:operation soapAction="http://tempuri.org/gettwtretweets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <soap12:operation soapAction="http://tempuri.org/uniquetwitteruser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <soap12:operation soapAction="http://tempuri.org/total_twitter_accounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <soap12:operation soapAction="http://tempuri.org/gettwittersexdivision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <soap12:operation soapAction="http://tempuri.org/GetSexRatio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupReportsHttpGet" type="tns:GroupReportsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getgroups">
+      <http:operation location="/getgroups" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <http:operation location="/getinboxcount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <http:operation location="/getsentmessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <http:operation location="/gettwitterfollowers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <http:operation location="/getfbfans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <http:operation location="/getinteractions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <http:operation location="/gettwtmentions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <http:operation location="/gettwtretweets" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <http:operation location="/uniquetwitteruser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <http:operation location="/total_twitter_accounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <http:operation location="/gettwittersexdivision" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <http:operation location="/GetSexRatio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupReportsHttpPost" type="tns:GroupReportsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getgroups">
+      <http:operation location="/getgroups" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getinboxcount">
+      <http:operation location="/getinboxcount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getsentmessage">
+      <http:operation location="/getsentmessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwitterfollowers">
+      <http:operation location="/gettwitterfollowers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfbfans">
+      <http:operation location="/getfbfans" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getinteractions">
+      <http:operation location="/getinteractions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtmentions">
+      <http:operation location="/gettwtmentions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwtretweets">
+      <http:operation location="/gettwtretweets" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uniquetwitteruser">
+      <http:operation location="/uniquetwitteruser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="total_twitter_accounts">
+      <http:operation location="/total_twitter_accounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <http:operation location="/gettwittersexdivision" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSexRatio">
+      <http:operation location="/GetSexRatio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GroupReports">
+    <wsdl:port name="GroupReportsSoap" binding="tns:GroupReportsSoap">
+      <soap:address location="http://localhost:6361/Services/GroupReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupReportsSoap12" binding="tns:GroupReportsSoap12">
+      <soap12:address location="http://localhost:6361/Services/GroupReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupReportsHttpGet" binding="tns:GroupReportsHttpGet">
+      <http:address location="http://localhost:6361/Services/GroupReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupReportsHttpPost" binding="tns:GroupReportsHttpPost">
+      <http:address location="http://localhost:6361/Services/GroupReports.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

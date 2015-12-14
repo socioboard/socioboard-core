@@ -14,11 +14,12 @@
     string MessageId = string.Empty;
     string FeedLink = string.Empty;
     Dictionary<string, object> feed = (Dictionary<string, object>)Model;
+    Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
     foreach(var item in feed)
     {
         if(item.Key=="twt")
         {
-            Domain.Socioboard.Domain.TwitterFeed twtfeed=(Domain.Socioboard.Domain.TwitterFeed)item.Value;
+            Domain.Socioboard.MongoDomain.TwitterFeed twtfeed=(Domain.Socioboard.MongoDomain.TwitterFeed)item.Value;
             ScreenName = twtfeed.ScreenName;
             FromScreenName = twtfeed.FromScreenName;
             Feed = twtfeed.Feed;
@@ -28,9 +29,9 @@
         }
         else if(item.Key=="linkedin")
         {
-            Domain.Socioboard.Domain.LinkedInFeed linkitem = (Domain.Socioboard.Domain.LinkedInFeed)item.Value;
+            Domain.Socioboard.MongoDomain.LinkedInFeed linkitem = (Domain.Socioboard.MongoDomain.LinkedInFeed)item.Value;
             Socioboard.Api.LinkedinAccount.LinkedinAccount ApiobjLinkedInaccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
-            Domain.Socioboard.Domain.LinkedInAccount linkaccount = (Domain.Socioboard.Domain.LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedInaccount.UserInformation(@linkitem.UserId.ToString(), @linkitem.ProfileId), typeof(Domain.Socioboard.Domain.LinkedInAccount)));
+            Domain.Socioboard.Domain.LinkedInAccount linkaccount = (Domain.Socioboard.Domain.LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedInaccount.UserInformation(_User.Id.ToString(), @linkitem.ProfileId), typeof(Domain.Socioboard.Domain.LinkedInAccount)));
 
             ScreenName = linkaccount.LinkedinUserName;
             FromScreenName = linkitem.FromName;

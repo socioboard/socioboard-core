@@ -108,6 +108,39 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public void updateInstagramAccount(string mediaCount, string followers, string followings,string userName, string imageUrl, string profileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    //Proceed action to Update InstagrameAccount
+                    // And Set the reuired paremeters to find the specific values.
+                    try
+                    {
+                        session.CreateQuery("Update InstagramAccount set InsUserName =:InsUserName,ProfileUrl=:ProfileUrl,Followers =:Followers,FollowedBy=:FollowedBy,TotalImages=:TotalImages where InstagramId = :InstagramId")
+                            .SetParameter("InsUserName", userName)
+                            .SetParameter("ProfileUrl", imageUrl)
+                            .SetParameter("Followers", followers)
+                            .SetParameter("FollowedBy", followings)
+                            .SetParameter("TotalImages", mediaCount)
+                            .SetParameter("InstagramId", profileId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End session
+        }
 
         /// <getAllInstagramAccountsOfUser>
         /// Get all Instagram accounts of User by userId(Guid).
@@ -195,6 +228,14 @@ namespace Api.Socioboard.Services
 
         }
 
+        public Domain.Socioboard.Domain.InstagramAccount GetInstagramAccount()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                List<Domain.Socioboard.Domain.InstagramAccount> lstInstagramAccount = session.Query<Domain.Socioboard.Domain.InstagramAccount>().Take(1).ToList();
+                return lstInstagramAccount[0];
+            }
+        }
 
         /// <getInstagramAccountDetailsById>
         /// Get Instagram Account Details by Insuserid(string) userId(Guid).

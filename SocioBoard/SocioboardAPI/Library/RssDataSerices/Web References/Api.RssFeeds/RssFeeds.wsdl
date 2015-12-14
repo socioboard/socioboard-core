@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddRssFeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TextUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="typeandid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRssFeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRssFeedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParseFeedUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TextUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profiletype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileImageUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ParseFeedUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParseFeedUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRssDataByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRssDataByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRssDataByUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRssData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRssDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRssDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostRssfeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profiletype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostRssfeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostRssfeedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllRssPostFeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RssUrls" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllRssPostFeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRssPostFeedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFeedInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFeedInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFeedInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditFeedUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewFeedUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldFeedUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RssId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditFeedUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditFeedUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePofile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RssId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePofileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeletePofileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddRssFeedSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRssFeed" />
+  </wsdl:message>
+  <wsdl:message name="AddRssFeedSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRssFeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:ParseFeedUrl" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:ParseFeedUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRssDataByUser" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRssDataByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRssData" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRssDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedSoapIn">
+    <wsdl:part name="parameters" element="tns:PostRssfeed" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedSoapOut">
+    <wsdl:part name="parameters" element="tns:PostRssfeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRssPostFeed" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRssPostFeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFeedInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFeedInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:EditFeedUrl" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:EditFeedUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePofile" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePofileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRssFeedHttpGetIn">
+    <wsdl:part name="TextUrl" type="s:string" />
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="typeandid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRssFeedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlHttpGetIn">
+    <wsdl:part name="TextUrl" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="profileName" type="s:string" />
+    <wsdl:part name="profileImageUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataHttpGetIn" />
+  <wsdl:message name="GetRssDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedHttpGetIn">
+    <wsdl:part name="profiletype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedHttpGetIn">
+    <wsdl:part name="RssUrls" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoHttpGetIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlHttpGetIn">
+    <wsdl:part name="NewFeedUrl" type="s:string" />
+    <wsdl:part name="OldFeedUrl" type="s:string" />
+    <wsdl:part name="RssId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileHttpGetIn">
+    <wsdl:part name="RssId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRssFeedHttpPostIn">
+    <wsdl:part name="TextUrl" type="s:string" />
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="typeandid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRssFeedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlHttpPostIn">
+    <wsdl:part name="TextUrl" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="profileName" type="s:string" />
+    <wsdl:part name="profileImageUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ParseFeedUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataByUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRssDataHttpPostIn" />
+  <wsdl:message name="GetRssDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedHttpPostIn">
+    <wsdl:part name="profiletype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostRssfeedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedHttpPostIn">
+    <wsdl:part name="RssUrls" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRssPostFeedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoHttpPostIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFeedInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlHttpPostIn">
+    <wsdl:part name="NewFeedUrl" type="s:string" />
+    <wsdl:part name="OldFeedUrl" type="s:string" />
+    <wsdl:part name="RssId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EditFeedUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileHttpPostIn">
+    <wsdl:part name="RssId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeletePofileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="RssFeedsSoap">
+    <wsdl:operation name="AddRssFeed">
+      <wsdl:input message="tns:AddRssFeedSoapIn" />
+      <wsdl:output message="tns:AddRssFeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <wsdl:input message="tns:ParseFeedUrlSoapIn" />
+      <wsdl:output message="tns:ParseFeedUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <wsdl:input message="tns:GetRssDataByUserSoapIn" />
+      <wsdl:output message="tns:GetRssDataByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <wsdl:input message="tns:GetRssDataSoapIn" />
+      <wsdl:output message="tns:GetRssDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <wsdl:input message="tns:PostRssfeedSoapIn" />
+      <wsdl:output message="tns:PostRssfeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <wsdl:input message="tns:GetAllRssPostFeedSoapIn" />
+      <wsdl:output message="tns:GetAllRssPostFeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <wsdl:input message="tns:GetAllFeedInfoSoapIn" />
+      <wsdl:output message="tns:GetAllFeedInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <wsdl:input message="tns:EditFeedUrlSoapIn" />
+      <wsdl:output message="tns:EditFeedUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <wsdl:input message="tns:DeletePofileSoapIn" />
+      <wsdl:output message="tns:DeletePofileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RssFeedsHttpGet">
+    <wsdl:operation name="AddRssFeed">
+      <wsdl:input message="tns:AddRssFeedHttpGetIn" />
+      <wsdl:output message="tns:AddRssFeedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <wsdl:input message="tns:ParseFeedUrlHttpGetIn" />
+      <wsdl:output message="tns:ParseFeedUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <wsdl:input message="tns:GetRssDataByUserHttpGetIn" />
+      <wsdl:output message="tns:GetRssDataByUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <wsdl:input message="tns:GetRssDataHttpGetIn" />
+      <wsdl:output message="tns:GetRssDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <wsdl:input message="tns:PostRssfeedHttpGetIn" />
+      <wsdl:output message="tns:PostRssfeedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <wsdl:input message="tns:GetAllRssPostFeedHttpGetIn" />
+      <wsdl:output message="tns:GetAllRssPostFeedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <wsdl:input message="tns:GetAllFeedInfoHttpGetIn" />
+      <wsdl:output message="tns:GetAllFeedInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <wsdl:input message="tns:EditFeedUrlHttpGetIn" />
+      <wsdl:output message="tns:EditFeedUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <wsdl:input message="tns:DeletePofileHttpGetIn" />
+      <wsdl:output message="tns:DeletePofileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RssFeedsHttpPost">
+    <wsdl:operation name="AddRssFeed">
+      <wsdl:input message="tns:AddRssFeedHttpPostIn" />
+      <wsdl:output message="tns:AddRssFeedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <wsdl:input message="tns:ParseFeedUrlHttpPostIn" />
+      <wsdl:output message="tns:ParseFeedUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <wsdl:input message="tns:GetRssDataByUserHttpPostIn" />
+      <wsdl:output message="tns:GetRssDataByUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <wsdl:input message="tns:GetRssDataHttpPostIn" />
+      <wsdl:output message="tns:GetRssDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <wsdl:input message="tns:PostRssfeedHttpPostIn" />
+      <wsdl:output message="tns:PostRssfeedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <wsdl:input message="tns:GetAllRssPostFeedHttpPostIn" />
+      <wsdl:output message="tns:GetAllRssPostFeedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <wsdl:input message="tns:GetAllFeedInfoHttpPostIn" />
+      <wsdl:output message="tns:GetAllFeedInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <wsdl:input message="tns:EditFeedUrlHttpPostIn" />
+      <wsdl:output message="tns:EditFeedUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <wsdl:input message="tns:DeletePofileHttpPostIn" />
+      <wsdl:output message="tns:DeletePofileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RssFeedsSoap" type="tns:RssFeedsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRssFeed">
+      <soap:operation soapAction="http://tempuri.org/AddRssFeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <soap:operation soapAction="http://tempuri.org/ParseFeedUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <soap:operation soapAction="http://tempuri.org/GetRssDataByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <soap:operation soapAction="http://tempuri.org/GetRssData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <soap:operation soapAction="http://tempuri.org/PostRssfeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <soap:operation soapAction="http://tempuri.org/GetAllRssPostFeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <soap:operation soapAction="http://tempuri.org/GetAllFeedInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <soap:operation soapAction="http://tempuri.org/EditFeedUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <soap:operation soapAction="http://tempuri.org/DeletePofile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RssFeedsSoap12" type="tns:RssFeedsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRssFeed">
+      <soap12:operation soapAction="http://tempuri.org/AddRssFeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <soap12:operation soapAction="http://tempuri.org/ParseFeedUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <soap12:operation soapAction="http://tempuri.org/GetRssDataByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <soap12:operation soapAction="http://tempuri.org/GetRssData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <soap12:operation soapAction="http://tempuri.org/PostRssfeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <soap12:operation soapAction="http://tempuri.org/GetAllRssPostFeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFeedInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <soap12:operation soapAction="http://tempuri.org/EditFeedUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <soap12:operation soapAction="http://tempuri.org/DeletePofile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RssFeedsHttpGet" type="tns:RssFeedsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddRssFeed">
+      <http:operation location="/AddRssFeed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <http:operation location="/ParseFeedUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <http:operation location="/GetRssDataByUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <http:operation location="/GetRssData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <http:operation location="/PostRssfeed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <http:operation location="/GetAllRssPostFeed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <http:operation location="/GetAllFeedInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <http:operation location="/EditFeedUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <http:operation location="/DeletePofile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RssFeedsHttpPost" type="tns:RssFeedsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddRssFeed">
+      <http:operation location="/AddRssFeed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseFeedUrl">
+      <http:operation location="/ParseFeedUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssDataByUser">
+      <http:operation location="/GetRssDataByUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRssData">
+      <http:operation location="/GetRssData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostRssfeed">
+      <http:operation location="/PostRssfeed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRssPostFeed">
+      <http:operation location="/GetAllRssPostFeed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFeedInfo">
+      <http:operation location="/GetAllFeedInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditFeedUrl">
+      <http:operation location="/EditFeedUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePofile">
+      <http:operation location="/DeletePofile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RssFeeds">
+    <wsdl:port name="RssFeedsSoap" binding="tns:RssFeedsSoap">
+      <soap:address location="http://devapi.socioboard.com/Services/RssFeeds.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RssFeedsSoap12" binding="tns:RssFeedsSoap12">
+      <soap12:address location="http://devapi.socioboard.com/Services/RssFeeds.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RssFeedsHttpGet" binding="tns:RssFeedsHttpGet">
+      <http:address location="http://devapi.socioboard.com/Services/RssFeeds.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RssFeedsHttpPost" binding="tns:RssFeedsHttpPost">
+      <http:address location="http://devapi.socioboard.com/Services/RssFeeds.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

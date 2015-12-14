@@ -31,6 +31,8 @@ namespace Socioboard.Api.GooglePlus {
         
         private System.Threading.SendOrPostCallback AddGPlusAccountOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetGPusDataOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -73,6 +75,9 @@ namespace Socioboard.Api.GooglePlus {
         public event AddGPlusAccountCompletedEventHandler AddGPlusAccountCompleted;
         
         /// <remarks/>
+        public event GetGPusDataCompletedEventHandler GetGPusDataCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddGPlusAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string AddGPlusAccount(string client_id, string client_secret, string redirect_uri, string UserId, string GroupId, string code) {
             object[] results = this.Invoke("AddGPlusAccount", new object[] {
@@ -112,6 +117,37 @@ namespace Socioboard.Api.GooglePlus {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetGPusData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetGPusData(string UserId, string ProfileId) {
+            object[] results = this.Invoke("GetGPusData", new object[] {
+                        UserId,
+                        ProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGPusDataAsync(string UserId, string ProfileId) {
+            this.GetGPusDataAsync(UserId, ProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void GetGPusDataAsync(string UserId, string ProfileId, object userState) {
+            if ((this.GetGPusDataOperationCompleted == null)) {
+                this.GetGPusDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGPusDataOperationCompleted);
+            }
+            this.InvokeAsync("GetGPusData", new object[] {
+                        UserId,
+                        ProfileId}, this.GetGPusDataOperationCompleted, userState);
+        }
+        
+        private void OnGetGPusDataOperationCompleted(object arg) {
+            if ((this.GetGPusDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGPusDataCompleted(this, new GetGPusDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -143,6 +179,32 @@ namespace Socioboard.Api.GooglePlus {
         private object[] results;
         
         internal AddGPlusAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetGPusDataCompletedEventHandler(object sender, GetGPusDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGPusDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGPusDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

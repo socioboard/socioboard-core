@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="GooglePlusActivities">
     <wsdl:port name="GooglePlusActivitiesSoap" binding="tns:GooglePlusActivitiesSoap">
-      <soap:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+      <soap:address location="http://localhost:6361/Services/GooglePlusActivities.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusActivitiesSoap12" binding="tns:GooglePlusActivitiesSoap12">
-      <soap12:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+      <soap12:address location="http://localhost:6361/Services/GooglePlusActivities.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusActivitiesHttpGet" binding="tns:GooglePlusActivitiesHttpGet">
-      <http:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+      <http:address location="http://localhost:6361/Services/GooglePlusActivities.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusActivitiesHttpPost" binding="tns:GooglePlusActivitiesHttpPost">
-      <http:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+      <http:address location="http://localhost:6361/Services/GooglePlusActivities.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -429,16 +429,16 @@
   </wsdl:binding>
   <wsdl:service name="TumblrAccount">
     <wsdl:port name="TumblrAccountSoap" binding="tns:TumblrAccountSoap">
-      <soap:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountSoap12" binding="tns:TumblrAccountSoap12">
-      <soap12:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountHttpGet" binding="tns:TumblrAccountHttpGet">
-      <http:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountHttpPost" binding="tns:TumblrAccountHttpPost">
-      <http:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/TumblrAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

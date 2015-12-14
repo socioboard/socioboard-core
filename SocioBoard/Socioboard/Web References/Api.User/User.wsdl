@@ -393,7 +393,11 @@
         </s:complexType>
       </s:element>
       <s:element name="GetAllExpiredUser">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetAllExpiredUserResponse">
         <s:complexType>
@@ -403,7 +407,11 @@
         </s:complexType>
       </s:element>
       <s:element name="GetAllUsers">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="access_token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetAllUsersResponse">
         <s:complexType>
@@ -912,11 +920,15 @@
   <wsdl:message name="GetUserInfoByCodeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllExpiredUserHttpGetIn" />
+  <wsdl:message name="GetAllExpiredUserHttpGetIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllExpiredUserHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllUsersHttpGetIn" />
+  <wsdl:message name="GetAllUsersHttpGetIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllUsersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
@@ -1147,11 +1159,15 @@
   <wsdl:message name="GetUserInfoByCodeHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllExpiredUserHttpPostIn" />
+  <wsdl:message name="GetAllExpiredUserHttpPostIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllExpiredUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllUsersHttpPostIn" />
+  <wsdl:message name="GetAllUsersHttpPostIn">
+    <wsdl:part name="access_token" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllUsersHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
@@ -2877,16 +2893,16 @@
   </wsdl:binding>
   <wsdl:service name="User">
     <wsdl:port name="UserSoap" binding="tns:UserSoap">
-      <soap:address location="http://api.socioboard.com/Services/User.asmx" />
+      <soap:address location="http://localhost:6361/services/user.asmx" />
     </wsdl:port>
     <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/User.asmx" />
+      <soap12:address location="http://localhost:6361/services/user.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
-      <http:address location="http://api.socioboard.com/Services/User.asmx" />
+      <http:address location="http://localhost:6361/services/user.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
-      <http:address location="http://api.socioboard.com/Services/User.asmx" />
+      <http:address location="http://localhost:6361/services/user.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

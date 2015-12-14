@@ -175,224 +175,231 @@ namespace Api.Socioboard.Services
         private void AddTunblrFeeds(string UserId, KeyValuePair<string, string> LoginDetails, string username)
         {
             int I = 0;
-            JObject UserDashboard = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersDashboardUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
-            JArray objJarray = (JArray)UserDashboard["response"]["posts"];
-            foreach (var item in objJarray)
+            try
             {
-                objTumblrFeed = new Domain.Socioboard.MongoDomain.TumblrFeed();
-                //objTumblrFeed.Id = Guid.NewGuid();
-                //objTumblrFeed.UserId = Guid.Parse(UserId);
-                objTumblrFeed.Id = ObjectId.GenerateNewId();
-                try
+                JObject UserDashboard = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersDashboardUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
+                JArray objJarray = (JArray)UserDashboard["response"]["posts"];
+                foreach (var item in objJarray)
                 {
-                    objTumblrFeed.ProfileId = username;
-
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.blogname = item["blog_name"].ToString();
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.blogId = item["id"].ToString();
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.blogposturl = item["post_url"].ToString();
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    String result = item["caption"].ToString();
-                    objTumblrFeed.description = Regex.Replace(result, @"<[^>]*>", String.Empty);
-                }
-                catch (Exception ex)
-                {
-                    objTumblrFeed.description = null;
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.slug = item["slug"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.type = item["type"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    string test = item["date"].ToString();
-                    string dt;
-                    if (test.Contains("GMT"))
+                    objTumblrFeed = new Domain.Socioboard.MongoDomain.TumblrFeed();
+                    //objTumblrFeed.Id = Guid.NewGuid();
+                    //objTumblrFeed.UserId = Guid.Parse(UserId);
+                    objTumblrFeed.Id = ObjectId.GenerateNewId();
+                    try
                     {
-                        test = test.Replace("GMT", "").Trim().ToString();
-                        dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
-                    }
-                    else
-                    {
-                        test = test.Replace("GMT", "").Trim().ToString();
-                        dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
-                    }
-                    objTumblrFeed.date = dt;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.reblogkey = item["reblog_key"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    string str = item["liked"].ToString();
-                    if (str == "False")
-                    {
-                        objTumblrFeed.liked = 0;
-                    }
-                    else { objTumblrFeed.liked = 1; }
+                        objTumblrFeed.ProfileId = username;
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    string str = item["followed"].ToString();
-                    if (str == "false")
-                    {
-                        objTumblrFeed.followed = 0;
                     }
-                    else { objTumblrFeed.followed = 1; }
-                    // objTumblrDashboard.followed = Convert.ToInt16(item["followed"]);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.canreply = Convert.ToInt16(item["can_reply"]);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.sourceurl = item["source_url"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.sourcetitle = item["source_title"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    JArray asdasd12 = (JArray)item["photos"];
-                    foreach (var item1 in asdasd12)
+                    catch (Exception ex)
                     {
-                        objTumblrFeed.imageurl = item1["original_size"]["url"].ToString();
+
+                        Console.WriteLine(ex.Message);
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    objTumblrFeed.videourl = item["permalink_url"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                    try
+                    {
+                        objTumblrFeed.blogname = item["blog_name"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
 
-                try
-                {
-                    string str = item["note_count"].ToString();
-                    objTumblrFeed.notes = Convert.ToInt16(str);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                try
-                {
-                    string content = item["trail"][0]["content"].ToString();
-                    objTumblrFeed.content = content;
-                }
-                catch { }
-                try
-                {
-                    string postId = item["trail"][0]["post"]["id"].ToString();
-                    objTumblrFeed.postId = postId;
-                }
-                catch { }
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.blogId = item["id"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
 
-                var ret = tumblrFeedRepo.Find<Domain.Socioboard.MongoDomain.TumblrFeed>(t => t.postId.Equals(objTumblrFeed.postId));
-                var task = Task.Run(async () =>
-                {
-                    return await ret;
-                });
-                int count = task.Result.Count;
-                if (count < 1)
-                {
-                    tumblrFeedRepo.Add(objTumblrFeed);
-                }
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.blogposturl = item["post_url"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
 
-                //objTumblrFeed.timestamp = DateTime.Now;
-                //if (!objTumblrFeedRepository.checkTumblrMessageExists(objTumblrFeed))
-                //{
-                //    try
-                //    {
-                //        I++;
-                //        TumblrFeedRepository.Add(objTumblrFeed);
-                //        logger.Error("AddTunblrFeedsCount>>>>" + I);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //    }
-                //}
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        String result = item["caption"].ToString();
+                        objTumblrFeed.description = Regex.Replace(result, @"<[^>]*>", String.Empty);
+                    }
+                    catch (Exception ex)
+                    {
+                        objTumblrFeed.description = null;
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.slug = item["slug"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.type = item["type"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        string test = item["date"].ToString();
+                        string dt;
+                        if (test.Contains("GMT"))
+                        {
+                            test = test.Replace("GMT", "").Trim().ToString();
+                            dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
+                        }
+                        else
+                        {
+                            test = test.Replace("GMT", "").Trim().ToString();
+                            dt = Convert.ToDateTime(test).ToString("yyyy/MM/dd HH:mm:ss");
+                        }
+                        objTumblrFeed.date = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.reblogkey = item["reblog_key"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        string str = item["liked"].ToString();
+                        if (str == "False")
+                        {
+                            objTumblrFeed.liked = 0;
+                        }
+                        else { objTumblrFeed.liked = 1; }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        string str = item["followed"].ToString();
+                        if (str == "false")
+                        {
+                            objTumblrFeed.followed = 0;
+                        }
+                        else { objTumblrFeed.followed = 1; }
+                        // objTumblrDashboard.followed = Convert.ToInt16(item["followed"]);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.canreply = Convert.ToInt16(item["can_reply"]);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.sourceurl = item["source_url"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.sourcetitle = item["source_title"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        JArray asdasd12 = (JArray)item["photos"];
+                        foreach (var item1 in asdasd12)
+                        {
+                            objTumblrFeed.imageurl = item1["original_size"]["url"].ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        objTumblrFeed.videourl = item["permalink_url"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    try
+                    {
+                        string str = item["note_count"].ToString();
+                        objTumblrFeed.notes = Convert.ToInt16(str);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    try
+                    {
+                        string content = item["trail"][0]["content"].ToString();
+                        objTumblrFeed.content = content;
+                    }
+                    catch { }
+                    try
+                    {
+                        string postId = item["trail"][0]["post"]["id"].ToString();
+                        objTumblrFeed.postId = postId;
+                    }
+                    catch { }
+
+                    var ret = tumblrFeedRepo.Find<Domain.Socioboard.MongoDomain.TumblrFeed>(t => t.postId.Equals(objTumblrFeed.postId));
+                    var task = Task.Run(async () =>
+                    {
+                        return await ret;
+                    });
+                    int count = task.Result.Count;
+                    if (count < 1)
+                    {
+                        tumblrFeedRepo.Add(objTumblrFeed);
+                    }
+
+                    //objTumblrFeed.timestamp = DateTime.Now;
+                    //if (!objTumblrFeedRepository.checkTumblrMessageExists(objTumblrFeed))
+                    //{
+                    //    try
+                    //    {
+                    //        I++;
+                    //        TumblrFeedRepository.Add(objTumblrFeed);
+                    //        logger.Error("AddTunblrFeedsCount>>>>" + I);
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("GetTumblrFeed => "+ ex.Message);
             }
 
         }
@@ -401,24 +408,49 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getTumblrData(string UserId, string Tumblrid)
         {
-            Guid userId = Guid.Parse(UserId);
-            oAuthTumbler Obj_oAuthTumbler = new oAuthTumbler();
-            oAuthTumbler.TumblrConsumerKey = ConfigurationManager.AppSettings["TumblrClientKey"];
-            oAuthTumbler.TumblrConsumerSecret = ConfigurationManager.AppSettings["TumblrClientSec"];
-            Obj_oAuthTumbler.TumblrCallBackUrl = ConfigurationManager.AppSettings["TumblrCallBackURL"];
-            TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
-            Domain.Socioboard.Domain.TumblrAccount ObjTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(Tumblrid, userId);
-            #region UpdateTeammemberprofile
-            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-            objTeamMemberProfile.ProfileName = ObjTumblrAccount.tblrUserName;
-            objTeamMemberProfile.ProfilePicUrl = ObjTumblrAccount.tblrProfilePicUrl;
-            objTeamMemberProfile.ProfileId = ObjTumblrAccount.tblrUserName;
-            objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
-            #endregion
-            oAuthTumbler.TumblrToken = ObjTumblrAccount.tblrAccessToken;
-            oAuthTumbler.TumblrTokenSecret = ObjTumblrAccount.tblrAccessTokenSecret;
-            KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret);
-            AddTunblrFeeds(UserId, LoginDetails, ObjTumblrAccount.tblrUserName);
+            try
+            {
+                Guid userId = Guid.Parse(UserId);
+                oAuthTumbler Obj_oAuthTumbler = new oAuthTumbler();
+                oAuthTumbler.TumblrConsumerKey = ConfigurationManager.AppSettings["TumblrClientKey"];
+                oAuthTumbler.TumblrConsumerSecret = ConfigurationManager.AppSettings["TumblrClientSec"];
+                Obj_oAuthTumbler.TumblrCallBackUrl = ConfigurationManager.AppSettings["TumblrCallBackURL"];
+                TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
+                Domain.Socioboard.Domain.TumblrAccount ObjTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(Tumblrid, userId);
+
+                oAuthTumbler.TumblrToken = ObjTumblrAccount.tblrAccessToken;
+                oAuthTumbler.TumblrTokenSecret = ObjTumblrAccount.tblrAccessTokenSecret;
+                KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret);
+                JObject profile = new JObject();
+                try
+                {
+                    profile = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersInfoUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
+                }
+                catch (Exception ex)
+                {
+                }
+
+                #region UpdateTumblrAccount
+                string tumblrnameold = ObjTumblrAccount.tblrUserName;
+                ObjTumblrAccount.tblrUserName = profile["response"]["user"]["name"].ToString();
+                ObjTumblrAccount.tblrProfilePicUrl = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+                objTumblrAccountRepository.UpdateTumblrAccount(ObjTumblrAccount, tumblrnameold);
+                #endregion
+
+                #region UpdateTeammemberprofile
+                Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                objTeamMemberProfile.ProfileName = ObjTumblrAccount.tblrUserName;
+                objTeamMemberProfile.ProfilePicUrl = ObjTumblrAccount.tblrProfilePicUrl;
+                objTeamMemberProfile.ProfileId = ObjTumblrAccount.tblrUserName;
+                objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+                #endregion
+
+                AddTunblrFeeds(UserId, LoginDetails, ObjTumblrAccount.tblrUserName);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("GetTumblrData => " + ex.Message);
+            }
             //Domain.Socioboard.Domain.TumblrFeed tumblrTumblrFeed = new Domain.Socioboard.Domain.TumblrFeed();
             //TumblrFeedRepository.Add(tumblrTumblrFeed);
             return "Tumblr info is updated successfully";

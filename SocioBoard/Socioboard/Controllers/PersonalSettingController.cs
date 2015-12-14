@@ -38,6 +38,12 @@ namespace Socioboard.Controllers
               User objUser = (User)Session["User"];
               return PartialView("_PersonalSettingPartial", objUser);
         }
+
+        public ActionResult YearlyBilling()
+        {
+            return View();
+        }
+
         //vikash [20/11/2014]
         public ActionResult Billing()
         {
@@ -71,6 +77,10 @@ namespace Socioboard.Controllers
             }
               User objUser = (User)Session["User"];
               Api.User.User ApiobjUser = new Api.User.User();
+              if (string.IsNullOrEmpty(file))
+              {
+                  file = objUser.ProfileUrl;
+              }
               string ret = ApiobjUser.UpdateUser(id, fname, lname, dt, file,Session["access_token"].ToString());
               if (ret == "1")
               {
@@ -90,12 +100,17 @@ namespace Socioboard.Controllers
             //UserRepository userrepo = new UserRepository();
             //Domain.Socioboard.Domain.User user = ApiobjUser.getUserInfoByEmail(;
             string user = ApiobjUser.getUserInfoByEmail(id);
+            Domain.Socioboard.Domain.User _User=(Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(user,typeof(Domain.Socioboard.Domain.User)); 
             string ret = string.Empty;
             if (newpass.Equals(confirmpass))
             {
-                //Modified by Sumit Gupta [31-01-15]
-                //ret = ApiobjUser.ChangePassword(id, oldpass, newpass);
-                ret = ApiobjUser.ChangePasswordWithoutOldPassword(id, "", newpass);
+                if (!_User.Password.Equals(SBUtils.MD5Hash(confirmpass)))
+                {
+                    ret = ApiobjUser.ChangePasswordWithoutOldPassword(id, "", newpass);
+                }
+                else {
+                    ret = "New Password and Old Password is same";
+                }
             }
             else
             {
@@ -116,7 +131,10 @@ namespace Socioboard.Controllers
             User objUser = (User)Session["User"];
             string Password = SBUtils.MD5Hash(CnfrmPassword);
             string ret = string.Empty;
-            if (objUser.Password == Password)
+            Api.User.User ApiobjUser = new Api.User.User();
+            string user = ApiobjUser.getUserInfoByEmail(objUser.EmailId);
+            objUser = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(user, typeof(Domain.Socioboard.Domain.User));
+            if (objUser.Password.Equals(Password))
             {
                 ret = "Password Confirm";
             }
@@ -149,7 +167,7 @@ namespace Socioboard.Controllers
               }
               Session["User"] = objUser;
               var mailBody = Helper.SBUtils.RenderViewToString1(this.ControllerContext, this.TempData, "_EmailChangeMailBodyPartial", objUser);
-              string Subject = "Socioboard";
+              string Subject = ConfigurationManager.AppSettings["domain"] + "! Confirm your email.";
 
               mailsender = ApiobjMailSender.SendChangePasswordMail(newEmailId, mailBody, Subject);
               return Content("Mail Send Successfully");
@@ -381,8 +399,8 @@ namespace Socioboard.Controllers
                 string UpgradeAccountFailedURL = ConfigurationManager.AppSettings["UpgradeAccountFailedURL"];
                 string UpgradeAccountpaypalemail = ConfigurationManager.AppSettings["UpgradeAccountpaypalemail"];
                 string userId = objUser.Id.ToString();
-               
-                pay = payme.PayWithPayPal(amount, plan, UserName, "", EmailId, "USD", UpgradeAccountpaypalemail, UpgradeAccountSuccessURL,
+
+                pay = payme.RecurringPaymentWithPayPal(amount, plan, UserName, "", EmailId, "USD", UpgradeAccountpaypalemail, UpgradeAccountSuccessURL,
                                          UpgradeAccountFailedURL, UpgradeAccountSuccessURL, "", "", userId);
             }
             return Content(pay);
@@ -429,6 +447,135 @@ namespace Socioboard.Controllers
             Session["Paid_User"] = "Paid";
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
+
+        #region Yearly Payment
+        public ActionResult YearlyUpgradeAccountByPayPal(string plan, string price)
+        {
+            string pay = string.Empty;
+            Api.User.User ApiobjUser = new Api.User.User();
+            User objUser = (User)Session["User"];
+            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString(), Session["access_token"].ToString()), typeof(User)));
+            Helper.Payment payme = new Payment();
+            string amount = price.Replace("$", "").Trim();
+            Session["PaymentAmount"] = amount;
+            Session["AccountType"] = plan;
+            if (amount == "FREE")
+            {
+                amount = "0";
+                pay = "success";
+
+                if (DateTime.Compare(objUser.ExpiryDate, DateTime.Now) > 0)
+                {
+                    objUser.ExpiryDate = objUser.ExpiryDate.AddDays(365);
+                }
+                else
+                {
+                    objUser.ExpiryDate = DateTime.Now.AddDays(365);
+                }
+                string i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), "Free", objUser.ExpiryDate, objUser.PaymentStatus, Session["access_token"].ToString());
+                Session["Paid_User"] = "Paid";
+            }
+            string UserName = objUser.UserName;
+            string EmailId = objUser.EmailId;
+
+            string ewallet = objUser.Ewallet;
+            Session["Ewallet"] = ewallet;
+            if (decimal.Parse(ewallet) > 0 && amount != "0")
+            {
+                if (decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat) >= decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat))
+                {
+                    ewallet = (decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat) - decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat)).ToString(CultureInfo.InvariantCulture.NumberFormat);
+                    Session["Ewallet"] = ewallet;
+                    //int ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), ewallet, plan, "paid");
+                    UpgradeAccountSuccessful();
+                    amount = "0";
+                    pay = "success";
+
+                }
+                else
+                {
+                    decimal _amount = (decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat) - decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat));
+                    amount = _amount.ToString(CultureInfo.InvariantCulture.NumberFormat);
+                    Session["Ewallet"] = "0";
+                }
+            }
+            if (amount != "0")
+            {
+                string UpgradeAccountSuccessURL = ConfigurationManager.AppSettings["UpgradeAccountSuccessURL"];
+                string UpgradeAccountFailedURL = ConfigurationManager.AppSettings["UpgradeAccountFailedURL"];
+                string UpgradeAccountpaypalemail = ConfigurationManager.AppSettings["UpgradeAccountpaypalemail"];
+                string userId = objUser.Id.ToString();
+
+                pay = payme.PayWithPayPal(amount, plan, UserName, "", EmailId, "USD", UpgradeAccountpaypalemail, UpgradeAccountSuccessURL,
+                                         UpgradeAccountFailedURL, UpgradeAccountSuccessURL, "", "", userId);
+            }
+            return Content(pay);
+        }
+
+
+
+        public ActionResult YearlyUpgradeAccountSuccessful()
+        {
+            User objUser = (User)Session["User"];
+            string paidamount = (string)Session["PaymentAmount"];
+            string accountType = (string)Session["AccountType"];
+            objUser.PaymentStatus = "Paid";
+            objUser.AccountType = accountType;
+            Api.User.User ApiobjUser = new Api.User.User();
+            Api.PaymentTransaction.PaymentTransaction objApiPaymentTransaction = new Api.PaymentTransaction.PaymentTransaction();
+            if (DateTime.Compare(objUser.ExpiryDate, DateTime.Now) > 0)
+            {
+                objUser.ExpiryDate = objUser.ExpiryDate.AddDays(365);
+            }
+            else
+            {
+                objUser.ExpiryDate = DateTime.Now.AddDays(365);
+            }
+            string i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), objUser.AccountType, objUser.ExpiryDate, objUser.PaymentStatus, Session["access_token"].ToString());
+            string res_PaymentTransaction = objApiPaymentTransaction.SavePayPalTransaction(objUser.Id.ToString(), paidamount);
+            string ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), Session["Ewallet"].ToString(), accountType, "paid", Session["access_token"].ToString());
+            objUser.Ewallet = Session["Ewallet"].ToString();
+            objUser.ActivationStatus = "paid";
+            Session["User"] = objUser;
+            Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
+            try
+            {
+                Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)(new JavaScriptSerializer().Deserialize(ApiInvitation.UserInvitedInfo(objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Invitation)));
+                if (_Invitation != null)
+                {
+                    User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString(), Session["access_token"].ToString()), typeof(User)));
+                    decimal bonus = (decimal.Parse(paidamount, CultureInfo.InvariantCulture.NumberFormat) * Payment.ReferedAmountDetails(accountType)) / 100;
+                    newUser.Ewallet = (decimal.Parse(newUser.Ewallet, CultureInfo.InvariantCulture.NumberFormat) + bonus).ToString();
+                    string ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus, Session["access_token"].ToString());
+                    Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
+                    ApiAffiliates.AddAffiliateDetail(newUser.Id.ToString(), objUser.Id.ToString(), DateTime.Now, bonus.ToString());
+                }
+            }
+            catch (Exception ex) { }
+            Session["Paid_User"] = "Paid";
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //public ActionResult RechrgeEwalletByPaypal(string amount)
         //{

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="InstagramUserDetails" table="instagramuserdetails" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Profile_Id">
+      <column name="Profile_Id" />
+    </property>
+    <property name="Insta_Name">
+      <column name="Insta_Name" />
+    </property>
+
+    <property name="Full_Name">
+      <column name="Full_Name"  />
+    </property>
+    <property name="Media_Count">
+      <column name="Media_Count"  />
+    </property>
+    <property name="Created_Time">
+      <column name="Created_Time"  />
+    </property>
+    <property name="Follower">
+      <column name="Follower"  />
+    </property>
+    <property name="Following">
+      <column name="Following"  />
+    </property>
+  
+
+  </class>
+</hibernate-mapping>

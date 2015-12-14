@@ -14,6 +14,7 @@ using System.Web.Security;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
@@ -23,6 +24,7 @@ namespace Socioboard.Controllers
         // GET: /Default/
         ILog logger = LogManager.GetLogger(typeof(IndexController));
        // [OutputCache(Duration = 604800)]
+        [MyExpirePageActionFilter]
         public ActionResult Index()
         {
            
@@ -349,7 +351,9 @@ namespace Socioboard.Controllers
                     retmsg = "Email Already Exists";
                 }
                 //return Content(retmsg);
-
+                Session.Abandon();
+                Session.Clear();
+                Session.RemoveAll();
             }
             catch (Exception ex)
             {

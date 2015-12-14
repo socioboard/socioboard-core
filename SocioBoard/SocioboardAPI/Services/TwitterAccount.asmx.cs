@@ -266,8 +266,8 @@ namespace Api.Socioboard.Services
                 try
                 {
 
-                    NHibernate.IQuery retrieve = session.CreateQuery("from TwitterRecentDetails where TwitterId =: id").SetParameter("id", id);
-                    ret = (Domain.Socioboard.Domain.TwitterRecentDetails)retrieve.UniqueResult();
+                    List<Domain.Socioboard.Domain.TwitterRecentDetails> retrieve = session.CreateQuery("from TwitterRecentDetails where TwitterId =: id").SetParameter("id", id).List<Domain.Socioboard.Domain.TwitterRecentDetails>().ToList();
+                    ret = (Domain.Socioboard.Domain.TwitterRecentDetails)retrieve[0];
                     if (ret == null)
                     {
                         ret = new Domain.Socioboard.Domain.TwitterRecentDetails();

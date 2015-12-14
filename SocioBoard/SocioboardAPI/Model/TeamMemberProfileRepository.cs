@@ -349,6 +349,36 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+        public bool checkTeamMemberProfilebyType(Guid Teamid, string ProfileId ,string profiletype)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Get the details of team profile by team id and profile id.
+                        List<Domain.Socioboard.Domain.TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileId = :profileid and ProfileType=:ProfileType")
+                         .SetParameter("teamid", Teamid)
+                         .SetParameter("profileid", ProfileId)
+                         .SetParameter("ProfileType", profiletype)
+                        .List<Domain.Socioboard.Domain.TeamMemberProfile>()
+                     .ToList<Domain.Socioboard.Domain.TeamMemberProfile>();
+                        if (alstFBAccounts == null || alstFBAccounts.Count == 0)
+                            return false;
+                        else
+                            return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
         /// <DeleteTeamMemberProfileByUserid>
         /// Delete Team Member Profile By Userid

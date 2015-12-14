@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="InstagramReport" table="instagramreport" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Profile_Id">
+      <column name="Profile_Id" />
+    </property>
+    <property name="Insta_Name">
+      <column name="Insta_Name"  />
+    </property>
+    <property name="Full_Name">
+      <column name="Full_Name"  />
+    </property>
+    <property name="Media_Count">
+      <column name="Media_Count"  />
+    </property>
+    <property name="Follower">
+      <column name="Follower"  />
+    </property>
+
+    <property name="Following">
+      <column name="Following"  />
+    </property>
+    <property name="follow_15">
+      <column name="follow_15"  />
+    </property>
+    <property name="perday_follow_15">
+      <column name="perday_follow_15"  />
+    </property>
+
+    <property name="follow_30">
+      <column name="follow_30"  />
+    </property>
+    <property name="perday_follow_30">
+      <column name="perday_follow_30"  />
+    </property>
+
+    <property name="follow_60">
+      <column name="follow_60"  />
+    </property>
+    <property name="perday_follow_60">
+      <column name="perday_follow_60"  />
+    </property>
+
+    <property name="follow_90">
+      <column name="follow_90"  />
+    </property>
+    <property name="perday_follow_90">
+      <column name="perday_follow_90"  />
+    </property>
+
+    <property name="following_15">
+      <column name="following_15"  />
+    </property>
+    <property name="perday_following_15">
+      <column name="perday_following_15"  />
+    </property>
+
+    <property name="following_30">
+      <column name="following_30"  />
+    </property>
+    <property name="perday_following_30">
+      <column name="perday_following_30"  />
+    </property>
+
+    <property name="following_60">
+      <column name="following_60"  />
+    </property>
+    <property name="perday_following_60">
+      <column name="perday_following_60"  />
+    </property>
+    <property name="following_90">
+      <column name="following_90"  />
+    </property>
+    <property name="perday_following_90">
+      <column name="perday_following_90"  />
+    </property>
+
+
+    <property name="postcomment_15">
+      <column name="postcomment_15"  />
+    </property>
+    <property name="perday_postcomment_15">
+      <column name="perday_postcomment_15"  />
+    </property>
+
+    <property name="postcomment_30">
+      <column name="postcomment_30"  />
+    </property>
+    <property name="perday_postcomment_30">
+      <column name="perday_postcomment_30"  />
+    </property>
+    
+    <property name="postcomment_60">
+      <column name="postcomment_60"  />
+    </property>
+    <property name="perday_postcomment_60">
+      <column name="perday_postcomment_60"  />
+    </property>
+
+    <property name="postcomment_90">
+      <column name="postcomment_90"  />
+    </property>
+    <property name="perday_postcomment_90">
+      <column name="perday_postcomment_90"  />
+    </property>
+
+    <property name="postlike_15">
+      <column name="postlike_15"  />
+    </property>
+    <property name="perday_postlike_15">
+      <column name="perday_postlike_15"  />
+    </property>
+
+    <property name="postlike_30">
+      <column name="postlike_30"  />
+    </property>
+    <property name="perday_postlike_30">
+      <column name="perday_postlike_30"  />
+    </property>
+     <property name="postlike_60">
+      <column name="postlike_60"  />
+    </property>
+    <property name="perday_postlike_60">
+      <column name="perday_postlike_60"  />
+    </property>
+
+    <property name="postlike_90">
+      <column name="postlike_90"  />
+    </property>
+    <property name="perday_postlike_90">
+      <column name="perday_postlike_90"  />
+    </property>
+    
+
+<property name="videopost_15">
+  <column name="videopost_15"/>
+</property>
+
+    <property name="perday_videopost_15">
+  <column name="perday_videopost_15"/>
+</property>
+
+<property name="videopost_30">
+  <column name="videopost_30"/>
+</property>
+
+    <property name="perday_videopost_30">
+  <column name="perday_videopost_30"/>
+</property>
+
+<property name="videopost_60">
+  <column name="videopost_60"/>
+</property>
+
+    <property name="perday_videopost_60">
+  <column name="perday_videopost_60"/>
+</property>
+
+<property name="videopost_90">
+  <column name="videopost_90"/>
+</property>
+
+    <property name="perday_videopost_90">
+  <column name="perday_videopost_90"/>
+</property>
+
+  <property name="imagepost_15">
+    <column name="imagepost_15"/>
+  </property>
+
+  <property name="perday_imagepost_15">
+    <column name="perday_imagepost_15"/>
+  </property>
+  
+
+<property name="imagepost_30">
+    <column name="imagepost_30"/>
+  </property>
+
+  <property name="perday_imagepost_30">
+    <column name="perday_imagepost_30"/>
+  </property>
+  
+<property name="imagepost_60">
+    <column name="imagepost_60"/>
+  </property>
+
+  <property name="perday_imagepost_60">
+    <column name="perday_imagepost_60"/>
+  </property>
+  
+<property name="imagepost_90">
+    <column name="imagepost_90"/>
+  </property>
+
+  <property name="perday_imagepost_90">
+    <column name="perday_imagepost_90"/>
+  </property>
+  
+
+  </class>
+</hibernate-mapping>

@@ -17,6 +17,12 @@
     <property name="UserId">
       <column name="UserId" />
     </property>
+    <property name="Email">
+      <column name="Email" />
+    </property>
+    <property name="Name">
+      <column name="Name" />
+    </property>
     <property name="SendStatus">
       <column name="SendStatus"  />
     </property>

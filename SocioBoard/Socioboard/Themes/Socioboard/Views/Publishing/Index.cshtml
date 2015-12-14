@@ -98,6 +98,7 @@
                     <div class="panel-footer">
 
                         <button id="scheduled" class="btn btn-outline btn-default" type="button">Schedule</button>
+                        <img src="/Themes/Socioboard/Contents/img/bx_loader.gif" style="display:none;" id="ScheduleLoadimg">
                         <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Drafts</button>
 
                     </div>
@@ -335,7 +336,8 @@
         //});
 
         $('#scheduled').click(function () {
-            debugger;
+            $('#scheduled').hide();
+            $('#ScheduleLoadimg').show();
             var curdate = new Date();
             var dd = curdate.getDate();
             if (dd < 10) {
@@ -394,7 +396,7 @@
             var shsec = schdd[2];
 			
 			var intScheduleDate=parseInt(shdd,10);
-			--intScheduleDate;
+			//--intScheduleDate;
 			shdd=intScheduleDate.toString();
 			
             if (shdd < 10) {
@@ -419,21 +421,29 @@
             var scheduledtime = shdd + ":" + shmin + ":" + shsec;
             var allprofiles = '';
             if (scheduledmessage == "") {
+                $('#scheduled').show();
+                $('#ScheduleLoadimg').hide();
                 alertify.set({ delay: 1000 });
                 alertify.error('Please Enter a message ');
                 return false;
             }
             if (scheduleddate == "") {
+                $('#scheduled').show();
+                $('#ScheduleLoadimg').hide();
                 alertify.set({ delay: 1000 });
                 alertify.error('Please Select a Date');
                 return false;
             }
             if (scheduledtime == "") {
+                $('#scheduled').show();
+                $('#ScheduleLoadimg').hide();
                 alertify.set({ delay: 1000 });
                 alertify.error('Please Select a Time');
                 return false;
             }
             if (arrbinduser.length < 1) {
+                $('#scheduled').show();
+                $('#ScheduleLoadimg').hide();
                 alertify.set({ delay: 1000 });
                 alertify.error('Please Select Profiles to Scheduled a message');
                 return false;
@@ -447,18 +457,25 @@
                 var ProfileType = strarray[1];
                 if (ProfileType == 'facebook') {
                     if (scheduledmessage.length > 5000) {
+                        $('#scheduled').show();
+                        $('#ScheduleLoadimg').hide();
                         alertify.error("Facebook Not Support more than 5000 characters");
                         return;
                     }
                 }
                 if (ProfileType == 'twitter') {
                     if (scheduledmessage.length > 140) {
+                        $('#scheduled').show();
+                        $('#ScheduleLoadimg').hide();
                         alertify.error("Twitter Not Support more than 140 characters");
                         return;
                     }
                 }
                 if (ProfileType == 'linkedin') {
+
                     if (scheduledmessage.length > 600) {
+                        $('#scheduled').show();
+                        $('#ScheduleLoadimg').hide();
                         alertify.error("Linkedin Not Support more than 600 characters");
                         return;
                     }
@@ -480,6 +497,8 @@
                     $('#scheduleddate').val('');
                     $('#scheduledtime').val('');
                     $('#tumbnail').children().html('');
+                    $('#scheduled').show();
+                    $('#ScheduleLoadimg').hide();
                     alertify.set({ delay: 1000 });
                     alertify.success('Message Scheduled Successfully');
                     arrbinduser = [];
@@ -494,6 +513,8 @@
         });
 
         $('#savedraft').click(function () {
+            $('#ScheduleLoadimg').show();
+            $('#savedraft').hide();
             var scheduledmessage = $('#txtscheduled').val();
             if (scheduledmessage != "") {
                 $.ajax({
@@ -504,6 +525,8 @@
                         $('#txtscheduled').val('');
                         $('#scheduleddate').val('');
                         $('#scheduledtime').val('');
+                        $('#ScheduleLoadimg').hide();
+                        $('#savedraft').show();
                         alertify.set({ delay: 1000 });
                         alertify.success('Message Saved to Draft');
                         arrbinduser = [];
@@ -515,6 +538,8 @@
                 });
             }
             else {
+                $('#ScheduleLoadimg').hide();
+                $('#savedraft').show();
                 alertify.set({ delay: 1000 });
                 alertify.error('Please Enter a message ');
                 return false;

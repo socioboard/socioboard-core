@@ -35,7 +35,7 @@ namespace GlobusTumblerLib.Tumblr.Core.BlogMethods
                 prms.Add("type", "quote");
                 prms.Add("quote", title);
                 prms.Add("source", body);            
-                postUrl = "https://api.tumblr.com/v2/blog/" + Hostname + ".tumblr.com/post";
+                postUrl = "https://api.tumblr.com/v2/blog/" + Hostname + ".tumblr.com/post"; 
             }
             else if (type == "photo")
             {
@@ -52,7 +52,7 @@ namespace GlobusTumblerLib.Tumblr.Core.BlogMethods
                 }
 
                 // Delete the temporary file
-                fileInfo.Delete();
+                //fileInfo.Delete();
 
                 prms.Add("type", "photo");
                 prms.Add("caption", body);

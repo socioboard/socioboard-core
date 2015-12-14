@@ -200,16 +200,16 @@
   </wsdl:binding>
   <wsdl:service name="TaskComment">
     <wsdl:port name="TaskCommentSoap" binding="tns:TaskCommentSoap">
-      <soap:address location="http://localhost:6361/services/TaskComment.asmx" />
+      <soap:address location="http://localhost:6361/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentSoap12" binding="tns:TaskCommentSoap12">
-      <soap12:address location="http://localhost:6361/services/TaskComment.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentHttpGet" binding="tns:TaskCommentHttpGet">
-      <http:address location="http://localhost:6361/services/TaskComment.asmx" />
+      <http:address location="http://localhost:6361/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentHttpPost" binding="tns:TaskCommentHttpPost">
-      <http:address location="http://localhost:6361/services/TaskComment.asmx" />
+      <http:address location="http://localhost:6361/Services/TaskComment.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -59,5 +59,11 @@
     <property name="Status">
       <column name="Status"  />
     </property>
+    <property name="Positive">
+      <column name="Positive"  />
+    </property>
+    <property name="Negative">
+      <column name="Negative"  />
+    </property>
   </class>
 </hibernate-mapping>

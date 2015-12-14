@@ -16,7 +16,7 @@ namespace GlobusGooglePlusLib.GAnalytics.Core.AnalyticsMethod
             oAuthToken objToken = new oAuthToken();
             try
             {
-                string strDataUrl = Globals.strGetGaAnalytics + strProfileId + "&" + metricDimension + "&start-date=" + strdtFrom + "&end-date=" + strdtTo + "&access_token=" + strToken;
+                string strDataUrl = Globals.strGetGaAnalytics + strProfileId + "&metrics=" + metricDimension + "&start-date=" + strdtFrom + "&end-date=" + strdtTo + "&access_token=" + strToken;
                 strData=objToken.WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.GET, strDataUrl, "");
             }
             catch (Exception Err)

@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetInstagramAccounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetInstagramAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstaAccountById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstaAccountByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstaAccountByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoPosts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoPostsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVideoPostsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImagePosts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImagePostsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImagePostsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramUserDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramUserDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramUserDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramFollowerGained">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramFollowerGainedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramFollowerGainedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramFollowingGained">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramFollowingGainedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramFollowingGainedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramPostCommentGained">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramPostCommentGainedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramPostCommentGainedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramPostLikesGained">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramPostLikesGainedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramPostLikesGainedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="i" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="retrievedata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievedataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrievedataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstagramDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstagramDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetInstagramAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstaAccountById" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstaAccountByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideoPosts" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideoPostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImagePosts" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImagePostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramUserDetail" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramUserDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramFollowerGained" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramFollowerGainedResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramFollowingGained" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramFollowingGainedResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramPostCommentGained" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramPostCommentGainedResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramPostLikesGained" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramPostLikesGainedResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapIn">
+    <wsdl:part name="parameters" element="tns:insertdata" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapOut">
+    <wsdl:part name="parameters" element="tns:insertdataResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapIn">
+    <wsdl:part name="parameters" element="tns:retrievedata" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapOut">
+    <wsdl:part name="parameters" element="tns:retrievedataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstagramData" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstagramDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramAccountsHttpGetIn" />
+  <wsdl:message name="GetInstagramAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetOut" />
+  <wsdl:message name="retrievedataHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataHttpGetIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramAccountsHttpPostIn" />
+  <wsdl:message name="GetInstagramAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstaAccountByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoPostsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetImagePostsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramUserDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowerGainedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramFollowingGainedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostCommentGainedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramPostLikesGainedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostOut" />
+  <wsdl:message name="retrievedataHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataHttpPostIn">
+    <wsdl:part name="ProfileIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInstagramDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="InstagramReportsSoap">
+    <wsdl:operation name="GetInstagramAccounts">
+      <wsdl:input message="tns:GetInstagramAccountsSoapIn" />
+      <wsdl:output message="tns:GetInstagramAccountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <wsdl:input message="tns:GetInstaAccountByIdSoapIn" />
+      <wsdl:output message="tns:GetInstaAccountByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <wsdl:input message="tns:GetVideoPostsSoapIn" />
+      <wsdl:output message="tns:GetVideoPostsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <wsdl:input message="tns:GetImagePostsSoapIn" />
+      <wsdl:output message="tns:GetImagePostsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <wsdl:input message="tns:InstagramUserDetailSoapIn" />
+      <wsdl:output message="tns:InstagramUserDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <wsdl:input message="tns:InstagramFollowerGainedSoapIn" />
+      <wsdl:output message="tns:InstagramFollowerGainedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <wsdl:input message="tns:InstagramFollowingGainedSoapIn" />
+      <wsdl:output message="tns:InstagramFollowingGainedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <wsdl:input message="tns:InstagramPostCommentGainedSoapIn" />
+      <wsdl:output message="tns:InstagramPostCommentGainedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <wsdl:input message="tns:InstagramPostLikesGainedSoapIn" />
+      <wsdl:output message="tns:InstagramPostLikesGainedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataSoapIn" />
+      <wsdl:output message="tns:insertdataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataSoapIn" />
+      <wsdl:output message="tns:retrievedataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <wsdl:input message="tns:GetInstagramDataSoapIn" />
+      <wsdl:output message="tns:GetInstagramDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InstagramReportsHttpGet">
+    <wsdl:operation name="GetInstagramAccounts">
+      <wsdl:input message="tns:GetInstagramAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramAccountsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <wsdl:input message="tns:GetInstaAccountByIdHttpGetIn" />
+      <wsdl:output message="tns:GetInstaAccountByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <wsdl:input message="tns:GetVideoPostsHttpGetIn" />
+      <wsdl:output message="tns:GetVideoPostsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <wsdl:input message="tns:GetImagePostsHttpGetIn" />
+      <wsdl:output message="tns:GetImagePostsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <wsdl:input message="tns:InstagramUserDetailHttpGetIn" />
+      <wsdl:output message="tns:InstagramUserDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <wsdl:input message="tns:InstagramFollowerGainedHttpGetIn" />
+      <wsdl:output message="tns:InstagramFollowerGainedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <wsdl:input message="tns:InstagramFollowingGainedHttpGetIn" />
+      <wsdl:output message="tns:InstagramFollowingGainedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <wsdl:input message="tns:InstagramPostCommentGainedHttpGetIn" />
+      <wsdl:output message="tns:InstagramPostCommentGainedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <wsdl:input message="tns:InstagramPostLikesGainedHttpGetIn" />
+      <wsdl:output message="tns:InstagramPostLikesGainedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpGetIn" />
+      <wsdl:output message="tns:insertdataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpGetIn" />
+      <wsdl:output message="tns:retrievedataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <wsdl:input message="tns:GetInstagramDataHttpGetIn" />
+      <wsdl:output message="tns:GetInstagramDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InstagramReportsHttpPost">
+    <wsdl:operation name="GetInstagramAccounts">
+      <wsdl:input message="tns:GetInstagramAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramAccountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <wsdl:input message="tns:GetInstaAccountByIdHttpPostIn" />
+      <wsdl:output message="tns:GetInstaAccountByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <wsdl:input message="tns:GetVideoPostsHttpPostIn" />
+      <wsdl:output message="tns:GetVideoPostsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <wsdl:input message="tns:GetImagePostsHttpPostIn" />
+      <wsdl:output message="tns:GetImagePostsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <wsdl:input message="tns:InstagramUserDetailHttpPostIn" />
+      <wsdl:output message="tns:InstagramUserDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <wsdl:input message="tns:InstagramFollowerGainedHttpPostIn" />
+      <wsdl:output message="tns:InstagramFollowerGainedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <wsdl:input message="tns:InstagramFollowingGainedHttpPostIn" />
+      <wsdl:output message="tns:InstagramFollowingGainedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <wsdl:input message="tns:InstagramPostCommentGainedHttpPostIn" />
+      <wsdl:output message="tns:InstagramPostCommentGainedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <wsdl:input message="tns:InstagramPostLikesGainedHttpPostIn" />
+      <wsdl:output message="tns:InstagramPostLikesGainedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpPostIn" />
+      <wsdl:output message="tns:insertdataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpPostIn" />
+      <wsdl:output message="tns:retrievedataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <wsdl:input message="tns:GetInstagramDataHttpPostIn" />
+      <wsdl:output message="tns:GetInstagramDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InstagramReportsSoap" type="tns:InstagramReportsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInstagramAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <soap:operation soapAction="http://tempuri.org/GetInstaAccountById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <soap:operation soapAction="http://tempuri.org/GetVideoPosts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <soap:operation soapAction="http://tempuri.org/GetImagePosts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <soap:operation soapAction="http://tempuri.org/InstagramUserDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <soap:operation soapAction="http://tempuri.org/InstagramFollowerGained" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <soap:operation soapAction="http://tempuri.org/InstagramFollowingGained" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <soap:operation soapAction="http://tempuri.org/InstagramPostCommentGained" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <soap:operation soapAction="http://tempuri.org/InstagramPostLikesGained" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <soap:operation soapAction="http://tempuri.org/GetInstagramData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramReportsSoap12" type="tns:InstagramReportsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInstagramAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <soap12:operation soapAction="http://tempuri.org/GetInstaAccountById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <soap12:operation soapAction="http://tempuri.org/GetVideoPosts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <soap12:operation soapAction="http://tempuri.org/GetImagePosts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <soap12:operation soapAction="http://tempuri.org/InstagramUserDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <soap12:operation soapAction="http://tempuri.org/InstagramFollowerGained" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <soap12:operation soapAction="http://tempuri.org/InstagramFollowingGained" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <soap12:operation soapAction="http://tempuri.org/InstagramPostCommentGained" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <soap12:operation soapAction="http://tempuri.org/InstagramPostLikesGained" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap12:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap12:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <soap12:operation soapAction="http://tempuri.org/GetInstagramData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramReportsHttpGet" type="tns:InstagramReportsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetInstagramAccounts">
+      <http:operation location="/GetInstagramAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <http:operation location="/GetInstaAccountById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <http:operation location="/GetVideoPosts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <http:operation location="/GetImagePosts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <http:operation location="/InstagramUserDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <http:operation location="/InstagramFollowerGained" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <http:operation location="/InstagramFollowingGained" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <http:operation location="/InstagramPostCommentGained" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <http:operation location="/InstagramPostLikesGained" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <http:operation location="/GetInstagramData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramReportsHttpPost" type="tns:InstagramReportsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetInstagramAccounts">
+      <http:operation location="/GetInstagramAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstaAccountById">
+      <http:operation location="/GetInstaAccountById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoPosts">
+      <http:operation location="/GetVideoPosts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagePosts">
+      <http:operation location="/GetImagePosts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramUserDetail">
+      <http:operation location="/InstagramUserDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowerGained">
+      <http:operation location="/InstagramFollowerGained" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramFollowingGained">
+      <http:operation location="/InstagramFollowingGained" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostCommentGained">
+      <http:operation location="/InstagramPostCommentGained" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramPostLikesGained">
+      <http:operation location="/InstagramPostLikesGained" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstagramData">
+      <http:operation location="/GetInstagramData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InstagramReports">
+    <wsdl:port name="InstagramReportsSoap" binding="tns:InstagramReportsSoap">
+      <soap:address location="http://localhost:6361/Services/InstagramReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramReportsSoap12" binding="tns:InstagramReportsSoap12">
+      <soap12:address location="http://localhost:6361/Services/InstagramReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramReportsHttpGet" binding="tns:InstagramReportsHttpGet">
+      <http:address location="http://localhost:6361/Services/InstagramReports.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramReportsHttpPost" binding="tns:InstagramReportsHttpPost">
+      <http:address location="http://localhost:6361/Services/InstagramReports.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

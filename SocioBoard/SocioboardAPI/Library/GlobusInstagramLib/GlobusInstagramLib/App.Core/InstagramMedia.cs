@@ -15,6 +15,7 @@ namespace GlobusInstagramLib.Authentication
         public User user;
         public double created_time;
         public ImagesList images;
+        public VideoList videos;
         public string type;
         public string filter;
         public string[] tags;

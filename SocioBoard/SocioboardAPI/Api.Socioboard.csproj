@@ -150,9 +150,9 @@
     <Reference Include="MongoDB.Driver.Legacy">
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.3.3.4.4000\lib\Net35\NHibernate.dll</HintPath>
@@ -263,6 +263,9 @@
     <Compile Include="Helper\AddlinkedinCompanyPage.cs" />
     <Compile Include="Helper\ChilkatHttpHelpr.cs" />
     <Compile Include="Helper\FacebookUser.cs" />
+    <Compile Include="Helper\FbDiscoverySearchHelper.cs" />
+    <Compile Include="Helper\Globals.cs" />
+    <Compile Include="Helper\GlobusHttpHelper.cs" />
     <Compile Include="Helper\GoogleAnalyticsAuthenticationHelper.cs" />
     <Compile Include="Helper\GoogleAnalyticsRealTimeHelper.cs" />
     <Compile Include="Helper\GplusDiscoverySearchHelper.cs" />
@@ -290,17 +293,23 @@
     <Compile Include="Model\FacebookAccountRepository.cs" />
     <Compile Include="Model\FacebookFanPageRepository.cs" />
     <Compile Include="Model\FacebookFeedRepository.cs" />
+    <Compile Include="Model\FacebookInsightPostStatsRepository.cs" />
     <Compile Include="Model\FacebookMessageRepository.cs" />
     <Compile Include="Model\FacebookStatsRepository.cs" />
+    <Compile Include="Model\FbaPageSharerRepository.cs" />
     <Compile Include="Model\FbPageSharerRepository.cs" />
     <Compile Include="Model\FbPageCommentRepository.cs" />
     <Compile Include="Model\FbPageLikerRepository.cs" />
     <Compile Include="Model\FbPagePostCommentLikerRepository.cs" />
     <Compile Include="Model\FbPagePostRepository.cs" />
     <Compile Include="Model\FeedSentimentalAnalysisRepository.cs" />
+    <Compile Include="Model\GoogleAnalyticsAccountRepository.cs" />
+    <Compile Include="Model\GoogleAnalyticsStatsRepository.cs" />
     <Compile Include="Model\GooglePlusAccountRepository.cs" />
     <Compile Include="Model\GooglePlusActivitiesRepository.cs" />
+    <Compile Include="Model\GoogleplusComments.cs" />
     <Compile Include="Model\GoogleplusCommentsRepository.cs" />
+    <Compile Include="Model\GoogleplusLike.cs" />
     <Compile Include="Model\GroupProfileRepository.cs" />
     <Compile Include="Model\GroupScheduleMessageRepository.cs" />
     <Compile Include="Model\GroupsRepository.cs" />
@@ -310,14 +319,18 @@
     <Compile Include="Model\InstagramCommentRepository.cs" />
     <Compile Include="Model\InstagramFeedRepository.cs" />
     <Compile Include="Model\InvitationRepository.cs" />
+    <Compile Include="Model\ISocialSiteMessageRepository.cs" />
     <Compile Include="Model\LinkedInAccountRepository.cs" />
     <Compile Include="Model\LinkedinCompanyPageRepository.cs" />
     <Compile Include="Model\LinkedInFeedRepository.cs" />
     <Compile Include="Model\LinkedInMessageRepository.cs" />
     <Compile Include="Model\LinkedinPagePostRepository.cs" />
+    <Compile Include="Model\LogRepository.cs" />
+    <Compile Include="Model\MandrillAccountRepository.cs" />
     <Compile Include="Model\MongoRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
     <Compile Include="Model\NewsRepository.cs" />
+    <Compile Include="Model\NhibernateQueries.cs" />
     <Compile Include="Model\PackageRepository.cs" />
     <Compile Include="Model\PaymentTransactionRepository.cs" />
     <Compile Include="Model\ReplyMessageRepository.cs" />
@@ -345,6 +358,7 @@
     <Compile Include="Model\TwitterStatsRepository.cs" />
     <Compile Include="Model\UserActivationRepository.cs" />
     <Compile Include="Model\UserPackageRelationRepository.cs" />
+    <Compile Include="Model\UserRefRelationRepository.cs" />
     <Compile Include="Model\UserRepository.cs" />
     <Compile Include="Model\YoutubeAccountRepository.cs" />
     <Compile Include="Model\YoutubeChannelRepository.cs" />
@@ -375,14 +389,6 @@
     </Compile>
     <Compile Include="Services\ArchiveMessage.asmx.cs">
       <DependentUpon>ArchiveMessage.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Services\Blog_Comments.asmx.cs">
-      <DependentUpon>Blog_Comments.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Services\Blog_Posts.asmx.cs">
-      <DependentUpon>Blog_Posts.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\BusinessSetting.asmx.cs">
@@ -587,6 +593,10 @@
     </Compile>
     <Compile Include="Services\SocialProfile.asmx.cs">
       <DependentUpon>SocialProfile.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\SocialProfiles.asmx.cs">
+      <DependentUpon>SocialProfiles.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\TaskComment.asmx.cs">
@@ -1033,14 +1043,108 @@
     <EmbeddedResource Include="Mappings\GroupReports.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\RssFeeds.hbm.xml" />
-    <Content Include="Mappings\RssReader.hbm.xml" />
-    <Content Include="Mappings\TwitterEngagement.hbm.xml" />
+    <EmbeddedResource Include="Mappings\RssFeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RssReader.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterFollowerNames.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterNameTable.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\TwitterEngagement.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\TwitterFollowerNames.hbm.xml" />
-    <Content Include="Mappings\TwitterNameTable.hbm.xml" />
+    <EmbeddedResource Include="Mappings\BusinessSetting.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\dailymotionpost.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookGroupReport_15.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookGroupReport_30.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookGroupReport_60.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookGroupReport_90.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookPagePost.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookReport.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookReport_15.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookReport_30.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookReport_60.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookReport_90.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleAnalyticsReport.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleplusComments.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleplusLike.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramPostComments.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramPostLikes.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramReport.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramSelfFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramUserDetails.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TopFiveFans.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TopFiveFans_15.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TopFiveFans_30.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TopFiveFans_60.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TopFiveFans_90.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterRecentDetails.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterReport.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\UserGroup.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="obj\Debug\Api.Socioboard.dll" />
     <Content Include="obj\Debug\SocialCrowd.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.csproj.FileListAbsolute.txt" />
@@ -1063,8 +1167,6 @@
     <Content Include="Services\Ads.asmx" />
     <Content Include="Services\Affiliates.asmx" />
     <Content Include="Services\ArchiveMessage.asmx" />
-    <Content Include="Services\Blog_Comments.asmx" />
-    <Content Include="Services\Blog_Posts.asmx" />
     <Content Include="Services\BusinessSetting.asmx" />
     <Content Include="Services\CompanyDashboard.asmx" />
     <Content Include="Services\Companypage.asmx" />
@@ -1116,6 +1218,7 @@
     <Content Include="Services\ScheduledMessage.asmx" />
     <Content Include="Services\SentimentalAnalysis.asmx" />
     <Content Include="Services\SocialProfile.asmx" />
+    <Content Include="Services\SocialProfiles.asmx" />
     <Content Include="Services\TaskComment.asmx" />
     <Content Include="Services\Tasks.asmx" />
     <Content Include="Services\Team.asmx" />

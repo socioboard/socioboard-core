@@ -33,11 +33,11 @@ namespace Socioboard.Api.Instagram {
         
         private System.Threading.SendOrPostCallback SheduleInstagramMessageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getInstaAccountsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetInstagramRedirectUrlOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddInstagramAccountOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetIntagramImagesOperationCompleted;
         
         private System.Threading.SendOrPostCallback InstagramLikeUnLikeOperationCompleted;
         
@@ -45,9 +45,25 @@ namespace Socioboard.Api.Instagram {
         
         private System.Threading.SendOrPostCallback UpdateInstagramAccountByAdminOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetInstagramFeedsOperationCompleted;
-        
         private System.Threading.SendOrPostCallback AddCommentOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback PostFollowOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback PostUnfollowOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback PostBlockOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramUserPostsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramPostCommentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramPostLikesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramFollowerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramFollowingOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInstagramUserDetailsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -94,13 +110,13 @@ namespace Socioboard.Api.Instagram {
         public event SheduleInstagramMessageCompletedEventHandler SheduleInstagramMessageCompleted;
         
         /// <remarks/>
+        public event getInstaAccountsCompletedEventHandler getInstaAccountsCompleted;
+        
+        /// <remarks/>
         public event GetInstagramRedirectUrlCompletedEventHandler GetInstagramRedirectUrlCompleted;
         
         /// <remarks/>
         public event AddInstagramAccountCompletedEventHandler AddInstagramAccountCompleted;
-        
-        /// <remarks/>
-        public event GetIntagramImagesCompletedEventHandler GetIntagramImagesCompleted;
         
         /// <remarks/>
         public event InstagramLikeUnLikeCompletedEventHandler InstagramLikeUnLikeCompleted;
@@ -112,10 +128,34 @@ namespace Socioboard.Api.Instagram {
         public event UpdateInstagramAccountByAdminCompletedEventHandler UpdateInstagramAccountByAdminCompleted;
         
         /// <remarks/>
-        public event GetInstagramFeedsCompletedEventHandler GetInstagramFeedsCompleted;
+        public event AddCommentCompletedEventHandler AddCommentCompleted;
         
         /// <remarks/>
-        public event AddCommentCompletedEventHandler AddCommentCompleted;
+        public event PostFollowCompletedEventHandler PostFollowCompleted;
+        
+        /// <remarks/>
+        public event PostUnfollowCompletedEventHandler PostUnfollowCompleted;
+        
+        /// <remarks/>
+        public event PostBlockCompletedEventHandler PostBlockCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramUserPostsCompletedEventHandler GetInstagramUserPostsCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramPostCommentsCompletedEventHandler GetInstagramPostCommentsCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramPostLikesCompletedEventHandler GetInstagramPostLikesCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramFollowerCompletedEventHandler GetInstagramFollowerCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramFollowingCompletedEventHandler GetInstagramFollowingCompleted;
+        
+        /// <remarks/>
+        public event GetInstagramUserDetailsCompletedEventHandler GetInstagramUserDetailsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getInstagramData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -178,6 +218,33 @@ namespace Socioboard.Api.Instagram {
             if ((this.SheduleInstagramMessageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SheduleInstagramMessageCompleted(this, new SheduleInstagramMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getInstaAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getInstaAccounts() {
+            object[] results = this.Invoke("getInstaAccounts", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getInstaAccountsAsync() {
+            this.getInstaAccountsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getInstaAccountsAsync(object userState) {
+            if ((this.getInstaAccountsOperationCompleted == null)) {
+                this.getInstaAccountsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetInstaAccountsOperationCompleted);
+            }
+            this.InvokeAsync("getInstaAccounts", new object[0], this.getInstaAccountsOperationCompleted, userState);
+        }
+        
+        private void OngetInstaAccountsOperationCompleted(object arg) {
+            if ((this.getInstaAccountsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getInstaAccountsCompleted(this, new getInstaAccountsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -250,35 +317,6 @@ namespace Socioboard.Api.Instagram {
             if ((this.AddInstagramAccountCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AddInstagramAccountCompleted(this, new AddInstagramAccountCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetIntagramImages", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetIntagramImages(InstagramAccount objInsAccount) {
-            object[] results = this.Invoke("GetIntagramImages", new object[] {
-                        objInsAccount});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetIntagramImagesAsync(InstagramAccount objInsAccount) {
-            this.GetIntagramImagesAsync(objInsAccount, null);
-        }
-        
-        /// <remarks/>
-        public void GetIntagramImagesAsync(InstagramAccount objInsAccount, object userState) {
-            if ((this.GetIntagramImagesOperationCompleted == null)) {
-                this.GetIntagramImagesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetIntagramImagesOperationCompleted);
-            }
-            this.InvokeAsync("GetIntagramImages", new object[] {
-                        objInsAccount}, this.GetIntagramImagesOperationCompleted, userState);
-        }
-        
-        private void OnGetIntagramImagesOperationCompleted(object arg) {
-            if ((this.GetIntagramImagesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetIntagramImagesCompleted(this, new GetIntagramImagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -376,34 +414,6 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramFeeds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GetInstagramFeeds(InstagramAccount objInsAccount) {
-            this.Invoke("GetInstagramFeeds", new object[] {
-                        objInsAccount});
-        }
-        
-        /// <remarks/>
-        public void GetInstagramFeedsAsync(InstagramAccount objInsAccount) {
-            this.GetInstagramFeedsAsync(objInsAccount, null);
-        }
-        
-        /// <remarks/>
-        public void GetInstagramFeedsAsync(InstagramAccount objInsAccount, object userState) {
-            if ((this.GetInstagramFeedsOperationCompleted == null)) {
-                this.GetInstagramFeedsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramFeedsOperationCompleted);
-            }
-            this.InvokeAsync("GetInstagramFeeds", new object[] {
-                        objInsAccount}, this.GetInstagramFeedsOperationCompleted, userState);
-        }
-        
-        private void OnGetInstagramFeedsOperationCompleted(object arg) {
-            if ((this.GetInstagramFeedsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetInstagramFeedsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddComment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string AddComment(string UserId, string FeedId, string Text, string InstagramId) {
             object[] results = this.Invoke("AddComment", new object[] {
@@ -439,6 +449,303 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/PostFollow", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string PostFollow(string FollowingId, string FollowingName, string FromId, string AccessToken) {
+            object[] results = this.Invoke("PostFollow", new object[] {
+                        FollowingId,
+                        FollowingName,
+                        FromId,
+                        AccessToken});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void PostFollowAsync(string FollowingId, string FollowingName, string FromId, string AccessToken) {
+            this.PostFollowAsync(FollowingId, FollowingName, FromId, AccessToken, null);
+        }
+        
+        /// <remarks/>
+        public void PostFollowAsync(string FollowingId, string FollowingName, string FromId, string AccessToken, object userState) {
+            if ((this.PostFollowOperationCompleted == null)) {
+                this.PostFollowOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostFollowOperationCompleted);
+            }
+            this.InvokeAsync("PostFollow", new object[] {
+                        FollowingId,
+                        FollowingName,
+                        FromId,
+                        AccessToken}, this.PostFollowOperationCompleted, userState);
+        }
+        
+        private void OnPostFollowOperationCompleted(object arg) {
+            if ((this.PostFollowCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PostFollowCompleted(this, new PostFollowCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/PostUnfollow", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string PostUnfollow(string FollowingId, string FollowingName, string FromId, string AccessToken) {
+            object[] results = this.Invoke("PostUnfollow", new object[] {
+                        FollowingId,
+                        FollowingName,
+                        FromId,
+                        AccessToken});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void PostUnfollowAsync(string FollowingId, string FollowingName, string FromId, string AccessToken) {
+            this.PostUnfollowAsync(FollowingId, FollowingName, FromId, AccessToken, null);
+        }
+        
+        /// <remarks/>
+        public void PostUnfollowAsync(string FollowingId, string FollowingName, string FromId, string AccessToken, object userState) {
+            if ((this.PostUnfollowOperationCompleted == null)) {
+                this.PostUnfollowOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostUnfollowOperationCompleted);
+            }
+            this.InvokeAsync("PostUnfollow", new object[] {
+                        FollowingId,
+                        FollowingName,
+                        FromId,
+                        AccessToken}, this.PostUnfollowOperationCompleted, userState);
+        }
+        
+        private void OnPostUnfollowOperationCompleted(object arg) {
+            if ((this.PostUnfollowCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PostUnfollowCompleted(this, new PostUnfollowCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/PostBlock", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string PostBlock(string FollowingId, string InstagramId) {
+            object[] results = this.Invoke("PostBlock", new object[] {
+                        FollowingId,
+                        InstagramId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void PostBlockAsync(string FollowingId, string InstagramId) {
+            this.PostBlockAsync(FollowingId, InstagramId, null);
+        }
+        
+        /// <remarks/>
+        public void PostBlockAsync(string FollowingId, string InstagramId, object userState) {
+            if ((this.PostBlockOperationCompleted == null)) {
+                this.PostBlockOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostBlockOperationCompleted);
+            }
+            this.InvokeAsync("PostBlock", new object[] {
+                        FollowingId,
+                        InstagramId}, this.PostBlockOperationCompleted, userState);
+        }
+        
+        private void OnPostBlockOperationCompleted(object arg) {
+            if ((this.PostBlockCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PostBlockCompleted(this, new PostBlockCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramUserPosts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramUserPosts(string profile_id, string access_token) {
+            object[] results = this.Invoke("GetInstagramUserPosts", new object[] {
+                        profile_id,
+                        access_token});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramUserPostsAsync(string profile_id, string access_token) {
+            this.GetInstagramUserPostsAsync(profile_id, access_token, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramUserPostsAsync(string profile_id, string access_token, object userState) {
+            if ((this.GetInstagramUserPostsOperationCompleted == null)) {
+                this.GetInstagramUserPostsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramUserPostsOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramUserPosts", new object[] {
+                        profile_id,
+                        access_token}, this.GetInstagramUserPostsOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramUserPostsOperationCompleted(object arg) {
+            if ((this.GetInstagramUserPostsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramUserPostsCompleted(this, new GetInstagramUserPostsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramPostComments", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramPostComments(string profile_id, string access_token) {
+            object[] results = this.Invoke("GetInstagramPostComments", new object[] {
+                        profile_id,
+                        access_token});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramPostCommentsAsync(string profile_id, string access_token) {
+            this.GetInstagramPostCommentsAsync(profile_id, access_token, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramPostCommentsAsync(string profile_id, string access_token, object userState) {
+            if ((this.GetInstagramPostCommentsOperationCompleted == null)) {
+                this.GetInstagramPostCommentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramPostCommentsOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramPostComments", new object[] {
+                        profile_id,
+                        access_token}, this.GetInstagramPostCommentsOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramPostCommentsOperationCompleted(object arg) {
+            if ((this.GetInstagramPostCommentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramPostCommentsCompleted(this, new GetInstagramPostCommentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramPostLikes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramPostLikes(string profile_id, string access_token, int status) {
+            object[] results = this.Invoke("GetInstagramPostLikes", new object[] {
+                        profile_id,
+                        access_token,
+                        status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramPostLikesAsync(string profile_id, string access_token, int status) {
+            this.GetInstagramPostLikesAsync(profile_id, access_token, status, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramPostLikesAsync(string profile_id, string access_token, int status, object userState) {
+            if ((this.GetInstagramPostLikesOperationCompleted == null)) {
+                this.GetInstagramPostLikesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramPostLikesOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramPostLikes", new object[] {
+                        profile_id,
+                        access_token,
+                        status}, this.GetInstagramPostLikesOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramPostLikesOperationCompleted(object arg) {
+            if ((this.GetInstagramPostLikesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramPostLikesCompleted(this, new GetInstagramPostLikesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramFollower", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramFollower(string userid, string profile_id, string access_token, int status) {
+            object[] results = this.Invoke("GetInstagramFollower", new object[] {
+                        userid,
+                        profile_id,
+                        access_token,
+                        status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramFollowerAsync(string userid, string profile_id, string access_token, int status) {
+            this.GetInstagramFollowerAsync(userid, profile_id, access_token, status, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramFollowerAsync(string userid, string profile_id, string access_token, int status, object userState) {
+            if ((this.GetInstagramFollowerOperationCompleted == null)) {
+                this.GetInstagramFollowerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramFollowerOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramFollower", new object[] {
+                        userid,
+                        profile_id,
+                        access_token,
+                        status}, this.GetInstagramFollowerOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramFollowerOperationCompleted(object arg) {
+            if ((this.GetInstagramFollowerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramFollowerCompleted(this, new GetInstagramFollowerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramFollowing", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramFollowing(string userid, string profile_id, string access_token, int status) {
+            object[] results = this.Invoke("GetInstagramFollowing", new object[] {
+                        userid,
+                        profile_id,
+                        access_token,
+                        status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramFollowingAsync(string userid, string profile_id, string access_token, int status) {
+            this.GetInstagramFollowingAsync(userid, profile_id, access_token, status, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramFollowingAsync(string userid, string profile_id, string access_token, int status, object userState) {
+            if ((this.GetInstagramFollowingOperationCompleted == null)) {
+                this.GetInstagramFollowingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramFollowingOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramFollowing", new object[] {
+                        userid,
+                        profile_id,
+                        access_token,
+                        status}, this.GetInstagramFollowingOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramFollowingOperationCompleted(object arg) {
+            if ((this.GetInstagramFollowingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramFollowingCompleted(this, new GetInstagramFollowingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramUserDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramUserDetails(string profile_id, string access_token) {
+            object[] results = this.Invoke("GetInstagramUserDetails", new object[] {
+                        profile_id,
+                        access_token});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInstagramUserDetailsAsync(string profile_id, string access_token) {
+            this.GetInstagramUserDetailsAsync(profile_id, access_token, null);
+        }
+        
+        /// <remarks/>
+        public void GetInstagramUserDetailsAsync(string profile_id, string access_token, object userState) {
+            if ((this.GetInstagramUserDetailsOperationCompleted == null)) {
+                this.GetInstagramUserDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramUserDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetInstagramUserDetails", new object[] {
+                        profile_id,
+                        access_token}, this.GetInstagramUserDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetInstagramUserDetailsOperationCompleted(object arg) {
+            if ((this.GetInstagramUserDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInstagramUserDetailsCompleted(this, new GetInstagramUserDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -454,147 +761,6 @@ namespace Socioboard.Api.Instagram {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class InstagramAccount {
-        
-        private System.Guid idField;
-        
-        private string instagramIdField;
-        
-        private string accessTokenField;
-        
-        private string insUserNameField;
-        
-        private System.Guid userIdField;
-        
-        private bool isActiveField;
-        
-        private int followersField;
-        
-        private int followedByField;
-        
-        private string profileUrlField;
-        
-        private int totalImagesField;
-        
-        private string profileTypeField;
-        
-        /// <remarks/>
-        public System.Guid Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InstagramId {
-            get {
-                return this.instagramIdField;
-            }
-            set {
-                this.instagramIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AccessToken {
-            get {
-                return this.accessTokenField;
-            }
-            set {
-                this.accessTokenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InsUserName {
-            get {
-                return this.insUserNameField;
-            }
-            set {
-                this.insUserNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.Guid UserId {
-            get {
-                return this.userIdField;
-            }
-            set {
-                this.userIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsActive {
-            get {
-                return this.isActiveField;
-            }
-            set {
-                this.isActiveField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Followers {
-            get {
-                return this.followersField;
-            }
-            set {
-                this.followersField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int FollowedBy {
-            get {
-                return this.followedByField;
-            }
-            set {
-                this.followedByField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ProfileUrl {
-            get {
-                return this.profileUrlField;
-            }
-            set {
-                this.profileUrlField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int TotalImages {
-            get {
-                return this.totalImagesField;
-            }
-            set {
-                this.totalImagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ProfileType {
-            get {
-                return this.profileTypeField;
-            }
-            set {
-                this.profileTypeField = value;
-            }
         }
     }
     
@@ -652,6 +818,32 @@ namespace Socioboard.Api.Instagram {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getInstaAccountsCompletedEventHandler(object sender, getInstaAccountsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getInstaAccountsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getInstaAccountsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     public delegate void GetInstagramRedirectUrlCompletedEventHandler(object sender, GetInstagramRedirectUrlCompletedEventArgs e);
     
     /// <remarks/>
@@ -689,32 +881,6 @@ namespace Socioboard.Api.Instagram {
         private object[] results;
         
         internal AddInstagramAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void GetIntagramImagesCompletedEventHandler(object sender, GetIntagramImagesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetIntagramImagesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetIntagramImagesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -808,10 +974,6 @@ namespace Socioboard.Api.Instagram {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void GetInstagramFeedsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     public delegate void AddCommentCompletedEventHandler(object sender, AddCommentCompletedEventArgs e);
     
     /// <remarks/>
@@ -823,6 +985,240 @@ namespace Socioboard.Api.Instagram {
         private object[] results;
         
         internal AddCommentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void PostFollowCompletedEventHandler(object sender, PostFollowCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PostFollowCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PostFollowCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void PostUnfollowCompletedEventHandler(object sender, PostUnfollowCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PostUnfollowCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PostUnfollowCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void PostBlockCompletedEventHandler(object sender, PostBlockCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PostBlockCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PostBlockCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramUserPostsCompletedEventHandler(object sender, GetInstagramUserPostsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramUserPostsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramUserPostsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramPostCommentsCompletedEventHandler(object sender, GetInstagramPostCommentsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramPostCommentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramPostCommentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramPostLikesCompletedEventHandler(object sender, GetInstagramPostLikesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramPostLikesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramPostLikesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramFollowerCompletedEventHandler(object sender, GetInstagramFollowerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramFollowerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramFollowerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramFollowingCompletedEventHandler(object sender, GetInstagramFollowingCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramFollowingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramFollowingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetInstagramUserDetailsCompletedEventHandler(object sender, GetInstagramUserDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInstagramUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInstagramUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

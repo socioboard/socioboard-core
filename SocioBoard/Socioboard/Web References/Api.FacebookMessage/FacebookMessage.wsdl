@@ -1448,16 +1448,16 @@
   </wsdl:binding>
   <wsdl:service name="FacebookMessage">
     <wsdl:port name="FacebookMessageSoap" binding="tns:FacebookMessageSoap">
-      <soap:address location="http://localhost:6361/services/FacebookMessage.asmx" />
+      <soap:address location="http://localhost:6361/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageSoap12" binding="tns:FacebookMessageSoap12">
-      <soap12:address location="http://localhost:6361/services/FacebookMessage.asmx" />
+      <soap12:address location="http://localhost:6361/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageHttpGet" binding="tns:FacebookMessageHttpGet">
-      <http:address location="http://localhost:6361/services/FacebookMessage.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageHttpPost" binding="tns:FacebookMessageHttpPost">
-      <http:address location="http://localhost:6361/services/FacebookMessage.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -9,7 +9,7 @@ using System.Data;
 using NHibernate.Linq;
 using Api.Socioboard.Helper;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class FbaPageSharerRepository
     {

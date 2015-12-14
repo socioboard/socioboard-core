@@ -47,6 +47,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DiscoverySearchinstagram">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchinstagramResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DiscoverySearchinstagramResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="contactSearchFacebook">
         <s:complexType>
           <s:sequence>
@@ -72,6 +86,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="contactSearchTwitterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactSearchInstagram">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactSearchInstagramResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ContactSearchInstagramResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -138,6 +166,12 @@
   <wsdl:message name="DiscoverySearchGplusSoapOut">
     <wsdl:part name="parameters" element="tns:DiscoverySearchGplusResponse" />
   </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramSoapIn">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchinstagram" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramSoapOut">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchinstagramResponse" />
+  </wsdl:message>
   <wsdl:message name="contactSearchFacebookSoapIn">
     <wsdl:part name="parameters" element="tns:contactSearchFacebook" />
   </wsdl:message>
@@ -149,6 +183,12 @@
   </wsdl:message>
   <wsdl:message name="contactSearchTwitterSoapOut">
     <wsdl:part name="parameters" element="tns:contactSearchTwitterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactSearchInstagram" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactSearchInstagramResponse" />
   </wsdl:message>
   <wsdl:message name="getAllSearchKeywordsSoapIn">
     <wsdl:part name="parameters" element="tns:getAllSearchKeywords" />
@@ -189,6 +229,12 @@
   <wsdl:message name="DiscoverySearchGplusHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramHttpGetIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="contactSearchFacebookHttpGetIn">
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
@@ -199,6 +245,12 @@
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="contactSearchTwitterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getAllSearchKeywordsHttpGetIn">
@@ -240,6 +292,12 @@
   <wsdl:message name="DiscoverySearchGplusHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramHttpPostIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchinstagramHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="contactSearchFacebookHttpPostIn">
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
@@ -250,6 +308,12 @@
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="contactSearchTwitterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ContactSearchInstagramHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getAllSearchKeywordsHttpPostIn">
@@ -283,6 +347,10 @@
       <wsdl:input message="tns:DiscoverySearchGplusSoapIn" />
       <wsdl:output message="tns:DiscoverySearchGplusSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <wsdl:input message="tns:DiscoverySearchinstagramSoapIn" />
+      <wsdl:output message="tns:DiscoverySearchinstagramSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookSoapIn" />
       <wsdl:output message="tns:contactSearchFacebookSoapOut" />
@@ -290,6 +358,10 @@
     <wsdl:operation name="contactSearchTwitter">
       <wsdl:input message="tns:contactSearchTwitterSoapIn" />
       <wsdl:output message="tns:contactSearchTwitterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <wsdl:input message="tns:ContactSearchInstagramSoapIn" />
+      <wsdl:output message="tns:ContactSearchInstagramSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllSearchKeywords">
       <wsdl:input message="tns:getAllSearchKeywordsSoapIn" />
@@ -317,6 +389,10 @@
       <wsdl:input message="tns:DiscoverySearchGplusHttpGetIn" />
       <wsdl:output message="tns:DiscoverySearchGplusHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <wsdl:input message="tns:DiscoverySearchinstagramHttpGetIn" />
+      <wsdl:output message="tns:DiscoverySearchinstagramHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookHttpGetIn" />
       <wsdl:output message="tns:contactSearchFacebookHttpGetOut" />
@@ -324,6 +400,10 @@
     <wsdl:operation name="contactSearchTwitter">
       <wsdl:input message="tns:contactSearchTwitterHttpGetIn" />
       <wsdl:output message="tns:contactSearchTwitterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <wsdl:input message="tns:ContactSearchInstagramHttpGetIn" />
+      <wsdl:output message="tns:ContactSearchInstagramHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllSearchKeywords">
       <wsdl:input message="tns:getAllSearchKeywordsHttpGetIn" />
@@ -351,6 +431,10 @@
       <wsdl:input message="tns:DiscoverySearchGplusHttpPostIn" />
       <wsdl:output message="tns:DiscoverySearchGplusHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <wsdl:input message="tns:DiscoverySearchinstagramHttpPostIn" />
+      <wsdl:output message="tns:DiscoverySearchinstagramHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <wsdl:input message="tns:contactSearchFacebookHttpPostIn" />
       <wsdl:output message="tns:contactSearchFacebookHttpPostOut" />
@@ -358,6 +442,10 @@
     <wsdl:operation name="contactSearchTwitter">
       <wsdl:input message="tns:contactSearchTwitterHttpPostIn" />
       <wsdl:output message="tns:contactSearchTwitterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <wsdl:input message="tns:ContactSearchInstagramHttpPostIn" />
+      <wsdl:output message="tns:ContactSearchInstagramHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllSearchKeywords">
       <wsdl:input message="tns:getAllSearchKeywordsHttpPostIn" />
@@ -401,6 +489,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <soap:operation soapAction="http://tempuri.org/DiscoverySearchinstagram" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <soap:operation soapAction="http://tempuri.org/contactSearchFacebook" style="document" />
       <wsdl:input>
@@ -412,6 +509,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <soap:operation soapAction="http://tempuri.org/contactSearchTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <soap:operation soapAction="http://tempuri.org/ContactSearchInstagram" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -476,6 +582,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <soap12:operation soapAction="http://tempuri.org/DiscoverySearchinstagram" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <soap12:operation soapAction="http://tempuri.org/contactSearchFacebook" style="document" />
       <wsdl:input>
@@ -487,6 +602,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <soap12:operation soapAction="http://tempuri.org/contactSearchTwitter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <soap12:operation soapAction="http://tempuri.org/ContactSearchInstagram" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -551,6 +675,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <http:operation location="/DiscoverySearchinstagram" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <http:operation location="/contactSearchFacebook" />
       <wsdl:input>
@@ -562,6 +695,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <http:operation location="/contactSearchTwitter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <http:operation location="/ContactSearchInstagram" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -626,6 +768,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchinstagram">
+      <http:operation location="/DiscoverySearchinstagram" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="contactSearchFacebook">
       <http:operation location="/contactSearchFacebook" />
       <wsdl:input>
@@ -637,6 +788,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <http:operation location="/contactSearchTwitter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactSearchInstagram">
+      <http:operation location="/ContactSearchInstagram" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -674,16 +834,16 @@
   </wsdl:binding>
   <wsdl:service name="DiscoverySearch">
     <wsdl:port name="DiscoverySearchSoap" binding="tns:DiscoverySearchSoap">
-      <soap:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
+      <soap:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchSoap12" binding="tns:DiscoverySearchSoap12">
-      <soap12:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
+      <soap12:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpGet" binding="tns:DiscoverySearchHttpGet">
-      <http:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
+      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpPost" binding="tns:DiscoverySearchHttpPost">
-      <http:address location="http://api.socioboard.com/services/discoverysearch.asmx" />
+      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

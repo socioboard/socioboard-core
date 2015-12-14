@@ -79,6 +79,14 @@ namespace Socioboard.Controllers
             GplusDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.DiscoverySearchGplus(objUser.Id.ToString(), keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
             return PartialView("_SearchGplusPartial", GplusDiscoverySearch);
         }
+        public ActionResult SearchInstagram(string keyword)
+        {
+            keyword = keyword.Replace("#", "");
+            keyword = Uri.EscapeDataString(keyword);
+            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.DiscoverySearchinstagram(keyword),typeof(List<Domain.Socioboard.MongoDomain.InstagramFeed>)));
+            return PartialView("_SearchInstagramPartial", lstInstagramFeed);
+        }
 
         public ActionResult GetUrls(string keywords)
         {

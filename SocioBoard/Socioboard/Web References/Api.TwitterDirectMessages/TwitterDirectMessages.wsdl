@@ -57,6 +57,38 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTwitterDirectMessageSentCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterDirectMessageSentCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterDirectMessageSentCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterDirectMessageRecievedCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileids" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterDirectMessageRecievedCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterDirectMessageRecievedCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -84,6 +116,18 @@
   <wsdl:message name="GetConversationSoapOut">
     <wsdl:part name="parameters" element="tns:GetConversationResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterDirectMessageSentCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterDirectMessageSentCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterDirectMessageRecievedCount" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterDirectMessageRecievedCountResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpGetIn" />
   <wsdl:message name="HelloWorldHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -107,6 +151,22 @@
     <wsdl:part name="RecipientId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetConversationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="HelloWorldHttpPostIn" />
@@ -134,6 +194,22 @@
   <wsdl:message name="GetConversationHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageSentCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileids" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterDirectMessageRecievedCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterDirectMessagesSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -150,6 +226,14 @@
     <wsdl:operation name="GetConversation">
       <wsdl:input message="tns:GetConversationSoapIn" />
       <wsdl:output message="tns:GetConversationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageSentCountSoapIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageSentCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageRecievedCountSoapIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageRecievedCountSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterDirectMessagesHttpGet">
@@ -169,6 +253,14 @@
       <wsdl:input message="tns:GetConversationHttpGetIn" />
       <wsdl:output message="tns:GetConversationHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageSentCountHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageSentCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageRecievedCountHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageRecievedCountHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterDirectMessagesHttpPost">
     <wsdl:operation name="HelloWorld">
@@ -186,6 +278,14 @@
     <wsdl:operation name="GetConversation">
       <wsdl:input message="tns:GetConversationHttpPostIn" />
       <wsdl:output message="tns:GetConversationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageSentCountHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageSentCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <wsdl:input message="tns:GetTwitterDirectMessageRecievedCountHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterDirectMessageRecievedCountHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterDirectMessagesSoap" type="tns:TwitterDirectMessagesSoap">
@@ -219,6 +319,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetConversation">
       <soap:operation soapAction="http://tempuri.org/GetConversation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterDirectMessageSentCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterDirectMessageRecievedCount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -265,6 +383,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterDirectMessageSentCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterDirectMessageRecievedCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterDirectMessagesHttpGet" type="tns:TwitterDirectMessagesHttpGet">
     <http:binding verb="GET" />
@@ -297,6 +433,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetConversation">
       <http:operation location="/GetConversation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <http:operation location="/GetTwitterDirectMessageSentCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <http:operation location="/GetTwitterDirectMessageRecievedCount" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -343,19 +497,37 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageSentCount">
+      <http:operation location="/GetTwitterDirectMessageSentCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterDirectMessageRecievedCount">
+      <http:operation location="/GetTwitterDirectMessageRecievedCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="TwitterDirectMessages">
     <wsdl:port name="TwitterDirectMessagesSoap" binding="tns:TwitterDirectMessagesSoap">
-      <soap:address location="http://localhost:6361/services/TwitterDirectMessages.asmx" />
+      <soap:address location="http://localhost:6361/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesSoap12" binding="tns:TwitterDirectMessagesSoap12">
-      <soap12:address location="http://localhost:6361/services/TwitterDirectMessages.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesHttpGet" binding="tns:TwitterDirectMessagesHttpGet">
-      <http:address location="http://localhost:6361/services/TwitterDirectMessages.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesHttpPost" binding="tns:TwitterDirectMessagesHttpPost">
-      <http:address location="http://localhost:6361/services/TwitterDirectMessages.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

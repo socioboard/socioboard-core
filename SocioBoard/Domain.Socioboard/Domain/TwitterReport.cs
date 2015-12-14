@@ -118,6 +118,8 @@ namespace Domain.Socioboard.Domain
 
         public long directmessagesent_90 { get; set; }
         public string perday_directmessagesent_90 { get; set; }
+        public string sexratio { get; set; }
+
 
 
     }

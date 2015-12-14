@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="InstagramSelfFeed" table="instagramselffeed" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="ProfileId">
+      <column name="ProfileId" />
+    </property>
+    <property name="FeedId">
+      <column name="FeedId" />
+    </property>
+    
+      <property name="Accesstoken">
+      <column name="Accesstoken"  />
+    </property>
+    <property name="User_name">
+      <column name="User_name"  />
+    </property>
+    <property name="Post_url">
+      <column name="Post_url"  />
+    </property>
+    <property name="Link">  
+      <column name="Link"  />
+    </property>
+    <property name="Type">
+      <column name="Type"  />
+    </property>
+    <property name="Created_Time">
+      <column name="Created_Time"  />
+    </property>
+  
+
+  </class>
+</hibernate-mapping>

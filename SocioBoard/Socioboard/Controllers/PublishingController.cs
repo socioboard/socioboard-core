@@ -43,25 +43,39 @@ namespace Socioboard.Controllers
         }
         public ActionResult Socioqueue()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             //return View();
         }
         public ActionResult Draft()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             //return View();
         }
@@ -86,7 +100,7 @@ namespace Socioboard.Controllers
         {
             User objUser = (User)Session["User"];
             Api.Drafts.Drafts ApiobjDrafts = new Api.Drafts.Drafts();
-            string retmsg= ApiobjDrafts.UpdateDraftsMessage(draftid, objUser.Id.ToString(), Session["group"].ToString(), draftmsg);
+            string retmsg = ApiobjDrafts.UpdateDraftsMessage(draftid, objUser.Id.ToString(), Session["group"].ToString(), draftmsg);
             return Content(retmsg);
         }
         public ActionResult DeleteDraftMessage(string draftid)
@@ -118,11 +132,11 @@ namespace Socioboard.Controllers
         {
             User objUser = (User)Session["User"];
             Dictionary<TeamMemberProfile, object> dict_TeamMember = new Dictionary<TeamMemberProfile, object>();
-                      if (Session["group"] != null)
+            if (Session["group"] != null)
             {
                 dict_TeamMember = SBUtils.GetUserProfilesccordingToGroup();
             }
-                      return PartialView("_ComposeMessageSchedulerPartial", dict_TeamMember);
+            return PartialView("_ComposeMessageSchedulerPartial", dict_TeamMember);
         }
 
 
@@ -147,7 +161,7 @@ namespace Socioboard.Controllers
                 }
             }
 
-             User objUser = (User)Session["User"];
+            User objUser = (User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
             string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, scheduledmessage, clienttime, scheduleddate, scheduledtime, objUser.Id.ToString(), file);
             return Content("_ComposeMessagePartial");
@@ -158,12 +172,12 @@ namespace Socioboard.Controllers
         {
             User objUser = (User)Session["User"];
             Api.Drafts.Drafts ApiobjDrafts = new Api.Drafts.Drafts();
-            string retmsg = ApiobjDrafts.AddDraft(objUser.Id.ToString(),Session["group"].ToString(),DateTime.Now,scheduledmessage);
+            string retmsg = ApiobjDrafts.AddDraft(objUser.Id.ToString(), Session["group"].ToString(), DateTime.Now, scheduledmessage);
             return Content(retmsg);
         }
 
-//-------------For Bulk Schedule Import
-//-------------Edited by Kushagra[21/04/2015]
+        //-------------For Bulk Schedule Import
+        //-------------Edited by Kushagra[21/04/2015]
         public ActionResult InputCSVForBulkImport(string profiles, string clienttime)
         {
             string scheduletime = string.Empty;
@@ -282,7 +296,7 @@ namespace Socioboard.Controllers
                 }
                 catch (Exception ex)
                 {
-                   
+
                 }
             }
 
@@ -394,6 +408,6 @@ namespace Socioboard.Controllers
                 GC.Collect();
             }
         }
-        
+
     }
 }

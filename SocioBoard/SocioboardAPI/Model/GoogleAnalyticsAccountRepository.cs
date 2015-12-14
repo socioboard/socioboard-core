@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
 using System.Collections;
-using SocioBoard.Helper;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 
 namespace SocioBoard.Model
 {

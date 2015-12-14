@@ -8,7 +8,11 @@ using GlobusGooglePlusLib.Youtube.Core;
 using System.Configuration;
 using System.Web.Script.Serialization;
 using log4net;
-
+using System.Collections.Generic;
+using MongoDB.Bson;
+using Api.Socioboard.Model;
+using System.Threading.Tasks;
+using MongoDB.Driver;
 
 namespace Api.Socioboard.Services
 {
@@ -32,6 +36,7 @@ namespace Api.Socioboard.Services
         YoutubeChannelRepository objYoutubeChannelRepository = new YoutubeChannelRepository();
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
+        MongoRepository youtubefeedrepo = new MongoRepository("YouTubeFeed");
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string AddYoutubeAccount(string client_id, string client_secret, string redirect_uri, string UserId, string GroupId, string code)
@@ -218,7 +223,7 @@ namespace Api.Socioboard.Services
             objTeamMemberProfile.ProfileName = objYoutubeAccount.Ytusername;
             objTeamMemberProfile.ProfilePicUrl = objYoutubeAccount.Ytprofileimage;
 
-            if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objYoutubeAccount.Ytuserid))
+            if (!objTeamMemberProfileRepository.checkTeamMemberProfilebyType(objTeam.Id, objYoutubeAccount.Ytuserid, "youtube"))
             {
                 objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
             }
@@ -236,47 +241,100 @@ namespace Api.Socioboard.Services
                 objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
             }
             #endregion
+            GetYoutubeChannelVideos(UserId, objYoutubeAccount.Ytuserid);
             return ret;
         }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetYoutubeChannelVideos(string userid, string profileid)
+        public void GetYoutubeChannelVideos(string userid, string profileid)
         {
             string ret = string.Empty;
             string strfinaltoken = string.Empty;
             string channelDetails = string.Empty;
             Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = objYoutubeAccountRepository.getYoutubeAccountDetailsById(profileid, Guid.Parse(userid));
-            Domain.Socioboard.Domain.YoutubeChannel objYoutubeChannel = objYoutubeChannelRepository.getYoutubeChannelDetailsById(profileid, Guid.Parse(userid));
+            List<Domain.Socioboard.Domain.YoutubeChannel> lstYoutubeChannel = objYoutubeChannelRepository.getYoutubeChannelDetailsById(profileid, Guid.Parse(userid));
 
-            oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
-            string finaltoken = objoAuthTokenYoutube.GetAccessToken(objYoutubeAccount.Refreshtoken);
-            JObject objArray = JObject.Parse(finaltoken);
-            //foreach (var item in objArray)
-            //{
-            try
+            foreach (Domain.Socioboard.Domain.YoutubeChannel objYoutubeChannel in lstYoutubeChannel)
             {
-                strfinaltoken = objArray["access_token"].ToString();
-                // break;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            //}
-            PlaylistItems objPlaylistItems = new PlaylistItems();
-            try
-            {
-                channelDetails = objPlaylistItems.Get_PlaylistItems_List(strfinaltoken, GlobusGooglePlusLib.Authentication.oAuthTokenYoutube.Parts.snippet.ToString(), objYoutubeChannel.Uploadsid);
-            }
-            catch (Exception ex)
-            {
+                oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
+                string finaltoken = objoAuthTokenYoutube.GetAccessToken(objYoutubeAccount.Refreshtoken);
+                JObject objArray = JObject.Parse(finaltoken);
+                //foreach (var item in objArray)
+                //{
+                try
+                {
+                    strfinaltoken = objArray["access_token"].ToString();
+                    // break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                //}
+                PlaylistItems objPlaylistItems = new PlaylistItems();
+                Video objVideo = new Video();
+                try
+                {
+                    Domain.Socioboard.MongoDomain.YouTubeFeed _YouTubeFeed;
+                    channelDetails = objPlaylistItems.Get_PlaylistItems_List(strfinaltoken, GlobusGooglePlusLib.Authentication.oAuthTokenYoutube.Parts.snippet.ToString(), objYoutubeChannel.Uploadsid);
+                    JObject obj = JObject.Parse(channelDetails);
+                    JArray array = (JArray)obj["items"];
+                    foreach (var item in array)
+                    {
+                        try
+                        {
+                            _YouTubeFeed = new Domain.Socioboard.MongoDomain.YouTubeFeed();
+                            _YouTubeFeed.Id = ObjectId.GenerateNewId();
+                            _YouTubeFeed.ChannelName = item["snippet"]["channelTitle"].ToString();
+                            _YouTubeFeed.PublishTime = DateTime.Parse(item["snippet"]["publishedAt"].ToString()).ToString("yyyy/MM/dd HH:mm:ss");
+                            _YouTubeFeed.Thumbnail = item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                            _YouTubeFeed.Title = item["snippet"]["title"].ToString();
+                            _YouTubeFeed.ChannelId = item["snippet"]["channelId"].ToString();
+                            _YouTubeFeed.Description = item["snippet"]["description"].ToString();
+                            _YouTubeFeed.VideoId = item["snippet"]["resourceId"]["videoId"].ToString();
+                            _YouTubeFeed.YoutubeId = profileid;
 
+                            string videodetail = objVideo.Get_VideoDetails_byId(_YouTubeFeed.VideoId, strfinaltoken, "contentDetails,statistics");
+                            JObject objv = JObject.Parse(videodetail);
+                            var videodata = objv["items"][0];
+
+                            _YouTubeFeed.commentCount = videodata["statistics"]["commentCount"].ToString();
+                            _YouTubeFeed.dislikeCount = videodata["statistics"]["dislikeCount"].ToString();
+                            _YouTubeFeed.duration = videodata["contentDetails"]["duration"].ToString();
+                            _YouTubeFeed.favoriteCount = videodata["statistics"]["favoriteCount"].ToString();
+                            _YouTubeFeed.likeCount = videodata["statistics"]["likeCount"].ToString();
+                            _YouTubeFeed.viewCount = videodata["statistics"]["viewCount"].ToString();
+
+                            var rt = youtubefeedrepo.Find<Domain.Socioboard.MongoDomain.YouTubeFeed>(t => t.VideoId.Equals(_YouTubeFeed.VideoId));
+                            var task = Task.Run(async () =>
+                            {
+                                return await rt;
+                            });
+                            int count = task.Result.Count;
+                            if (count < 1)
+                            {
+                                youtubefeedrepo.Add(_YouTubeFeed);
+                            }
+                            else
+                            {
+                                FilterDefinition<BsonDocument> filter = new BsonDocument("VideoId", _YouTubeFeed.VideoId);
+                                var update = Builders<BsonDocument>.Update.Set("commentCount", _YouTubeFeed.commentCount).Set("dislikeCount", _YouTubeFeed.dislikeCount).Set("duration", _YouTubeFeed.duration).Set("favoriteCount", _YouTubeFeed.favoriteCount)
+                                    .Set("likeCount", _YouTubeFeed.likeCount).Set("viewCount", _YouTubeFeed.viewCount);
+                                youtubefeedrepo.Update<Domain.Socioboard.MongoDomain.YouTubeFeed>(update, filter);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
+                } 
             }
-
-
-
-            return channelDetails;
+            
         }
 
         [WebMethod]
@@ -470,12 +528,12 @@ namespace Api.Socioboard.Services
                 YoutubeAccountRepository ObjYoutubeAccountRepository = new YoutubeAccountRepository();
                 Domain.Socioboard.Domain.YoutubeAccount ObjYoutubeAccount = ObjYoutubeAccountRepository.getYoutubeAccountDetailsById(youtubeId, userId);
                 AddYouTubeChannels(userId.ToString(), ObjYoutubeAccount.Accesstoken, youtubeId);
+                GetYoutubeChannelVideos(userId.ToString(), youtubeId);
                 return "Youtube Channel is added";
             }
             catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
         }
 

@@ -29,7 +29,7 @@ namespace Socioboard.Api.InstagramFeed {
     [System.Web.Services.WebServiceBindingAttribute(Name="InstagramFeedSoap", Namespace="http://tempuri.org/")]
     public partial class InstagramFeed : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback GetLinkedInFeedsOperationCompleted;
+        private System.Threading.SendOrPostCallback GetInstagramFeedsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetFeedsOfProfileWithRangeOperationCompleted;
         
@@ -72,39 +72,39 @@ namespace Socioboard.Api.InstagramFeed {
         }
         
         /// <remarks/>
-        public event GetLinkedInFeedsCompletedEventHandler GetLinkedInFeedsCompleted;
+        public event GetInstagramFeedsCompletedEventHandler GetInstagramFeedsCompleted;
         
         /// <remarks/>
         public event GetFeedsOfProfileWithRangeCompletedEventHandler GetFeedsOfProfileWithRangeCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLinkedInFeeds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetLinkedInFeeds(string UserId, string LinkedInId) {
-            object[] results = this.Invoke("GetLinkedInFeeds", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramFeeds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramFeeds(string UserId, string InstagramId) {
+            object[] results = this.Invoke("GetInstagramFeeds", new object[] {
                         UserId,
-                        LinkedInId});
+                        InstagramId});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetLinkedInFeedsAsync(string UserId, string LinkedInId) {
-            this.GetLinkedInFeedsAsync(UserId, LinkedInId, null);
+        public void GetInstagramFeedsAsync(string UserId, string InstagramId) {
+            this.GetInstagramFeedsAsync(UserId, InstagramId, null);
         }
         
         /// <remarks/>
-        public void GetLinkedInFeedsAsync(string UserId, string LinkedInId, object userState) {
-            if ((this.GetLinkedInFeedsOperationCompleted == null)) {
-                this.GetLinkedInFeedsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLinkedInFeedsOperationCompleted);
+        public void GetInstagramFeedsAsync(string UserId, string InstagramId, object userState) {
+            if ((this.GetInstagramFeedsOperationCompleted == null)) {
+                this.GetInstagramFeedsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramFeedsOperationCompleted);
             }
-            this.InvokeAsync("GetLinkedInFeeds", new object[] {
+            this.InvokeAsync("GetInstagramFeeds", new object[] {
                         UserId,
-                        LinkedInId}, this.GetLinkedInFeedsOperationCompleted, userState);
+                        InstagramId}, this.GetInstagramFeedsOperationCompleted, userState);
         }
         
-        private void OnGetLinkedInFeedsOperationCompleted(object arg) {
-            if ((this.GetLinkedInFeedsCompleted != null)) {
+        private void OnGetInstagramFeedsOperationCompleted(object arg) {
+            if ((this.GetInstagramFeedsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetLinkedInFeedsCompleted(this, new GetLinkedInFeedsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetInstagramFeedsCompleted(this, new GetInstagramFeedsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -164,17 +164,17 @@ namespace Socioboard.Api.InstagramFeed {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void GetLinkedInFeedsCompletedEventHandler(object sender, GetLinkedInFeedsCompletedEventArgs e);
+    public delegate void GetInstagramFeedsCompletedEventHandler(object sender, GetInstagramFeedsCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetLinkedInFeedsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetInstagramFeedsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetLinkedInFeedsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetInstagramFeedsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

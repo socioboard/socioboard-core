@@ -8,7 +8,7 @@ using GlobusInstagramLib.Authentication;
 
 namespace GlobusInstagramLib.Instagram.Core.MediaMethods
 {
-    class Media
+    public class Media
     {
         oAuthInstagram oAuthIns = new oAuthInstagram();
         /// <summary>
@@ -83,5 +83,18 @@ namespace GlobusInstagramLib.Instagram.Core.MediaMethods
             InstagramResponse<InstagramMedia[]> res = Base.DeserializeObject<InstagramResponse<InstagramMedia[]>>(json);
             return res;
         }
+
+        public string ActivitySearchByTag(string Keyword,string accessToken, string clientid)
+        {
+            string url = "https://api.instagram.com/v1/tags/" + Keyword.TrimStart() + "/media/recent?access_token=" + accessToken;
+            if(string.IsNullOrEmpty(accessToken))
+                url = "https://api.instagram.com/v1/tags/" + Keyword.TrimStart() + "/media/recent?client_id=" + clientid;
+            string json = oAuthIns.RequestGetToUrl(url, null);
+            if (string.IsNullOrEmpty(json))
+                return null;
+
+            return json;
+        }
+
     }
 }

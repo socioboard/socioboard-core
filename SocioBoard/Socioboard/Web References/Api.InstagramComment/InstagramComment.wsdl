@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="InstagramComment">
     <wsdl:port name="InstagramCommentSoap" binding="tns:InstagramCommentSoap">
-      <soap:address location="http://localhost:6361/services/InstagramComment.asmx" />
+      <soap:address location="http://localhost:6361/Services/InstagramComment.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramCommentSoap12" binding="tns:InstagramCommentSoap12">
-      <soap12:address location="http://localhost:6361/services/InstagramComment.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InstagramComment.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramCommentHttpGet" binding="tns:InstagramCommentHttpGet">
-      <http:address location="http://localhost:6361/services/InstagramComment.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramComment.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramCommentHttpPost" binding="tns:InstagramCommentHttpPost">
-      <http:address location="http://localhost:6361/services/InstagramComment.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramComment.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

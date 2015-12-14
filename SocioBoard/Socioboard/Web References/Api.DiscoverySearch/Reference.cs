@@ -35,9 +35,13 @@ namespace Socioboard.Api.DiscoverySearch {
         
         private System.Threading.SendOrPostCallback DiscoverySearchGplusOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DiscoverySearchinstagramOperationCompleted;
+        
         private System.Threading.SendOrPostCallback contactSearchFacebookOperationCompleted;
         
         private System.Threading.SendOrPostCallback contactSearchTwitterOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ContactSearchInstagramOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAllSearchKeywordsOperationCompleted;
         
@@ -93,10 +97,16 @@ namespace Socioboard.Api.DiscoverySearch {
         public event DiscoverySearchGplusCompletedEventHandler DiscoverySearchGplusCompleted;
         
         /// <remarks/>
+        public event DiscoverySearchinstagramCompletedEventHandler DiscoverySearchinstagramCompleted;
+        
+        /// <remarks/>
         public event contactSearchFacebookCompletedEventHandler contactSearchFacebookCompleted;
         
         /// <remarks/>
         public event contactSearchTwitterCompletedEventHandler contactSearchTwitterCompleted;
+        
+        /// <remarks/>
+        public event ContactSearchInstagramCompletedEventHandler ContactSearchInstagramCompleted;
         
         /// <remarks/>
         public event getAllSearchKeywordsCompletedEventHandler getAllSearchKeywordsCompleted;
@@ -201,6 +211,35 @@ namespace Socioboard.Api.DiscoverySearch {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DiscoverySearchinstagram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string DiscoverySearchinstagram(string Keyword) {
+            object[] results = this.Invoke("DiscoverySearchinstagram", new object[] {
+                        Keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DiscoverySearchinstagramAsync(string Keyword) {
+            this.DiscoverySearchinstagramAsync(Keyword, null);
+        }
+        
+        /// <remarks/>
+        public void DiscoverySearchinstagramAsync(string Keyword, object userState) {
+            if ((this.DiscoverySearchinstagramOperationCompleted == null)) {
+                this.DiscoverySearchinstagramOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDiscoverySearchinstagramOperationCompleted);
+            }
+            this.InvokeAsync("DiscoverySearchinstagram", new object[] {
+                        Keyword}, this.DiscoverySearchinstagramOperationCompleted, userState);
+        }
+        
+        private void OnDiscoverySearchinstagramOperationCompleted(object arg) {
+            if ((this.DiscoverySearchinstagramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DiscoverySearchinstagramCompleted(this, new DiscoverySearchinstagramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/contactSearchFacebook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string contactSearchFacebook(string keyword) {
             object[] results = this.Invoke("contactSearchFacebook", new object[] {
@@ -255,6 +294,35 @@ namespace Socioboard.Api.DiscoverySearch {
             if ((this.contactSearchTwitterCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.contactSearchTwitterCompleted(this, new contactSearchTwitterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ContactSearchInstagram", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ContactSearchInstagram(string keyword) {
+            object[] results = this.Invoke("ContactSearchInstagram", new object[] {
+                        keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ContactSearchInstagramAsync(string keyword) {
+            this.ContactSearchInstagramAsync(keyword, null);
+        }
+        
+        /// <remarks/>
+        public void ContactSearchInstagramAsync(string keyword, object userState) {
+            if ((this.ContactSearchInstagramOperationCompleted == null)) {
+                this.ContactSearchInstagramOperationCompleted = new System.Threading.SendOrPostCallback(this.OnContactSearchInstagramOperationCompleted);
+            }
+            this.InvokeAsync("ContactSearchInstagram", new object[] {
+                        keyword}, this.ContactSearchInstagramOperationCompleted, userState);
+        }
+        
+        private void OnContactSearchInstagramOperationCompleted(object arg) {
+            if ((this.ContactSearchInstagramCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ContactSearchInstagramCompleted(this, new ContactSearchInstagramCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -444,6 +512,32 @@ namespace Socioboard.Api.DiscoverySearch {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void DiscoverySearchinstagramCompletedEventHandler(object sender, DiscoverySearchinstagramCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DiscoverySearchinstagramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DiscoverySearchinstagramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     public delegate void contactSearchFacebookCompletedEventHandler(object sender, contactSearchFacebookCompletedEventArgs e);
     
     /// <remarks/>
@@ -481,6 +575,32 @@ namespace Socioboard.Api.DiscoverySearch {
         private object[] results;
         
         internal contactSearchTwitterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void ContactSearchInstagramCompletedEventHandler(object sender, ContactSearchInstagramCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ContactSearchInstagramCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ContactSearchInstagramCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

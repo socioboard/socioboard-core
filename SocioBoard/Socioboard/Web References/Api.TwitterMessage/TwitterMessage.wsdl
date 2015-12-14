@@ -75,21 +75,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getAlltwtMessages1">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Profileid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getAlltwtMessages1Response">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getAlltwtMessages1Result" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="getAllTwitterUsertweetOfUsers">
         <s:complexType>
           <s:sequence>
@@ -296,12 +281,6 @@
   <wsdl:message name="getAlltwtMessagesSoapOut">
     <wsdl:part name="parameters" element="tns:getAlltwtMessagesResponse" />
   </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1SoapIn">
-    <wsdl:part name="parameters" element="tns:getAlltwtMessages1" />
-  </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1SoapOut">
-    <wsdl:part name="parameters" element="tns:getAlltwtMessages1Response" />
-  </wsdl:message>
   <wsdl:message name="getAllTwitterUsertweetOfUsersSoapIn">
     <wsdl:part name="parameters" element="tns:getAllTwitterUsertweetOfUsers" />
   </wsdl:message>
@@ -399,13 +378,6 @@
     <wsdl:part name="Profileid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getAlltwtMessagesHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1HttpGetIn">
-    <wsdl:part name="Profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1HttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getAllTwitterUsertweetOfUsersHttpGetIn">
@@ -525,13 +497,6 @@
   <wsdl:message name="getAlltwtMessagesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1HttpPostIn">
-    <wsdl:part name="Profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAlltwtMessages1HttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:message name="getAllTwitterUsertweetOfUsersHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -637,10 +602,6 @@
       <wsdl:input message="tns:getAlltwtMessagesSoapIn" />
       <wsdl:output message="tns:getAlltwtMessagesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <wsdl:input message="tns:getAlltwtMessages1SoapIn" />
-      <wsdl:output message="tns:getAlltwtMessages1SoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="getAllTwitterUsertweetOfUsers">
       <wsdl:input message="tns:getAllTwitterUsertweetOfUsersSoapIn" />
       <wsdl:output message="tns:getAllTwitterUsertweetOfUsersSoapOut" />
@@ -707,10 +668,6 @@
       <wsdl:input message="tns:getAlltwtMessagesHttpGetIn" />
       <wsdl:output message="tns:getAlltwtMessagesHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <wsdl:input message="tns:getAlltwtMessages1HttpGetIn" />
-      <wsdl:output message="tns:getAlltwtMessages1HttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="getAllTwitterUsertweetOfUsers">
       <wsdl:input message="tns:getAllTwitterUsertweetOfUsersHttpGetIn" />
       <wsdl:output message="tns:getAllTwitterUsertweetOfUsersHttpGetOut" />
@@ -776,10 +733,6 @@
     <wsdl:operation name="getAlltwtMessages">
       <wsdl:input message="tns:getAlltwtMessagesHttpPostIn" />
       <wsdl:output message="tns:getAlltwtMessagesHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <wsdl:input message="tns:getAlltwtMessages1HttpPostIn" />
-      <wsdl:output message="tns:getAlltwtMessages1HttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllTwitterUsertweetOfUsers">
       <wsdl:input message="tns:getAllTwitterUsertweetOfUsersHttpPostIn" />
@@ -866,15 +819,6 @@
     </wsdl:operation>
     <wsdl:operation name="getAlltwtMessages">
       <soap:operation soapAction="http://tempuri.org/getAlltwtMessages" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <soap:operation soapAction="http://tempuri.org/getAlltwtMessages1" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1029,15 +973,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <soap12:operation soapAction="http://tempuri.org/getAlltwtMessages1" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllTwitterUsertweetOfUsers">
       <soap12:operation soapAction="http://tempuri.org/getAllTwitterUsertweetOfUsers" style="document" />
       <wsdl:input>
@@ -1178,15 +1113,6 @@
     </wsdl:operation>
     <wsdl:operation name="getAlltwtMessages">
       <http:operation location="/getAlltwtMessages" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <http:operation location="/getAlltwtMessages1" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1341,15 +1267,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getAlltwtMessages1">
-      <http:operation location="/getAlltwtMessages1" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllTwitterUsertweetOfUsers">
       <http:operation location="/getAllTwitterUsertweetOfUsers" />
       <wsdl:input>
@@ -1452,16 +1369,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterMessage">
     <wsdl:port name="TwitterMessageSoap" binding="tns:TwitterMessageSoap">
-      <soap:address location="http://localhost:6361/services/TwitterMessage.asmx" />
+      <soap:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageSoap12" binding="tns:TwitterMessageSoap12">
-      <soap12:address location="http://localhost:6361/services/TwitterMessage.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageHttpGet" binding="tns:TwitterMessageHttpGet">
-      <http:address location="http://localhost:6361/services/TwitterMessage.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageHttpPost" binding="tns:TwitterMessageHttpPost">
-      <http:address location="http://localhost:6361/services/TwitterMessage.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -91,6 +91,18 @@ namespace Domain.Socioboard.Domain
         public long twtretweets_90 { get; set; }
         public string perday_twtretweets_90 { get; set; }
         public string sexratio { get; set; }
-       
+
+
+        public long uniqueusers_15 { get; set; }
+        public string perday_uniqueusers_15 { get; set; }
+        public long uniqueusers_30 { get; set; }
+        public string perday_uniqueusers_30 { get; set; }
+        public long uniqueusers_60 { get; set; }
+        public string perday_uniqueusers_60 { get; set; }
+        public long uniqueusers_90 { get; set; }
+        public string perday_uniqueusers_90 { get; set; }
+        public long twitter_account_count { get; set; }
+
+
     }
 }

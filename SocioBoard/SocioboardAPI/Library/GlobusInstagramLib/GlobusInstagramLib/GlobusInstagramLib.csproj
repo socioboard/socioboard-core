@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\Newtonsoft.Json.dll</HintPath>
@@ -72,6 +68,8 @@
     <Compile Include="App.Core\TagController.cs" />
     <Compile Include="App.Core\User.cs" />
     <Compile Include="App.Core\UserController.cs" />
+    <Compile Include="App.Core\VideoLink.cs" />
+    <Compile Include="App.Core\VideoList.cs" />
     <Compile Include="Authentication\AccessToken.cs" />
     <Compile Include="Authentication\Base.cs" />
     <Compile Include="Authentication\BaseObject.cs" />
@@ -89,9 +87,7 @@
     <Compile Include="Instagram.Core\UsersMethods\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="bin\Debug\ApiBase.dll" />
     <Content Include="bin\Debug\ApiBase.pdb" />

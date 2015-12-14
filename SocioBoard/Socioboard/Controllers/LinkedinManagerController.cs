@@ -75,15 +75,28 @@ namespace Socioboard.Controllers
                     }
                     if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
+                        //if (profilecount < totalaccount)
+                        //{
+                        //    Session["linSocial"] = "a";
+                        //    Api.Linkedin.Linkedin objApiLinkedin = new Api.Linkedin.Linkedin();
+                        //    string redircturl = objApiLinkedin.GetLinkedinRedirectUrl(ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"]);
+                        //    Session["reuqestToken"] = redircturl.Split('~')[1].ToString();
+                        //    Session["reuqestTokenSecret"] = redircturl.Split('~')[2].ToString();
+                        //    redircturl = redircturl.Split('~')[0].ToString();
+                        //    Response.Redirect(redircturl);
+                        //}
                         if (profilecount < totalaccount)
                         {
                             Session["linSocial"] = "a";
                             Api.Linkedin.Linkedin objApiLinkedin = new Api.Linkedin.Linkedin();
-                            string redircturl = objApiLinkedin.GetLinkedinRedirectUrl(ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"]);
-                            Session["reuqestToken"] = redircturl.Split('~')[1].ToString();
-                            Session["reuqestTokenSecret"] = redircturl.Split('~')[2].ToString();
-                            redircturl = redircturl.Split('~')[0].ToString();
-                            Response.Redirect(redircturl);
+                            //  string redircturl = objApiLinkedin.GetLinkedinRedirectUrl(ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"]);
+                            //   Session["reuqestToken"] = redircturl.Split('~')[1].ToString();
+                            // Session["reuqestTokenSecret"] = redircturl.Split('~')[2].ToString();
+                            //  redircturl = redircturl.Split('~')[0].ToString();
+                            // Response.Redirect(redircturl);
+                            Random ran = new Random();
+                            int x = ran.Next(8976557);
+                            Response.Redirect("https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=" + ConfigurationManager.AppSettings["LiApiKey"] + "&redirect_uri=http%3A%2F%2Flocalhost:9821%2FLinkedinManager%2FLinkedinRedirect&state=9876lkiknfl" + x + "&scope=r_fullprofile");
                         }
                         else if (profilecount == 0 || totalaccount == 0)
                         {
@@ -189,6 +202,40 @@ namespace Socioboard.Controllers
              string AddLinkedinAccount = objLinkedinCompanypage.AddLinkedinCompanyPage(id, Oauth, objUser.Id.ToString(), Session["group"].ToString());
 
              return Content("");
+         }
+
+
+
+         public ActionResult LinkedinRedirect()
+         {
+             Session["LinkedinCompanyPage"] = null;
+             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+             string code = Request.QueryString["code"];
+             string state = Request.QueryString["state"];
+
+
+
+             //string reuqestTokenSecret = Session["reuqestTokenSecret"].ToString();
+             if (Session["linSocial"] == "a")
+             {
+                 Api.Linkedin.Linkedin objApiLinkedin = new Api.Linkedin.Linkedin();
+                 //string AddLinkedinAccount = objApiLinkedin.AddLinkedinAccount(oauth_token, oauth_verifier, reuqestTokenSecret, ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"], objUser.Id.ToString(), Session["group"].ToString());
+                 objApiLinkedin.Timeout = -1;
+                // string AddLinkedinAccount = objApiLinkedin.AddLinkedinAccountNew(code, ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"], objUser.Id.ToString(), Session["group"].ToString());
+                // Session["SocialManagerInfo"] = AddLinkedinAccount;
+                 return RedirectToAction("Index", "Home");
+             }
+             else
+             {
+                 Api.LinkedinCompanyPage.LinkedinCompanyPage objLiCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
+
+                 List<Helper.AddliPage> lstLinkedinCompanyPage = new List<Helper.AddliPage>();
+
+                 //string page = objLiCompanyPage.GetLinkedinCompanyPage(oauth_token, oauth_verifier, reuqestTokenSecret, ConfigurationManager.AppSettings["LiApiKey"], ConfigurationManager.AppSettings["LiSecretKey"], objUser.Id.ToString(), Session["group"].ToString());
+                 //lstLinkedinCompanyPage = (List<Helper.AddliPage>)(new JavaScriptSerializer().Deserialize(page, typeof(List<Helper.AddliPage>)));
+                 //Session["LinkedinCompanyPage"] = lstLinkedinCompanyPage;
+                 return RedirectToAction("Index", "Home", new { hint = "linpage" });
+             }
          }
     }
 }

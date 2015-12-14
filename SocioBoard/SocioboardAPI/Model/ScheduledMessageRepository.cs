@@ -1371,7 +1371,7 @@ namespace Api.Socioboard.Services
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 string[] arrsrt = profileids.Split(',');
-                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now.AddDays(1).Date.AddSeconds(1) && U.ScheduleTime > DateTime.Now.AddDays(days + 1).Date.AddSeconds(-1)).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now && U.ScheduleTime > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
                 return Int16.Parse(results.ToString());
 
             }
@@ -1383,7 +1383,7 @@ namespace Api.Socioboard.Services
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 string[] arrsrt = profileids.Split(',');
-                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now.AddDays(1).Date.AddSeconds(1) && U.ScheduleTime > DateTime.Now.AddDays(days + 1).Date.AddSeconds(-1) && U.ShareMessage.Contains("bit.ly")).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId && U.Status == true && U.ScheduleTime < DateTime.Now && U.ScheduleTime > DateTime.Now.AddDays(-days).Date.AddSeconds(-1) && U.ShareMessage.Contains("bit.ly")).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
                 return Int16.Parse(results.ToString());
 
             }

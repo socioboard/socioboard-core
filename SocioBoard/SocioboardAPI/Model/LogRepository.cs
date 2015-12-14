@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Api.Socioboard.Helper;
+using Domain.Socioboard.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
 namespace SocioBoard.Model
 {
     public class LogRepository : ILogException

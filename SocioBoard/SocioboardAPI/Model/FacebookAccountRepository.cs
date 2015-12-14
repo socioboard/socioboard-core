@@ -530,7 +530,7 @@ namespace Api.Socioboard.Services
                 {
 
                     // proceed action, to get all Facebook Account of User by UserId(Guid) and FbUserId(string).
-                    List<Domain.Socioboard.Domain.FacebookAccount> objlstfb = session.CreateQuery("from FacebookAccount where FbUserId = :Fbuserid ")
+                    List<Domain.Socioboard.Domain.FacebookAccount> objlstfb = session.CreateQuery("from FacebookAccount where FbUserId = :Fbuserid")
                             .SetParameter("Fbuserid", Fbuserid)
                        .List<Domain.Socioboard.Domain.FacebookAccount>().ToList<Domain.Socioboard.Domain.FacebookAccount>();
                     if (objlstfb.Count > 0)

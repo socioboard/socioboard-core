@@ -73,12 +73,12 @@ namespace GlobusGooglePlusLib.Authentication
         /// <returns></returns>
         public string GetAccessToken(string refreshToken)
         {
-            string postData = "refresh_token=" + refreshToken + "&client_id=" + ConfigurationManager.AppSettings["GplusClientId"] + "&client_secret=" + ConfigurationManager.AppSettings["GplusClientSecretKey"] + "&grant_type=refresh_token";
+            string postData = "refresh_token=" + refreshToken + "&client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&client_secret=" + ConfigurationManager.AppSettings["YtconsumerSecret"] + "&grant_type=refresh_token";
             string[] header = { "token_type", "expires_in" };
             string[] val = { "Bearer", "3600" };
-            Uri path = new Uri(Globals.strRefreshToken);
+            Uri path = new Uri(Globals.strRefreshTokenGPlus);
           //  string response = postWebRequest(path, postData, header, val);
-            string response = WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.POST, Globals.strRefreshToken, postData);
+            string response = WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.POST, Globals.strRefreshTokenGPlus, postData);
             return response;
         }
 
@@ -114,7 +114,7 @@ namespace GlobusGooglePlusLib.Authentication
             //webRequest.Timeout = 20000;
             if (method == Method.POST || method == Method.DELETE)
             {
-                
+                //webRequest.ContentType = "application/json";
                 webRequest.ContentType = "application/x-www-form-urlencoded";
                 //  webRequest.ContentType = "multipart/form-data;";
                 //POST the data.
@@ -125,7 +125,7 @@ namespace GlobusGooglePlusLib.Authentication
                 }
                 catch
                 {
-                    throw;
+                    
                 }
                 finally
                 {
@@ -140,6 +140,7 @@ namespace GlobusGooglePlusLib.Authentication
 
         }
 
+     
         /// <summary>
         /// Process the web response.
         /// </summary>
@@ -147,25 +148,26 @@ namespace GlobusGooglePlusLib.Authentication
         /// <returns>The response data.</returns>
         public string WebResponseGet(HttpWebRequest webRequest)
         {
-            StreamReader responseReader = null;
+            //StreamReader responseReader = null;
             string responseData = "";
 
             try
             {
-                responseReader = new StreamReader(webRequest.GetResponse().GetResponseStream());
-                responseData = responseReader.ReadToEnd();
+                using (HttpWebResponse httResponse = (HttpWebResponse)webRequest.GetResponse())
+                {
+                    Stream responseStream = httResponse.GetResponseStream();
+                    using (StreamReader responseReader = new StreamReader(responseStream, Encoding.Default))
+                    {
+                        responseData = responseReader.ReadToEnd();
+                    }
+                }
+                
             }
             catch (Exception ex)
             {
-                throw;
+               
             }
-            finally
-            {
-                webRequest.GetResponse().GetResponseStream().Close();
-                responseReader.Close();
-                responseReader = null;
-            }
-
+            
             return responseData;
         }
 

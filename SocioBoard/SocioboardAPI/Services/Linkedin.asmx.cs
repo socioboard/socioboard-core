@@ -12,7 +12,10 @@ using GlobusLinkedinLib.App.Core;
 using GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods;
 using log4net;
 using System.Text.RegularExpressions;
-
+using SocioBoard.Model;
+using Api.Socioboard.Model;
+using System.Threading.Tasks;
+using MongoDB.Bson;
 namespace Api.Socioboard.Services
 {
     /// <summary>
@@ -36,12 +39,14 @@ namespace Api.Socioboard.Services
         LinkedInAccountRepository objLinkedInAccountRepository = new LinkedInAccountRepository();
         Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount;
         LinkedInFeedRepository objLinkedInFeedRepository = new LinkedInFeedRepository();
-        Domain.Socioboard.Domain.LinkedInFeed objLinkedInFeed;
+        //Domain.Socioboard.Domain.LinkedInFeed objLinkedInFeed;
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         LinkedInMessageRepository objLinkedInMessageRepository = new LinkedInMessageRepository();
-        Domain.Socioboard.Domain.LinkedInMessage objLinkedInMessage;
+        //Domain.Socioboard.Domain.LinkedInMessage objLinkedInMessage;
 
+        MongoRepository linkedinFeedRepo = new MongoRepository("LinkedInFeed");
+        MongoRepository linkedinMessageRepo = new MongoRepository("LinkedInMessage");
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -244,19 +249,22 @@ namespace Api.Socioboard.Services
                     #region Add LinkedIn Feeds
                     LinkedInNetwork objln = new LinkedInNetwork();
                     List<LinkedInNetwork.Network_Updates> userUPdate = objln.GetNetworkUpdates(_oauth, 20);
+                    Domain.Socioboard.MongoDomain.LinkedInFeed objLinkedInFeed;
                     foreach (var item in userUPdate)
                     {
+                        objLinkedInFeed = new Domain.Socioboard.MongoDomain.LinkedInFeed();
                         try
                         {
-                            objLinkedInFeed = new Domain.Socioboard.Domain.LinkedInFeed();
+                            //objLinkedInFeed = new Domain.Socioboard.Domain.LinkedInFeed();
+                            objLinkedInFeed.Id = ObjectId.GenerateNewId();
                             objLinkedInFeed.Feeds = item.Message;
                             objLinkedInFeed.FromId = item.PersonId;
                             objLinkedInFeed.FromName = item.PersonFirstName + " " + item.PersonLastName;
-                            objLinkedInFeed.FeedsDate = Convert.ToDateTime(item.DateTime);
-                            objLinkedInFeed.EntryDate = DateTime.Now;
+                            objLinkedInFeed.FeedsDate = Convert.ToDateTime(item.DateTime).ToString("yyyy/MM/dd HH:mm:ss");
+                            //objLinkedInFeed.EntryDate = DateTime.Now;
                             objLinkedInFeed.ProfileId = objLinkedInAccount.LinkedinUserId;
                             objLinkedInFeed.Type = item.UpdateType;
-                            objLinkedInFeed.UserId = Guid.Parse(UserId);
+                            //objLinkedInFeed.UserId = Guid.Parse(UserId);
                             objLinkedInFeed.FromPicUrl = item.PictureUrl;
                             objLinkedInFeed.ImageUrl = item.ImageUrl;
                             objLinkedInFeed.FromUrl = item.url;
@@ -265,10 +273,20 @@ namespace Api.Socioboard.Services
                         {
                             logger.Error(ex.StackTrace);
                         }
-                        if (!objLinkedInFeedRepository.checkLinkedInFeedExists(objLinkedInFeed.FeedId, Guid.Parse(UserId)))
-                        {
+                        //if (!objLinkedInFeedRepository.checkLinkedInFeedExists(objLinkedInFeed.FeedId, Guid.Parse(UserId)))
+                        //{
 
-                            objLinkedInFeedRepository.addLinkedInFeed(objLinkedInFeed);
+                        //    objLinkedInFeedRepository.addLinkedInFeed(objLinkedInFeed);
+                        //}
+
+                        var rt = linkedinFeedRepo.Find<Domain.Socioboard.MongoDomain.LinkedInFeed>(t=>t.FeedId.Equals(objLinkedInFeed.FeedId));
+                        var task = Task.Run(async ()=> {
+                            return await rt;
+                        });
+                        int count = task.Result.Count;
+                        if (count < 1)
+                        {
+                            linkedinFeedRepo.Add(objLinkedInFeed);
                         }
                     }
                     #endregion
@@ -277,19 +295,20 @@ namespace Api.Socioboard.Services
                     #region Add LinkedIn UserUpdates
                     GlobusLinkedinLib.App.Core.LinkedInUser l = new GlobusLinkedinLib.App.Core.LinkedInUser();
                     List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> lst_Messages = l.GetUserUpdateNew(_oauth, objLinkedInAccount.LinkedinUserId, 10);
+                    Domain.Socioboard.MongoDomain.LinkedInMessage objLinkedInMessage;
                     foreach (var item_Messages in lst_Messages)
                     {
+                        objLinkedInMessage = new Domain.Socioboard.MongoDomain.LinkedInMessage();
                         try
                         {
-                            objLinkedInMessage = new Domain.Socioboard.Domain.LinkedInMessage();
-                            objLinkedInMessage.Id = Guid.NewGuid();
+                            objLinkedInMessage.Id = ObjectId.GenerateNewId();
                             objLinkedInMessage.Message = item_Messages.Message;
                             objLinkedInMessage.ProfileId = item_Messages.ProfileId;
                             objLinkedInMessage.ProfileName = item_Messages.ProfileName;
-                            objLinkedInMessage.CreatedDate = Convert.ToDateTime(item_Messages.CreatedDate);
-                            objLinkedInMessage.EntryDate = DateTime.Now;
+                            objLinkedInMessage.CreatedDate = Convert.ToDateTime(item_Messages.CreatedDate).ToString("yyyy/MM/dd HH:mm:ss");
+                            //objLinkedInMessage.EntryDate = DateTime.Now;
                             objLinkedInMessage.Type = item_Messages.Type;
-                            objLinkedInMessage.UserId = Guid.Parse(UserId);
+                            //objLinkedInMessage.UserId = Guid.Parse(UserId);
                             objLinkedInMessage.ImageUrl = item_Messages.ImageUrl;
                             objLinkedInMessage.FeedId = item_Messages.FeedId;
                             objLinkedInMessage.ProfileUrl = item_Messages.ProfileUrl;
@@ -301,10 +320,22 @@ namespace Api.Socioboard.Services
                         {
                             logger.Error(ex.StackTrace);
                         }
-                        if (!objLinkedInMessageRepository.checkLinkedInMessageExists(objLinkedInAccount.LinkedinUserId, objLinkedInMessage.FeedId, Guid.Parse(UserId)))
+
+                        var rt = linkedinMessageRepo.Find<Domain.Socioboard.MongoDomain.LinkedInMessage>(t => t.FeedId.Equals(objLinkedInMessage.FeedId));
+                        var task = Task.Run(async () =>
                         {
-                            objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                            return await rt;
+                        });
+                        int count = task.Result.Count;
+                        if (count < 1)
+                        {
+                            linkedinMessageRepo.Add(objLinkedInMessage);
                         }
+
+                        //if (!objLinkedInMessageRepository.checkLinkedInMessageExists(objLinkedInAccount.LinkedinUserId, objLinkedInMessage.FeedId, Guid.Parse(UserId)))
+                        //{
+                        //    objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                        //}
                     }
                     #endregion
                 }
@@ -869,19 +900,21 @@ namespace Api.Socioboard.Services
          {
              GlobusLinkedinLib.App.Core.LinkedInUser l = new GlobusLinkedinLib.App.Core.LinkedInUser();
              List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> lst_Messages = l.GetUserUpdateNew(Linkedin_Oauth, profileid, 10);
+             Domain.Socioboard.MongoDomain.LinkedInMessage objLinkedInMessage;
              foreach (var item_Messages in lst_Messages)
              {
+                 objLinkedInMessage = new Domain.Socioboard.MongoDomain.LinkedInMessage();
                  try
                  {
-                     objLinkedInMessage = new Domain.Socioboard.Domain.LinkedInMessage();
-                     objLinkedInMessage.Id = Guid.NewGuid();
+                     //objLinkedInMessage = new Domain.Socioboard.Domain.LinkedInMessage();
+                     objLinkedInMessage.Id = ObjectId.GenerateNewId();
                      objLinkedInMessage.Message = item_Messages.Message;
                      objLinkedInMessage.ProfileId = item_Messages.ProfileId;
                      objLinkedInMessage.ProfileName = item_Messages.ProfileName;
-                     objLinkedInMessage.CreatedDate =Convert.ToDateTime(item_Messages.CreatedDate);
-                     objLinkedInMessage.EntryDate = DateTime.Now;
+                     objLinkedInMessage.CreatedDate =Convert.ToDateTime(item_Messages.CreatedDate).ToString("yyyy/MM/dd HH:mm:ss");
+                     //objLinkedInMessage.EntryDate = DateTime.Now;
                      objLinkedInMessage.Type = item_Messages.Type;
-                     objLinkedInMessage.UserId = UserId;
+                     //objLinkedInMessage.UserId = UserId;
                      objLinkedInMessage.ImageUrl = item_Messages.ImageUrl;
                      objLinkedInMessage.FeedId = item_Messages.FeedId;
                      objLinkedInMessage.ProfileUrl = item_Messages.ProfileUrl;
@@ -892,10 +925,22 @@ namespace Api.Socioboard.Services
                  {
                      logger.Error(ex.StackTrace);
                  }
-                 if (!objLinkedInMessageRepository.checkLinkedInMessageExists(profileid, objLinkedInMessage.FeedId, UserId))
+                 //if (!objLinkedInMessageRepository.checkLinkedInMessageExists(profileid, objLinkedInMessage.FeedId, UserId))
+                 //{
+                 //    objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                 //}
+
+                 var rt = linkedinMessageRepo.Find<Domain.Socioboard.MongoDomain.LinkedInMessage>(t => t.FeedId.Equals(objLinkedInMessage.FeedId));
+                 var task = Task.Run(async () =>
                  {
-                     objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                     return await rt;
+                 });
+                 int count = task.Result.Count;
+                 if (count < 1)
+                 {
+                     linkedinMessageRepo.Add(objLinkedInMessage);
                  }
+
              }
 
          }
@@ -961,19 +1006,23 @@ namespace Api.Socioboard.Services
              LinkedInNetwork objln = new LinkedInNetwork();
              LinkedInFeedRepository objliFeedsRepo = new LinkedInFeedRepository();
              List<LinkedInNetwork.Network_Updates> userUPdate = objln.GetNetworkUpdates(_oauth, 20);
-             Domain.Socioboard.Domain.LinkedInFeed lnkfeeds = new Domain.Socioboard.Domain.LinkedInFeed();
+             Domain.Socioboard.MongoDomain.LinkedInFeed lnkfeeds;
              foreach (var item in userUPdate)
              {
+                 lnkfeeds = new Domain.Socioboard.MongoDomain.LinkedInFeed();
                  lnkfeeds.Feeds = item.Message;
                  lnkfeeds.FromId = item.PersonId;
                  lnkfeeds.FromName = item.PersonFirstName + " " + item.PersonLastName;
-                 lnkfeeds.FeedsDate = Convert.ToDateTime(item.DateTime);
-                 lnkfeeds.EntryDate = DateTime.Now;
+                 lnkfeeds.FeedsDate = Convert.ToDateTime(item.DateTime).ToString("yyyy/MM/dd HH:mm:ss");
+                 //lnkfeeds.EntryDate = DateTime.Now;
                  lnkfeeds.ProfileId = profileId;
                  lnkfeeds.Type = item.UpdateType;
-                 lnkfeeds.UserId = userId;
+                 //lnkfeeds.UserId = userId;
                  lnkfeeds.FromPicUrl = item.PictureUrl;
-                 objliFeedsRepo.addLinkedInFeed(lnkfeeds);
+                 
+                 //objliFeedsRepo.addLinkedInFeed(lnkfeeds);
+
+                 linkedinFeedRepo.Add(lnkfeeds);
              }
 
          }
@@ -1051,6 +1100,15 @@ namespace Api.Socioboard.Services
                  return ret = "Message Could Not Posted";
              }
          }
+        //[WebMethod]
+        // public string AddLinkedinAccountNew(string UserId, string GroupId, string Code)
+        // {
+        //     oAuthLinkedIn _oauth = new oAuthLinkedIn();
+        //     string url = "https://linkedin.com/uas/oauth2/accessToken";
+        //     string post = "grant_type=authorization_code&code=" + Code + "&redirect_uri=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LinkedinCallBackURL"]) + "&client_id=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LiApiKey"]) + "&client_secret=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LiSecretKey"]);
+        //     string ret = _oauth.ApiWebRequest(url, post);
+        //     return "";
+        // }
 
     }
 }

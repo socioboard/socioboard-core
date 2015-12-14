@@ -29,6 +29,9 @@ namespace GlobusMailLib
                 case MailSendingType.Gmail:
                     objMailSender = new MailSenderGmail();
                     break;
+                case MailSendingType.Zoho:
+                    objMailSender = new MailSenderZoho();
+                    break;
                 default:
                     break;
             }

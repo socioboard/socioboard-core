@@ -1,6 +1,7 @@
 ﻿using GlobusGooglePlusLib.App.Core;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -23,7 +24,16 @@ namespace GlobusGooglePlusLib.Authentication
             string result = objoAuth.WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.POST, Globals.strRefreshToken, postData);
             return result;
         }
-
+        public string GetAccessToken(string refreshToken)
+        {
+            string postData = "refresh_token=" + refreshToken + "&client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&client_secret=" + ConfigurationManager.AppSettings["YtconsumerSecret"] + "&grant_type=refresh_token";
+            string[] header = { "token_type", "expires_in" };
+            string[] val = { "Bearer", "3600" };
+            Uri path = new Uri(Globals.strRefreshToken);
+            //  string response = postWebRequest(path, postData, header, val);
+            string response = objoAuth.WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.POST, Globals.strRefreshToken, postData);
+            return response;
+        }
         public string RevokeToken(String token)
         {
             string Token = string.Empty;

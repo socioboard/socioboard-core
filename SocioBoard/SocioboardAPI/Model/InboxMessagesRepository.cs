@@ -345,5 +345,28 @@ namespace Api.Socioboard.Services
                 }
             }
         }
+
+        public int UpdateTwitterFollowerInfo(Domain.Socioboard.Domain.InboxMessages _InboxMessages)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    int i = session.CreateQuery("Update InboxMessages set FromName =: FromName, Message =: Message, FromImageUrl =: FromImageUrl, FollowerCount =: FollowerCount, FollowingCount =: FollowingCount where FromId =: FromId and MessageType=:MessageType")
+                        .SetParameter("FromName", _InboxMessages.FromName)
+                        .SetParameter("Message", _InboxMessages.Message)
+                        .SetParameter("FromImageUrl", _InboxMessages.FromImageUrl)
+                        .SetParameter("MessageType", _InboxMessages.MessageType)
+                        .SetParameter("FollowerCount", _InboxMessages.FollowerCount)
+                        .SetParameter("FollowingCount", _InboxMessages.FollowingCount)
+                        .SetParameter("FromId", _InboxMessages.FromId)
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                    return i;
+                }
+            }
+        }
+
+
     }
 }

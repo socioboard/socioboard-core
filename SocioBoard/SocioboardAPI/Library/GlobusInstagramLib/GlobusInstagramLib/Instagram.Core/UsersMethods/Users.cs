@@ -52,21 +52,21 @@ namespace GlobusInstagramLib.Instagram.Core.UsersMethods
         /// <param name="count"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public InstagramResponse<User[]> UsersSearch(string query, string count, string accessToken)
+        public string UsersSearch(string query, string count, string accessToken, string clientid)
         {
-            string url = objoAuthIns.Configuration.ApiBaseUrl + "users/search?access_token=" + accessToken;
+            string url = "https://api.instagram.com/v1/users/search?access_token=" + accessToken;
             if (string.IsNullOrEmpty(accessToken))
-                url = objoAuthIns.Configuration.ApiBaseUrl + "users/search?client_id=" + objoAuthIns.Configuration.ClientId;
+                url = "https://api.instagram.com/v1/users/search?client_id=" + clientid;
 
             if (!string.IsNullOrEmpty(query)) url = url + "&q=" + query;
             if (!string.IsNullOrEmpty(count)) url = url + "&count=" + count;
-            string json = objoAuthIns.RequestGetToUrl(url, objoAuthIns.Configuration.Proxy);
+            string json = objoAuthIns.RequestGetToUrl(url, null);
             if (string.IsNullOrEmpty(json))
                 return null;
 
-            InstagramResponse<User[]> res = Base.DeserializeObject<InstagramResponse<User[]>>(json);
+            //InstagramResponse<User[]> res = Base.DeserializeObject<InstagramResponse<User[]>>(json);
 
-            return res;
+            return json;
         }
 
         /// <summary>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="TopFiveFans_90" table="TopFiveFans_90" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Count">
+      <column name="Count" />
+    </property>
+    <property name="FromId">
+      <column name="FromId" />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="Rank">
+      <column name="Rank"/>
+    </property>
+    <property name="FromName">
+      <column name="FromName"/>
+    </property>
+    <property name="Retweetcount">
+      <column name="Retweetcount"></column>
+    </property>
+    <property name="Mentioncount">
+      <column name="Mentioncount"></column>
+    </property>
+    <property name="FromImageUrl">
+      <column name="FromImageUrl"></column>
+    </property>
+
+  </class>
+
+</hibernate-mapping>

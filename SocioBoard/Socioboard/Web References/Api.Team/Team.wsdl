@@ -138,6 +138,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllActiveTeam">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllActiveTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllActiveTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -194,6 +204,12 @@
   </wsdl:message>
   <wsdl:message name="getAllGroupMembersofTeamSoapOut">
     <wsdl:part name="parameters" element="tns:getAllGroupMembersofTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllActiveTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllActiveTeam" />
+  </wsdl:message>
+  <wsdl:message name="GetAllActiveTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllActiveTeamResponse" />
   </wsdl:message>
   <wsdl:message name="AddTeamHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -259,6 +275,10 @@
   </wsdl:message>
   <wsdl:message name="getAllGroupMembersofTeamHttpGetIn" />
   <wsdl:message name="getAllGroupMembersofTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllActiveTeamHttpGetIn" />
+  <wsdl:message name="GetAllActiveTeamHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddTeamHttpPostIn">
@@ -327,6 +347,10 @@
   <wsdl:message name="getAllGroupMembersofTeamHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllActiveTeamHttpPostIn" />
+  <wsdl:message name="GetAllActiveTeamHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TeamSoap">
     <wsdl:operation name="AddTeam">
       <wsdl:input message="tns:AddTeamSoapIn" />
@@ -363,6 +387,10 @@
     <wsdl:operation name="getAllGroupMembersofTeam">
       <wsdl:input message="tns:getAllGroupMembersofTeamSoapIn" />
       <wsdl:output message="tns:getAllGroupMembersofTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <wsdl:input message="tns:GetAllActiveTeamSoapIn" />
+      <wsdl:output message="tns:GetAllActiveTeamSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TeamHttpGet">
@@ -402,6 +430,10 @@
       <wsdl:input message="tns:getAllGroupMembersofTeamHttpGetIn" />
       <wsdl:output message="tns:getAllGroupMembersofTeamHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <wsdl:input message="tns:GetAllActiveTeamHttpGetIn" />
+      <wsdl:output message="tns:GetAllActiveTeamHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TeamHttpPost">
     <wsdl:operation name="AddTeam">
@@ -439,6 +471,10 @@
     <wsdl:operation name="getAllGroupMembersofTeam">
       <wsdl:input message="tns:getAllGroupMembersofTeamHttpPostIn" />
       <wsdl:output message="tns:getAllGroupMembersofTeamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <wsdl:input message="tns:GetAllActiveTeamHttpPostIn" />
+      <wsdl:output message="tns:GetAllActiveTeamHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TeamSoap" type="tns:TeamSoap">
@@ -517,6 +553,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllGroupMembersofTeam">
       <soap:operation soapAction="http://tempuri.org/getAllGroupMembersofTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <soap:operation soapAction="http://tempuri.org/GetAllActiveTeam" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -608,6 +653,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <soap12:operation soapAction="http://tempuri.org/GetAllActiveTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TeamHttpGet" type="tns:TeamHttpGet">
     <http:binding verb="GET" />
@@ -685,6 +739,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllGroupMembersofTeam">
       <http:operation location="/getAllGroupMembersofTeam" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <http:operation location="/GetAllActiveTeam" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -776,19 +839,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllActiveTeam">
+      <http:operation location="/GetAllActiveTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Team">
     <wsdl:port name="TeamSoap" binding="tns:TeamSoap">
-      <soap:address location="http://localhost:6361/services/Team.asmx" />
+      <soap:address location="http://localhost:6361/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamSoap12" binding="tns:TeamSoap12">
-      <soap12:address location="http://localhost:6361/services/Team.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamHttpGet" binding="tns:TeamHttpGet">
-      <http:address location="http://localhost:6361/services/Team.asmx" />
+      <http:address location="http://localhost:6361/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamHttpPost" binding="tns:TeamHttpPost">
-      <http:address location="http://localhost:6361/services/Team.asmx" />
+      <http:address location="http://localhost:6361/Services/Team.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

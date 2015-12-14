@@ -331,6 +331,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LinkedinComposeMessageRss">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinComposeMessageRssResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinComposeMessageRssResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -460,6 +476,12 @@
   </wsdl:message>
   <wsdl:message name="UpdateLinkedinAccountByAdminSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateLinkedinAccountByAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinComposeMessageRss" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinComposeMessageRssResponse" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
@@ -591,6 +613,14 @@
     <wsdl:part name="ObjLinkedin" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateLinkedinAccountByAdminHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpPostIn">
@@ -725,6 +755,14 @@
   <wsdl:message name="UpdateLinkedinAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageRssHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="LinkedinSoap">
     <wsdl:operation name="GetLinkedinRedirectUrl">
       <wsdl:input message="tns:GetLinkedinRedirectUrlSoapIn" />
@@ -806,6 +844,10 @@
       <wsdl:input message="tns:UpdateLinkedinAccountByAdminSoapIn" />
       <wsdl:output message="tns:UpdateLinkedinAccountByAdminSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <wsdl:input message="tns:LinkedinComposeMessageRssSoapIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageRssSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpGet">
     <wsdl:operation name="GetLinkedinRedirectUrl">
@@ -872,6 +914,10 @@
       <wsdl:input message="tns:UpdateLinkedinAccountByAdminHttpGetIn" />
       <wsdl:output message="tns:UpdateLinkedinAccountByAdminHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <wsdl:input message="tns:LinkedinComposeMessageRssHttpGetIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageRssHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpPost">
     <wsdl:operation name="GetLinkedinRedirectUrl">
@@ -937,6 +983,10 @@
     <wsdl:operation name="UpdateLinkedinAccountByAdmin">
       <wsdl:input message="tns:UpdateLinkedinAccountByAdminHttpPostIn" />
       <wsdl:output message="tns:UpdateLinkedinAccountByAdminHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <wsdl:input message="tns:LinkedinComposeMessageRssHttpPostIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageRssHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LinkedinSoap" type="tns:LinkedinSoap">
@@ -1114,6 +1164,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateLinkedinAccountByAdmin">
       <soap:operation soapAction="http://tempuri.org/UpdateLinkedinAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <soap:operation soapAction="http://tempuri.org/LinkedinComposeMessageRss" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1304,6 +1363,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinComposeMessageRss" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedinHttpGet" type="tns:LinkedinHttpGet">
     <http:binding verb="GET" />
@@ -1444,6 +1512,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateLinkedinAccountByAdmin">
       <http:operation location="/UpdateLinkedinAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <http:operation location="/LinkedinComposeMessageRss" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1598,19 +1675,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessageRss">
+      <http:operation location="/LinkedinComposeMessageRss" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Linkedin">
     <wsdl:port name="LinkedinSoap" binding="tns:LinkedinSoap">
-      <soap:address location="http://localhost:6361/services/Linkedin.asmx" />
+      <soap:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
-      <soap12:address location="http://localhost:6361/services/Linkedin.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpGet" binding="tns:LinkedinHttpGet">
-      <http:address location="http://localhost:6361/services/Linkedin.asmx" />
+      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
-      <http:address location="http://localhost:6361/services/Linkedin.asmx" />
+      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

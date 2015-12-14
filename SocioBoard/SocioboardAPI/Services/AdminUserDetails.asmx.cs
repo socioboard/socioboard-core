@@ -81,7 +81,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string UpdateUserAccount(string Id, string UserName, string EmailId, string Package, string Status)
+        public string UpdateUserAccount(string Id, string UserName, string EmailId, string Package, string Status,string PaymentStatus)
         {
             try
             {
@@ -91,6 +91,7 @@ namespace Api.Socioboard.Services
                 objUser.EmailId = EmailId;
                 objUser.AccountType = Package;
                 objUser.UserStatus = Convert.ToInt16(Status);
+                objUser.PaymentStatus = PaymentStatus;
                 UserRepository.UpdateAccountType(objUser);
                 return new JavaScriptSerializer().Serialize("Update Successfully");
             }

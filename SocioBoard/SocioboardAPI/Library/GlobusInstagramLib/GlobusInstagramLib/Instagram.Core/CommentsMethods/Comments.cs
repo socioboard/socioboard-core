@@ -55,13 +55,13 @@ namespace GlobusInstagramLib.Instagram.Core.CommentsMethods
         /// <returns></returns>
         public string CommentAdd(string mediaid, string text, string accessToken)
         {
-            string url = oAuthIns.Configuration.ApiBaseUrl + "media/" + mediaid + "/comments?access_token=" + accessToken;
+            string url = "https://api.instagram.com/v1/media/" + mediaid + "/comments?access_token=" + accessToken;
             NameValueCollection post = new NameValueCollection
                                        {
                                                {"text",text},
                                                {"access_token", accessToken}
                                        };
-            string json = oAuthIns.RequestPostToUrl(url, post, oAuthIns.Configuration.Proxy);
+            string json = oAuthIns.RequestPostToUrl(url, post, null);
             if (string.IsNullOrEmpty(json))
                 return "";
 

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FacebookPagePost" table="FacebookPagePost" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="PageId">
+      <column name="PageId" />
+    </property>
+    <property name="PageName">
+      <column name="PageName" />
+    </property>
+    <property name="PostId">
+      <column name="PostId" />
+    </property>
+    <property name="Message">
+      <column name="Message" />
+    </property>
+
+    <property name="Picture">
+      <column name="Picture" />
+    </property>
+    <property name="Link">
+      <column name="Link" />
+    </property>
+    <property name="Name">
+      <column name="Name" />
+    </property>
+    <property name="Description">
+      <column name="Description" />
+    </property>
+
+    <property name="Type">
+      <column name="Type" />
+    </property>
+    <property name="Likes">
+      <column name="Likes" />
+    </property>
+    <property name="Comments">
+      <column name="Comments" />
+    </property>
+    <property name="Shares">
+      <column name="Shares" />
+    </property>
+
+    <property name="Reach">
+      <column name="Reach" />
+    </property>
+    <property name="Talking">
+      <column name="Talking" />
+    </property>
+    <property name="EngagedUsers">
+      <column name="EngagedUsers" />
+    </property>
+     <property name="CreatedTime">
+      <column name="CreatedTime" />
+    </property>
+
+  </class>
+</hibernate-mapping>

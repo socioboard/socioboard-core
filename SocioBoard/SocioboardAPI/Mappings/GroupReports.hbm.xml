@@ -217,6 +217,34 @@
       <column name="sexratio"  />
     </property>
 
+    <property name="uniqueusers_15">
+      <column name="uniqueusers_15"  />
+    </property>
+    <property name="perday_uniqueusers_15">
+      <column name="perday_uniqueusers_15"  />
+    </property>
+    <property name="uniqueusers_30">
+      <column name="uniqueusers_30"  />
+    </property>
+    <property name="perday_uniqueusers_30">
+      <column name="perday_uniqueusers_30"  />
+    </property>
+    <property name="uniqueusers_60">
+      <column name="uniqueusers_60"  />
+    </property>
+    <property name="perday_uniqueusers_60">
+      <column name="perday_uniqueusers_60"  />
+    </property>
+    <property name="uniqueusers_90">
+      <column name="uniqueusers_90"  />
+    </property>
+    <property name="perday_uniqueusers_90">
+      <column name="perday_uniqueusers_90"  />
+    </property>
+
+    <property name="twitter_account_count">
+      <column name="twitter_account_count"/>
+    </property>
 
   </class>
 </hibernate-mapping>

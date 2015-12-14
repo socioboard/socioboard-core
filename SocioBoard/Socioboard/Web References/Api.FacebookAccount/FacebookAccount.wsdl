@@ -182,6 +182,96 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddFacebookAccountFromTweetBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FriendsCount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountFromTweetBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountFromTweetBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllFacebookPageDetails">
+        <s:complexType />
+      </s:element>
+      <s:element name="AllFacebookPageDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllFacebookPageDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MovefbFeedsToMongo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MovefbFeedsToMongoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MovefbFeedsToMongoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveFbMessageToMongo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoveFbMessageToMongoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveFbMessageToMongoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveTwitterFeedTOMOngo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoveTwitterFeedTOMOngoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveTwitterFeedTOMOngoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveTwitterMessagesTOMOngo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoveTwitterMessagesTOMOngoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveTwitterMessagesTOMOngoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveInstagramCommentToMongo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoveInstagramCommentToMongoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveInstagramCommentToMongoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoveInstagramFeedToMongo">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoveInstagramFeedToMongoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoveInstagramFeedToMongoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -256,6 +346,54 @@
   </wsdl:message>
   <wsdl:message name="GetAllFacebookAccountsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllFacebookAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountFromTweetBoard" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountFromTweetBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:AllFacebookPageDetails" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:AllFacebookPageDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="MovefbFeedsToMongoSoapIn">
+    <wsdl:part name="parameters" element="tns:MovefbFeedsToMongo" />
+  </wsdl:message>
+  <wsdl:message name="MovefbFeedsToMongoSoapOut">
+    <wsdl:part name="parameters" element="tns:MovefbFeedsToMongoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveFbMessageToMongoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveFbMessageToMongo" />
+  </wsdl:message>
+  <wsdl:message name="MoveFbMessageToMongoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveFbMessageToMongoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterFeedTOMOngoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveTwitterFeedTOMOngo" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterFeedTOMOngoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveTwitterFeedTOMOngoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterMessagesTOMOngoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveTwitterMessagesTOMOngo" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterMessagesTOMOngoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveTwitterMessagesTOMOngoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramCommentToMongoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveInstagramCommentToMongo" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramCommentToMongoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveInstagramCommentToMongoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramFeedToMongoSoapIn">
+    <wsdl:part name="parameters" element="tns:MoveInstagramFeedToMongo" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramFeedToMongoSoapOut">
+    <wsdl:part name="parameters" element="tns:MoveInstagramFeedToMongoResponse" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="FbUserId" type="s:string" />
@@ -341,6 +479,46 @@
   </wsdl:message>
   <wsdl:message name="GetAllFacebookAccountsHttpGetIn" />
   <wsdl:message name="GetAllFacebookAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsHttpGetIn" />
+  <wsdl:message name="AllFacebookPageDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MovefbFeedsToMongoHttpGetIn" />
+  <wsdl:message name="MovefbFeedsToMongoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveFbMessageToMongoHttpGetIn" />
+  <wsdl:message name="MoveFbMessageToMongoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterFeedTOMOngoHttpGetIn" />
+  <wsdl:message name="MoveTwitterFeedTOMOngoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterMessagesTOMOngoHttpGetIn" />
+  <wsdl:message name="MoveTwitterMessagesTOMOngoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramCommentToMongoHttpGetIn" />
+  <wsdl:message name="MoveInstagramCommentToMongoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramFeedToMongoHttpGetIn" />
+  <wsdl:message name="MoveInstagramFeedToMongoHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
@@ -429,6 +607,46 @@
   <wsdl:message name="GetAllFacebookAccountsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsHttpPostIn" />
+  <wsdl:message name="AllFacebookPageDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MovefbFeedsToMongoHttpPostIn" />
+  <wsdl:message name="MovefbFeedsToMongoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveFbMessageToMongoHttpPostIn" />
+  <wsdl:message name="MoveFbMessageToMongoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterFeedTOMOngoHttpPostIn" />
+  <wsdl:message name="MoveTwitterFeedTOMOngoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveTwitterMessagesTOMOngoHttpPostIn" />
+  <wsdl:message name="MoveTwitterMessagesTOMOngoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramCommentToMongoHttpPostIn" />
+  <wsdl:message name="MoveInstagramCommentToMongoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MoveInstagramFeedToMongoHttpPostIn" />
+  <wsdl:message name="MoveInstagramFeedToMongoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookAccountSoap">
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
@@ -477,6 +695,38 @@
     <wsdl:operation name="GetAllFacebookAccounts">
       <wsdl:input message="tns:GetAllFacebookAccountsSoapIn" />
       <wsdl:output message="tns:GetAllFacebookAccountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsSoapIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <wsdl:input message="tns:MovefbFeedsToMongoSoapIn" />
+      <wsdl:output message="tns:MovefbFeedsToMongoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <wsdl:input message="tns:MoveFbMessageToMongoSoapIn" />
+      <wsdl:output message="tns:MoveFbMessageToMongoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <wsdl:input message="tns:MoveTwitterFeedTOMOngoSoapIn" />
+      <wsdl:output message="tns:MoveTwitterFeedTOMOngoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <wsdl:input message="tns:MoveTwitterMessagesTOMOngoSoapIn" />
+      <wsdl:output message="tns:MoveTwitterMessagesTOMOngoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <wsdl:input message="tns:MoveInstagramCommentToMongoSoapIn" />
+      <wsdl:output message="tns:MoveInstagramCommentToMongoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <wsdl:input message="tns:MoveInstagramFeedToMongoSoapIn" />
+      <wsdl:output message="tns:MoveInstagramFeedToMongoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookAccountHttpGet">
@@ -528,6 +778,38 @@
       <wsdl:input message="tns:GetAllFacebookAccountsHttpGetIn" />
       <wsdl:output message="tns:GetAllFacebookAccountsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsHttpGetIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <wsdl:input message="tns:MovefbFeedsToMongoHttpGetIn" />
+      <wsdl:output message="tns:MovefbFeedsToMongoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <wsdl:input message="tns:MoveFbMessageToMongoHttpGetIn" />
+      <wsdl:output message="tns:MoveFbMessageToMongoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <wsdl:input message="tns:MoveTwitterFeedTOMOngoHttpGetIn" />
+      <wsdl:output message="tns:MoveTwitterFeedTOMOngoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <wsdl:input message="tns:MoveTwitterMessagesTOMOngoHttpGetIn" />
+      <wsdl:output message="tns:MoveTwitterMessagesTOMOngoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <wsdl:input message="tns:MoveInstagramCommentToMongoHttpGetIn" />
+      <wsdl:output message="tns:MoveInstagramCommentToMongoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <wsdl:input message="tns:MoveInstagramFeedToMongoHttpGetIn" />
+      <wsdl:output message="tns:MoveInstagramFeedToMongoHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookAccountHttpPost">
     <wsdl:operation name="AddFacebookAccount">
@@ -577,6 +859,38 @@
     <wsdl:operation name="GetAllFacebookAccounts">
       <wsdl:input message="tns:GetAllFacebookAccountsHttpPostIn" />
       <wsdl:output message="tns:GetAllFacebookAccountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsHttpPostIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <wsdl:input message="tns:MovefbFeedsToMongoHttpPostIn" />
+      <wsdl:output message="tns:MovefbFeedsToMongoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <wsdl:input message="tns:MoveFbMessageToMongoHttpPostIn" />
+      <wsdl:output message="tns:MoveFbMessageToMongoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <wsdl:input message="tns:MoveTwitterFeedTOMOngoHttpPostIn" />
+      <wsdl:output message="tns:MoveTwitterFeedTOMOngoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <wsdl:input message="tns:MoveTwitterMessagesTOMOngoHttpPostIn" />
+      <wsdl:output message="tns:MoveTwitterMessagesTOMOngoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <wsdl:input message="tns:MoveInstagramCommentToMongoHttpPostIn" />
+      <wsdl:output message="tns:MoveInstagramCommentToMongoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <wsdl:input message="tns:MoveInstagramFeedToMongoHttpPostIn" />
+      <wsdl:output message="tns:MoveInstagramFeedToMongoHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookAccountSoap" type="tns:FacebookAccountSoap">
@@ -682,6 +996,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllFacebookAccounts">
       <soap:operation soapAction="http://tempuri.org/GetAllFacebookAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccountFromTweetBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <soap:operation soapAction="http://tempuri.org/AllFacebookPageDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <soap:operation soapAction="http://tempuri.org/MovefbFeedsToMongo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <soap:operation soapAction="http://tempuri.org/MoveFbMessageToMongo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <soap:operation soapAction="http://tempuri.org/MoveTwitterFeedTOMOngo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <soap:operation soapAction="http://tempuri.org/MoveTwitterMessagesTOMOngo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <soap:operation soapAction="http://tempuri.org/MoveInstagramCommentToMongo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <soap:operation soapAction="http://tempuri.org/MoveInstagramFeedToMongo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -800,6 +1186,78 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccountFromTweetBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <soap12:operation soapAction="http://tempuri.org/AllFacebookPageDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <soap12:operation soapAction="http://tempuri.org/MovefbFeedsToMongo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <soap12:operation soapAction="http://tempuri.org/MoveFbMessageToMongo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <soap12:operation soapAction="http://tempuri.org/MoveTwitterFeedTOMOngo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <soap12:operation soapAction="http://tempuri.org/MoveTwitterMessagesTOMOngo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <soap12:operation soapAction="http://tempuri.org/MoveInstagramCommentToMongo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <soap12:operation soapAction="http://tempuri.org/MoveInstagramFeedToMongo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookAccountHttpGet" type="tns:FacebookAccountHttpGet">
     <http:binding verb="GET" />
@@ -911,6 +1369,78 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <http:operation location="/AddFacebookAccountFromTweetBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <http:operation location="/AllFacebookPageDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <http:operation location="/MovefbFeedsToMongo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <http:operation location="/MoveFbMessageToMongo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <http:operation location="/MoveTwitterFeedTOMOngo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <http:operation location="/MoveTwitterMessagesTOMOngo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <http:operation location="/MoveInstagramCommentToMongo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <http:operation location="/MoveInstagramFeedToMongo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookAccountHttpPost" type="tns:FacebookAccountHttpPost">
     <http:binding verb="POST" />
@@ -1015,6 +1545,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllFacebookAccounts">
       <http:operation location="/GetAllFacebookAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <http:operation location="/AddFacebookAccountFromTweetBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <http:operation location="/AllFacebookPageDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MovefbFeedsToMongo">
+      <http:operation location="/MovefbFeedsToMongo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFbMessageToMongo">
+      <http:operation location="/MoveFbMessageToMongo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterFeedTOMOngo">
+      <http:operation location="/MoveTwitterFeedTOMOngo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveTwitterMessagesTOMOngo">
+      <http:operation location="/MoveTwitterMessagesTOMOngo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramCommentToMongo">
+      <http:operation location="/MoveInstagramCommentToMongo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoveInstagramFeedToMongo">
+      <http:operation location="/MoveInstagramFeedToMongo" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

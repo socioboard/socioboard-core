@@ -183,7 +183,7 @@
       <Value Profile="(Default)">http://localhost:6361/Services/Companypage.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_LinkedinMessage_LinkedinMessage" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/LinkedinMessage.asmx</Value>
+      <Value Profile="(Default)">http://localhost:6361/services/linkedinmessage.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_InboxMessages_InboxMessages" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/InboxMessages.asmx</Value>

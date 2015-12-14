@@ -95,6 +95,8 @@ namespace Socioboard.Api.Facebook {
         
         private System.Threading.SendOrPostCallback AddFacebookAccountWithloginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetFacebookPageFeedOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -231,6 +233,9 @@ namespace Socioboard.Api.Facebook {
         
         /// <remarks/>
         public event AddFacebookAccountWithloginCompletedEventHandler AddFacebookAccountWithloginCompleted;
+        
+        /// <remarks/>
+        public event GetFacebookPageFeedCompletedEventHandler GetFacebookPageFeedCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddFacebookAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1318,6 +1323,36 @@ namespace Socioboard.Api.Facebook {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFacebookPageFeed", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GetFacebookPageFeed(string accesstoken, string facebookid) {
+            this.Invoke("GetFacebookPageFeed", new object[] {
+                        accesstoken,
+                        facebookid});
+        }
+        
+        /// <remarks/>
+        public void GetFacebookPageFeedAsync(string accesstoken, string facebookid) {
+            this.GetFacebookPageFeedAsync(accesstoken, facebookid, null);
+        }
+        
+        /// <remarks/>
+        public void GetFacebookPageFeedAsync(string accesstoken, string facebookid, object userState) {
+            if ((this.GetFacebookPageFeedOperationCompleted == null)) {
+                this.GetFacebookPageFeedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFacebookPageFeedOperationCompleted);
+            }
+            this.InvokeAsync("GetFacebookPageFeed", new object[] {
+                        accesstoken,
+                        facebookid}, this.GetFacebookPageFeedOperationCompleted, userState);
+        }
+        
+        private void OnGetFacebookPageFeedOperationCompleted(object arg) {
+            if ((this.GetFacebookPageFeedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFacebookPageFeedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -2230,6 +2265,10 @@ namespace Socioboard.Api.Facebook {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void GetFacebookPageFeedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

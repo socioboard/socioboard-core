@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Helper;
-using SocioBoard.Domain;
 using log4net;
+using Api.Socioboard.Helper;
+using Domain.Socioboard.Domain;
 
 namespace SocioBoard.Model
 {
     public class UserRefRelationRepository
     {
-        ILog logger = LogManager.GetLogger(typeof(Registration));
+        ILog logger = LogManager.GetLogger(typeof(UserRefRelationRepository));
 
         public int AddUserRefRelation(UserRefRelation userRefRelation)
         {

@@ -88,17 +88,6 @@
       <s:element name="getTwitterFeedsResponse">
         <s:complexType />
       </s:element>
-      <s:element name="getTwitterEngagement">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthTwitter" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getTwitterEngagementResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="getUserRetweets">
         <s:complexType>
           <s:sequence>
@@ -183,8 +172,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="OAuthToken" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="OAuthSecret" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowersCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowingCount" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileImageUrl" type="s:string" />
@@ -193,18 +182,6 @@
         </s:sequence>
       </s:complexType>
       <s:element name="getUserTweetsResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="gettwitterengagement">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthTwitter" />
-            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s1:guid" />
-            <s:element minOccurs="0" maxOccurs="1" name="objTwitterAccount" type="tns:TwitterAccount" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="gettwitterengagementResponse">
         <s:complexType />
       </s:element>
       <s:element name="getUserFeed">
@@ -218,16 +195,6 @@
         </s:complexType>
       </s:element>
       <s:element name="getUserFeedResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="getTwitterStats">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="twitterAccount" type="tns:TwitterAccount" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getTwitterStatsResponse">
         <s:complexType />
       </s:element>
       <s:element name="TwitterComposeMessage">
@@ -494,12 +461,6 @@
   <wsdl:message name="getTwitterFeedsSoapOut">
     <wsdl:part name="parameters" element="tns:getTwitterFeedsResponse" />
   </wsdl:message>
-  <wsdl:message name="getTwitterEngagementSoapIn">
-    <wsdl:part name="parameters" element="tns:getTwitterEngagement" />
-  </wsdl:message>
-  <wsdl:message name="getTwitterEngagementSoapOut">
-    <wsdl:part name="parameters" element="tns:getTwitterEngagementResponse" />
-  </wsdl:message>
   <wsdl:message name="getUserRetweetsSoapIn">
     <wsdl:part name="parameters" element="tns:getUserRetweets" />
   </wsdl:message>
@@ -536,23 +497,11 @@
   <wsdl:message name="getUserTweetsSoapOut">
     <wsdl:part name="parameters" element="tns:getUserTweetsResponse" />
   </wsdl:message>
-  <wsdl:message name="gettwitterengagementSoapIn">
-    <wsdl:part name="parameters" element="tns:gettwitterengagement" />
-  </wsdl:message>
-  <wsdl:message name="gettwitterengagementSoapOut">
-    <wsdl:part name="parameters" element="tns:gettwitterengagementResponse" />
-  </wsdl:message>
   <wsdl:message name="getUserFeedSoapIn">
     <wsdl:part name="parameters" element="tns:getUserFeed" />
   </wsdl:message>
   <wsdl:message name="getUserFeedSoapOut">
     <wsdl:part name="parameters" element="tns:getUserFeedResponse" />
-  </wsdl:message>
-  <wsdl:message name="getTwitterStatsSoapIn">
-    <wsdl:part name="parameters" element="tns:getTwitterStats" />
-  </wsdl:message>
-  <wsdl:message name="getTwitterStatsSoapOut">
-    <wsdl:part name="parameters" element="tns:getTwitterStatsResponse" />
   </wsdl:message>
   <wsdl:message name="TwitterComposeMessageSoapIn">
     <wsdl:part name="parameters" element="tns:TwitterComposeMessage" />
@@ -917,10 +866,6 @@
       <wsdl:input message="tns:getTwitterFeedsSoapIn" />
       <wsdl:output message="tns:getTwitterFeedsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getTwitterEngagement">
-      <wsdl:input message="tns:getTwitterEngagementSoapIn" />
-      <wsdl:output message="tns:getTwitterEngagementSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="getUserRetweets">
       <wsdl:input message="tns:getUserRetweetsSoapIn" />
       <wsdl:output message="tns:getUserRetweetsSoapOut" />
@@ -945,17 +890,9 @@
       <wsdl:input message="tns:getUserTweetsSoapIn" />
       <wsdl:output message="tns:getUserTweetsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="gettwitterengagement">
-      <wsdl:input message="tns:gettwitterengagementSoapIn" />
-      <wsdl:output message="tns:gettwitterengagementSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="getUserFeed">
       <wsdl:input message="tns:getUserFeedSoapIn" />
       <wsdl:output message="tns:getUserFeedSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getTwitterStats">
-      <wsdl:input message="tns:getTwitterStatsSoapIn" />
-      <wsdl:output message="tns:getTwitterStatsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="TwitterComposeMessage">
       <wsdl:input message="tns:TwitterComposeMessageSoapIn" />
@@ -1184,15 +1121,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getTwitterEngagement">
-      <soap:operation soapAction="http://tempuri.org/getTwitterEngagement" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getUserRetweets">
       <soap:operation soapAction="http://tempuri.org/getUserRetweets" style="document" />
       <wsdl:input>
@@ -1247,26 +1175,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="gettwitterengagement">
-      <soap:operation soapAction="http://tempuri.org/gettwitterengagement" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getUserFeed">
       <soap:operation soapAction="http://tempuri.org/getUserFeed" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getTwitterStats">
-      <soap:operation soapAction="http://tempuri.org/getTwitterStats" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1457,15 +1367,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getTwitterEngagement">
-      <soap12:operation soapAction="http://tempuri.org/getTwitterEngagement" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getUserRetweets">
       <soap12:operation soapAction="http://tempuri.org/getUserRetweets" style="document" />
       <wsdl:input>
@@ -1520,26 +1421,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="gettwitterengagement">
-      <soap12:operation soapAction="http://tempuri.org/gettwitterengagement" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getUserFeed">
       <soap12:operation soapAction="http://tempuri.org/getUserFeed" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getTwitterStats">
-      <soap12:operation soapAction="http://tempuri.org/getTwitterStats" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1970,16 +1853,16 @@
   </wsdl:binding>
   <wsdl:service name="Twitter">
     <wsdl:port name="TwitterSoap" binding="tns:TwitterSoap">
-      <soap:address location="http://localhost:6361/services/Twitter.asmx" />
+      <soap:address location="http://localhost:6361/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterSoap12" binding="tns:TwitterSoap12">
-      <soap12:address location="http://localhost:6361/services/Twitter.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterHttpGet" binding="tns:TwitterHttpGet">
-      <http:address location="http://localhost:6361/services/Twitter.asmx" />
+      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterHttpPost" binding="tns:TwitterHttpPost">
-      <http:address location="http://localhost:6361/services/Twitter.asmx" />
+      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

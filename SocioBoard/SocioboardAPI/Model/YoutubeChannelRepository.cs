@@ -26,7 +26,7 @@ namespace Api.Socioboard.Services
             }//End Using session
         }
 
-        public Domain.Socioboard.Domain.YoutubeChannel getYoutubeChannelDetailsById(string youtubeId)
+        public List<Domain.Socioboard.Domain.YoutubeChannel> getYoutubeChannelDetailsById(string youtubeId)
         {
 
             Domain.Socioboard.Domain.YoutubeChannel result = new Domain.Socioboard.Domain.YoutubeChannel();
@@ -41,16 +41,13 @@ namespace Api.Socioboard.Services
                     List<Domain.Socioboard.Domain.YoutubeChannel> objlstfb = session.CreateQuery("from YoutubeChannel where Googleplususerid = :youtubeId ")
                             .SetParameter("youtubeId", youtubeId)
                        .List<Domain.Socioboard.Domain.YoutubeChannel>().ToList<Domain.Socioboard.Domain.YoutubeChannel>();
-                    if (objlstfb.Count > 0)
-                    {
-                        result = objlstfb[0];
-                    }
-                    return result;
+
+                    return objlstfb;
                 }//End Transaction
             }//End session
         }
 
-        public Domain.Socioboard.Domain.YoutubeChannel getYoutubeChannelDetailsById(string youtubeId, Guid userid)
+        public List<Domain.Socioboard.Domain.YoutubeChannel> getYoutubeChannelDetailsById(string youtubeId, Guid userid)
         {
 
             Domain.Socioboard.Domain.YoutubeChannel result = new Domain.Socioboard.Domain.YoutubeChannel();
@@ -66,11 +63,8 @@ namespace Api.Socioboard.Services
                             .SetParameter("youtubeId", youtubeId)
                             .SetParameter("userid", userid)
                        .List<Domain.Socioboard.Domain.YoutubeChannel>().ToList<Domain.Socioboard.Domain.YoutubeChannel>();
-                    if (objlstfb.Count > 0)
-                    {
-                        result = objlstfb[0];
-                    }
-                    return result;
+
+                    return objlstfb;
                 }//End Transaction
             }//End session
         }

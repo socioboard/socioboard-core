@@ -29,10 +29,10 @@ namespace GlobusInstagramLib.App.Core
         /// <param name="count"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public InstagramResponse<User[]> GetUsersSearch(string query, string count, string accessToken)
+        public string GetUsersSearch(string query, string count, string accessToken, string clientid)
         {
             Users objUsers=new Users();
-            InstagramResponse<User[]> res = objUsers.UsersSearch(query, count, accessToken);
+            string res = objUsers.UsersSearch(query, count, accessToken, clientid);
             return res;
         }
 

@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddFacebookAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FbUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FbUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Friends" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IsActive" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacebookAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFacebookuserExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFacebookuserExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsFacebookuserExistResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFacebookAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFacebookAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteFacebookAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookAccountByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookAccountsOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookAccountsOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookAccountsOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FbUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookAccountsByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookAccountsByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFacebookAccountsByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookPageByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookPageByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFacebookPageByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookAccountDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookAccountDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFacebookAccountDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookAccounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllFacebookAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFacebookAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountFromTweetBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FriendsCount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountFromTweetBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountFromTweetBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllFacebookPageDetails">
+        <s:complexType />
+      </s:element>
+      <s:element name="AllFacebookPageDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllFacebookPageDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddFacebookAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacebookAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacebookAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistSoapIn">
+    <wsdl:part name="parameters" element="tns:IsFacebookuserExist" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistSoapOut">
+    <wsdl:part name="parameters" element="tns:IsFacebookuserExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFacebookAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFacebookAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountByUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookAccountsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookAccountsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccountsByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookPageByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookPageByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountFromTweetBoard" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountFromTweetBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:AllFacebookPageDetails" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:AllFacebookPageDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpGetIn">
+    <wsdl:part name="FbUserId" type="s:string" />
+    <wsdl:part name="FbUserName" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="Friends" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Type" type="s:string" />
+    <wsdl:part name="ProfileUrl" type="s:string" />
+    <wsdl:part name="IsActive" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsHttpGetIn">
+    <wsdl:part name="FbUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsHttpGetIn" />
+  <wsdl:message name="GetAllFacebookAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsHttpGetIn" />
+  <wsdl:message name="AllFacebookPageDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpPostIn">
+    <wsdl:part name="FbUserId" type="s:string" />
+    <wsdl:part name="FbUserName" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="Friends" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Type" type="s:string" />
+    <wsdl:part name="ProfileUrl" type="s:string" />
+    <wsdl:part name="IsActive" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFacebookuserExistHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFacebookAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookAccountsOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsHttpPostIn">
+    <wsdl:part name="FbUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookPageByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookAccountsHttpPostIn" />
+  <wsdl:message name="GetAllFacebookAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="FriendsCount" type="s:string" />
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountFromTweetBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AllFacebookPageDetailsHttpPostIn" />
+  <wsdl:message name="AllFacebookPageDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="FacebookAccountSoap">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <wsdl:input message="tns:getFacebookAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:getFacebookAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <wsdl:input message="tns:GetFacebookAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetFacebookAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <wsdl:input message="tns:IsFacebookuserExistSoapIn" />
+      <wsdl:output message="tns:IsFacebookuserExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <wsdl:input message="tns:DeleteFacebookAccountSoapIn" />
+      <wsdl:output message="tns:DeleteFacebookAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <wsdl:input message="tns:GetFacebookAccountByUserIdSoapIn" />
+      <wsdl:output message="tns:GetFacebookAccountByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <wsdl:input message="tns:getAllFacebookAccountsOfUserSoapIn" />
+      <wsdl:output message="tns:getAllFacebookAccountsOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <wsdl:input message="tns:getUserDetailsSoapIn" />
+      <wsdl:output message="tns:getUserDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookAccountsByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookPageByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllFacebookPageByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <wsdl:input message="tns:GetAllFacebookAccountDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <wsdl:input message="tns:GetAllFacebookAccountsSoapIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsSoapIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookAccountHttpGet">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <wsdl:input message="tns:getFacebookAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:getFacebookAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <wsdl:input message="tns:GetFacebookAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <wsdl:input message="tns:IsFacebookuserExistHttpGetIn" />
+      <wsdl:output message="tns:IsFacebookuserExistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <wsdl:input message="tns:DeleteFacebookAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteFacebookAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <wsdl:input message="tns:GetFacebookAccountByUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookAccountByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <wsdl:input message="tns:getAllFacebookAccountsOfUserHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookAccountsOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <wsdl:input message="tns:getUserDetailsHttpGetIn" />
+      <wsdl:output message="tns:getUserDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookAccountsByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookPageByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllFacebookPageByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <wsdl:input message="tns:GetAllFacebookAccountDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <wsdl:input message="tns:GetAllFacebookAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsHttpGetIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookAccountHttpPost">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <wsdl:input message="tns:getFacebookAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:getFacebookAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <wsdl:input message="tns:GetFacebookAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <wsdl:input message="tns:IsFacebookuserExistHttpPostIn" />
+      <wsdl:output message="tns:IsFacebookuserExistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <wsdl:input message="tns:DeleteFacebookAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteFacebookAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <wsdl:input message="tns:GetFacebookAccountByUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookAccountByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <wsdl:input message="tns:getAllFacebookAccountsOfUserHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookAccountsOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <wsdl:input message="tns:getUserDetailsHttpPostIn" />
+      <wsdl:output message="tns:getUserDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookAccountsByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllFacebookPageByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllFacebookPageByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <wsdl:input message="tns:GetAllFacebookAccountDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <wsdl:input message="tns:GetAllFacebookAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetAllFacebookAccountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <wsdl:input message="tns:AddFacebookAccountFromTweetBoardHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountFromTweetBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <wsdl:input message="tns:AllFacebookPageDetailsHttpPostIn" />
+      <wsdl:output message="tns:AllFacebookPageDetailsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacebookAccountSoap" type="tns:FacebookAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookAccount">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/getFacebookAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <soap:operation soapAction="http://tempuri.org/IsFacebookuserExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookAccountByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <soap:operation soapAction="http://tempuri.org/getUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllFacebookAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllFacebookPageByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <soap:operation soapAction="http://tempuri.org/GetAllFacebookAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetAllFacebookAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccountFromTweetBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <soap:operation soapAction="http://tempuri.org/AllFacebookPageDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookAccountSoap12" type="tns:FacebookAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/getFacebookAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <soap12:operation soapAction="http://tempuri.org/IsFacebookuserExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookAccountByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <soap12:operation soapAction="http://tempuri.org/getUserDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFacebookAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFacebookPageByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFacebookAccountDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFacebookAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccountFromTweetBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <soap12:operation soapAction="http://tempuri.org/AllFacebookPageDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookAccountHttpGet" type="tns:FacebookAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddFacebookAccount">
+      <http:operation location="/AddFacebookAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <http:operation location="/getFacebookAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <http:operation location="/GetFacebookAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <http:operation location="/IsFacebookuserExist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <http:operation location="/DeleteFacebookAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <http:operation location="/GetFacebookAccountByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <http:operation location="/getAllFacebookAccountsOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <http:operation location="/getUserDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllFacebookAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <http:operation location="/GetAllFacebookPageByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <http:operation location="/GetAllFacebookAccountDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <http:operation location="/GetAllFacebookAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <http:operation location="/AddFacebookAccountFromTweetBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <http:operation location="/AllFacebookPageDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookAccountHttpPost" type="tns:FacebookAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddFacebookAccount">
+      <http:operation location="/AddFacebookAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookAccountDetailsById">
+      <http:operation location="/getFacebookAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountDetailsById">
+      <http:operation location="/GetFacebookAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFacebookuserExist">
+      <http:operation location="/IsFacebookuserExist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFacebookAccount">
+      <http:operation location="/DeleteFacebookAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountByUserId">
+      <http:operation location="/GetFacebookAccountByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookAccountsOfUser">
+      <http:operation location="/getAllFacebookAccountsOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <http:operation location="/getUserDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllFacebookAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookPageByUserIdAndGroupId">
+      <http:operation location="/GetAllFacebookPageByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccountDetails">
+      <http:operation location="/GetAllFacebookAccountDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookAccounts">
+      <http:operation location="/GetAllFacebookAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountFromTweetBoard">
+      <http:operation location="/AddFacebookAccountFromTweetBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllFacebookPageDetails">
+      <http:operation location="/AllFacebookPageDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FacebookAccount">
+    <wsdl:port name="FacebookAccountSoap" binding="tns:FacebookAccountSoap">
+      <soap:address location="http://localhost:6361/services/FacebookAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookAccountSoap12" binding="tns:FacebookAccountSoap12">
+      <soap12:address location="http://localhost:6361/services/FacebookAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookAccountHttpGet" binding="tns:FacebookAccountHttpGet">
+      <http:address location="http://localhost:6361/services/FacebookAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookAccountHttpPost" binding="tns:FacebookAccountHttpPost">
+      <http:address location="http://localhost:6361/services/FacebookAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

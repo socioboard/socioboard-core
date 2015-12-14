@@ -1,6 +1,7 @@
 ﻿using Domain.Socioboard.Domain;
 using Newtonsoft.Json.Linq;
 using Socioboard.App_Start;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -418,7 +419,7 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.LinkedInFeed.LinkedInFeed ApiobjLinkedInFeed = new Api.LinkedInFeed.LinkedInFeed();
-            List<Domain.Socioboard.Domain.LinkedInFeed> lstLinkedInFeed = (List<Domain.Socioboard.Domain.LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds1(objGroups.UserId.ToString(), profileid, linkedinwallcount), typeof(List<Domain.Socioboard.Domain.LinkedInFeed>)));
+            List<Domain.Socioboard.MongoDomain.LinkedInFeed> lstLinkedInFeed = (List<Domain.Socioboard.MongoDomain.LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds1(objGroups.UserId.ToString(), profileid, linkedinwallcount), typeof(List<Domain.Socioboard.MongoDomain.LinkedInFeed>)));
 
             //List<Domain.Socioboard.Domain.LinkedInFeed> lstLinkedInFeed = (List<Domain.Socioboard.Domain.LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.LinkedInFeed>)));
             List<object> lstobject = new List<object>();
@@ -454,6 +455,7 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel2Partial", dictwallposts);
         //}
 
+
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LinkedinFeeds(string profileid, string load)
         {
@@ -478,7 +480,7 @@ namespace Socioboard.Controllers
             //List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> lstlinkedinFeeds = (List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedin.GetLinkedUserUpdates(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)));
 
             Api.LinkedinMessage.LinkedinMessage ApiobjLinkedinMessage = new Api.LinkedinMessage.LinkedinMessage();
-            List<Domain.Socioboard.Domain.LinkedInMessage> lstLinkedInMessage = (List<Domain.Socioboard.Domain.LinkedInMessage>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinMessage.GetLinkedInMessages(objGroups.UserId.ToString(), profileid, linkedinfeedcount), typeof(List<Domain.Socioboard.Domain.LinkedInMessage>)));
+            List<Domain.Socioboard.MongoDomain.LinkedInMessage> lstLinkedInMessage = (List<Domain.Socioboard.MongoDomain.LinkedInMessage>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinMessage.GetLinkedInMessages(objGroups.UserId.ToString(), profileid, linkedinfeedcount), typeof(List<Domain.Socioboard.MongoDomain.LinkedInMessage>)));
 
             foreach (var linkledinfeed in lstLinkedInMessage)
             {
@@ -624,57 +626,9 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult YoutubeChannelVideos(string profileid)
         {
-            //List<object> lstobject = new List<object>();
-            //Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
-            //Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
-            //Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            //Api.Youtube.Youtube ApiobjYoutube = new Api.Youtube.Youtube();
-            //string channeldetails = ApiobjYoutube.GetYoutubeChannelVideos(objGroups.UserId.ToString(), profileid);
-            //JObject obj = JObject.Parse(channeldetails);
-            //JArray array = (JArray)obj["items"];
-
-            //foreach (var item in array)
-            //{
-            //    try
-            //    {
-            //        lstobject.Add(item["snippet"]["thumbnails"]["maxres"]["url"].ToString());
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine(ex.StackTrace);
-            //    }
-            //}
-            //dictwallposts.Add("youtube", lstobject);
-            //return PartialView("_ImagePartial", dictwallposts);
-
-            object lstobject = new object();
-            List<object> lstComment = null;
-            Dictionary<string, Dictionary<object, List<object>>> dictwallposts = new Dictionary<string, Dictionary<object, List<object>>>();
-            Dictionary<object, List<object>> dic_youtube = new Dictionary<object, List<object>>();
-
-            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
-            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            Api.Youtube.Youtube ApiobjYoutube = new Api.Youtube.Youtube();
-            string channeldetails = ApiobjYoutube.GetYoutubeChannelVideos(objGroups.UserId.ToString(), profileid);
-            JObject obj = JObject.Parse(channeldetails);
-            JArray array = (JArray)obj["items"];
-
-            foreach (var item in array)
-            {
-                try
-                {
-                    lstComment = new List<object>();
-                    lstobject = (object)item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
-                    dic_youtube.Add(lstobject, lstComment);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
-
-            }
-            dictwallposts.Add("youtube", dic_youtube);
-            return PartialView("_ImagePartial", dictwallposts);
+            Api.YoutubeChannel.YoutubeChannel ApiYoutubeChannel = new Api.YoutubeChannel.YoutubeChannel();
+            List<Domain.Socioboard.MongoDomain.YouTubeFeed> lstYouTubeFeed = (List<Domain.Socioboard.MongoDomain.YouTubeFeed>)new JavaScriptSerializer().Deserialize(ApiYoutubeChannel.GetAllYoutubeVideos(profileid), typeof(List<Domain.Socioboard.MongoDomain.YouTubeFeed>));
+            return PartialView("_YouTubeFeedPartial", lstYouTubeFeed);
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
@@ -686,10 +640,10 @@ namespace Socioboard.Controllers
             string InstagramId = _FormCollection["InstagramId"];
             try
             {
-                Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
-                Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+                //Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+                //Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
                 Api.Instagram.Instagram ApiobjInstagram = new Api.Instagram.Instagram();
-                string ret = ApiobjInstagram.InstagramLikeUnLike(LikeCount, IsLike, FeedId, InstagramId, objGroups.UserId.ToString());
+                string ret = ApiobjInstagram.InstagramLikeUnLike(LikeCount, IsLike, FeedId, InstagramId, "");
                 return Content(ret);
 
             }
@@ -762,9 +716,9 @@ namespace Socioboard.Controllers
             //   Guid LdFeedId = Guid.Parse(Id);
             List<object> lstfeed = new List<object>();
             Dictionary<string, object> linkinfo = new Dictionary<string, object>();
-            List<Domain.Socioboard.Domain.LinkedInFeed> lstlinkedInfeed = new List<LinkedInFeed>();
-            lstlinkedInfeed = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Domain.Socioboard.Domain.LinkedInFeed>>(ApiobjLinkedInFeed.GetAllLinkedInFeedsOfProfileWithId(profileId, Id));
-            linkinfo.Add("linkedin", lstlinkedInfeed[0]);
+            Domain.Socioboard.MongoDomain.LinkedInFeed linkedInfeed = new Domain.Socioboard.MongoDomain.LinkedInFeed();
+            linkedInfeed = Newtonsoft.Json.JsonConvert.DeserializeObject<Domain.Socioboard.MongoDomain.LinkedInFeed>(ApiobjLinkedInFeed.GetAllLinkedInFeedsOfProfileWithId(profileId, Id));
+            linkinfo.Add("linkedin", linkedInfeed);
             return PartialView("_MailSendingPartial", linkinfo);
         }
 
@@ -1490,7 +1444,7 @@ namespace Socioboard.Controllers
             else
             {
                 id = (string)Session["InsragramIdForFeeds"];
-                instagramfeedcount = instagramfeedcount + 4;
+                instagramfeedcount = instagramfeedcount + 8;
             }
 
             object lstobject = new object();
@@ -1504,7 +1458,7 @@ namespace Socioboard.Controllers
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
 
-            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), id, instagramfeedcount.ToString(), "4"), typeof(List<Domain.Socioboard.MongoDomain.InstagramFeed>)));
+            List<Domain.Socioboard.MongoDomain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), id, instagramfeedcount.ToString(), "8"), typeof(List<Domain.Socioboard.MongoDomain.InstagramFeed>)));
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
                 lstComment = new List<object>();
@@ -1524,9 +1478,9 @@ namespace Socioboard.Controllers
         {
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
 
-            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            //Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Instagram.Instagram ApiObjInstagram = new Api.Instagram.Instagram();
-            string ret = ApiObjInstagram.AddComment(objGroups.UserId.ToString(), FeedId, Text, InstagramId);
+            string ret = ApiObjInstagram.AddComment("", FeedId, Text, InstagramId);
             if (!string.IsNullOrEmpty(ret))
             {
 

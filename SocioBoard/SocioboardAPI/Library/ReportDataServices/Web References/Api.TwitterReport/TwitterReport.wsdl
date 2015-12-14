@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getprofileids">
+        <s:complexType />
+      </s:element>
+      <s:element name="getprofileidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getprofileidsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalfollowers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalfollowersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettotalfollowersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalfollowing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalfollowingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettotalfollowingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="newfollower">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="newfollowerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newfollowerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="youfollowed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="youfollowedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="youfollowedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="directmessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="directmessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="directmessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="directmessagesent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="directmessagesentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="directmessagesentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="twittermention">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="twittermentionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="twittermentionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="twitterretweets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="twitterretweetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="twitterretweetsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clicks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clicksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clicksResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="messagesent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="messagesentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messagesentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="messagerecieved">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="messagerecievedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messagerecievedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="i" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertdataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="retrievedata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievedataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrievedataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwittersexdivision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettwittersexdivisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettwittersexdivisionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getprofileidsSoapIn">
+    <wsdl:part name="parameters" element="tns:getprofileids" />
+  </wsdl:message>
+  <wsdl:message name="getprofileidsSoapOut">
+    <wsdl:part name="parameters" element="tns:getprofileidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersSoapIn">
+    <wsdl:part name="parameters" element="tns:gettotalfollowers" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersSoapOut">
+    <wsdl:part name="parameters" element="tns:gettotalfollowersResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingSoapIn">
+    <wsdl:part name="parameters" element="tns:gettotalfollowing" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingSoapOut">
+    <wsdl:part name="parameters" element="tns:gettotalfollowingResponse" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerSoapIn">
+    <wsdl:part name="parameters" element="tns:newfollower" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerSoapOut">
+    <wsdl:part name="parameters" element="tns:newfollowerResponse" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedSoapIn">
+    <wsdl:part name="parameters" element="tns:youfollowed" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedSoapOut">
+    <wsdl:part name="parameters" element="tns:youfollowedResponse" />
+  </wsdl:message>
+  <wsdl:message name="directmessageSoapIn">
+    <wsdl:part name="parameters" element="tns:directmessage" />
+  </wsdl:message>
+  <wsdl:message name="directmessageSoapOut">
+    <wsdl:part name="parameters" element="tns:directmessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentSoapIn">
+    <wsdl:part name="parameters" element="tns:directmessagesent" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentSoapOut">
+    <wsdl:part name="parameters" element="tns:directmessagesentResponse" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionSoapIn">
+    <wsdl:part name="parameters" element="tns:twittermention" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionSoapOut">
+    <wsdl:part name="parameters" element="tns:twittermentionResponse" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsSoapIn">
+    <wsdl:part name="parameters" element="tns:twitterretweets" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsSoapOut">
+    <wsdl:part name="parameters" element="tns:twitterretweetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="clicksSoapIn">
+    <wsdl:part name="parameters" element="tns:clicks" />
+  </wsdl:message>
+  <wsdl:message name="clicksSoapOut">
+    <wsdl:part name="parameters" element="tns:clicksResponse" />
+  </wsdl:message>
+  <wsdl:message name="messagesentSoapIn">
+    <wsdl:part name="parameters" element="tns:messagesent" />
+  </wsdl:message>
+  <wsdl:message name="messagesentSoapOut">
+    <wsdl:part name="parameters" element="tns:messagesentResponse" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedSoapIn">
+    <wsdl:part name="parameters" element="tns:messagerecieved" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedSoapOut">
+    <wsdl:part name="parameters" element="tns:messagerecievedResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapIn">
+    <wsdl:part name="parameters" element="tns:insertdata" />
+  </wsdl:message>
+  <wsdl:message name="insertdataSoapOut">
+    <wsdl:part name="parameters" element="tns:insertdataResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapIn">
+    <wsdl:part name="parameters" element="tns:retrievedata" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataSoapOut">
+    <wsdl:part name="parameters" element="tns:retrievedataResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionSoapIn">
+    <wsdl:part name="parameters" element="tns:gettwittersexdivision" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionSoapOut">
+    <wsdl:part name="parameters" element="tns:gettwittersexdivisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getprofileidsHttpGetIn" />
+  <wsdl:message name="getprofileidsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessageHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="clicksHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="clicksHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="messagesentHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="messagesentHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpGetOut" />
+  <wsdl:message name="retrievedataHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getprofileidsHttpPostIn" />
+  <wsdl:message name="getprofileidsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettotalfollowingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="newfollowerHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="youfollowedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessageHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="directmessagesentHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="twittermentionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="twitterretweetsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="clicksHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="clicksHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="messagesentHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="messagesentHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="messagerecievedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="insertdataHttpPostOut" />
+  <wsdl:message name="retrievedataHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievedataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="gettwittersexdivisionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TwitterReportSoap">
+    <wsdl:operation name="getprofileids">
+      <wsdl:input message="tns:getprofileidsSoapIn" />
+      <wsdl:output message="tns:getprofileidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <wsdl:input message="tns:gettotalfollowersSoapIn" />
+      <wsdl:output message="tns:gettotalfollowersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <wsdl:input message="tns:gettotalfollowingSoapIn" />
+      <wsdl:output message="tns:gettotalfollowingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <wsdl:input message="tns:newfollowerSoapIn" />
+      <wsdl:output message="tns:newfollowerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <wsdl:input message="tns:youfollowedSoapIn" />
+      <wsdl:output message="tns:youfollowedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <wsdl:input message="tns:directmessageSoapIn" />
+      <wsdl:output message="tns:directmessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <wsdl:input message="tns:directmessagesentSoapIn" />
+      <wsdl:output message="tns:directmessagesentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <wsdl:input message="tns:twittermentionSoapIn" />
+      <wsdl:output message="tns:twittermentionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <wsdl:input message="tns:twitterretweetsSoapIn" />
+      <wsdl:output message="tns:twitterretweetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <wsdl:input message="tns:clicksSoapIn" />
+      <wsdl:output message="tns:clicksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <wsdl:input message="tns:messagesentSoapIn" />
+      <wsdl:output message="tns:messagesentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <wsdl:input message="tns:messagerecievedSoapIn" />
+      <wsdl:output message="tns:messagerecievedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataSoapIn" />
+      <wsdl:output message="tns:insertdataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataSoapIn" />
+      <wsdl:output message="tns:retrievedataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionSoapIn" />
+      <wsdl:output message="tns:gettwittersexdivisionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterReportHttpGet">
+    <wsdl:operation name="getprofileids">
+      <wsdl:input message="tns:getprofileidsHttpGetIn" />
+      <wsdl:output message="tns:getprofileidsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <wsdl:input message="tns:gettotalfollowersHttpGetIn" />
+      <wsdl:output message="tns:gettotalfollowersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <wsdl:input message="tns:gettotalfollowingHttpGetIn" />
+      <wsdl:output message="tns:gettotalfollowingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <wsdl:input message="tns:newfollowerHttpGetIn" />
+      <wsdl:output message="tns:newfollowerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <wsdl:input message="tns:youfollowedHttpGetIn" />
+      <wsdl:output message="tns:youfollowedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <wsdl:input message="tns:directmessageHttpGetIn" />
+      <wsdl:output message="tns:directmessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <wsdl:input message="tns:directmessagesentHttpGetIn" />
+      <wsdl:output message="tns:directmessagesentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <wsdl:input message="tns:twittermentionHttpGetIn" />
+      <wsdl:output message="tns:twittermentionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <wsdl:input message="tns:twitterretweetsHttpGetIn" />
+      <wsdl:output message="tns:twitterretweetsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <wsdl:input message="tns:clicksHttpGetIn" />
+      <wsdl:output message="tns:clicksHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <wsdl:input message="tns:messagesentHttpGetIn" />
+      <wsdl:output message="tns:messagesentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <wsdl:input message="tns:messagerecievedHttpGetIn" />
+      <wsdl:output message="tns:messagerecievedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpGetIn" />
+      <wsdl:output message="tns:insertdataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpGetIn" />
+      <wsdl:output message="tns:retrievedataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionHttpGetIn" />
+      <wsdl:output message="tns:gettwittersexdivisionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterReportHttpPost">
+    <wsdl:operation name="getprofileids">
+      <wsdl:input message="tns:getprofileidsHttpPostIn" />
+      <wsdl:output message="tns:getprofileidsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <wsdl:input message="tns:gettotalfollowersHttpPostIn" />
+      <wsdl:output message="tns:gettotalfollowersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <wsdl:input message="tns:gettotalfollowingHttpPostIn" />
+      <wsdl:output message="tns:gettotalfollowingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <wsdl:input message="tns:newfollowerHttpPostIn" />
+      <wsdl:output message="tns:newfollowerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <wsdl:input message="tns:youfollowedHttpPostIn" />
+      <wsdl:output message="tns:youfollowedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <wsdl:input message="tns:directmessageHttpPostIn" />
+      <wsdl:output message="tns:directmessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <wsdl:input message="tns:directmessagesentHttpPostIn" />
+      <wsdl:output message="tns:directmessagesentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <wsdl:input message="tns:twittermentionHttpPostIn" />
+      <wsdl:output message="tns:twittermentionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <wsdl:input message="tns:twitterretweetsHttpPostIn" />
+      <wsdl:output message="tns:twitterretweetsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <wsdl:input message="tns:clicksHttpPostIn" />
+      <wsdl:output message="tns:clicksHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <wsdl:input message="tns:messagesentHttpPostIn" />
+      <wsdl:output message="tns:messagesentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <wsdl:input message="tns:messagerecievedHttpPostIn" />
+      <wsdl:output message="tns:messagerecievedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <wsdl:input message="tns:insertdataHttpPostIn" />
+      <wsdl:output message="tns:insertdataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <wsdl:input message="tns:retrievedataHttpPostIn" />
+      <wsdl:output message="tns:retrievedataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <wsdl:input message="tns:gettwittersexdivisionHttpPostIn" />
+      <wsdl:output message="tns:gettwittersexdivisionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwitterReportSoap" type="tns:TwitterReportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getprofileids">
+      <soap:operation soapAction="http://tempuri.org/getprofileids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <soap:operation soapAction="http://tempuri.org/gettotalfollowers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <soap:operation soapAction="http://tempuri.org/gettotalfollowing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <soap:operation soapAction="http://tempuri.org/newfollower" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <soap:operation soapAction="http://tempuri.org/youfollowed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <soap:operation soapAction="http://tempuri.org/directmessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <soap:operation soapAction="http://tempuri.org/directmessagesent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <soap:operation soapAction="http://tempuri.org/twittermention" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <soap:operation soapAction="http://tempuri.org/twitterretweets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <soap:operation soapAction="http://tempuri.org/clicks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <soap:operation soapAction="http://tempuri.org/messagesent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <soap:operation soapAction="http://tempuri.org/messagerecieved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <soap:operation soapAction="http://tempuri.org/gettwittersexdivision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterReportSoap12" type="tns:TwitterReportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getprofileids">
+      <soap12:operation soapAction="http://tempuri.org/getprofileids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <soap12:operation soapAction="http://tempuri.org/gettotalfollowers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <soap12:operation soapAction="http://tempuri.org/gettotalfollowing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <soap12:operation soapAction="http://tempuri.org/newfollower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <soap12:operation soapAction="http://tempuri.org/youfollowed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <soap12:operation soapAction="http://tempuri.org/directmessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <soap12:operation soapAction="http://tempuri.org/directmessagesent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <soap12:operation soapAction="http://tempuri.org/twittermention" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <soap12:operation soapAction="http://tempuri.org/twitterretweets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <soap12:operation soapAction="http://tempuri.org/clicks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <soap12:operation soapAction="http://tempuri.org/messagesent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <soap12:operation soapAction="http://tempuri.org/messagerecieved" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <soap12:operation soapAction="http://tempuri.org/insertdata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <soap12:operation soapAction="http://tempuri.org/retrievedata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <soap12:operation soapAction="http://tempuri.org/gettwittersexdivision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterReportHttpGet" type="tns:TwitterReportHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getprofileids">
+      <http:operation location="/getprofileids" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <http:operation location="/gettotalfollowers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <http:operation location="/gettotalfollowing" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <http:operation location="/newfollower" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <http:operation location="/youfollowed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <http:operation location="/directmessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <http:operation location="/directmessagesent" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <http:operation location="/twittermention" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <http:operation location="/twitterretweets" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <http:operation location="/clicks" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <http:operation location="/messagesent" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <http:operation location="/messagerecieved" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <http:operation location="/gettwittersexdivision" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterReportHttpPost" type="tns:TwitterReportHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getprofileids">
+      <http:operation location="/getprofileids" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowers">
+      <http:operation location="/gettotalfollowers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalfollowing">
+      <http:operation location="/gettotalfollowing" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newfollower">
+      <http:operation location="/newfollower" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="youfollowed">
+      <http:operation location="/youfollowed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessage">
+      <http:operation location="/directmessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="directmessagesent">
+      <http:operation location="/directmessagesent" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twittermention">
+      <http:operation location="/twittermention" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="twitterretweets">
+      <http:operation location="/twitterretweets" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clicks">
+      <http:operation location="/clicks" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesent">
+      <http:operation location="/messagesent" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagerecieved">
+      <http:operation location="/messagerecieved" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertdata">
+      <http:operation location="/insertdata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="retrievedata">
+      <http:operation location="/retrievedata" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettwittersexdivision">
+      <http:operation location="/gettwittersexdivision" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwitterReport">
+    <wsdl:port name="TwitterReportSoap" binding="tns:TwitterReportSoap">
+      <soap:address location="http://localhost:6361/Services/TwitterReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterReportSoap12" binding="tns:TwitterReportSoap12">
+      <soap12:address location="http://localhost:6361/Services/TwitterReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterReportHttpGet" binding="tns:TwitterReportHttpGet">
+      <http:address location="http://localhost:6361/Services/TwitterReport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterReportHttpPost" binding="tns:TwitterReportHttpPost">
+      <http:address location="http://localhost:6361/Services/TwitterReport.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

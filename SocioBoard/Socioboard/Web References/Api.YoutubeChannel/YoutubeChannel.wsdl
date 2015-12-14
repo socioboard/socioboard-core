@@ -17,6 +17,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllYoutubeVideos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllYoutubeVideosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllYoutubeVideosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -26,11 +40,23 @@
   <wsdl:message name="GetAllYoutubeChannelByUserIdAndProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllYoutubeChannelByUserIdAndProfileIdResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllYoutubeVideos" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllYoutubeVideosResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllYoutubeChannelByUserIdAndProfileIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllYoutubeChannelByUserIdAndProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosHttpGetIn">
+    <wsdl:part name="profileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllYoutubeChannelByUserIdAndProfileIdHttpPostIn">
@@ -40,10 +66,20 @@
   <wsdl:message name="GetAllYoutubeChannelByUserIdAndProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosHttpPostIn">
+    <wsdl:part name="profileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeVideosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="YoutubeChannelSoap">
     <wsdl:operation name="GetAllYoutubeChannelByUserIdAndProfileId">
       <wsdl:input message="tns:GetAllYoutubeChannelByUserIdAndProfileIdSoapIn" />
       <wsdl:output message="tns:GetAllYoutubeChannelByUserIdAndProfileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <wsdl:input message="tns:GetAllYoutubeVideosSoapIn" />
+      <wsdl:output message="tns:GetAllYoutubeVideosSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeChannelHttpGet">
@@ -51,17 +87,34 @@
       <wsdl:input message="tns:GetAllYoutubeChannelByUserIdAndProfileIdHttpGetIn" />
       <wsdl:output message="tns:GetAllYoutubeChannelByUserIdAndProfileIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <wsdl:input message="tns:GetAllYoutubeVideosHttpGetIn" />
+      <wsdl:output message="tns:GetAllYoutubeVideosHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeChannelHttpPost">
     <wsdl:operation name="GetAllYoutubeChannelByUserIdAndProfileId">
       <wsdl:input message="tns:GetAllYoutubeChannelByUserIdAndProfileIdHttpPostIn" />
       <wsdl:output message="tns:GetAllYoutubeChannelByUserIdAndProfileIdHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <wsdl:input message="tns:GetAllYoutubeVideosHttpPostIn" />
+      <wsdl:output message="tns:GetAllYoutubeVideosHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="YoutubeChannelSoap" type="tns:YoutubeChannelSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllYoutubeChannelByUserIdAndProfileId">
       <soap:operation soapAction="http://tempuri.org/GetAllYoutubeChannelByUserIdAndProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <soap:operation soapAction="http://tempuri.org/GetAllYoutubeVideos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -81,11 +134,29 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <soap12:operation soapAction="http://tempuri.org/GetAllYoutubeVideos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="YoutubeChannelHttpGet" type="tns:YoutubeChannelHttpGet">
     <http:binding verb="GET" />
     <wsdl:operation name="GetAllYoutubeChannelByUserIdAndProfileId">
       <http:operation location="/GetAllYoutubeChannelByUserIdAndProfileId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <http:operation location="/GetAllYoutubeVideos" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -105,19 +176,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeVideos">
+      <http:operation location="/GetAllYoutubeVideos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="YoutubeChannel">
     <wsdl:port name="YoutubeChannelSoap" binding="tns:YoutubeChannelSoap">
-      <soap:address location="http://localhost:6361/services/YoutubeChannel.asmx" />
+      <soap:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelSoap12" binding="tns:YoutubeChannelSoap12">
-      <soap12:address location="http://localhost:6361/services/YoutubeChannel.asmx" />
+      <soap12:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelHttpGet" binding="tns:YoutubeChannelHttpGet">
-      <http:address location="http://localhost:6361/services/YoutubeChannel.asmx" />
+      <http:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelHttpPost" binding="tns:YoutubeChannelHttpPost">
-      <http:address location="http://localhost:6361/services/YoutubeChannel.asmx" />
+      <http:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

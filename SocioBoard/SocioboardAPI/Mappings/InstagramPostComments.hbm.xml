@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="InstagramPostComments" table="instagrampostcomments" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Profile_Id">
+      <column name="Profile_Id" />
+    </property>
+    <property name="Feed_Id">
+      <column name="Feed_Id"  />
+    </property>
+    <property name="Commented_By_Id">
+      <column name="Commented_By_Id"  />
+    </property>
+    <property name="Commented_By_Name">
+      <column name="Commented_By_Name"  />
+    </property>
+    <property name="Comment">
+      <column name="Comment"  />
+    </property>
+    <property name="Created_Time">
+      <column name="Created_Time"  />
+    </property>
+    <property name="Comment_Id">
+      <column name="Comment_Id"  />
+    </property>
+    <property name="Feed_Type">
+      <column name="Feed_Type"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

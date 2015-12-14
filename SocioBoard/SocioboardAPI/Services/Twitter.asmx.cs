@@ -502,7 +502,7 @@ namespace Api.Socioboard.Services
                     {
                     }
 
-                    var ret = twitterfeedrepo.Find<Domain.Socioboard.MongoDomain.TwitterFeed>(t => t.MessageId.Equals(objTwitterFeed.MessageId));
+                    var ret = twitterfeedrepo.Find<Domain.Socioboard.MongoDomain.TwitterFeed>(t => t.MessageId.Equals(objTwitterFeed.MessageId) && t.ProfileId.Equals(objTwitterFeed.ProfileId));
                     var task = Task.Run(async () =>
                             {
                                 return await ret;
@@ -1073,7 +1073,7 @@ namespace Api.Socioboard.Services
                     objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
 
                     #endregion
-                    Domain.Socioboard.Domain.TwitterAccount _TwitterAccount = objTwtRepo.GetUserInformation(itemTwt.UserId, itemTwt.TwitterUserId);
+                    //Domain.Socioboard.Domain.TwitterAccount _TwitterAccount = objTwtRepo.GetUserInformation(itemTwt.UserId, itemTwt.TwitterUserId);
                     //if (_TwitterAccount != null)
                     //    getTwitterStats(_TwitterAccount);
 
@@ -2038,10 +2038,10 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string TwitterComposeMessageRss(string message, string profileid, string userid)
+        public string TwitterComposeMessageRss(string message, string profileid, string rssFeedId)
         {
             string ret = "";
-            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.getUserInformation(profileid);
             oAuthTwitter OAuthTwt = new oAuthTwitter();
             OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
             OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
@@ -2049,11 +2049,18 @@ namespace Api.Socioboard.Services
             OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
             this.SetCofigDetailsForTwitter(OAuthTwt);
             Tweet twt = new Tweet();
+            MongoRepository rssfeedRepo = new MongoRepository("RssFeed");
             try
             {
                 JArray post = twt.Post_Statuses_Update(OAuthTwt, message);
-                RssFeedsRepository objrssfeed = new RssFeedsRepository();
-                objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+                //RssFeedsRepository objrssfeed = new RssFeedsRepository();
+                //objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+
+                var builders = Builders<BsonDocument>.Filter;
+                FilterDefinition<BsonDocument> filter = builders.Eq("strId", rssFeedId);
+                var update = Builders<BsonDocument>.Update.Set("Status", true);
+                rssfeedRepo.Update<Domain.Socioboard.MongoDomain.RssFeed>(update, filter);
+
                 return ret = "Messages Posted Successfully";
             }
             catch (Exception ex)
@@ -2544,6 +2551,10 @@ namespace Api.Socioboard.Services
                             {
                                 objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
                             }
+                            else 
+                            {
+                                objInboxMessagesRepository.UpdateTwitterFollowerInfo(_InboxMessages);               
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -2767,6 +2778,10 @@ namespace Api.Socioboard.Services
                         if (!objInboxMessagesRepository.checkInboxMessageFriendExists(userId, _InboxMessages.FromId, _InboxMessages.RecipientId, _InboxMessages.MessageType))
                         {
                             objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
+                        }
+                        else
+                        {
+                            objInboxMessagesRepository.UpdateTwitterFollowerInfo(_InboxMessages);
                         }
                     }
                     catch (Exception ex)

@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Api.Socioboard.Services
 {
@@ -1917,7 +1918,7 @@ namespace Api.Socioboard.Services
                     // dynamic friends = fb.Get("v2.0/me/friends");
                     dynamic friends = fb.Get("v2.0/" + profileId);
                     //fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
-                    fancountPage = Convert.ToInt16(friends["likes"].ToString());
+                    fancountPage = Convert.ToInt32(friends["likes"].ToString());
 
                 }
                 catch (Exception)
@@ -4221,23 +4222,28 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string FacebookComposeMessageRss(string message, string profileid, string userid, string title, string link)
+        public string FacebookComposeMessageRss(string message, string profileid, string title, string link, string rssFeedId)
         {
             string ret = "";
-            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
+            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid);
             FacebookClient fb = new FacebookClient();
-
+            MongoRepository rssfeedRepo = new MongoRepository("RssFeed");
             try
             {
                 fb.AccessToken = objFacebookAccount.AccessToken;
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
                 var args = new Dictionary<string, object>();
                 args["message"] = message;
-                args["description"] = title;
+                //args["description"] = title;
                 args["link"] = link;
                 ret = fb.Post("v2.0/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
-                RssFeedsRepository objrssfeed = new RssFeedsRepository();
-                objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+                //RssFeedsRepository objrssfeed = new RssFeedsRepository();
+                //objrssfeed.updateFeedStatus(Guid.Parse(userid), message);
+                var builders = Builders<BsonDocument>.Filter;
+                FilterDefinition<BsonDocument> filter = builders.Eq("strId", rssFeedId);
+                var update = Builders<BsonDocument>.Update.Set("Status", true);
+                rssfeedRepo.Update<Domain.Socioboard.MongoDomain.RssFeed>(update, filter);
+
                 return ret = "Messages Posted Successfully";
             }
             catch (Exception ex)
@@ -4566,12 +4572,237 @@ namespace Api.Socioboard.Services
                         }
                         catch { }
                         objFacebookFeedRepository.AddFacebookPagePost(_FacebookPagePost);
+
+
+
                     }
                     catch (Exception ex)
                     {
                         logger.Error(ex.Message);
                     }
+
+                   
+                }//till here
+
+
+
+                try
+                {
+                    dynamic pagination_url = fbfeeds["paging"];
+                    string next_url = string.Empty;
+                    if (pagination_url != null)
+                    {
+
+                        try
+                        {
+                            next_url = fbfeeds["paging"]["next"].ToString();
+                        }
+                        catch (Exception)
+                        {
+                            pagination_url = null;
+
+                        }
+
+                        while (pagination_url != null)
+                        {
+                            dynamic fbfeeds_next = fb.Get(next_url);
+                            try
+                            {
+                                next_url = fbfeeds_next["paging"]["next"].ToString();
+                                pagination_url = fbfeeds_next["paging"];
+                            }
+                            catch (Exception)
+                            {
+                                pagination_url = null;
+                            }
+
+                            try
+                            {
+
+                                foreach (var _feed1 in fbfeeds_next["data"])
+                                {
+
+                                    Domain.Socioboard.Domain.FacebookPagePost _FacebookPagePost = new FacebookPagePost();
+                                    _FacebookPagePost.PageId = facebookid;
+                                    try
+                                    {
+                                        _FacebookPagePost.PageName = _feed1["from"]["name"].ToString();
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        _FacebookPagePost.PostId = _feed1["id"].ToString();
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        _FacebookPagePost.Message = _feed1["message"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Message = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.Link = _feed1["link"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Link = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.Name = _feed1["name"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Name = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.Picture = _feed1["picture"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Picture = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.Description = _feed1["description"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Description = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.Type = _feed1["type"].ToString();
+                                    }
+                                    catch
+                                    {
+                                        _FacebookPagePost.Type = "";
+                                    }
+                                    try
+                                    {
+                                        _FacebookPagePost.CreatedTime = Convert.ToDateTime(_feed1["created_time"].ToString());
+                                    }
+                                    catch { }
+
+                                    try
+                                    {
+                                        dynamic feeddetails = fb.Get("v2.0/" + _FacebookPagePost.PostId + "?fields=likes.summary(true),comments.summary(true),shares");
+
+                                        try
+                                        {
+                                            _FacebookPagePost.Likes = feeddetails["likes"]["summary"]["total_count"].ToString();
+                                        }
+                                        catch
+                                        {
+                                            _FacebookPagePost.Likes = "0";
+                                        }
+                                        try
+                                        {
+                                            _FacebookPagePost.Comments = feeddetails["comments"]["summary"]["total_count"].ToString();
+                                        }
+                                        catch
+                                        {
+                                            _FacebookPagePost.Comments = "0";
+                                        }
+                                        try
+                                        {
+                                            _FacebookPagePost.Shares = feeddetails["shares"]["count"].ToString();
+                                        }
+                                        catch
+                                        {
+                                            _FacebookPagePost.Shares = "0";
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+
+                                    try
+                                    {
+                                        dynamic postdetails = fb.Get("v2.0/" + _FacebookPagePost.PostId + "/insights");
+                                        string _clicks = string.Empty;
+                                        foreach (var _details in postdetails["data"])
+                                        {
+                                            if (_details["name"].ToString() == "post_story_adds_unique")
+                                            {
+                                                try
+                                                {
+                                                    _FacebookPagePost.Talking = _details["values"][0]["value"].ToString();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    _FacebookPagePost.Talking = "0";
+                                                }
+                                            }
+                                            else if (_details["name"].ToString() == "post_impressions_unique")
+                                            {
+                                                try
+                                                {
+                                                    _FacebookPagePost.Reach = _details["values"][0]["value"].ToString();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    _FacebookPagePost.Reach = "0";
+                                                }
+                                            }
+                                            else if (_details["name"].ToString() == "post_consumptions_by_type_unique")
+                                            {
+                                                try
+                                                {
+                                                    _clicks = _details["values"][0]["value"]["other clicks"].ToString();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    _clicks = "0";
+                                                }
+                                            }
+                                        }
+                                        try
+                                        {
+                                            _FacebookPagePost.EngagedUsers = (Int32.Parse(_clicks) + Int32.Parse(_FacebookPagePost.Talking)).ToString();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            _FacebookPagePost.EngagedUsers = "0";
+                                        }
+                                    }
+                                    catch { }
+                                    objFacebookFeedRepository.AddFacebookPagePost(_FacebookPagePost);
+
+
+
+
+                                }
+
+
+
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+
+
+
+
+
+                        }
+
+                    }
                 }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
+                }
+
+
+
+
+
             }
             catch (Exception ex)
             {

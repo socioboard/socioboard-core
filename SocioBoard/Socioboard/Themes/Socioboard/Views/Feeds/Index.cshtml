@@ -313,12 +313,13 @@ function imagebind() {
     {
         debugger;
         var text = $("#" + feedid).val();
+        $("#" + feedid).val('');
         $.ajax({
             url: "../Feeds/AddInstagramComment?FeedId=" + feedid + "&Text=" + encodeURIComponent(text) + "&InstagramId=" + instagramid,
             type: "Get",
             success: function (msg)
             {
-                $("#" + feedid).val('');
+                
 
                 if (msg != "")
                 {

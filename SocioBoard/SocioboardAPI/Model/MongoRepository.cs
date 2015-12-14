@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -54,7 +55,7 @@ namespace Api.Socioboard.Model
         //       }
         //   }
 
-        public void Delete<T>(T item, BsonDocument filter) where T : class, new()
+        public void Delete<T>(FilterDefinition<T> filter) where T : class, new()
         {
             _db.GetCollection<T>(collecionName, settings).DeleteOneAsync(filter);
         }
@@ -80,7 +81,7 @@ namespace Api.Socioboard.Model
         }
         public async Task<IList<T>> FindWithRange<T>(Expression<Func<T, bool>> query, SortDefinition<T> sort, int skip, int take) where T : class, new()
         {
-            var collection = _db.GetCollection<T>(collecionName, settings).Find<T>(query).Sort(sort).Skip(skip).Limit(take);
+            var collection = _db.GetCollection<T>(collecionName, settings).Find<T>(query).Sort(sort).Limit(take).Skip(skip);
             try
             {
                 var output = await collection.ToListAsync().ConfigureAwait(false);

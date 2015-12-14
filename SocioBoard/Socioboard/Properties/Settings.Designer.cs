@@ -624,7 +624,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedinMessage.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/linkedinmessage.asmx")]
         public string Socioboard_Api_LinkedinMessage_LinkedinMessage {
             get {
                 return ((string)(this["Socioboard_Api_LinkedinMessage_LinkedinMessage"]));

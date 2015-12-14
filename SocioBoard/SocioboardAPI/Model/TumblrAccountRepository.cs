@@ -5,6 +5,7 @@ using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using System.Collections;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -230,6 +231,50 @@ namespace Api.Socioboard.Services
         }
 
 
+        public void InsertTwitterRecentDetails(Domain.Socioboard.Domain.TwitterRecentDetails data)
+        {
+            bool exists = false;
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                exists = session.Query<Domain.Socioboard.Domain.TwitterRecentDetails>()
+                              .Any(x => x.TwitterId == data.TwitterId);
+            }
+
+          using (NHibernate.ISession session = SessionFactory.GetNewSession())
+           {
+               using (NHibernate.ITransaction transaction = session.BeginTransaction())
+               {
+
+                   if (exists)
+                   {
+
+
+
+                       session.CreateQuery("Update twitterrecentdetails set AccountCreationDate = : AccountCreationDate , LastActivityDate = : LastActivityDate , LastFeed = : LastFeed , FeedId = : FeedId , FeedRetweetCount = : FeedRetweetCount , FeedFavoriteCount = : FeedFavoriteCount where TwitterId = : TwitterId")
+                           .SetParameter("AccountCreationDate", data.AccountCreationDate)
+                           .SetParameter("LastActivityDate", data.LastActivityDate)
+                           .SetParameter("LastFeed", data.LastFeed)
+                           .SetParameter("FeedId", data.FeedId)
+                           .SetParameter("FeedRetweetCount", data.FeedRetweetCount)
+                           .SetParameter("FeedFavoriteCount", data.FeedFavoriteCount)
+                           .ExecuteUpdate();
+                       transaction.Commit();
+                       
+                   }
+
+                   else
+                   {
+
+                       session.Save(data);
+                       transaction.Commit();
+
+
+                   }
+               }
+        }
+        }
+
         public ArrayList getAllTumblrAccounts()
         {
             //Creates a database connection and opens up a session
@@ -252,7 +297,30 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
+        public int UpdateTumblrAccount(Domain.Socioboard.Domain.TumblrAccount _TumblrAccount, string tumblrUserName)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i= session.CreateQuery("Update tumblraccount set tblrProfilePicUrl=:TumblrProfilePicUrl, tblrUserName =:TumblrUserName where tblrUserName =:TumblrUserNameold")
+                            .SetParameter("TumblrUserName", _TumblrAccount.tblrUserName)
+                            .SetParameter("TumblrProfilePicUrl", _TumblrAccount.tblrProfilePicUrl)
+                            .SetParameter("TumblrUserNameold",tumblrUserName)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
 
     }
 }

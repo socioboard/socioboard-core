@@ -74,6 +74,7 @@
     <Compile Include="Domain\Admin.cs" />
     <Compile Include="Domain\Ads.cs" />
     <Compile Include="Domain\Affiliates.cs" />
+    <Compile Include="Domain\AnalyticsGraphViewModel.cs" />
     <Compile Include="Domain\ArchiveMessage.cs" />
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Domain\CompanyProfiles.cs" />
     <Compile Include="Domain\CompanySocialProfiles.cs" />
     <Compile Include="Domain\Coupon.cs" />
+    <Compile Include="Domain\dailymotionpost.cs" />
     <Compile Include="Domain\DiscoverySearch.cs" />
     <Compile Include="Domain\Drafts.cs" />
     <Compile Include="Domain\DropboxAccount.cs" />
@@ -90,10 +92,19 @@
     <Compile Include="Domain\FacebookFeed.cs" />
     <Compile Include="Domain\FacebookGroup.cs" />
     <Compile Include="Domain\FacebookGroupData.cs" />
+    <Compile Include="Domain\FacebookGroupReport_15.cs" />
+    <Compile Include="Domain\FacebookGroupReport_30.cs" />
+    <Compile Include="Domain\FacebookGroupReport_60.cs" />
+    <Compile Include="Domain\FacebookGroupReport_90.cs" />
     <Compile Include="Domain\FacebookInsightPostStats.cs" />
     <Compile Include="Domain\FacebookInsightStats.cs" />
     <Compile Include="Domain\FacebookMessage.cs" />
     <Compile Include="Domain\FacebookPagePost.cs" />
+    <Compile Include="Domain\FacebookReport.cs" />
+    <Compile Include="Domain\FacebookReport_15.cs" />
+    <Compile Include="Domain\FacebookReport_30.cs" />
+    <Compile Include="Domain\FacebookReport_60.cs" />
+    <Compile Include="Domain\FacebookReport_90.cs" />
     <Compile Include="Domain\FacebookStats.cs" />
     <Compile Include="Domain\FbPageComment.cs" />
     <Compile Include="Domain\FbPageLiker.cs" />
@@ -103,7 +114,10 @@
     <Compile Include="Domain\FBTwitterFeeds.cs" />
     <Compile Include="Domain\FeedSentimentalAnalysis.cs" />
     <Compile Include="Domain\GoogleAnalyticsAccount.cs" />
+    <Compile Include="Domain\GoogleAnalyticsCityPageViews.cs" />
+    <Compile Include="Domain\GoogleAnalyticsReport.cs" />
     <Compile Include="Domain\GoogleAnalyticsStats.cs" />
+    <Compile Include="Domain\GoogleAnalyticsViewModel.cs" />
     <Compile Include="Domain\GooglePlusAccount.cs" />
     <Compile Include="Domain\GooglePlusActivities.cs" />
     <Compile Include="Domain\GoogleplusComments.cs" />
@@ -144,12 +158,16 @@
     <Compile Include="Domain\InstagramAccount.cs" />
     <Compile Include="Domain\InstagramComment.cs" />
     <Compile Include="Domain\InstagramFeed.cs" />
+    <Compile Include="Domain\InstagramIds.cs" />
     <Compile Include="Domain\InstagramPostComments.cs" />
     <Compile Include="Domain\InstagramPostLikes.cs" />
+    <Compile Include="Domain\InstagramReport.cs" />
     <Compile Include="Domain\InstagramSelfFeed.cs" />
     <Compile Include="Domain\InstagramUserDetails.cs" />
     <Compile Include="Domain\Invitation.cs" />
     <Compile Include="Domain\IPackageRepository.cs" />
+    <Compile Include="Domain\IRssFeedsRepository.cs" />
+    <Compile Include="Domain\IRssReader.cs" />
     <Compile Include="Domain\IScheduledMessageRepository.cs" />
     <Compile Include="Domain\ISocialProfilesRepository.cs" />
     <Compile Include="Domain\ISocialSite.cs" />
@@ -185,6 +203,7 @@
     <Compile Include="Domain\NewsLetter.cs" />
     <Compile Include="Domain\Package.cs" />
     <Compile Include="Domain\PaymentTransaction.cs" />
+    <Compile Include="Domain\Paypaltransactions.cs" />
     <Compile Include="Domain\ProjectDetails.cs" />
     <Compile Include="Domain\ReplyMessage.cs" />
     <Compile Include="Domain\ReturnData.cs" />
@@ -197,6 +216,11 @@
     <Compile Include="Domain\Team.cs" />
     <Compile Include="Domain\TeamMemberProfile.cs" />
     <Compile Include="Domain\TicketAssigneeStatus.cs" />
+    <Compile Include="Domain\TopFiveFans.cs" />
+    <Compile Include="Domain\TopFiveFans_15.cs" />
+    <Compile Include="Domain\TopFiveFans_30.cs" />
+    <Compile Include="Domain\TopFiveFans_60.cs" />
+    <Compile Include="Domain\TopFiveFans_90.cs" />
     <Compile Include="Domain\TumblerData.cs" />
     <Compile Include="Domain\TumblrAccount.cs" />
     <Compile Include="Domain\TumblrFeed.cs" />
@@ -214,8 +238,12 @@
     <Compile Include="Domain\TwitterStatsReport.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserActivation.cs" />
+    <Compile Include="Domain\Userfacebook.cs" />
     <Compile Include="Domain\UserPackageRelation.cs" />
     <Compile Include="Domain\UserRefRelation.cs" />
+    <Compile Include="Domain\WordpressAccount.cs" />
+    <Compile Include="Domain\WordpressFeeds.cs" />
+    <Compile Include="Domain\WordpressSites.cs" />
     <Compile Include="Domain\YoutubeAccount.cs" />
     <Compile Include="Domain\YoutubeChannel.cs" />
     <Compile Include="Factory\SocialSiteAccountFactory.cs" />
@@ -227,9 +255,14 @@
     <Compile Include="MongoDomain\GooglePlusFeed.cs" />
     <Compile Include="MongoDomain\InstagramComment.cs" />
     <Compile Include="MongoDomain\InstagramFeed.cs" />
+    <Compile Include="MongoDomain\LinkedInFeed.cs" />
+    <Compile Include="MongoDomain\LinkedInMessage.cs" />
+    <Compile Include="MongoDomain\Rss.cs" />
+    <Compile Include="MongoDomain\RssFeed.cs" />
     <Compile Include="MongoDomain\TumblrFeed.cs" />
     <Compile Include="MongoDomain\TwitterFeed.cs" />
     <Compile Include="MongoDomain\TwitterMessage.cs" />
+    <Compile Include="MongoDomain\YouTubeFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

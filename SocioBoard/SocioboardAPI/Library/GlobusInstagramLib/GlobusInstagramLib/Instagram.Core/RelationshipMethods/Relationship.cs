@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 
 namespace GlobusInstagramLib.Instagram.Core.RelationshipMethods
 {
-    class Relationship
+    public class Relationship
     {
         oAuthInstagram objoAuthIns = new oAuthInstagram();
         #region relationships
@@ -142,6 +142,50 @@ namespace GlobusInstagramLib.Instagram.Core.RelationshipMethods
             InstagramResponse<Relation> res = Base.DeserializeObject<InstagramResponse<Relation>>(json);
             return res;
         }
+
+        public string FollowPost(string followingid, string accessToken)
+        {
+            string url = "https://api.instagram.com/v1/users/" + followingid + "/relationship?access_token=" + accessToken;
+            NameValueCollection post = new NameValueCollection
+                                       {
+                                               {"action","follow"},
+                                               {"access_token", accessToken}
+                                       };
+            string json = objoAuthIns.RequestPostToUrl(url, post, null);
+            if (string.IsNullOrEmpty(json))
+                return "";
+            return json;
+        }
+        public string UnfollowPost(string followingid, string accessToken)
+        {
+            string url = "https://api.instagram.com/v1/users/" + followingid + "/relationship?access_token=" + accessToken;
+            NameValueCollection post = new NameValueCollection
+                                       {
+                                               {"action","unfollow"},
+                                               {"access_token", accessToken}
+                                       };
+            string json = objoAuthIns.RequestPostToUrl(url, post, null);
+            if (string.IsNullOrEmpty(json))
+                return "";
+
+            return json;
+        }
+        public string BlockUserPost(string followingid, string accessToken)
+        {
+            string url = "https://api.instagram.com/v1/users/" + followingid + "/relationship?access_token=" + accessToken;
+            NameValueCollection post = new NameValueCollection
+                                       {
+                                               {"action","block"},
+                                               {"access_token", accessToken}
+                                       };
+            string json = objoAuthIns.RequestPostToUrl(url, post, null);
+            if (string.IsNullOrEmpty(json))
+                return "";
+                       
+            return json;
+        }
+
+
         #endregion
 
     }

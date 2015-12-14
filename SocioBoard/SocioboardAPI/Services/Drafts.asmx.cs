@@ -116,12 +116,10 @@ namespace Api.Socioboard.Services
         {
             try
             {
-                
-                Domain.Socioboard.Domain.Drafts objDrafts = new Domain.Socioboard.Domain.Drafts();
-
+                           
                 Guid DraftId = Guid.Parse(Id);
 
-                int isUpdated = objDraftsRepository.DeleteDrafts(objDrafts);
+                int isUpdated = objDraftsRepository.DeleteDrafts(DraftId);
                 if (isUpdated > 0)
                 {
                     return "Success";

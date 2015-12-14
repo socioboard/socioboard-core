@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FacebookReport" table="facebookreport" lazy="false">  
+
+<id name="Id" column="Id" >
+			<generator class="guid"/>
+		</id>
+  
+    	<property name="likes_15" >
+			<column name="likes_15"/>
+		</property>
+    	<property name="likes_30" >
+			<column name="likes_30"/>
+		</property>
+    	<property name="likes_60" >
+			<column name="likes_60"/>
+		</property>
+    	<property name="likes_90" >
+			<column name="likes_90"/>
+		</property>
+    	<property name="perday_likes_90" >
+			<column name="perday_likes_90"/>
+		</property>
+    
+  
+    	<property name="unlikes_15" >
+			<column name="unlikes_15"/>
+		</property>
+   	<property name="unlikes_30" >
+			<column name="unlikes_30"/>
+		</property>
+    	<property name="unlikes_60" >
+			<column name="unlikes_60"/>
+		</property>
+    	<property name="unlikes_90" >
+			<column name="unlikes_90"/>
+		</property>
+    	<property name="perday_unlikes_90" >
+			<column name="perday_unlikes_90"/>
+		</property>
+    
+	  <property name="impression_15" >
+			<column name="impression_15"/>
+		</property>
+    	<property name="impression_30" >
+			<column name="impression_30"/>
+		</property>
+    	<property name="impression_60" >
+			<column name="impression_60"/>
+		</property>
+    	<property name="impression_90" >
+			<column name="impression_90"/>
+		</property>
+    	<property name="perday_impression_90" >
+			<column name="perday_impression_90"/>
+		</property>
+    
+
+    <property name="impressionbyloc_15" >
+			<column name="impressionbyloc_15"/>
+		</property>
+    	<property name="impressionbyloc_30" >
+			<column name="impressionbyloc_30"/>
+		</property>
+    	<property name="impressionbyloc_60" >
+			<column name="impressionbyloc_60"/>
+		</property>
+    	<property name="impressionbyloc_90" >
+			<column name="impressionbyloc_90"/>
+		</property>
+    	<property name="perday_impressionbyloc_90" >
+			<column name="perday_impressionbyloc_90"/>
+		</property>
+    
+
+  <property name="impressionbyday_15" >
+			<column name="impressionbyday_15"/>
+		</property>
+    	<property name="impressionbyday_30" >
+			<column name="impressionbyday_30"/>
+		</property>
+    	<property name="impressionbyday_60" >
+			<column name="impressionbyday_60"/>
+		</property>
+    	<property name="impressionbyday_90" >
+			<column name="impressionbyday_90"/>
+		</property>
+    	<property name="perday_impressionbyday_90" >
+			<column name="perday_impressionbyday_90"/>
+		</property>
+    
+
+<property name="impressionbyage_15" >
+			<column name="impressionbyage_15"/>
+		</property>
+    	<property name="impressionbyage_30" >
+			<column name="impressionbyage_30"/>
+		</property>
+    	<property name="impressionbyage_60" >
+			<column name="impressionbyage_60"/>
+		</property>
+    	<property name="impressionbyage_90" >
+			<column name="impressionbyage_90"/>
+		</property>
+    	<property name="perday_impressionbyage_90" >
+			<column name="perday_impressionbyage_90"/>
+		</property>
+    
+<property name="impressionbygender_15" >
+			<column name="impressionbygender_15"/>
+		</property>
+    	<property name="impressionbygender_30" >
+			<column name="impressionbygender_30"/>
+		</property>
+    	<property name="impressionbygender_60" >
+			<column name="impressionbygender_60"/>
+		</property>
+    	<property name="impressionbygender_90" >
+			<column name="impressionbygender_90"/>
+		</property>
+    	<property name="perday_impressionbygender_90" >
+			<column name="perday_impressionbygender_90"/>
+		</property>
+      
+<property name="sharing_15" >
+			<column name="sharing_15"/>
+		</property>
+    	<property name="sharing_30" >
+			<column name="sharing_30"/>
+		</property>
+    	<property name="sharing_60" >
+			<column name="sharing_60"/>
+		</property>
+    	<property name="sharing_90" >
+			<column name="sharing_90"/>
+		</property>
+    	<property name="perday_sharing_90" >
+			<column name="perday_sharing_90"/>
+		</property>
+    
+    	<property name="fan" >
+			<column name="fan"/>
+		</property>
+   	<property name="pagepost" >
+			<column name="pagepost"/>
+		</property>
+    	<property name="mention" >
+			<column name="mention"/>
+		</property>
+    	<property name="checkin" >
+			<column name="checkin"/>
+		</property>
+   	<property name="question" >
+			<column name="question"/>
+		</property>
+   	<property name="coupon" >
+			<column name="coupon"/>
+		</property>
+   	<property name="userpost" >
+			<column name="userpost"/>
+		</property>
+   	<property name="other" >
+			<column name="other"/>
+		</property>
+   	<property name="Event" >
+			<column name="Event"/>
+		</property>
+   
+    	<property name="organic" >
+			<column name="organic"/>
+		</property>
+   	<property name="viral" >
+			<column name="viral"/>
+		</property>
+   	<property name="paid" >
+			<column name="paid"/>
+		</property>
+   
+
+</class>
+</hibernate-mapping>

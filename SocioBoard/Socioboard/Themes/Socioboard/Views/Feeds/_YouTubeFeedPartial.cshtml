@@ -1,0 +1,87 @@
+<style>
+    #youtubefeed .col-md-3 {
+        padding: 2px;
+    }
+
+    #youtubefeed .yt-content {
+        background: #f8f8f8 none repeat scroll 0 0;
+        box-shadow: 1px 1px 3px;
+        padding: 5px;
+    }
+
+    #youtubefeed label, #youtubefeed a {
+        cursor: pointer;
+    }
+
+        #youtubefeed label:hover, #youtubefeed a:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+</style>
+
+@using Socioboard.Helper;
+@{
+    List<Domain.Socioboard.MongoDomain.YouTubeFeed> lstYouTubeFeed = (List<Domain.Socioboard.MongoDomain.YouTubeFeed>)Model;
+    System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
+    string format = "yyyy/MM/dd HH:mm:ss";
+}
+@foreach (Domain.Socioboard.MongoDomain.YouTubeFeed item in lstYouTubeFeed)
+{
+    string title = string.Empty;
+    if (item.Title.Length > 25)
+    {
+        title = item.Title.Substring(0, 24) + "..";
+    }
+    else
+    {
+        title = item.Title;
+    }
+    <div class="col-md-3">
+        <div class="yt-content">
+            <a href="javascript:;" onclick="ytvideo('@item.VideoId')" data-toggle="modal" data-target="#profileModal" channel="@item.ChannelName" description="@item.Description" viewcount="@item.viewCount" likecount="@item.likeCount" dislikecount="@item.dislikeCount" favoritecount="@item.favoriteCount" commentcount="@item.commentCount" tl="@item.Title" id="video-details">
+                <img src="@item.Thumbnail" class="img-responsive" />
+                <label class="control-label" style="margin-top:1%;" title="@item.Title">
+                    @title
+                </label>
+            </a><br />
+            <span> <small>by</small> <strong> @item.ChannelName </strong></span><br />
+            <small> @item.viewCount views </small> - <small> @DateTime.ParseExact(item.PublishTime, format, provider).CalculateTimeDiff() </small>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                <h4 class="modal-title" id="yt_model"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe id="popupimagesyt" class="embed-responsive-item" src=""></iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function ytvideo(check) {
+        
+        var channel=$("#video-details").attr("channel");
+        var description=$("#video-details").attr("description");
+        var viewcount=$("#video-details").attr("viewcount");
+        var likecount=$("#video-details").attr("likecount");
+        var dislikecount=$("#video-details").attr("dislikecount");
+        var favoritecount=$("#video-details").attr("favoritecount");
+        var commentcount=$("#video-details").attr("commentcount");
+        var tl=$("#video-details").attr("tl");
+       $("#yt_model").html(tl);
+
+        $("#popupimagesyt").attr('src', 'https://www.youtube.com/embed/' + check);
+
+
+    };
+</script>

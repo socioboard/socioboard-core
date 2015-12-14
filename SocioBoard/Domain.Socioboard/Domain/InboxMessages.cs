@@ -25,5 +25,7 @@ namespace Domain.Socioboard.Domain
         public string FollowerCount { get; set; }
         public string FollowingCount { get; set; }
         public int Status { get; set; }
+        public double Positive { get; set; }
+        public double Negative { get; set; }
     }
 }

@@ -5,12 +5,46 @@ using System.Text;
 using GlobusGooglePlusLib.App.Core;
 using System.Configuration;
 using System.Data;
+using System.Net;
+using System.IO;
 
 namespace GlobusGooglePlusLib.Authentication
 {
+       
+
     public class oAuthTokenGa
     {
         oAuthToken objoAuth = new oAuthToken();
+        public enum Method { GET, POST, DELETE };
+        private string _consumerKey = string.Empty;
+        private string _consumerSecret = string.Empty;
+        private string _redirectUri = string.Empty;
+        public string ConsumerKey
+        {
+            get
+            {
+                return _consumerKey;
+            }
+            set { _consumerKey = value; }
+        }
+
+        public string ConsumerSecret
+        {
+            get
+            {
+                return _consumerSecret;
+            }
+            set { _consumerSecret = value; }
+        }
+
+        public string RedirectUri
+        {
+            get 
+            {
+                return _redirectUri;
+            }
+            set { _redirectUri = value; }
+        }
 
         /// <summary>
         ///  To get authentication Link
@@ -31,7 +65,7 @@ namespace GlobusGooglePlusLib.Authentication
         /// <returns></returns>
         public string GetRefreshToken(string code)
         {
-            string postData = "code=" + code + "&client_id=" + ConfigurationManager.AppSettings["GaClientId"] + "&client_secret=" + ConfigurationManager.AppSettings["GaClientSecretKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["GaRedirectUrl"] + "&grant_type=authorization_code";
+            string postData = "code=" + code + "&client_id=" + _consumerKey + "&client_secret=" + _consumerSecret + "&redirect_uri=" + _redirectUri + "&grant_type=authorization_code";
             string result = objoAuth.WebRequest(GlobusGooglePlusLib.Authentication.oAuthToken.Method.POST, Globals.strRefreshToken, postData);
             return result;
         }
@@ -43,7 +77,7 @@ namespace GlobusGooglePlusLib.Authentication
         /// <returns></returns>
         public string GetAccessToken(string refreshToken)
         {
-            string postData = "refresh_token=" + refreshToken + "&client_id=" + ConfigurationManager.AppSettings["GaClientId"] + "&client_secret=" + ConfigurationManager.AppSettings["GaClientSecretKey"] + "&grant_type=refresh_token";
+            string postData = "refresh_token=" + refreshToken + "&client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&client_secret=" + ConfigurationManager.AppSettings["YtconsumerSecret"] + "&grant_type=refresh_token";
             string[] header = { "token_type", "expires_in" };
             string[] val = { "Bearer", "3600" };
             Uri path = new Uri(Globals.strRefreshToken);
@@ -52,7 +86,50 @@ namespace GlobusGooglePlusLib.Authentication
             return response;
         }
 
-      
+        public string RevokeToken(String token)
+        {
+            string Token = string.Empty;
+            string Url = "https://accounts.google.com/o/oauth2/revoke?token=" + token;
+            string[] header = { "token_type", "expires_in" };
+            string[] val = { "Bearer", "3600" };
+            Token = WebRequestHeader(new Uri(Url), header, val);
+
+            return Token;
+        }
+
+        public string WebRequestHeader(Uri url, string[] HeaderName, string[] Value)
+        {
+            HttpWebRequest gRequest;
+            HttpWebResponse gResponse;
+            gRequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+            gRequest.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.4) Gecko/2008102920 Firefox/3.0.4";
+            gRequest.CookieContainer = new CookieContainer();
+            gRequest.Method = "GET";
+
+            for (int i = 0; i < HeaderName.Length; i++)
+            {
+                gRequest.Headers.Add(HeaderName[i], Value[i]);
+            }
+
+
+            gResponse = (HttpWebResponse)gRequest.GetResponse();
+            Stream getstream = gResponse.GetResponseStream();
+            StreamReader readStream = new StreamReader(getstream);
+
+
+            //get all the cookies from the current request and add them to the response object cookies
+            gResponse.Cookies = gRequest.CookieContainer.GetCookies(gRequest.RequestUri);
+            //check if response object has any cookies or not
+
+
+            StreamReader reader = new StreamReader(gResponse.GetResponseStream());
+            string responseString = reader.ReadToEnd();
+            reader.Close();
+            //Console.Write("Response String:" + responseString);
+            return responseString;
+
+
+        }
 
 
     }

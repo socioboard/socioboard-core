@@ -31,5 +31,7 @@ namespace Domain.Socioboard.MongoDomain
         public string ImageUrl { get; set; }
         public string FeedUrl { get; set; }
         public string FromId { get; set; }
+        public string Type { get; set; }
+        public string VideoUrl { get; set; }
     }
 }

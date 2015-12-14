@@ -22,7 +22,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
           <s:element minOccurs="1" maxOccurs="1" name="AssignTaskTo" type="s1:guid" />
           <s:element minOccurs="1" maxOccurs="1" name="TaskStatus" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="AssignDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssignDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="CompletionDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="ReadStatus" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="TaskMessageDate" type="s:dateTime" />
@@ -183,7 +183,11 @@
         </s:complexType>
       </s:element>
       <s:element name="AddNewTaskWithGroupForAppsResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddNewTaskWithGroupForAppsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="ChangeTaskStatus">
         <s:complexType>
@@ -449,7 +453,9 @@
     <wsdl:part name="comment" type="s:string" />
     <wsdl:part name="groupid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewTaskWithGroupForAppsHttpGetOut" />
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="ChangeTaskStatusHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="TaskId" type="s:string" />
@@ -554,7 +560,9 @@
     <wsdl:part name="comment" type="s:string" />
     <wsdl:part name="groupid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewTaskWithGroupForAppsHttpPostOut" />
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="ChangeTaskStatusHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="TaskId" type="s:string" />
@@ -1164,7 +1172,9 @@
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <http:operation location="/ChangeTaskStatus" />
@@ -1289,7 +1299,9 @@
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <http:operation location="/ChangeTaskStatus" />
@@ -1348,16 +1360,16 @@
   </wsdl:binding>
   <wsdl:service name="Tasks">
     <wsdl:port name="TasksSoap" binding="tns:TasksSoap">
-      <soap:address location="http://localhost:6361/services/Tasks.asmx" />
+      <soap:address location="http://localhost:6361/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
-      <soap12:address location="http://localhost:6361/services/Tasks.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpGet" binding="tns:TasksHttpGet">
-      <http:address location="http://localhost:6361/services/Tasks.asmx" />
+      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpPost" binding="tns:TasksHttpPost">
-      <http:address location="http://localhost:6361/services/Tasks.asmx" />
+      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

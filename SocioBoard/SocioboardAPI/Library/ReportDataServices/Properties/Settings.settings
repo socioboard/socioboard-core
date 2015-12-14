@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ReportDataServices.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ReportDataServices_Api_FacebookAccount_FacebookAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/services/FacebookAccount.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_FacebookReport_FacebookReport" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookReport.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_InstagramReports_InstagramReports" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/InstagramReports.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Instagram.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_TwitterReport_TwitterReport" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterReport.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_GroupReports_GroupReports" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/GroupReports.asmx</Value>
+    </Setting>
+    <Setting Name="ReportDataServices_Api_FacebookGroupReport_FacebookGroupReport" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookGroupReport.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

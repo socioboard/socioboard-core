@@ -71,6 +71,12 @@ namespace Api.Socioboard.Services
                 pass = ConfigurationManager.AppSettings["GendgridPassword"];
                 objMailSenderFactory = new MailSenderFactory(MailSendingType.Sendgrid);
             }
+            else if (mailtype == "Zoho")
+            {
+                usernameSend = ConfigurationManager.AppSettings["ZohoUserName"];
+                pass = ConfigurationManager.AppSettings["ZohoPassword"];
+                objMailSenderFactory = new MailSenderFactory(MailSendingType.Zoho);
+            }
             return objMailSenderFactory;
         }
 

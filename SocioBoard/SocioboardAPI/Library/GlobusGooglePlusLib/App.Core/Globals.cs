@@ -9,6 +9,7 @@ namespace GlobusGooglePlusLib.App.Core
     {
         public static string strAuthentication = "https://accounts.google.com/o/oauth2/auth";
         public static string strRefreshToken = "https://accounts.google.com/o/oauth2/token";
+        public static string strRefreshTokenGPlus = "https://www.googleapis.com/oauth2/v4/token";
         public static string strUserInfo = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
         public static string strRevokeToken = "https://accounts.google.com/o/oauth2/revoke?token=";
 
@@ -41,8 +42,8 @@ namespace GlobusGooglePlusLib.App.Core
         #endregion
 
         #region Google Analytics
-        public static string strgetGaAccounts = "https://www.googleapis.com/analytics/v2.4/management/accounts/";
-        public static string strGetGaAnalytics = "https://www.googleapis.com/analytics/v2.4/data?ids=ga:";
+        public static string strgetGaAccounts = "https://www.googleapis.com/analytics/v3/management/accounts/";
+        public static string strGetGaAnalytics = "https://www.googleapis.com/analytics/v3/data/ga?ids=ga:";
         #endregion
 
 

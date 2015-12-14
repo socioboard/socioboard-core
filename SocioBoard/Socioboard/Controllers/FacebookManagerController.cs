@@ -185,6 +185,7 @@ namespace Socioboard.Controllers
 
         public ActionResult AuthenticateFacebook(string op)
         {
+            Session["fblogin"] = null;
             string facebookurl = "../index/index";
             if (!string.IsNullOrEmpty(op))
             {
@@ -229,6 +230,7 @@ namespace Socioboard.Controllers
             }
             else
             {
+                Session["addfbaccount"] = "true";
                 try
                 {
                     try
