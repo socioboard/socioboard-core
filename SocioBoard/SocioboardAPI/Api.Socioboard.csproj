@@ -776,7 +776,6 @@
     <Content Include="index.html" />
     <Content Include="Layouts\Mails\FriendInvitation.html" />
     <Content Include="Layouts\Mails\GroupInvitation.html" />
-    <Content Include="Layouts\Mails\GroupInvitation1.html" />
     <Content Include="Layouts\Mails\Invitationmailer_template.html" />
     <Content Include="lib\Antlr3.Runtime.dll" />
     <Content Include="lib\CodeScales.Http.dll" />
