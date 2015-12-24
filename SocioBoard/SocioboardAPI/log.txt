@@ -3547,3 +3547,27 @@ ERROR2015-12-23 03:34:51 Class:Api.Socioboard.Global Method:Application_BeginReq
 Parameter name: startIndex
 ERROR2015-12-23 03:34:51 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
    at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:34 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:34 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:35 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:35 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
+ERROR2015-12-24 12:52:36 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 79  – startIndex cannot be larger than length of string.
+Parameter name: startIndex
+ERROR2015-12-24 12:52:36 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 80  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in c:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 74
