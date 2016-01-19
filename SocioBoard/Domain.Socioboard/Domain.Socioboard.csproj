@@ -210,6 +210,12 @@
     <Compile Include="Domain\RssFeeds.cs" />
     <Compile Include="Domain\RssReader.cs" />
     <Compile Include="Domain\ScheduledMessage.cs" />
+    <Compile Include="Domain\Shareathon.cs" />
+    <Compile Include="Domain\ShareathonGroup.cs" />
+    <Compile Include="Domain\ShareathonGroupViewModel.cs" />
+    <Compile Include="Domain\ShareathonViewModel.cs" />
+    <Compile Include="Domain\SharethonGroupPost.cs" />
+    <Compile Include="Domain\SharethonPost.cs" />
     <Compile Include="Domain\SocialProfile.cs" />
     <Compile Include="Domain\TaskComment.cs" />
     <Compile Include="Domain\Tasks.cs" />

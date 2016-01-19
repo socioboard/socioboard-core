@@ -1,0 +1,270 @@
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+   Layout = "~/Themes/" + path + "/Views/Shared/_Site.cshtml";
+}
+@*<link href="~/Themes/Socioboard/Contents/css/select2.min.css" rel="stylesheet" />*@
+<link href="~/Themes/Socioboard/Contents/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Shareathon</h1>
+        </div>
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="todo-content">
+                        <div class="portlet light">
+                            <!-- PROJECT HEAD -->
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-bar-chart font-green-sharp hide"></i>
+                                    <span class="caption-helper">POST:</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">Feeds</span>
+                                </div>
+                            </div>
+                            <!-- end PROJECT HEAD -->
+                            <div class="portlet-body">
+                                @{int isacc = 0; }
+                                <form action="/Shareathon/GroupCreate" method="post" id="ShareathonGroupForm" class="">
+
+                                    <input type="hidden" name="Userid" value="@ViewBag.UserId" />
+                                    <!-- TASK HEAD -->
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label>Selects any A/c</label>
+                                            <select name="Facebookaccountid" id="Facebookaccountid" class="form-control" onchange="getfbgroup(this);">
+                                                <option value="" id="">-----------</option>
+                                                @if (ViewBag.FbAccounts != null)
+                                                {
+                                                    foreach (var item in ViewBag.FbAccounts)
+                                                    {
+
+                                                        <option value="@item.Id" id="@item.AccessToken">@item.FbUserName</option>
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    isacc = 1;
+                                                    <option>Select facebook account</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group" style="display:none;" id="fbgrpdiv">
+                                            <label class="control-label">Selects any Group</label>
+                                            @*<select class="js-example-responsive" id="fbgrp" multiple="multiple" name="Facebookgroupid[]" style="width:100%;"></select>*@
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <select name="from[]" class="js-multiselect form-control" id="fbgrp" size="8" multiple="multiple"></select>
+                                                </div>
+
+                                                <div class="col-xs-2">
+                                                    <button type="button" id="js_right_All_1" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                                                    <button type="button" id="js_right_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                    <button type="button" id="js_left_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                                    <button type="button" id="js_left_All_1" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                                                </div>
+
+                                                <div class="col-xs-5">
+                                                    <select name="Facebookgroupid[]" id="js_multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END TASK HEAD -->
+                                        <div class="form-group">
+                                            <label class="control-label">Enter any page Url</label>
+                                            <input type="text" class="form-control" name="FacebookPageUrl" placeholder="Ex : http://www.facebook.com/socioboard" />
+                                        </div>
+                                        <!-- TASK TAGS -->
+                                        <div class="form-group">
+                                            <label class="control-label">Selects any time</label>
+                                            <select name="Timeintervalminutes" class="form-control">
+                                                <option value="10">10 Min</option>
+                                                <option value="20">20 Min</option>
+                                                <option value="30">30 Min</option>
+                                            </select>
+                                        </div>
+                                        <!-- TASK TAGS -->
+                                        <div class="form-actions right todo-form-actions">
+                                            @if (isacc == 0)
+                                            {
+                                                <button id="groupformSubmit" @*onclick="crateShareton()"*@ class="btn btn-primary pull-right">Post</button>
+                                            }
+                                            else if (isacc == 1)
+                                            {
+                                                <a href="/home" class="btn btn-danger pull-right"> Add facebook Account </a>
+                                            }
+                                            else if (isacc == 2)
+                                            {
+                                                <a href="/home" class="btn btn-danger pull-right"> Add facebook Page </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="profile-userpic">
+                            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAIRAAAAJDVhNmRhZjhlLTgxNmQtNDI5OS1iOGM2LWYzMGQwNDAwZmU4Yw.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                Suresh Bandi
+                            </div>
+                            <div class="profile-usertitle-job">
+                                Developer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="profile-pagepic">
+                            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAIRAAAAJDVhNmRhZjhlLTgxNmQtNDI5OS1iOGM2LWYzMGQwNDAwZmU4Yw.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                Suresh Bandi
+                            </div>
+                            <div class="profile-usertitle-job">
+                                website
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+@*<script src="~/Themes/Socioboard/Contents/js/select2.full.min.js"></script>*@
+<script src="~/Themes/Socioboard/Contents/js/multiselect.min.js"></script>
+@*<script src="~/Themes/Socioboard/Contents/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>*@
+
+<script>
+    //function crateShareton() {
+
+    @*$("#ShareathonGroupForm").submit(function (e) {
+        e.preventDefault();
+        //var fd = new FormData;
+        debugger;
+        $('#groupformSubmit').hide();
+        $('#Saving').show();
+
+        jQuery.support.cors = true;
+
+        var groupid = $('#fbgrp').val();
+        //if (!(groupid == null || groupid == ''))
+        //{
+
+        //    fd.append("groupid",groupid);
+        //}
+        $.ajax({
+            url: '@System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"]/api/ApiShareathon/AddGroupSharethon',
+            type: 'POST',
+            data: $('#ShareathonGroupForm').serialize(),
+            contentType: 'application/x-www-form-urlencoded',
+            crossDomain: true,
+
+            statusCode: {
+                201: function (data) {
+                    Command: toastr.success("", "Password Reset Link Sent to your mail")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "50000",
+                        "hideDuration": "10000",
+                        "timeOut": "10000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    $('#btnForgotPassword').show();
+                    $('#Saving').hide();
+                    window.top.location = '/shareathon/Groupindex'
+                },
+                200: function (data) {
+
+                    window.top.location = '/shareathon/Groupindex'
+                    $('#btnForgotPassword').show();
+                    $('#Saving').hide();
+                },
+                400: function (data) {
+                    alert('Shareton already exist');
+                    Command: toastr.warning("", "User Not Exist")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "50000",
+                        "hideDuration": "10000",
+                        "timeOut": "10000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+
+                    $('#formSubmit').show();
+                    $('#Saving').hide();
+                }
+            },
+            error: function (e) {
+                $('#groupformSubmit').show();
+                $('#Saving').hide();
+            }
+        });
+
+    });*@
+
+    //}
+
+
+    function getfbgroup() {
+        var accesstoken = $('option:selected', $('select#Facebookaccountid')).attr("id");
+        if (accesstoken == '')
+        {
+            $('#fbgrpdiv').css("display", "none");
+            alert('Please select any account');
+            return;
+        }
+        $('#fbgrpdiv').css("display", "block");
+        $.ajax({
+            type: 'GET',
+            url: '../Shareathon/GetAllFacebookGroups?accesstoken=' + accesstoken,
+            success: function (msg) {
+                $('#fbgrp').html(msg);
+            },
+            async: false
+        });
+
+    }
+
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.js-multiselect').multiselect({
+            right: '#js_multiselect_to_1',
+            rightAll: '#js_right_All_1',
+            rightSelected: '#js_right_Selected_1',
+            leftSelected: '#js_left_Selected_1',
+            leftAll: '#js_left_All_1'
+        });
+    });
+</script>

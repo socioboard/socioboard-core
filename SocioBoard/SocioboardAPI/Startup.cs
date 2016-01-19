@@ -64,7 +64,7 @@ namespace Api.Socioboard
             var config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
                 "DefaultApi",
-                "api/{controller}/{id}",
+                "api/{controller}/{action}/{id}",
                 new { id = RouteParameter.Optional });
             return config;
         }

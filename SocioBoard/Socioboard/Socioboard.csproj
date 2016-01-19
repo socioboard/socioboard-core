@@ -250,6 +250,7 @@
     <Compile Include="Controllers\MultilanguageController.cs" />
     <Compile Include="Controllers\PersonalSettingController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
+    <Compile Include="Controllers\ShareathonController.cs" />
     <Compile Include="Controllers\SocialManagerController.cs" />
     <Compile Include="Controllers\TumblrManagerController.cs" />
     <Compile Include="Controllers\TwitterManagerController.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="Helper\SocialAccountsAPIHelper.cs" />
     <Compile Include="Helper\TwitterHelper.cs" />
     <Compile Include="Helper\UrlExtractor.cs" />
+    <Compile Include="Helper\WebApiReq.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
@@ -2732,6 +2734,13 @@
     <Content Include="Themes\Socioboard\Contents\js\carhartl-jquery-cookie-92b7715\README.md" />
     <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\README.md" />
     <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\Create.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\Edit.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\GroupCreate.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\GroupIndex.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\GroupShareathonEdit.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\Index.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shareathon\_facebookgrouppartial.cshtml" />
     <None Include="Web References\Api.AdminNews\AdminNews.disco" />
     <None Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.disco" />
     <None Include="Web References\Api.AdminUserDetails\AdminUserDetails.disco" />

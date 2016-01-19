@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Domain.Socioboard.Domain.ShareathonViewModel>
+
+    @{
+        string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+        Layout = "~/Themes/" + path + "/Views/Shared/_Site.cshtml";
+    }
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Shareathon
+
+                </h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading panel_header_color">
+                    <i class="fa fa-share fa-fw"></i>Shareathon
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="~/shareathon/create">Add A Shareathon</a>
+                                </li>
+                                @* <li><a href="#">Upgrade</a>
+                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Facebook Account</th>
+                                    <th>Facebook Page</th>
+                                    <th>Time Interval</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int count = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.Facebookaccount.FbUserName</td>
+                                        <td>
+                                            @foreach (var fbac in item.Facebookpages)
+                                            {
+                                                @fbac.FbUserName <text>,</text>
+                                            }
+                                        </td>
+                                       
+                                        @*<td>@item.Facebookpage.FbUserName</td>*@
+                                        <td>@item.Timeintervalminutes</td>
+                                        <td>
+                                       <a href="~/Shareathon/Edit/@item.Id">
+                                           <span class="label label-sm label-success label-mini" style="cursor:pointer">
+                                               Edit
+                                           </span>
+                                            </a>
+                                            <a href="~/Shareathon/DeletePageShareathon/@item.Id">
+                                                <span class="label label-sm label-danger label-mini" style="cursor:pointer">
+                                                    Delete
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+                      <div class="modal fade" id="EditSharethon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header  header_color">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></button>
+                                      <h2 class="modal-title" id="myModalLabel"><b>Edit Sharethon</b></h2>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form class="form-horizontal" id="EditForm">
+                                          <input type="hidden" name="id" id="EditId" />
+                                          <div class="form-group">
+                                              <label for="inputEmail13" class="col-sm-2 control-label">Email</label>
+                                              <div class="col-sm-10">
+                                                  <input type="email" class="form-control" id="inputEmail13" placeholder="Email" disabled>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="inputPassword13" class="col-sm-2 control-label">Password</label>
+                                              <div class="col-sm-10">
+                                                  <input type="password" class="form-control" id="inputPassword13" placeholder="Password">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group">
+                                              <label for="EditProxyip" class="col-sm-2 control-label">Proxy Ip</label>
+                                              <div class="col-sm-10">
+                                                  <input type="text" class="form-control" id="EditProxyip" placeholder="Proxy Ip">
+                                              </div>
+                                          </div>
+
+
+                                          <div class="form-group">
+                                              <label for="EditProxyport" class="col-sm-2 control-label">Proxy Port</label>
+                                              <div class="col-sm-10">
+                                                  <input type="text" name="EditProxyport" class="form-control" id="EditProxyport" placeholder="Proxy Port">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group">
+                                              <label for="EditProxyusername" class="col-sm-2 control-label">Proxy username</label>
+                                              <div class="col-sm-10">
+                                                  <input type="text" name="EditProxyusername" class="form-control" id="EditProxyusername" placeholder="Proxy Username">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group">
+                                              <label for="Editproxypassword" class="col-sm-2 control-label">Proxy Password</label>
+                                              <div class="col-sm-10">
+                                                  <input type="text" name="Editproxypassword" class="form-control" id="Editproxypassword" placeholder="Proxy Password">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group">
+                                              <div class="col-sm-offset-2 col-sm-10">
+                                                  <div onclick="SaveEdit()" id="EditSaveBtn" class="btn btn-default">Save</div>
+                                                  <img id="btneditloading" src="~/Themes/Socioleads/Contents/img/bx_loader.gif" style="display:none" />
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+

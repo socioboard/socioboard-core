@@ -1,0 +1,306 @@
+﻿
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    Layout = "~/Themes/" + path + "/Views/Shared/_Site.cshtml";
+}
+
+@model Domain.Socioboard.Domain.Shareathon
+@using Domain.Socioboard.Domain;
+<link href="~/Themes/Socioboard/Contents/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Shareathon</h1>
+        </div>
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="todo-content">
+                        <div class="portlet light">
+                            <!-- PROJECT HEAD -->
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-bar-chart font-green-sharp hide"></i>
+                                    <span class="caption-helper"></span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">Create</span>
+                                </div>
+                            </div>
+                            <!-- end PROJECT HEAD -->
+                            <div class="portlet-body">
+                                @{int isacc = 0; }
+                                <form action="/Shareathon/Edit" method="post" id="ShareathonForm" class="form-horizontal">
+
+                                    <input type="hidden" name="Userid" value="@ViewBag.UserId" />
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <!-- TASK HEAD -->
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label>Selects any A/c</label>
+                                            <select name="Facebookaccountid" class="form-control">
+                                                @if (ViewBag.FbAccounts != null)
+                                                {
+                                                    List<Domain.Socioboard.Domain.FacebookAccount> fbacc = (List<Domain.Socioboard.Domain.FacebookAccount>)ViewBag.FbAccounts;
+                                                    if (fbacc.Count() == 0)
+                                                    {
+                                                        isacc = 1;
+                                                        <option>Select facebook account</option>
+                                                    }
+                                                    foreach (var item in ViewBag.FbAccounts)
+                                                    {
+                                                        <option value="@item.Id">@item.FbUserName</option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    isacc = 1;
+                                                    <option>Select facebook account</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                        <!-- END TASK HEAD -->
+                                        <div class="form-group">
+                                            <label class="control-label">Selects pages</label>
+                                            <div class="row">
+                                                <div class="col-xs-5">
+
+                                                    <select name="from[]" class="js-multiselect form-control" id="fbpage" size="8" multiple="multiple">
+                                                        @if (ViewBag.Pages != null)
+                                                        {
+                                                            foreach (FacebookAccount item in ViewBag.Pages)
+                                                            {
+                                                                if (!(ViewBag.pageid).ToString().Contains(item.Id.ToString()))
+                                                                {
+                                                                    <option value="@item.Id">@item.FbUserName</option>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-2">
+                                                    <button type="button" id="js_right_All_1" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                                                    <button type="button" id="js_right_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                    <button type="button" id="js_left_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                                    <button type="button" id="js_left_All_1" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                                                </div>
+
+                                                <div class="col-xs-5">
+                                                    <select name="FacebookPageId[]" id="js_multiselect_to_1" class="form-control" size="8" multiple="multiple">
+                                                        @if (ViewBag.Pages != null)
+                                                        {
+                                                            foreach (FacebookAccount item in ViewBag.Pages)
+                                                            {
+                                                                if ((ViewBag.pageid).ToString().Contains(item.Id.ToString()))
+                                                                {
+                                                                    <option selected value="@item.Id">@item.FbUserName</option>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @*<select name="Facebookpageid" class="form-control">
+                        @if (ViewBag.FbPages != null)
+                        {
+                            List<Domain.Socioboard.Domain.FacebookAccount> fbacc = (List<Domain.Socioboard.Domain.FacebookAccount>)ViewBag.FbPages;
+                            if (fbacc.Count() == 0)
+                            {
+                                isacc = 2;
+                                <option>Select facebook page</option>
+                            }
+                            foreach (var item in ViewBag.FbPages)
+                            {
+                                <option value="@item.Id">@item.FbUserName</option>
+                            }
+                        }
+                        else
+                        {
+                            isacc = 2;
+                            <option>Select facebook page</option>
+                        }
+                    </select>*@
+                                        </div>
+                                        <!-- TASK TAGS -->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Select time interval </label>
+                                                    <select name="Timeintervalminutes" class="form-control">
+                                                        <option value="10">10 Min</option>
+                                                        <option value="20">20 Min</option>
+                                                        <option value="30">30 Min</option>
+                                                        <option value="60">1 hr</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- TASK TAGS -->
+                                        <div class="form-actions right todo-form-actions">
+                                            @if (isacc == 0)
+                                            {
+                                                <button id="formSubmit" type="submit" class="btn btn-primary pull-right">Save</button>
+                                            }
+                                            else if (isacc == 1)
+                                            {
+                                                <a href="/home" class="btn btn-danger pull-right"> Add facebook Account </a>
+                                            }
+                                            else if (isacc == 2)
+                                            {
+                                                <a href="/home" class="btn btn-danger pull-right"> Add facebook Page </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="profile-userpic">
+                            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAIRAAAAJDVhNmRhZjhlLTgxNmQtNDI5OS1iOGM2LWYzMGQwNDAwZmU4Yw.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                Suresh Bandi
+                            </div>
+                            <div class="profile-usertitle-job">
+                                Developer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="profile-pagepic">
+                            <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAIRAAAAJDVhNmRhZjhlLTgxNmQtNDI5OS1iOGM2LWYzMGQwNDAwZmU4Yw.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                Suresh Bandi
+                            </div>
+                            <div class="profile-usertitle-job">
+                                website
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+<script src="~/Themes/Socioboard/Contents/js/multiselect.min.js"></script>
+@*<script>
+    //function crateShareton() {
+    $("#ShareathonForm").submit(function (e) {
+        e.preventDefault();
+        $('#formSubmit').hide();
+        $('#Saving').show();
+        //if (!form.valid()) {
+        //    $('#btnForgotPassword').show();
+        //    $('#Saving').hide();
+        //    return false;
+        //}
+        jQuery.support.cors = true;
+        var config = {
+            headers: { 'Content-type': 'application/json' },
+            'dataType': 'json'
+        };
+
+        $.post('@System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"]/api/ApiShareathon/EditShareathon', $('#ShareathonForm').serialize(), config).done(function (response) {
+            window.top.location = '/shareathon/index'
+        }).fail(function (jqxhr) {
+            if (jqxhr.status == 400) {
+                alert("Error while updating");
+
+            }
+            $('#EditSaveBtn').show();
+            $('#btneditloading').hide();
+        });
+
+
+        @*$.ajax({
+            url: ' @System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"]/api/ApiShareathon/AddShareathon',
+            //cache: false,
+            type: 'POST',
+            data: $('#ShareathonForm').serialize(),
+            contentType: 'application/x-www-form-urlencoded',
+            crossDomain: true,
+
+            statusCode: {
+                201 /*Created*/: function (data) {
+                    Command: toastr.success("", "Password Reset Link Sent to your mail")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "50000",
+                        "hideDuration": "10000",
+                        "timeOut": "10000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    $('#btnForgotPassword').show();
+                    $('#Saving').hide();
+                    window.top.location = '/shareathon/index'
+                },
+                200 /*Created*/: function (data) {
+                    //window.top.location = '/ManageCityAdmin/Index';
+                    window.top.location = '/shareathon/index'
+                    $('#btnForgotPassword').show();
+                    $('#Saving').hide();
+                },
+                400 /* BadRequest */: function (data) {
+                    alert('Shareton already exist');
+                    Command: toastr.warning("", "User Not Exist")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onclick": null,
+                        "showDuration": "50000",
+                        "hideDuration": "10000",
+                        "timeOut": "10000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+
+                    $('#formSubmit').show();
+                    $('#Saving').hide();
+                }
+            },
+            error: function (e) {
+                $('#formSubmit').show();
+                $('#Saving').hide();
+            }
+        });*&@
+
+        // return false;
+    });
+</script>*@
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.js-multiselect').multiselect({
+            right: '#js_multiselect_to_1',
+            rightAll: '#js_right_All_1',
+            rightSelected: '#js_right_Selected_1',
+            leftSelected: '#js_left_Selected_1',
+            leftAll: '#js_left_All_1'
+        });
+    });
+</script>

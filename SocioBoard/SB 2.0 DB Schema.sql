@@ -1667,6 +1667,45 @@ CREATE TABLE IF NOT EXISTS `youtubesubscription` (
   `HiddenSubscriberCount` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+-- Dumping structure for table Socioboard.shareathon
+CREATE TABLE `shareathon` (
+	`Id` BINARY(16) NOT NULL,
+	`FacebookAccountId` BINARY(16) NOT NULL,
+	`FacebookPageId` VARCHAR(500) NOT NULL,
+	`TimeIntervalMinutes` INT(11) NOT NULL,
+	`LastPostId` VARCHAR(50) NULL DEFAULT NULL,
+	`LastShareTimeStamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`UserId` BINARY(16) NOT NULL,
+	`IsHidden` BIT(1) NOT NULL DEFAULT b'1',
+	PRIMARY KEY (`Id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+-- Dumping structure for table Socioboard.shareathongroup
+CREATE TABLE `shareathongroup` (
+	`Id` BINARY(16) NOT NULL,
+	`FacebookPageId` TEXT NOT NULL,
+	`FacebookPageUrl` TEXT NOT NULL,
+	`FacebookGroupId` TEXT NOT NULL,
+	`FacebookNameId` TEXT NOT NULL,
+	`FacebookAccountid` BINARY(16) NOT NULL,
+	`AccessToken` TEXT NOT NULL,
+	`TimeIntervalMinutes` INT(11) NOT NULL,
+	`LastPostId` VARCHAR(50) NULL DEFAULT NULL,
+	`LastShareTimeStamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`UserId` BINARY(16) NOT NULL,
+	`IsHidden` BIT(1) NOT NULL,
+	PRIMARY KEY (`Id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
 -- Data exporting was unselected.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

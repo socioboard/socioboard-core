@@ -150,9 +150,9 @@
     <Reference Include="MongoDB.Driver.Legacy">
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.3.3.4.4000\lib\Net35\NHibernate.dll</HintPath>
@@ -249,6 +249,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AllowCrossSiteJsonAttribute.cs" />
     <Compile Include="App_Start\apiClientProvider.cs" />
     <Compile Include="App_Start\ApplicationOAuthServerProvider.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
@@ -257,11 +258,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiShareathonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\AddlinkedinCompanyPage.cs" />
     <Compile Include="Helper\ChilkatHttpHelpr.cs" />
+    <Compile Include="Helper\FacebookHelper.cs" />
     <Compile Include="Helper\FacebookUser.cs" />
     <Compile Include="Helper\FbDiscoverySearchHelper.cs" />
     <Compile Include="Helper\Globals.cs" />
@@ -336,6 +339,8 @@
     <Compile Include="Model\ReplyMessageRepository.cs" />
     <Compile Include="Model\RssFeedsRepository.cs" />
     <Compile Include="Model\ScheduledMessageRepository.cs" />
+    <Compile Include="Model\ShareathonGroupRepository.cs" />
+    <Compile Include="Model\ShareathonRepository.cs" />
     <Compile Include="Model\SocialProfilesRepository.cs" />
     <Compile Include="Model\TaskCommentRepository.cs" />
     <Compile Include="Model\TaskRepository.cs" />
@@ -1141,7 +1146,16 @@
     <EmbeddedResource Include="Mappings\TwitterReport.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\UserGroup.hbm.xml">
+    <EmbeddedResource Include="Mappings\Shareathon.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ShareathonGroup.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\SharethonGroupPost.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\SharethonPost.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="obj\Debug\Api.Socioboard.dll" />

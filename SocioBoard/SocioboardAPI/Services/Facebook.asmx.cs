@@ -1557,6 +1557,10 @@ namespace Api.Socioboard.Services
         }
 
 
+
+
+
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string FacebookComposeMessageForPage(String message, String profileid, string userid, string currentdatetime, string imagepath)
@@ -2030,8 +2034,8 @@ namespace Api.Socioboard.Services
             if (accessToken != null)
             {
                 fb.AccessToken = accessToken;
-                dynamic profile = fb.Get("v2.0/me");
-                output = fb.Get("v2.0/me/groups");
+                dynamic profile = fb.Get("v2.5/me");
+                output = fb.Get("v2.5/me/groups");
                 foreach (var item in output["data"])
                 {
                     try
@@ -4809,6 +4813,97 @@ namespace Api.Socioboard.Services
                 logger.Error(ex.Message);
             }
         }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string FacebookComposeMessagePlugin(String message, String profileid, string userid, string currentdatetime, string imagepath,string link)
+        {
+            string ret = "";
+            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
+            FacebookClient fb = new FacebookClient();
+
+            fb.AccessToken = objFacebookAccount.AccessToken;
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+            var args = new Dictionary<string, object>();
+            args["message"] = message;
+            if (!string.IsNullOrEmpty(link))
+            {
+                args["link"] = link; 
+            }
+            //args["privacy"] = SetPrivacy("Public", fb);//"{\"description\": \"Public\",\"value\": \"EVERYONE\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
+            try
+            {
+                if (!string.IsNullOrEmpty(imagepath))
+                {
+                    //var media = new FacebookMediaObject
+                    //{
+                    //    FileName = "filename",
+                    //    ContentType = "image/jpeg"
+                    //};
+                    //byte[] img = System.IO.File.ReadAllBytes(imagepath);
+                    //media.SetValue(img);
+                    string profileurl = "";
+                    string[] profileUrl = imagepath.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                    profileurl = "https://www.socioboard.com" + "/Themes/Socioboard" + profileUrl[2];
+                    args["source"] = profileurl;
+                    ret = fb.Post("v2.5/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+                }
+                else
+                {
+                    ret = fb.Post("v2.5/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+                   
+
+                }
+                ret = "success";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                ret = "failure";
+            }
+
+
+            return ret;
+        }
+
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllFacebookGroups(string accessToken)
+        {
+            string client_id = ConfigurationManager.AppSettings["ClientId"];
+            string redirect_uri = ConfigurationManager.AppSettings["RedirectUrl"];
+            string client_secret = ConfigurationManager.AppSettings["ClientSecretKey"];
+            List<Domain.Socioboard.Domain.AddFacebookGroup> lstAddFacebookGroup = new List<Domain.Socioboard.Domain.AddFacebookGroup>();
+            FacebookClient fb = new FacebookClient();
+            string profileId = string.Empty;
+            dynamic output = null;
+            if (accessToken != null)
+            {
+                fb.AccessToken = accessToken;
+                dynamic profile = fb.Get("v2.5/me");
+                output = fb.Get("v2.5/me/groups");
+                foreach (var item in output["data"])
+                {
+                    try
+                    {
+                        Domain.Socioboard.Domain.AddFacebookGroup objAddFacebookGroup = new Domain.Socioboard.Domain.AddFacebookGroup();
+                        objAddFacebookGroup.ProfileGroupId = item["id"].ToString();
+                        objAddFacebookGroup.Name = item["name"].ToString();
+                        objAddFacebookGroup.AccessToken = accessToken.ToString();
+                        lstAddFacebookGroup.Add(objAddFacebookGroup);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            return new JavaScriptSerializer().Serialize(lstAddFacebookGroup);
+        }
+
 
     }
 }

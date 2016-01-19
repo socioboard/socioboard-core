@@ -1,0 +1,18 @@
+﻿@using Domain.Socioboard.Domain;
+
+
+    @if (ViewBag.facebbokgroup != null )
+    {
+        foreach (AddFacebookGroup item in ViewBag.facebbokgroup)
+        {
+            <option value="@item.ProfileGroupId">@item.Name</option>
+        }
+    }
+    else
+    {
+       
+        <option value="hello">No Group Found In This Account</option>
+    }
+
+
+

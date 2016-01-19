@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="SharethonPost" table="SharethonPost" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Facebookpageid">
+      <column name="Facebookpageid" />
+    </property>
+    <property name="Facebookaccountid">
+      <column name="Facebookaccountid" />
+    </property>
+    <property name="PostId">
+      <column name="PostId"  />
+    </property>
+    <property name="PostedTime">
+      <column name="PostedTime"  />
+    </property>
+    
+  </class>
+</hibernate-mapping>

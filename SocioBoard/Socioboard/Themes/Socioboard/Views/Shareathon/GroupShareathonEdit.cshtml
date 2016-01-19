@@ -1,0 +1,248 @@
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    Layout = "~/Themes/" + path + "/Views/Shared/_Site.cshtml";
+}
+
+@model Domain.Socioboard.Domain.ShareathonGroup
+@using Domain.Socioboard.Domain;
+@*<link href="~/Themes/Socioboard/Contents/css/select2.min.css" rel="stylesheet" />*@
+<link href="~/Themes/Socioboard/Contents/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" />
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Shareathon</h1>
+        </div>
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="todo-content">
+                        <div class="portlet light">
+                            <!-- PROJECT HEAD -->
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-bar-chart font-green-sharp hide"></i>
+                                    <span class="caption-helper"></span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">Create</span>
+                                </div>
+                            </div>
+                            <!-- end PROJECT HEAD -->
+                            <div class="portlet-body">
+
+                                <form id="ShareathonForm" action="/Shareathon/EditGroup" method="post" class="form-horizontal">
+
+                                    <input type="hidden" name="Userid" value="@ViewBag.UserId" />
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <!-- TASK HEAD -->
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label>Selects any A/c</label>
+                                            <select name="Facebookaccountid" id="Facebookaccountid" class="form-control" onchange="getfbgroup(this);">
+                                                <option value=" " id=" ">
+                                                    -----------
+                                                </option>
+                                                @if (ViewBag.FbAccounts != null)
+                                                {
+                                                    List<Domain.Socioboard.Domain.FacebookAccount> fbacc = (List<Domain.Socioboard.Domain.FacebookAccount>)ViewBag.FbAccounts;
+                                                    if (fbacc.Count() == 0)
+                                                    {
+
+                                                        <option value="" id="">Select facebook account</option>
+                                                    }
+                                                    foreach (var item in ViewBag.FbAccounts)
+                                                    {
+                                                        if (item.Id.Equals(Model.Facebookaccountid))
+                                                        {
+                                                            <option selected value="@item.Id" id="@Model.AccessToken">@item.FbUserName</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.Id" id="@Model.AccessToken">@item.FbUserName</option>
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+
+                                                    <option value="" id="">Select facebook account</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                        <!-- END TASK HEAD -->
+                                        <div class="form-group">
+                                            <label class="control-label">Selects any Group</label>
+
+                                            @if (ViewBag.GroupId != null)
+                                            {
+
+                                                <div class="row">
+
+                                                    <div class="col-xs-5">
+
+                                                        <select name="from[]" class="js-multiselect form-control" id="fbgrp" size="8" multiple="multiple">
+                                                            @foreach (AddFacebookGroup item in ViewBag.facebbokgroup)
+                                                            {
+                                                                if (!(ViewBag.GroupId).ToString().Contains(item.ProfileGroupId))
+                                                                {
+                                                                    string id = item.ProfileGroupId + "###" + item.Name;
+                                                                    <option value="@id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="col-xs-2">
+                                                        <button type="button" id="js_right_All_1" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                                                        <button type="button" id="js_right_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                        <button type="button" id="js_left_Selected_1" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                                        <button type="button" id="js_left_All_1" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                                                    </div>
+
+                                                    <div class="col-xs-5">
+
+                                                        <select name="Facebookgroupid[]" id="js_multiselect_to_1" class="form-control" size="8" multiple="multiple">
+                                                            @foreach (AddFacebookGroup item in ViewBag.facebbokgroup)
+                                                            {
+                                                                if ((ViewBag.GroupId).ToString().Contains(item.ProfileGroupId))
+                                                                {
+                                                                    string id = item.ProfileGroupId + "###" + item.Name;
+                                                                    <option selected value="@id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
+                                                @*<select name="Facebookgroupid[]" multiple="multiple" class="js-example-responsive" style="width:100%;" id="fbgrp">
+                            @foreach (KeyValuePair<string, string> kvp in ViewBag.Group)
+                            {
+                                <option selected value="@kvp.Key">@kvp.Value</option>
+                            }
+
+
+                            @foreach (AddFacebookGroup item in ViewBag.facebbokgroup)
+                            {
+                                if(!(ViewBag.GroupId).ToString().Contains(item.ProfileGroupId))
+                                {
+                                string id = item.ProfileGroupId + "###" + item.Name;
+                                <option value="@id">@item.Name</option>
+                            }
+                            }
+                        </select>*@
+
+                                            }
+                                        </div>
+                                        @if (Model.FacebookPageUrl != null)
+                                        {
+                                            <div class="form-group">
+                                                <label class="control-label"> Page Url</label>
+                                                <input type="text" class="form-control" name="FacebookPageUrl" value="@Model.FacebookPageUrl" />
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <label class="control-label">Enter any page Url</label>
+                                                <input type="text" class="form-control" name="FacebookPageUrl" placeholder="Ex : https://www.facebook.com/socioboard" />
+                                            </div>
+                                        }
+
+
+
+                                        <!-- TASK TAGS -->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Select time interval </label>
+                                                    <select name="Timeintervalminutes" class="form-control">
+                                                        <option value="10">10 Min</option>
+                                                        <option value="20">20 Min</option>
+                                                        <option value="30">30 Min</option>
+                                                        <option value="60">1 hr</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- TASK TAGS -->
+                                        <div class="form-actions right todo-form-actions">
+                                            <button id="formSubmit" type="submit" class="btn btn-primary pull-right">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@*<script src="~/Themes/Socioboard/Contents/js/select2.full.min.js"></script>*@
+<script src="~/Themes/Socioboard/Contents/js/multiselect.min.js"></script>
+<script>
+    @*function crateShareton() {
+        $('#formSubmit').hide();
+        $('#Saving').show();
+
+        jQuery.support.cors = true;
+        var groupid = $('#fbgrp').val();
+
+        var config = {
+            headers: { 'Content-type': 'application/json' },
+            'dataType': 'json'
+        };
+
+        $.post('@System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"]/api/ApiShareathon/EditShareathonGroup', $('#ShareathonForm').serialize(), config).done(function (response) {
+            window.top.location = '/shareathon/GroupIndex'
+        }).fail(function (jqxhr) {
+            if (jqxhr.status == 400) {
+                alert("Error while updating");
+
+            }
+            $('#EditSaveBtn').show();
+            $('#btneditloading').hide();
+        });
+
+
+    }*@
+
+
+
+</script>
+<script>
+    function getfbgroup() {
+        var accesstoken = $('option:selected', $('select#Facebookaccountid')).attr("id");
+        if (accesstoken == '') {
+            $('#fbgrpdiv').css("display", "none");
+            alert('Please select any account');
+            return;
+        }
+        $('#fbgrpdiv').css("display", "block");
+        $.ajax({
+            type: 'GET',
+            url: '../Shareathon/GetAllFacebookGroups?accesstoken=' + accesstoken,
+            success: function (msg) {
+                $('#fbgrp').html(msg);
+            },
+            async: false
+        });
+
+    }
+</script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.js-multiselect').multiselect({
+            right: '#js_multiselect_to_1',
+            rightAll: '#js_right_All_1',
+            rightSelected: '#js_right_Selected_1',
+            leftSelected: '#js_left_Selected_1',
+            leftAll: '#js_left_All_1'
+        });
+    });
+</script>

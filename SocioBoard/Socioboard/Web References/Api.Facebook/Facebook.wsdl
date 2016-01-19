@@ -502,9 +502,9 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rssFeedId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -541,6 +541,39 @@
       </s:element>
       <s:element name="GetFacebookPageFeedResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="FacebookComposeMessagePlugin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentdatetime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagepath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookComposeMessagePluginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookComposeMessagePluginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFacebookGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFacebookGroupsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
@@ -748,6 +781,18 @@
   </wsdl:message>
   <wsdl:message name="GetFacebookPageFeedSoapOut">
     <wsdl:part name="parameters" element="tns:GetFacebookPageFeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessagePluginSoapIn">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessagePlugin" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessagePluginSoapOut">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessagePluginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFacebookGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -981,9 +1026,9 @@
   <wsdl:message name="FacebookComposeMessageRssHttpGetIn">
     <wsdl:part name="message" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="link" type="s:string" />
+    <wsdl:part name="rssFeedId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="FacebookComposeMessageRssHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -1001,6 +1046,23 @@
     <wsdl:part name="facebookid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPageFeedHttpGetOut" />
+  <wsdl:message name="FacebookComposeMessagePluginHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="imagepath" type="s:string" />
+    <wsdl:part name="link" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessagePluginHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsHttpGetIn">
+    <wsdl:part name="accessToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
     <wsdl:part name="code" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -1233,9 +1295,9 @@
   <wsdl:message name="FacebookComposeMessageRssHttpPostIn">
     <wsdl:part name="message" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="link" type="s:string" />
+    <wsdl:part name="rssFeedId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="FacebookComposeMessageRssHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -1253,6 +1315,23 @@
     <wsdl:part name="facebookid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPageFeedHttpPostOut" />
+  <wsdl:message name="FacebookComposeMessagePluginHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="imagepath" type="s:string" />
+    <wsdl:part name="link" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessagePluginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsHttpPostIn">
+    <wsdl:part name="accessToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFacebookGroupsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
@@ -1390,6 +1469,14 @@
       <wsdl:input message="tns:GetFacebookPageFeedSoapIn" />
       <wsdl:output message="tns:GetFacebookPageFeedSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <wsdl:input message="tns:FacebookComposeMessagePluginSoapIn" />
+      <wsdl:output message="tns:FacebookComposeMessagePluginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <wsdl:input message="tns:GetAllFacebookGroupsSoapIn" />
+      <wsdl:output message="tns:GetAllFacebookGroupsSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
     <wsdl:operation name="AddFacebookAccount">
@@ -1520,6 +1607,14 @@
       <wsdl:input message="tns:GetFacebookPageFeedHttpGetIn" />
       <wsdl:output message="tns:GetFacebookPageFeedHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <wsdl:input message="tns:FacebookComposeMessagePluginHttpGetIn" />
+      <wsdl:output message="tns:FacebookComposeMessagePluginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <wsdl:input message="tns:GetAllFacebookGroupsHttpGetIn" />
+      <wsdl:output message="tns:GetAllFacebookGroupsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
     <wsdl:operation name="AddFacebookAccount">
@@ -1649,6 +1744,14 @@
     <wsdl:operation name="GetFacebookPageFeed">
       <wsdl:input message="tns:GetFacebookPageFeedHttpPostIn" />
       <wsdl:output message="tns:GetFacebookPageFeedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <wsdl:input message="tns:FacebookComposeMessagePluginHttpPostIn" />
+      <wsdl:output message="tns:FacebookComposeMessagePluginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <wsdl:input message="tns:GetAllFacebookGroupsHttpPostIn" />
+      <wsdl:output message="tns:GetAllFacebookGroupsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
@@ -1952,6 +2055,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPageFeed">
       <soap:operation soapAction="http://tempuri.org/GetFacebookPageFeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <soap:operation soapAction="http://tempuri.org/FacebookComposeMessagePlugin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <soap:operation soapAction="http://tempuri.org/GetAllFacebookGroups" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2268,6 +2389,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <soap12:operation soapAction="http://tempuri.org/FacebookComposeMessagePlugin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFacebookGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
@@ -2557,6 +2696,24 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <http:operation location="/FacebookComposeMessagePlugin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <http:operation location="/GetAllFacebookGroups" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpPost" type="tns:FacebookHttpPost">
     <http:binding verb="POST" />
@@ -2845,6 +3002,24 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessagePlugin">
+      <http:operation location="/FacebookComposeMessagePlugin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFacebookGroups">
+      <http:operation location="/GetAllFacebookGroups" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Facebook">
