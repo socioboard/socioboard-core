@@ -109,199 +109,6 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table socioboard.boardfbfeeds
-CREATE TABLE IF NOT EXISTS `boardfbfeeds` (
-  `Id` binary(16) NOT NULL,
-  `Type` varchar(50) NOT NULL,
-  `Link` varchar(5000) DEFAULT NULL,
-  `Message` varchar(5000) DEFAULT NULL,
-  `CreatedDate` datetime DEFAULT NULL,
-  `Description` varchar(5000) DEFAULT NULL,
-  `FeedId` varchar(500) NOT NULL,
-  `IsVisible` bit(1) NOT NULL,
-  `VideoLink` varchar(500) DEFAULT NULL,
-  `Story` varchar(5000) DEFAULT NULL,
-  `FbPageProfileId` binary(16) NOT NULL,
-  `CoverPhoto` varchar(500) DEFAULT NULL,
-  `Image` varchar(500) DEFAULT NULL,
-  `Likes` varchar(500) DEFAULT NULL,
-  `FromId` varchar(500) DEFAULT NULL,
-  `FromName` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardfbpage
-CREATE TABLE IF NOT EXISTS `boardfbpage` (
-  `Id` binary(16) NOT NULL,
-  `FbPageId` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `TalkingAboutCount` varchar(50) DEFAULT NULL,
-  `Likes` varchar(50) DEFAULT NULL,
-  `Checkins` varchar(50) DEFAULT NULL,
-  `fbPageName` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ProfileImageUrl` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `BoardId` binary(16) NOT NULL,
-  `PageUrl` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Country` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `City` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Phone` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Website` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Founded` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Mission` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `About` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Companyname` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Entrydate` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardgplusaccount
-CREATE TABLE IF NOT EXISTS `boardgplusaccount` (
-  `Id` binary(16) NOT NULL,
-  `PageId` varchar(500) NOT NULL,
-  `CircledByCount` varchar(50) DEFAULT NULL,
-  `PlusOneCount` varchar(50) DEFAULT NULL,
-  `DisplayName` varchar(500) DEFAULT NULL,
-  `BoardId` binary(16) NOT NULL,
-  `Nickname` varchar(500) DEFAULT NULL,
-  `AboutMe` varchar(500) DEFAULT NULL,
-  `PageUrl` varchar(500) DEFAULT NULL,
-  `ProfileImageUrl` varchar(500) DEFAULT NULL,
-  `Tagline` varchar(500) DEFAULT NULL,
-  `CoverPhotoUrl` varchar(500) DEFAULT NULL,
-  `EntryDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardgplusfeeds
-CREATE TABLE IF NOT EXISTS `boardgplusfeeds` (
-  `Id` binary(16) NOT NULL,
-  `FeedLink` varchar(500) DEFAULT NULL,
-  `gplusboardaccProfileId` binary(16) NOT NULL,
-  `PublishedTime` datetime DEFAULT NULL,
-  `ImageUrl` varchar(500) DEFAULT NULL,
-  `Title` varchar(500) DEFAULT NULL,
-  `FeedId` varchar(50) DEFAULT NULL,
-  `FromId` varchar(500) DEFAULT NULL,
-  `FromName` varchar(500) DEFAULT NULL,
-  `FromPicUrl` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardinstagramaccount
-CREATE TABLE IF NOT EXISTS `boardinstagramaccount` (
-  `Id` binary(16) NOT NULL,
-  `UserName` varchar(500) NOT NULL,
-  `FollowedByCount` varchar(50) NOT NULL,
-  `FollowsCount` varchar(50) NOT NULL,
-  `BoardId` binary(16) NOT NULL,
-  `ProfilePicUrl` varchar(500) DEFAULT NULL,
-  `ProfileId` varchar(500) DEFAULT NULL,
-  `Url` varchar(500) DEFAULT NULL,
-  `Bio` varchar(500) DEFAULT NULL,
-  `Media` varchar(500) DEFAULT NULL,
-  `EntryDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardinstagramfeeds
-CREATE TABLE IF NOT EXISTS `boardinstagramfeeds` (
-  `Id` binary(16) NOT NULL,
-  `Link` varchar(500) DEFAULT NULL,
-  `ImageUrl` varchar(500) DEFAULT NULL,
-  `tags` varchar(5000) DEFAULT NULL,
-  `CreatedTime` datetime DEFAULT NULL,
-  `InstagramAccountId` binary(16) NOT NULL,
-  `FeedId` varchar(100) DEFAULT NULL,
-  `IsVisible` bit(1) NOT NULL,
-  `FromId` varchar(500) DEFAULT NULL,
-  `FromName` varchar(500) DEFAULT NULL,
-  `FromPicUrl` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `InstagramAccountId_FeedId` (`FeedId`,`InstagramAccountId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boards
-CREATE TABLE IF NOT EXISTS `boards` (
-  `BoardId` binary(16) NOT NULL,
-  `BoardName` varchar(500) DEFAULT NULL,
-  `Instagramprofileid` varchar(500) DEFAULT NULL,
-  `Fbprofileid` varchar(500) DEFAULT NULL,
-  `Twitterprofileid` varchar(500) DEFAULT NULL,
-  `Linkedinprofileid` varchar(500) DEFAULT NULL,
-  `Youtubeprofileid` varchar(500) DEFAULT NULL,
-  `Gplusprofileid` varchar(500) DEFAULT NULL,
-  `Tumblrprofileid` varchar(500) DEFAULT NULL,
-  `UserId` binary(16) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT '2015-05-26 18:18:43',
-  `IsHidden` bit(1) NOT NULL DEFAULT b'1',
-  PRIMARY KEY (`BoardId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardtwitteraccount
-CREATE TABLE IF NOT EXISTS `boardtwitteraccount` (
-  `Id` binary(16) NOT NULL,
-  `ScreenName` varchar(500) NOT NULL,
-  `StatusCount` varchar(50) NOT NULL,
-  `FriendsCount` varchar(50) NOT NULL,
-  `FollowersCount` varchar(50) NOT NULL,
-  `FavouritesCount` varchar(50) NOT NULL,
-  `BoardId` binary(16) NOT NULL,
-  `TwitterProfileId` varchar(500) NOT NULL,
-  `ProfileImageUrl` varchar(5000) NOT NULL,
-  `Url` varchar(500) DEFAULT NULL,
-  `Tweet` varchar(500) DEFAULT NULL,
-  `PhotosVideos` varchar(500) DEFAULT NULL,
-  `FollowingsCount` varchar(500) DEFAULT NULL,
-  `EntryDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
--- Dumping structure for table socioboard.boardtwitterfeeds
-CREATE TABLE IF NOT EXISTS `boardtwitterfeeds` (
-  `Id` binary(16) NOT NULL,
-  `CreatedAt` datetime DEFAULT NULL,
-  `FeedId` varchar(500) NOT NULL,
-  `FeedUrl` varchar(5000) DEFAULT NULL,
-  `ImageUrl` varchar(5000) DEFAULT NULL,
-  `Text` varchar(5000) DEFAULT NULL,
-  `RetweetCount` int(11) DEFAULT NULL,
-  `FavoritedCount` int(11) DEFAULT NULL,
-  `HashTags` varchar(5000) DEFAULT NULL,
-  `TwitterProfileId` binary(16) NOT NULL,
-  `IsVisible` bit(1) NOT NULL,
-  `FromId` varchar(500) DEFAULT NULL,
-  `FromName` varchar(500) DEFAULT NULL,
-  `FromPicUrl` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
 -- Dumping structure for table socioboard.businesssetting
 CREATE TABLE IF NOT EXISTS `businesssetting` (
   `Id` binary(16) NOT NULL,
@@ -1532,35 +1339,42 @@ CREATE TABLE IF NOT EXISTS `twitterstats` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table socioboard.user
-CREATE TABLE IF NOT EXISTS `user` (
-  `Id` binary(16) NOT NULL,
-  `UserName` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EmailId` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ProfileUrl` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `AccountType` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `CreateDate` datetime DEFAULT NULL,
-  `ExpiryDate` datetime DEFAULT NULL,
-  `UserStatus` tinyint(1) DEFAULT NULL COMMENT '0 = InActive,1 = Active|| unpaid,2=Active||paid',
-  `Password` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `TimeZone` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ChangePasswordKey` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IsKeyUsed` tinyint(1) DEFAULT '0',
-  `PaymentStatus` varchar(6) COLLATE utf8_unicode_ci DEFAULT 'unpaid' COMMENT 'default value = unpaid',
-  `ActivationStatus` varchar(5) COLLATE utf8_unicode_ci DEFAULT '0' COMMENT '0 = InActive,1 = Active',
-  `CouponCode` varchar(350) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ReferenceStatus` varchar(5) COLLATE utf8_unicode_ci DEFAULT '0',
-  `RefereeStatus` varchar(5) COLLATE utf8_unicode_ci DEFAULT '0',
-  `UserType` varchar(350) COLLATE utf8_unicode_ci DEFAULT 'user' COMMENT 'default value=user',
-  `ChangeEmailKey` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IsEmailKeyUsed` tinyint(4) DEFAULT '0',
-  `Ewallet` varchar(50) COLLATE utf8_unicode_ci DEFAULT '0',
-  `UserCode` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `SocialLogin` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `user` (
+	`Id` BINARY(16) NOT NULL,
+	`UserName` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`EmailId` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`ProfileUrl` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`AccountType` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`CreateDate` DATETIME NULL DEFAULT NULL,
+	`ExpiryDate` DATETIME NULL DEFAULT NULL,
+	`UserStatus` TINYINT(1) NULL DEFAULT NULL COMMENT '0 = InActive,1 = Active|| unpaid,2=Active||paid',
+	`Password` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`TimeZone` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`PaymentStatus` VARCHAR(6) NULL DEFAULT 'unpaid' COMMENT 'default value = unpaid' COLLATE 'utf8_general_ci',
+	`ActivationStatus` VARCHAR(5) NULL DEFAULT '0' COMMENT '0 = InActive,1 = Active' COLLATE 'utf8_general_ci',
+	`CouponCode` VARCHAR(350) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`ReferenceStatus` VARCHAR(5) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`RefereeStatus` VARCHAR(5) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`UserType` VARCHAR(350) NULL DEFAULT 'user' COMMENT 'default value=user' COLLATE 'utf8_general_ci',
+	`ChangePasswordKey` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`IsKeyUsed` TINYINT(1) NULL DEFAULT '0',
+	`ChangeEmailKey` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`IsEmailKeyUsed` TINYINT(4) NULL DEFAULT '0',
+	`UserCode` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`Ewallet` VARCHAR(50) NULL DEFAULT '0' COLLATE 'utf8_unicode_ci',
+	`SocialLogin` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`LastLoginTime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	`Mail_Daily` BIT(1) NOT NULL DEFAULT b'1',
+	`Mail_15Days` BIT(1) NOT NULL DEFAULT b'1',
+	`Mail_30Days` BIT(1) NOT NULL DEFAULT b'1',
+	`Mail_60Days` BIT(1) NOT NULL DEFAULT b'1',
+	`Mail_90Days` BIT(1) NOT NULL DEFAULT b'1',
+	PRIMARY KEY (`Id`)
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=InnoDB
+;
 
--- Data exporting was unselected.
 
 
 -- Dumping structure for table socioboard.useractivation
