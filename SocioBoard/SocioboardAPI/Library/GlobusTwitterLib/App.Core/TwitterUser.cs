@@ -594,11 +594,11 @@ namespace GlobusTwitterLib.App.Core
         /// <param name="oAuth"></param>
         /// <param name="textMessage"></param>
         /// <returns></returns>
-        public JArray PostDirect_Messages_New(oAuthTwitter oAuth, string textMessage)
+        public JArray PostDirect_Messages_New(oAuthTwitter oAuth, string textMessage, string userId)
         {
             DirectMessage objDM = new DirectMessage();
             JArray jobjDMN = new JArray();
-            jobjDMN = objDM.Post_Direct_Messages_Destroy_ById(oAuth, textMessage);
+            jobjDMN = objDM.Post_Direct_Messages_New(oAuth, textMessage, userId);
             return jobjDMN;
         }
         #endregion

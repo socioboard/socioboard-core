@@ -15,10 +15,36 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult ManageNews()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
         public ActionResult LoadNews()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.AdminNews.AdminNews apiobjNews = new Api.AdminNews.AdminNews();
             List<Domain.Socioboard.Domain.News> lstPackage = (List<Domain.Socioboard.Domain.News>)(new JavaScriptSerializer().Deserialize(apiobjNews.GetAllNews(), typeof(List<Domain.Socioboard.Domain.News>)));
 
@@ -26,6 +52,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult EditNews(string Id)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.AdminNews.AdminNews apiobjNews = new Api.AdminNews.AdminNews();
             Domain.Socioboard.Domain.News ObjNews = (Domain.Socioboard.Domain.News)(new JavaScriptSerializer().Deserialize(apiobjNews.GetNewsById(Id), typeof(Domain.Socioboard.Domain.News)));
             Session["NewsToUpdate"] = ObjNews;
@@ -34,6 +73,19 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult UpdateNews(string News,string ExpiryDate,string Status)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.News objNews = (Domain.Socioboard.Domain.News)Session["NewsToUpdate"];
             objNews.NewsDetail = News;
             objNews.ExpiryDate = Convert.ToDateTime(ExpiryDate);
@@ -45,10 +97,36 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult CreateNews()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
         public ActionResult AddNews(string News, string ExpiryDate, string Status)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.News objNews = new Domain.Socioboard.Domain.News();
             objNews.NewsDetail = News;
             objNews.ExpiryDate = Convert.ToDateTime(ExpiryDate);

@@ -35,6 +35,8 @@ namespace Api.Socioboard.Services
         YoutubeAccountRepository objYoutubeAccountRepository = new YoutubeAccountRepository();
         YoutubeChannelRepository objYoutubeChannelRepository = new YoutubeChannelRepository();
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+        private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
+
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         MongoRepository youtubefeedrepo = new MongoRepository("YouTubeFeed");
         [WebMethod]
@@ -211,22 +213,34 @@ namespace Api.Socioboard.Services
             }
             #endregion
             #region Add TeamMemberProfile
-            Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-            objTeamMemberProfile.Id = Guid.NewGuid();
-            objTeamMemberProfile.TeamId = objTeam.Id;
-            objTeamMemberProfile.Status = 1;
-            objTeamMemberProfile.ProfileType = "youtube";
-            objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-            objTeamMemberProfile.ProfileId = objYoutubeAccount.Ytuserid;
+            //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+            //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+            //objTeamMemberProfile.Id = Guid.NewGuid();
+            //objTeamMemberProfile.TeamId = objTeam.Id;
+            //objTeamMemberProfile.Status = 1;
+            //objTeamMemberProfile.ProfileType = "youtube";
+            //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+            //objTeamMemberProfile.ProfileId = objYoutubeAccount.Ytuserid;
 
-            objTeamMemberProfile.ProfileName = objYoutubeAccount.Ytusername;
-            objTeamMemberProfile.ProfilePicUrl = objYoutubeAccount.Ytprofileimage;
+            //objTeamMemberProfile.ProfileName = objYoutubeAccount.Ytusername;
+            //objTeamMemberProfile.ProfilePicUrl = objYoutubeAccount.Ytprofileimage;
 
-            if (!objTeamMemberProfileRepository.checkTeamMemberProfilebyType(objTeam.Id, objYoutubeAccount.Ytuserid, "youtube"))
-            {
-                objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
-            }
+            //if (!objTeamMemberProfileRepository.checkTeamMemberProfilebyType(objTeam.Id, objYoutubeAccount.Ytuserid, "youtube"))
+            //{
+            //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+            //}
+
+            Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+            grpProfile.Id = Guid.NewGuid();
+            grpProfile.EntryDate = DateTime.UtcNow;
+            grpProfile.GroupId = Guid.Parse(GroupId);
+            grpProfile.GroupOwnerId = Guid.Parse(UserId);
+            grpProfile.ProfileId = objYoutubeAccount.Ytuserid;
+            grpProfile.ProfileType = "youtube";
+            grpProfile.ProfileName = objYoutubeAccount.Ytusername;
+            grpProfile.ProfilePic = objYoutubeAccount.Ytprofileimage;
+
+
             #endregion
             #region SocialProfile
             Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
@@ -238,6 +252,7 @@ namespace Api.Socioboard.Services
             objSocialProfile.ProfileStatus = 1;
             if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
             {
+                grpProfileRepo.AddGroupProfile(grpProfile);
                 objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
             }
             #endregion
@@ -398,7 +413,7 @@ namespace Api.Socioboard.Services
                 try
                 {
                     objuser.EmailId = itemEmail["email"].ToString();
-                    objuser.UserName = itemEmail["given_name"].ToString();
+                    objuser.UserName = itemEmail["name"].ToString();
                     objuser.ProfileUrl = itemEmail["picture"].ToString();
 
                 }

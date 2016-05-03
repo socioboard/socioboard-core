@@ -54,24 +54,29 @@ namespace Api.Socioboard.Services
             objGroupProfile.ProfileType = network;
             objGroupProfile.EntryDate = DateTime.Now;
             objGroupProfileRepository.AddGroupProfile(objGroupProfile);
-            objTeam = new Domain.Socioboard.Domain.Team();
-            objTeam=objTeamRepository.GetAllTeam(Guid.Parse(groupid), Guid.Parse(userid));
-            objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-            objTeamMemberProfile.Id = Guid.NewGuid();
-            objTeamMemberProfile.TeamId = objTeam.Id;
-            objTeamMemberProfile.ProfileId = profileid;
-            objTeamMemberProfile.ProfileType = network;
-            objTeamMemberProfile.Status = 1;
-            objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-            objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+
+            //Domain.Socioboard.Domain.TeamMemberProfile _TeamMemberProfile = objTeamMemberProfileRepository.GetMemberdata(profileid, network);
+
+            //objTeam = new Domain.Socioboard.Domain.Team();
+            //objTeam = objTeamRepository.GetAllTeam(Guid.Parse(groupid), Guid.Parse(userid));
+            //objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+            //objTeamMemberProfile.Id = Guid.NewGuid();
+            //objTeamMemberProfile.TeamId = objTeam.Id;
+            //objTeamMemberProfile.ProfileId = profileid;
+            //objTeamMemberProfile.ProfileType = network;
+            //objTeamMemberProfile.Status = 1;
+            //objTeamMemberProfile.ProfilePicUrl = _TeamMemberProfile.ProfilePicUrl;
+            //objTeamMemberProfile.ProfileName = _TeamMemberProfile.ProfileName;
+            //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+            //objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
             return "";
         }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteProfileFromGroup(string profileid, string groupid, string userid)
+        public string DeleteProfileFromGroup(string profileid, string groupid, string userid, string ProfileType)
         {
-            objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(userid), profileid, Guid.Parse(groupid));
+            objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(userid), profileid, Guid.Parse(groupid), ProfileType);
             objTeam = new Domain.Socioboard.Domain.Team();
             objTeam = objTeamRepository.GetAllTeam(Guid.Parse(groupid), Guid.Parse(userid));
             objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(profileid, objTeam.Id);

@@ -6,9 +6,9 @@ using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
-    public class GroupsRepository:IGroupRepository
+    public class GroupsRepository : IGroupRepository
     {
 
         /// <AddGroup>
@@ -113,7 +113,7 @@ namespace Api.Socioboard.Services
                         //Proceed action, to update group name.
                         session.CreateQuery("Update Groups set GroupName =:groupname where UserId = :userid")
                             .SetParameter("groupname", group.GroupName)
-                            .SetParameter("userid",group.UserId )
+                            .SetParameter("userid", group.UserId)
                             .ExecuteUpdate();
                         transaction.Commit();
                     }
@@ -137,25 +137,12 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    List<Domain.Socioboard.Domain.Groups> alstFBAccounts = session.CreateQuery("from Groups where UserId = :userid")
-                    .SetParameter("userid", Userid)
-                    .List<Domain.Socioboard.Domain.Groups>()
-                    .ToList<Domain.Socioboard.Domain.Groups>();
+                List<Domain.Socioboard.Domain.Groups> alstFBAccounts = session.CreateQuery("from Groups where UserId = :userid")
+                .SetParameter("userid", Userid)
+                .List<Domain.Socioboard.Domain.Groups>()
+                .ToList<Domain.Socioboard.Domain.Groups>();
+                return alstFBAccounts;
 
-                    #region oldcode
-                    //List<Groups> alstFBAccounts = new List<Groups>();
-
-                    //  foreach (Groups item in query.Enumerable())
-                    //  {
-                    //      alstFBAccounts.Add(item);
-                    //  }
-                    //   
-                    #endregion
-                    return alstFBAccounts;
-                }//End Transaction
             }//End Session
         }
 
@@ -252,7 +239,7 @@ namespace Api.Socioboard.Services
         /// <param name="userid">Id of user(Guid)</param>
         /// <param name="groupname">Name of group(String)</param>
         /// <returns>Bool(True or False)</returns>
-        public bool checkGroupExists(Guid userid,string groupname)
+        public bool checkGroupExists(Guid userid, string groupname)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -265,7 +252,7 @@ namespace Api.Socioboard.Services
                         //Proceed action, to find group by and and group name
                         NHibernate.IQuery query = session.CreateQuery("from Groups where UserId = :userid and GroupName =:groupname");
                         //  query.SetParameter("userid", group.UserId);  UserId =:userid and
-                        query.SetParameter("userid",userid);
+                        query.SetParameter("userid", userid);
                         query.SetParameter("groupname", groupname);
                         var result = query.UniqueResult();
                         if (result == null)
@@ -302,7 +289,7 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action to Get group records.
                         NHibernate.IQuery query = session.CreateQuery("from Groups where UserId = :userid and GroupName=:groupname");
-                      
+
                         query.SetParameter("userid", userid);
                         query.SetParameter("groupname", groupname);
                         Domain.Socioboard.Domain.Groups grou = query.UniqueResult<Domain.Socioboard.Domain.Groups>();
@@ -351,7 +338,7 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-    
+
 
 
         /// <DeleteGroup>
@@ -439,10 +426,73 @@ namespace Api.Socioboard.Services
 
 
 
+        public Domain.Socioboard.Domain.Groups getGroupById(Guid GroupId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from Groups where Id=:GroupId");
+
+                        query.SetParameter("GroupId", GroupId);
+                        Domain.Socioboard.Domain.Groups grou = query.UniqueResult<Domain.Socioboard.Domain.Groups>();
+                        return grou;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+
+        }
 
 
+        public List<Domain.Socioboard.Domain.Groups> getAlluserGroups(Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    List<Domain.Socioboard.Domain.Groups> alstFBAccounts = session.CreateQuery("from Groups where UserId=:UserId ")
+                          .SetParameter("UserId", UserId)
+                    .List<Domain.Socioboard.Domain.Groups>()
+                    .ToList<Domain.Socioboard.Domain.Groups>();
 
+                    #region oldcode
+                    //List<Groups> alstFBAccounts = new List<Groups>();
 
-
+                    //  foreach (Groups item in query.Enumerable())
+                    //  {
+                    //      alstFBAccounts.Add(item);
+                    //  }
+                    //   
+                    #endregion
+                    return alstFBAccounts;
+                }//End Transaction
+            }//End Session
+        }
+        public List<Domain.Socioboard.Domain.Groups> getAlluserGroups()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    List<Domain.Socioboard.Domain.Groups> alstFBAccounts = session.CreateQuery("from Groups")
+                    .List<Domain.Socioboard.Domain.Groups>()
+                    .ToList<Domain.Socioboard.Domain.Groups>();
+                    return alstFBAccounts;
+                }//End Transaction
+            }//End Session
+        }
     }
 }

@@ -145,6 +145,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TwitterTweetSearchWithGeoLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="q" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="geoCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterTweetSearchWithGeoLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterTweetSearchWithGeoLocationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -208,6 +223,12 @@
   <wsdl:message name="GPlusLinkBuilderSoapOut">
     <wsdl:part name="parameters" element="tns:GPlusLinkBuilderResponse" />
   </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterTweetSearchWithGeoLocation" />
+  </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterTweetSearchWithGeoLocationResponse" />
+  </wsdl:message>
   <wsdl:message name="DiscoverySearchFacebookHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="keyword" type="s:string" />
@@ -269,6 +290,13 @@
     <wsdl:part name="q" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GPlusLinkBuilderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationHttpGetIn">
+    <wsdl:part name="q" type="s:string" />
+    <wsdl:part name="geoCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="DiscoverySearchFacebookHttpPostIn">
@@ -334,6 +362,13 @@
   <wsdl:message name="GPlusLinkBuilderHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationHttpPostIn">
+    <wsdl:part name="q" type="s:string" />
+    <wsdl:part name="geoCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterTweetSearchWithGeoLocationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="DiscoverySearchSoap">
     <wsdl:operation name="DiscoverySearchFacebook">
       <wsdl:input message="tns:DiscoverySearchFacebookSoapIn" />
@@ -374,6 +409,10 @@
     <wsdl:operation name="GPlusLinkBuilder">
       <wsdl:input message="tns:GPlusLinkBuilderSoapIn" />
       <wsdl:output message="tns:GPlusLinkBuilderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <wsdl:input message="tns:TwitterTweetSearchWithGeoLocationSoapIn" />
+      <wsdl:output message="tns:TwitterTweetSearchWithGeoLocationSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DiscoverySearchHttpGet">
@@ -417,6 +456,10 @@
       <wsdl:input message="tns:GPlusLinkBuilderHttpGetIn" />
       <wsdl:output message="tns:GPlusLinkBuilderHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <wsdl:input message="tns:TwitterTweetSearchWithGeoLocationHttpGetIn" />
+      <wsdl:output message="tns:TwitterTweetSearchWithGeoLocationHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DiscoverySearchHttpPost">
     <wsdl:operation name="DiscoverySearchFacebook">
@@ -458,6 +501,10 @@
     <wsdl:operation name="GPlusLinkBuilder">
       <wsdl:input message="tns:GPlusLinkBuilderHttpPostIn" />
       <wsdl:output message="tns:GPlusLinkBuilderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <wsdl:input message="tns:TwitterTweetSearchWithGeoLocationHttpPostIn" />
+      <wsdl:output message="tns:TwitterTweetSearchWithGeoLocationHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DiscoverySearchSoap" type="tns:DiscoverySearchSoap">
@@ -545,6 +592,15 @@
     </wsdl:operation>
     <wsdl:operation name="GPlusLinkBuilder">
       <soap:operation soapAction="http://tempuri.org/GPlusLinkBuilder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <soap:operation soapAction="http://tempuri.org/TwitterTweetSearchWithGeoLocation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -645,6 +701,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <soap12:operation soapAction="http://tempuri.org/TwitterTweetSearchWithGeoLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DiscoverySearchHttpGet" type="tns:DiscoverySearchHttpGet">
     <http:binding verb="GET" />
@@ -738,6 +803,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <http:operation location="/TwitterTweetSearchWithGeoLocation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DiscoverySearchHttpPost" type="tns:DiscoverySearchHttpPost">
     <http:binding verb="POST" />
@@ -824,6 +898,15 @@
     </wsdl:operation>
     <wsdl:operation name="GPlusLinkBuilder">
       <http:operation location="/GPlusLinkBuilder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterTweetSearchWithGeoLocation">
+      <http:operation location="/TwitterTweetSearchWithGeoLocation" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

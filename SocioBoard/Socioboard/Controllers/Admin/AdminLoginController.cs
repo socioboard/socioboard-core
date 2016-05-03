@@ -19,6 +19,7 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult AdminLogin(string username, string password)

@@ -19,8 +19,6 @@ namespace Api.Socioboard.Services
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [ScriptService]
-
-
     public class Groups : System.Web.Services.WebService
     {
         ILog logger = LogManager.GetLogger(typeof(Groups));
@@ -48,16 +46,16 @@ namespace Api.Socioboard.Services
                     Domain.Socioboard.Domain.User objUser = objUserRepository.getUsersById(Guid.Parse(UserId));
                     Team.AddTeamByGroupIdUserId(objUser.Id, objUser.EmailId, group.Id);
                     BusinessSetting ApiobjBusinesssSetting = new BusinessSetting();
-                    Domain.Socioboard.Domain.BusinessSetting ObjBsnsStng=new Domain.Socioboard.Domain.BusinessSetting();
-                    ObjBsnsStng.Id=Guid.NewGuid();
-                    ObjBsnsStng.BusinessName=GroupName;
-                    ObjBsnsStng.GroupId=group.Id;
-                    ObjBsnsStng.AssigningTasks=false;
-                    ObjBsnsStng.TaskNotification=false;
-                    ObjBsnsStng.FbPhotoUpload=0;
-                    ObjBsnsStng.UserId=Guid.Parse(UserId);
-                    ObjBsnsStng.EntryDate=DateTime.Now;
-                    string ObjBsnsStg=(new JavaScriptSerializer().Serialize(ObjBsnsStng));
+                    Domain.Socioboard.Domain.BusinessSetting ObjBsnsStng = new Domain.Socioboard.Domain.BusinessSetting();
+                    ObjBsnsStng.Id = Guid.NewGuid();
+                    ObjBsnsStng.BusinessName = GroupName;
+                    ObjBsnsStng.GroupId = group.Id;
+                    ObjBsnsStng.AssigningTasks = false;
+                    ObjBsnsStng.TaskNotification = false;
+                    ObjBsnsStng.FbPhotoUpload = 0;
+                    ObjBsnsStng.UserId = Guid.Parse(UserId);
+                    ObjBsnsStng.EntryDate = DateTime.Now;
+                    string ObjBsnsStg = (new JavaScriptSerializer().Serialize(ObjBsnsStng));
                     string BsnsMessage = ApiobjBusinesssSetting.AddBusinessByUser(ObjBsnsStg);
                     //return new JavaScriptSerializer().Serialize(group);
                     return "Added Sucessfully";
@@ -215,6 +213,22 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllGroups()
+        {
+            List<Domain.Socioboard.Domain.Groups> lstGroups;
+            try
+            {
+                lstGroups = grouprepo.getAlluserGroups();
+            }
+            catch (Exception ex)
+            {
+                lstGroups = new List<Domain.Socioboard.Domain.Groups>();
+            }
+            return new JavaScriptSerializer().Serialize(lstGroups);
+        }
+
 
     }
 }

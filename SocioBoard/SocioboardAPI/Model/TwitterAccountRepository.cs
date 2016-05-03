@@ -9,7 +9,7 @@ using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using NHibernate.Linq;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class TwitterAccountRepository : ITwitterAccountRepository
     {
@@ -223,7 +223,22 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.TwitterAccount> GetAllTwitterAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = session.CreateQuery("from TwitterAccount").List<Domain.Socioboard.Domain.TwitterAccount>().ToList<Domain.Socioboard.Domain.TwitterAccount>();
+                    return lstTwitterAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.TwitterAccount>();
+                }
+            }
 
+        }
 
         /// <checkTwitterUserExists>
         /// Check the existing Twitter account by twitter id and user id.

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+  <class name="Demorequest" table="demorequest" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Firstname">
+      <column name="FirstName" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Lastname">
+      <column name="LastName" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Email">
+      <column name="Email" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Company">
+      <column name="Company" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Location">
+      <column name="Location" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Skype">
+      <column name="Skype" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Phone">
+      <column name="Phone" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Designation">
+      <column name="Designation" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="CompanyWebsite">
+      <column name="CompanyWebsite" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="DemoPlanType">
+      <column name="DemoPlanType" sql-type="int(11)" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

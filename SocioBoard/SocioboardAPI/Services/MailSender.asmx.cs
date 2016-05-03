@@ -77,6 +77,7 @@ namespace Api.Socioboard.Services
                 pass = ConfigurationManager.AppSettings["ZohoPassword"];
                 objMailSenderFactory = new MailSenderFactory(MailSendingType.Zoho);
             }
+            
             return objMailSenderFactory;
         }
 

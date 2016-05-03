@@ -223,11 +223,12 @@ namespace GlobusTwitterLib.Twitter.Core.DirectMessageMethods
        /// <param name="oAuth"></param>
        /// <param name="textMessage"></param>
        /// <returns></returns>
-        public JArray Post_Direct_Messages_New(oAuthTwitter oAuth,string textMessage)
+        public JArray Post_Direct_Messages_New(oAuthTwitter oAuth,string textMessage, string userId)
         {
             string RequestUrl = Globals.PostDirectMesagesNewUrl; 
             SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
             strdic.Add("text", textMessage);
+            strdic.Add("user_id", userId);
             string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl, strdic);
             if (!response.StartsWith("["))
                 response = "[" + response + "]";

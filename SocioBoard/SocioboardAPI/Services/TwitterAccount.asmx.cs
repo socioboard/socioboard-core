@@ -33,6 +33,8 @@ namespace Api.Socioboard.Services
         TwitterDirectMessageRepository objTwitterDirectMessageRepository = new TwitterDirectMessageRepository();
         UserRepository objUserRepository = new Model.UserRepository();
         ILog logger = LogManager.GetLogger(typeof(TwitterAccount));
+
+        GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
       
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -60,7 +62,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteTwitterAccount(string UserId, string ProfileId, string GroupId)
+        public string DeleteTwitterAccount(string UserId, string ProfileId, string GroupId, string ProfileType)
         {
             try
             {
@@ -69,9 +71,11 @@ namespace Api.Socioboard.Services
                 //objTwtstats.deleteTwitterStats(Guid.Parse(UserId), ProfileId);
                 //objTwitterMessageRepository.deleteTwitterMessage(ProfileId, Guid.Parse(UserId));
                 //objTwitterDirectMessageRepository.deleteDirectMessage(Guid.Parse(UserId), ProfileId);
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId), ProfileType);
+                //objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, ProfileType);
                 return new JavaScriptSerializer().Serialize("");
             }
             catch (Exception ex)
@@ -183,15 +187,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllTwitterAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
-                ArrayList lstTwtAcc = objTwitterAccountRepository.getAllTwitterAccounts();
-                return new JavaScriptSerializer().Serialize(lstTwtAcc);
+                List<Domain.Socioboard.Domain.TwitterAccount> lstTwtAcc = objTwitterAccountRepository.GetAllTwitterAccounts();
+                return serializer.Serialize(lstTwtAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.TwitterAccount>());
             }
         }
 
@@ -213,20 +219,34 @@ namespace Api.Socioboard.Services
                     _TwitterAccount.ProfileImageUrl = ProfilePicUrl;
                     objTwitterAccountRepository.addTwitterkUser(_TwitterAccount);
 
-                    Domain.Socioboard.Domain.Team _Team = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                    Domain.Socioboard.Domain.TeamMemberProfile _TeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                    if (objTeamMemberProfileRepository.checkTeamMemberProfile(_Team.Id, ProfileId))
+                    //Domain.Socioboard.Domain.Team _Team = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    //Domain.Socioboard.Domain.TeamMemberProfile _TeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    //if (objTeamMemberProfileRepository.checkTeamMemberProfile(_Team.Id, ProfileId))
+                    //{
+                    //    _TeamMemberProfile.Id = Guid.NewGuid();
+                    //    _TeamMemberProfile.TeamId = _Team.Id;
+                    //    _TeamMemberProfile.ProfileId = ProfileId;
+                    //    _TeamMemberProfile.ProfileName = ScreenName;
+                    //    _TeamMemberProfile.Status = 1;
+                    //    _TeamMemberProfile.ProfileType = "twitter";
+                    //    _TeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                    //    _TeamMemberProfile.ProfilePicUrl = ProfilePicUrl;
+                    //    objTeamMemberProfileRepository.addNewTeamMember(_TeamMemberProfile);
+                    //}
+
+                    if (!grpProfileRepo.checkProfileExistsingroup(Guid.Parse(GroupId), ProfileId))
                     {
-                        _TeamMemberProfile.Id = Guid.NewGuid();
-                        _TeamMemberProfile.TeamId = _Team.Id;
-                        _TeamMemberProfile.ProfileId = ProfileId;
-                        _TeamMemberProfile.ProfileName = ScreenName;
-                        _TeamMemberProfile.Status = 1;
-                        _TeamMemberProfile.ProfileType = "twitter";
-                        _TeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                        _TeamMemberProfile.ProfilePicUrl = ProfilePicUrl;
-                        objTeamMemberProfileRepository.addNewTeamMember(_TeamMemberProfile);
+                        Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+                        grpProfile.Id = Guid.NewGuid();
+                        grpProfile.EntryDate = DateTime.UtcNow;
+                        grpProfile.GroupId = Guid.Parse(GroupId);
+                        grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                        grpProfile.ProfileId = ProfileId;
+                        grpProfile.ProfileType = "twitter";
+                        grpProfileRepo.AddGroupProfile(grpProfile);
                     }
+
+
 
                     Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
                     objSocialProfile.Id = Guid.NewGuid();
@@ -259,7 +279,7 @@ namespace Api.Socioboard.Services
         public string retrievetwitterdata(string id)
         {
             string ret_string = string.Empty;
-            Domain.Socioboard.Domain.TwitterRecentDetails ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
+            //List<Domain.Socioboard.Domain.TwitterRecentDetails> ret = new List<Domain.Socioboard.Domain.TwitterRecentDetails>();
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
 
@@ -267,12 +287,12 @@ namespace Api.Socioboard.Services
                 {
 
                     List<Domain.Socioboard.Domain.TwitterRecentDetails> retrieve = session.CreateQuery("from TwitterRecentDetails where TwitterId =: id").SetParameter("id", id).List<Domain.Socioboard.Domain.TwitterRecentDetails>().ToList();
-                    ret = (Domain.Socioboard.Domain.TwitterRecentDetails)retrieve[0];
-                    if (ret == null)
+                    //ret = (Domain.Socioboard.Domain.TwitterRecentDetails)retrieve;
+                    if (retrieve.Count == 0)
                     {
-                        ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
+                        retrieve = new List<Domain.Socioboard.Domain.TwitterRecentDetails>();
                     }
-                    ret_string = new JavaScriptSerializer().Serialize(ret);
+                    ret_string = new JavaScriptSerializer().Serialize(retrieve);
 
                 }
                 catch (Exception e)
@@ -281,8 +301,8 @@ namespace Api.Socioboard.Services
                     Console.WriteLine(e.StackTrace);
                     logger.Error(e.Message);
                     logger.Error(e.StackTrace);
-                    ret = new Domain.Socioboard.Domain.TwitterRecentDetails();
-                    ret_string = new JavaScriptSerializer().Serialize(ret);
+                   
+                    ret_string = new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.TwitterRecentDetails>());
                 }
 
             }

@@ -11,12 +11,13 @@ namespace Domain.Socioboard.Domain
         public virtual Guid Userid { get; set; }
         public virtual FacebookAccount Facebookaccount { get; set; }
         public virtual List<FacebookAccount> Facebookpages { get; set; }
-        public virtual Guid Facebookaccountid { get; set; }
+        public virtual string Facebookaccountid { get; set; }
         public virtual string[] FacebookPageId { get; set; }
         public virtual string pageid { get; set; }
         public virtual int Timeintervalminutes { get; set; }
         public virtual string Lastpostid { get; set; }
         public virtual DateTime Lastsharetimestamp { get; set; }
         public virtual bool IsHidden { get; set; }
+        public virtual int FacebookStatus { get; set; }
     }
 }

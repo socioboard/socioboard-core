@@ -1,4 +1,5 @@
 ﻿using Api.Socioboard.Model;
+using Api.Socioboard.Services;
 using Facebook;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 
@@ -35,38 +37,50 @@ namespace Api.Socioboard.Helper
                     }
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e) {
+            
+            }
             return output;
         }
 
 
-        public static string ShareFeed(string fbAccesstoken, string FeedId, string pageId, string message, string fbUserId, string title, int time)
+        public static string ShareFeed(string fbAccesstoken, string FeedId, string pageId, string message, string fbUserId,string FbPageName)
         {
+            string ret = "";
 
             try
             {
                 ShareathonRepository sharepo = new ShareathonRepository();
                 Domain.Socioboard.Domain.SharethonPost objshrpost = new Domain.Socioboard.Domain.SharethonPost();
                 string link = "https://www.facebook.com/" + pageId + "/posts/" + FeedId;
-
+                
                 FacebookClient fb = new FacebookClient();
                 fb.AccessToken = fbAccesstoken;
                 var args = new Dictionary<string, object>();
 
                 args["message"] = message;
-                args["description"] = title;
                 args["link"] = link;
                 if (!sharepo.IsPostExist(fbUserId, pageId, FeedId))
                 {
-                    dynamic output = fb.Post("v2.0/" + fbUserId + "/feed", args);
-                    objshrpost.Id = Guid.NewGuid();
-                    objshrpost.Facebookaccountid = fbUserId;
-                    objshrpost.Facebookpageid = pageId;
-                    string feed_id = output["id"].ToString();
-                    objshrpost.PostId = FeedId;
-                    objshrpost.PostedTime = DateTime.UtcNow;
-                    sharepo.AddShareathonPost(objshrpost);
-
+                    try
+                    {
+                        dynamic output = fb.Post("v2.0/" + fbUserId + "/feed", args);
+                        string feed_id = output["id"].ToString();
+                        objshrpost.Id = Guid.NewGuid();
+                        objshrpost.Facebookaccountid = fbUserId;
+                        objshrpost.Facebookpageid = pageId;
+                        objshrpost.PostId = FeedId;
+                        objshrpost.PostedTime = DateTime.UtcNow;
+                        objshrpost.Facebookpagename = FbPageName;
+                        sharepo.AddShareathonPost(objshrpost);
+                        ret = "success";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.StackTrace);
+                        return "";
+                    }
+                    
                 }
 
             }
@@ -77,7 +91,7 @@ namespace Api.Socioboard.Helper
 
 
 
-            return "success";
+            return ret;
         }
 
 
@@ -181,7 +195,7 @@ namespace Api.Socioboard.Helper
 
 
 
-        public static void postfeedGroup(string fbaccesstoken, string fbgrpids, string feedid, string facebookaccountid, int time)
+        public static void postfeedGroup(string fbaccesstoken, string fbgrpids, string feedid, string facebookaccountid,int time,Guid Id)
         {
             List<string> lstPost = new List<string>();
             int lstCout = 0;
@@ -193,7 +207,7 @@ namespace Api.Socioboard.Helper
             fb.AccessToken = fbaccesstoken;
             Random r = new Random();
             int length = postid.Length;
-            while (length != lstCout)
+            while (length >= lstCout)
             {
 
                 int i = r.Next(0, length - 1);
@@ -207,7 +221,8 @@ namespace Api.Socioboard.Helper
                     string[] group = fbgrpids.Split(',');
                     foreach (var item in group)
                     {
-                        isPosted = shareagrp.IsPostExist(item, postid[i], facebookaccountid);
+                        string [] grpinfo = Regex.Split(item, "###");
+                        isPosted = shareagrp.IsPostExist(grpinfo[0], postid[i], facebookaccountid);
                         if (!isPosted)
                         {
                             string link = "https://www.facebook.com/" + postid[i];
@@ -216,32 +231,38 @@ namespace Api.Socioboard.Helper
                             args["link"] = link;
                             try
                             {
-                                dynamic output = fb.Post("v2.0/" + item + "/feed", args);
+                                if (shareagrp.IsShareathonExistById(Id))
+                                {
+                                    dynamic output = fb.Post("v2.0/" + grpinfo[0] + "/feed", args);
+                                    objshrgrp.Id = Guid.NewGuid();
+                                    objshrgrp.Facebookaccountid = facebookaccountid;
+                                    objshrgrp.Facebookgroupid = grpinfo[0];
+                                    objshrgrp.PostId = postid[i];
+                                    objshrgrp.PostedTime = DateTime.UtcNow;
+                                    objshrgrp.Facebookgroupname = grpinfo[1];
+                                    shareagrp.AddShareathonPost(objshrgrp);
+                                }
                             }
                             catch (Exception ex)
                             {
                                 Console.Write(ex.StackTrace);
+                                
                             }
-                            objshrgrp.Id = Guid.NewGuid();
-                            objshrgrp.Facebookaccountid = facebookaccountid;
-                            objshrgrp.Facebookgroupid = item;
-                            objshrgrp.PostId = postid[i];
-                            objshrgrp.PostedTime = DateTime.UtcNow;
-                            shareagrp.AddShareathonPost(objshrgrp);
+                            
 
-                            Thread.Sleep(1000 * 15);
+                            Thread.Sleep(1000 * 30);
                         }
                     }
 
-                    Thread.Sleep(1000 * 60 * time);
+                    Thread.Sleep(1000 *60*time);
                 }
             }
 
         }
 
 
-       
 
-        
+
+
     }
 }

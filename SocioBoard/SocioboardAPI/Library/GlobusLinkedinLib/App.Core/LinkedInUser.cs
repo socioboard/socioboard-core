@@ -285,6 +285,8 @@ namespace GlobusLinkedinLib.App.Core
             List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> UserUpdatesList = new List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>();
             // SocialStream socialStream = new SocialStream();
             ShareAndSocialStream socialStream = new ShareAndSocialStream();
+
+            string streamdata = socialStream.GetLinkedIn_UserUpdates(OAuth, LinkedInId, Count);
             xmlResult = socialStream.Get_UserUpdates(OAuth, LinkedInId, Count);
 
             XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update");

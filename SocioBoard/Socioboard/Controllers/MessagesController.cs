@@ -12,10 +12,12 @@ using Newtonsoft.Json.Linq;
 using Socioboard.Api.TeamMemberProfile;
 using Socioboard.Helper;
 using Socioboard.App_Start;
-
+using System.Threading.Tasks;
+using System.Net.Http;
+using Domain.Socioboard.Domain;
 namespace Socioboard.Controllers
 {
-
+    [CustomAuthorize]
     public class MessagesController : BaseController
     {
         //
@@ -24,7 +26,7 @@ namespace Socioboard.Controllers
         public static int inboxchatmessagecount = 0;
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             if (Session["User"] != null)
             {
@@ -34,21 +36,23 @@ namespace Socioboard.Controllers
                 }
                 else
                 {
-                    return View("Index");
+                    User objUser = (User)Session["User"];
+                    string selectedgroupid = Session["group"].ToString();
+                    IEnumerable<Domain.Socioboard.Domain.Groupmembers> lstGroupMembers = new List<Domain.Socioboard.Domain.Groupmembers>();
+                    HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/GetAcceptedGroupMembers?GroupId=" + selectedgroupid, "Bearer", Session["access_token"].ToString());
+                    if (response.IsSuccessStatusCode)
+                    {
+                        lstGroupMembers = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groupmembers>>();
+                    }
+
+                    return View("Index", lstGroupMembers.ToList());
                 }
             }
             else
             {
                 return RedirectToAction("Index", "Index");
             }
-            //DataSet ds = bindMessages();
-            //return View("_MessagesMidPartial", ds.Tables[0]);
-
-            //string viewToStr = RenderRazorViewToString("_MessagesLeftSideBarPartial", null);
-
-            //return Content(viewToStr);
-
-            //return View("Index"); //View("_MessagesMidPartialNew", ds); //View("Index");
+            
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
@@ -466,12 +470,15 @@ namespace Socioboard.Controllers
         // [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadtask()
         {
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            ViewBag.datetime = datetime;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
 
-            Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+            string groupId = Session["group"].ToString();
+            //Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
-            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksOfUserList(objUser.Id.ToString(), team.GroupId.ToString()), typeof(List<Domain.Socioboard.Domain.Tasks>));
+            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksOfUserList(objUser.Id.ToString(), groupId), typeof(List<Domain.Socioboard.Domain.Tasks>));
 
             string taskvalue = "My Task";
 
@@ -483,12 +490,14 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadIncompleteTask()
         {
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            ViewBag.datetime = datetime;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
-
-            Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+            string groupId = Session["group"].ToString();
+            //Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
-            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllIncompleteTaskofUser(objUser.Id.ToString(), team.GroupId.ToString()), typeof(List<Domain.Socioboard.Domain.Tasks>));
+            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllIncompleteTaskofUser(objUser.Id.ToString(), groupId), typeof(List<Domain.Socioboard.Domain.Tasks>));
 
             string taskvalue = "Pending Task";
 
@@ -499,12 +508,14 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadCompleteTask()
         {
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            ViewBag.datetime = datetime;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
-
-            Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+            string groupId = Session["group"].ToString();
+            //Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
-            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllCompleteTaskofUser(objUser.Id.ToString(), team.GroupId.ToString()), typeof(List<Domain.Socioboard.Domain.Tasks>));
+            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllCompleteTaskofUser(objUser.Id.ToString(), groupId), typeof(List<Domain.Socioboard.Domain.Tasks>));
 
             string taskvalue = "Completed Task";
 
@@ -515,12 +526,15 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadTeamTask()
         {
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            ViewBag.datetime = datetime;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string groupId = Session["group"].ToString();
 
-            Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+           // Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
-            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllTeamTask(objUser.Id.ToString(), team.GroupId.ToString()), typeof(List<Domain.Socioboard.Domain.Tasks>));
+            List<Domain.Socioboard.Domain.Tasks> taskdata = (List<Domain.Socioboard.Domain.Tasks>)new JavaScriptSerializer().Deserialize(objApiTasks.GetAllTeamTask(objUser.Id.ToString(), groupId), typeof(List<Domain.Socioboard.Domain.Tasks>));
 
             string taskvalue = "Team Task";
 
@@ -645,13 +659,19 @@ namespace Socioboard.Controllers
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult sentmsg()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
-            {
-                return View();
+            else {
+                return RedirectToAction("Index","Index");
             }
             //return View();
         }
@@ -661,12 +681,12 @@ namespace Socioboard.Controllers
         //}
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult loadsentmsg()
+        public async Task<ActionResult> loadsentmsg()
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser =await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -837,13 +857,14 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult loadarchive()
+        public async Task<ActionResult> loadarchive()
         {
 
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ArchiveMessage.ArchiveMessage ApiobjArchiveMessage = new Api.ArchiveMessage.ArchiveMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser =await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -920,12 +941,13 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult LoadSentmsgByDay(string day)
+        public async Task<ActionResult> LoadSentmsgByDay(string day)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser =await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -950,12 +972,13 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult LoadSentmsgByDays(string days)
+        public async Task<ActionResult> LoadSentmsgByDays(string days)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -980,12 +1003,13 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult LoadSentmsgByMonth(string month)
+        public async Task<ActionResult> LoadSentmsgByMonth(string month)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1010,12 +1034,13 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult LoadSentmsgForCustomrange(string sdate, string ldate)
+        public async Task<ActionResult> LoadSentmsgForCustomrange(string sdate, string ldate)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1096,12 +1121,13 @@ namespace Socioboard.Controllers
             Response.End();
         }
 
-        public ActionResult ExportSentmsgByDay(string day)
+        public async Task<ActionResult> ExportSentmsgByDay(string day)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser =  await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1125,12 +1151,13 @@ namespace Socioboard.Controllers
             ExportSentMessages(lstSchedulemsg, objUser);
             return RedirectToAction("sentmsg");
         }
-        public ActionResult ExportSentmsgByDays(string days)
+        public async Task<ActionResult> ExportSentmsgByDays(string days)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1154,12 +1181,13 @@ namespace Socioboard.Controllers
             ExportSentMessages(lstSchedulemsg, objUser);
             return RedirectToAction("sentmsg");
         }
-        public ActionResult ExportSentmsgByMonth(string month)
+        public async Task<ActionResult> ExportSentmsgByMonth(string month)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1183,12 +1211,13 @@ namespace Socioboard.Controllers
             ExportSentMessages(lstSchedulemsg, objUser);
             return RedirectToAction("sentmsg");
         }
-        public ActionResult ExportSentmsgForCustomrange(string sdate, string ldate)
+        public async Task<ActionResult> ExportSentmsgForCustomrange(string sdate, string ldate)
         {
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = await SBUtils.GetUserProfilesccordingToGroup();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -1215,14 +1244,29 @@ namespace Socioboard.Controllers
 
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult BindUserProfileByGroup()
+        public async Task<ActionResult> BindUserProfileByGroup()
         {
             Api.Team.Team objApiTeam = new Api.Team.Team();
-            string groupid = Session["group"].ToString();
-            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
-            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
-            List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
-            return PartialView("_InboxProfilePartial", alstprofiles);
+            string groupId = Session["group"].ToString();
+            string accesstoken = string.Empty;
+            try
+            {
+                accesstoken = System.Web.HttpContext.Current.Session["access_token"].ToString();
+            }
+            catch { }
+
+            IEnumerable<Domain.Socioboard.Domain.GroupProfile> lstGrpProfiles = new List<Domain.Socioboard.Domain.GroupProfile>();
+            HttpResponseMessage response1 = await WebApiReq.GetReq("api/ApiGroupProfiles/GetGroupProfiles?GroupId=" + groupId, "Bearer", accesstoken);
+            if (response1.IsSuccessStatusCode)
+            {
+                lstGrpProfiles = await response1.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.GroupProfile>>();
+            }
+
+
+            //Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            //Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            //List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            return PartialView("_InboxProfilePartial", lstGrpProfiles);
         }
 
 
@@ -1233,7 +1277,7 @@ namespace Socioboard.Controllers
         }
 
         [CustomException]
-        public ActionResult BindInboxMessage(string load, string arrmsgtype, string arrid)
+        public async Task<ActionResult> BindInboxMessage(string load, string arrmsgtype, string arrid)
         {
             string AllProfileId = string.Empty;
             string MessageType = string.Empty;
@@ -1242,10 +1286,10 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             if (load == "first")
             {
-                Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object>();
+                Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = new Dictionary<Domain.Socioboard.Domain.GroupProfile, object>();
                 try
                 {
-                    allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+                    allprofileofuser = await SBHelper.GetGroupProfiles();
                 }
                 catch (Exception Err)
                 {
@@ -1303,31 +1347,55 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult Inbox()
+        public async Task<ActionResult> Inbox()
         {
-            return View();
+            User objUser = (User)Session["User"];
+            string selectedgroupid = Session["group"].ToString();
+            IEnumerable<Domain.Socioboard.Domain.Groupmembers> lstGroupMembers = new List<Domain.Socioboard.Domain.Groupmembers>();
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/GetAcceptedGroupMembers?GroupId=" + selectedgroupid, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroupMembers = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groupmembers>>();
+            }
+
+            return View(lstGroupMembers.ToList());
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult BindUserProfileByGroupChat()
+        public async Task<ActionResult> BindUserProfileByGroupChat()
         {
-            Api.Team.Team objApiTeam = new Api.Team.Team();
-            string groupid = Session["group"].ToString();
-            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
-            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
-            List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
-            return PartialView("_InboxChatProfilePartial", alstprofiles);
+            string groupId = Session["group"].ToString();
+            string accesstoken = string.Empty;
+            try
+            {
+                accesstoken = System.Web.HttpContext.Current.Session["access_token"].ToString();
+            }
+            catch { }
+
+            IEnumerable<Domain.Socioboard.Domain.GroupProfile> lstGrpProfiles = new List<Domain.Socioboard.Domain.GroupProfile>();
+            HttpResponseMessage response1 = await WebApiReq.GetReq("api/ApiGroupProfiles/GetGroupProfiles?GroupId=" + groupId, "Bearer", accesstoken);
+            if (response1.IsSuccessStatusCode)
+            {
+                lstGrpProfiles = await response1.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.GroupProfile>>();
+            }
+
+
+            //Api.Team.Team objApiTeam = new Api.Team.Team();
+            //Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            //Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            //List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            return PartialView("_InboxChatProfilePartial", lstGrpProfiles);
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult BindInboxChatMessage(string load, string arrid)
+        public async Task<ActionResult> BindInboxChatMessage(string load, string arrid)
         {
             string TwitterProfiles = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
 
             if (load == "first")
             {
-                Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+                Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser = await SBHelper.GetGroupProfiles();
                 foreach (var item in allprofileofuser)
                 {
                     try
@@ -1380,6 +1448,8 @@ namespace Socioboard.Controllers
             return PartialView("_ShowChatPartial", _TwitterDirectMessages);
         }
 
+        
+
         public ActionResult Followers(string ProfileId)
         {
             Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
@@ -1388,5 +1458,21 @@ namespace Socioboard.Controllers
             return View(lstInboxMessages);
         }
 
+        public ActionResult SendDirectMessage(string message, string fromId, string toId)
+        {
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.Twitter.Twitter ApiTwitter = new Api.Twitter.Twitter();
+            string ret = ApiTwitter.PostTwitterDirectmessage(message, _User.Id.ToString(), fromId, toId);
+            JArray Jdata = JArray.Parse(ret);
+            if (ret != "{[]}")
+            {
+                string datetime = (Jdata[0]["created_at"].ToString()).ParseTwitterTime().ToString();
+                string senderImage = Jdata[0]["sender"]["profile_image_url_https"].ToString();
+                string html = "<li title=\"" + datetime + "\" class=\"msg col-md-9\">" + HttpUtility.HtmlDecode(message) + "</li>";
+                html += "<style>.chat-thread .msg:before {background-image:url(" + senderImage + ");}</style>";
+                return Content(html);
+            }
+            return Content("");
+        }
     }
 }

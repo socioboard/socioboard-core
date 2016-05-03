@@ -28,6 +28,18 @@ namespace GlobusLinkedinLib.LinkedIn.Core.PeopleMethods
             return xmlResult;
         }
 
+
+        public string GetLinkedIn_UserProfile(oAuthLinkedIn OAuth)
+        {
+            string response = OAuth.APIWebRequest("GET", Global.GetUserProfileUrl, null);
+            return response;
+        }
+
+        public string GetLinkedIn_Get_People_Connection(oAuthLinkedIn OAuth)
+        {
+            string response = OAuth.APIWebRequest("GET", Global.GetPeopleConnectionUrl, null);
+            return response;
+        }
         /// <summary>
         /// The People Search API returns information about people.
         /// </summary>

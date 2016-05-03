@@ -5,7 +5,7 @@ using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using System.IO;
-
+using NHibernate.Linq;
 namespace Api.Socioboard.Model
 {
     public class NewsLetterRepository : INewsLetterRepository
@@ -33,7 +33,7 @@ namespace Api.Socioboard.Model
 
         //public string GetAllNewLetter()
         //{
-            
+
         //    try
         //    {
         //        lstbox.Items.Add("Getting Mails....");
@@ -129,36 +129,15 @@ namespace Api.Socioboard.Model
                 {
                     try
                     {
-                        //Proceed action, to update existing news.
-                      //  session.CreateQuery("Update NewsLetter set SendStatus =1 where UserId = :UserId,SendDate = :SendDate and Id= :adsid")
-                      //  int i = session.CreateQuery("Update NewsLetter set SendStatus ='1' where Id = :id")
-                      //      .SetParameter("id",nl.Id)
-                      //     // .SetParameter("uid", nl.UserId)
-                      //      //.SetParameter("SendDate", nl.SendDate)
-                      //      //.SetParameter("nid", nl.Id)
-                      //      .ExecuteUpdate();
-                      //transaction.Commit();
-
-                      //  List<NewsLetter> alst = session.CreateQuery("from NewsLetter where Id ="+nl.Id+ " ")
-                      ////.SetParameter("id", nl.Id)
-                      //.List<NewsLetter>()
-                      //.ToList<NewsLetter>();
-
-
-
-
-                        int i = session.CreateQuery("Update NewsLetter set SendStatus ='1' where Id = :id")
-                                 .SetParameter("id",nl.UserId)
+                        int i = session.CreateQuery("Update NewsLetter set SendStatus =:SendStatus where Id = :id")
+                                 .SetParameter("id", nl.UserId)
+                                 .SetParameter("SendStatus", true)
                                  .ExecuteUpdate();
-                      transaction.Commit();
-                     
-
-
+                        transaction.Commit();
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        // return 0;
                     }
                 }//End Transaction
             }//End Session
@@ -452,6 +431,66 @@ namespace Api.Socioboard.Model
             }
         }
 
+
+        public Domain.Socioboard.Domain.NewsLetterSetting getNewsLetterSettings(string userId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+
+                    Domain.Socioboard.Domain.NewsLetterSetting _NewsLetterSetting = session.Query<Domain.Socioboard.Domain.NewsLetterSetting>().Where(t => t.userId == userId).SingleOrDefault();
+                    return _NewsLetterSetting;
+                }
+                catch (Exception ex)
+                {
+                    return new NewsLetterSetting();
+                }
+
+            }
+        }
+        public bool UpdateNewsLatterSetting(NewsLetterSetting _NewsLetterSetting)
+        {
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    NewsLetterSetting objNewsLetterSetting = new NewsLetterSetting();
+                    try
+                    {
+                        objNewsLetterSetting = session.Query<NewsLetterSetting>().Where(t => t.userId == _NewsLetterSetting.userId).SingleOrDefault();
+                    }
+                    catch (Exception ex)
+                    {
+                        objNewsLetterSetting = null;
+                    }
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        if (objNewsLetterSetting == null)
+                        {
+                            session.Save(_NewsLetterSetting);
+                        }
+                        else
+                        {
+                            objNewsLetterSetting.groupReport_Daily = _NewsLetterSetting.groupReport_Daily;
+                            objNewsLetterSetting.groupReport_7 = _NewsLetterSetting.groupReport_7;
+                            objNewsLetterSetting.groupReport_15 = _NewsLetterSetting.groupReport_15;
+                            objNewsLetterSetting.groupReport_30 = _NewsLetterSetting.groupReport_30;
+                            objNewsLetterSetting.groupReport_60 = _NewsLetterSetting.groupReport_60;
+                            objNewsLetterSetting.groupReport_90 = _NewsLetterSetting.groupReport_90;
+                            objNewsLetterSetting.others = _NewsLetterSetting.others;
+                            session.SaveOrUpdate(objNewsLetterSetting);
+                        }
+                        transaction.Commit();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
 
     }

@@ -11,10 +11,11 @@ using Socioboard.App_Start;
 using log4net;
 using DataStreams.Xlsx;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Threading.Tasks;
 
 namespace Socioboard.Controllers
 {
-    [Authorize]
+  //  [Authorize]
     [CustomAuthorize]
     public class PublishingController : BaseController
     {
@@ -128,18 +129,18 @@ namespace Socioboard.Controllers
             return Content(retmsg);
         }
 
-        public ActionResult ComposeScheduledMessage()
+        public async Task<ActionResult> ComposeScheduledMessage()
         {
             User objUser = (User)Session["User"];
-            Dictionary<TeamMemberProfile, object> dict_TeamMember = new Dictionary<TeamMemberProfile, object>();
+            Dictionary<GroupProfile, object> dict_TeamMember = new Dictionary<GroupProfile, object>();
             if (Session["group"] != null)
             {
-                dict_TeamMember = SBUtils.GetUserProfilesccordingToGroup();
+                dict_TeamMember = await SBHelper.GetGroupProfiles();
             }
             return PartialView("_ComposeMessageSchedulerPartial", dict_TeamMember);
         }
 
-
+        [HttpPost]
         public ActionResult ScheduledMessage(string scheduledmessage, string scheduleddate, string scheduledtime, string profiles, string clienttime)
         {
             var fi = Request.Files["file"];
@@ -163,7 +164,7 @@ namespace Socioboard.Controllers
 
             User objUser = (User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, scheduledmessage, clienttime, scheduleddate, scheduledtime, objUser.Id.ToString(), file);
+            string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, scheduledmessage, clienttime, scheduleddate, scheduledtime, objUser.Id.ToString(), file,"");
             return Content("_ComposeMessagePartial");
         }
 
@@ -291,7 +292,7 @@ namespace Socioboard.Controllers
                     scheduletime = hour + ":" + minute + ":00";
 
                     Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-                    string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, schedulemsg, clienttime, scheduledate, scheduletime, objUser.Id.ToString(), picURL);
+                    string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, schedulemsg, clienttime, scheduledate, scheduletime, objUser.Id.ToString(), picURL,"");
 
                 }
                 catch (Exception ex)
@@ -409,5 +410,111 @@ namespace Socioboard.Controllers
             }
         }
 
+
+
+
+        public async Task<ActionResult> Calendar()
+        {
+            User objUser = (User)Session["User"];
+            Dictionary<GroupProfile, object> dict_TeamMember = new Dictionary<GroupProfile, object>();
+            if (Session["group"] != null)
+            {
+                dict_TeamMember = await SBHelper.GetGroupProfiles();
+            }
+            return View(dict_TeamMember);
+        }
+
+        [HttpGet]
+        public JsonResult GetFeeds(DateTime start, DateTime end)
+        {
+            User objUser = (User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+            List<ScheduledMessage> lstScheduledMessage = (List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates(objUser.Id.ToString(), Session["group"].ToString(), start.ToString(), end.ToString()), typeof(List<ScheduledMessage>)));
+            string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+            var eventList = from e in lstScheduledMessage
+                            select new
+                            {
+                                id = e.Id,
+                                title = e.ShareMessage,
+                              //  start = new DateTime(e.ScheduleTime.Year, e.ScheduleTime.Month, e.ScheduleTime.Day, e.ScheduleTime.Hour, e.ScheduleTime.Minute, e.ScheduleTime.Second).ToString("yyyy-MM-dd HH':'mm':'ss"),
+                              start = ScheduleTime(e.ClientTime.ToLocalTime(),e.CreateTime,e.ScheduleTime) , 
+                              //url
+                                allDay = false,
+                                description = e.ShareMessage,
+                                profileId = e.ProfileId,
+                                Image = e.PicUrl,
+                                ProfileImg = GetProfileImage(e.ProfileId,e.ProfileType)
+                                //Image = "/Themes/" + path + "/" +e.PicUrl.Split(new string[] { path }, StringSplitOptions.None)[2],
+                            };
+            var rows = eventList.ToArray();
+
+            return Json(rows, JsonRequestBehavior.AllowGet);
+        }
+
+        string GetProfileImage(string ProfileId, string ProfileType) 
+        {
+            Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Session["User"];
+            string profileImg = "/Themes/@path/Contents/img/anonymousUser.jpg";
+            string profileName = "";
+            if (ProfileType.Equals("facebook")) 
+            {
+                Socioboard.Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
+                FacebookAccount objFacebookAccount = (FacebookAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objuser.Id.ToString(), ProfileId), typeof(FacebookAccount)));
+                profileName = objFacebookAccount.FbUserName;
+                profileImg = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+               
+            }
+            else if (ProfileType.Equals("twitter"))
+            {
+                Socioboard.Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
+                TwitterAccount objTwitterAccount = (TwitterAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objuser.Id.ToString(), ProfileId), typeof(TwitterAccount)));
+                profileName = objTwitterAccount.TwitterScreenName;
+                profileImg = objTwitterAccount.ProfileImageUrl;
+            }
+            else if (ProfileType.Equals("linkedin"))
+            {
+                Socioboard.Api.LinkedinAccount.LinkedinAccount ApiobjLinkedinAccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+                LinkedInAccount objLinkedInAccount = (LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objuser.Id.ToString(), ProfileId), typeof(LinkedInAccount)));
+                profileName = objLinkedInAccount.LinkedinUserName;
+                profileImg = objLinkedInAccount.ProfileImageUrl;
+               
+            }
+            else if (ProfileType.Equals("tumblr"))
+            {
+                Socioboard.Api.TumblrAccount.TumblrAccount ApiobjTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
+                TumblrAccount objTumblrAccount = (TumblrAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTumblrAccount.GetTumblrAccountDetailsById(objuser.Id.ToString(), ProfileId), typeof(TumblrAccount)));
+                profileName = objTumblrAccount.tblrUserName;
+                profileImg = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+            }
+            return profileImg+","+profileName;
+        }
+
+        string ScheduleTime(DateTime clientdate, DateTime server, DateTime scheduletime)
+        {
+            DateTime client = Convert.ToDateTime(clientdate);
+            string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
+            DateTime schedule = Convert.ToDateTime(scheduletime);
+            if (DateTime.Compare(client, server) > 0)
+            {
+
+                //double minutes = (server - client).TotalMinutes;
+                double minutes = (client - server).TotalMinutes;
+                schedule = schedule.AddMinutes(minutes);
+                return String.Format(schedule.ToString("yyyy-MM-dd HH':'mm':'ss"));
+
+            }
+            else if (DateTime.Compare(client, server) == 0)
+            {
+                return String.Format(schedule.ToString("yyyy-MM-dd HH':'mm':'ss"));
+            }
+            else if (DateTime.Compare(client, server) < 0)
+            {
+                //double minutes = (server - client).TotalMinutes;
+                double minutes = (client - server).TotalMinutes;
+                schedule = schedule.AddMinutes(minutes);
+                return String.Format(schedule.ToString("yyyy-MM-dd HH':'mm':'ss"));
+            }
+            return null;
+        }
     }
 }

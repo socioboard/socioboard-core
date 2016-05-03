@@ -55,28 +55,28 @@ namespace Api.Socioboard.Services
         }
 
 
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteProfileByProfileId(String UserId,string ProfileId)
-        {
-            try
-            {
-                int i = sociorepo.deleteProfile(Guid.Parse(UserId), ProfileId);
-                if (i == 1)
-                {
-                    return "Profile Deleted Successfully";
-                }
-                else
-                {
-                    return "Invalid UserId or ProfileId";
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
-            }
-        }
+        //[WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public string DeleteProfileByProfileId(String UserId,string ProfileId)
+        //{
+        //    try
+        //    {
+        //        int i = sociorepo.deleteProfile(Guid.Parse(UserId), ProfileId);
+        //        if (i == 1)
+        //        {
+        //            return "Profile Deleted Successfully";
+        //        }
+        //        else
+        //        {
+        //            return "Invalid UserId or ProfileId";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        return "Something Went Wrong";
+        //    }
+        //}
    
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

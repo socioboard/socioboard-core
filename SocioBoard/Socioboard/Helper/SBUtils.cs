@@ -17,6 +17,8 @@ using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using System.IO;
 using Socioboard.App_Start;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 
 namespace Socioboard.Helper
@@ -24,14 +26,24 @@ namespace Socioboard.Helper
     public static class SBUtils
     {
         static ILog logger = LogManager.GetLogger(typeof(SBUtils));
-        public static Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> GetUserProfilesccordingToGroup()
+        public static async Task<Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object>> GetUserProfilesccordingToGroup()
         {
             User objUser = (User)System.Web.HttpContext.Current.Session["User"];
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
-            ApiobjGroups.Timeout = 300000;
+           // ApiobjGroups.Timeout = 300000;
             //ApiobjGroups.GetGroupDetailsByGroupId
-            Groups objGroups = (Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()), typeof(Groups)));
+            //Groups objGroups = (Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()), typeof(Groups)));
+            Groups objGroups = null;
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroups/GetGroupDetailsByGroupId?GroupId=" + System.Web.HttpContext.Current.Session["group"].ToString(), "Bearer", System.Web.HttpContext.Current.Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                objGroups = await response.Content.ReadAsAsync<Domain.Socioboard.Domain.Groups>();
+            }
+
+
+
             Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> dict_TeamMember = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object>();
+
             Api.Team.Team objApiTeam = new Api.Team.Team();
             objApiTeam.Timeout = 300000;
             JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
@@ -170,6 +182,16 @@ namespace Socioboard.Helper
 
                 }
             }
+            else if (objTeamMemberProfile.ProfileType == "googleanalytics")
+            {
+                using (Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount ApiobjGoogleAnalyticsAccount = new Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount())
+                {
+
+                    ApiobjGoogleAnalyticsAccount.Timeout = 300000;
+                    objSocialSiteAccount = (GoogleAnalyticsAccount)(new JavaScriptSerializer().Deserialize(ApiobjGoogleAnalyticsAccount.GetGooglePlusAccountDetailsById(objUserid.ToString(), objTeamMemberProfile.ProfileId), typeof(GoogleAnalyticsAccount)));
+
+                }
+            }
 
 
             return objSocialSiteAccount;
@@ -181,7 +203,7 @@ namespace Socioboard.Helper
             string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
 
             List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
-            
+
             Api.Team.Team objApiTeam = new Api.Team.Team();
             objApiTeam.Timeout = 300000;
             JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
@@ -219,7 +241,7 @@ namespace Socioboard.Helper
             List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
             List<Domain.Socioboard.Domain.FacebookAccount> ret_lstFacebookProfile = new List<Domain.Socioboard.Domain.FacebookAccount>();
             Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
-         
+
             Api.Team.Team objApiTeam = new Api.Team.Team();
             objApiTeam.Timeout = 300000;
             JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
@@ -231,14 +253,14 @@ namespace Socioboard.Helper
             foreach (Domain.Socioboard.Domain.TeamMemberProfile team_member in lstTeamMemberProfile)
             {
                 _FacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(ApiFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), team_member.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
-             
-                if(team_member.ProfileType == "facebook_page" && !string.IsNullOrEmpty(_FacebookAccount.AccessToken))
+
+                if (team_member.ProfileType == "facebook_page" && !string.IsNullOrEmpty(_FacebookAccount.AccessToken))
                 {
                     ret_lstFacebookProfile.Add(_FacebookAccount);
                 }
             }
             return ret_lstFacebookProfile;
-        
+
         }
 
 
@@ -287,6 +309,33 @@ namespace Socioboard.Helper
             lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberTwitterProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
 
             return lstTeamMemberProfile;
+        }
+
+        public static List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> GetUserTeamMemberGAProfiles()
+        {
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string groupid = System.Web.HttpContext.Current.Session["group"].ToString();
+            Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount ApiGoogleAnalyticsAccount = new Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount();
+            List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+            List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> ret_GoogleAnalyticsAccount = new List<Domain.Socioboard.Domain.GoogleAnalyticsAccount>();
+            Domain.Socioboard.Domain.GoogleAnalyticsAccount _GoogleAnalyticsAccount = new Domain.Socioboard.Domain.GoogleAnalyticsAccount();
+
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            objApiTeam.Timeout = 300000;
+            JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            objApiTeamMemberProfile.Timeout = 300000;
+            lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+
+            foreach (Domain.Socioboard.Domain.TeamMemberProfile team_member in lstTeamMemberProfile)
+            {
+                if (team_member.ProfileType == "googleanalytics")
+                {
+                    _GoogleAnalyticsAccount = (Domain.Socioboard.Domain.GoogleAnalyticsAccount)new JavaScriptSerializer().Deserialize(ApiGoogleAnalyticsAccount.GetGooglePlusAccountDetailsById(objUser.Id.ToString(), team_member.ProfileId), typeof(Domain.Socioboard.Domain.GoogleAnalyticsAccount));
+                    ret_GoogleAnalyticsAccount.Add(_GoogleAnalyticsAccount);
+                }
+            }
+            return ret_GoogleAnalyticsAccount;
         }
 
         public static List<object> check(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile)
@@ -457,6 +506,7 @@ namespace Socioboard.Helper
         //}
         public static Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> GetUserProfilesSnapsAccordingToGroup(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile, int CountProfileSnapshot = 0)
         {
+
             User objUser = (User)System.Web.HttpContext.Current.Session["User"];
             Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> dic_profilessnap = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>();
             var dicprofilefeeds = new Dictionary<object, List<object>>();
@@ -562,6 +612,7 @@ namespace Socioboard.Helper
                         InstagramAccount objInstagramAccount = (InstagramAccount)(new JavaScriptSerializer().Deserialize(ApiobjInstagramAccount.UserInformation(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(InstagramAccount)));
                         dicprofilefeeds.Add(objInstagramAccount, feeds);
                         dic_profilessnap.Add(item, dicprofilefeeds);
+
                     }
                     catch (Exception ex)
                     {
@@ -593,13 +644,13 @@ namespace Socioboard.Helper
                     {
                         feeds = new List<object>();
                         Api.YoutubeAccount.YoutubeAccount ApiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
-                        ApiobjYoutubeAccount.Timeout = 300000; 
+                        ApiobjYoutubeAccount.Timeout = 300000;
                         YoutubeAccount objYoutubeAccount = (YoutubeAccount)(new JavaScriptSerializer().Deserialize(ApiobjYoutubeAccount.GetYoutubeAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(YoutubeAccount)));
                         Api.YoutubeChannel.YoutubeChannel ApiobjYoutubeChannel = new Api.YoutubeChannel.YoutubeChannel();
-                        ApiobjYoutubeChannel.Timeout = 300000; 
-                        YoutubeChannel objYoutubeChannel = (YoutubeChannel)(new JavaScriptSerializer().Deserialize(ApiobjYoutubeChannel.GetAllYoutubeChannelByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(YoutubeChannel)));
-                        List<YoutubeChannel> lstYoutubeChannel = new List<YoutubeChannel>();
-                        lstYoutubeChannel.Add(objYoutubeChannel);
+                        ApiobjYoutubeChannel.Timeout = 300000;
+                        List<YoutubeChannel> lstYoutubeChannel = (List<YoutubeChannel>)(new JavaScriptSerializer().Deserialize(ApiobjYoutubeChannel.GetAllYoutubeChannelByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<YoutubeChannel>)));
+                        //List<YoutubeChannel> lstYoutubeChannel = new List<YoutubeChannel>();
+                        //lstYoutubeChannel.Add(objYoutubeChannel);
                         foreach (var youtubechannel in lstYoutubeChannel)
                         {
                             feeds.Add(youtubechannel);
@@ -619,7 +670,7 @@ namespace Socioboard.Helper
                     {
                         feeds = new List<object>();
                         Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
-                        ApiobjLinkedinCompanyPage.Timeout = 300000; 
+                        ApiobjLinkedinCompanyPage.Timeout = 300000;
                         LinkedinCompanyPage objLinkedinCompanypage = (LinkedinCompanyPage)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinCompanyPage.GetLinkedinCompanyPageDetailsByUserIdAndPageId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(LinkedinCompanyPage)));
                         Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjLinkedinCompanyPagePost = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
                         ApiobjLinkedinCompanyPage.Timeout = 300000;
@@ -642,7 +693,7 @@ namespace Socioboard.Helper
                     {
                         feeds = new List<object>();
                         Api.GooglePlusAccount.GooglePlusAccount ApiobjGooglePlusAccount = new Api.GooglePlusAccount.GooglePlusAccount();
-                        ApiobjGooglePlusAccount.Timeout = 300000; 
+                        ApiobjGooglePlusAccount.Timeout = 300000;
                         Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount = (GooglePlusAccount)new JavaScriptSerializer().Deserialize(ApiobjGooglePlusAccount.GetGooglePlusAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(GooglePlusAccount));
                         dicprofilefeeds.Add(_GooglePlusAccount, feeds);
                         dic_profilessnap.Add(item, dicprofilefeeds);
@@ -652,8 +703,26 @@ namespace Socioboard.Helper
                         Console.WriteLine(ex.Message);
                     }
                 }
+                if (item.ProfileType == "googleanalytics")
+                {
+                    try
+                    {
+                        feeds = new List<object>();
+                        Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount ApiobjGoogleAnalyticsAccount = new Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount();
+                        ApiobjGoogleAnalyticsAccount.Timeout = 300000;
+                        Domain.Socioboard.Domain.GoogleAnalyticsAccount _GoogleAnalyticsAccount = (GoogleAnalyticsAccount)new JavaScriptSerializer().Deserialize(ApiobjGoogleAnalyticsAccount.GetGooglePlusAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(GoogleAnalyticsAccount));
+                        dicprofilefeeds.Add(_GoogleAnalyticsAccount, feeds);
+                        dic_profilessnap.Add(item, dicprofilefeeds);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                }
 
             }
+
             return dic_profilessnap;
         }
         public static int GetUserPackageProfileCount(string accounttype)
@@ -662,12 +731,11 @@ namespace Socioboard.Helper
             if (accounttype.ToString().ToLower() == AccountType.Deluxe.ToString().ToLower())
                 tot_acc = 50;
             else if (accounttype.ToString().ToLower() == AccountType.Standard.ToString().ToLower())
-                tot_acc = 20;
+                tot_acc = 10;
             else if (accounttype.ToString().ToLower() == AccountType.Premium.ToString().ToLower())
                 tot_acc = 20;
             else if (accounttype.ToString().ToLower() == AccountType.Free.ToString().ToLower())
-                tot_acc = 20;
-
+                tot_acc = 5;
             else if (accounttype.ToString().ToLower() == AccountType.SocioBasic.ToString().ToLower())
                 tot_acc = 100;
             else if (accounttype.ToString().ToLower() == AccountType.SocioStandard.ToString().ToLower())
@@ -686,7 +754,7 @@ namespace Socioboard.Helper
             {
                 if (name.Length > 10)
                 {
-                    ret = name.Substring(0, 10) + "..";
+                    ret = name.Substring(0, 9) + "..";
                 }
                 else
                 {
@@ -696,7 +764,6 @@ namespace Socioboard.Helper
             catch (Exception)
             {
 
-                throw;
             }
             return ret;
 
@@ -714,7 +781,7 @@ namespace Socioboard.Helper
                 List<object> socialaccounts = null;
                 socialaccounts = new List<object>();
                 Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
-                ApiobjFacebookAccount.Timeout = 300000; 
+                ApiobjFacebookAccount.Timeout = 300000;
                 List<FacebookAccount> lstFacebookAccount = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objGroups.UserId.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
                 foreach (var FacebookAccount in lstFacebookAccount)
                 {
@@ -1880,6 +1947,7 @@ namespace Socioboard.Helper
             string GuidString = Convert.ToBase64String(g.ToByteArray());
             GuidString = GuidString.Replace("=", "");
             GuidString = GuidString.Replace("+", "");
+            GuidString = GuidString.Replace("/", "");
             return GuidString;
         }
 
@@ -1910,6 +1978,98 @@ namespace Socioboard.Helper
         {
             return "https://public-api.wordpress.com/oauth2/authorize?client_id=" + ConfigurationManager.AppSettings["WordpessClientID"] + "&redirect_uri=" + ConfigurationManager.AppSettings["WordpessCallBackURL"] + "&response_type=code&scope=global";
         }
+
+        public static List<Domain.Socioboard.Helper.PluginProfile> GetProfilesForPlugin()
+        {
+            List<Domain.Socioboard.Helper.PluginProfile> lstobj = new List<Domain.Socioboard.Helper.PluginProfile>();
+
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            // Dictionary<string, object> dict_TeamMember = new Dictionary<string, object>();
+            Api.SocialProfile.SocialProfile ApiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+            List<Domain.Socioboard.Domain.SocialProfile> lstSocialProfile = (List<Domain.Socioboard.Domain.SocialProfile>)new JavaScriptSerializer().Deserialize(ApiobjSocialProfile.GetAllTwitterAndfacebookProfileOfUser(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.SocialProfile>));
+            foreach (var item_socialProfiel in lstSocialProfile)
+            {
+                if (item_socialProfiel.ProfileType == "facebook" || item_socialProfiel.ProfileType == "facebook_page")
+                {
+                    Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+                    FacebookAccount objFacebookAccount = (FacebookAccount)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item_socialProfiel.ProfileId.ToString()), typeof(FacebookAccount)));
+                    if (objFacebookAccount != null)
+                    {
+                        if(!string.IsNullOrEmpty(objFacebookAccount.AccessToken))
+                        {
+                            Domain.Socioboard.Helper.PluginProfile _sb = new Domain.Socioboard.Helper.PluginProfile();
+                            _sb.type = "facebook";
+                            _sb.profile = objFacebookAccount;
+                            lstobj.Add(_sb);
+                        }
+                    }
+                    //dict_TeamMember.Add("facebook", objFacebookAccount);
+                }
+                else if (item_socialProfiel.ProfileType == "twitter")
+                {
+                    Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
+                    TwitterAccount objTwitterAccount = (TwitterAccount)(new JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objUser.Id.ToString(), item_socialProfiel.ProfileId.ToString()), typeof(TwitterAccount)));
+
+                    Domain.Socioboard.Helper.PluginProfile _sb = new Domain.Socioboard.Helper.PluginProfile();
+                    _sb.type = "twitter";
+                    _sb.profile = objTwitterAccount;
+                    lstobj.Add(_sb);
+
+                    //dict_TeamMember.Add("twitter", objTwitterAccount);
+                }
+            }
+
+            return lstobj;
+        }
+
+        public static List<Domain.Socioboard.Domain.FacebookAccount> GetProfileForGroupShareathon()
+        {
+            List<Domain.Socioboard.Domain.FacebookAccount> lstobj = new List<Domain.Socioboard.Domain.FacebookAccount>();
+            List<Domain.Socioboard.Domain.ShareathonGroup> sharethons = new List<Domain.Socioboard.Domain.ShareathonGroup>();
+            Api.FacebookAccount.FacebookAccount _facebook = new Api.FacebookAccount.FacebookAccount();
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string accesstoken = string.Empty;
+            string UserId = objUser.Id.ToString();
+            string data = WebApiReq.GetShareathondata(ConfigurationManager.AppSettings["apiDomainName"] + "/API/ApiShareathon/ShareathonGroupByUserId?UserId=" + UserId);
+            sharethons = (List<Domain.Socioboard.Domain.ShareathonGroup>)(new JavaScriptSerializer().Deserialize(data, typeof(List<Domain.Socioboard.Domain.ShareathonGroup>)));
+            foreach (var item in sharethons)
+            {
+                string facebookdata = _facebook.getFacebookAccountDetailsById(item.Userid.ToString(),item.Facebookaccountid);
+                FacebookAccount fbaccount = (Domain.Socioboard.Domain.FacebookAccount)(new JavaScriptSerializer().Deserialize(facebookdata, typeof(Domain.Socioboard.Domain.FacebookAccount)));
+                if (fbaccount!=null)
+                {
+                    lstobj.Add(fbaccount); 
+                }
+            }
+            return lstobj;
+        }
+
+
+
+        public static List<Domain.Socioboard.Domain.FacebookAccount> GetProfilePageForShareathon()
+        {
+            List<Domain.Socioboard.Domain.FacebookAccount> lstobj = new List<Domain.Socioboard.Domain.FacebookAccount>();
+            List<Domain.Socioboard.Domain.Shareathon> sharethons = new List<Domain.Socioboard.Domain.Shareathon>();
+            Api.FacebookAccount.FacebookAccount _facebook = new Api.FacebookAccount.FacebookAccount();
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            string accesstoken = string.Empty;
+            string UserId = objUser.Id.ToString();
+            string data = WebApiReq.GetShareathondata(ConfigurationManager.AppSettings["apiDomainName"] + "/API/ApiShareathon/ShareathonByUserId?UserId=" + UserId);
+            sharethons = (List<Domain.Socioboard.Domain.Shareathon>)(new JavaScriptSerializer().Deserialize(data, typeof(List<Domain.Socioboard.Domain.Shareathon>)));
+            foreach (var item in sharethons)
+            {
+                string facebookdata = _facebook.getFacebookAccountDetailsById(item.Userid.ToString(), item.Facebookaccountid);
+                FacebookAccount fbaccount = (Domain.Socioboard.Domain.FacebookAccount)(new JavaScriptSerializer().Deserialize(facebookdata, typeof(Domain.Socioboard.Domain.FacebookAccount)));
+                if (fbaccount!=null)
+                {
+                    lstobj.Add(fbaccount); 
+                }
+            }
+            return lstobj;
+        }
+
     }
 
+
 }
+

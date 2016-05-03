@@ -30,11 +30,7 @@
         </s:complexType>
       </s:element>
       <s:element name="GetYoutubeChannelVideosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetYoutubeChannelVideosResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
+        <s:complexType />
       </s:element>
       <s:element name="GoogleLogin">
         <s:complexType>
@@ -191,9 +187,7 @@
     <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetYoutubeChannelVideosHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
+  <wsdl:message name="GetYoutubeChannelVideosHttpGetOut" />
   <wsdl:message name="GoogleLoginHttpGetIn">
     <wsdl:part name="code" type="s:string" />
   </wsdl:message>
@@ -252,9 +246,7 @@
     <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetYoutubeChannelVideosHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
+  <wsdl:message name="GetYoutubeChannelVideosHttpPostOut" />
   <wsdl:message name="GoogleLoginHttpPostIn">
     <wsdl:part name="code" type="s:string" />
   </wsdl:message>
@@ -566,9 +558,7 @@
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="GoogleLogin">
       <http:operation location="/GoogleLogin" />
@@ -639,9 +629,7 @@
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="GoogleLogin">
       <http:operation location="/GoogleLogin" />

@@ -171,5 +171,63 @@ namespace Api.Socioboard.Model
 
 
         }
+
+        public Domain.Socioboard.Domain.LinkedinCompanyPagePosts getCompanyPagPostInformation(string UpdateKey)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get details of account.
+                        List<Domain.Socioboard.Domain.LinkedinCompanyPagePosts> objlst = session.CreateQuery("from LinkedinCompanyPagePosts where UpdateKey = :UpdateKey ")
+                        .SetParameter("UpdateKey", UpdateKey)
+                        .List<Domain.Socioboard.Domain.LinkedinCompanyPagePosts>().ToList<Domain.Socioboard.Domain.LinkedinCompanyPagePosts>();
+                        Domain.Socioboard.Domain.LinkedinCompanyPagePosts result = new Domain.Socioboard.Domain.LinkedinCompanyPagePosts();
+                        if (objlst.Count > 0)
+                        {
+                            result = objlst[0];
+                        }
+                        return result;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        public void updateLinkedinPostCommentofPage(Domain.Socioboard.Domain.LinkedinCompanyPagePosts lipost)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.CreateQuery("Update LinkedinCompanyPagePosts set Comments =:Comments where PostId = :PostId and UserId = :UserId")
+                            .SetParameter("PostId", lipost.PostId)
+                            .SetParameter("UserId", lipost.UserId)
+                            .SetParameter("Comments",lipost.Comments)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }
+            }
+
+
+
+        }
     }
 }

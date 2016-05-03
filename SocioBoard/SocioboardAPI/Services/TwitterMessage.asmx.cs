@@ -11,7 +11,6 @@ using Domain.Socioboard.Domain;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Globalization;
-using MongoDB.Driver.Builders;
 using MongoDB.Driver;
 using MongoDB.Bson;
 namespace Api.Socioboard.Services
@@ -735,6 +734,30 @@ namespace Api.Socioboard.Services
 
             //List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmsg = objTwitterMessageRepository.GetAllMessageDetailWithRange(Guid.Parse(UserId), profileid, noOfDataToSkip);
             //return new JavaScriptSerializer().Serialize(lsttwtmsg);
+        }
+
+        [WebMethod]
+        public string GetTwitterFeedWithSentiments(string profileId, string noOfDataToSkip, string count)
+        {
+            List<Domain.Socioboard.MongoDomain.TwitterMessage> lstTwitterMessage = new List<Domain.Socioboard.MongoDomain.TwitterMessage>();
+
+            try
+            {
+                string[] arrId = profileId.Split(',');
+
+                var ret = twitterMessageRepo.Find<Domain.Socioboard.MongoDomain.TwitterMessage>(t => arrId.Contains(t.ProfileId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+                });
+                IList<Domain.Socioboard.MongoDomain.TwitterMessage> _lstTwitterFeed = task.Result;
+                lstTwitterMessage = _lstTwitterFeed.Where(t => t.Positive != 0).OrderByDescending(t => t.MessageDate).Skip(Int32.Parse(noOfDataToSkip)).Take(Int32.Parse(count)).ToList();
+            }
+            catch (Exception ex)
+            {
+                lstTwitterMessage = new List<Domain.Socioboard.MongoDomain.TwitterMessage>();
+            }
+            return new JavaScriptSerializer().Serialize(lstTwitterMessage);
         }
     }
 }

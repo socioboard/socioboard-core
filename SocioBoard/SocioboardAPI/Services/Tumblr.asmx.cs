@@ -48,7 +48,8 @@ namespace Api.Socioboard.Services
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         MongoRepository tumblrFeedRepo = new MongoRepository("TumblrFeed");
-
+       private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
+        
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -136,20 +137,32 @@ namespace Api.Socioboard.Services
                     #endregion
 
                     #region Add TeamMemeberProfile
-                    Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                    objTeamMemberProfile.Id = Guid.NewGuid();
-                    objTeamMemberProfile.TeamId = objTeam.Id;
-                    objTeamMemberProfile.Status = 1;
-                    objTeamMemberProfile.ProfileType = "tumblr";
-                    objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                    objTeamMemberProfile.ProfileId = objTumblrAccount.tblrUserName;
+                    //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    //objTeamMemberProfile.Id = Guid.NewGuid();
+                    //objTeamMemberProfile.TeamId = objTeam.Id;
+                    //objTeamMemberProfile.Status = 1;
+                    //objTeamMemberProfile.ProfileType = "tumblr";
+                    //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                    //objTeamMemberProfile.ProfileId = objTumblrAccount.tblrUserName;
 
-                    //Modified [13-02-15]
-                    objTeamMemberProfile.ProfilePicUrl = objTumblrAccount.tblrProfilePicUrl;
-                    objTeamMemberProfile.ProfileName = objTumblrAccount.tblrUserName;
+                    ////Modified [13-02-15]
+                    //objTeamMemberProfile.ProfilePicUrl = objTumblrAccount.tblrProfilePicUrl;
+                    //objTeamMemberProfile.ProfileName = objTumblrAccount.tblrUserName;
 
-                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    //objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+
+
+                    Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+                    grpProfile.Id = Guid.NewGuid();
+                    grpProfile.EntryDate = DateTime.UtcNow;
+                    grpProfile.GroupId = Guid.Parse(GroupId);
+                    grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                    grpProfile.ProfileId = objTumblrAccount.tblrUserName;
+                    grpProfile.ProfileType = "tumblr";
+                    grpProfile.ProfileName = objTumblrAccount.tblrUserName;
+                    grpProfile.ProfilePic = objTumblrAccount.tblrProfilePicUrl;
+                    grpProfileRepo.AddGroupProfile(grpProfile);
                     #endregion
                 }
                 #endregion

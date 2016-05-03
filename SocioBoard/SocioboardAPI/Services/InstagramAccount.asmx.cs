@@ -63,17 +63,17 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteInstagramAccount(string UserId, string ProfileId, string GroupId)
+        public string DeleteInstagramAccount(string UserId, string ProfileId, string GroupId,string ProfileType)
         {
             try
             {
                 objInstagramAccountRepository.deleteInstagramUser(ProfileId, Guid.Parse(UserId));
                 objInstagramCommentRepository.deleteAllCommentsOfUser(ProfileId, Guid.Parse(UserId));
                 objInstagramFeedRepository.deleteAllFeedsOfUser(ProfileId, Guid.Parse(UserId));
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
-                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                  objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId),ProfileType);
+                //objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, ProfileType);
                 return new JavaScriptSerializer().Serialize("");
             }
             catch (Exception ex)

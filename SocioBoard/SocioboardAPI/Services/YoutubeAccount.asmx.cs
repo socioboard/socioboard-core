@@ -69,7 +69,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteYoutubeAccount(string UserId, string ProfileId, string GroupId)
+        public string DeleteYoutubeAccount(string UserId, string ProfileId, string GroupId, string profiletype)
         {
             try
             {
@@ -77,9 +77,10 @@ namespace Api.Socioboard.Services
                 objYoutubeChannelRepository.DeleteProfileDataByUserid(ProfileId, Guid.Parse(UserId));
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
-                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
-                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId), profiletype);
+                //objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
+               // objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, profiletype);
                 return new JavaScriptSerializer().Serialize("Success");
             }
             catch (Exception ex)
@@ -124,16 +125,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllYoutubeAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
                 YoutubeAccountRepository objyoutube = new YoutubeAccountRepository();
                 List<Domain.Socioboard.Domain.YoutubeAccount> lstYoutubeAcc = objyoutube.getAllYoutubeAccounts();
-                return new JavaScriptSerializer().Serialize(lstYoutubeAcc);
+                return serializer.Serialize(lstYoutubeAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.YoutubeAccount>());
             }
         }
 

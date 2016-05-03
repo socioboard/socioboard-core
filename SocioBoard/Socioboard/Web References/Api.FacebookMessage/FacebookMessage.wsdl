@@ -261,6 +261,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetFacebookMessageWithSentiments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="count" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookMessageWithSentimentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookMessageWithSentimentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -365,6 +381,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllMessageDetailWithRangeSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMessageDetailWithRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookMessageWithSentiments" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookMessageWithSentimentsResponse" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -487,6 +509,14 @@
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllMessageDetailWithRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsHttpGetIn">
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpPostIn">
@@ -612,6 +642,14 @@
   <wsdl:message name="GetAllMessageDetailWithRangeHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsHttpPostIn">
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageWithSentimentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookMessageSoap">
     <wsdl:operation name="UserHomeWithLimit">
       <wsdl:input message="tns:UserHomeWithLimitSoapIn" />
@@ -680,6 +718,10 @@
     <wsdl:operation name="GetAllMessageDetailWithRange">
       <wsdl:input message="tns:GetAllMessageDetailWithRangeSoapIn" />
       <wsdl:output message="tns:GetAllMessageDetailWithRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <wsdl:input message="tns:GetFacebookMessageWithSentimentsSoapIn" />
+      <wsdl:output message="tns:GetFacebookMessageWithSentimentsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpGet">
@@ -751,6 +793,10 @@
       <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpGetIn" />
       <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <wsdl:input message="tns:GetFacebookMessageWithSentimentsHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookMessageWithSentimentsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpPost">
     <wsdl:operation name="UserHomeWithLimit">
@@ -820,6 +866,10 @@
     <wsdl:operation name="GetAllMessageDetailWithRange">
       <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpPostIn" />
       <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <wsdl:input message="tns:GetFacebookMessageWithSentimentsHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookMessageWithSentimentsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookMessageSoap" type="tns:FacebookMessageSoap">
@@ -970,6 +1020,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMessageDetailWithRange">
       <soap:operation soapAction="http://tempuri.org/GetAllMessageDetailWithRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookMessageWithSentiments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1133,6 +1192,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookMessageWithSentiments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpGet" type="tns:FacebookMessageHttpGet">
     <http:binding verb="GET" />
@@ -1289,6 +1357,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <http:operation location="/GetFacebookMessageWithSentiments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpPost" type="tns:FacebookMessageHttpPost">
     <http:binding verb="POST" />
@@ -1438,6 +1515,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMessageDetailWithRange">
       <http:operation location="/GetAllMessageDetailWithRange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageWithSentiments">
+      <http:operation location="/GetFacebookMessageWithSentiments" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

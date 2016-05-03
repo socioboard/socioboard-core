@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class TeamRepository : ITeamRepository
     {

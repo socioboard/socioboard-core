@@ -27,6 +27,8 @@ namespace Api.Socioboard.Services
         TeamRepository objTeamRepository = new TeamRepository();
         GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
         UserRepository objUserRepository = new UserRepository();
+        ShareathonGroupRepository shareathongrp = new ShareathonGroupRepository();
+        ShareathonRepository shreathonpage = new ShareathonRepository();
         Domain.Socioboard.Domain.FacebookAccount objFacebook;
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -148,17 +150,29 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteFacebookAccount(string UserId, string ProfileId,string GroupId)
+        public string DeleteFacebookAccount(string UserId, string ProfileId,string GroupId,string Profiletype)
         {
             try
             {
+                Domain.Socioboard.Domain.FacebookAccount facebook = objFacebookAccountRepository.getFacebookAccountDetailsByUserProfileId(ProfileId, Guid.Parse(UserId));
+                if (facebook.Type != "Page")
+                {
+                    shreathonpage.DeleteShareathonByFacebookId(facebook.FbUserId,Guid.Parse(UserId));
+                    Profiletype = "facebook";
+                }
+                else {
+
+                    shreathonpage.DeleteShareathonByFacebookPageId(facebook.FbUserId,Guid.Parse(UserId));
+                    Profiletype = "facebook_page";
+                }
+                shareathongrp.DeleteGroupShareathonByFacebookId(facebook.FbUserId,facebook.UserId);
                 objFacebookAccountRepository.deleteFacebookUser(ProfileId, Guid.Parse(UserId));
                 //objFacebookFeedRepository.deleteAllFeedsOfUser(ProfileId, Guid.Parse(UserId));
                 //objFacebookMessageRepository.deleteAllMessagesOfUser(ProfileId, Guid.Parse(UserId));
-                Domain.Socioboard.Domain.Team objTeam=objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                //Domain.Socioboard.Domain.Team objTeam=objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                //objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId), Profiletype);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, Profiletype);
                 return new JavaScriptSerializer().Serialize("");
             }
             catch (Exception ex)
@@ -223,9 +237,10 @@ namespace Api.Socioboard.Services
             try
             {
                 List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = new List<Domain.Socioboard.Domain.FacebookAccount>();
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
-                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile=objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id,"facebook");
-                foreach (var item in lstTeamMemberProfile)
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
+                //List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile=objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id,"facebook");
+                List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = objGroupProfileRepository.GetAllGroupProfilesByProfileType(Guid.Parse(groupid), "facebook");
+                foreach (var item in lstGroupProfile)
                 {
                     try
                     {
@@ -260,9 +275,10 @@ namespace Api.Socioboard.Services
             try
             {
                 List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = new List<Domain.Socioboard.Domain.FacebookAccount>();
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
-                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id, "facebook_page");
-                foreach (var item in lstTeamMemberProfile)
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
+                //List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id, "facebook_page");
+                List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = objGroupProfileRepository.GetAllGroupProfilesByProfileType(Guid.Parse(groupid), "facebook_page");
+                foreach (var item in lstGroupProfile)
                 {
                     try
                     {
@@ -313,17 +329,19 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllFacebookAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
                 FacebookAccountRepository objFbRepo = new FacebookAccountRepository();
-                ArrayList lstFBAcc = objFbRepo.getAllFacebookAccounts();
-                return new JavaScriptSerializer().Serialize(lstFBAcc);
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFBAcc = objFbRepo.GetAllFacebookAccounts();
+                return serializer.Serialize(lstFBAcc);
                 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.FacebookAccount>());
             }
         }
 
@@ -400,8 +418,48 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetFacebookAccounrForDataServices()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = objFacebookAccountRepository.GetFacebookAccounrForDataServices();
+                return new JavaScriptSerializer().Serialize(lstFacebookAccount);
+            }
+            catch (Exception ex)
+            {
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.FacebookAccount>());
+            }
+        
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetFacebookPagesForDataServices()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = objFacebookAccountRepository.GetFacebookPagesForDataServices();
+                return new JavaScriptSerializer().Serialize(lstFacebookAccount);
+            }
+            catch (Exception ex)
+            {
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.FacebookAccount>());
+            }
+        }
 
-
+        [WebMethod]
+        public string GetFacebookAccountById(string Id)
+        {
+            try
+            {
+                return new JavaScriptSerializer().Serialize(objFacebookAccountRepository.getFbAccount(Guid.Parse(Id)));
+            }
+            catch (Exception ex)
+            {
+                return new JavaScriptSerializer().Serialize(new Domain.Socioboard.Domain.FacebookAccount());
+            }
+        }
 
 
 
@@ -666,6 +724,7 @@ namespace Api.Socioboard.Services
 
             return output;
         }
+
 
 
     }

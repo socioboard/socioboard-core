@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
 using Domain.Socioboard.Domain;
+using Api.Socioboard.Model;
 
 namespace Api.Socioboard.Services
 {

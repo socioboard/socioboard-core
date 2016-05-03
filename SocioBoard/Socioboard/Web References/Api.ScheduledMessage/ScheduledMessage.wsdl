@@ -273,6 +273,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="scheduletime" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="PicUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -420,6 +421,23 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetClickCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -608,6 +626,12 @@
   <wsdl:message name="GetClickCountSoapOut">
     <wsdl:part name="parameters" element="tns:GetClickCountResponse" />
   </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates" />
+  </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesResponse" />
+  </wsdl:message>
   <wsdl:message name="UploadFileHttpGetIn">
     <wsdl:part name="f" type="s2:StringArray" />
     <wsdl:part name="fileName" type="s:string" />
@@ -738,6 +762,7 @@
     <wsdl:part name="scheduletime" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="PicUrl" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddAllScheduledMessageHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -810,6 +835,15 @@
     <wsdl:part name="days" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetClickCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UploadFileHttpPostIn">
@@ -942,6 +976,7 @@
     <wsdl:part name="scheduletime" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="PicUrl" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddAllScheduledMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -1014,6 +1049,15 @@
     <wsdl:part name="days" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetClickCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="ScheduledMessageSoap">
@@ -1125,6 +1169,10 @@
       <wsdl:input message="tns:GetClickCountSoapIn" />
       <wsdl:output message="tns:GetClickCountSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <wsdl:input message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesSoapIn" />
+      <wsdl:output message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpGet">
     <wsdl:operation name="UploadFile">
@@ -1231,6 +1279,10 @@
       <wsdl:input message="tns:GetClickCountHttpGetIn" />
       <wsdl:output message="tns:GetClickCountHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <wsdl:input message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpGetIn" />
+      <wsdl:output message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpPost">
     <wsdl:operation name="UploadFile">
@@ -1336,6 +1388,10 @@
     <wsdl:operation name="GetClickCount">
       <wsdl:input message="tns:GetClickCountHttpPostIn" />
       <wsdl:output message="tns:GetClickCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <wsdl:input message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpPostIn" />
+      <wsdl:output message="tns:GetSociaoQueueMessageByUserIdAndGroupIdBetweenDatesHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ScheduledMessageSoap" type="tns:ScheduledMessageSoap">
@@ -1576,6 +1632,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetClickCount">
       <soap:operation soapAction="http://tempuri.org/GetClickCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <soap:operation soapAction="http://tempuri.org/GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1829,6 +1894,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <soap12:operation soapAction="http://tempuri.org/GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScheduledMessageHttpGet" type="tns:ScheduledMessageHttpGet">
     <http:binding verb="GET" />
@@ -2066,6 +2140,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <http:operation location="/GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScheduledMessageHttpPost" type="tns:ScheduledMessageHttpPost">
     <http:binding verb="POST" />
@@ -2296,6 +2379,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetClickCount">
       <http:operation location="/GetClickCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates">
+      <http:operation location="/GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

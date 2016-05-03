@@ -517,6 +517,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SaveFacebookId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFacebookIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveFacebookIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="int" type="s:int" />
     </s:schema>
@@ -737,6 +752,12 @@
   </wsdl:message>
   <wsdl:message name="InactiveUserSoapOut">
     <wsdl:part name="parameters" element="tns:InactiveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFacebookIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFacebookId" />
+  </wsdl:message>
+  <wsdl:message name="SaveFacebookIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFacebookIdResponse" />
   </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="EmailId" type="s:string" />
@@ -975,6 +996,13 @@
   </wsdl:message>
   <wsdl:message name="InactiveUserHttpGetIn" />
   <wsdl:message name="InactiveUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveFacebookIdHttpGetIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveFacebookIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="LoginHttpPostIn">
@@ -1216,6 +1244,13 @@
   <wsdl:message name="InactiveUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SaveFacebookIdHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveFacebookIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="UserSoap">
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
@@ -1358,6 +1393,10 @@
       <wsdl:input message="tns:InactiveUserSoapIn" />
       <wsdl:output message="tns:InactiveUserSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <wsdl:input message="tns:SaveFacebookIdSoapIn" />
+      <wsdl:output message="tns:SaveFacebookIdSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpGet">
     <wsdl:operation name="Login">
@@ -1497,6 +1536,10 @@
       <wsdl:input message="tns:InactiveUserHttpGetIn" />
       <wsdl:output message="tns:InactiveUserHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <wsdl:input message="tns:SaveFacebookIdHttpGetIn" />
+      <wsdl:output message="tns:SaveFacebookIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpPost">
     <wsdl:operation name="Login">
@@ -1635,6 +1678,10 @@
     <wsdl:operation name="InactiveUser">
       <wsdl:input message="tns:InactiveUserHttpPostIn" />
       <wsdl:output message="tns:InactiveUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <wsdl:input message="tns:SaveFacebookIdHttpPostIn" />
+      <wsdl:output message="tns:SaveFacebookIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UserSoap" type="tns:UserSoap">
@@ -1947,6 +1994,15 @@
     </wsdl:operation>
     <wsdl:operation name="InactiveUser">
       <soap:operation soapAction="http://tempuri.org/InactiveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <soap:operation soapAction="http://tempuri.org/SaveFacebookId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2272,6 +2328,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <soap12:operation soapAction="http://tempuri.org/SaveFacebookId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserHttpGet" type="tns:UserHttpGet">
     <http:binding verb="GET" />
@@ -2581,6 +2646,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <http:operation location="/SaveFacebookId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserHttpPost" type="tns:UserHttpPost">
     <http:binding verb="POST" />
@@ -2883,6 +2957,15 @@
     </wsdl:operation>
     <wsdl:operation name="InactiveUser">
       <http:operation location="/InactiveUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFacebookId">
+      <http:operation location="/SaveFacebookId" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

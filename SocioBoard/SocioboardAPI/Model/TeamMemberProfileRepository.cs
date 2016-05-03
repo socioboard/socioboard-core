@@ -5,7 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-namespace Api.Socioboard.Services
+using NHibernate.Linq;
+namespace Api.Socioboard.Model
 {
     public class TeamMemberProfileRepository : ITeamMemberProfileRepository
     {
@@ -380,6 +381,37 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        //public bool checkTeamMemberProfilebyType(Guid Teamid, string ProfileId, string profiletype)
+        //{
+        //    //Creates a database connection and opens up a session
+        //    using (NHibernate.ISession session = SessionFactory.GetNewSession())
+        //    {
+        //        //After Session creation, start Transaction.
+        //        using (NHibernate.ITransaction transaction = session.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                //Get the details of team profile by team id and profile id.
+        //                List<Domain.Socioboard.Domain.TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileId = :profileid and ProfileType=:ProfileType")
+        //                 .SetParameter("teamid", Teamid)
+        //                 .SetParameter("profileid", ProfileId)
+        //                 .SetParameter("ProfileType", profiletype)
+        //                .List<Domain.Socioboard.Domain.TeamMemberProfile>()
+        //             .ToList<Domain.Socioboard.Domain.TeamMemberProfile>();
+        //                if (alstFBAccounts == null || alstFBAccounts.Count == 0)
+        //                    return false;
+        //                else
+        //                    return true;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //                return true;
+        //            }
+        //        }//End Transaction
+        //    }//End Session
+        //}
+
         /// <DeleteTeamMemberProfileByUserid>
         /// Delete Team Member Profile By Userid
         /// </summary>
@@ -541,6 +573,22 @@ namespace Api.Socioboard.Services
                     }
                 }//End Transaction
             }//End Session
+        }
+
+        public Domain.Socioboard.Domain.TeamMemberProfile GetMemberdata(string profileid, string network)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = session.Query<Domain.Socioboard.Domain.TeamMemberProfile>().Where(t => t.ProfileId == profileid && t.ProfileType == network && t.ProfilePicUrl != null && t.ProfileName != null).OrderByDescending(t => t.StatusUpdateDate).ToList();
+                    return lstTeamMemberProfile[0];
+                }
+                catch (Exception ex)
+                {
+                    return new Domain.Socioboard.Domain.TeamMemberProfile();
+                }
+            }
         }
 
     }

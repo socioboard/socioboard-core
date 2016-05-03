@@ -599,16 +599,16 @@
   </wsdl:binding>
   <wsdl:service name="Affiliates">
     <wsdl:port name="AffiliatesSoap" binding="tns:AffiliatesSoap">
-      <soap:address location="http://localhost:6361/services/Affiliates.asmx" />
+      <soap:address location="http://localhost:6361/Services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesSoap12" binding="tns:AffiliatesSoap12">
-      <soap12:address location="http://localhost:6361/services/Affiliates.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesHttpGet" binding="tns:AffiliatesHttpGet">
-      <http:address location="http://localhost:6361/services/Affiliates.asmx" />
+      <http:address location="http://localhost:6361/Services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesHttpPost" binding="tns:AffiliatesHttpPost">
-      <http:address location="http://localhost:6361/services/Affiliates.asmx" />
+      <http:address location="http://localhost:6361/Services/Affiliates.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

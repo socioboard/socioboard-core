@@ -31,6 +31,14 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetInboxMessageWithSentiments(string UserId, string ProfileIds, string MessageType, string noOfDataToSkip, string noOfDataFromTop)
+        {
+            List<Domain.Socioboard.Domain.InboxMessages> lstmsg = objInboxMessagesRepository.getInboxMessageWithSentimentsByGroupandMessageType(Guid.Parse(UserId), ProfileIds, MessageType, noOfDataToSkip, noOfDataFromTop);
+            return new JavaScriptSerializer().Serialize(lstmsg);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getInboxMessageByMessageId(string UserId, string MessageId)
         {
             Domain.Socioboard.Domain.InboxMessages _InboxMessages = objInboxMessagesRepository.getInboxMessageByMessageId(Guid.Parse(UserId), Guid.Parse(MessageId));

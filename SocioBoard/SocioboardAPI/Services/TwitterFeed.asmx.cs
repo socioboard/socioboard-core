@@ -338,5 +338,28 @@ namespace Api.Socioboard.Services
             //    return "Something Went Wrong";
             //}
         }
+        [WebMethod]
+        public string GetTwitterFeedWithSentiments(string profileId, string noOfDataToSkip, string count)
+        {
+            List<Domain.Socioboard.MongoDomain.TwitterFeed> lstTwitterFeed = new List<Domain.Socioboard.MongoDomain.TwitterFeed>();
+
+            try
+            {
+                string[] arrId = profileId.Split(',');
+
+                var ret = twitterfeedrepo.Find<Domain.Socioboard.MongoDomain.TwitterFeed>(t => arrId.Contains(t.ProfileId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+                });
+                IList<Domain.Socioboard.MongoDomain.TwitterFeed> _lstTwitterFeed = task.Result;
+                lstTwitterFeed = _lstTwitterFeed.Where(t => t.Positive != 0).OrderByDescending(t => t.FeedDate).Skip(Int32.Parse(noOfDataToSkip)).Take(Int32.Parse(count)).ToList();
+            }
+            catch (Exception ex)
+            {
+                lstTwitterFeed = new List<Domain.Socioboard.MongoDomain.TwitterFeed>();
+            }
+            return new JavaScriptSerializer().Serialize(lstTwitterFeed);
+        }
     }
 }

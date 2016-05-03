@@ -21,8 +21,8 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class NewsLetter : System.Web.Services.WebService
     {
-        NewsLetterRepository ObjNewsLetterRepository = new NewsLetterRepository();
-        Domain.Socioboard.Domain.NewsLetter ObjNewsLetter = new Domain.Socioboard.Domain.NewsLetter();
+        NewsLetterRepository objNewsLetterRepository = new NewsLetterRepository();
+        Domain.Socioboard.Domain.NewsLetter objNewsLetter = new Domain.Socioboard.Domain.NewsLetter();
         
         
         
@@ -35,45 +35,53 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllNewsLetters()
         {
-
+            MailSender _MailSender=new MailSender();
             //List<NewsLetter> = ObjNewsLetterRepository.getAllNewsLetter();
             try
             {
                 List<Domain.Socioboard.Domain.NewsLetter> lstNewsLetter = new List<Domain.Socioboard.Domain.NewsLetter>();
-                lstNewsLetter = ObjNewsLetterRepository.getAllNewsLetters();
+                lstNewsLetter = objNewsLetterRepository.getAllNewsLetters();
+                if(lstNewsLetter.Count == 0)
+                {
+                    return "No record found";
+                }
                 foreach (Domain.Socioboard.Domain.NewsLetter item in lstNewsLetter)
                 {
                     //string ret = string.Empty;
                     try
                     {
+                        objNewsLetter=new Domain.Socioboard.Domain.NewsLetter();
+                        string ret = _MailSender.SendAddNewsLatterMail(item.Email, item.NewsLetterBody, item.Subject);
+                        if(ret=="Success")
+                        {
+                            objNewsLetter.Id = item.Id;
+                            objNewsLetter.SendStatus = true;
+                            objNewsLetterRepository.UpdateNewsLetter(objNewsLetter);
+                        }
                         //SendMail(item);
-                        SendNewsLetter(item.NewsLetterBody, item.Subject, item.UserId.ToString(), item.Id.ToString());
+                        //SendNewsLetter(item.NewsLetterBody, item.Subject, item.UserId.ToString(), item.Id.ToString());
                     }
                     catch (Exception ex)
                     {
-
                         Console.WriteLine("Error : " + ex.StackTrace);
                     }
-
-                
                 }
-                return new JavaScriptSerializer().Serialize(lstNewsLetter);
+                return "New Latter Sent successfully";
             }
             catch (Exception ex)
             {
-                
-               Console.WriteLine(ex.StackTrace);
-                return new JavaScriptSerializer().Serialize("Please try Again");
+                return "Please try Again";
             }      
         }
 
         //[WebMethod]
         //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string SendNewsLetter(string body, string Subject, string userid,string NewsLetterId)
+        public string SendNewsLetter(string body, string Subject, string userid,string NewsLetterId, string email, string name)
         {
             
             UserRepository objUserRepository = new UserRepository();
             Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objNewsLetter = new Domain.Socioboard.Domain.NewsLetter();
             string res = string.Empty;
             string ret = string.Empty;
             try
@@ -98,18 +106,14 @@ namespace Api.Socioboard.Services
 
                 if (ret.Contains("Success"))
                 {
-                    ObjNewsLetter.Id = Guid.Parse(NewsLetterId);
-                    ObjNewsLetter.SendStatus = true;
-                    ObjNewsLetterRepository.UpdateNewsLetter(ObjNewsLetter);
-                    //lstbox.Items.Add("Mail send to : " + objUser.UserName);
+                    objNewsLetter.Id = Guid.Parse(NewsLetterId);
+                    objNewsLetter.SendStatus = true;
+                    objNewsLetterRepository.UpdateNewsLetter(objNewsLetter);
                 }
                 //return ret;
-
-                
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine("Error : " + ex.StackTrace);
             }
             return ret;
@@ -122,14 +126,12 @@ namespace Api.Socioboard.Services
             try
             {
                 Domain.Socioboard.Domain.NewsLetter objnewsLatter = (Domain.Socioboard.Domain.NewsLetter)(new JavaScriptSerializer().Deserialize(ObjNewsLatter, typeof(Domain.Socioboard.Domain.NewsLetter)));
-                ObjNewsLetterRepository.AddNewsLetter(objnewsLatter);
-                return new JavaScriptSerializer().Serialize("Success");
+                objNewsLetterRepository.AddNewsLetter(objnewsLatter);
+                return "Success";
             }
             catch (Exception ex)
             {
-
-                Console.WriteLine("Error : " + ex.StackTrace);
-                return new JavaScriptSerializer().Serialize("Something went wrong!");
+                return "Something went wrong!";
             }
         }
     }

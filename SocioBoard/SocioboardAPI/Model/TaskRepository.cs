@@ -808,8 +808,24 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-    
-    
+
+        public int DeleteTaskOfGroup(Guid groupId)
+        { 
+        //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action to delete task of user by groupId.
+                    NHibernate.IQuery query = session.CreateQuery("delete from Tasks where GroupId = :GroupId")
+                                    .SetParameter("GroupId", groupId);
+                    int isUpdated = query.ExecuteUpdate();
+                    transaction.Commit();
+                    return isUpdated;
+                }
+            }
+        }
     
     
     }

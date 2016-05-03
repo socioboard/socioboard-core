@@ -25,6 +25,7 @@ using log4net;
 using Newtonsoft.Json.Linq;
 using Facebook;
 using Api.Socioboard.Helper;
+using Api.Socioboard.Model;
 namespace Api.Socioboard.Services
 {
     /// <summary>
@@ -38,7 +39,7 @@ namespace Api.Socioboard.Services
     public class GroupReports : System.Web.Services.WebService
     {
         ILog logger = LogManager.GetLogger(typeof(GroupReports));
-
+        private GroupProfileRepository grpProfilesRepo = new GroupProfileRepository();
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getgroups()
@@ -64,10 +65,10 @@ namespace Api.Socioboard.Services
         public string getinboxcount(string groupid, string userid)
         {
             Domain.Socioboard.Domain.ReturnData r = new Domain.Socioboard.Domain.ReturnData();
-            long _15 = 0;
-            long _30 = 0;
-            long _60 = 0;
-            long _90 = 0;
+            //long _15 = 0;
+            //long _30 = 0;
+            //long _60 = 0;
+            //long _90 = 0;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_15;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_30;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_60;
@@ -76,8 +77,8 @@ namespace Api.Socioboard.Services
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_30;
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_60;
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_90;
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             DateTime present_date = DateTime.Now;
             string perday_15 = string.Empty;
             string perday_30 = string.Empty;
@@ -91,153 +92,154 @@ namespace Api.Socioboard.Services
 
             try
             {
-                using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                //using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session4.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
+                //{
+                //    lstGroupProfile = session5.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //}
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                 {
-                    teams = session4.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session5.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
-                    {
-                        try
-                        {
-                            AllProfileId += teammemberprofile.ProfileId + ',';
-                        }
-                        catch (Exception Err)
-                        {
-                            Console.Write(Err.StackTrace);
-                        }
-                    }
                     try
                     {
-                        AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
-                        ArrProfileId = AllProfileId.Split(',');
+                        AllProfileId += teammemberprofile.ProfileId + ',';
                     }
                     catch (Exception Err)
                     {
                         Console.Write(Err.StackTrace);
                     }
-                    if (!string.IsNullOrEmpty(AllProfileId))
+                }
+                try
+                {
+                    AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
+                    ArrProfileId = AllProfileId.Split(',');
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+                if (!string.IsNullOrEmpty(AllProfileId))
+                {
+                    string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.RecipientId In(" + AllProfileId + ")";
+
+                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
                     {
-                        string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.RecipientId In(" + AllProfileId + ")";
 
-                        using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                        {
-
-                            twitterdirectmessages_90 = session2.CreateQuery(strtwitterdirectmessages)
-                                                                                  .SetParameter("UserId", Guid.Parse(userid))
-                                                                                .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-90).Date)).ToList();
-
-                            twitterdirectmessages_60 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-60).Date)).ToList();
-                            twitterdirectmessages_30 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-30).Date)).ToList();
-                            twitterdirectmessages_15 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-15).Date)).ToList();
-
-
-                        }
-                        string strinboxmessages = "from InboxMessages t where t.UserId =: UserId and t.MessageType = : msgtype and t.RecipientId In(" + AllProfileId + ")";
-
-                        using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
-                        {
-
-                            inboxmessages_90 = session3.CreateQuery(strinboxmessages)
+                        twitterdirectmessages_90 = session2.CreateQuery(strtwitterdirectmessages)
                                                                               .SetParameter("UserId", Guid.Parse(userid))
-                                                                                .SetParameter("msgtype", "twt_mention")
-                                                                                .List<Domain.Socioboard.Domain.InboxMessages>().ToList().Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-90).Date)).ToList();
+                                                                            .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            inboxmessages_60 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-60).Date)).ToList();
-
-                            inboxmessages_30 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-30).Date)).ToList();
-
-                            inboxmessages_15 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-15).Date)).ToList();
+                        twitterdirectmessages_60 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-60).Date)).ToList();
+                        twitterdirectmessages_30 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-30).Date)).ToList();
+                        twitterdirectmessages_15 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate >= (DateTime.Now.AddDays(-15).Date)).ToList();
 
 
-                        }
-                        present_date = DateTime.Now;
-                        while (present_date.Date != DateTime.Now.Date.AddDays(-90))
-                        {
-                            List<Domain.Socioboard.Domain.InboxMessages> _inboxmessages = new List<Domain.Socioboard.Domain.InboxMessages>();
-                            List<Domain.Socioboard.Domain.TwitterDirectMessages> _twitterdirectmessages = new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                            try
-                            {
-                                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                                {
-                                    int item = 0;
-                                    int item1 = 0;
-                                    try
-                                    {
-                                        //item = session1.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1) && m.MessageType == "twt_mention").WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
-                                        //                             .Select(Projections.CountDistinct<Domain.Socioboard.Domain.InboxMessages>(x => x.MessageId))
-                                        //                             .FutureValue<int>().Value;
+                    }
+                    string strinboxmessages = "from InboxMessages t where t.UserId =: UserId and t.MessageType = : msgtype and t.RecipientId In(" + AllProfileId + ")";
 
-                                        _inboxmessages = inboxmessages_90.Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
-                                        item = _inboxmessages.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        item = 0;
-                                    }
-                                    try
-                                    {
-                                        //item1 = session1.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
-                                        //                             .Select(Projections.CountDistinct<Domain.Socioboard.Domain.TwitterDirectMessages>(x => x.MessageId))
-                                        //                             .FutureValue<int>().Value;
+                    using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
+                    {
 
-                                        _twitterdirectmessages = twitterdirectmessages_90.Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+                        inboxmessages_90 = session3.CreateQuery(strinboxmessages)
+                                                                          .SetParameter("UserId", Guid.Parse(userid))
+                                                                            .SetParameter("msgtype", "twt_mention")
+                                                                            .List<Domain.Socioboard.Domain.InboxMessages>().ToList().Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                                        item1 = _twitterdirectmessages.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        item1 = 0;
-                                    }
+                        inboxmessages_60 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-60).Date)).ToList();
 
-                                    int add_data = item + item1;
+                        inboxmessages_30 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-30).Date)).ToList();
 
-                                    perday_90 = perday_90 + add_data.ToString() + ",";
+                        inboxmessages_15 = inboxmessages_90.Where(x => x.CreatedTime < DateTime.Now.AddDays(1).Date && x.CreatedTime >= (DateTime.Now.AddDays(-15).Date)).ToList();
 
-                                    present_date = present_date.AddDays(-1);
-                                    //logger.Error("perdayinbox >>" + perday_90);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                logger.Error("perdayinboxerror >>" + e.Message);
-                            }
-                        }
+
+                    }
+                    present_date = DateTime.Now;
+                    while (present_date.Date != DateTime.Now.Date.AddDays(-90))
+                    {
+                        List<Domain.Socioboard.Domain.InboxMessages> _inboxmessages = new List<Domain.Socioboard.Domain.InboxMessages>();
+                        List<Domain.Socioboard.Domain.TwitterDirectMessages> _twitterdirectmessages = new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
                         try
                         {
-                            string[] arr = perday_90.Split(',');
-                            for (int i = 0; i < 15; i++)
+                            using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
                             {
-                                perday_15 = perday_15 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 30; i++)
-                            {
-                                perday_30 = perday_30 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 60; i++)
-                            {
-                                perday_60 = perday_60 + arr[i] + ",";
-                            }
-                        }
-                        catch (Exception)
-                        {
-                        }
-                        r._15 = twitterdirectmessages_15.Count + inboxmessages_15.Count;
-                        r._30 = twitterdirectmessages_30.Count + inboxmessages_30.Count;
-                        r._60 = twitterdirectmessages_60.Count + inboxmessages_60.Count;
-                        r._90 = twitterdirectmessages_90.Count + inboxmessages_90.Count;
+                                int item = 0;
+                                int item1 = 0;
+                                try
+                                {
+                                    //item = session1.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1) && m.MessageType == "twt_mention").WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
+                                    //                             .Select(Projections.CountDistinct<Domain.Socioboard.Domain.InboxMessages>(x => x.MessageId))
+                                    //                             .FutureValue<int>().Value;
 
-                        r.perday_15 = perday_15;
-                        r.perday_30 = perday_30;
-                        r.perday_60 = perday_60;
-                        r.perday_90 = perday_90;
+                                    _inboxmessages = inboxmessages_90.Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+                                    item = _inboxmessages.Count;
+                                }
+                                catch (Exception e)
+                                {
+                                    item = 0;
+                                }
+                                try
+                                {
+                                    //item1 = session1.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
+                                    //                             .Select(Projections.CountDistinct<Domain.Socioboard.Domain.TwitterDirectMessages>(x => x.MessageId))
+                                    //                             .FutureValue<int>().Value;
+
+                                    _twitterdirectmessages = twitterdirectmessages_90.Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+
+                                    item1 = _twitterdirectmessages.Count;
+                                }
+                                catch (Exception e)
+                                {
+                                    item1 = 0;
+                                }
+
+                                int add_data = item + item1;
+
+                                perday_90 = perday_90 + add_data.ToString() + ",";
+
+                                present_date = present_date.AddDays(-1);
+                                //logger.Error("perdayinbox >>" + perday_90);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            logger.Error("perdayinboxerror >>" + e.Message);
+                        }
                     }
+                    try
+                    {
+                        string[] arr = perday_90.Split(',');
+                        for (int i = 0; i < 15; i++)
+                        {
+                            perday_15 = perday_15 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            perday_30 = perday_30 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 60; i++)
+                        {
+                            perday_60 = perday_60 + arr[i] + ",";
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    r._15 = twitterdirectmessages_15.Count + inboxmessages_15.Count;
+                    r._30 = twitterdirectmessages_30.Count + inboxmessages_30.Count;
+                    r._60 = twitterdirectmessages_60.Count + inboxmessages_60.Count;
+                    r._90 = twitterdirectmessages_90.Count + inboxmessages_90.Count;
+
+                    r.perday_15 = perday_15;
+                    r.perday_30 = perday_30;
+                    r.perday_60 = perday_60;
+                    r.perday_90 = perday_90;
                 }
+                //}
             }
             catch (Exception e)
             {
@@ -254,10 +256,10 @@ namespace Api.Socioboard.Services
         {
 
             Domain.Socioboard.Domain.ReturnData r = new Domain.Socioboard.Domain.ReturnData();
-            long _15 = 0;
-            long _30 = 0;
-            long _60 = 0;
-            long _90 = 0;
+            //long _15 = 0;
+            //long _30 = 0;
+            //long _60 = 0;
+            //long _90 = 0;
 
             DateTime present_date = DateTime.Now;
             string perday_15 = string.Empty;
@@ -270,8 +272,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_15;
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_30;
             List<Domain.Socioboard.Domain.TwitterDirectMessages> twitterdirectmessages_60;
@@ -284,178 +286,179 @@ namespace Api.Socioboard.Services
 
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //{
+
+                //    teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid ").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //}
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                 {
-
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid ").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
-                    {
-                        try
-                        {
-                            AllProfileId += teammemberprofile.ProfileId + ',';
-                            AllProfileIds += "'" + teammemberprofile.ProfileId + "',";
-                        }
-                        catch (Exception Err)
-                        {
-                            Console.Write(Err.StackTrace);
-                        }
-                    }
-
                     try
                     {
-                        AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
-                        AllProfileIds = AllProfileIds.Substring(0, AllProfileIds.Length - 1);
-                        ArrProfileId = AllProfileId.Split(',');
+                        AllProfileId += teammemberprofile.ProfileId + ',';
+                        AllProfileIds += "'" + teammemberprofile.ProfileId + "',";
                     }
                     catch (Exception Err)
                     {
                         Console.Write(Err.StackTrace);
                     }
+                }
+
+                try
+                {
+                    AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
+                    AllProfileIds = AllProfileIds.Substring(0, AllProfileIds.Length - 1);
+                    ArrProfileId = AllProfileId.Split(',');
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
 
 
-                    if (!string.IsNullOrEmpty(AllProfileId))
+                if (!string.IsNullOrEmpty(AllProfileId))
+                {
+                    string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.SenderId In(" + AllProfileIds + ")";
+
+                    using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
                     {
-                        string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.SenderId In(" + AllProfileIds + ")";
 
-                        using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
-                        {
+                        twitterdirectmessages_90 = session3.CreateQuery(strtwitterdirectmessages)
+                                                                             .SetParameter("UserId", Guid.Parse(userid))
+                                                                             .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            twitterdirectmessages_90 = session3.CreateQuery(strtwitterdirectmessages)
-                                                                                 .SetParameter("UserId", Guid.Parse(userid))
-                                                                                 .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-90).Date)).ToList();
+                        twitterdirectmessages_60 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-60).Date)).ToList();
 
-                            twitterdirectmessages_60 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-60).Date)).ToList();
+                        twitterdirectmessages_30 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-30).Date)).ToList();
 
-                            twitterdirectmessages_30 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-30).Date)).ToList();
+                        twitterdirectmessages_15 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-15).Date)).ToList();
 
-                            twitterdirectmessages_15 = twitterdirectmessages_90.Where(x => x.CreatedDate < DateTime.Now.AddDays(1).Date && x.CreatedDate > (DateTime.Now.AddDays(-15).Date)).ToList();
+                    }
+                    string strschedule = "from ScheduledMessage t where t.UserId =: UserId and t.Status = : msgtype and t.ProfileId In(" + AllProfileIds + ")";
 
-                        }
-                        string strschedule = "from ScheduledMessage t where t.UserId =: UserId and t.Status = : msgtype and t.ProfileId In(" + AllProfileIds + ")";
+                    using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                    {
 
-                        using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
-                        {
+                        schedule_90 = session4.CreateQuery(strschedule)
+                                                            .SetParameter("UserId", Guid.Parse(userid))
+                                                            .SetParameter("msgtype", true)
+                                                            .List<Domain.Socioboard.Domain.ScheduledMessage>().ToList().Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            schedule_90 = session4.CreateQuery(strschedule)
-                                                                .SetParameter("UserId", Guid.Parse(userid))
-                                                                .SetParameter("msgtype", true)
-                                                                .List<Domain.Socioboard.Domain.ScheduledMessage>().ToList().Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-90).Date)).ToList();
+                        schedule_60 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-60).Date)).ToList();
 
-                            schedule_60 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-60).Date)).ToList();
+                        schedule_30 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-30).Date)).ToList();
 
-                            schedule_30 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-30).Date)).ToList();
+                        schedule_15 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-15).Date)).ToList();
 
-                            schedule_15 = schedule_90.Where(x => x.ScheduleTime < DateTime.Now.AddDays(1).Date && x.ScheduleTime > (DateTime.Now.AddDays(-15).Date)).ToList();
+                    }
 
-                        }
+                    present_date = DateTime.Now;
 
-                        present_date = DateTime.Now;
-
-                        while (present_date.Date != DateTime.Now.Date.AddDays(-90))
-                        {
-                            try
-                            {
-                                //  int item = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(m => m.ScheduleTime >= present_date.Date && m.ScheduleTime <= present_date.AddDays(1).Date && ArrProfileId.Contains(m.ProfileId) && m.Status == 1).Select(Projections.RowCount()).FutureValue<int>().Value;
-
-                                using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
-                                {
-                                    int item = 0;
-                                    int item1 = 0;
-
-                                    try
-                                    {
-                                        //List<Domain.Socioboard.Domain.ScheduledMessage> perday_schedule_90 = session5.CreateQuery(strschedule)
-                                        //                                                            .SetParameter("UserId", Guid.Parse(userid))
-                                        //                                                            .SetParameter("msgtype", true)
-                                        //                                                            .List<Domain.Socioboard.Domain.ScheduledMessage>().ToList().Where(x => x.ScheduleTime <= present_date.AddDays(1).Date.AddSeconds(-1) && x.ScheduleTime >= present_date.Date.AddSeconds(1)).ToList();
-
-                                        List<Domain.Socioboard.Domain.ScheduledMessage> perday_schedule_90 = schedule_90.Where(x => x.ScheduleTime <= present_date.AddDays(1).Date.AddSeconds(-1) && x.ScheduleTime >= present_date.Date.AddSeconds(1)).ToList();
-
-                                        item = perday_schedule_90.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-
-                                        item = 0;
-
-                                    }
-
-                                    try
-                                    {
-                                        //List<Domain.Socioboard.Domain.TwitterDirectMessages> perday_twitterdirectmessages_90 = session5.CreateQuery(strtwitterdirectmessages)
-                                        //                                      .SetParameter("UserId", Guid.Parse(userid))
-                                        //                                     .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate >= present_date.Date.AddSeconds(1)).ToList();
-
-                                        List<Domain.Socioboard.Domain.TwitterDirectMessages> perday_twitterdirectmessages_90 = twitterdirectmessages_90.Where(x => x.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate >= present_date.Date.AddSeconds(1)).ToList();
-
-                                        item1 = perday_twitterdirectmessages_90.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        item1 = 0;
-                                    }
-
-                                    int add_data = item + item1;
-
-                                    perday_90 = perday_90 + add_data.ToString() + ",";
-
-                                    present_date = present_date.AddDays(-1);
-                                    logger.Error("perdaysent >>" + perday_90);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                logger.Error("perdaysenterror >>" + e);
-                                Console.Write(e.StackTrace);
-                            }
-                        }
-
-
+                    while (present_date.Date != DateTime.Now.Date.AddDays(-90))
+                    {
                         try
                         {
-                            string[] arr = perday_90.Split(',');
-                            for (int i = 0; i < 15; i++)
+                            //  int item = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(m => m.ScheduleTime >= present_date.Date && m.ScheduleTime <= present_date.AddDays(1).Date && ArrProfileId.Contains(m.ProfileId) && m.Status == 1).Select(Projections.RowCount()).FutureValue<int>().Value;
+
+                            using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
                             {
-                                perday_15 = perday_15 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 30; i++)
-                            {
-                                perday_30 = perday_30 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 60; i++)
-                            {
-                                perday_60 = perday_60 + arr[i] + ",";
+                                int item = 0;
+                                int item1 = 0;
+
+                                try
+                                {
+                                    //List<Domain.Socioboard.Domain.ScheduledMessage> perday_schedule_90 = session5.CreateQuery(strschedule)
+                                    //                                                            .SetParameter("UserId", Guid.Parse(userid))
+                                    //                                                            .SetParameter("msgtype", true)
+                                    //                                                            .List<Domain.Socioboard.Domain.ScheduledMessage>().ToList().Where(x => x.ScheduleTime <= present_date.AddDays(1).Date.AddSeconds(-1) && x.ScheduleTime >= present_date.Date.AddSeconds(1)).ToList();
+
+                                    List<Domain.Socioboard.Domain.ScheduledMessage> perday_schedule_90 = schedule_90.Where(x => x.ScheduleTime <= present_date.AddDays(1).Date.AddSeconds(-1) && x.ScheduleTime >= present_date.Date.AddSeconds(1)).ToList();
+
+                                    item = perday_schedule_90.Count;
+                                }
+                                catch (Exception e)
+                                {
+
+                                    item = 0;
+
+                                }
+
+                                try
+                                {
+                                    //List<Domain.Socioboard.Domain.TwitterDirectMessages> perday_twitterdirectmessages_90 = session5.CreateQuery(strtwitterdirectmessages)
+                                    //                                      .SetParameter("UserId", Guid.Parse(userid))
+                                    //                                     .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate >= present_date.Date.AddSeconds(1)).ToList();
+
+                                    List<Domain.Socioboard.Domain.TwitterDirectMessages> perday_twitterdirectmessages_90 = twitterdirectmessages_90.Where(x => x.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate >= present_date.Date.AddSeconds(1)).ToList();
+
+                                    item1 = perday_twitterdirectmessages_90.Count;
+                                }
+                                catch (Exception e)
+                                {
+                                    item1 = 0;
+                                }
+
+                                int add_data = item + item1;
+
+                                perday_90 = perday_90 + add_data.ToString() + ",";
+
+                                present_date = present_date.AddDays(-1);
+                                logger.Error("perdaysent >>" + perday_90);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
-
-
+                            logger.Error("perdaysenterror >>" + e);
+                            Console.Write(e.StackTrace);
                         }
-
-
-
-                        r._15 = twitterdirectmessages_15.Count + schedule_15.Count;
-                        r._30 = twitterdirectmessages_30.Count + schedule_30.Count;
-                        r._60 = twitterdirectmessages_60.Count + schedule_60.Count;
-                        r._90 = twitterdirectmessages_90.Count + schedule_90.Count;
-
-
-                        r.perday_15 = perday_15;
-                        r.perday_30 = perday_30;
-                        r.perday_60 = perday_60;
-                        r.perday_90 = perday_90;
                     }
+
+
+                    try
+                    {
+                        string[] arr = perday_90.Split(',');
+                        for (int i = 0; i < 15; i++)
+                        {
+                            perday_15 = perday_15 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            perday_30 = perday_30 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 60; i++)
+                        {
+                            perday_60 = perday_60 + arr[i] + ",";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+
+
+
+                    r._15 = twitterdirectmessages_15.Count + schedule_15.Count;
+                    r._30 = twitterdirectmessages_30.Count + schedule_30.Count;
+                    r._60 = twitterdirectmessages_60.Count + schedule_60.Count;
+                    r._90 = twitterdirectmessages_90.Count + schedule_90.Count;
+
+
+                    r.perday_15 = perday_15;
+                    r.perday_30 = perday_30;
+                    r.perday_60 = perday_60;
+                    r.perday_90 = perday_90;
                 }
+                //}
             }
             catch (Exception e)
             {
@@ -488,8 +491,8 @@ namespace Api.Socioboard.Services
             string[] perdayalldatas = { };
 
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
 
             List<Domain.Socioboard.Domain.InboxMessages> InboxMessages_15 = new List<Domain.Socioboard.Domain.InboxMessages>();
             List<Domain.Socioboard.Domain.InboxMessages> InboxMessages_30 = new List<Domain.Socioboard.Domain.InboxMessages>();
@@ -500,149 +503,149 @@ namespace Api.Socioboard.Services
             {
                 try
                 {
-                    using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                    {
-                        teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.Team team in teams)
-                    {
+                    //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                    //{
+                    //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                    //}
+                    //foreach (Domain.Socioboard.Domain.Team team in teams)
+                    //{
 
-                        using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                        {
-                            teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and  t.ProfileType =: ProfileType").SetParameter("teamid", team.Id).SetParameter("ProfileType", "twitter").List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                        }
-
-                        foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
-                        {
-                            try
-                            {
-                                TwtProfileId += teammemberprofile.ProfileId + ',';
-                            }
-                            catch (Exception Err)
-                            {
-                                Console.Write(Err.StackTrace);
-                            }
-                        }
+                    //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                    //    {
+                    //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and  t.ProfileType =: ProfileType").SetParameter("teamid", team.Id).SetParameter("ProfileType", "twitter").List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                    //    }
+                    lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                    foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
+                    {
                         try
                         {
-                            AllProfileId = TwtProfileId.Substring(0, TwtProfileId.Length - 1);
-                            ArrProfileId = AllProfileId.Split(',');
+                            TwtProfileId += teammemberprofile.ProfileId + ',';
                         }
                         catch (Exception Err)
                         {
                             Console.Write(Err.StackTrace);
                         }
+                    }
+                    try
+                    {
+                        AllProfileId = TwtProfileId.Substring(0, TwtProfileId.Length - 1);
+                        ArrProfileId = AllProfileId.Split(',');
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                    }
 
-                        if (!string.IsNullOrEmpty(AllProfileId))
+                    if (!string.IsNullOrEmpty(AllProfileId))
+                    {
+
+                        InboxMessages_90 = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.Status == 0 && U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-90).Date.AddSeconds(1)) && ArrProfileId.Contains(U.ProfileId) && U.MessageType == "twt_followers").GroupBy(x => new { x.ProfileId, x.FromId }).Select(g => g.First()).ToList<Domain.Socioboard.Domain.InboxMessages>();
+
+                        InboxMessages_60 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-60).Date.AddSeconds(1))).ToList();
+
+                        InboxMessages_30 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-30).Date.AddSeconds(1))).ToList();
+
+                        InboxMessages_15 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-15).Date.AddSeconds(1))).ToList();
+
+                        present_date = DateTime.Now;
+                        i = 0;
+                        while (present_date.Date != DateTime.Now.Date.AddDays(-90))
                         {
-
-                            InboxMessages_90 = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.Status == 0 && U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-90).Date.AddSeconds(1)) && ArrProfileId.Contains(U.ProfileId) && U.MessageType == "twt_followers").GroupBy(x => new { x.ProfileId,x.FromId}).Select(g=>g.First()).ToList<Domain.Socioboard.Domain.InboxMessages>();
-
-                            InboxMessages_60 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-60).Date.AddSeconds(1))).ToList();
-
-                            InboxMessages_30 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-30).Date.AddSeconds(1))).ToList();
-
-                            InboxMessages_15 = InboxMessages_90.Where(U => U.CreatedTime < DateTime.Now.AddDays(1).Date && U.CreatedTime >= (DateTime.Now.AddDays(-15).Date.AddSeconds(1))).ToList();
-
-                            present_date = DateTime.Now;
-                            i = 0;
-                            while (present_date.Date != DateTime.Now.Date.AddDays(-90))
+                            try
                             {
-                                try
+                                using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
                                 {
-                                    using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                                    //List<Domain.Socioboard.Domain.InboxMessages> lstresult = session4.Query<Domain.Socioboard.Domain.TwitterAccountFollowers>().Where(t => t.ProfileId == id && t.EntryDate >= present_date.Date.AddSeconds(1) && t.EntryDate <= present_date.AddDays(1).Date.AddSeconds(-1)).OrderByDescending(t => t.EntryDate).ToList();
+
+                                    List<Domain.Socioboard.Domain.InboxMessages> lstresult = InboxMessages_90.Where(t => t.CreatedTime >= present_date.Date.AddSeconds(1) && t.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+                                    if (lstresult.Count > 0)
                                     {
-                                        //List<Domain.Socioboard.Domain.InboxMessages> lstresult = session4.Query<Domain.Socioboard.Domain.TwitterAccountFollowers>().Where(t => t.ProfileId == id && t.EntryDate >= present_date.Date.AddSeconds(1) && t.EntryDate <= present_date.AddDays(1).Date.AddSeconds(-1)).OrderByDescending(t => t.EntryDate).ToList();
+                                        int newfollowerdata = lstresult.Count();
 
-                                        List<Domain.Socioboard.Domain.InboxMessages> lstresult = InboxMessages_90.Where(t => t.CreatedTime >= present_date.Date.AddSeconds(1) && t.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
-                                        if (lstresult.Count > 0)
-                                        {
-                                            int newfollowerdata = lstresult.Count();
+                                        perday_90 = perday_90 + newfollowerdata.ToString() + ",";
 
-                                            perday_90 = perday_90 + newfollowerdata.ToString() + ",";
-
-                                        }
-                                        else
-                                        {
-                                            perday_90 += "0,";
-                                        }
+                                    }
+                                    else
+                                    {
+                                        perday_90 += "0,";
                                     }
                                 }
-                                catch (Exception e)
-                                {
-                                    logger.Error("perdaytwtnerror >>" + e.Message);
-                                }
-
-                                //logger.Error("perdaytwtn>>" + perday_90);
-                                present_date = present_date.AddDays(-1);
+                            }
+                            catch (Exception e)
+                            {
+                                logger.Error("perdaytwtnerror >>" + e.Message);
                             }
 
-
-                            if (InboxMessages_15.Count > 0)
-                            {
-                                r._15 = InboxMessages_15.Count;
-                            }
-                            else
-                            {
-                                r._15 = 0;
-                            }
-
-                            if (InboxMessages_30.Count > 0)
-                            {
-                                r._30 = InboxMessages_30.Count;
-                            }
-                            else
-                            {
-                                r._30 = 0;
-                            }
-
-                            if (InboxMessages_60.Count > 0)
-                            {
-
-                                r._60 = InboxMessages_60.Count;
-                            }
-                            else
-                            {
-                                r._60 = 0;
-                            }
-
-                            if (InboxMessages_90.Count > 0)
-                            {
-
-                                r._90 = InboxMessages_90.Count;
-                            }
-                            else
-                            {
-                                r._90 = 0;
-                            }
+                            //logger.Error("perdaytwtn>>" + perday_90);
+                            present_date = present_date.AddDays(-1);
                         }
-                        try
+
+
+                        if (InboxMessages_15.Count > 0)
                         {
-                            string[] arr = perday_90.Split(',');
-                            for (i = 0; i < 15; i++)
-                            {
-                                perday_15 = perday_15 + arr[i] + ",";
-                            }
-                            for (i = 0; i < 30; i++)
-                            {
-                                perday_30 = perday_30 + arr[i] + ",";
-                            }
-                            for (i = 0; i < 60; i++)
-                            {
-                                perday_60 = perday_60 + arr[i] + ",";
-                            }
+                            r._15 = InboxMessages_15.Count;
                         }
-                        catch (Exception)
+                        else
+                        {
+                            r._15 = 0;
+                        }
+
+                        if (InboxMessages_30.Count > 0)
+                        {
+                            r._30 = InboxMessages_30.Count;
+                        }
+                        else
+                        {
+                            r._30 = 0;
+                        }
+
+                        if (InboxMessages_60.Count > 0)
                         {
 
+                            r._60 = InboxMessages_60.Count;
+                        }
+                        else
+                        {
+                            r._60 = 0;
                         }
 
-                        r.perday_15 = perday_15;
-                        r.perday_30 = perday_30;
-                        r.perday_60 = perday_60;
-                        r.perday_90 = perday_90;
+                        if (InboxMessages_90.Count > 0)
+                        {
+
+                            r._90 = InboxMessages_90.Count;
+                        }
+                        else
+                        {
+                            r._90 = 0;
+                        }
+                    }
+                    try
+                    {
+                        string[] arr = perday_90.Split(',');
+                        for (i = 0; i < 15; i++)
+                        {
+                            perday_15 = perday_15 + arr[i] + ",";
+                        }
+                        for (i = 0; i < 30; i++)
+                        {
+                            perday_30 = perday_30 + arr[i] + ",";
+                        }
+                        for (i = 0; i < 60; i++)
+                        {
+                            perday_60 = perday_60 + arr[i] + ",";
+                        }
+                    }
+                    catch (Exception)
+                    {
 
                     }
+
+                    r.perday_15 = perday_15;
+                    r.perday_30 = perday_30;
+                    r.perday_60 = perday_60;
+                    r.perday_90 = perday_90;
+
+                    // }
 
                 }
                 catch (Exception e)
@@ -661,7 +664,7 @@ namespace Api.Socioboard.Services
         {
 
             Domain.Socioboard.Domain.ReturnData r = new Domain.Socioboard.Domain.ReturnData();
-            
+
             int i = 0;
             long[] arr_perday = new long[90];
             DateTime present_date = DateTime.Now;
@@ -676,8 +679,8 @@ namespace Api.Socioboard.Services
             string FbProfileIds = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.FacebookFanPage> fbfan_15;
             List<Domain.Socioboard.Domain.FacebookFanPage> fbfan_30;
             List<Domain.Socioboard.Domain.FacebookFanPage> fbfan_60;
@@ -696,216 +699,217 @@ namespace Api.Socioboard.Services
 
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType = : ProfileType").SetParameter("teamid", team.Id).SetParameter("ProfileType", "facebook_page").List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                 {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType = : ProfileType").SetParameter("teamid", team.Id).SetParameter("ProfileType", "facebook_page").List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
-                    {
-
-                        try
-                        {
-                            FbProfileId += teammemberprofile.ProfileId + ',';
-                            FbProfileIds += "'" + teammemberprofile.ProfileId + "',";
-
-                        }
-                        catch (Exception Err)
-                        {
-                            Console.Write(Err.StackTrace);
-                        }
-                    }
 
                     try
                     {
-                        AllProfileId = FbProfileId.Substring(0, FbProfileId.Length - 1);
-                        AllProfileIds = FbProfileIds.Substring(0, FbProfileIds.Length - 1);
+                        FbProfileId += teammemberprofile.ProfileId + ',';
+                        FbProfileIds += "'" + teammemberprofile.ProfileId + "',";
 
-                        ArrProfileId = AllProfileId.Split(',');
                     }
                     catch (Exception Err)
                     {
                         Console.Write(Err.StackTrace);
                     }
+                }
 
-                    if (!string.IsNullOrEmpty(AllProfileId))
+                try
+                {
+                    AllProfileId = FbProfileId.Substring(0, FbProfileId.Length - 1);
+                    AllProfileIds = FbProfileIds.Substring(0, FbProfileIds.Length - 1);
+
+                    ArrProfileId = AllProfileId.Split(',');
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+
+                if (!string.IsNullOrEmpty(AllProfileId))
+                {
+                    string strfbfan = "from FacebookFanPage t where t.UserId =: UserId and t.ProfilePageId In(" + AllProfileIds + ")";
+
+                    using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
                     {
-                        string strfbfan = "from FacebookFanPage t where t.UserId =: UserId and t.ProfilePageId In(" + AllProfileIds + ")";
 
-                        using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
-                        {
-
-                            try
-                            {
-
-                                fbfan_90 = session3.CreateQuery(strfbfan)
-                                                                      .SetParameter("UserId", Guid.Parse(userid))
-                                                                       .List<Domain.Socioboard.Domain.FacebookFanPage>().ToList().Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-90))).OrderByDescending(y => y.EntryDate).ToList();
-
-                            }
-                            catch (Exception)
-                            {
-
-                                fbfan_90 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
-                            }
-
-                            try
-                            {
-                                fbfan_15 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-15))).OrderByDescending(y => y.EntryDate).ToList();
-
-                            }
-                            catch (Exception)
-                            {
-                                fbfan_15 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
-                            }
-
-
-                            try
-                            {
-                                fbfan_30 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-30))).OrderByDescending(y => y.EntryDate).ToList();
-                            }
-                            catch (Exception)
-                            {
-                                fbfan_30 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
-                            }
-
-                            try
-                            {
-                                fbfan_60 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-60))).OrderByDescending(y => y.EntryDate).ToList();
-                            }
-                            catch (Exception)
-                            {
-                                fbfan_60 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
-                            }
-                        }
-
-                        present_date = DateTime.Now;
-
-                        while (present_date.Date != DateTime.Now.Date.AddDays(-90))
-                        {
-                            perdayalldata = 0;
-                            foreach (string profileid in ArrProfileId)
-                            {
-                                try
-                                {
-                                    using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
-                                    {
-                                        List<Domain.Socioboard.Domain.FacebookFanPage> lstresult = fbfan_90.Where(t => t.EntryDate >= present_date.Date.AddSeconds(1) && t.EntryDate <= present_date.Date.AddDays(1).AddSeconds(-1)).OrderByDescending(t => t.EntryDate).ToList();
-
-                                        if (lstresult.Count > 0)
-                                        {
-                                            Domain.Socioboard.Domain.FacebookFanPage _result = lstresult.First();
-                                            Domain.Socioboard.Domain.FacebookFanPage _result1 = lstresult.Last();
-
-                                            long add_data = long.Parse(_result.FanpageCount);
-
-                                            long add_data1 = long.Parse(_result1.FanpageCount);
-
-                                            long newfollowerdata = add_data - add_data1;
-
-                                            perdayalldata += newfollowerdata;
-                                        }
-                                        else
-                                        {
-                                            perdayalldata += 0;
-                                        }
-
-                                    }
-                                }
-
-                                catch (Exception e)
-                                {
-                                    logger.Error("perdayfberror >>" + e);
-                                    Console.Write(e.StackTrace);
-                                }
-                            }
-                            arr_perday[i] = perdayalldata;
-                            i++;
-
-                            logger.Error("perdayfb>>" + perday_90);
-                            present_date = present_date.AddDays(-1);
-                        }
-                        for (i = 0; i < 90; i++)
-                        {
-                            perday_90 = perday_90 + arr_perday[i].ToString() + ",";
-                        }
                         try
                         {
-                            string[] arr = perday_90.Split(',');
-                            for (i = 0; i < 15; i++)
-                            {
-                                perday_15 = perday_15 + arr[i] + ",";
-                            }
-                            for (i = 0; i < 30; i++)
-                            {
-                                perday_30 = perday_30 + arr[i] + ",";
-                            }
-                            for (i = 0; i < 60; i++)
-                            {
-                                perday_60 = perday_60 + arr[i] + ",";
-                            }
+
+                            fbfan_90 = session3.CreateQuery(strfbfan)
+                                                                  .SetParameter("UserId", Guid.Parse(userid))
+                                                                   .List<Domain.Socioboard.Domain.FacebookFanPage>().ToList().Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-90))).OrderByDescending(y => y.EntryDate).ToList();
+
                         }
                         catch (Exception)
                         {
 
-
-                        }
-                        if (fbfan_15.Count > 0)
-                        {
-                            _15_first = fbfan_15.First();
-                            _15_last = fbfan_15.Last();
-                            r._15 = long.Parse(_15_first.FanpageCount) - long.Parse(_15_last.FanpageCount);
-                        }
-                        else
-                        {
-                            r._15 = 0;
+                            fbfan_90 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
                         }
 
-                        if (fbfan_30.Count > 0)
+                        try
                         {
-                            _30_first = fbfan_30.First();
-                            _30_last = fbfan_30.Last();
-                            r._30 = long.Parse(_30_first.FanpageCount) - long.Parse(_30_last.FanpageCount);
+                            fbfan_15 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-15))).OrderByDescending(y => y.EntryDate).ToList();
+
                         }
-                        else
+                        catch (Exception)
                         {
-                            r._30 = 0;
+                            fbfan_15 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
                         }
 
-                        if (fbfan_60.Count > 0)
+
+                        try
                         {
-                            _60_first = fbfan_60.First();
-                            _60_last = fbfan_60.Last();
-                            r._60 = long.Parse(_60_first.FanpageCount) - long.Parse(_60_last.FanpageCount);
+                            fbfan_30 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-30))).OrderByDescending(y => y.EntryDate).ToList();
                         }
-                        else
+                        catch (Exception)
                         {
-                            r._60 = 0;
+                            fbfan_30 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
                         }
 
-                        if (fbfan_90.Count > 0)
+                        try
                         {
-                            _90_first = fbfan_90.First();
-                            _90_last = fbfan_90.Last();
-                            r._90 = long.Parse(_90_first.FanpageCount) - long.Parse(_90_last.FanpageCount);
+                            fbfan_60 = fbfan_90.Where(x => x.EntryDate <= DateTime.Now && x.EntryDate >= (DateTime.Now.AddDays(-60))).OrderByDescending(y => y.EntryDate).ToList();
                         }
-                        else
+                        catch (Exception)
                         {
-                            r._90 = 0;
+                            fbfan_60 = new List<Domain.Socioboard.Domain.FacebookFanPage>();
                         }
-
-                        r.perday_15 = perday_15;
-                        r.perday_30 = perday_30;
-                        r.perday_60 = perday_60;
-                        r.perday_90 = perday_90;
                     }
+
+                    present_date = DateTime.Now;
+
+                    while (present_date.Date != DateTime.Now.Date.AddDays(-90))
+                    {
+                        perdayalldata = 0;
+                        foreach (string profileid in ArrProfileId)
+                        {
+                            try
+                            {
+                                using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                                {
+                                    List<Domain.Socioboard.Domain.FacebookFanPage> lstresult = fbfan_90.Where(t => t.EntryDate >= present_date.Date.AddSeconds(1) && t.EntryDate <= present_date.Date.AddDays(1).AddSeconds(-1)).OrderByDescending(t => t.EntryDate).ToList();
+
+                                    if (lstresult.Count > 0)
+                                    {
+                                        Domain.Socioboard.Domain.FacebookFanPage _result = lstresult.First();
+                                        Domain.Socioboard.Domain.FacebookFanPage _result1 = lstresult.Last();
+
+                                        long add_data = long.Parse(_result.FanpageCount);
+
+                                        long add_data1 = long.Parse(_result1.FanpageCount);
+
+                                        long newfollowerdata = add_data - add_data1;
+
+                                        perdayalldata += newfollowerdata;
+                                    }
+                                    else
+                                    {
+                                        perdayalldata += 0;
+                                    }
+
+                                }
+                            }
+
+                            catch (Exception e)
+                            {
+                                logger.Error("perdayfberror >>" + e);
+                                Console.Write(e.StackTrace);
+                            }
+                        }
+                        arr_perday[i] = perdayalldata;
+                        i++;
+
+                        logger.Error("perdayfb>>" + perday_90);
+                        present_date = present_date.AddDays(-1);
+                    }
+                    for (i = 0; i < 90; i++)
+                    {
+                        perday_90 = perday_90 + arr_perday[i].ToString() + ",";
+                    }
+                    try
+                    {
+                        string[] arr = perday_90.Split(',');
+                        for (i = 0; i < 15; i++)
+                        {
+                            perday_15 = perday_15 + arr[i] + ",";
+                        }
+                        for (i = 0; i < 30; i++)
+                        {
+                            perday_30 = perday_30 + arr[i] + ",";
+                        }
+                        for (i = 0; i < 60; i++)
+                        {
+                            perday_60 = perday_60 + arr[i] + ",";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    if (fbfan_15.Count > 0)
+                    {
+                        _15_first = fbfan_15.First();
+                        _15_last = fbfan_15.Last();
+                        r._15 = long.Parse(_15_first.FanpageCount) - long.Parse(_15_last.FanpageCount);
+                    }
+                    else
+                    {
+                        r._15 = 0;
+                    }
+
+                    if (fbfan_30.Count > 0)
+                    {
+                        _30_first = fbfan_30.First();
+                        _30_last = fbfan_30.Last();
+                        r._30 = long.Parse(_30_first.FanpageCount) - long.Parse(_30_last.FanpageCount);
+                    }
+                    else
+                    {
+                        r._30 = 0;
+                    }
+
+                    if (fbfan_60.Count > 0)
+                    {
+                        _60_first = fbfan_60.First();
+                        _60_last = fbfan_60.Last();
+                        r._60 = long.Parse(_60_first.FanpageCount) - long.Parse(_60_last.FanpageCount);
+                    }
+                    else
+                    {
+                        r._60 = 0;
+                    }
+
+                    if (fbfan_90.Count > 0)
+                    {
+                        _90_first = fbfan_90.First();
+                        _90_last = fbfan_90.Last();
+                        r._90 = long.Parse(_90_first.FanpageCount) - long.Parse(_90_last.FanpageCount);
+                    }
+                    else
+                    {
+                        r._90 = 0;
+                    }
+
+                    r.perday_15 = perday_15;
+                    r.perday_30 = perday_30;
+                    r.perday_60 = perday_60;
+                    r.perday_90 = perday_90;
                 }
+                //}
             }
             catch (Exception e)
             {
@@ -1081,8 +1085,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_15;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_30;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_60;
@@ -1097,160 +1101,161 @@ namespace Api.Socioboard.Services
             try
             {
 
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid ").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                 {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid ").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
-                    {
-                        try
-                        {
-                            AllProfileId += teammemberprofile.ProfileId + ',';
-                            AllProfileIds += "'" + teammemberprofile.ProfileId + "',";
-                        }
-                        catch (Exception Err)
-                        {
-                            Console.Write(Err.StackTrace);
-                        }
-                    }
                     try
                     {
-                        AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
-                        AllProfileIds = AllProfileIds.Substring(0, AllProfileIds.Length - 1);
-                        ArrProfileId = AllProfileId.Split(',');
+                        AllProfileId += teammemberprofile.ProfileId + ',';
+                        AllProfileIds += "'" + teammemberprofile.ProfileId + "',";
                     }
                     catch (Exception Err)
                     {
                         Console.Write(Err.StackTrace);
                     }
-                    if (!string.IsNullOrEmpty(AllProfileId))
+                }
+                try
+                {
+                    AllProfileId = AllProfileId.Substring(0, AllProfileId.Length - 1);
+                    AllProfileIds = AllProfileIds.Substring(0, AllProfileIds.Length - 1);
+                    ArrProfileId = AllProfileId.Split(',');
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+                if (!string.IsNullOrEmpty(AllProfileId))
+                {
+                    string strinboxmessages = "from InboxMessages t where t.UserId =: UserId and t.MessageType = : msgtype and t.RecipientId In(" + AllProfileIds + ")";
+                    using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
                     {
-                        string strinboxmessages = "from InboxMessages t where t.UserId =: UserId and t.MessageType = : msgtype and t.RecipientId In(" + AllProfileIds + ")";
-                        using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
-                        {
-                           
-                            inboxmessages_90 = session3.CreateQuery(strinboxmessages)
-                                                                          .SetParameter("UserId", Guid.Parse(userid))
-                                                                          .SetParameter("msgtype", "twt_retweet")
-                                                                                       .List<Domain.Socioboard.Domain.InboxMessages>().ToList().Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            inboxmessages_60 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-60).Date)).ToList();
+                        inboxmessages_90 = session3.CreateQuery(strinboxmessages)
+                                                                      .SetParameter("UserId", Guid.Parse(userid))
+                                                                      .SetParameter("msgtype", "twt_retweet")
+                                                                                   .List<Domain.Socioboard.Domain.InboxMessages>().ToList().Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            inboxmessages_30 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-30).Date)).ToList();
+                        inboxmessages_60 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-60).Date)).ToList();
 
-                            inboxmessages_15 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-15).Date)).ToList();
+                        inboxmessages_30 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-30).Date)).ToList();
 
-                        }
-                        string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.SenderId In(" + AllProfileIds + ")";
-                        using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
-                        {
-                                                    
-                            twitterdirectmessages_90 = session4.CreateQuery(strtwitterdirectmessages).SetParameter("UserId", Guid.Parse(userid))
-                                                                                       .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-90).Date)).ToList();
+                        inboxmessages_15 = inboxmessages_90.Where(x => x.CreatedTime <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedTime > (DateTime.Now.AddDays(-15).Date)).ToList();
 
-                            twitterdirectmessages_60=twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-60).Date)).ToList();
+                    }
+                    string strtwitterdirectmessages = "from TwitterDirectMessages t where t.UserId =: UserId and t.SenderId In(" + AllProfileIds + ")";
+                    using (NHibernate.ISession session4 = SessionFactory.GetNewSession())
+                    {
 
-                            twitterdirectmessages_30=twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-30).Date)).ToList();
+                        twitterdirectmessages_90 = session4.CreateQuery(strtwitterdirectmessages).SetParameter("UserId", Guid.Parse(userid))
+                                                                                   .List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList().Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-90).Date)).ToList();
 
-                            twitterdirectmessages_15=twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-15).Date)).ToList();
+                        twitterdirectmessages_60 = twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-60).Date)).ToList();
 
-                        }
+                        twitterdirectmessages_30 = twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-30).Date)).ToList();
 
-                        present_date = DateTime.Now;
+                        twitterdirectmessages_15 = twitterdirectmessages_90.Where(x => x.CreatedDate <= DateTime.Now.AddDays(1).Date.AddSeconds(-1) && x.CreatedDate > (DateTime.Now.AddDays(-15).Date)).ToList();
 
-                        while (present_date.Date != DateTime.Now.Date.AddDays(-90))
-                        {
-                            try
-                            {
-                                List<Domain.Socioboard.Domain.InboxMessages> _inboxmessages;
-                                List<Domain.Socioboard.Domain.TwitterDirectMessages> _twitterdirectmessages;
-                                using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
-                                {
-                                    int item = 0;
-                                    int item1 = 0;
-                                    try
-                                    {
-                                        //item = session5.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1) && m.MessageType == "twt_retweet" && m.UserId == Guid.Parse(userid)).WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
-                                        //                              .FutureValue<int>().Value;
-
-                                        _inboxmessages = inboxmessages_90.Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
-
-                                        item = _inboxmessages.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        item = 0;
-                                    }
-
-                                    try
-                                    {
-                                        //item1 = session5.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && m.UserId == Guid.Parse(userid)).WhereRestrictionOn(S => S.SenderId).IsIn(ArrProfileId)
-                                        //                              .Select(Projections.CountDistinct<Domain.Socioboard.Domain.TwitterDirectMessages>(x => x.MessageId))
-                                        //                              .FutureValue<int>().Value;
-
-                                        _twitterdirectmessages = twitterdirectmessages_90.Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
-
-                                        item1 = _twitterdirectmessages.Count;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        item1 = 0;
-                                    }
-
-                                    int add_data = item + item1;
-
-                                    perday_90 = perday_90 + add_data.ToString() + ",";
-
-                                    present_date = present_date.AddDays(-1);
-                                    //logger.Error("perdayinteraction>>" + perday_90);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                logger.Error("perdayintrerror >>" + e.Message);
-                            }
-                        }
-
-                        try
-                        {
-                            string[] arr = perday_90.Split(',');
-                            for (int i = 0; i < 15; i++)
-                            {
-                                perday_15 = perday_15 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 30; i++)
-                            {
-                                perday_30 = perday_30 + arr[i] + ",";
-                            }
-                            for (int i = 0; i < 60; i++)
-                            {
-                                perday_60 = perday_60 + arr[i] + ",";
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                        
-                        r._15 = twitterdirectmessages_15.Count + inboxmessages_15.Count;
-                        r._30 = twitterdirectmessages_30.Count + inboxmessages_30.Count;
-                        r._60 = twitterdirectmessages_60.Count + inboxmessages_60.Count;
-                        r._90 = twitterdirectmessages_90.Count + inboxmessages_90.Count;
-
-                        r.perday_15 = perday_15;
-                        r.perday_30 = perday_30;
-                        r.perday_60 = perday_60;
-                        r.perday_90 = perday_90;
-                        
                     }
 
+                    present_date = DateTime.Now;
+
+                    while (present_date.Date != DateTime.Now.Date.AddDays(-90))
+                    {
+                        try
+                        {
+                            List<Domain.Socioboard.Domain.InboxMessages> _inboxmessages;
+                            List<Domain.Socioboard.Domain.TwitterDirectMessages> _twitterdirectmessages;
+                            using (NHibernate.ISession session5 = SessionFactory.GetNewSession())
+                            {
+                                int item = 0;
+                                int item1 = 0;
+                                try
+                                {
+                                    //item = session5.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1) && m.MessageType == "twt_retweet" && m.UserId == Guid.Parse(userid)).WhereRestrictionOn(S => S.RecipientId).IsIn(ArrProfileId)
+                                    //                              .FutureValue<int>().Value;
+
+                                    _inboxmessages = inboxmessages_90.Where(m => m.CreatedTime >= present_date.Date.AddSeconds(1) && m.CreatedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+
+                                    item = _inboxmessages.Count;
+                                }
+                                catch (Exception e)
+                                {
+                                    item = 0;
+                                }
+
+                                try
+                                {
+                                    //item1 = session5.QueryOver<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1) && m.UserId == Guid.Parse(userid)).WhereRestrictionOn(S => S.SenderId).IsIn(ArrProfileId)
+                                    //                              .Select(Projections.CountDistinct<Domain.Socioboard.Domain.TwitterDirectMessages>(x => x.MessageId))
+                                    //                              .FutureValue<int>().Value;
+
+                                    _twitterdirectmessages = twitterdirectmessages_90.Where(m => m.CreatedDate >= present_date.Date.AddSeconds(1) && m.CreatedDate <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+
+                                    item1 = _twitterdirectmessages.Count;
+                                }
+                                catch (Exception e)
+                                {
+                                    item1 = 0;
+                                }
+
+                                int add_data = item + item1;
+
+                                perday_90 = perday_90 + add_data.ToString() + ",";
+
+                                present_date = present_date.AddDays(-1);
+                                //logger.Error("perdayinteraction>>" + perday_90);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            logger.Error("perdayintrerror >>" + e.Message);
+                        }
+                    }
+
+                    try
+                    {
+                        string[] arr = perday_90.Split(',');
+                        for (int i = 0; i < 15; i++)
+                        {
+                            perday_15 = perday_15 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            perday_30 = perday_30 + arr[i] + ",";
+                        }
+                        for (int i = 0; i < 60; i++)
+                        {
+                            perday_60 = perday_60 + arr[i] + ",";
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                    r._15 = twitterdirectmessages_15.Count + inboxmessages_15.Count;
+                    r._30 = twitterdirectmessages_30.Count + inboxmessages_30.Count;
+                    r._60 = twitterdirectmessages_60.Count + inboxmessages_60.Count;
+                    r._90 = twitterdirectmessages_90.Count + inboxmessages_90.Count;
+
+                    r.perday_15 = perday_15;
+                    r.perday_30 = perday_30;
+                    r.perday_60 = perday_60;
+                    r.perday_90 = perday_90;
+
                 }
+
+                //}
             }
             catch (Exception e)
             {
@@ -1318,8 +1323,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_15;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_30;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_60;
@@ -1328,19 +1333,19 @@ namespace Api.Socioboard.Services
             string ret_string = string.Empty;
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
 
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                     {
                         try
                         {
@@ -1367,7 +1372,7 @@ namespace Api.Socioboard.Services
 
                         using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
                         {
-                            
+
                             inboxmessages_90 = session3.CreateQuery(strinboxmessages)
                                                                                  .SetParameter("UserId", Guid.Parse(userid))
                                                                                  .SetParameter("msgtype", "twt_mention")
@@ -1454,7 +1459,7 @@ namespace Api.Socioboard.Services
                         r.perday_90 = perday_90;
 
                     }
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -1479,8 +1484,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_15;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_30;
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_60;
@@ -1489,17 +1494,19 @@ namespace Api.Socioboard.Services
             string ret_string = string.Empty;
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                    foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                     {
                         try
                         {
@@ -1525,7 +1532,7 @@ namespace Api.Socioboard.Services
 
                         using (NHibernate.ISession session3 = SessionFactory.GetNewSession())
                         {
-                            
+
                             inboxmessages_90 = session3.CreateQuery(strinboxmessages)
                                                                                  .SetParameter("UserId", Guid.Parse(userid))
                                                                                  .SetParameter("msgtype", "twt_retweet")
@@ -1607,7 +1614,7 @@ namespace Api.Socioboard.Services
                         r.perday_90 = perday_90;
 
                     }
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -1636,8 +1643,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
 
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_15 = new List<Domain.Socioboard.Domain.InboxMessages>();
             List<Domain.Socioboard.Domain.InboxMessages> inboxmessages_30 = new List<Domain.Socioboard.Domain.InboxMessages>();
@@ -1653,17 +1660,17 @@ namespace Api.Socioboard.Services
             try
             {
                 using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                    foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                     {
                         try
                         {
@@ -1726,7 +1733,7 @@ namespace Api.Socioboard.Services
                             }
                             catch (Exception)
                             {
-                                
+
                             }
 
                         }
@@ -1800,7 +1807,7 @@ namespace Api.Socioboard.Services
                         r.perday_90 = perday_90;
 
                     }
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -1813,36 +1820,36 @@ namespace Api.Socioboard.Services
         [WebMethod]
         public string total_twitter_accounts(string groupid, string userid)
         {
-            List<Domain.Socioboard.Domain.Team> teams = new List<Domain.Socioboard.Domain.Team>();
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+            //List<Domain.Socioboard.Domain.Team> teams = new List<Domain.Socioboard.Domain.Team>();
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = grpProfilesRepo.GetAllGroupProfilesByProfileType(Guid.Parse(groupid),"twitter");
             string ret_string = string.Empty;
 
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
+            //    using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+            //    {
+            //        teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+            //    }
+            //    foreach (Domain.Socioboard.Domain.Team team in teams)
+            //    {
+            //        using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+            //        {
+            //            teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+            //        }
 
-                }
+            //    }
 
-                ret_string = teammemberprofiles.Count.ToString();
-
+                ret_string = lstGroupProfile.Count.ToString();
             }
             catch (Exception e)
             {
                 logger.Error(e.StackTrace);
                 logger.Error(e.Message);
+                ret_string = "0";
             }
 
             return ret_string;
-            
+
         }
         [WebMethod]
         public string gettwittersexdivision(string groupid, string userid)
@@ -1858,8 +1865,8 @@ namespace Api.Socioboard.Services
             string FbProfileId = string.Empty;
             string TwtProfileId = string.Empty;
             string[] ArrProfileId = { };
-            List<Domain.Socioboard.Domain.Team> teams;
-            List<Domain.Socioboard.Domain.TeamMemberProfile> teammemberprofiles;
+            //List<Domain.Socioboard.Domain.Team> teams;
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile;
             List<Domain.Socioboard.Domain.TwitterFollowerNames> twtfollowernames;
             long total = 0;
             long male_count = 0;
@@ -1868,20 +1875,20 @@ namespace Api.Socioboard.Services
             string ret_string = string.Empty;
             try
             {
-                using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
-                {
-                    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
-                }
+                //using (NHibernate.ISession session1 = SessionFactory.GetNewSession())
+                //{
+                //    teams = session1.CreateQuery("from Team t where t.GroupId = : groupid and t.UserId = : userid ").SetParameter("groupid", Guid.Parse(groupid)).SetParameter("userid", Guid.Parse(userid)).List<Domain.Socioboard.Domain.Team>().ToList();
+                //}
 
-                foreach (Domain.Socioboard.Domain.Team team in teams)
-                {
+                //foreach (Domain.Socioboard.Domain.Team team in teams)
+                //{
 
-                    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
-                    {
-                        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
-                    }
-
-                    foreach (Domain.Socioboard.Domain.TeamMemberProfile teammemberprofile in teammemberprofiles)
+                //    using (NHibernate.ISession session2 = SessionFactory.GetNewSession())
+                //    {
+                //        teammemberprofiles = session2.CreateQuery("from TeamMemberProfile t where t.TeamId = : teamid and t.ProfileType =: ProfileType").SetParameter("ProfileType", "twitter").SetParameter("teamid", team.Id).List<Domain.Socioboard.Domain.TeamMemberProfile>().ToList();
+                //    }
+                lstGroupProfile = grpProfilesRepo.GetAllGroupProfiles(Guid.Parse(groupid));
+                foreach (Domain.Socioboard.Domain.GroupProfile teammemberprofile in lstGroupProfile)
                     {
                         try
                         {
@@ -1972,7 +1979,7 @@ namespace Api.Socioboard.Services
                             ret_string = "0,0";
                         }
                     }
-                }
+                //}
 
 
             }

@@ -21,18 +21,54 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult Index()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
             return View();
         }
 
         public ActionResult LoadAdminSetting()
         {
-            Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+            
             return PartialView("_AdminSettingPartial");
         }
 
         [HttpPost]
         public ActionResult ChangeAdminPassword()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
             string NewPassword = Request.Form["NewPassword"].ToString();
             string OldPassword = Request.Form["OldPassword"].ToString();
             string returnmsg=string.Empty;
@@ -65,6 +101,18 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult UpdateAdminSettingData()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
             Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
             string FirstName = Request.Form["Adminfname"];
             string LastName = Request.Form["Adminlname"];

@@ -6,7 +6,7 @@ using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using System.Collections;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class YoutubeAccountRepository
     {
@@ -252,6 +252,30 @@ namespace Api.Socioboard.Services
                     {
                         Console.WriteLine(ex.StackTrace);
                         // return 0;
+                    }
+                }
+            }
+        }
+
+        public int DeleteYoutubeAccount(Guid userId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete existing YoutubeAccounts by user id
+                        NHibernate.IQuery query = session.CreateQuery("delete from YoutubeAccount where UserId = :userid")
+                                        .SetParameter("userid", userId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
                     }
                 }
             }

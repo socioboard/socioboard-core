@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetGoogleAnalyticsAccountByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoogleAnalyticsAccountByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoogleAnalyticsAccountByUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGooglePlusAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GAId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGooglePlusAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGooglePlusAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllGoogleAnalyticsProfiles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllGoogleAnalyticsProfilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGoogleAnalyticsProfilesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoogelAnalyticsAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profiletype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoogelAnalyticsAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGoogelAnalyticsAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoogleAnalyticsData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoogleAnalyticsDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoogleAnalyticsDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterUrlMention">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hostName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterUrlMentionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterUrlMentionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleAndBlogs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hostName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleAndBlogsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticleAndBlogsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoogleAnalyticsAccountByUser" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoogleAnalyticsAccountByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGooglePlusAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGooglePlusAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGoogleAnalyticsProfiles" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGoogleAnalyticsProfilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGoogelAnalyticsAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGoogelAnalyticsAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoogleAnalyticsData" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoogleAnalyticsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterUrlMention" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterUrlMentionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticleAndBlogs" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleAndBlogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GAId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesHttpGetIn" />
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataHttpGetIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionHttpGetIn">
+    <wsdl:part name="hostName" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsHttpGetIn">
+    <wsdl:part name="hostName" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsAccountByUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GAId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesHttpPostIn" />
+  <wsdl:message name="GetAllGoogleAnalyticsProfilesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoogelAnalyticsAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataHttpPostIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGoogleAnalyticsDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionHttpPostIn">
+    <wsdl:part name="hostName" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterUrlMentionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsHttpPostIn">
+    <wsdl:part name="hostName" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleAndBlogsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="GoogleAnalyticsAccountSoap">
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <wsdl:input message="tns:GetGoogleAnalyticsAccountByUserSoapIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsAccountByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <wsdl:input message="tns:GetGooglePlusAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetGooglePlusAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <wsdl:input message="tns:GetAllGoogleAnalyticsProfilesSoapIn" />
+      <wsdl:output message="tns:GetAllGoogleAnalyticsProfilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <wsdl:input message="tns:DeleteGoogelAnalyticsAccountSoapIn" />
+      <wsdl:output message="tns:DeleteGoogelAnalyticsAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <wsdl:input message="tns:GetGoogleAnalyticsDataSoapIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <wsdl:input message="tns:GetTwitterUrlMentionSoapIn" />
+      <wsdl:output message="tns:GetTwitterUrlMentionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <wsdl:input message="tns:GetArticleAndBlogsSoapIn" />
+      <wsdl:output message="tns:GetArticleAndBlogsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GoogleAnalyticsAccountHttpGet">
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <wsdl:input message="tns:GetGoogleAnalyticsAccountByUserHttpGetIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsAccountByUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <wsdl:input message="tns:GetGooglePlusAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetGooglePlusAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <wsdl:input message="tns:GetAllGoogleAnalyticsProfilesHttpGetIn" />
+      <wsdl:output message="tns:GetAllGoogleAnalyticsProfilesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <wsdl:input message="tns:DeleteGoogelAnalyticsAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteGoogelAnalyticsAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <wsdl:input message="tns:GetGoogleAnalyticsDataHttpGetIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <wsdl:input message="tns:GetTwitterUrlMentionHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterUrlMentionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <wsdl:input message="tns:GetArticleAndBlogsHttpGetIn" />
+      <wsdl:output message="tns:GetArticleAndBlogsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GoogleAnalyticsAccountHttpPost">
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <wsdl:input message="tns:GetGoogleAnalyticsAccountByUserHttpPostIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsAccountByUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <wsdl:input message="tns:GetGooglePlusAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetGooglePlusAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <wsdl:input message="tns:GetAllGoogleAnalyticsProfilesHttpPostIn" />
+      <wsdl:output message="tns:GetAllGoogleAnalyticsProfilesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <wsdl:input message="tns:DeleteGoogelAnalyticsAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteGoogelAnalyticsAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <wsdl:input message="tns:GetGoogleAnalyticsDataHttpPostIn" />
+      <wsdl:output message="tns:GetGoogleAnalyticsDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <wsdl:input message="tns:GetTwitterUrlMentionHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterUrlMentionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <wsdl:input message="tns:GetArticleAndBlogsHttpPostIn" />
+      <wsdl:output message="tns:GetArticleAndBlogsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GoogleAnalyticsAccountSoap" type="tns:GoogleAnalyticsAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <soap:operation soapAction="http://tempuri.org/GetGoogleAnalyticsAccountByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetGooglePlusAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <soap:operation soapAction="http://tempuri.org/GetAllGoogleAnalyticsProfiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteGoogelAnalyticsAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <soap:operation soapAction="http://tempuri.org/GetGoogleAnalyticsData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterUrlMention" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <soap:operation soapAction="http://tempuri.org/GetArticleAndBlogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GoogleAnalyticsAccountSoap12" type="tns:GoogleAnalyticsAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <soap12:operation soapAction="http://tempuri.org/GetGoogleAnalyticsAccountByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetGooglePlusAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <soap12:operation soapAction="http://tempuri.org/GetAllGoogleAnalyticsProfiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGoogelAnalyticsAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <soap12:operation soapAction="http://tempuri.org/GetGoogleAnalyticsData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterUrlMention" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <soap12:operation soapAction="http://tempuri.org/GetArticleAndBlogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GoogleAnalyticsAccountHttpGet" type="tns:GoogleAnalyticsAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <http:operation location="/GetGoogleAnalyticsAccountByUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <http:operation location="/GetGooglePlusAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <http:operation location="/GetAllGoogleAnalyticsProfiles" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <http:operation location="/DeleteGoogelAnalyticsAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <http:operation location="/GetGoogleAnalyticsData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <http:operation location="/GetTwitterUrlMention" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <http:operation location="/GetArticleAndBlogs" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GoogleAnalyticsAccountHttpPost" type="tns:GoogleAnalyticsAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetGoogleAnalyticsAccountByUser">
+      <http:operation location="/GetGoogleAnalyticsAccountByUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusAccountDetailsById">
+      <http:operation location="/GetGooglePlusAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoogleAnalyticsProfiles">
+      <http:operation location="/GetAllGoogleAnalyticsProfiles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoogelAnalyticsAccount">
+      <http:operation location="/DeleteGoogelAnalyticsAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoogleAnalyticsData">
+      <http:operation location="/GetGoogleAnalyticsData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterUrlMention">
+      <http:operation location="/GetTwitterUrlMention" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleAndBlogs">
+      <http:operation location="/GetArticleAndBlogs" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GoogleAnalyticsAccount">
+    <wsdl:port name="GoogleAnalyticsAccountSoap" binding="tns:GoogleAnalyticsAccountSoap">
+      <soap:address location="http://localhost:6361/services/GoogleAnalyticsAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GoogleAnalyticsAccountSoap12" binding="tns:GoogleAnalyticsAccountSoap12">
+      <soap12:address location="http://localhost:6361/services/GoogleAnalyticsAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GoogleAnalyticsAccountHttpGet" binding="tns:GoogleAnalyticsAccountHttpGet">
+      <http:address location="http://localhost:6361/services/GoogleAnalyticsAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GoogleAnalyticsAccountHttpPost" binding="tns:GoogleAnalyticsAccountHttpPost">
+      <http:address location="http://localhost:6361/services/GoogleAnalyticsAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

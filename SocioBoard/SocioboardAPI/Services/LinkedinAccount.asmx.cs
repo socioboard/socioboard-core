@@ -94,9 +94,9 @@ namespace Api.Socioboard.Services
                 objlinkedinaccrepo.deleteLinkedinUser(ProfileId, Guid.Parse(UserId));
                 objLinkedInFeedRepository.deleteAllFeedsOfUser(ProfileId,Guid.Parse(UserId));
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
+                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId),"");
                 objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId,"");
                 return new JavaScriptSerializer().Serialize("");
             }
             catch (Exception ex)
@@ -147,15 +147,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllLinkedinAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
-                ArrayList lstLiAcc = objlinkedinaccrepo.getAllLinkedinAccounts();
-                return new JavaScriptSerializer().Serialize(lstLiAcc);
+                List<Domain.Socioboard.Domain.LinkedInAccount> lstLiAcc = objlinkedinaccrepo.GetAllLinkedinAccounts();
+                return serializer.Serialize(lstLiAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.LinkedInAccount>());
             }
         }
 

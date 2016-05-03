@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -21,17 +22,15 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
+               
                     //Proceed action, to get all Data by user id.
-                    List<Domain.Socioboard.Domain.SocialProfile> alst = session.CreateQuery("from SocialProfile where UserId = :userid and ProfileType!='googleplus'")
+                    List<Domain.Socioboard.Domain.SocialProfile> alst = session.CreateQuery("from SocialProfile where UserId = :userid")
                     .SetParameter("userid", userid)
                     .List<Domain.Socioboard.Domain.SocialProfile>()
                     .ToList<Domain.Socioboard.Domain.SocialProfile>();
                     return alst;
 
-                }//End Transaction
+               
             }//End Session
         }
 
@@ -258,7 +257,7 @@ namespace Api.Socioboard.Services
         /// <param name="userid">user id.(Guid)</param>
         /// <param name="profileid">Profile id.(String)</param>
         /// <returns>Return 1 for true and 0 for false.(int)</returns>
-        public int deleteProfile(Guid userid, string profileid)
+        public int deleteProfile(Guid userid, string profileid, string profiletype)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -269,9 +268,10 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to delete profile.
-                        NHibernate.IQuery query = session.CreateQuery("delete from SocialProfile where UserId = :userid and ProfileId = :profileid")
+                        NHibernate.IQuery query = session.CreateQuery("delete from SocialProfile where UserId = :userid and ProfileId = :profileid and ProfileType = :profiletype")
                                         .SetParameter("userid", userid)
-                                        .SetParameter("profileid", profileid);
+                                        .SetParameter("profileid", profileid)
+                                        .SetParameter("profiletype", profiletype);
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
                         return isUpdated;
@@ -441,7 +441,24 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.SocialProfile> GetAllTwitterAndfacebookProfileOfUser(Guid id)
+        { 
+              //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.SocialProfile> lstSocialProfile = session.Query<Domain.Socioboard.Domain.SocialProfile>().Where(t => (t.ProfileType == "facebook" || t.ProfileType == "facebook_page" || t.ProfileType == "twitter") && t.UserId==id).ToList();
+                    return lstSocialProfile;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.SocialProfile>();
+                }
+            }
 
+        
+        }
 
     }
 }

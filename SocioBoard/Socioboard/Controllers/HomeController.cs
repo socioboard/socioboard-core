@@ -15,6 +15,8 @@ using log4net;
 using System.Data;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Socioboard.Controllers
 {
@@ -61,11 +63,11 @@ namespace Socioboard.Controllers
 
 
         private ILog logger = LogManager.GetLogger(typeof(HomeController));
-
+        Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
         [MyExpirePageActionFilter]
         //[Authorize]
         [CustomAuthorize]
-        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+       // [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
             Session["addfbaccount"] = null;
@@ -86,14 +88,15 @@ namespace Socioboard.Controllers
                     ViewBag.FacebookAccount = TempData["FacebookAccount"];
                 }
 
-                if (Request.QueryString["teamid"] != null)
-                {
-                    string teamid = Request.QueryString["teamid"].ToString();
-                    Api.Team.Team _apiteam = new Api.Team.Team();
-                    _apiteam.Timeout = 300000;
-                    _apiteam.UpdateTeambyteamid(teamid);
+                //if (Request.QueryString["teamid"] != null)
+                //{
+                //    string teamid = Request.QueryString["teamid"].ToString();
+                //    Api.Team.Team _apiteam = new Api.Team.Team();
+                //    _apiteam.Timeout = 300000;
+                //    _apiteam.UpdateTeambyteamid(teamid);
 
-                }
+                //}
+
                 if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
                 {
                     return RedirectToAction("Billing", "PersonalSetting");
@@ -156,8 +159,9 @@ namespace Socioboard.Controllers
 
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult ProfileSnapshot(string op)
+        public async Task<ActionResult> ProfileSnapshot(string op)
         {
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
             int CountProfileSnapshot = 0;
 
             try
@@ -181,9 +185,24 @@ namespace Socioboard.Controllers
                 Session["CountProfileSnapshot"] = 0;
             }
 
+            string groupId = System.Web.HttpContext.Current.Session["group"].ToString();
+            string accesstoken = string.Empty;
+            try
+            {
+                accesstoken = System.Web.HttpContext.Current.Session["access_token"].ToString();
+            }
+            catch { }
 
-            List<TeamMemberProfile> lstTeamMemberProfile = SBUtils.GetUserTeamMemberProfiles();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> diclist = SBUtils.GetUserProfilesSnapsAccordingToGroup(lstTeamMemberProfile, CountProfileSnapshot);
+            IEnumerable<GroupProfile> lstGrpProfiles = new List<GroupProfile>();
+            HttpResponseMessage response1 = await WebApiReq.GetReq("api/ApiGroupProfiles/GetGroupProfiles?GroupId=" + groupId, "Bearer", accesstoken);
+            if (response1.IsSuccessStatusCode)
+            {
+                lstGrpProfiles = await response1.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.GroupProfile>>();
+            }
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, Dictionary<object, List<object>>> diclist = SBHelper.GetUserProfilesSnapsAccordingToGroup(lstGrpProfiles.ToList(), objUser, CountProfileSnapshot);
+
+            //List<TeamMemberProfile> lstTeamMemberProfile = SBUtils.GetUserTeamMemberProfiles();
+            //Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> diclist = SBUtils.GetUserProfilesSnapsAccordingToGroup(lstTeamMemberProfile, CountProfileSnapshot);
 
             if (diclist.Count > 0 && diclist != null)
             {
@@ -202,26 +221,37 @@ namespace Socioboard.Controllers
         }
 
 
-        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult LoadGroup()
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public async Task<ActionResult> LoadGroup()
         {
             User objUser = (User)Session["User"];
-            Api.Groups.Groups objApiGroups = new Api.Groups.Groups();
-            objApiGroups.Timeout = 300000;
-            JArray profile = JArray.Parse(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()));
+            string accesstoken = System.Web.HttpContext.Current.Session["access_token"].ToString();
+            //Api.Groups.Groups objApiGroups = new Api.Groups.Groups();
 
-            List<Groups> lstgroup = new List<Groups>();
-            foreach (var item in profile)
+            //objApiGroups.Timeout = 300000;
+            //JArray profile = JArray.Parse(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()));
+
+            //List<Groups> lstgroup = new List<Groups>();
+            //foreach (var item in profile)
+            //{
+            //    Groups objGroups = new Groups();
+            //    objGroups.Id = Guid.Parse(Convert.ToString(item["Id"]));
+            //    objGroups.GroupName = Convert.ToString(item["GroupName"]);
+            //    objGroups.UserId = Guid.Parse(Convert.ToString(item["UserId"]));
+            //    objGroups.EntryDate = Convert.ToDateTime(Convert.ToString(item["EntryDate"]));
+            //    lstgroup.Add(objGroups);
+            //}
+
+            IEnumerable<Domain.Socioboard.Domain.Groups> lstgroup = new List<Domain.Socioboard.Domain.Groups>();
+
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroups/GetGroupsOfUser?UserId=" + objUser.Id.ToString(), "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
             {
-                Groups objGroups = new Groups();
-                objGroups.Id = Guid.Parse(Convert.ToString(item["Id"]));
-                objGroups.GroupName = Convert.ToString(item["GroupName"]);
-                objGroups.UserId = Guid.Parse(Convert.ToString(item["UserId"]));
-                objGroups.EntryDate = Convert.ToDateTime(Convert.ToString(item["EntryDate"]));
-                lstgroup.Add(objGroups);
+                lstgroup = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groups>>();
             }
 
-            return PartialView("_LoadGroupPartial", lstgroup);
+
+            return PartialView("_LoadGroupPartial", lstgroup.ToList());
 
         }
 
@@ -235,21 +265,21 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult loadprofiles()
+        public async Task<ActionResult> loadprofiles()
         {
             User objUser = (User)Session["User"];
             //List<TeamMemberProfile> lstTeamMemberProfile = new List<TeamMemberProfile>();
-            Dictionary<TeamMemberProfile, object> dict_TeamMember = new Dictionary<TeamMemberProfile, object>();
+            Dictionary<GroupProfile, object> dict_TeamMember = new Dictionary<GroupProfile, object>();
             // Api.Team.Team objApiTeam = new Api.Team.Team();
             if (Session["group"] != null)
             {
-                dict_TeamMember = SBUtils.GetUserProfilesccordingToGroup();
+                dict_TeamMember =await SBHelper.GetGroupProfiles();
             }
             return PartialView("_PofilePartial", dict_TeamMember);
         }
 
         [HttpPost]
-        public ActionResult DeleteAccount()
+        public async Task<ActionResult> DeleteAccount()
         {
 
             string type = Request.QueryString["profile"].ToString();
@@ -258,33 +288,53 @@ namespace Socioboard.Controllers
 
             // Edited By Antima[15/12/2014]
             string GroupId = Session["group"].ToString();
-            Api.Team.Team objApiTeam = new Api.Team.Team();
-            objApiTeam.Timeout = 300000;
-            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
-            Guid AdminUserId = team.UserId;
+            //Api.Team.Team objApiTeam = new Api.Team.Team();
+            //objApiTeam.Timeout = 300000;
+            //Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            //Guid AdminUserId = team.UserId;
+            //string output = string.Empty;
+            //HttpResponseMessage response1 = await WebApiReq.DelReq("api/ApiGroupProfiles/DeleteProfileFromGroup?profileid=" + profileid + "&groupid=" + GroupId + "&userid=" + objUser.Id+ "&profiletype="+type, "Bearer", Session["access_token"].ToString());
+            //if (response1.IsSuccessStatusCode)
+            //{
+            //    output = await response1.Content.ReadAsAsync<string>();
+            //}
+
             try
             {
-                if (AdminUserId == objUser.Id)
-                {
+                //if (output.Equals("Deleted"))
+                //{
                     if (type == "fb")
                     {
                         Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
-                        ApiobjFacebookAccount.DeleteFacebookAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        ApiobjFacebookAccount.DeleteFacebookAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(),"");
                     }
                     else if (type == "twt")
                     {
                         Api.TwitterAccount.TwitterAccount apiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
-                        apiobjTwitterAccount.DeleteTwitterAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        apiobjTwitterAccount.DeleteTwitterAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(), "twitter");
                     }
                     else if (type == "linkedin")
                     {
-                        Api.LinkedinAccount.LinkedinAccount apiobjLinkedinAccount = new Api.LinkedinAccount.LinkedinAccount();
-                        apiobjLinkedinAccount.DeleteLinkedinAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        string accesstoken = "";
+                        string returndata = "";
+                        List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+                        Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+                        Parameters.Add(new KeyValuePair<string, string>("ProfileId", profileid));
+                        Parameters.Add(new KeyValuePair<string, string>("GroupId", GroupId));
+                        if (Session["access_token"] != null)
+                        {
+                            accesstoken = Session["access_token"].ToString();
+                        }
+                        HttpResponseMessage response = await WebApiReq.PostReq("api/ApiLinkedIn/DeleteLinkedinAccount", Parameters, "Bearer", accesstoken);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            returndata = await response.Content.ReadAsAsync<string>();
+                        }
                     }
                     else if (type == "instagram")
                     {
                         Api.InstagramAccount.InstagramAccount apiobjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
-                        apiobjInstagramAccount.DeleteInstagramAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        apiobjInstagramAccount.DeleteInstagramAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(),type);
                     }
                     else if (type == "tumblr")
                     {
@@ -294,25 +344,44 @@ namespace Socioboard.Controllers
                     else if (type == "youtube")
                     {
                         Api.YoutubeAccount.YoutubeAccount apiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
-                        apiobjYoutubeAccount.DeleteYoutubeAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        apiobjYoutubeAccount.DeleteYoutubeAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(), type);
                     }
                     else if (type == "liComPage")
                     {
-                        Api.LinkedinCompanyPage.LinkedinCompanyPage apiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
-                        apiobjLinkedinCompanyPage.DeleteLinkedinCompanyPage(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        string accesstoken = "";
+                        string returndata = "";
+                        List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+                        Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+                        Parameters.Add(new KeyValuePair<string, string>("ProfileId", profileid));
+                        Parameters.Add(new KeyValuePair<string, string>("GroupId", GroupId));
+                        if (Session["access_token"] != null)
+                        {
+                            accesstoken = Session["access_token"].ToString();
+                        }
+                        HttpResponseMessage response = await WebApiReq.PostReq("api/ApiLinkedIn/DeleteLinkedinCompanyPage", Parameters, "Bearer", accesstoken);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            returndata = await response.Content.ReadAsAsync<string>();
+                        }
                     }
                     else if (type == "gplus")
                     {
                         Api.GooglePlusAccount.GooglePlusAccount objGooglePlusAccount = new Api.GooglePlusAccount.GooglePlusAccount();
-                        objGooglePlusAccount.DeleteGplusAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        objGooglePlusAccount.DeleteGplusAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(), "gplus");
                         
                     }
+                    else if (type == "ga")
+                    {
+                        Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount ApiGoogleAnalyticsAccount = new Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount();
+                        ApiGoogleAnalyticsAccount.DeleteGoogelAnalyticsAccount(objUser.Id.ToString(), profileid, Session["group"].ToString(), "googleanalytics");
+
+                    }
                     return Content("Deleted");
-                }
-                else
-                {
-                    return Content("Not Deleted");
-                }
+                //}
+                //else
+                //{
+                //    return Content("Not Deleted");
+                //}
             }
             catch (Exception ex)
             {
@@ -321,20 +390,22 @@ namespace Socioboard.Controllers
             }
         }
 
-        public ActionResult ComposeMessage()
+        public async Task<ActionResult> ComposeMessage()
         {
             User objUser = (User)Session["User"];
-            Dictionary<TeamMemberProfile, object> dict_TeamMember = new Dictionary<TeamMemberProfile, object>();
+           // Dictionary<TeamMemberProfile, object> dict_TeamMember = new Dictionary<TeamMemberProfile, object>();
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> lstGroupProfiles = new Dictionary<Domain.Socioboard.Domain.GroupProfile, object>();
             if (Session["group"] != null)
             {
-                dict_TeamMember = SBUtils.GetUserProfilesccordingToGroup();
+                lstGroupProfiles = await SBHelper.GetGroupProfiles();
             }
-            return PartialView("_ComposeMessagePartial", dict_TeamMember);
+            return PartialView("_ComposeMessagePartial", lstGroupProfiles);
         }
 
-        public ActionResult ComposeMessageSend(string message, string allprofiles, string curdaatetimetime)
+        public async Task<ActionResult> ComposeMessageSend(string message, string allprofiles, string curdaatetimetime)
         {
             User objUser = (User)Session["User"];
+            //curdaatetimetime = DateExtension.ToClientTime(DateTime.UtcNow);
             string groupid = Session["group"].ToString();
             Socioboard.Api.Groups.Groups ApiobjGroups = new Socioboard.Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
@@ -393,13 +464,13 @@ namespace Socioboard.Controllers
                     if (profiletype == "facebook")
                     {
                         Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                        ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                        ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file,"");
 
                     }
                     if (profiletype == "facebook_page")
                     {
                         Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                        ApiobjFacebook.FacebookComposeMessageForPage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                        ApiobjFacebook.FacebookComposeMessageForPage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file,"");
                     }
 
                     if (profiletype == "twitter")
@@ -409,8 +480,23 @@ namespace Socioboard.Controllers
 
                     } if (profiletype == "linkedin")
                     {
-                        Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
-                        ApiobjLinkedin.LinkedinComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                 string accesstoken = "";
+                 string returndata = "";
+                 List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+                 Parameters.Add(new KeyValuePair<string, string>("GroupId", Session["group"].ToString()));
+                 Parameters.Add(new KeyValuePair<string, string>("comment", message));
+                 Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+                 Parameters.Add(new KeyValuePair<string, string>("ImageUrl", file));
+                 Parameters.Add(new KeyValuePair<string, string>("ProfileId", profileid));
+                 if (Session["access_token"] != null)
+                 {
+                     accesstoken = Session["access_token"].ToString();
+                 }
+                 HttpResponseMessage response = await WebApiReq.PostReq("api/ApiLinkedIn/LinkedInProfileUpdate", Parameters, "Bearer", accesstoken);
+                 if (response.IsSuccessStatusCode)
+                 {
+                     returndata = await response.Content.ReadAsAsync<string>();
+                 }
                     }
                     if (profiletype == "tumblr")
                     {
@@ -449,7 +535,7 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult DisplayCount()
+        public async Task<ActionResult> DisplayCount()
         {
             string AllProfileId = string.Empty;
             string FbProfileId = string.Empty;
@@ -458,7 +544,10 @@ namespace Socioboard.Controllers
             int twtmsgcount = 0;
             int allsentmsgcount = 0;
             User objUser = (User)Session["User"];
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+
+
+
+            Dictionary<Domain.Socioboard.Domain.GroupProfile, object> allprofileofuser =await SBHelper.GetGroupProfiles();
             foreach (var item in allprofileofuser)
             {
                 try
@@ -615,16 +704,17 @@ namespace Socioboard.Controllers
         }
 
 
-        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult ContactSearchTwitter(string keyword)
-        {
-            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
-            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
-            List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
-            lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
-            return PartialView("_TwitterContactPartial", lstDiscoverySearch);
-        }
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        //public ActionResult ContactSearchTwitter(string keyword)
+        //{
+        //    Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+        //    Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+        //    List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+        //    lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+        //    return PartialView("_TwitterContactPartial", lstDiscoverySearch);
+        //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ContactSearchInstagram(string keyword)
         {
             Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
@@ -632,12 +722,29 @@ namespace Socioboard.Controllers
             lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.ContactSearchInstagram(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
             return PartialView("_InstagramContactPartial", lstDiscoverySearch);
         }
-        public ActionResult InstagramProfile()
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult ContactSearchTwitter(string keyword)
         {
-            Session["AllInstagramAccount"] = SBUtils.GetUserTeamMemberInstaProfiles();
+            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+            List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+            return PartialView("_TwitterContactPartial", lstDiscoverySearch);
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public async Task<ActionResult> InstagramProfile()
+        {
+            Session["AllInstagramAccount"] =await SBHelper.GetUserTeamMemberInstaProfiles();
             return PartialView("_InstagramProfilePartial");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public async Task<ActionResult> TwitterProfile()
+        {
+            Session["AllTwitterAccount"] = await SBHelper.GetUserTeamMemberTwitterProfiles();
+            return PartialView("_TwitterProfilePartial");
+        }
         public ActionResult FollowInstagramUser(string fromId, string toId, string toName)
         {
             Api.Instagram.Instagram ApiInstagram = new Api.Instagram.Instagram();
@@ -662,9 +769,64 @@ namespace Socioboard.Controllers
             return Content("success");
         }
 
+        public ActionResult FollowTwitterUser(string fromId, string toId, string toName)
+        {
+            Api.Twitter.Twitter ApiTwitter = new Api.Twitter.Twitter();
+            string[] arrId = fromId.Split(',');
+            List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = ((List<Domain.Socioboard.Domain.TwitterAccount>)Session["AllTwitterAccount"]).Where(t => arrId.Contains(t.TwitterUserId)).ToList();
+            foreach (var item in lstTwitterAccount)
+            {
+                string ret = ApiTwitter.PostFollow(item.OAuthToken, item.OAuthSecret, item.TwitterScreenName, item.TwitterUserId, toId, toName);
+            }
+            return Content("success");
+        }
+
+        public ActionResult UnfollowTwitterUser(string fromId, string toId, string toName)
+        {
+            Api.Twitter.Twitter ApiTwitter = new Api.Twitter.Twitter();
+            string[] arrId = fromId.Split(',');
+            List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = ((List<Domain.Socioboard.Domain.TwitterAccount>)Session["AllTwitterAccount"]).Where(t => arrId.Contains(t.TwitterUserId)).ToList();
+            foreach (var item in lstTwitterAccount)
+            {
+                string ret = ApiTwitter.PostUnFollow(item.OAuthToken, item.OAuthSecret, item.TwitterScreenName, item.TwitterUserId, toId, toName);
+            }
+            return Content("success");
+        }
+
+        public ActionResult BindGAProfiles()
+        {
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount ApiGoogleAnalyticsAccount = new Api.GoogleAnalyticsAccount.GoogleAnalyticsAccount();
+            List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> lstGoogleAnalyticsAccount = (List<Domain.Socioboard.Domain.GoogleAnalyticsAccount>)new JavaScriptSerializer().Deserialize(ApiGoogleAnalyticsAccount.GetGoogleAnalyticsAccountByUser(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.GoogleAnalyticsAccount>));
+            return PartialView("_GAProfilesPartial",lstGoogleAnalyticsAccount);
+        }
+        public ActionResult BindFbPage()
+        { 
+            Domain.Socioboard.Domain.User _User=(Domain.Socioboard.Domain.User)Session["User"];
+            Api.FacebookAccount.FacebookAccount ApiFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+            List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount=(List<Domain.Socioboard.Domain.FacebookAccount>)new JavaScriptSerializer().Deserialize(ApiFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(_User.Id.ToString(),Session["group"].ToString()),typeof(List<Domain.Socioboard.Domain.FacebookAccount>));
+            return PartialView("_FBPagePartial", lstFacebookAccount);
+        }
+
+        public ActionResult AddGaProfiles(string arrId)
+        {
+            Domain.Socioboard.Domain.User _User=(Domain.Socioboard.Domain.User)Session["User"];
+            Api.GoogleAnalytics.GoogleAnalytics ApiGoogleAnalytics = new Api.GoogleAnalytics.GoogleAnalytics();
+            string [] arrProfiles=arrId.Split(',');
+            List<Domain.Socioboard.Helper.GoogleAnalyticsProfiles> lstGoogleAnalyticsProfiles = (List<Domain.Socioboard.Helper.GoogleAnalyticsProfiles>)Session["GAProfiles"];
+            lstGoogleAnalyticsProfiles = lstGoogleAnalyticsProfiles.Where(t => arrId.Contains(t.ProfileId)).ToList();
+            string strGoogleAnalyticsProfiles = new JavaScriptSerializer().Serialize(lstGoogleAnalyticsProfiles);
+            string ret = ApiGoogleAnalytics.AddAnalyticsProfiles(strGoogleAnalyticsProfiles, _User.Id.ToString(), Session["group"].ToString());
+            return Content("Success");
+        }
         public ActionResult pagenotfound()
         {
             return View("pagenotfound");
+        }
+
+        public ActionResult Internal() 
+        {
+            return View();
         }
 
         public ActionResult training()
@@ -810,5 +972,227 @@ namespace Socioboard.Controllers
         }
 
 
+
+        public ActionResult PluginComposeMessage()
+        {
+            Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+
+            string profile = Request.Form["profile"];
+            string twitterText = Request.Form["twitterText"];
+            string tweetId = Request.Form["tweetId"];
+            string tweetUrl = Request.Form["tweetUrl"];
+            string facebookText = Request.Form["facebookText"];
+            string url = Request.Form["url"];
+            string imgUrl = Request.Form["imgUrl"];
+            string curdaatetimetime = DateTime.Now.ToString();
+            User objUser = (User)Session["User"];
+            string[] arrProfile = Regex.Split(profile, ",");
+
+            foreach (string item in arrProfile)
+            {
+                string[] profile_id = item.Split('~');
+                string profileType = profile_id[1];
+                string profileId = profile_id[0];
+                if (profileType == "facebook")
+                {
+                    ApiobjFacebook.FacebookComposeMessage(facebookText, profileId, objUser.Id.ToString(), curdaatetimetime, imgUrl, url);
+                }
+                else if (profileType == "facebook_page")
+                {
+                    ApiobjFacebook.FacebookComposeMessageForPage(facebookText, profileId, objUser.Id.ToString(), curdaatetimetime, imgUrl, url);
+                }
+                else if (profileType == "twitter")
+                {
+                    if (!string.IsNullOrEmpty(twitterText) || !string.IsNullOrEmpty(imgUrl))
+                    {
+                        twitterText = twitterText + " " + tweetUrl;
+                        ApiobjTwitter.TwitterComposeMessage(twitterText, profileId, objUser.Id.ToString(), curdaatetimetime, imgUrl);
+                    }
+                    else
+                    {
+                        ApiobjTwitter.TwitterReteet_post(objUser.Id.ToString(), profileId, tweetId);
+                    }
+                }
+            }
+            return Content("success");
+        }
+        public ActionResult PluginScheduleMessage(string scheduleTime, string clientTime)
+        {
+            User objUser = (User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+
+            string profiles = Request.Form["profile"];
+            string twitterText = Request.Form["twitterText"];
+            string tweetId = Request.Form["tweetId"];
+            string tweetUrl = Request.Form["tweetUrl"];
+            string facebookText = Request.Form["facebookText"];
+            string url = Request.Form["url"];
+            string imgUrl = Request.Form["imgUrl"];
+
+            string sdTime = Convert.ToDateTime(scheduleTime).ToString("yyyy/MM/dd HH:mm:ss");
+            string ctTime = clientTime;
+
+            string[] arrDateTime = Regex.Split(sdTime, " ");
+
+            string[] arrProfile = Regex.Split(profiles, ",");
+
+            foreach (string item in arrProfile)
+            {
+                string[] profile_id = item.Split('~');
+                string profileType = profile_id[1];
+                string profileId = profile_id[0];
+
+                if (profileType == "facebook")
+                {
+                    ApiobjScheduledMessage.AddAllScheduledMessage(item, facebookText, ctTime, arrDateTime[0], arrDateTime[1], objUser.Id.ToString(), imgUrl, url);
+                }
+                else if (profileType == "facebook_page")
+                {
+                    ApiobjScheduledMessage.AddAllScheduledMessage(item, facebookText, ctTime, arrDateTime[0], arrDateTime[1], objUser.Id.ToString(), imgUrl, url);
+                }
+                else if (profileType == "twitter")
+                {
+                    if (!string.IsNullOrEmpty(twitterText) || !string.IsNullOrEmpty(imgUrl))
+                    {
+                        twitterText = twitterText + " " + tweetUrl;
+                        ApiobjScheduledMessage.AddAllScheduledMessage(item, twitterText, ctTime, arrDateTime[0], arrDateTime[1], objUser.Id.ToString(), imgUrl, "");
+                    }
+                    else
+                    {
+                        ApiobjTwitter.TwitterReteet_post(objUser.Id.ToString(), profileId, tweetId);
+                    }
+                }
+            }
+            return Content("success");
+        }
+
+        public ActionResult UploadImage()
+        {
+            var fi = Request.Files["file"];
+            string file = string.Empty;
+            var retPath = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
+            if (Request.Files.Count > 0)
+            {
+                if (fi != null)
+                {
+                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
+
+
+                    file = path + "\\" + fi.FileName;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    fi.SaveAs(file);
+                    retPath = retPath + "/" + fi.FileName;
+                }
+            }
+            return Content(retPath);
+        }
+
+
+
+        public async Task<ActionResult> LoadGroups() 
+        {
+            string accesstoken = string.Empty;
+            User objUser = (User)Session["user"];
+            try
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+            catch { }
+            IEnumerable<Domain.Socioboard.Domain.Groups> lstGroups = new List<Domain.Socioboard.Domain.Groups>();
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroups/GetGroupsOfUser?UserId=" + objUser.Id, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroups = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groups>>();
+            }
+            return View(lstGroups);
+
+        }
+
+
+        [CustomAuthorize]
+        public async Task<ActionResult> GroupMember(string MemberId, string code) 
+        {
+            string res = string.Empty;
+            string accesstoken = string.Empty;
+            User user = (User)Session["user"];
+            try 
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+            catch { }
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/VadifyGroupMemeber?MemberId=" + MemberId + "&Code=" + code+"&UserId="+user.Id, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                res = await response.Content.ReadAsAsync<string>();
+                if (res.Equals("Wrong Code"))
+                {
+                    ViewBag.Data = "Wrong Code";
+                    return View();
+                }
+                else if (res.Equals("Member Not Exist"))
+                {
+                    ViewBag.Data = "Invalid invitation pls check with admin";
+                    return View();
+                }
+                else if (res.Equals("Email Doesn't match"))
+                {
+                    ViewBag.Data = "Invalid invitation pls check with admin";
+                    return View();
+                }
+                else { return RedirectToAction("index", "home"); }
+            }
+            else 
+            {
+                res = await response.Content.ReadAsAsync<string>();
+
+               
+                return RedirectToAction("Registration", "index");
+            }
+
+            return View("Registration", "index");
+        }
+
+
+        public async Task<ActionResult> GrpProfileSev()
+        {
+            string res = string.Empty;
+            string accesstoken = string.Empty;
+            User user = (User)Session["user"];
+            try
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+            catch { }
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupProfiles/TeamProfileTOGroupProfileService", "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                res = await response.Content.ReadAsAsync<string>();
+            }
+
+            return View();
+        }
+
+
+        public async Task<ActionResult> GrpMemberSev()
+        {
+            string res = string.Empty;
+            string accesstoken = string.Empty;
+            User user = (User)Session["user"];
+            try
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+            catch { }
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupProfiles/GrpMemService", "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                res = await response.Content.ReadAsAsync<string>();
+            }
+
+            return View();
+        }
     }
 }

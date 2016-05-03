@@ -1,10 +1,13 @@
 ﻿using Domain.Socioboard.Domain;
 using Socioboard.App_Start;
+using Socioboard.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -151,6 +154,39 @@ namespace Socioboard.Controllers
 
         }
 
+        public async Task<ActionResult> SmartSearch()
+        {
+            User objUser = (User)Session["User"];
+            string selectedgroupid = Session["group"].ToString();
+            IEnumerable<Domain.Socioboard.Domain.Groupmembers> lstGroupMembers = new List<Domain.Socioboard.Domain.Groupmembers>();
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/GetAcceptedGroupMembers?GroupId=" + selectedgroupid, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroupMembers = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groupmembers>>();
+            }
+
+            return View(lstGroupMembers.ToList());
+        }
+        public ActionResult Searchtweets(string q, string geoLocation)
+        {
+            try
+            {
+                Api.DiscoverySearch.DiscoverySearch apiLinkBuilder = new Api.DiscoverySearch.DiscoverySearch();
+                List<Domain.Socioboard.Helper.Discovery> lstDiscovery = new List<Domain.Socioboard.Helper.Discovery>();
+                lstDiscovery = (List<Domain.Socioboard.Helper.Discovery>)new JavaScriptSerializer().Deserialize(apiLinkBuilder.TwitterTweetSearchWithGeoLocation(q, geoLocation), typeof(List<Domain.Socioboard.Helper.Discovery>));
+                if (lstDiscovery.Count > 0)
+                {
+                    return PartialView("_SmartSearchPartial", lstDiscovery);
+                }
+                else {
+                    return Content("no_data");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content("no_data");
+            }
+        }
       
     }
 }

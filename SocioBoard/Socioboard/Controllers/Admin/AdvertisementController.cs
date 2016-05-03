@@ -16,11 +16,37 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult ManageAdvertisement()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
 
         public ActionResult LoadAdvertisement()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.Ads.Ads apiobjAds = new Api.Ads.Ads();
             List<Domain.Socioboard.Domain.Ads> lstPackage = (List<Domain.Socioboard.Domain.Ads>)(new JavaScriptSerializer().Deserialize(apiobjAds.GetAllAds(), typeof(List<Domain.Socioboard.Domain.Ads>)));
 
@@ -28,6 +54,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult EditAdvertisement(string Id)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.Ads.Ads apiobjNews = new Api.Ads.Ads();
             Domain.Socioboard.Domain.Ads ObjAdvertise = (Domain.Socioboard.Domain.Ads)(new JavaScriptSerializer().Deserialize(apiobjNews.GetAdsdetailsById(Id), typeof(Domain.Socioboard.Domain.Ads)));
             Session["AdvertiseToToUpdate"] = ObjAdvertise;
@@ -35,6 +74,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult UpdateAdvertisement(string Advertisement, string AdsExpiryDate, string Status, string AdsImageUrl)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.Ads objAds = (Domain.Socioboard.Domain.Ads)Session["AdvertiseToToUpdate"];
             objAds.Advertisment = Advertisement;
             objAds.ExpiryDate = Convert.ToDateTime(AdsExpiryDate);
@@ -76,10 +128,35 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult CreateAdvertisement()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
             return View();
         }
         public ActionResult AddAdvertisement(string Advertisement, string AdsExpiryDate, string Status, string AdsImageUrl)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.Ads objAds = new Domain.Socioboard.Domain.Ads();
             objAds.Id = Guid.NewGuid();
             objAds.Advertisment = Advertisement;

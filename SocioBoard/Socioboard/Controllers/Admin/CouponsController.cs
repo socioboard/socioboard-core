@@ -15,10 +15,36 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult ManageCoupons()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             return View();
         }
         public ActionResult LoadCoupons()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.Coupon.Coupon apiobjCoupons = new Api.Coupon.Coupon();
             List<Domain.Socioboard.Domain.Coupon> lstCoupons = (List<Domain.Socioboard.Domain.Coupon>)(new JavaScriptSerializer().Deserialize(apiobjCoupons.GetAllCoupons(), typeof(List<Domain.Socioboard.Domain.Coupon>)));
 
@@ -26,6 +52,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult EditCoupons(string Id)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.Coupon objCoupon = new Domain.Socioboard.Domain.Coupon();
             objCoupon.Id = Guid.Parse(Id);
             string Objcoupon = (new JavaScriptSerializer().Serialize(objCoupon));
@@ -38,6 +77,19 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult UpdateCoupons(string couponcode, string EntryDate, string ExpiryDate, string Status)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.Coupon objCoupons = (Domain.Socioboard.Domain.Coupon)Session["CouponsToUpdate"];
             objCoupons.CouponCode = couponcode;
             objCoupons.EntryCouponDate = Convert.ToDateTime(EntryDate);
@@ -50,6 +102,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult CreateCoupons()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.Coupon.Coupon apiobjCoupons = new Api.Coupon.Coupon();
             List<Domain.Socioboard.Domain.Coupon> lstCoupons = (List<Domain.Socioboard.Domain.Coupon>)(new JavaScriptSerializer().Deserialize(apiobjCoupons.GetAllCoupons(), typeof(List<Domain.Socioboard.Domain.Coupon>)));
             int CouponNo = lstCoupons.Count + 1;
@@ -57,6 +122,19 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult AddCoupons(string Couponcode, string EntryDate, string ExpiryDate, string Status, string Percentage)
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Domain.Socioboard.Domain.Coupon objCoupons = new  Domain.Socioboard.Domain.Coupon();
             objCoupons.Id = Guid.NewGuid();
             objCoupons.CouponCode = Couponcode;

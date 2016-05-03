@@ -23,6 +23,9 @@
     <property name="Timeintervalminutes">
       <column name="TimeIntervalMinutes" sql-type="int(11)" not-null="true" />
     </property>
+    <property name="FacebookStatus">
+      <column name="FacebookStatus"/>
+    </property>
     <property name="Lastpostid">
       <column name="LastPostId" sql-type="varchar(50)" not-null="false" />
     </property>
@@ -35,5 +38,6 @@
     <property name="AccessToken">
       <column name="AccessToken" sql-type="text" not-null="true" />
     </property>
+  
   </class>
 </hibernate-mapping>

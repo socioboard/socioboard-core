@@ -14,5 +14,7 @@ namespace Domain.Socioboard.Domain
         public virtual DateTime PostedTime { get; set; }
         public virtual string PostId { get; set; }
 
+        public virtual string Facebookpagename { get; set; }
+
     }
 }

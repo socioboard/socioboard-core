@@ -75,6 +75,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Profiletype" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -209,6 +210,40 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="AllFacebookPageDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccounrForDataServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFacebookAccounrForDataServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookAccounrForDataServicesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookPagesForDataServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFacebookPagesForDataServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookPagesForDataServicesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookAccountByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookAccountByIdResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -359,6 +394,24 @@
   <wsdl:message name="AllFacebookPageDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:AllFacebookPageDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetFacebookAccounrForDataServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccounrForDataServices" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccounrForDataServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccounrForDataServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPagesForDataServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookPagesForDataServices" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPagesForDataServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookPagesForDataServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountById" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookAccountByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="MovefbFeedsToMongoSoapIn">
     <wsdl:part name="parameters" element="tns:MovefbFeedsToMongo" />
   </wsdl:message>
@@ -434,6 +487,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="Profiletype" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteFacebookAccountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -495,6 +549,20 @@
   </wsdl:message>
   <wsdl:message name="AllFacebookPageDetailsHttpGetIn" />
   <wsdl:message name="AllFacebookPageDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccounrForDataServicesHttpGetIn" />
+  <wsdl:message name="GetFacebookAccounrForDataServicesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPagesForDataServicesHttpGetIn" />
+  <wsdl:message name="GetFacebookPagesForDataServicesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="MovefbFeedsToMongoHttpGetIn" />
@@ -560,6 +628,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="Profiletype" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteFacebookAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -621,6 +690,20 @@
   </wsdl:message>
   <wsdl:message name="AllFacebookPageDetailsHttpPostIn" />
   <wsdl:message name="AllFacebookPageDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccounrForDataServicesHttpPostIn" />
+  <wsdl:message name="GetFacebookAccounrForDataServicesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPagesForDataServicesHttpPostIn" />
+  <wsdl:message name="GetFacebookPagesForDataServicesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookAccountByIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="MovefbFeedsToMongoHttpPostIn" />
@@ -704,6 +787,18 @@
       <wsdl:input message="tns:AllFacebookPageDetailsSoapIn" />
       <wsdl:output message="tns:AllFacebookPageDetailsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <wsdl:input message="tns:GetFacebookAccounrForDataServicesSoapIn" />
+      <wsdl:output message="tns:GetFacebookAccounrForDataServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <wsdl:input message="tns:GetFacebookPagesForDataServicesSoapIn" />
+      <wsdl:output message="tns:GetFacebookPagesForDataServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <wsdl:input message="tns:GetFacebookAccountByIdSoapIn" />
+      <wsdl:output message="tns:GetFacebookAccountByIdSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="MovefbFeedsToMongo">
       <wsdl:input message="tns:MovefbFeedsToMongoSoapIn" />
       <wsdl:output message="tns:MovefbFeedsToMongoSoapOut" />
@@ -786,6 +881,18 @@
       <wsdl:input message="tns:AllFacebookPageDetailsHttpGetIn" />
       <wsdl:output message="tns:AllFacebookPageDetailsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <wsdl:input message="tns:GetFacebookAccounrForDataServicesHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookAccounrForDataServicesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <wsdl:input message="tns:GetFacebookPagesForDataServicesHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookPagesForDataServicesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <wsdl:input message="tns:GetFacebookAccountByIdHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookAccountByIdHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="MovefbFeedsToMongo">
       <wsdl:input message="tns:MovefbFeedsToMongoHttpGetIn" />
       <wsdl:output message="tns:MovefbFeedsToMongoHttpGetOut" />
@@ -867,6 +974,18 @@
     <wsdl:operation name="AllFacebookPageDetails">
       <wsdl:input message="tns:AllFacebookPageDetailsHttpPostIn" />
       <wsdl:output message="tns:AllFacebookPageDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <wsdl:input message="tns:GetFacebookAccounrForDataServicesHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookAccounrForDataServicesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <wsdl:input message="tns:GetFacebookPagesForDataServicesHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookPagesForDataServicesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <wsdl:input message="tns:GetFacebookAccountByIdHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookAccountByIdHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="MovefbFeedsToMongo">
       <wsdl:input message="tns:MovefbFeedsToMongoHttpPostIn" />
@@ -1014,6 +1133,33 @@
     </wsdl:operation>
     <wsdl:operation name="AllFacebookPageDetails">
       <soap:operation soapAction="http://tempuri.org/AllFacebookPageDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookAccounrForDataServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookPagesForDataServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookAccountById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1204,6 +1350,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookAccounrForDataServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookPagesForDataServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookAccountById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="MovefbFeedsToMongo">
       <soap12:operation soapAction="http://tempuri.org/MovefbFeedsToMongo" style="document" />
       <wsdl:input>
@@ -1387,6 +1560,33 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <http:operation location="/GetFacebookAccounrForDataServices" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <http:operation location="/GetFacebookPagesForDataServices" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <http:operation location="/GetFacebookAccountById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="MovefbFeedsToMongo">
       <http:operation location="/MovefbFeedsToMongo" />
       <wsdl:input>
@@ -1563,6 +1763,33 @@
     </wsdl:operation>
     <wsdl:operation name="AllFacebookPageDetails">
       <http:operation location="/AllFacebookPageDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccounrForDataServices">
+      <http:operation location="/GetFacebookAccounrForDataServices" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPagesForDataServices">
+      <http:operation location="/GetFacebookPagesForDataServices" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookAccountById">
+      <http:operation location="/GetFacebookAccountById" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

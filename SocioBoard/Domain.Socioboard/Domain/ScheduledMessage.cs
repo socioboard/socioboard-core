@@ -17,6 +17,7 @@ namespace Domain.Socioboard.Domain
         public string ProfileId { get; set; }
         public string PicUrl { get; set; }
         public DateTime CreateTime { get; set; }
+        public string Url { get; set; }
       
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+  <class name="Fbpublicpagereports" table="fbpublicpagereports" lazy="true" >
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="Date">
+      <column name="Date" sql-type="date" not-null="true" />
+    </property>
+    <property name="Pageid">
+      <column name="PageId" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Likescount">
+      <column name="LikesCount" sql-type="float" not-null="true" />
+    </property>
+    <property name="Postscount">
+      <column name="PostsCount" sql-type="float" not-null="true" />
+    </property>
+    <property name="Commentscount">
+      <column name="CommentsCount" sql-type="float" not-null="true" />
+    </property>
+    <property name="Sharescount">
+      <column name="SharesCount" sql-type="float" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

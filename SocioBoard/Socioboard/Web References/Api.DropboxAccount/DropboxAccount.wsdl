@@ -105,16 +105,16 @@
   </wsdl:binding>
   <wsdl:service name="DropboxAccount">
     <wsdl:port name="DropboxAccountSoap" binding="tns:DropboxAccountSoap">
-      <soap:address location="http://localhost:6361/services/DropboxAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/DropboxAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxAccountSoap12" binding="tns:DropboxAccountSoap12">
-      <soap12:address location="http://localhost:6361/services/DropboxAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/DropboxAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxAccountHttpGet" binding="tns:DropboxAccountHttpGet">
-      <http:address location="http://localhost:6361/services/DropboxAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/DropboxAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxAccountHttpPost" binding="tns:DropboxAccountHttpPost">
-      <http:address location="http://localhost:6361/services/DropboxAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/DropboxAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

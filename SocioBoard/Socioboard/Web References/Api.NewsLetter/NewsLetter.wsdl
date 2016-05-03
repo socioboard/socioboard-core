@@ -249,16 +249,16 @@
   </wsdl:binding>
   <wsdl:service name="NewsLetter">
     <wsdl:port name="NewsLetterSoap" binding="tns:NewsLetterSoap">
-      <soap:address location="http://localhost:6361/services/NewsLetter.asmx" />
+      <soap:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterSoap12" binding="tns:NewsLetterSoap12">
-      <soap12:address location="http://localhost:6361/services/NewsLetter.asmx" />
+      <soap12:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterHttpGet" binding="tns:NewsLetterHttpGet">
-      <http:address location="http://localhost:6361/services/NewsLetter.asmx" />
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterHttpPost" binding="tns:NewsLetterHttpPost">
-      <http:address location="http://localhost:6361/services/NewsLetter.asmx" />
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Helper;
+using Api.Socioboard.Helper;
 using log4net;
-using SocioBoard.Domain;
-using SocioBoard.Admin.Scheduler;
+using Domain.Socioboard.Domain;
 
 namespace SocioBoard.Model
 {
@@ -21,7 +20,7 @@ namespace SocioBoard.Model
         /// Add logging details of user
         /// </Add>
         /// <param name="loginLogs">Set Values in a LoginLogs Class Property and Pass the Object of LoginLogs Class (SocioBoard.Domain.LoginLogs).</param>
-        public void Add(SocioBoard.Domain.LoginLogs loginLogs)
+        public void Add(LoginLogs loginLogs)
         {
             try
             {

@@ -315,16 +315,16 @@
   </wsdl:binding>
   <wsdl:service name="BusinessSetting">
     <wsdl:port name="BusinessSettingSoap" binding="tns:BusinessSettingSoap">
-      <soap:address location="http://localhost:6361/services/BusinessSetting.asmx" />
+      <soap:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingSoap12" binding="tns:BusinessSettingSoap12">
-      <soap12:address location="http://localhost:6361/services/BusinessSetting.asmx" />
+      <soap12:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpGet" binding="tns:BusinessSettingHttpGet">
-      <http:address location="http://localhost:6361/services/BusinessSetting.asmx" />
+      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpPost" binding="tns:BusinessSettingHttpPost">
-      <http:address location="http://localhost:6361/services/BusinessSetting.asmx" />
+      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

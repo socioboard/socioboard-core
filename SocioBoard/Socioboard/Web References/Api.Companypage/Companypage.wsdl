@@ -101,21 +101,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="TwitterUserTimeLine">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ScreenName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LastTweetId" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="TwitterUserTimeLineResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserTimeLineResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="LinkedinSearch">
         <s:complexType>
           <s:sequence>
@@ -212,20 +197,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getInstagramListResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getInstagramUserRecentActivities">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getInstagramUserRecentActivitiesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getInstagramUserRecentActivitiesResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -401,12 +372,6 @@
   <wsdl:message name="TwitterAccountPageWithoutLoginSoapOut">
     <wsdl:part name="parameters" element="tns:TwitterAccountPageWithoutLoginResponse" />
   </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineSoapIn">
-    <wsdl:part name="parameters" element="tns:TwitterUserTimeLine" />
-  </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineSoapOut">
-    <wsdl:part name="parameters" element="tns:TwitterUserTimeLineResponse" />
-  </wsdl:message>
   <wsdl:message name="LinkedinSearchSoapIn">
     <wsdl:part name="parameters" element="tns:LinkedinSearch" />
   </wsdl:message>
@@ -448,12 +413,6 @@
   </wsdl:message>
   <wsdl:message name="getInstagramListSoapOut">
     <wsdl:part name="parameters" element="tns:getInstagramListResponse" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesSoapIn">
-    <wsdl:part name="parameters" element="tns:getInstagramUserRecentActivities" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesSoapOut">
-    <wsdl:part name="parameters" element="tns:getInstagramUserRecentActivitiesResponse" />
   </wsdl:message>
   <wsdl:message name="getInstagramUserDetailsSoapIn">
     <wsdl:part name="parameters" element="tns:getInstagramUserDetails" />
@@ -552,13 +511,6 @@
   <wsdl:message name="TwitterAccountPageWithoutLoginHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineHttpGetIn">
-    <wsdl:part name="ScreenName" type="s:string" />
-    <wsdl:part name="LastTweetId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:message name="LinkedinSearchHttpGetIn">
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
@@ -600,12 +552,6 @@
     <wsdl:part name="Keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramListHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesHttpGetIn">
-    <wsdl:part name="UserId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramUserDetailsHttpGetIn">
@@ -705,13 +651,6 @@
   <wsdl:message name="TwitterAccountPageWithoutLoginHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineHttpPostIn">
-    <wsdl:part name="ScreenName" type="s:string" />
-    <wsdl:part name="LastTweetId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="TwitterUserTimeLineHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:message name="LinkedinSearchHttpPostIn">
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
@@ -753,12 +692,6 @@
     <wsdl:part name="Keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramListHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesHttpPostIn">
-    <wsdl:part name="UserId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getInstagramUserRecentActivitiesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramUserDetailsHttpPostIn">
@@ -844,10 +777,6 @@
       <wsdl:input message="tns:TwitterAccountPageWithoutLoginSoapIn" />
       <wsdl:output message="tns:TwitterAccountPageWithoutLoginSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <wsdl:input message="tns:TwitterUserTimeLineSoapIn" />
-      <wsdl:output message="tns:TwitterUserTimeLineSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <wsdl:input message="tns:LinkedinSearchSoapIn" />
       <wsdl:output message="tns:LinkedinSearchSoapOut" />
@@ -875,10 +804,6 @@
     <wsdl:operation name="getInstagramList">
       <wsdl:input message="tns:getInstagramListSoapIn" />
       <wsdl:output message="tns:getInstagramListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <wsdl:input message="tns:getInstagramUserRecentActivitiesSoapIn" />
-      <wsdl:output message="tns:getInstagramUserRecentActivitiesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getInstagramUserDetails">
       <wsdl:input message="tns:getInstagramUserDetailsSoapIn" />
@@ -946,10 +871,6 @@
       <wsdl:input message="tns:TwitterAccountPageWithoutLoginHttpGetIn" />
       <wsdl:output message="tns:TwitterAccountPageWithoutLoginHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <wsdl:input message="tns:TwitterUserTimeLineHttpGetIn" />
-      <wsdl:output message="tns:TwitterUserTimeLineHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <wsdl:input message="tns:LinkedinSearchHttpGetIn" />
       <wsdl:output message="tns:LinkedinSearchHttpGetOut" />
@@ -977,10 +898,6 @@
     <wsdl:operation name="getInstagramList">
       <wsdl:input message="tns:getInstagramListHttpGetIn" />
       <wsdl:output message="tns:getInstagramListHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <wsdl:input message="tns:getInstagramUserRecentActivitiesHttpGetIn" />
-      <wsdl:output message="tns:getInstagramUserRecentActivitiesHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="getInstagramUserDetails">
       <wsdl:input message="tns:getInstagramUserDetailsHttpGetIn" />
@@ -1048,10 +965,6 @@
       <wsdl:input message="tns:TwitterAccountPageWithoutLoginHttpPostIn" />
       <wsdl:output message="tns:TwitterAccountPageWithoutLoginHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <wsdl:input message="tns:TwitterUserTimeLineHttpPostIn" />
-      <wsdl:output message="tns:TwitterUserTimeLineHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <wsdl:input message="tns:LinkedinSearchHttpPostIn" />
       <wsdl:output message="tns:LinkedinSearchHttpPostOut" />
@@ -1079,10 +992,6 @@
     <wsdl:operation name="getInstagramList">
       <wsdl:input message="tns:getInstagramListHttpPostIn" />
       <wsdl:output message="tns:getInstagramListHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <wsdl:input message="tns:getInstagramUserRecentActivitiesHttpPostIn" />
-      <wsdl:output message="tns:getInstagramUserRecentActivitiesHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="getInstagramUserDetails">
       <wsdl:input message="tns:getInstagramUserDetailsHttpPostIn" />
@@ -1186,15 +1095,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <soap:operation soapAction="http://tempuri.org/TwitterUserTimeLine" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <soap:operation soapAction="http://tempuri.org/LinkedinSearch" style="document" />
       <wsdl:input>
@@ -1251,15 +1151,6 @@
     </wsdl:operation>
     <wsdl:operation name="getInstagramList">
       <soap:operation soapAction="http://tempuri.org/getInstagramList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <soap:operation soapAction="http://tempuri.org/getInstagramUserRecentActivities" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1414,15 +1305,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <soap12:operation soapAction="http://tempuri.org/TwitterUserTimeLine" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <soap12:operation soapAction="http://tempuri.org/LinkedinSearch" style="document" />
       <wsdl:input>
@@ -1479,15 +1361,6 @@
     </wsdl:operation>
     <wsdl:operation name="getInstagramList">
       <soap12:operation soapAction="http://tempuri.org/getInstagramList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <soap12:operation soapAction="http://tempuri.org/getInstagramUserRecentActivities" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1642,15 +1515,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <http:operation location="/TwitterUserTimeLine" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <http:operation location="/LinkedinSearch" />
       <wsdl:input>
@@ -1707,15 +1571,6 @@
     </wsdl:operation>
     <wsdl:operation name="getInstagramList">
       <http:operation location="/getInstagramList" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <http:operation location="/getInstagramUserRecentActivities" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1870,15 +1725,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="TwitterUserTimeLine">
-      <http:operation location="/TwitterUserTimeLine" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LinkedinSearch">
       <http:operation location="/LinkedinSearch" />
       <wsdl:input>
@@ -1935,15 +1781,6 @@
     </wsdl:operation>
     <wsdl:operation name="getInstagramList">
       <http:operation location="/getInstagramList" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getInstagramUserRecentActivities">
-      <http:operation location="/getInstagramUserRecentActivities" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -2035,16 +1872,16 @@
   </wsdl:binding>
   <wsdl:service name="Companypage">
     <wsdl:port name="CompanypageSoap" binding="tns:CompanypageSoap">
-      <soap:address location="http://localhost:6361/services/Companypage.asmx" />
+      <soap:address location="http://localhost:6361/Services/Companypage.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanypageSoap12" binding="tns:CompanypageSoap12">
-      <soap12:address location="http://localhost:6361/services/Companypage.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Companypage.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanypageHttpGet" binding="tns:CompanypageHttpGet">
-      <http:address location="http://localhost:6361/services/Companypage.asmx" />
+      <http:address location="http://localhost:6361/Services/Companypage.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanypageHttpPost" binding="tns:CompanypageHttpPost">
-      <http:address location="http://localhost:6361/services/Companypage.asmx" />
+      <http:address location="http://localhost:6361/Services/Companypage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

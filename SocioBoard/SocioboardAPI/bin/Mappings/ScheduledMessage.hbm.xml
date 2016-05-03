@@ -42,6 +42,10 @@
       <column name="Status"  />
     </property>
 
+    <!--<property name="Url">
+      <column name="Url"  />
+    </property>-->
+
 
   </class>
 </hibernate-mapping>

@@ -203,5 +203,11 @@
     <Setting Name="Socioboard_Api_ScheduledMessage_ScheduledMessage" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/services/ScheduledMessage.asmx</Value>
     </Setting>
+    <Setting Name="Socioboard_Api_GoogleAnalyticsAccount_GoogleAnalyticsAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/services/GoogleAnalyticsAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_GoogleAnalytics_GoogleAnalytics" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/services/GoogleAnalytics.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

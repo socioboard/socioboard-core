@@ -87,12 +87,6 @@ namespace Socioboard.Controllers
             if (response.IsSuccessStatusCode)
             {
                 sharethons = await response.Content.ReadAsAsync<Domain.Socioboard.Domain.ShareathonGroup>();
-                    //FacebookClient fb = new FacebookClient();
-                    //fb.AccessToken = sharethons.AccessToken;
-                    //System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-                    //dynamic profile = fb.Get("v2.0/" + sharethons.Facebookgroupid + "?fields=id,name");
-                    //ViewBag.GroupId = (Convert.ToString(profile["id"]));
-                    //ViewBag.Groupname = (Convert.ToString(profile["name"]));
                     string [] nameId=sharethons.Facebooknameid.Split(',');
                     string id = "";
                     for (int i = 0; i < nameId.Length; i++)
@@ -115,7 +109,7 @@ namespace Socioboard.Controllers
             }
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objuser.Id.ToString(), Session["group"].ToString()), typeof(List<FacebookAccount>)));
-            ViewBag.FbAccounts = facebookaccounts;
+            ViewBag.FbAccounts = facebookaccounts.Where(t=>t.FbUserId!="").ToList();
             ViewBag.UserId = objuser.Id;
             ViewBag.Group = lst;
             return View(sharethons);
@@ -126,12 +120,26 @@ namespace Socioboard.Controllers
         {
             User objUser = (User)Session["User"];
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
             List<FacebookAccount> facebookpages = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
-           
-            ViewBag.FbPages = facebookpages;
-            Session["FbPages"] = ViewBag.FbPages;
-            ViewBag.FbAccounts = facebookaccounts;
+            foreach (FacebookAccount item in facebookpages)
+            {
+                if(item!=null)
+                {
+                    lstFacebookAccount.Add(item);
+                }
+            }
+            if (lstFacebookAccount.Count>0)
+            {
+                ViewBag.FbPages = lstFacebookAccount;
+                Session["FbPages"] = ViewBag.FbPages; 
+            }
+            else
+            {
+                ViewBag.FbPages = null;
+            }
+            ViewBag.FbAccounts = facebookaccounts.Where(t=>t.FbUserId!="").ToList();
             ViewBag.UserId = objUser.Id;
 
             return View();
@@ -167,14 +175,28 @@ namespace Socioboard.Controllers
             {
                 return RedirectToAction("Index");
             }
-
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
             List<FacebookAccount> facebookpages = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
 
-            ViewBag.FbPages = facebookpages;
-            Session["FbPages"] = ViewBag.FbPages;
-            ViewBag.FbAccounts = facebookaccounts;
+            foreach (FacebookAccount item in facebookpages)
+            {
+                if (item != null)
+                {
+                    lstFacebookAccount.Add(item);
+                }
+            }
+            if (lstFacebookAccount.Count > 0)
+            {
+                ViewBag.FbPages = lstFacebookAccount;
+                Session["FbPages"] = ViewBag.FbPages;
+            }
+            else
+            {
+                ViewBag.FbPages = null;
+            }
+            ViewBag.FbAccounts = facebookaccounts.Where(t => t.FbUserId != "").ToList();
             ViewBag.UserId = objUser.Id;
             return View();
         }
@@ -201,6 +223,7 @@ namespace Socioboard.Controllers
             Parameters.Add(new KeyValuePair<string, string>("Userid", objUser.Id.ToString()));
             Parameters.Add(new KeyValuePair<string, string>("FacebookPageUrl",shareathon.FacebookPageUrl));
             Parameters.Add(new KeyValuePair<string, string>("FacebookGroupId", groupId));
+            Parameters.Add(new KeyValuePair<string, string>("Facebooknameid", nameId));
             Parameters.Add(new KeyValuePair<string, string>("Timeintervalminutes", shareathon.Timeintervalminutes.ToString()));
             string accesstoken = string.Empty;
             string UserId = objUser.Id.ToString();
@@ -212,16 +235,30 @@ namespace Socioboard.Controllers
             HttpResponseMessage response = await WebApiReq.PostReq("api/ApiShareathon/AddGroupSharethon", Parameters, "Bearer", accesstoken);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("GroupIndex");
             }
-
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
             List<FacebookAccount> facebookpages = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
 
-            ViewBag.FbPages = facebookpages;
-            Session["FbPages"] = ViewBag.FbPages;
-            ViewBag.FbAccounts = facebookaccounts;
+            foreach (FacebookAccount item in facebookpages)
+            {
+                if (item != null)
+                {
+                    lstFacebookAccount.Add(item);
+                }
+            }
+            if (lstFacebookAccount.Count > 0)
+            {
+                ViewBag.FbPages = lstFacebookAccount;
+                Session["FbPages"] = ViewBag.FbPages;
+            }
+            else
+            {
+                ViewBag.FbPages = null;
+            }
+            ViewBag.FbAccounts = facebookaccounts.Where(t => t.FbUserId != "").ToList();
             ViewBag.UserId = objUser.Id;
             return View();
         }
@@ -258,14 +295,28 @@ namespace Socioboard.Controllers
             {
                 return RedirectToAction("Index");
             }
-
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
             List<FacebookAccount> facebookpages = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
 
-            ViewBag.FbPages = facebookpages;
-            Session["FbPages"] = ViewBag.FbPages;
-            ViewBag.FbAccounts = facebookaccounts;
+            foreach (FacebookAccount item in facebookpages)
+            {
+                if (item != null)
+                {
+                    lstFacebookAccount.Add(item);
+                }
+            }
+            if (lstFacebookAccount.Count > 0)
+            {
+                ViewBag.FbPages = lstFacebookAccount;
+                Session["FbPages"] = ViewBag.FbPages;
+            }
+            else
+            {
+                ViewBag.FbPages = null;
+            }
+            ViewBag.FbAccounts = facebookaccounts.Where(t => t.FbUserId != "").ToList();
             ViewBag.UserId = objUser.Id;
             return View();
         }
@@ -293,6 +344,7 @@ namespace Socioboard.Controllers
             Parameters.Add(new KeyValuePair<string, string>("Userid", objUser.Id.ToString()));
             Parameters.Add(new KeyValuePair<string, string>("FacebookPageUrl", shareathon.FacebookPageUrl));
             Parameters.Add(new KeyValuePair<string, string>("FacebookGroupId", groupId));
+            Parameters.Add(new KeyValuePair<string, string>("Facebooknameid", nameId));
             Parameters.Add(new KeyValuePair<string, string>("Timeintervalminutes", shareathon.Timeintervalminutes.ToString()));
             string accesstoken = string.Empty;
             string UserId = objUser.Id.ToString();
@@ -306,14 +358,28 @@ namespace Socioboard.Controllers
             {
                 return RedirectToAction("GroupIndex");
             }
-
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
             Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
             List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountsByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
             List<FacebookAccount> facebookpages = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookPageByUserIdAndGroupId(objUser.Id.ToString(), System.Web.HttpContext.Current.Session["group"].ToString()), typeof(List<FacebookAccount>)));
 
-            ViewBag.FbPages = facebookpages;
-            Session["FbPages"] = ViewBag.FbPages;
-            ViewBag.FbAccounts = facebookaccounts;
+            foreach (FacebookAccount item in facebookpages)
+            {
+                if (item != null)
+                {
+                    lstFacebookAccount.Add(item);
+                }
+            }
+            if (lstFacebookAccount.Count > 0)
+            {
+                ViewBag.FbPages = lstFacebookAccount;
+                Session["FbPages"] = ViewBag.FbPages;
+            }
+            else
+            {
+                ViewBag.FbPages = null;
+            }
+            ViewBag.FbAccounts = facebookaccounts.Where(t => t.FbUserId != "").ToList();
             ViewBag.UserId = objUser.Id;
             return View();
         }
@@ -430,12 +496,28 @@ namespace Socioboard.Controllers
                 
 
              }
+             List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
              List<FacebookAccount> facebookaccounts = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getAllFacebookAccountsOfUser(objuser.Id.ToString()), typeof(List<FacebookAccount>)));
              List<FacebookAccount> lstpage = facebookaccounts.Where(t => t.Type == "Page").ToList();
              List<FacebookAccount> lstaccount = facebookaccounts.Where(t=>t.Type=="account").ToList();
              ViewBag.UserId = objuser.Id;
-             ViewBag.FbAccounts = lstaccount;
-             ViewBag.Pages = lstpage;
+             ViewBag.FbAccounts = lstaccount.Where(t => t.FbUserId != "").ToList();
+             foreach (FacebookAccount item in lstpage)
+             {
+                 if (item != null)
+                 {
+                     lstFacebookAccount.Add(item);
+                 }
+             }
+             if (lstFacebookAccount.Count > 0)
+             {
+                 ViewBag.FbPages = lstFacebookAccount;
+                 Session["FbPages"] = ViewBag.FbPages;
+             }
+             else
+             {
+                 ViewBag.FbPages = null;
+             }
              ViewBag.pageid = nameId;
              return View(sharethons);
          }

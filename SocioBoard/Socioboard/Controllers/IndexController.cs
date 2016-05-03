@@ -15,19 +15,34 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Socioboard.App_Start;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
+using System.Net.Http;
 
 namespace Socioboard.Controllers
 {
     public class IndexController : BaseController
     {
+
+        public bool IsUserLogedIn()
+        {
+            bool IsUserLogedIn = false;
+            if (((Session["User"] != null && Session["access_token"] != null)) || Session["fblogin"] != null || Session["addfbaccount"] != null || Session["googlepluslogin"] != null)
+            {
+                IsUserLogedIn = true;
+            }
+            return IsUserLogedIn;
+        }
+
         //
         // GET: /Default/
         ILog logger = LogManager.GetLogger(typeof(IndexController));
-       // [OutputCache(Duration = 604800)]
-        [MyExpirePageActionFilter]
+        [OutputCache(Duration = 604800)]
+        // [MyExpirePageActionFilter]
         public ActionResult Index()
         {
-           
 
             if (Session["User"] != null)
             {
@@ -40,16 +55,29 @@ namespace Socioboard.Controllers
                     Session["User"] = null;
                 }
             }
+
+            try
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["hint"]))
+                {
+                    return View("Error");
+                }
+            }
+            catch { }
             return View();
-           
+
         }
 
-        public ActionResult Logout() 
+        public ActionResult Logout()
         {
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
             FormsAuthentication.SignOut();
+            if (Request.Cookies["referal_url"] != null)
+            {
+                Response.Cookies["referal_url"].Expires = DateTime.Now.AddDays(-1);
+            }
             return RedirectToAction("Index");
         }
         //[HttpPost]
@@ -62,141 +90,201 @@ namespace Socioboard.Controllers
             string uname = Request.QueryString["username"].ToString();
             string pass = Request.QueryString["password"].ToString();
             Api.User.User obj = new Api.User.User();
-            string logindata = obj.Login(uname, pass);
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiUser/Login?EmailId=" + uname + "&PasswordHash=" + SBUtils.MD5Hash(pass), "", "");
+            if (response.IsSuccessStatusCode)
+            {
+                objUser = await response.Content.ReadAsAsync<Domain.Socioboard.Domain.User>();
+                if (objUser != null)
+                {
+                    Response.Cookies.Add(FormsAuthentication.GetAuthCookie(objUser.UserName, true));
+                    // FormsAuthentication.SetAuthCookie(objUser.UserName, false);
+                    Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider(System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"] + "/token");
+                    try
+                    {
+                        Dictionary<string, string> re = await ac.GetTokenDictionary(username, SBUtils.MD5Hash(pass));
+                        Session["access_token"] = re["access_token"];
+                    }
+                    catch (Exception e)
+                    {
+                        objUser = null;
+
+                        // Edited by Antima 
+
+                        HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
+                        myCookie.Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies.Add(myCookie);
+
+                        returnmsg = "Invalid Email or Password";
+                        return Content(returnmsg);
+                    }
+
+                    if (objUser != null)
+                    {
+                        if (objUser.ActivationStatus == "1")
+                        {
+                            int daysremaining = 0;
+
+                            daysremaining = (objUser.ExpiryDate.Date - DateTime.Now.Date).Days;
+                            if (daysremaining > 0)
+                            {
+                                Session["User"] = objUser;
+                                Session["group"] = await SBHelper.LoadGroups(objUser.Id);
+                                returnmsg = "user";
+                                #region Count Used Accounts
+                                try
+                                {
+                                    Session["Paid_User"] = "Paid";
+                                    Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                                    Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                                    Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                #endregion
+                            }
+                            else
+                            {
+                                Session["User"] = objUser;
+                                Session["Paid_User"] = "Unpaid";
+                                returnmsg = "unpaid";
+                            }
+                        }
+                        else if (objUser.ActivationStatus == "2")
+                        {
+                            returnmsg = "User Not Exist!";
+                        }
+                        else
+                        {
+                            returnmsg = "notactivated";
+                        }
+                    }
+                    if (objUser.UserType == "SuperAdmin")
+                    {
+                        returnmsg = "SuperAdmin";
+                        Session["User"] = objUser;
+                    }
+                }
+            }
+            else
+            {
+                objUser = null;
+                HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
+                myCookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(myCookie);
+                returnmsg = "Invalid Email or Password";
+                return Content(returnmsg);
+            }
+            return Content(returnmsg);
+        }
+
+
+        [HttpPost]
+        public async System.Threading.Tasks.Task<ActionResult> AjaxPluginLogin()
+        {
+            Session.Clear();
+            Session.RemoveAll();
+
+            string returnmsg = string.Empty;
+
+            string uname = Request.Form["email"].ToString();
+            string pass = Request.Form["password"].ToString();
+            User objUser = new User();
+            Api.User.User ApiUser = new Api.User.User();
+            string logindata = ApiUser.Login(uname, pass);
             string str = logindata.Replace("\"", string.Empty).Trim();
             if (str != "Not Exist" && !str.Equals("Email Not Exist"))
             {
-                 objUser = (User)(new JavaScriptSerializer().Deserialize(logindata, typeof(User)));
+                objUser = (User)(new JavaScriptSerializer().Deserialize(logindata, typeof(User)));
                 FormsAuthentication.SetAuthCookie(objUser.UserName, false);
                 Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider(System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"] + "/token");
                 try
                 {
-                    Dictionary<string, string> re = await ac.GetTokenDictionary(username, password);
+                    Dictionary<string, string> re = await ac.GetTokenDictionary(uname, SBUtils.MD5Hash(pass));
                     Session["access_token"] = re["access_token"];
                 }
                 catch (Exception e)
                 {
-                    objUser = null;
-
-                    // Edited by Antima 
-
-                    HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
-                    myCookie.Expires = DateTime.Now.AddDays(-1);
-                    Response.Cookies.Add(myCookie);
-
                     returnmsg = "Invalid Email or Password";
                     return Content(returnmsg);
                 }
             }
-            else if (str.Equals("Email Not Exist")) 
+            else if (str.Equals("Email Not Exist"))
             {
                 returnmsg = "Sorry, " + ConfigurationManager.AppSettings["domain"] + " doesn't recognize that username.";
                 return Content(returnmsg);
             }
             else
             {
-                objUser = null;
-
-                // Edited by Antima 
-
-                HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
-                myCookie.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(myCookie);
-
                 returnmsg = "Invalid Email or Password";
                 return Content(returnmsg);
             }
 
-            #region Unused code
-            //JObject profile = JObject.Parse(obj.Login(uname, pass));
-            //objUser.Id = Guid.Parse(profile["Id"].ToString());
-            //objUser.UserName = profile["UserName"].ToString();
-            //objUser.AccountType = profile["AccountType"].ToString();
-            //objUser.ProfileUrl = profile["ProfileUrl"].ToString();
-            //objUser.EmailId = profile["EmailId"].ToString();
-            //objUser.CreateDate = Convert.ToDateTime(profile["CreateDate"].ToString());
-            //objUser.ExpiryDate = Convert.ToDateTime(profile["ExpiryDate"].ToString());
-            //objUser.UserStatus = Convert.ToInt16(profile["UserStatus"].ToString());
-            //objUser.Password = profile["Password"].ToString();
-            //objUser.TimeZone = profile["TimeZone"].ToString();
-            //objUser.PaymentStatus = profile["PaymentStatus"].ToString();
-            //objUser.ActivationStatus = profile["ActivationStatus"].ToString();
-            //objUser.CouponCode = profile["CouponCode"].ToString();
-            //objUser.ReferenceStatus = profile["ReferenceStatus"].ToString();
-            //objUser.RefereeStatus = profile["RefereeStatus"].ToString();
-            //objUser.UserType = profile["UserType"].ToString(); 
-            #endregion
-            if (objUser.UserType != "SuperAdmin")
+            if (objUser != null)
             {
-                if (objUser != null)
+                if (objUser.ActivationStatus == "1")
                 {
-                    if (objUser.ActivationStatus == "1")
+                    int daysremaining = 0;
+                    daysremaining = (objUser.ExpiryDate.Date - DateTime.Now.Date).Days;
+                    Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                    #region Count Used Accounts
+                    try
                     {
-                        int daysremaining = 0;
-
-                        daysremaining = (objUser.ExpiryDate.Date - DateTime.Now.Date).Days;
-                        if (daysremaining > 0)
-                        {
-                            Session["User"] = objUser;
-                            returnmsg = "user";
-                            #region Count Used Accounts
-                            try
-                            {
-                                Session["Paid_User"] = "Paid";
-                                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
-                                Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
-                                Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                            }
-                            #endregion
-                        }
-                        else
-                        {
-                            Session["User"] = objUser;
-                            Session["Paid_User"] = "Unpaid";
-                            returnmsg = "unpaid";
-                        }
+                        Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                        Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
                     }
-                    else if (objUser.ActivationStatus == "2")
+                    catch (Exception ex)
                     {
-                        returnmsg = "User Not Exist!";
+                        Session["ProfileCount"] = 0;
+                        Session["TotalAccount"] = 0;
+                    }
+                    #endregion
+                    if (daysremaining > 0)
+                    {
+                        Session["User"] = objUser;
+                        returnmsg = "user";
+                        Session["Paid_User"] = "Paid";
                     }
                     else
                     {
-                        returnmsg = "notactivated";
+                        Session["User"] = objUser;
+                        Session["Paid_User"] = "Unpaid";
+                        returnmsg = "unpaid";
                     }
                 }
+                else if (objUser.ActivationStatus == "2")
+                {
+                    returnmsg = "User Not Exist!";
+                }
+                else
+                {
+                    returnmsg = "notactivated";
+                }
             }
-            else
-            {
-                returnmsg = "SuperAdmin";
-                Session["User"] = objUser;
-            }
+
             return Content(returnmsg);
         }
 
-        
+
         public ActionResult Download()
         {
             return View();
         }
 
-       
+
         public ActionResult Contact()
         {
             return View();
         }
 
-       
+
         public ActionResult About()
         {
             return View();
         }
 
-        
+
         public ActionResult Pricing()
         {
             PricingModelHelper objPricingModelHelper_Basic = new PricingModelHelper("Basic", "FREE", "Every plan is a unique package. This one fits for individuals.", "Comprehensive Dashboard", null);
@@ -232,18 +320,18 @@ namespace Socioboard.Controllers
             }
             Session["User"] = null;
             return View("_PricingPartial", new PricingModelHelper[] { objPricingModelHelper_Basic, objPricingModelHelper_Standard, objPricingModelHelper_Premium, objPricingModelHelper_Deluxe, objPricingModelHelper_SocioBasic, objPricingModelHelper_SocioStandard, objPricingModelHelper_SocioPremium, objPricingModelHelper_SocioDeluxe });
-            
+
         }
-        
+
         public ActionResult Registration()
         {
             return View();
         }
-        
+
         public ActionResult Signup()
         {
             logger.Error("Register");
-            User _user=(User)Session["User"];
+            User _user = (User)Session["User"];
             Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
             Session["AjaxLogin"] = "register";
             string retmsg = string.Empty;
@@ -254,7 +342,7 @@ namespace Socioboard.Controllers
                 line = sr.ReadToEnd();
                 JObject jo = JObject.Parse(line);
                 user.PaymentStatus = "unpaid";
-               
+
                 user.AccountType = Server.UrlDecode((string)jo["package"]);
                 user.CreateDate = DateTime.Now;
                 user.ExpiryDate = DateTime.Now.AddDays(30);
@@ -336,7 +424,7 @@ namespace Socioboard.Controllers
                         string invitationcode = Session["InvitationCode"].ToString();
                         ApiInvitation.AddInvitationInfoBycode(invitationcode, user.EmailId, user.Id.ToString());
                     }
-                    
+
                     //if (_Invitation != null)
                     //{
                     //    if (user.EmailId == _Invitation.FriendEmail)
@@ -361,9 +449,9 @@ namespace Socioboard.Controllers
                 Console.WriteLine(ex.StackTrace);
             }
             //return View("_RegistrationPartial");
-            
-            
-           
+
+
+
             return Content(retmsg);
         }
 
@@ -376,7 +464,7 @@ namespace Socioboard.Controllers
         {
             return View();
         }
-     
+
         public ActionResult LoadRegistration(string teamid)
         {
             string ss = Request.QueryString["teamid"];
@@ -398,7 +486,7 @@ namespace Socioboard.Controllers
             string mailsender = ApiobjMailSender.SendMail(name, lname, email, Subject, profile);
             return Content(mailsender);
         }
-     
+
         //vikash
         public ActionResult SendCareerMail(string fname, string lname, string email, string Subject, string profile)
         {
@@ -524,7 +612,6 @@ namespace Socioboard.Controllers
 
         }
 
-        // Edited by Antima[8/11/2014]
 
         public ActionResult PaypalPage()
         {
@@ -545,15 +632,15 @@ namespace Socioboard.Controllers
 
                 pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", Downloadpaypalemail, DownloadSuccessURL,
                                         DownloadFailedURL, DownloadSuccessURL, "", "", userId);
-                
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
             //return View();
-             Response.Redirect(pay);
-             return Content("");
+            Response.Redirect(pay);
+            return Content("");
         }
 
         public ActionResult PaymentSuccessful()
@@ -574,7 +661,6 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
-        // Edited by Antima[24/11/2014]
 
         public ActionResult SendVideoMail(string EmailId)
         {
@@ -588,7 +674,7 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
-           
+
             Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
             string mailsender = "";
             try
@@ -605,7 +691,6 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
-        // Edited by Antima[09/12/2014]
 
         public ActionResult PaypalAgency(string PlanType)
         {
@@ -614,7 +699,7 @@ namespace Socioboard.Controllers
             {
                 Helper.Agency agency = new Agency();
                 Helper.Payment payme = new Payment();
-               
+
                 agency.AgencyPlan(PlanType);
                 string amount = agency.amount;
                 string plantype = agency.plantype;
@@ -622,11 +707,11 @@ namespace Socioboard.Controllers
                 string EmailId = agency.EmailId;
                 string userId = agency.userId;
 
-                 //pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
-                 //                     ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], ConfigurationManager.AppSettings["EnterPrisecancelurl"], ConfigurationManager.AppSettings["EnterPrisenotifyurl"], userId);
+                //pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
+                //                     ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], ConfigurationManager.AppSettings["EnterPrisecancelurl"], ConfigurationManager.AppSettings["EnterPrisenotifyurl"], userId);
 
                 pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
-                                    ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"],"","", userId);
+                                    ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], "", "", userId);
 
 
             }
@@ -634,14 +719,14 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
-             return Content(pay);
+            return Content(pay);
         }
 
-        public ActionResult Privacy() 
+        public ActionResult Privacy()
         {
             return View("privacy");
         }
-        public ActionResult Disclaimer() 
+        public ActionResult Disclaimer()
         {
             return View();
         }
@@ -650,5 +735,116 @@ namespace Socioboard.Controllers
         {
             return View("OpenSource");
         }
+        [HttpGet]
+        public ActionResult SBApp(string profileType, string url, string content, string imageUrl, string name, string userImage, string screenName, string tweet, string tweetId, string type)
+        {
+
+            Domain.Socioboard.Helper.PluginData _PluginData = new Domain.Socioboard.Helper.PluginData();
+            _PluginData.profileType = profileType;
+            _PluginData.content = content;
+            _PluginData.imageUrl = imageUrl;
+            _PluginData.name = name;
+            _PluginData.screenName = screenName;
+            _PluginData.tweet = tweet;
+            _PluginData.tweetId = tweetId;
+            _PluginData.url = url;
+            _PluginData.userImage = userImage;
+            _PluginData.type = type;
+
+            if (Session["User"] != null)
+            {
+                if (!string.IsNullOrEmpty(url) && profileType != "pinterest")
+                {
+                    Domain.Socioboard.Helper.ThumbnailDetails plugindata = PluginHelper.CreateThumbnail(url);
+                    _PluginData._ThumbnailDetails = plugindata;
+                }
+
+                ViewBag.plugin = _PluginData;
+                //Dictionary<string, object> dict_TeamMember = new Dictionary<string, object>();
+                List<Domain.Socioboard.Helper.PluginProfile> lstsb = new List<Domain.Socioboard.Helper.PluginProfile>();
+                lstsb = SBUtils.GetProfilesForPlugin();
+                return View("RMain", lstsb);
+            }
+            return View("Rlogin");
+        }
+
+        public ActionResult PluginSignUp()
+        {
+            string name = Request.Form["name"].ToString();
+            string email = Request.Form["email"].ToString();
+            string password = Request.Form["password"].ToString();
+            Api.User.User objApiUser = new Api.User.User();
+            string res = objApiUser.Register(email, password, "free", name, "0");
+            if (res == "Email Already Exists")
+            {
+                return Content("email exist");
+            }
+            else
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(res, typeof(Domain.Socioboard.Domain.User));
+
+                Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
+                string mailsender = "";
+                try
+                {
+                    var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_RegistrationMailPartial", _User);
+                    string Subject = "Thanks for creating your " + ConfigurationManager.AppSettings["DefaultGroupName"].ToString() + " Account";
+
+                    mailsender = ApiobjMailSender.SendChangePasswordMail(email, mailBody, Subject);
+                }
+                catch { }
+            }
+            return Content("user");
+        }
+        public ActionResult SendFbCreads(string userId, string password)
+        {
+            Api.User.User ApiUser = new Api.User.User();
+            string _user = ApiUser.SaveFacebookId(userId, password);
+            return Content(_user);
+        }
+
+
+
+        public string SendLocalEmail(string toAddress)
+        {
+            string result = "Message Sent Successfully..!!";
+            string senderID = "suresh@socioboard.com";// use sender’s email id here..
+            try
+            {
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = "127.0.0.1", // smtp server address here…
+                    Port = 25,
+                    //EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    //Credentials = new System.Net.NetworkCredential(senderID, senderPassword),
+                    Timeout = 30000,
+                };
+                MailMessage message = new MailMessage(senderID, toAddress, "Test Mail", "Test Body");
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                result = "Error sending email.!!!";
+                logger.Error(ex.StackTrace);
+                logger.Error(ex.Message);
+            }
+            return result;
+        }
+
+        public ActionResult IsUserSession()
+        {
+            if (Session["User"] != null)
+            {
+                return Content("user");
+            }
+            else
+            {
+                return Content("");
+            }
+        }
+
     }
+
+
 }

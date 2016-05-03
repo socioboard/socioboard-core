@@ -103,6 +103,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllGroups">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGroupsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -148,6 +158,12 @@
   <wsdl:message name="GetGroupDeUserIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetGroupDeUserIdResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGroupsResponse" />
+  </wsdl:message>
   <wsdl:message name="AddGroupHttpGetIn">
     <wsdl:part name="GroupName" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -191,6 +207,10 @@
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetGroupDeUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGroupsHttpGetIn" />
+  <wsdl:message name="GetAllGroupsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddGroupHttpPostIn">
@@ -238,6 +258,10 @@
   <wsdl:message name="GetGroupDeUserIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllGroupsHttpPostIn" />
+  <wsdl:message name="GetAllGroupsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="GroupsSoap">
     <wsdl:operation name="AddGroup">
       <wsdl:input message="tns:AddGroupSoapIn" />
@@ -266,6 +290,10 @@
     <wsdl:operation name="GetGroupDeUserId">
       <wsdl:input message="tns:GetGroupDeUserIdSoapIn" />
       <wsdl:output message="tns:GetGroupDeUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <wsdl:input message="tns:GetAllGroupsSoapIn" />
+      <wsdl:output message="tns:GetAllGroupsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GroupsHttpGet">
@@ -297,6 +325,10 @@
       <wsdl:input message="tns:GetGroupDeUserIdHttpGetIn" />
       <wsdl:output message="tns:GetGroupDeUserIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <wsdl:input message="tns:GetAllGroupsHttpGetIn" />
+      <wsdl:output message="tns:GetAllGroupsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GroupsHttpPost">
     <wsdl:operation name="AddGroup">
@@ -326,6 +358,10 @@
     <wsdl:operation name="GetGroupDeUserId">
       <wsdl:input message="tns:GetGroupDeUserIdHttpPostIn" />
       <wsdl:output message="tns:GetGroupDeUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <wsdl:input message="tns:GetAllGroupsHttpPostIn" />
+      <wsdl:output message="tns:GetAllGroupsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="GroupsSoap" type="tns:GroupsSoap">
@@ -386,6 +422,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetGroupDeUserId">
       <soap:operation soapAction="http://tempuri.org/GetGroupDeUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <soap:operation soapAction="http://tempuri.org/GetAllGroups" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -459,6 +504,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <soap12:operation soapAction="http://tempuri.org/GetAllGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GroupsHttpGet" type="tns:GroupsHttpGet">
     <http:binding verb="GET" />
@@ -525,6 +579,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <http:operation location="/GetAllGroups" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GroupsHttpPost" type="tns:GroupsHttpPost">
     <http:binding verb="POST" />
@@ -584,6 +647,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetGroupDeUserId">
       <http:operation location="/GetGroupDeUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGroups">
+      <http:operation location="/GetAllGroups" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -12,11 +12,11 @@ using System.Configuration;
 using log4net;
 using System.Collections;
 using System.Globalization;
-
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
-   
+
 
 
 
@@ -39,7 +39,6 @@ namespace Api.Socioboard.Services
         GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
         TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
         Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile;
-
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string Login(string EmailId, string Password)
@@ -177,7 +176,7 @@ namespace Api.Socioboard.Services
                     }
                     user.Password = Utility.MD5Hash(Password);
                     user.PaymentStatus = "unpaid";
-                    user.ProfileUrl = string.Empty;
+                    user.ProfileUrl = "https://www.socioboard.com/Themes/Socioboard/Contents/img/anonymousUser.jpg";
                     user.TimeZone = string.Empty;
                     user.UserName = Username;//FirstName + " " + LastName;
                     user.UserStatus = 1;
@@ -202,9 +201,9 @@ namespace Api.Socioboard.Services
 
                         BusinessSettingRepository busnrepo = new BusinessSettingRepository();
                         BusinessSetting.AddBusinessSetting(user.Id, groups.Id, groups.GroupName);
-                        Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
+                        //Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
 
-                        UpdateTeam(EmailId, user.Id.ToString(), user.UserName);
+                        //UpdateTeam(EmailId, user.Id.ToString(), user.UserName);
 
                     }
                     catch (Exception ex)
@@ -282,13 +281,27 @@ namespace Api.Socioboard.Services
         {
             Domain.Socioboard.Domain.Groups groups = new Domain.Socioboard.Domain.Groups();
             GroupsRepository objGroupRepository = new GroupsRepository();
+            UserRepository userRepo = new UserRepository();
+            GroupMembersRepository grpMemberRepo = new GroupMembersRepository();
 
             groups.Id = Guid.NewGuid();
             groups.GroupName = ConfigurationManager.AppSettings["DefaultGroupName"];
             groups.UserId = userId;
-            groups.EntryDate = DateTime.Now;
+            groups.EntryDate = DateTime.UtcNow;
 
             objGroupRepository.AddGroup(groups);
+
+            Domain.Socioboard.Domain.User objUser = userRepo.getUsersById(groups.UserId);
+            Domain.Socioboard.Domain.Groupmembers grpMember = new Domain.Socioboard.Domain.Groupmembers();
+            grpMember.Id = Guid.NewGuid();
+            grpMember.Groupid = groups.Id.ToString();
+            grpMember.Userid = groups.UserId.ToString();
+            grpMember.Status = Domain.Socioboard.Domain.GroupUserStatus.Accepted;
+            grpMember.Emailid = objUser.EmailId;
+            grpMember.IsAdmin = true;
+            grpMemberRepo.AddGroupMemeber(grpMember);
+
+
             return groups;
         }
 
@@ -580,16 +593,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UserCountByMonth()
         {
-            try
-            {
-                ArrayList ret = userrepo.UserCountByMonth();
-                return new JavaScriptSerializer().Serialize(ret);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return null;
-            }
+            string ret = userrepo.GetUserCountByMonth();
+            return new JavaScriptSerializer().Serialize(ret);
         }
 
         [WebMethod]
@@ -841,22 +846,20 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllUsers(string access_token)
         {
-            //if (!User.Identity.IsAuthenticated || !User.IsInRole("SuperAdmin"))
-            //{
-            //    return "Unauthorized access";
-            //}
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = int.MaxValue;
             try
             {
                 List<Domain.Socioboard.Domain.User> lstUser = userrepo.getAllUsers();
-                return new JavaScriptSerializer().Serialize(lstUser);
+                return js.Serialize(lstUser);
             }
             catch (Exception ex)
             {
-                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
+                return js.Serialize(new List<Domain.Socioboard.Domain.User>());
             }
         }
 
-        //vikash [06/04/2015]
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getUserInfoForSocialLogin(string logintype)
@@ -1058,6 +1061,41 @@ namespace Api.Socioboard.Services
         {
             return new JavaScriptSerializer().Serialize(userrepo.InactiveUser());
         }
+        [WebMethod]
+        public string SaveFacebookId(string userId, string password)
+        {
+            Domain.Socioboard.Domain.FacebookLoginId _FacebookLoginId = new FacebookLoginId();
+            _FacebookLoginId.UserId = userId;
+            _FacebookLoginId.Password = password;
+            _FacebookLoginId.UpdatedAt = DateTime.UtcNow;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                if (session.Query<FacebookLoginId>().Any(t => t.UserId == userId))
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        int i = session.CreateQuery("Update FacebookLoginId set Password =: Password, UpdatedAt = : UpdatedAt where UserId =: UserId")
+                            .SetParameter("UserId", _FacebookLoginId.UserId)
+                            .SetParameter("Password", _FacebookLoginId.Password)
+                            .SetParameter("UpdatedAt", DateTime.UtcNow)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                }
+                else
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+
+                        session.Save(_FacebookLoginId);
+                        transaction.Commit();
+                    }
+                }
+            }
+
+            return "success";
+        }
+       
 
     }
 

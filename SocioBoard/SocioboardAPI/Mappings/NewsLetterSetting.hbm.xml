@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="NewsLetterSetting" table="NewsLetterSetting" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="userId">
+      <column name="userId" />
+    </property>
+    <property name="groupReport_Daily">
+      <column name="groupReport_Daily" />
+    </property>
+    <property name="groupReport_7">
+      <column name="groupReport_7"  />
+    </property>
+    <property name="groupReport_15">
+      <column name="groupReport_15"  />
+    </property>
+    <property name="groupReport_30">
+      <column name="groupReport_30"  />
+    </property>
+    <property name="groupReport_60">
+      <column name="groupReport_60"  />
+    </property>
+    <property name="groupReport_90">
+      <column name="groupReport_90"  />
+    </property>
+    <property name="others">
+      <column name="others"  />
+    </property>
+
+  </class>
+</hibernate-mapping> 

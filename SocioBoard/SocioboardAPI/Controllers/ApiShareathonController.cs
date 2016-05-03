@@ -1,6 +1,9 @@
 ﻿using Api.Socioboard.Helper;
 using Api.Socioboard.Model;
+using Api.Socioboard.Services;
 using Domain.Socioboard.Domain;
+using Domain.Socioboard.Helper;
+using log4net;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,12 +20,15 @@ namespace Api.Socioboard.Controllers
     [Api.Socioboard.App_Start.AllowCrossSiteJson]
     public class ApiShareathonController : ApiController
     {
+        ILog logger = LogManager.GetLogger(typeof(ApiShareathonController));
         private ShareathonRepository sharepo = new ShareathonRepository();
         private ShareathonGroupRepository sharegrprepo = new ShareathonGroupRepository();
+        private FacebookAccountRepository facebookrepo = new FacebookAccountRepository();
 
         [HttpPost]
         public IHttpActionResult AddShareathon(ShareathonViewModel shareathon)
         {
+
             Shareathon _shreathon = new Shareathon();
             string id = "";
             for (int i = 0; i < shareathon.FacebookPageId.Length; i++)
@@ -35,6 +41,7 @@ namespace Api.Socioboard.Controllers
             _shreathon.Timeintervalminutes = shareathon.Timeintervalminutes;
             _shreathon.Id = Guid.NewGuid();
             _shreathon.Userid = shareathon.Userid;
+            _shreathon.FacebookStatus = 1;
             if (!sharepo.IsShareathonExist(shareathon.Userid, shareathon.Facebookaccountid, _shreathon.Facebookpageid))
             {
                 if (sharepo.AddShareathon(_shreathon))
@@ -61,25 +68,26 @@ namespace Api.Socioboard.Controllers
             Domain.Socioboard.Domain.ShareathonGroup _ShareathonGroup = new ShareathonGroup();
             string groupId = "";
             string nameId = "";
-            FacebookAccount facebookAccount = sharepo.getFbAccount(sharethon.Facebookaccountid);
+            Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharegrprepo.getFacebookAccountDetailsByUserProfileId(sharethon.Facebookaccountid, sharethon.Userid);
             string pageid = FacebookHelper.GetFbPageDetails(sharethon.FacebookPageUrl, facebookAccount.AccessToken);
             _ShareathonGroup.Id = Guid.NewGuid();
             _ShareathonGroup.Facebookpageid = pageid.TrimEnd(',');
             _ShareathonGroup.FacebookPageUrl = sharethon.FacebookPageUrl;
             _ShareathonGroup.AccessToken = facebookAccount.AccessToken;
-            _ShareathonGroup.Facebookaccountid = facebookAccount.Id;
+            _ShareathonGroup.Facebookaccountid = facebookAccount.FbUserId;
             _ShareathonGroup.Userid = sharethon.Userid;
             _ShareathonGroup.Timeintervalminutes = sharethon.Timeintervalminutes;
             _ShareathonGroup.IsHidden = false;
+            _ShareathonGroup.FacebookStatus = 1;
             for (int i = 0; i < sharethon.FacebookGroupId.Length; i++)
             {
                 string dataid = sharethon.FacebookGroupId[i];
                 string[] grpid = Regex.Split(dataid, "###");
                 groupId = grpid[0] + "," + groupId;
-                nameId = sharethon.FacebookGroupId[i] + "," + nameId;
+
             }
+            _ShareathonGroup.Facebooknameid = sharethon.Facebooknameid.TrimEnd(',');
             _ShareathonGroup.Facebookgroupid = groupId.TrimEnd(',');
-            _ShareathonGroup.Facebooknameid = nameId.TrimEnd(',');
             if (!sharegrprepo.IsShareathonExist(sharethon.Userid, groupId, pageid))
             {
                 if (sharegrprepo.AddShareathon(_ShareathonGroup))
@@ -98,8 +106,6 @@ namespace Api.Socioboard.Controllers
             return Ok();
 
         }
-
-
 
         [HttpGet]
         public IHttpActionResult GetShareathons(string UserId)
@@ -130,21 +136,27 @@ namespace Api.Socioboard.Controllers
                     svmodel.Lastsharetimestamp = item.Lastsharetimestamp;
                     svmodel.Timeintervalminutes = item.Timeintervalminutes;
                     svmodel.Userid = item.Userid;
-                    svmodel.Facebookaccount = sharepo.getFbAccount(item.Facebookaccountid);
-                    List<FacebookAccount> Facebookpages = new List<FacebookAccount>();
-                    try {
+                    svmodel.Facebookaccount = sharepo.getFacebookAccountDetailsByUserProfileId(item.Facebookaccountid, item.Userid);
+                    List<Domain.Socioboard.Domain.FacebookAccount> Facebookpages = new List<Domain.Socioboard.Domain.FacebookAccount>();
+                    try
+                    {
                         string[] fbids = item.Facebookpageid.Split(',');
                         foreach (var id in fbids)
                         {
-                            try 
+                            try
                             {
-                                Facebookpages.Add(sharepo.getFbAccount(Guid.Parse(id)));
+                                Domain.Socioboard.Domain.FacebookAccount fbaccount = sharepo.getFacebookAccountDetailsByUserProfileId(id, item.Userid);
+                                if (fbaccount != null)
+                                {
+                                    Facebookpages.Add(fbaccount);
+                                }
+                               
                             }
                             catch { }
                         }
                     }
                     catch { }
-                    svmodel.Facebookpages = Facebookpages;
+                    svmodel.Facebookpages = Facebookpages.Where(t=>t.FbUserId!="").ToList();
                     svmodel.pageid = item.Facebookpageid;
                     shareathonviewModels.Add(svmodel);
                 }
@@ -204,8 +216,6 @@ namespace Api.Socioboard.Controllers
 
         }
 
-
-
         [HttpGet]
         public IHttpActionResult GetGroupShareathons(string UserId)
         {
@@ -235,7 +245,7 @@ namespace Api.Socioboard.Controllers
                     svmodel.Lastsharetimestamp = item.Lastsharetimestamp;
                     svmodel.Timeintervalminutes = item.Timeintervalminutes;
                     svmodel.Userid = item.Userid;
-                    svmodel.Facebookaccount = sharepo.getFbAccount(item.Facebookaccountid);
+                    svmodel.Facebookaccount = sharepo.getFacebookAccountDetailsByUserProfileId(item.Facebookaccountid, item.Userid);
                     shareathonviewModels.Add(svmodel);
                 }
                 return Ok(shareathonviewModels);
@@ -244,10 +254,72 @@ namespace Api.Socioboard.Controllers
         }
 
         [HttpGet]
-        public List<Shareathon> ShareShareathons()
+        public IHttpActionResult ShareShareathons()
         {
-            List<Shareathon> shareathon = sharepo.getShareathons();
-            return shareathon;
+            List<Shareathon> shareatons = sharepo.getShareathons();
+            foreach (var item in shareatons)
+            {
+                Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharepo.getFacebookAccountDetailsByUserProfileId(item.Facebookaccountid, item.Userid);
+                try
+                {
+                    string[] ids = item.Facebookpageid.Split(',');
+                    foreach (string id in ids)
+                    {
+                        try
+                        {
+                            Domain.Socioboard.Domain.FacebookAccount facebookPage = sharepo.getFbAccount(Guid.Parse(id));
+                            if (facebookPage != null)
+                            {
+                                string feeds = FacebookHelper.getFacebookRecentPost(facebookAccount.AccessToken, facebookPage.FbUserId);
+                                string feedId = string.Empty;
+                                if (!string.IsNullOrEmpty(feeds) && !feeds.Equals("[]"))
+                                {
+                                    JObject fbpageNotes = JObject.Parse(feeds);
+                                    foreach (JObject obj in JArray.Parse(fbpageNotes["data"].ToString()))
+                                    {
+                                        try
+                                        {
+                                            feedId = obj["id"].ToString();
+                                            feedId = feedId.Split('_')[1];
+                                        }
+                                        catch { }
+                                        break;
+                                    }
+                                    if (item.Lastpostid == null || (!item.Lastpostid.Equals(feedId) && item.Lastsharetimestamp.AddMinutes(item.Timeintervalminutes) >= DateTime.UtcNow))
+                                    {
+                                        FacebookHelper.ShareFeed(facebookAccount.AccessToken, feedId, facebookPage.FbUserId, "", facebookAccount.FbUserId, facebookPage.FbUserName);
+                                    }
+                                }
+                            }
+                        }
+
+                        catch { }
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e.Message);
+                    logger.Error(e.StackTrace);
+                }
+
+            }
+
+            return Ok();
+        }
+
+
+        [HttpGet]
+        public List<Shareathon> ShareathonPage()
+        {
+            List<Shareathon> shareatons = sharepo.getShareathons();
+            return shareatons;
+        }
+
+        [HttpGet]
+        public List<Shareathon> ShareathonByUserId(string UserId)
+        {
+            List<Shareathon> lstshareathongrp = sharepo.getUserShareathonByUserId(Guid.Parse(UserId));
+            return lstshareathongrp;
         }
 
         [HttpGet]
@@ -258,17 +330,26 @@ namespace Api.Socioboard.Controllers
 
         }
 
+        [HttpGet]
+        public List<ShareathonGroup> ShareathonGroupByUserId(string UserId)
+        {
+            List<ShareathonGroup> lstshareathongrp = sharegrprepo.getUserShareathon(Guid.Parse(UserId));
+            return lstshareathongrp;
+        }
+
         [HttpPost]
         public void PostData(ShareathonGroup item)
         {
-            FacebookAccount facebookAccount = sharegrprepo.getFbAccount(item.Facebookaccountid);
+
+            Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharegrprepo.getFacebookAccountDetailsByUserProfileId(item.Facebookaccountid, item.Userid);
+
             string feedId = string.Empty;
             string[] pageid = item.Facebookpageid.Split(',');
 
             foreach (string item_str in pageid)
             {
 
-                string feeds = FacebookHelper.getFacebookRecentPost(item.AccessToken, item_str);
+                string feeds = FacebookHelper.getFacebookRecentPost(facebookAccount.AccessToken, item_str);
 
                 try
                 {
@@ -286,6 +367,14 @@ namespace Api.Socioboard.Controllers
                             catch { }
 
                         }
+                        FacebookHelper.postfeedGroup(item.AccessToken, item.Facebookgroupid, feedId, facebookAccount.FbUserId, item.Timeintervalminutes, item.Id);
+
+                    }
+                    else
+                    {
+                        facebookAccount.IsActive = 2;
+                        facebookrepo.updateFacebookUserStatus(facebookAccount);
+                        sharegrprepo.UpadteShareathonByFacebookUserId(facebookAccount.FbUserId, facebookAccount.UserId);
                     }
 
                 }
@@ -295,47 +384,80 @@ namespace Api.Socioboard.Controllers
 
                 }
             }
-            FacebookHelper.postfeedGroup(item.AccessToken, item.Facebookgroupid, feedId, facebookAccount.FbUserId, item.Timeintervalminutes);
+
+
         }
 
 
         [HttpPost]
         public void PostDataPage(Shareathon item, string pageid)
         {
-            FacebookAccount facebookpage = sharegrprepo.getFbAccount(Guid.Parse(pageid));
-            FacebookAccount facebookAccount = sharegrprepo.getFbAccount(item.Facebookaccountid);
 
-            string feeds = FacebookHelper.getFacebookRecentPost(facebookpage.AccessToken, facebookpage.FbUserId);
+            Domain.Socioboard.Domain.FacebookAccount facebookpage = sharepo.getFacebookAccountDetailsByUserProfileId(pageid, item.Userid);
+                Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharepo.getFacebookAccountDetailsByUserProfileId(item.Facebookaccountid,item.Userid);
 
-
-            string feedId = string.Empty;
-            try
+            if (facebookpage != null)
             {
-                if (!string.IsNullOrEmpty(feeds) && !feeds.Equals("[]"))
+                string feeds = FacebookHelper.getFacebookRecentPost(facebookAccount.AccessToken, facebookpage.FbUserId);
+
+
+
+                string feedId = string.Empty;
+                try
                 {
-                    JObject fbpageNotes = JObject.Parse(feeds);
-                    foreach (JObject obj in JArray.Parse(fbpageNotes["data"].ToString()))
+                    if (!string.IsNullOrEmpty(feeds) && !feeds.Equals("[]"))
                     {
-                        try
+                        JObject fbpageNotes = JObject.Parse(feeds);
+                        foreach (JObject obj in JArray.Parse(fbpageNotes["data"].ToString()))
                         {
-                            string feedid = obj["id"].ToString();
-                            feedid = feedid.Split('_')[1];
-                            FacebookHelper.ShareFeed(facebookAccount.AccessToken, feedid, facebookpage.FbUserId, "", facebookAccount.FbUserId, "", item.Timeintervalminutes);
+                            try
+                            {
+                                string feedid = obj["id"].ToString();
+                                feedid = feedid.Split('_')[1];
+                                if (sharepo.IsShareathonExistById(item.Id))
+                                {
+                                    string ret = FacebookHelper.ShareFeed(facebookAccount.AccessToken, feedid, facebookpage.FbUserId, "", facebookAccount.FbUserId, facebookpage.FbUserName);
+                                    if (ret == "success")
+                                    {
+
+                                        Thread.Sleep(1000 * 60 * item.Timeintervalminutes);
+                                    }
+                                    else if (ret == "Error validating access token")
+                                    {
+                                        facebookAccount.IsActive = 2;
+                                        facebookrepo.updateFacebookUserStatus(facebookAccount);
+                                    }
+                                }
+                            }
+                            catch { }
+
+
                         }
-                        catch { }
-                        Thread.Sleep(1000 * 60 * item.Timeintervalminutes);
                     }
+                    else
+                    {
+                        if (!feeds.Contains("The remote server returned an error: (400) Bad Request."))
+                        {
+                            facebookpage.IsActive = 2;
+                            facebookrepo.updateFacebookUserStatus(facebookpage);
+                        }
+                        else {
+
+                            facebookpage.IsActive = 2;
+                            facebookrepo.updateFacebookUserStatus(facebookAccount);
+                            sharepo.UpadteShareathonByFacebookUserId(facebookAccount.FbUserId, facebookAccount.UserId);
+                        }
+                    }
+
                 }
+                catch (Exception ex)
+                {
 
+
+                }
             }
-            catch (Exception ex)
-            {
 
-
-            }
         }
-
-
 
         [HttpGet]
         public IHttpActionResult DeletePageShareathon(string Id)
@@ -378,9 +500,9 @@ namespace Api.Socioboard.Controllers
             string groupId = "";
             string nameId = "";
             ShareathonGroup eidtShareathon = sharegrprepo.getShareathon(sharethon.Id);
-            FacebookAccount facebookAccount = sharepo.getFbAccount(sharethon.Facebookaccountid);
+            Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharepo.getFacebookAccountDetailsByUserProfileId(sharethon.Facebookaccountid, sharethon.Userid);
             string pageid = FacebookHelper.GetFbPageDetails(sharethon.FacebookPageUrl, facebookAccount.AccessToken);
-            eidtShareathon.Facebookaccountid = facebookAccount.Id;
+            eidtShareathon.Facebookaccountid = facebookAccount.FbUserId;
             eidtShareathon.Facebookpageid = pageid;
             eidtShareathon.FacebookPageUrl = sharethon.FacebookPageUrl;
             eidtShareathon.Timeintervalminutes = sharethon.Timeintervalminutes;
@@ -391,8 +513,8 @@ namespace Api.Socioboard.Controllers
                 groupId = grpid[0] + "," + groupId;
                 nameId = sharethon.FacebookGroupId[i] + "," + nameId;
             }
+            eidtShareathon.Facebooknameid = sharethon.Facebooknameid.TrimEnd(',');
             eidtShareathon.Facebookgroupid = groupId.TrimEnd(',');
-            eidtShareathon.Facebooknameid = nameId.TrimEnd(',');
             if (sharegrprepo.updateShareathon(eidtShareathon))
             {
                 return Ok();
@@ -404,14 +526,13 @@ namespace Api.Socioboard.Controllers
         }
 
 
-
         [ActionName("EditShareathon")]
         [HttpPost]
         public IHttpActionResult EditShareathon(ShareathonViewModel sharethon)
         {
             Shareathon eidtShareathon = sharepo.getShareathon(sharethon.Id);
-            FacebookAccount facebookAccount = sharepo.getFbAccount(sharethon.Facebookaccountid);
-            eidtShareathon.Facebookaccountid = facebookAccount.Id;
+            Domain.Socioboard.Domain.FacebookAccount facebookAccount = sharepo.getFacebookAccountDetailsByUserProfileId(sharethon.Facebookaccountid, sharethon.Userid);
+            eidtShareathon.Facebookaccountid = facebookAccount.FbUserId;
             string id = "";
             for (int i = 0; i < sharethon.FacebookPageId.Length; i++)
             {
@@ -436,26 +557,89 @@ namespace Api.Socioboard.Controllers
         public IHttpActionResult DeleteGroupShareathon()
         {
             int i = sharegrprepo.deletegroupshraethonpost();
-            if (i == 1) { return Ok(); }
-            else { return BadRequest(); }
+            return Ok();
 
         }
-
-
 
         [HttpGet]
         public IHttpActionResult DeleteGrPagehareathon()
         {
             int i = sharepo.deletepageshraethonpost();
-            if (i == 1) { return Ok(); }
-            else { return BadRequest(); }
+            return Ok();
 
         }
 
 
+        [HttpGet]
+        public IHttpActionResult GetGroupShareathonReport(string profileid, string days)
+        {
+            string strCount = string.Empty;
+            List<SharethonGroupPost> lstgrppost = sharegrprepo.GetGroupPostReport(profileid, Int32.Parse(days));
+
+            List<GroupPostDetails> lstGrpPost = lstgrppost.GroupBy(t => t.Facebookgroupid).Select(t => new GroupPostDetails(t.First(), t.Count())).ToList();
+
+            DateTime present_date = DateTime.UtcNow;
+            while (present_date.Date != DateTime.UtcNow.Date.AddDays(-Int32.Parse(days)))
+            {
+                List<SharethonGroupPost> _lstgrppost = new List<SharethonGroupPost>();
+                _lstgrppost = lstgrppost.Where(m => m.PostedTime >= present_date.Date.AddSeconds(1) && m.PostedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+                strCount += _lstgrppost.Count.ToString() + ",";
+                present_date = present_date.AddDays(-1);
+            }
+
+            string data = new JavaScriptSerializer().Serialize(lstGrpPost) + "#_#" + strCount.TrimEnd(',');
+
+            return Ok(data);
+        }
 
 
+        [HttpGet]
+        public IHttpActionResult GePageShareathonReport(string profileid, string days)
+        {
+            string strCount = string.Empty;
+            List<SharethonPost> lstgrppost = sharepo.GetGroupPostReport(profileid, Int32.Parse(days));
+            List<PagePostDetails> lstGrpPost = lstgrppost.GroupBy(t => t.Facebookpageid).Select(t => new PagePostDetails(t.First(), t.Count())).ToList();
+            DateTime present_date = DateTime.UtcNow;
+            while (present_date.Date != DateTime.UtcNow.Date.AddDays(-Int32.Parse(days)))
+            {
+                List<SharethonPost> _lstgrppost = new List<SharethonPost>();
+                _lstgrppost = lstgrppost.Where(m => m.PostedTime >= present_date.Date.AddSeconds(1) && m.PostedTime <= present_date.AddDays(1).Date.AddSeconds(-1)).ToList();
+                strCount += _lstgrppost.Count.ToString() + ",";
+                present_date = present_date.AddDays(-1);
+            }
+            string data = new JavaScriptSerializer().Serialize(lstGrpPost) + "#_#" + strCount.TrimEnd(',');
+            return Ok(data);
+        }
 
+        [HttpGet]
+        public IHttpActionResult GetShareCountGroupSharethon(string profileIds, string days)
+        {
+            try
+            {
+                List<Domain.Socioboard.Helper.SharethonGroupData> lstSharethonGroupData = sharegrprepo.GetShareCountByFacebookId(profileIds, Int32.Parse(days));
+                return Ok(lstSharethonGroupData);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("something went wrong");
+            }
+
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetShareCountPageSharethon(string profileIds, string days)
+        {
+            try
+            {
+                List<Domain.Socioboard.Helper.SharethonPageData> lstSharethonPageData = sharepo.GetShareCountByFacebookId(profileIds, Int32.Parse(days));
+                return Ok(lstSharethonPageData);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("something went wrong");
+            }
+
+        }
 
     }
 }

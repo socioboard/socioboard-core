@@ -1,5 +1,6 @@
 ﻿using GlobusLinkedinLib.Authentication;
 using GlobusLinkedinLib.LinkedIn.Core.CompanyMethods;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,71 +29,109 @@ namespace GlobusLinkedinLib.App.Core
         }
 
 
-        public List<CompanyPageComment> GetPagePostscomment(oAuthLinkedIn OAuth, string updatekey)
+        public List<CompanyPageComment> GetPagePostscomment(oAuthLinkedIn OAuth, string updatekey,string PageId)
         {
             CompanyPageComment companypage_postcmnt = new CompanyPageComment();
 
             Company companyConnection = new Company();
-            xmlResult = companyConnection.GetCommentOnPagePost(OAuth, updatekey);
+            string CommentPageData = companyConnection.GetLinkedINCommentOnPagePost(OAuth, updatekey, PageId);
+            var commentpost_data = JObject.Parse(CommentPageData);
 
-            XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update-comment");
-            foreach (XmlNode xn in xmlNodeList)
+            #region PagePostComment
+            //xmlResult = companyConnection.GetCommentOnPagePost(OAuth, updatekey);
+
+            //XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update-comment");
+            //foreach (XmlNode xn in xmlNodeList)
+            //{
+
+            //    try
+            //    {
+            //        XmlElement Element = (XmlElement)xn;
+
+
+
+            //        try
+            //        {
+            //            companypage_postcmnt.Comment = Element.GetElementsByTagName("comment")[0].InnerText;
+            //        }
+            //        catch
+            //        { }
+            //        try
+            //        {
+
+            //            companypage_postcmnt.FirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
+
+
+            //        }
+            //        catch
+            //        {
+            //            companypage_postcmnt.FirstName = Element.GetElementsByTagName("name")[0].InnerText;
+            //        }
+            //        try
+            //        {
+            //            companypage_postcmnt.LastName = Element.GetElementsByTagName("last-name")[0].InnerText;
+            //        }
+            //        catch
+            //        {
+            //            companypage_postcmnt.LastName = null;
+            //        }
+
+            //        try
+            //        {
+            //            double timestamp = Convert.ToDouble(Element.GetElementsByTagName("timestamp")[0].InnerText);
+            //            companypage_postcmnt.CommentTime = JavaTimeStampToDateTime(timestamp);
+            //        }
+            //        catch
+            //        {
+
+            //        }
+            //        try
+            //        {
+            //            companypage_postcmnt.PictureUrl = Element.GetElementsByTagName("picture-url")[0].InnerText;
+            //        }
+            //        catch
+            //        {
+            //            companypage_postcmnt.PictureUrl = null;
+            //        }
+
+
+            //        CompanyPagePostsList.Add(companypage_postcmnt);
+            //    }
+            //    catch { }
+            //} 
+            #endregion
+            foreach (var item in commentpost_data["updateComments"]["values"])
             {
-
-                try
-                {
-                    XmlElement Element = (XmlElement)xn;
-
-
-
-                    try
+                  try
                     {
-                        companypage_postcmnt.Comment = Element.GetElementsByTagName("comment")[0].InnerText;
-                    }
+                        companypage_postcmnt.Comment = item["comment"].ToString();
+                     }
                     catch
                     { }
-                    try
-                    {
+                  try
+                  {
+                      companypage_postcmnt.FirstName = item["company"]["name"].ToString();
+                  }
+                  catch
+                  { }
+                  try
+                  {
+                      double timestamp = Convert.ToDouble(item["timestamp"].ToString());
+                      companypage_postcmnt.CommentTime = JavaTimeStampToDateTime(timestamp);
+                  }
+                  catch
+                  {
 
-                        companypage_postcmnt.FirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
-
-
-                    }
-                    catch
-                    {
-                        companypage_postcmnt.FirstName = Element.GetElementsByTagName("name")[0].InnerText;
-                    }
-                    try
-                    {
-                        companypage_postcmnt.LastName = Element.GetElementsByTagName("last-name")[0].InnerText;
-                    }
-                    catch
-                    {
-                        companypage_postcmnt.LastName = null;
-                    }
-
-                    try
-                    {
-                        double timestamp = Convert.ToDouble(Element.GetElementsByTagName("timestamp")[0].InnerText);
-                        companypage_postcmnt.CommentTime = JavaTimeStampToDateTime(timestamp);
-                    }
-                    catch
-                    {
-
-                    }
-                    try
-                    {
-                        companypage_postcmnt.PictureUrl = Element.GetElementsByTagName("picture-url")[0].InnerText;
-                    }
-                    catch
-                    {
-                        companypage_postcmnt.PictureUrl = null;
-                    }
-
-
-                    CompanyPagePostsList.Add(companypage_postcmnt);
-                }
-                catch { }
+                  }
+                  try
+                  {
+                      companypage_postcmnt.PictureUrl = commentpost_data["updateContent"]["companyStatusUpdate"]["share"]["content"]["thumbnailUrl"].ToString();
+                  }
+                  catch
+                  {
+                      companypage_postcmnt.PictureUrl = null;
+                  }
+                  CompanyPagePostsList.Add(companypage_postcmnt);
             }
             return CompanyPagePostsList;
 

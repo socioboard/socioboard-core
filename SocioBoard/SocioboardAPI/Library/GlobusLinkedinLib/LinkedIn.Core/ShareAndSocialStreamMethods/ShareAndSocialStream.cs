@@ -30,6 +30,13 @@ namespace GlobusLinkedinLib.LinkedIn.Core.ShareAndSocialStreamMethods
             return xmlResult;
         }
 
+        public string GetLinkedIn_UserUpdates(oAuthLinkedIn OAuth, string LinkedInId, int Count)
+        {
+            string url = "https://api.linkedin.com/v1/people/id=" + LinkedInId + "/network/updates?scope=self" + "&count=" + Count + "?format=json";
+            string response = OAuth.APIWebRequest("GET", url, null);
+            return response;
+        }
+
         /// <summary>
         /// The Get Network Updates API returns the users network updates, which is the LinkedIn term for the user's feed.
         /// </summary>
@@ -84,5 +91,8 @@ namespace GlobusLinkedinLib.LinkedIn.Core.ShareAndSocialStreamMethods
             string response = OAuth.APIWebRequest("PUT", Global.StatusUpdate, xml);
             return response;
         }
+
+
+       
     }
 }

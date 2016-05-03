@@ -285,10 +285,16 @@
     <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\AffiliatesRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
+    <Compile Include="Model\Blog_CommentsRepository.cs" />
+    <Compile Include="Model\Blog_PostsRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
     <Compile Include="Model\CompanyProfilesRepository.cs" />
     <Compile Include="Model\CompanySocialProfilesRepository.cs" />
     <Compile Include="Model\CouponRepository.cs" />
+    <Compile Include="Model\dailymotionpostRepository.cs" />
+    <Compile Include="Model\DataTableGenerator.cs" />
+    <Compile Include="Model\DemorequestRepository.cs" />
+    <Compile Include="Model\discoveryleadsRepository.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
     <Compile Include="Model\DropboxAccountRepository.cs" />
@@ -296,8 +302,11 @@
     <Compile Include="Model\FacebookAccountRepository.cs" />
     <Compile Include="Model\FacebookFanPageRepository.cs" />
     <Compile Include="Model\FacebookFeedRepository.cs" />
+    <Compile Include="Model\FacebookGroupRepository.cs" />
     <Compile Include="Model\FacebookInsightPostStatsRepository.cs" />
+    <Compile Include="Model\FacebookInsightStatsRepository.cs" />
     <Compile Include="Model\FacebookMessageRepository.cs" />
+    <Compile Include="Model\FacebookReportRepository.cs" />
     <Compile Include="Model\FacebookStatsRepository.cs" />
     <Compile Include="Model\FbaPageSharerRepository.cs" />
     <Compile Include="Model\FbPageSharerRepository.cs" />
@@ -305,6 +314,7 @@
     <Compile Include="Model\FbPageLikerRepository.cs" />
     <Compile Include="Model\FbPagePostCommentLikerRepository.cs" />
     <Compile Include="Model\FbPagePostRepository.cs" />
+    <Compile Include="Model\FbPublicpageReportsRepository.cs" />
     <Compile Include="Model\FeedSentimentalAnalysisRepository.cs" />
     <Compile Include="Model\GoogleAnalyticsAccountRepository.cs" />
     <Compile Include="Model\GoogleAnalyticsStatsRepository.cs" />
@@ -313,6 +323,7 @@
     <Compile Include="Model\GoogleplusComments.cs" />
     <Compile Include="Model\GoogleplusCommentsRepository.cs" />
     <Compile Include="Model\GoogleplusLike.cs" />
+    <Compile Include="Model\GroupMembersRepository.cs" />
     <Compile Include="Model\GroupProfileRepository.cs" />
     <Compile Include="Model\GroupScheduleMessageRepository.cs" />
     <Compile Include="Model\GroupsRepository.cs" />
@@ -336,8 +347,10 @@
     <Compile Include="Model\NhibernateQueries.cs" />
     <Compile Include="Model\PackageRepository.cs" />
     <Compile Include="Model\PaymentTransactionRepository.cs" />
+    <Compile Include="Model\plugininfoRepository.cs" />
     <Compile Include="Model\ReplyMessageRepository.cs" />
     <Compile Include="Model\RssFeedsRepository.cs" />
+    <Compile Include="Model\RssReaderRepository.cs" />
     <Compile Include="Model\ScheduledMessageRepository.cs" />
     <Compile Include="Model\ShareathonGroupRepository.cs" />
     <Compile Include="Model\ShareathonRepository.cs" />
@@ -365,6 +378,9 @@
     <Compile Include="Model\UserPackageRelationRepository.cs" />
     <Compile Include="Model\UserRefRelationRepository.cs" />
     <Compile Include="Model\UserRepository.cs" />
+    <Compile Include="Model\WordpressAccountRepository.cs" />
+    <Compile Include="Model\WordpressFeedsRepository.cs" />
+    <Compile Include="Model\WordpressSitesRepository.cs" />
     <Compile Include="Model\YoutubeAccountRepository.cs" />
     <Compile Include="Model\YoutubeChannelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -474,6 +490,10 @@
     </Compile>
     <Compile Include="Services\FbPagePost.asmx.cs">
       <DependentUpon>FbPagePost.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GoogleAnalytics.asmx.cs">
+      <DependentUpon>GoogleAnalytics.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\GoogleAnalyticsAccount.asmx.cs">
@@ -1200,6 +1220,7 @@
     <Content Include="Services\FbPageComment.asmx" />
     <Content Include="Services\FbPageLiker.asmx" />
     <Content Include="Services\FbPagePost.asmx" />
+    <Content Include="Services\GoogleAnalytics.asmx" />
     <Content Include="Services\GoogleAnalyticsAccount.asmx" />
     <Content Include="Services\GoogleAnalyticsStats.asmx" />
     <Content Include="Services\GooglePlus.asmx" />

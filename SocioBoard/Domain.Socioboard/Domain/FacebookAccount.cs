@@ -18,7 +18,7 @@ namespace Domain.Socioboard.Domain
         public string ProfileUrl { get; set; }
         public int IsActive { get; set; }
         public Guid UserId { get; set; }
-
+        public DateTime LastScraped { get; set; }
 
         public string ProfileType
         {

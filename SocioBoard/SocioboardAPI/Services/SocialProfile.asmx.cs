@@ -57,11 +57,11 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string DeleteProfileByProfileId(String UserId, string ProfileId)
+        public string DeleteProfileByProfileId(String UserId, string ProfileId,string ProfileType)
         {
             try
             {
-                int i = objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                int i = objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, ProfileType);
                 if (i == 1)
                 {
                     return "Profile Deleted Successfully";
@@ -210,7 +210,13 @@ namespace Api.Socioboard.Services
 
         }
 
-
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTwitterAndfacebookProfileOfUser(string userId)
+        {
+            List<Domain.Socioboard.Domain.SocialProfile> lstSocialprofile = objSocialProfilesRepository.GetAllTwitterAndfacebookProfileOfUser(Guid.Parse(userId));
+            return new JavaScriptSerializer().Serialize(lstSocialprofile);
+        }
 
 
     }

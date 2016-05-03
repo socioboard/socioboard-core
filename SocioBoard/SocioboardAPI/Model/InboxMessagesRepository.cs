@@ -32,57 +32,53 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+
+                try
                 {
-                    try
-                    {
-                        NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and MessageId =:messageid and MessageType=:MessageType");
-                        query.SetParameter("userid", userid);
-                        query.SetParameter("messageid", messageid);
-                        query.SetParameter("MessageType",type);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
+                    NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and MessageId =:messageid and MessageType=:MessageType");
+                    query.SetParameter("userid", userid);
+                    query.SetParameter("messageid", messageid);
+                    query.SetParameter("MessageType", type);
+                    var result = query.UniqueResult();
+                    if (result == null)
+                        return false;
+                    else
                         return true;
-                    }
-                }//End using transaction
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return true;
+                }
+
             }//End using session
         }
 
-        public bool checkInboxMessageFriendExists(Guid userid, string fromid,string recipientid, string type)
+        public bool checkInboxMessageFriendExists(Guid userid, string fromid, string recipientid, string type)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+
+                try
                 {
-                    try
-                    {
-                        NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and FromId =:fromid and RecipientId =:recipientid and MessageType=:MessageType");
-                        query.SetParameter("userid", userid);
-                        query.SetParameter("fromid", fromid);
-                        query.SetParameter("recipientid", recipientid);
-                        query.SetParameter("MessageType", type);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
+                    NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and FromId =:fromid and RecipientId =:recipientid and MessageType=:MessageType");
+                    query.SetParameter("userid", userid);
+                    query.SetParameter("fromid", fromid);
+                    query.SetParameter("recipientid", recipientid);
+                    query.SetParameter("MessageType", type);
+                    var result = query.UniqueResult();
+                    if (result == null)
+                        return false;
+                    else
                         return true;
-                    }
-                }//End using transaction
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return true;
+                }
+
             }//End using session
         }
 
@@ -92,52 +88,47 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and MessageId=:messageid and FromId =:fromid and RecipientId =:recipientid and MessageType=:MessageType");
-                        query.SetParameter("userid", userid);
-                        query.SetParameter("fromid", fromid);
-                        query.SetParameter("recipientid", recipientid);
-                        query.SetParameter("messageid", messageid);
-                        query.SetParameter("MessageType", type);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
+                    NHibernate.IQuery query = session.CreateQuery("from InboxMessages where UserId = :userid and MessageId=:messageid and FromId =:fromid and RecipientId =:recipientid and MessageType=:MessageType");
+                    query.SetParameter("userid", userid);
+                    query.SetParameter("fromid", fromid);
+                    query.SetParameter("recipientid", recipientid);
+                    query.SetParameter("messageid", messageid);
+                    query.SetParameter("MessageType", type);
+                    var result = query.UniqueResult();
+                    if (result == null)
+                        return false;
+                    else
                         return true;
-                    }
-                }//End using transaction
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return true;
+                }
+
             }//End using session
         }
 
-        public List<Domain.Socioboard.Domain.InboxMessages> getInboxMessageByGroup(Guid UserId, string profileids, string noOfDataToSkip, string noOfResultsFromTop) 
+        public List<Domain.Socioboard.Domain.InboxMessages> getInboxMessageByGroup(Guid UserId, string profileids, string noOfDataToSkip, string noOfResultsFromTop)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+
+                try
                 {
-                    try
-                    {
-                        string[] arrsrt = profileids.Split(',');
-                        List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId)).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
-                        return results;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return new List<Domain.Socioboard.Domain.InboxMessages>();
-                    }
-                }//End using transaction
+                    string[] arrsrt = profileids.Split(',');
+                    List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId)).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
+                    return results;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return new List<Domain.Socioboard.Domain.InboxMessages>();
+                }
+
             }//End using session
         }
 
@@ -146,75 +137,90 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        string[] arrsrt = profileids.Split(',');
-                        string[] arrstrtype = MessageType.Split(',');
-                        List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId) && arrstrtype.Contains(U.MessageType) && U.Status == 0).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
-                        //string query = "from InboxMessages Where ProfileId In(" + profileids + ") and MessageType In(" + MessageType + ") and UserId =: UserId and Status=0 Order By CreatedTime DESC";
-                        //List<Domain.Socioboard.Domain.InboxMessages> results = session.CreateQuery(query)
-                        //    .SetParameter("UserId", UserId)
-                        //    .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
-                        //    .SetMaxResults(Convert.ToInt32(noOfResultsFromTop)).List<Domain.Socioboard.Domain.InboxMessages>().ToList();
+                    string[] arrsrt = profileids.Split(',');
+                    string[] arrstrtype = MessageType.Split(',');
+                    List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId) && arrstrtype.Contains(U.MessageType) && U.Status == 0).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
+                    //string query = "from InboxMessages Where ProfileId In(" + profileids + ") and MessageType In(" + MessageType + ") and UserId =: UserId and Status=0 Order By CreatedTime DESC";
+                    //List<Domain.Socioboard.Domain.InboxMessages> results = session.CreateQuery(query)
+                    //    .SetParameter("UserId", UserId)
+                    //    .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                    //    .SetMaxResults(Convert.ToInt32(noOfResultsFromTop)).List<Domain.Socioboard.Domain.InboxMessages>().ToList();
 
-                        return results;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return new List<Domain.Socioboard.Domain.InboxMessages>();
-                    }
-                }//End using transaction
+                    return results;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return new List<Domain.Socioboard.Domain.InboxMessages>();
+                }
             }//End using session
         }
 
-        public Domain.Socioboard.Domain.InboxMessages getInboxMessageByMessageId(Guid UserId, Guid MessageId) 
+
+        public List<Domain.Socioboard.Domain.InboxMessages> getInboxMessageWithSentimentsByGroupandMessageType(Guid UserId, string profileids, string MessageType, string noOfDataToSkip, string noOfResultsFromTop)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+
+                try
                 {
-                    try
-                    {
-                        NHibernate.IQuery results = session.CreateQuery("from InboxMessages Where UserId =: UserId and Id =: MessageId")
-                            .SetParameter("UserId", UserId)
-                            .SetParameter("MessageId", MessageId);
-                        Domain.Socioboard.Domain.InboxMessages result = (Domain.Socioboard.Domain.InboxMessages)results.UniqueResult();
-                        return result;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return new Domain.Socioboard.Domain.InboxMessages();
-                    }
-                }//End using transaction
+                    string[] arrsrt = profileids.Split(',');
+                    string[] arrstrtype = MessageType.Split(',');
+                    List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId) && arrstrtype.Contains(U.MessageType) && U.Positive != 0).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
+                    return results;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return new List<Domain.Socioboard.Domain.InboxMessages>();
+                }
             }//End using session
-        
+        }
+
+        public Domain.Socioboard.Domain.InboxMessages getInboxMessageByMessageId(Guid UserId, Guid MessageId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+
+                try
+                {
+                    NHibernate.IQuery results = session.CreateQuery("from InboxMessages Where UserId =: UserId and Id =: MessageId")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("MessageId", MessageId);
+                    Domain.Socioboard.Domain.InboxMessages result = (Domain.Socioboard.Domain.InboxMessages)results.UniqueResult();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return new Domain.Socioboard.Domain.InboxMessages();
+                }
+            }//End using session
+
         }
 
         public int GetInboxMessageCount(Guid UserId, string profileids)
-        { 
-         //Creates a database connection and opens up a session
+        {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try
                 {
                     string[] arrsrt = profileids.Split(',');
-                    var results = session.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId == UserId && U.Status==0).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                    var results = session.QueryOver<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId == UserId && U.Status == 0).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
                     return Int16.Parse(results.ToString());
                 }
                 catch (Exception ex)
                 {
                     return 0;
                 }
-                               
+
             }
-        
+
         }
 
         public List<Domain.Socioboard.Domain.InboxMessages> GetAllFollowersOfUser(Guid id, string profileid)
@@ -251,7 +257,7 @@ namespace Api.Socioboard.Services
                     logger.Error("GetTwitterMentionCount => " + ex.Message);
                     return 0;
                 }
-            } 
+            }
         }
 
         public int GetTwitterRetweetCount(Guid UserId, string profileids, int days)
@@ -296,8 +302,9 @@ namespace Api.Socioboard.Services
             {
                 try
                 {
-                    List<Domain.Socioboard.Domain.InboxMessages> inboxmessage = session.CreateQuery("from InboxMessages where MessageType=twt_followers and UserId=:userid and ProfileId=:profileid")
-                               .SetParameter("userid", UserId)
+                    List<Domain.Socioboard.Domain.InboxMessages> inboxmessage = session.CreateQuery("from InboxMessages where MessageType =: MessageType and UserId=:userid and ProfileId=:profileid")
+                                .SetParameter("MessageType", "twt_followers")       
+                                .SetParameter("userid", UserId)
                                .SetParameter("profileid", profileid)
                                .List<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.Status == 0 && U.CreatedTime < DateTime.Now && U.CreatedTime > DateTime.Now.AddDays(-days).Date.AddSeconds(-1)).ToList();
                     return inboxmessage;
@@ -367,6 +374,62 @@ namespace Api.Socioboard.Services
             }
         }
 
+        public List<Domain.Socioboard.Domain.InboxMessages> GetMentionAndRetweets(int statedIndex, int count)
+        {
+            List<Domain.Socioboard.Domain.InboxMessages> lstMessages;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    lstMessages = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(t => (t.Negative == 0 || t.Positive == 0) && (t.MessageType == "twt_mention" || t.MessageType == "twt_retweet")).OrderByDescending(t => t.CreatedTime).Skip(statedIndex).Take(count).ToList();
+                }
+                catch (Exception ex)
+                {
+                    lstMessages = new List<Domain.Socioboard.Domain.InboxMessages>();
+                }
+            }
+            return lstMessages;
+        }
+
+
+        public int UpdateMessageSentiments(Domain.Socioboard.Domain.InboxMessages _InboxMessages)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    int i = session.CreateQuery("Update InboxMessages set Negative =: Negative, Positive =: Positive where MessageId =: MessageId and MessageType=:MessageType")
+                        .SetParameter("Negative", _InboxMessages.Negative)
+                        .SetParameter("Positive", _InboxMessages.Positive)
+                        .SetParameter("MessageId", _InboxMessages.MessageId)
+                        .SetParameter("MessageType", _InboxMessages.MessageType)
+                        .ExecuteUpdate();
+                    transaction.Commit();
+                    return i;
+                }
+            }
+        }
+        public int DeleteInboxMessages(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from InboxMessages where UserId = :userid")
+                                                   .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
     }
 }

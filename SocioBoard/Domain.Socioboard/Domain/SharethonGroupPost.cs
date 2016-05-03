@@ -13,6 +13,7 @@ namespace Domain.Socioboard.Domain
         public virtual string Facebookaccountid { get; set; }
         public virtual DateTime PostedTime { get; set; }
         public virtual string PostId { get; set; }
+        public virtual string Facebookgroupname { get; set; }
 
     }
 }

@@ -38,6 +38,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Package" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentStatus" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -76,6 +77,25 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetUserDataForDataTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iDisplayLength" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iDisplayStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSortCol_0" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sSortDir_0" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sSearch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDataForDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDataForDataTableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -109,6 +129,12 @@
   <wsdl:message name="getAllDeletedUsersSoapOut">
     <wsdl:part name="parameters" element="tns:getAllDeletedUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDataForDataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDataForDataTableResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllUsersHttpGetIn">
     <wsdl:part name="Objuser" type="s:string" />
   </wsdl:message>
@@ -127,6 +153,7 @@
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Package" type="s:string" />
     <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="PaymentStatus" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserAccountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -141,6 +168,17 @@
     <wsdl:part name="Objuser" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getAllDeletedUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableHttpGetIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="iDisplayLength" type="s:string" />
+    <wsdl:part name="iDisplayStart" type="s:string" />
+    <wsdl:part name="iSortCol_0" type="s:string" />
+    <wsdl:part name="sSortDir_0" type="s:string" />
+    <wsdl:part name="sSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllUsersHttpPostIn">
@@ -161,6 +199,7 @@
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Package" type="s:string" />
     <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="PaymentStatus" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -175,6 +214,17 @@
     <wsdl:part name="Objuser" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getAllDeletedUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableHttpPostIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="iDisplayLength" type="s:string" />
+    <wsdl:part name="iDisplayStart" type="s:string" />
+    <wsdl:part name="iSortCol_0" type="s:string" />
+    <wsdl:part name="sSortDir_0" type="s:string" />
+    <wsdl:part name="sSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDataForDataTableHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="AdminUserDetailsSoap">
@@ -198,6 +248,10 @@
       <wsdl:input message="tns:getAllDeletedUsersSoapIn" />
       <wsdl:output message="tns:getAllDeletedUsersSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <wsdl:input message="tns:GetUserDataForDataTableSoapIn" />
+      <wsdl:output message="tns:GetUserDataForDataTableSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AdminUserDetailsHttpGet">
     <wsdl:operation name="GetAllUsers">
@@ -220,6 +274,10 @@
       <wsdl:input message="tns:getAllDeletedUsersHttpGetIn" />
       <wsdl:output message="tns:getAllDeletedUsersHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <wsdl:input message="tns:GetUserDataForDataTableHttpGetIn" />
+      <wsdl:output message="tns:GetUserDataForDataTableHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AdminUserDetailsHttpPost">
     <wsdl:operation name="GetAllUsers">
@@ -241,6 +299,10 @@
     <wsdl:operation name="getAllDeletedUsers">
       <wsdl:input message="tns:getAllDeletedUsersHttpPostIn" />
       <wsdl:output message="tns:getAllDeletedUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <wsdl:input message="tns:GetUserDataForDataTableHttpPostIn" />
+      <wsdl:output message="tns:GetUserDataForDataTableHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminUserDetailsSoap" type="tns:AdminUserDetailsSoap">
@@ -283,6 +345,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllDeletedUsers">
       <soap:operation soapAction="http://tempuri.org/getAllDeletedUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <soap:operation soapAction="http://tempuri.org/GetUserDataForDataTable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -338,6 +409,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <soap12:operation soapAction="http://tempuri.org/GetUserDataForDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminUserDetailsHttpGet" type="tns:AdminUserDetailsHttpGet">
     <http:binding verb="GET" />
@@ -379,6 +459,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllDeletedUsers">
       <http:operation location="/getAllDeletedUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <http:operation location="/GetUserDataForDataTable" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -434,19 +523,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserDataForDataTable">
+      <http:operation location="/GetUserDataForDataTable" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AdminUserDetails">
     <wsdl:port name="AdminUserDetailsSoap" binding="tns:AdminUserDetailsSoap">
-      <soap:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
+      <soap:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsSoap12" binding="tns:AdminUserDetailsSoap12">
-      <soap12:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
+      <soap12:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpGet" binding="tns:AdminUserDetailsHttpGet">
-      <http:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
+      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpPost" binding="tns:AdminUserDetailsHttpPost">
-      <http:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
+      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

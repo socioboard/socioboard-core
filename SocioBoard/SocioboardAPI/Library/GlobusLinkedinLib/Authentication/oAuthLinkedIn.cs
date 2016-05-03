@@ -17,6 +17,8 @@ using System.Xml;
 
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using System.Web.Script.Serialization;
 //using OAuthRequestHelper;
 //using OAuth.Net.Common;
 
@@ -188,7 +190,7 @@ namespace GlobusLinkedinLib.Authentication
 
 
             //querystring += "&oauth_signature=" + HttpUtility.UrlEncode(sig);
-           // querystring += "&state=" + GlobussHelper.Helper.GenerateRandomUniqueString();
+            // querystring += "&state=" + GlobussHelper.Helper.GenerateRandomUniqueString();
             //Convert the querystring to postData
             if (method == Method.POST)
             {
@@ -224,11 +226,11 @@ namespace GlobusLinkedinLib.Authentication
             {
                 if (!url.Contains("?"))
                 {
-                    url = url + "?" + "oauth2_access_token=" + this.Token; 
+                    url = url + "?" + "oauth2_access_token=" + this.Token;
                 }
                 else
                 {
-                    url = url + "&" + "oauth2_access_token=" + this.Token; 
+                    url = url + "&" + "oauth2_access_token=" + this.Token;
                 }
             }
             else
@@ -253,16 +255,9 @@ namespace GlobusLinkedinLib.Authentication
                 out outUrl,
                 out querystring);
 
-            //querystring += "&oauth_signature=" + HttpUtility.UrlEncode(sig);
-            //NameValueCollection qs = HttpUtility.ParseQueryString(querystring);
-
-            //string finalGetUrl = outUrl + "?" + querystring;
-
             HttpWebRequest webRequest = null;
-
-            //webRequest = System.Net.WebRequest.Create(finalGetUrl) as HttpWebRequest;
             webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
-            webRequest.ContentType = "application/x-www-form-urlencoded";
+            webRequest.ContentType = "application/json";
             webRequest.Method = method;
             webRequest.Credentials = CredentialCache.DefaultCredentials;
             webRequest.AllowWriteStreamBuffering = true;
@@ -270,9 +265,6 @@ namespace GlobusLinkedinLib.Authentication
             webRequest.PreAuthenticate = true;
             webRequest.ServicePoint.Expect100Continue = false;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
-
-            //webRequest.Headers.Add("Authorization", "OAuth realm=\"http://api.linkedin.com/\",oauth_consumer_key=\"" + this.ConsumerKey + "\",oauth_token=\"" + this.Token + "\",oauth_signature_method=\"HMAC-SHA1\",oauth_signature=\"" + HttpUtility.UrlEncode(sig) + "\",oauth_timestamp=\"" + timeStamp + "\",oauth_nonce=\"" + nonce + "\",oauth_verifier=\"" + this.Verifier + "\", oauth_version=\"1.0\"");
-            //webRequest.Headers.Add("Authorization", "Bearer " +sig);
             if (postData != null)
             {
                 byte[] fileToSend = Encoding.UTF8.GetBytes(postData);
@@ -288,6 +280,288 @@ namespace GlobusLinkedinLib.Authentication
 
             return returned;
         }
+
+
+        public string APIWebRequestAccessToken(string method, string url, string postData)
+        {
+
+            if (!url.Contains("oauth2_access_token") && !string.IsNullOrEmpty(this.Token))
+            {
+                if (!url.Contains("?"))
+                {
+                    url = url + "?" + "oauth2_access_token=" + this.Token;
+                }
+                else
+                {
+                    url = url + "&" + "oauth2_access_token=" + this.Token;
+                }
+            }
+            else
+            {
+                url = url;
+            }
+            Uri uri = new Uri(url);
+            string nonce = this.GenerateNonce();
+            string timeStamp = this.GenerateTimeStamp();
+
+            string outUrl, querystring;
+
+            //Generate Signature
+            string sig = this.GenerateSignature(uri,
+                this.ConsumerKey,
+                this.ConsumerSecret,
+                this.Token,
+                this.TokenSecret,
+                method,
+                timeStamp,
+                nonce,
+                out outUrl,
+                out querystring);
+
+            HttpWebRequest webRequest = null;
+            webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            webRequest.ContentType = "application/x-www-form-urlencoded";
+            webRequest.Method = method;
+            webRequest.Credentials = CredentialCache.DefaultCredentials;
+            webRequest.AllowWriteStreamBuffering = true;
+
+            webRequest.PreAuthenticate = true;
+            webRequest.ServicePoint.Expect100Continue = false;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
+            if (postData != null)
+            {
+                byte[] fileToSend = Encoding.UTF8.GetBytes(postData);
+                webRequest.ContentLength = fileToSend.Length;
+
+                Stream reqStream = webRequest.GetRequestStream();
+
+                reqStream.Write(fileToSend, 0, fileToSend.Length);
+                reqStream.Close();
+            }
+
+            string returned = WebResponseGet(webRequest);
+
+            return returned;
+        }
+
+
+        public string LinkedProfilePostWebRequestWithImage(string method, string url, string Comment,string ImagePath)
+        {
+            if (!url.Contains("oauth2_access_token") && !string.IsNullOrEmpty(this.Token))
+            {
+                if (!url.Contains("?"))
+                {
+                    url = url + "?" + "oauth2_access_token=" + this.Token;
+                }
+                else
+                {
+                    url = url + "&" + "oauth2_access_token=" + this.Token;
+                }
+            }
+
+            Uri uri = new Uri(url);
+            string nonce = this.GenerateNonce();
+            string timeStamp = this.GenerateTimeStamp();
+
+            string outUrl, querystring;
+
+            ////Generate Signature
+            string sig = this.GenerateSignature(uri,
+                this.ConsumerKey,
+                this.ConsumerSecret,
+                this.Token,
+                this.TokenSecret,
+                method,
+                timeStamp,
+                nonce,
+                out outUrl,
+                out querystring);
+            HttpWebRequest webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            webRequest.Host = "api.linkedin.com";
+            webRequest.Method = method;
+            webRequest.Headers.Add("x-li-format", "json");
+            webRequest.ContentType = "application/json";
+            using (var stream = new StreamWriter(webRequest.GetRequestStream()))
+            {
+                var shareMsg =
+                    new
+                    {
+                        comment =Comment,
+                        content =
+                            new
+                            {
+                                title = " ",
+                                submitted_url = ImagePath,
+                                submitted_image_url =ImagePath,
+                                description = string.Empty
+                            },
+                        visibility = new { code = "anyone" }
+                    };
+
+                string json = new JavaScriptSerializer().Serialize(shareMsg);
+                stream.Write(json);
+                stream.Flush();
+                stream.Close();
+            }
+            try
+            {
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream dataStream = webResponse.GetResponseStream();
+                var reader = new StreamReader(dataStream);
+                string response = reader.ReadToEnd();
+                return response;
+                
+            }
+            catch (Exception ex)
+            {
+
+                return "";
+            }
+        }
+
+
+        public string LinkedProfilePostWebRequest(string method, string url, string Comment)
+        {
+            if (!url.Contains("oauth2_access_token") && !string.IsNullOrEmpty(this.Token))
+            {
+                if (!url.Contains("?"))
+                {
+                    url = url + "?" + "oauth2_access_token=" + this.Token;
+                }
+                else
+                {
+                    url = url + "&" + "oauth2_access_token=" + this.Token;
+                }
+            }
+
+            Uri uri = new Uri(url);
+            string nonce = this.GenerateNonce();
+            string timeStamp = this.GenerateTimeStamp();
+
+            string outUrl, querystring;
+
+            ////Generate Signature
+            string sig = this.GenerateSignature(uri,
+                this.ConsumerKey,
+                this.ConsumerSecret,
+                this.Token,
+                this.TokenSecret,
+                method,
+                timeStamp,
+                nonce,
+                out outUrl,
+                out querystring);
+            HttpWebRequest webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            webRequest.Host = "api.linkedin.com";
+            webRequest.Method = method;
+            webRequest.Headers.Add("x-li-format", "json");
+            webRequest.ContentType = "application/json";
+            using (var stream = new StreamWriter(webRequest.GetRequestStream()))
+            {
+                var shareMsg =
+                    new
+                    {
+                        comment = Comment,
+                        visibility = new { code = "anyone" }
+                    };
+
+                string json = new JavaScriptSerializer().Serialize(shareMsg);
+                stream.Write(json);
+                stream.Flush();
+                stream.Close();
+            }
+            try
+            {
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream dataStream = webResponse.GetResponseStream();
+                var reader = new StreamReader(dataStream);
+                string response = reader.ReadToEnd();
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+
+                return "";
+            }
+        }
+
+
+        public string LinkedCompanyPagePostWebRequest(string method, string url, string Comment)
+        {
+            if (!url.Contains("oauth2_access_token") && !string.IsNullOrEmpty(this.Token))
+            {
+                if (!url.Contains("?"))
+                {
+                    url = url + "?" + "oauth2_access_token=" + this.Token;
+                }
+                else
+                {
+                    url = url + "&" + "oauth2_access_token=" + this.Token;
+                }
+            }
+
+            Uri uri = new Uri(url);
+            string nonce = this.GenerateNonce();
+            string timeStamp = this.GenerateTimeStamp();
+
+            string outUrl, querystring;
+
+            ////Generate Signature
+            string sig = this.GenerateSignature(uri,
+                this.ConsumerKey,
+                this.ConsumerSecret,
+                this.Token,
+                this.TokenSecret,
+                method,
+                timeStamp,
+                nonce,
+                out outUrl,
+                out querystring);
+            HttpWebRequest webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
+            webRequest.Host = "api.linkedin.com";
+            webRequest.Method = method;
+            webRequest.Headers.Add("x-li-format", "json");
+            webRequest.ContentType = "application/json";
+            using (var stream = new StreamWriter(webRequest.GetRequestStream()))
+            {
+                var shareMsg =
+                    new
+                    {
+                        comment = Comment,
+                    };
+
+                string json = new JavaScriptSerializer().Serialize(shareMsg);
+                stream.Write(json);
+                stream.Flush();
+                stream.Close();
+            }
+            try
+            {
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream dataStream = webResponse.GetResponseStream();
+                var reader = new StreamReader(dataStream);
+                string response = reader.ReadToEnd();
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+
+                return "Failed";
+            }
+        }
+
+
+
+        //public string ShareStatusUpdate(oAuthLinkedIn OAuth, string msg)
+        //{
+        //    string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        //    xml += "<share><comment>" + msg + "</comment><visibility><code>" + "anyone" + "</code></visibility></share>";
+        //    string response = OAuth.LinkedProfilePostWebRequest("POST", "https://api.linkedin.com/v1/people/~/shares?format=json", xml);
+        //    return response;
+        //}
+
 
         //ServiceProvider provider = new ServiceProvider(serviceUrl, consumerKey, secret);
         //private HttpWebRequest GenerateRequest(string contentType, string requestMethod)
@@ -408,7 +682,17 @@ namespace GlobusLinkedinLib.Authentication
                 Console.WriteLine(ex.StackTrace);
                 return string.Empty;
             }
-            
+
+        }
+
+        public string ApiWebRequest(string url, string post)
+        {
+            throw new NotImplementedException();
         }
     }
+    
+
+
+
+
 }

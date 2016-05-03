@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+  <class name="FacebookLoginId" table="FacebookLoginId" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="Password">
+      <column name="Password" />
+    </property>
+    <property name="UpdatedAt">
+      <column name="UpdatedAt" />
+    </property>
+
+  </class>
+</hibernate-mapping>

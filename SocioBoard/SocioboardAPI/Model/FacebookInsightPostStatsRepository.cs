@@ -6,7 +6,6 @@ using System.Collections;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 
-
 namespace SocioBoard.Model
 {
     public class FacebookInsightPostStatsRepository 

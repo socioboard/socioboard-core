@@ -37,7 +37,7 @@ namespace Api.Socioboard.Services
             if (string.IsNullOrEmpty(_facebookAccount.AccessToken))
             {
                 _facebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
-                Api.Socioboard.Services.FacebookAccountRepository _FacebookAccountRepository = new FacebookAccountRepository();
+                FacebookAccountRepository _FacebookAccountRepository = new FacebookAccountRepository();
 
                 System.Collections.ArrayList lstFacebookAccounts = _FacebookAccountRepository.getAllFacebookAccounts();
 

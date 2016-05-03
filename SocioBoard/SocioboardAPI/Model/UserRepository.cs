@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using NHibernate.Linq;
 using log4net;
+using NHibernate.Criterion;
 
 namespace Api.Socioboard.Model
 {
@@ -330,7 +331,6 @@ namespace Api.Socioboard.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
                         user = null;
                     }
                 }
@@ -533,9 +533,9 @@ namespace Api.Socioboard.Model
                     }
                     catch (Exception ex)
                     {
-                        logger.Error("UserRepository => getAllUsers => "+ex.Message);
+                        logger.Error("UserRepository => getAllUsers => " + ex.Message);
                         logger.Error("UserRepository => getAllUsers => " + ex.StackTrace);
-                                               
+
                         return new List<User>();
                     }
                 }
@@ -564,7 +564,7 @@ namespace Api.Socioboard.Model
                     }
                     catch (Exception ex)
                     {
-                        logger.Error("getAllUsersByAdmin => " +ex.StackTrace);
+                        logger.Error("getAllUsersByAdmin => " + ex.StackTrace);
                         logger.Error("getAllUsersByAdmin => " + ex.Message);
                         Console.WriteLine(ex.StackTrace);
                         return new List<User>();
@@ -670,6 +670,42 @@ namespace Api.Socioboard.Model
             }
         }
 
+        public string GetUserCountByMonth()
+        {
+            string strPaidUserCount=string.Empty;
+            string strUnPaidUserCount = string.Empty;
+            string PaidUserCount = string.Empty;
+            string UnpaidUserCount = string.Empty;
+            string month = string.Empty;
+            DateTime date = DateTime.Now.AddDays(-(DateTime.Now.Day - 1)).AddMonths(-11);
+            do
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+
+                    try 
+	                {	        
+		                var results = session.QueryOver<Domain.Socioboard.Domain.User>().Where(t => t.CreateDate > date.Date && t.CreateDate < date.AddMonths(1).Date && t.PaymentStatus=="paid").Select(Projections.RowCount()).FutureValue<int>().Value;
+                        var results1 = session.QueryOver<Domain.Socioboard.Domain.User>().Where(t => t.CreateDate > date.Date && t.CreateDate < date.AddMonths(1).Date && t.PaymentStatus=="unpaid").Select(Projections.RowCount()).FutureValue<int>().Value;
+                        PaidUserCount=results.ToString();
+                        UnpaidUserCount = results1.ToString();
+	                }
+	                catch (Exception ex)
+	                {
+                        PaidUserCount = "0";
+                        UnpaidUserCount = "0";
+	                }
+                    strPaidUserCount += PaidUserCount.ToString() + ",";
+                    strUnPaidUserCount += UnpaidUserCount.ToString() + ",";
+                    month += date.ToString("MMM") + ",";
+                }
+
+                date = date.AddMonths(1);
+            }
+            while (DateTime.Now.AddMonths(1).Month != date.Month);
+            return strPaidUserCount.TrimEnd(',') + "_#_" + strUnPaidUserCount.TrimEnd(',') + "_#_" + month;
+        }
+
         public ArrayList UserCountByAccTypeMonth()
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -755,15 +791,15 @@ namespace Api.Socioboard.Model
                 {
                     try
                     {
-                        int i = session.CreateQuery("Update User set UserName =: username, EmailId=:emailid, AccountType=:accounttype, UserStatus=:userstatus, PaymentStatus=:paymentstatus where Id = :userid")
+                        int i = session.CreateQuery("Update User set UserName =: username, EmailId=:emailid, AccountType=:accounttype, ActivationStatus=:userstatus, PaymentStatus=:paymentstatus where Id = :userid")
                                   .SetParameter("userid", user.Id)
-                                  //.SetParameter("profileurl", user.ProfileUrl)
+                            //.SetParameter("profileurl", user.ProfileUrl)
                                   .SetParameter("username", user.UserName)
                                   .SetParameter("emailid", user.EmailId)
                                   .SetParameter("accounttype", user.AccountType)
-                                  .SetParameter("userstatus", user.UserStatus)
-                                  //.SetParameter("expirydate", user.ExpiryDate)
-                                  //.SetParameter("timezone", user.TimeZone)
+                                  .SetParameter("userstatus", user.ActivationStatus)
+                            //.SetParameter("expirydate", user.ExpiryDate)
+                            //.SetParameter("timezone", user.TimeZone)
                                   .SetParameter("paymentstatus", user.PaymentStatus)
                                   .ExecuteUpdate();
                         transaction.Commit();
@@ -1348,10 +1384,8 @@ namespace Api.Socioboard.Model
                     // And return list of archive messages.
                     try
                     {
-                        List<User> alsdata = session.CreateQuery("from User")
-                                        .List<User>()
-                                        .ToList<User>()
-                                        .Where(e => e.ExpiryDate.Date == DateTime.Now.Date)
+                        List<User> alsdata = session.Query<User>()
+                                        .Where(e => e.ExpiryDate >= DateTime.Now.Date && e.ExpiryDate < DateTime.Now.AddDays(1).Date && e.PaymentStatus == "unpaid")
                                         .ToList<User>();
                         return alsdata;
 
@@ -1416,9 +1450,10 @@ namespace Api.Socioboard.Model
                     return i;
                 }
             }
-            
+
         }
-        public List<Domain.Socioboard.Domain.User> InactiveUser() {
+        public List<Domain.Socioboard.Domain.User> InactiveUser()
+        {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try
@@ -1442,6 +1477,62 @@ namespace Api.Socioboard.Model
                                  .Any(x => x.Id == UserId);
                 return exist;
             }
+        }
+
+        public static int GetAllUserCount()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                var count = session.QueryOver<Domain.Socioboard.Domain.User>().Select(Projections.RowCount()).FutureValue<int>().Value;
+                return Int32.Parse(count.ToString());
+            }
+        }
+
+        public Domain.Socioboard.Helper.UserDetails GetUserDataForDataTable(int iDisplayLength, int iDisplayStart, int iSortCol_0, string sSortDir_0, string sSearch)
+        {
+            if (iSortCol_0 < 2)
+            {
+                iSortCol_0 = 2;
+            }
+            int count = 0;
+            Domain.Socioboard.Helper.UserDetails _UserDetails = new Domain.Socioboard.Helper.UserDetails(); 
+            List<Domain.Socioboard.Domain.User> lstUser = new List<User>();
+            var sortColumnIndex = iSortCol_0;
+            Func<User, dynamic> orderingFunction = (c => sortColumnIndex == 2 ? c.UserName : sortColumnIndex == 3 ? c.AccountType : sortColumnIndex == 4 ? c.CreateDate.ToString() : sortColumnIndex == 5 ? c.EmailId : c.ActivationStatus );
+
+            var sortDirection = sSortDir_0; // asc or desc
+            
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                if (!string.IsNullOrEmpty(sSearch))
+                {
+
+                    if (sortDirection == "asc")
+                    {
+                        lstUser = session.Query<Domain.Socioboard.Domain.User>().Where(u => u.UserName.Contains(sSearch) || u.AccountType.Contains(sSearch) || u.CreateDate.ToString().Contains(sSearch) || u.EmailId.Contains(sSearch) || u.ActivationStatus.Contains(sSearch)).OrderBy(orderingFunction).ToList();
+                    }
+                    else
+                    {
+                        lstUser = session.Query<Domain.Socioboard.Domain.User>().Where(u => u.UserName.Contains(sSearch) || u.AccountType.Contains(sSearch) || u.CreateDate.ToString().Contains(sSearch) || u.EmailId.Contains(sSearch) || u.ActivationStatus.Contains(sSearch)).OrderByDescending(orderingFunction).ToList();
+                    }
+                }
+                else {
+                    if (sortDirection == "asc")
+                    {
+                        lstUser = session.Query<Domain.Socioboard.Domain.User>().OrderBy(orderingFunction).ToList();
+                        count = lstUser.Count;
+                    }
+                    else
+                    {
+                        lstUser = session.Query<Domain.Socioboard.Domain.User>().OrderByDescending(orderingFunction).ToList();
+                    }
+                }
+            }
+
+            _UserDetails.lstUser = lstUser.Skip(iDisplayStart).Take(iDisplayLength).ToList();
+            _UserDetails.resultCount = lstUser.Count;
+            _UserDetails.totalCount = GetAllUserCount();
+            return _UserDetails;
         }
 
     }

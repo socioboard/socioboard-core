@@ -1,10 +1,14 @@
 ﻿using Domain.Socioboard.Domain;
 using Newtonsoft.Json.Linq;
 using Socioboard.App_Start;
-
+using Socioboard.Helper;
+//using Socioboard.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -63,9 +67,9 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult loadmenu()
+        public async Task<ActionResult> loadmenu()
         {
-            return PartialView("_FeedMenu", Helper.SBUtils.GetFeedsMenuAccordingToGroup());
+            return PartialView("_FeedMenu", await Helper.SBHelper.GetFeedsMenuAccordingToGroup());
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
@@ -762,17 +766,28 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult linkedinpagecomentonpost(string pageid, string updatekey, string comment)
+        public async Task<ActionResult> linkedinpagecomentonpost(string pageid, string updatekey, string comment)
         {
-            string returnContent = string.Empty;
-            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
-            Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjLiPostComentOnPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
-            string Return = (string)(new JavaScriptSerializer().Deserialize(ApiobjLiPostComentOnPage.PsotCommentOnLinkedinCompanyPageUpdate(objUser.Id.ToString(), pageid, updatekey, comment), typeof(string)));
-            if (Return != "Something Went Wrong")
+           
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string accesstoken = "";
+            string returndata = "";
+            List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+            Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+            Parameters.Add(new KeyValuePair<string, string>("ProfileId", pageid));
+            Parameters.Add(new KeyValuePair<string, string>("Updatekey", updatekey));
+            Parameters.Add(new KeyValuePair<string, string>("comment", comment));
+            if (Session["access_token"] != null)
             {
-                returnContent = "";
+                accesstoken = Session["access_token"].ToString();
             }
-            return Content(returnContent);
+            HttpResponseMessage response = await WebApiReq.PostReq("api/ApiLinkedIn/PsotCommentOnLinkedinCompanyPageUpdate", Parameters, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                returndata = await response.Content.ReadAsAsync<string>();
+            }
+            return Content(returndata);
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
@@ -790,17 +805,45 @@ namespace Socioboard.Controllers
         }
 
         [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
-        public ActionResult CreatePostOnPage(string Pageid, string Post)
+        public async Task<ActionResult> CreatePostOnPage(string Pageid, string Post)
         {
-            string returnContent = string.Empty;
-            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
-            Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjCreateUpdate = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
-            string Return = (string)(new JavaScriptSerializer().Deserialize(ApiobjCreateUpdate.CreateUpdateOnLinkedinCompanyPage(objUser.Id.ToString(), Pageid, Post), typeof(string)));
-            if (Return != "Something Went Wrong")
+            var fi = Request.Files["fileimg"];
+            string file = string.Empty;
+            if (Request.Files.Count > 0)
             {
-                returnContent = "";
+                if (fi != null)
+                {
+                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
+
+                    // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"]+"Contents/img/upload";
+                    file = path + "\\" + fi.FileName;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    fi.SaveAs(file);
+                    path = path + "\\" + fi.FileName;
+                }
             }
-            return Content(returnContent);
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string accesstoken = "";
+            string returndata = "";
+            List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+            Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+            Parameters.Add(new KeyValuePair<string, string>("ProfileId", Pageid));
+            Parameters.Add(new KeyValuePair<string, string>("comment", Post));
+            Parameters.Add(new KeyValuePair<string, string>("ImageUrl", file));
+            if (Session["access_token"] != null)
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+            HttpResponseMessage response = await WebApiReq.PostReq("api/ApiLinkedIn/CreateUpdateOnLinkedinCompanyPage", Parameters, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                returndata = await response.Content.ReadAsAsync<string>();
+            }
+            return Content(returndata);
         }
 
         // Edited by Antima
@@ -1495,5 +1538,43 @@ namespace Socioboard.Controllers
         }
 
 
+
+
+        public string FbPostComment(string Message, string ProfileId,string PostId) 
+        {
+            string output = "NotCommented";
+            if (string.IsNullOrEmpty(ProfileId) || string.IsNullOrEmpty(Message) || string.IsNullOrEmpty(PostId)) 
+            {
+                return output;
+            }
+            Api.Facebook.Facebook fb = new Api.Facebook.Facebook();
+            Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["user"];
+          string x =  fb.FacebookComment(Message, ProfileId,PostId,user.Id.ToString());
+          if (!string.IsNullOrEmpty(x)) 
+          {
+             
+              output = "Commented";
+          }
+            return output;
+        }
+
+
+        public async Task<ActionResult> LoadComments(string PostId)
+        {
+            string accesstoken = string.Empty;
+            try
+            {
+                accesstoken = System.Web.HttpContext.Current.Session["access_token"].ToString();
+            }
+            catch { }
+            List<Domain.Socioboard.MongoDomain.FbPostComment> lstGroupProfiles = new List<Domain.Socioboard.MongoDomain.FbPostComment>();
+
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiFacebookAccount/GetFacebookPostComment?PostId=" + PostId, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroupProfiles = await response.Content.ReadAsAsync<List<Domain.Socioboard.MongoDomain.FbPostComment>>();
+            }
+            return View(lstGroupProfiles);
+        }
     }
 }

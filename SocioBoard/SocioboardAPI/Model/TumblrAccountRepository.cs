@@ -7,7 +7,7 @@ using Api.Socioboard.Helper;
 using System.Collections;
 using NHibernate.Linq;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class TumblrAccountRepository
     {
@@ -297,6 +297,22 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.TumblrAccount> GetAllTumblrAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.TumblrAccount> lstTumblrAccount = session.CreateQuery("from TumblrAccount").List<Domain.Socioboard.Domain.TumblrAccount>().ToList();
+                    return lstTumblrAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.TumblrAccount>();
+                }
+            }
+        }
+
         public int UpdateTumblrAccount(Domain.Socioboard.Domain.TumblrAccount _TumblrAccount, string tumblrUserName)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -320,6 +336,32 @@ namespace Api.Socioboard.Services
                     }
                 }
             }
+        }
+
+        public int DeletetumblraccountByUserid(Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete social profile by user id. 
+                        NHibernate.IQuery query = session.CreateQuery("delete from TumblrAccount where UserId = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
         }
 
     }

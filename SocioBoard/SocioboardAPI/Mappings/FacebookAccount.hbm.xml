@@ -39,6 +39,10 @@
     <property name="FbUserName">
       <column name="FbUserName"  />
     </property>
+
+    <property name="LastScraped">
+      <column name="LastScraped"  />
+    </property>
    
   </class>
 </hibernate-mapping>

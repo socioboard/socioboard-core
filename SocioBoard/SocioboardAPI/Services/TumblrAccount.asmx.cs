@@ -79,11 +79,11 @@ namespace Api.Socioboard.Services
             {
                 objTumblrAccountRepository.deleteTumblrUser(ProfileId,Guid.Parse(UserId));
                 objTumblrFeedRepository.DeleteTumblrDataByUserid(Guid.Parse(UserId), ProfileId);
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+               // Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
-                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));
-                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId), "tumblr");
+                //objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, "tumblr");
                 return new JavaScriptSerializer().Serialize("Success");
             }
             catch (Exception ex)
@@ -127,15 +127,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllTumblrAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
-                ArrayList lstTumblrAcc = objTumblrAccountRepository.getAllTumblrAccounts();
-                return new JavaScriptSerializer().Serialize(lstTumblrAcc);
+                List<Domain.Socioboard.Domain.TumblrAccount> lstTumblrAcc = objTumblrAccountRepository.GetAllTumblrAccounts();
+                return serializer.Serialize(lstTumblrAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.TumblrAccount>());
             }
         }
 

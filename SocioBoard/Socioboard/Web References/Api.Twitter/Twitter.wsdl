@@ -220,7 +220,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rssFeedId" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -427,6 +427,61 @@
       <s:element name="getTwittwrDirectMessageRecievedResponse">
         <s:complexType />
       </s:element>
+      <s:element name="PostTwitterDirectmessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostTwitterDirectmessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostTwitterDirectmessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostFollow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_OAuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OAuthSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostFollowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostFollowResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostUnFollow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_OAuthToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OAuthSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostUnFollowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostUnFollowResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -599,6 +654,24 @@
   <wsdl:message name="getTwittwrDirectMessageRecievedSoapOut">
     <wsdl:part name="parameters" element="tns:getTwittwrDirectMessageRecievedResponse" />
   </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageSoapIn">
+    <wsdl:part name="parameters" element="tns:PostTwitterDirectmessage" />
+  </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageSoapOut">
+    <wsdl:part name="parameters" element="tns:PostTwitterDirectmessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowSoapIn">
+    <wsdl:part name="parameters" element="tns:PostFollow" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowSoapOut">
+    <wsdl:part name="parameters" element="tns:PostFollowResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowSoapIn">
+    <wsdl:part name="parameters" element="tns:PostUnFollow" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowSoapOut">
+    <wsdl:part name="parameters" element="tns:PostUnFollowResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
     <wsdl:part name="consumerSecret" type="s:string" />
@@ -659,7 +732,7 @@
   <wsdl:message name="TwitterComposeMessageRssHttpGetIn">
     <wsdl:part name="message" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="rssFeedId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TwitterComposeMessageRssHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -724,6 +797,37 @@
   <wsdl:message name="TicketTwitterReplyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="fromId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowHttpGetIn">
+    <wsdl:part name="_OAuthToken" type="s:string" />
+    <wsdl:part name="OAuthSecret" type="s:string" />
+    <wsdl:part name="TwitterScreenName" type="s:string" />
+    <wsdl:part name="TwitterUserId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+    <wsdl:part name="toName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowHttpGetIn">
+    <wsdl:part name="_OAuthToken" type="s:string" />
+    <wsdl:part name="OAuthSecret" type="s:string" />
+    <wsdl:part name="TwitterScreenName" type="s:string" />
+    <wsdl:part name="TwitterUserId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+    <wsdl:part name="toName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterRedirectUrlHttpPostIn">
     <wsdl:part name="consumerKey" type="s:string" />
     <wsdl:part name="consumerSecret" type="s:string" />
@@ -784,7 +888,7 @@
   <wsdl:message name="TwitterComposeMessageRssHttpPostIn">
     <wsdl:part name="message" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
-    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="rssFeedId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TwitterComposeMessageRssHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -847,6 +951,37 @@
     <wsdl:part name="statusid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TicketTwitterReplyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="fromId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostTwitterDirectmessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowHttpPostIn">
+    <wsdl:part name="_OAuthToken" type="s:string" />
+    <wsdl:part name="OAuthSecret" type="s:string" />
+    <wsdl:part name="TwitterScreenName" type="s:string" />
+    <wsdl:part name="TwitterUserId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+    <wsdl:part name="toName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostFollowHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowHttpPostIn">
+    <wsdl:part name="_OAuthToken" type="s:string" />
+    <wsdl:part name="OAuthSecret" type="s:string" />
+    <wsdl:part name="TwitterScreenName" type="s:string" />
+    <wsdl:part name="TwitterUserId" type="s:string" />
+    <wsdl:part name="toId" type="s:string" />
+    <wsdl:part name="toName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostUnFollowHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="TwitterSoap">
@@ -958,6 +1093,18 @@
       <wsdl:input message="tns:getTwittwrDirectMessageRecievedSoapIn" />
       <wsdl:output message="tns:getTwittwrDirectMessageRecievedSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <wsdl:input message="tns:PostTwitterDirectmessageSoapIn" />
+      <wsdl:output message="tns:PostTwitterDirectmessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <wsdl:input message="tns:PostFollowSoapIn" />
+      <wsdl:output message="tns:PostFollowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <wsdl:input message="tns:PostUnFollowSoapIn" />
+      <wsdl:output message="tns:PostUnFollowSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterHttpGet">
     <wsdl:operation name="GetTwitterRedirectUrl">
@@ -1020,6 +1167,18 @@
       <wsdl:input message="tns:TicketTwitterReplyHttpGetIn" />
       <wsdl:output message="tns:TicketTwitterReplyHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <wsdl:input message="tns:PostTwitterDirectmessageHttpGetIn" />
+      <wsdl:output message="tns:PostTwitterDirectmessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <wsdl:input message="tns:PostFollowHttpGetIn" />
+      <wsdl:output message="tns:PostFollowHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <wsdl:input message="tns:PostUnFollowHttpGetIn" />
+      <wsdl:output message="tns:PostUnFollowHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterHttpPost">
     <wsdl:operation name="GetTwitterRedirectUrl">
@@ -1081,6 +1240,18 @@
     <wsdl:operation name="TicketTwitterReply">
       <wsdl:input message="tns:TicketTwitterReplyHttpPostIn" />
       <wsdl:output message="tns:TicketTwitterReplyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <wsdl:input message="tns:PostTwitterDirectmessageHttpPostIn" />
+      <wsdl:output message="tns:PostTwitterDirectmessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <wsdl:input message="tns:PostFollowHttpPostIn" />
+      <wsdl:output message="tns:PostFollowHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <wsdl:input message="tns:PostUnFollowHttpPostIn" />
+      <wsdl:output message="tns:PostUnFollowHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterSoap" type="tns:TwitterSoap">
@@ -1321,6 +1492,33 @@
     </wsdl:operation>
     <wsdl:operation name="getTwittwrDirectMessageRecieved">
       <soap:operation soapAction="http://tempuri.org/getTwittwrDirectMessageRecieved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <soap:operation soapAction="http://tempuri.org/PostTwitterDirectmessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <soap:operation soapAction="http://tempuri.org/PostFollow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <soap:operation soapAction="http://tempuri.org/PostUnFollow" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1574,6 +1772,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <soap12:operation soapAction="http://tempuri.org/PostTwitterDirectmessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <soap12:operation soapAction="http://tempuri.org/PostFollow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <soap12:operation soapAction="http://tempuri.org/PostUnFollow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterHttpGet" type="tns:TwitterHttpGet">
     <http:binding verb="GET" />
@@ -1712,6 +1937,33 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <http:operation location="/PostTwitterDirectmessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <http:operation location="/PostFollow" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <http:operation location="/PostUnFollow" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterHttpPost" type="tns:TwitterHttpPost">
     <http:binding verb="POST" />
@@ -1843,6 +2095,33 @@
     </wsdl:operation>
     <wsdl:operation name="TicketTwitterReply">
       <http:operation location="/TicketTwitterReply" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostTwitterDirectmessage">
+      <http:operation location="/PostTwitterDirectmessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostFollow">
+      <http:operation location="/PostFollow" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostUnFollow">
+      <http:operation location="/PostUnFollow" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

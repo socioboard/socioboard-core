@@ -184,5 +184,29 @@ namespace Api.Socioboard.Services
             }
 
         }
+        public int DeleteYoutubeChannelByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete records of YoutubeChannel.
+                        NHibernate.IQuery query = session.CreateQuery("delete from YoutubeChannel where UserId =: userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+
+
     }
 }

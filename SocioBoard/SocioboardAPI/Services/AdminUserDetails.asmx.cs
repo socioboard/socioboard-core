@@ -28,6 +28,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllUsers(string Objuser)
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
                 Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(Objuser, typeof(Domain.Socioboard.Domain.User)));
@@ -38,23 +40,23 @@ namespace Api.Socioboard.Services
                     List<Domain.Socioboard.Domain.User> lstUser = objUserRepo.getAllUsersByAdmin();
                     if (lstUser.Count > 0)
                     {
-                        return new JavaScriptSerializer().Serialize(lstUser);
+                        return serializer.Serialize(lstUser);
                     }
                     else
                     {
-                        return new JavaScriptSerializer().Serialize("Not User Found");
+                        return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
                     }
                 }
                 else
                 {
-                    return new JavaScriptSerializer().Serialize("You have no Authentication to call this method!");
+                    return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
                 }
             }
             catch (Exception ex)
             {
                 logger.Error("GetAllUsers => "+ex.Message);
                 Console.WriteLine(ex.StackTrace);
-                return new JavaScriptSerializer().Serialize(new List<User>());
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
             }
 
         }
@@ -73,7 +75,7 @@ namespace Api.Socioboard.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return null;
+                return new JavaScriptSerializer().Serialize(new Domain.Socioboard.Domain.User());
             }
 
 
@@ -90,7 +92,7 @@ namespace Api.Socioboard.Services
                 objUser.UserName = UserName;
                 objUser.EmailId = EmailId;
                 objUser.AccountType = Package;
-                objUser.UserStatus = Convert.ToInt16(Status);
+                objUser.ActivationStatus = Status.ToString();
                 objUser.PaymentStatus = PaymentStatus;
                 UserRepository.UpdateAccountType(objUser);
                 return new JavaScriptSerializer().Serialize("Update Successfully");
@@ -107,10 +109,10 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string DeleteUser(string Id)
         {
-                      
+            
             try 
 	        {
-                int delete = objUserRepo.DeleteUserByAdmin(Guid.Parse(Id));
+                int delete = objUserRepo.DeleteUser(Guid.Parse(Id));
                 return new JavaScriptSerializer().Serialize(delete);
 	        }
 	        catch (Exception ex)
@@ -124,7 +126,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getAllDeletedUsers(string Objuser)
         {
-
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;       
             try
             {
 
@@ -133,18 +136,47 @@ namespace Api.Socioboard.Services
                  if (ObjUser.UserType == "SuperAdmin")
                  {
                      List<Domain.Socioboard.Domain.User> lstUser = objUserRepo.getAllDeletedUsersByAdmin();
-                     return new JavaScriptSerializer().Serialize(lstUser);
+                     return serializer.Serialize(lstUser);
                  }
                  else
                  {
-                     return new JavaScriptSerializer().Serialize("You have no Authentication to call this method!");
+                     return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
                  }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return new JavaScriptSerializer().Serialize("No Record Exist");
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.User>());
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetUserDataForDataTable(string user, string iDisplayLength, string iDisplayStart, string iSortCol_0, string sSortDir_0, string sSearch)
+        {
+            string strUser = string.Empty;
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(user, typeof(Domain.Socioboard.Domain.User));
+          
+            if (_User.UserType == "SuperAdmin")
+            {
+                int dispalyLength = Int32.Parse(iDisplayLength);
+                int displayStart = Int32.Parse(iDisplayStart);
+                int sortCol = Int32.Parse(iSortCol_0);
+                string sortDir = sSortDir_0;
+                string search = sSearch;
+
+
+                Domain.Socioboard.Helper.UserDetails _UserDetails = new Domain.Socioboard.Helper.UserDetails();
+                _UserDetails = objUserRepo.GetUserDataForDataTable(dispalyLength, displayStart, sortCol, sortDir, search);
+                strUser = new JavaScriptSerializer().Serialize(_UserDetails);
+            }
+            else {
+                Domain.Socioboard.Helper.UserDetails _UserDetails = new Domain.Socioboard.Helper.UserDetails();
+                strUser = new JavaScriptSerializer().Serialize(_UserDetails);
+            }
+            
+            return strUser;
+        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Collections;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class GooglePlusAccountRepository : IGooglePlusAccountRepository
     {
@@ -128,6 +128,23 @@ namespace Api.Socioboard.Services
 
         }
 
+        public List<Domain.Socioboard.Domain.GooglePlusAccount> GetAllGooglePlusAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.GooglePlusAccount> lstGooglePlusAccount = session.CreateQuery("from GooglePlusAccount").List<Domain.Socioboard.Domain.GooglePlusAccount>().ToList();
+                    return lstGooglePlusAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.GooglePlusAccount>();
+                   
+                }
+            }
+
+        }
 
         /// <getAllGooglePlusAccountsOfUser>
         /// Get the all google plus account of user
@@ -332,8 +349,8 @@ namespace Api.Socioboard.Services
                 try
                 {
                     NHibernate.IQuery query = session.CreateQuery("from GooglePlusAccount where GpUserId = :gpuserid and UserId =: Userid")
-                               .SetParameter("GpUserId", GpUserId)
-                               .SetParameter("UserId", UserId);
+                               .SetParameter("gpuserid", GpUserId)
+                               .SetParameter("Userid", UserId);
                     return (Domain.Socioboard.Domain.GooglePlusAccount)query.UniqueResult();
                 }
                 catch (Exception ex)

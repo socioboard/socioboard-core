@@ -39,7 +39,7 @@ namespace Api.Socioboard.Services
         /// <param name="userid">User id.(Guid)</param>
         /// <param name="profileid">Profile id.(String)</param>
         /// <returns>Return 1 for success and 0 for failure.(int) </returns>
-        public int deleteDirectMessage(Guid userid,string profileid)
+        public int deleteDirectMessage(Guid userid, string profileid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -82,24 +82,18 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    //Proceed action, to get Messages by screen name.
-                    List<Domain.Socioboard.Domain.TwitterDirectMessages> alstFBAccounts = session.CreateQuery("from TwitterDirectMessages where SenderScreenName = :teamid")
-                    .SetParameter("teamid", screenName)
-                    .List<Domain.Socioboard.Domain.TwitterDirectMessages>()
-                    .ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                List<Domain.Socioboard.Domain.TwitterDirectMessages> alstFBAccounts = session.CreateQuery("from TwitterDirectMessages where SenderScreenName = :teamid")
+                .SetParameter("teamid", screenName)
+                .List<Domain.Socioboard.Domain.TwitterDirectMessages>()
+                .ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
 
-                    //List<TwitterDirectMessages> alstFBAccounts = new List<TwitterDirectMessages>();
+                //List<TwitterDirectMessages> alstFBAccounts = new List<TwitterDirectMessages>();
 
-                    //foreach (TwitterDirectMessages item in query.Enumerable())
-                    //{
-                    //    alstFBAccounts.Add(item);
-                    //}
-                    return alstFBAccounts;
-
-                }//End Transaction
+                //foreach (TwitterDirectMessages item in query.Enumerable())
+                //{
+                //    alstFBAccounts.Add(item);
+                //}
+                return alstFBAccounts;
             }//End Session
         }
 
@@ -114,30 +108,25 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        //Proceed action, to get message by message id.
-                        NHibernate.IQuery query = session.CreateQuery("from TwitterDirectMessages where MessageId = :userid ");
-                        query.SetParameter("userid", MessageId);
+                    //Proceed action, to get message by message id.
+                    NHibernate.IQuery query = session.CreateQuery("from TwitterDirectMessages where MessageId = :userid ");
+                    query.SetParameter("userid", MessageId);
 
-                        var result = query.UniqueResult();
+                    var result = query.UniqueResult();
 
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
+                    if (result == null)
+                        return false;
+                    else
                         return true;
-                    }
 
-                }//End Transaction
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return true;
+                }
             }//End Session
         }
 
@@ -146,30 +135,26 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        //Proceed action, to get message by message id.
-                        NHibernate.IQuery query = session.CreateQuery("from TwitterDirectMessages where UserId =: userid and MessageId = :MessageId ");
-                        query.SetParameter("MessageId", MessageId);
-                        query.SetParameter("userid", UserId);
-                        var result = query.UniqueResult();
+                    //Proceed action, to get message by message id.
+                    NHibernate.IQuery query = session.CreateQuery("from TwitterDirectMessages where UserId =: userid and MessageId = :MessageId ");
+                    query.SetParameter("MessageId", MessageId);
+                    query.SetParameter("userid", UserId);
+                    var result = query.UniqueResult();
 
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
+                    if (result == null)
+                        return false;
+                    else
                         return true;
-                    }
 
-                }//End Transaction
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return true;
+                }
+
             }//End Session
         }
 
@@ -183,24 +168,21 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    //Proceed action, to get Twitter direct message by profile id.
-                    List<Domain.Socioboard.Domain.TwitterDirectMessages> alstFBAccounts = session.CreateQuery("from TwitterDirectMessages where SenderId = :teamid")
-                    .SetParameter("teamid", profileid)
-                    .List<Domain.Socioboard.Domain.TwitterDirectMessages>()
-                    .ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
 
-                    //List<TwitterDirectMessages> alstFBAccounts = new List<TwitterDirectMessages>();
+                //Proceed action, to get Twitter direct message by profile id.
+                List<Domain.Socioboard.Domain.TwitterDirectMessages> alstFBAccounts = session.CreateQuery("from TwitterDirectMessages where SenderId = :teamid")
+                .SetParameter("teamid", profileid)
+                .List<Domain.Socioboard.Domain.TwitterDirectMessages>()
+                .ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
 
-                    //foreach (TwitterDirectMessages item in query.Enumerable())
-                    //{
-                    //    alstFBAccounts.Add(item);
-                    //}
+                //List<TwitterDirectMessages> alstFBAccounts = new List<TwitterDirectMessages>();
 
-                    return alstFBAccounts;
-                }//End Transaction
+                //foreach (TwitterDirectMessages item in query.Enumerable())
+                //{
+                //    alstFBAccounts.Add(item);
+                //}
+
+                return alstFBAccounts;
             }//End Session
         }
 
@@ -261,8 +243,8 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to get total count of message for last 7 day's by sender id and profileId.
                         NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate >= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  SenderId='" + profileId + "'");
-                            //.SetParameter("days", days)
-                       //  .SetParameter("profile", profileId);
+                        //.SetParameter("days", days)
+                        //  .SetParameter("profile", profileId);
                         ArrayList alstFBmsgs = new ArrayList();
 
                         foreach (var item in query.List())
@@ -319,26 +301,23 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //Begin session trasaction and opens up.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+
+                try
                 {
-                    try
-                    {
-                        string[] arrsrt = profileids.Split(',');
-                        DateTime date = DateTime.Now.AddDays(-Days);
-                        List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and SenderId=:SenderId and  Type =:Type")
-                            .SetParameter("UserId", UserId)
-                            .SetParameter("Days", date)
-                            .SetParameter("SenderId", arrsrt[0]).SetParameter("Type", "twt_directmessages_sent").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
-                        return Int16.Parse(results.Count.ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return 0;
-                    }
-                }//End Transaction
-            }// End se
+                    string[] arrsrt = profileids.Split(',');
+                    DateTime date = DateTime.Now.AddDays(-Days);
+                    List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and SenderId=:SenderId and  Type =:Type")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("Days", date)
+                        .SetParameter("SenderId", arrsrt[0]).SetParameter("Type", "twt_directmessages_sent").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
+                    return Int16.Parse(results.Count.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return 0;
+                }
+            }// End session
         }
 
         public int GetDirrectMessageReceiveCountByProfileIdAndUserId(Guid UserId, string profileids, int Days)
@@ -346,26 +325,22 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //Begin session trasaction and opens up.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        string[] arrsrt = profileids.Split(',');
-                        DateTime date = DateTime.Now.AddDays(-Days);
-                        List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and RecipientId=:RecipientId and Type =:Type")
-                            .SetParameter("UserId", UserId)
-                            .SetParameter("Days", date)
-                            .SetParameter("RecipientId", arrsrt[0]).SetParameter("Type", "twt_directmessages_receive").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
-                        return Int16.Parse(results.Count.ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return 0;
-                    }
-                }//End Transaction
-            }// End se
+                    string[] arrsrt = profileids.Split(',');
+                    DateTime date = DateTime.Now.AddDays(-Days);
+                    List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and RecipientId=:RecipientId and Type =:Type")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("Days", date)
+                        .SetParameter("RecipientId", arrsrt[0]).SetParameter("Type", "twt_directmessages_receive").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
+                    return Int16.Parse(results.Count.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return 0;
+                }
+            }// End session
         }
 
 
@@ -374,22 +349,18 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //Begin session trasaction and opens up.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        string[] arrsrt = profiles.Split(',');
-                        string[] type = { "twt_directmessages_received", "fb_received" };
-                        List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && arrsrt.Contains(U.RecipientId) && type.Contains(U.Type)).OrderByDescending(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                        lstTDM = lstTDM.GroupBy(y => y.SenderId, (key, g) => g.OrderByDescending(t => t.CreatedDate).First()).OrderByDescending(p => p.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                        return lstTDM;
-                    }
-                    catch (Exception ex)
-                    {
-                        return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                    }
-                }//End Transaction
+                    string[] arrsrt = profiles.Split(',');
+                    string[] type = { "twt_directmessages_received", "fb_received" };
+                    List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && arrsrt.Contains(U.RecipientId) && type.Contains(U.Type)).OrderByDescending(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                    lstTDM = lstTDM.GroupBy(y => y.SenderId, (key, g) => g.OrderByDescending(t => t.CreatedDate).First()).OrderByDescending(p => p.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                    return lstTDM;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                }
             }// End session
         }
 
@@ -398,19 +369,16 @@ namespace Api.Socioboard.Services
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //Begin session trasaction and opens up.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && ((U.SenderId == SenderId && U.RecipientId == RecipientId) || (U.SenderId == RecipientId && U.RecipientId == SenderId))).OrderBy(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                        return lstTDM;
-                    }
-                    catch (Exception ex)
-                    {
-                        return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
-                    }
-                }//End Transaction
+                    List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && ((U.SenderId == SenderId && U.RecipientId == RecipientId) || (U.SenderId == RecipientId && U.RecipientId == SenderId))).OrderBy(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                    return lstTDM;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                }
+
             }// End session
         }
 
@@ -430,7 +398,7 @@ namespace Api.Socioboard.Services
                         session.CreateQuery("Update TwitterDirectMessages set Image =:Image where MessageId = :MessageId and UserId = :userid")
                             .SetParameter("Image", _TwitterDirectMessages.Image)
                             .SetParameter("MessageId", _TwitterDirectMessages.MessageId)
-                            .SetParameter("userid",_TwitterDirectMessages.UserId)
+                            .SetParameter("userid", _TwitterDirectMessages.UserId)
                             .ExecuteUpdate();
                         transaction.Commit();
 
@@ -446,8 +414,8 @@ namespace Api.Socioboard.Services
         }
 
         public int GetTwitterDirectMessageSentCount(Guid UserId, string profileids, int days)
-        { 
-          //Creates a database connection and opens up a session
+        {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try
@@ -458,14 +426,14 @@ namespace Api.Socioboard.Services
                 }
                 catch (Exception ex)
                 {
-                    logger.Error("GetTwitterDirectMessageSentCount => "+ ex.Message);
+                    logger.Error("GetTwitterDirectMessageSentCount => " + ex.Message);
                     return 0;
                 }
             }
         }
         public int GetTwitterDirectMessageRecievedCount(Guid UserId, string profileids, int days)
-         { 
-          //Creates a database connection and opens up a session
+        {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try
@@ -476,7 +444,7 @@ namespace Api.Socioboard.Services
                 }
                 catch (Exception ex)
                 {
-                    logger.Error("GetTwitterDirectMessageRecievedCount => "+ex.Message);
+                    logger.Error("GetTwitterDirectMessageRecievedCount => " + ex.Message);
                     return 0;
                 }
             }

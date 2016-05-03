@@ -27,5 +27,8 @@ namespace Domain.Socioboard.MongoDomain
         public string UserId { get; set; }
         public string Picture { get; set; }
         public string IsArchived { get; set; }
+
+        public double Positive { get; set; }
+        public double Negative { get; set; }
     }
 }

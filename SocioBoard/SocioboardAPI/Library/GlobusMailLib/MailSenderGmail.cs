@@ -23,7 +23,7 @@ namespace GlobusMailLib
                 {
                     MailMessage mail = new MailMessage();
                     mail.To.Add(to);
-                    mail.From = new MailAddress(from);
+                    mail.From = new MailAddress(UserName);
                     mail.Subject = subject;
                     mail.Body = body;
                     mail.IsBodyHtml = true;
@@ -60,7 +60,7 @@ namespace GlobusMailLib
                     Attachment attachment;
                     MailMessage mail = new MailMessage();
                     mail.To.Add(to);
-                    mail.From = new MailAddress(from);
+                    mail.From = new MailAddress(UserName);
                     mail.Subject = subject;
                     mail.Body = body;
                    

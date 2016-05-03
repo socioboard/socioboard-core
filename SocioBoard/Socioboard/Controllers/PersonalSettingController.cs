@@ -11,6 +11,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.Globalization;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Socioboard.Controllers
 {
@@ -23,19 +25,30 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
-            {
-                return RedirectToAction("Billing", "PersonalSetting");
-            }
-            else
-            {
-                return View();
-            }
-            //return View();
+            //if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
+            //{
+            //    return RedirectToAction("Billing", "PersonalSetting");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+            return View();
         }
-        public ActionResult LoadPersonalSetting()
+        public async Task<ActionResult> LoadPersonalSetting()
         {
               User objUser = (User)Session["User"];
+              NewsLetterSetting _NewsLetterSetting = new NewsLetterSetting();
+
+              HttpResponseMessage response = await WebApiReq.GetReq("api/ApiNewsLetter/Get?userId=" + objUser.Id.ToString(), "Bearer", Session["access_token"].ToString());
+              if (response.IsSuccessStatusCode)
+              {
+                  _NewsLetterSetting = await response.Content.ReadAsAsync<Domain.Socioboard.Domain.NewsLetterSetting>();
+              }
+              else {
+                  _NewsLetterSetting = null;
+              }
+              ViewBag.NewsLetterSetting = _NewsLetterSetting;
               return PartialView("_PersonalSettingPartial", objUser);
         }
 
@@ -564,7 +577,29 @@ namespace Socioboard.Controllers
 
         #endregion
 
-
+        public async Task<ActionResult> UpdateNewsLatter(string _daily, string _15, string _30, string _60, string _90, string _others)
+        {
+            NewsLetterSetting _NewsLetterSetting = new NewsLetterSetting();
+            User _user=(User)Session["User"];
+            List<KeyValuePair<string, string>> _Parameters = new List<KeyValuePair<string, string>>();
+            _Parameters.Add(new KeyValuePair<string,string>("userId",_user.Id.ToString()));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_Daily",_daily));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_7", _15));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_15", _15));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_30", _30));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_60", _60));
+            _Parameters.Add(new KeyValuePair<string, string>("groupReport_90", _90));
+            _Parameters.Add(new KeyValuePair<string, string>("others", _others));
+            HttpResponseMessage _HttpResponseMessage;
+            _HttpResponseMessage = await WebApiReq.PostReq("api/ApiNewsLetter/UpdateSetting", _Parameters, "Bearer", Session["access_token"].ToString());
+            if (_HttpResponseMessage.IsSuccessStatusCode)
+            {
+                return Content("success");
+            }
+            else {
+                return Content("failed");
+            }
+        }
 
 
 

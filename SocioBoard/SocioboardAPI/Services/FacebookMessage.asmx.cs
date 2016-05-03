@@ -163,7 +163,7 @@ namespace Api.Socioboard.Services
             try
             {
 
-                var result = boardrepo.Find<Domain.Socioboard.MongoDomain.FacebookMessage>(t =>  t.ProfileId.Equals(ProfileId)).ConfigureAwait(false);
+                var result = boardrepo.Find<Domain.Socioboard.MongoDomain.FacebookMessage>(t => t.ProfileId.Equals(ProfileId)).ConfigureAwait(false);
 
                 var task = Task.Run(async () =>
                 {
@@ -227,8 +227,8 @@ namespace Api.Socioboard.Services
             try
             {
                 int daycount = Convert.ToInt32(days);
-                 lstmessage = objFacebookMessageRepository.getAllInboxMessagesByProfileid(Guid.Parse(userid), profileid, daycount);
-               
+                lstmessage = objFacebookMessageRepository.getAllInboxMessagesByProfileid(Guid.Parse(userid), profileid, daycount);
+
             }
             catch (Exception ex)
             {
@@ -460,7 +460,7 @@ namespace Api.Socioboard.Services
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetAllMessageDetail(string profileid) 
+        public string GetAllMessageDetail(string profileid)
         {
             List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid);
             return new JavaScriptSerializer().Serialize(lstFacebookMessage);
@@ -541,7 +541,7 @@ namespace Api.Socioboard.Services
             try
             {
 
-                var result = boardrepo.Find<Domain.Socioboard.MongoDomain.FacebookMessage>(t => t.UserId.Equals(UserId)&&t.ProfileId.Equals(ProfileId)&&t.Message.Contains(keyword)).ConfigureAwait(false);
+                var result = boardrepo.Find<Domain.Socioboard.MongoDomain.FacebookMessage>(t => t.UserId.Equals(UserId) && t.ProfileId.Equals(ProfileId) && t.Message.Contains(keyword)).ConfigureAwait(false);
 
                 var task = Task.Run(async () =>
                 {
@@ -549,7 +549,7 @@ namespace Api.Socioboard.Services
                 });
                 IList<Domain.Socioboard.MongoDomain.FacebookMessage> objfbfeeds = task.Result;
 
-                return new JavaScriptSerializer().Serialize(objfbfeeds.OrderByDescending(x=>x.MessageDate).Take(20).ToList());
+                return new JavaScriptSerializer().Serialize(objfbfeeds.OrderByDescending(x => x.MessageDate).Take(20).ToList());
 
             }
             catch (Exception ex)
@@ -663,6 +663,30 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
                 return "Something Went Wrong";
             }
+        }
+
+        [WebMethod]
+        public string GetFacebookMessageWithSentiments(string profileId, string noOfDataToSkip, string count)
+        {
+            MongoRepository boardrepo = new MongoRepository("FacebookMessage");
+            List<Domain.Socioboard.MongoDomain.FacebookMessage> lstFacebookMessage;
+            try
+            {
+                string[] arrId = profileId.Split(',');
+
+                var ret = boardrepo.Find<Domain.Socioboard.MongoDomain.FacebookMessage>(t => arrId.Contains(t.ProfileId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+                });
+                IList<Domain.Socioboard.MongoDomain.FacebookMessage> _lstFacebookMessage = task.Result;
+                lstFacebookMessage = _lstFacebookMessage.Where(t => t.Positive != 0).OrderByDescending(t => t.MessageDate).Skip(Int32.Parse(noOfDataToSkip)).Take(Int32.Parse(count)).ToList();
+            }
+            catch (Exception ex)
+            {
+                lstFacebookMessage = new List<Domain.Socioboard.MongoDomain.FacebookMessage>();
+            }
+            return new JavaScriptSerializer().Serialize(lstFacebookMessage);
         }
 
     }

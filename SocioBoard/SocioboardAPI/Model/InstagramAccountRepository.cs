@@ -8,7 +8,7 @@ using Api.Socioboard.Helper;
 using NHibernate.Linq;
 using System.Web.Script.Serialization;
 using NHibernate.Criterion;
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class InstagramAccountRepository : IInstagramAccountRepository
     {
@@ -108,7 +108,7 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
-        public void updateInstagramAccount(string mediaCount, string followers, string followings,string userName, string imageUrl, string profileId)
+        public void updateInstagramAccount(string mediaCount, string followers, string followings, string userName, string imageUrl, string profileId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -116,9 +116,7 @@ namespace Api.Socioboard.Services
                 //After Session creation, start Transaction.
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-
                     //Proceed action to Update InstagrameAccount
-                    // And Set the reuired paremeters to find the specific values.
                     try
                     {
                         session.CreateQuery("Update InstagramAccount set InsUserName =:InsUserName,ProfileUrl=:ProfileUrl,Followers =:Followers,FollowedBy=:FollowedBy,TotalImages=:TotalImages where InstagramId = :InstagramId")
@@ -130,13 +128,10 @@ namespace Api.Socioboard.Services
                             .SetParameter("InstagramId", profileId)
                             .ExecuteUpdate();
                         transaction.Commit();
-
-
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        // return 0;
                     }
                 }//End Transaction
             }//End session
@@ -226,6 +221,22 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session
 
+        }
+
+        public List<Domain.Socioboard.Domain.InstagramAccount> GetAllInstagramAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.InstagramAccount> lstInstagramAccount = session.CreateQuery("from InstagramAccount").List<Domain.Socioboard.Domain.InstagramAccount>().ToList();
+                    return lstInstagramAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.InstagramAccount>();
+                }
+            }
         }
 
         public Domain.Socioboard.Domain.InstagramAccount GetInstagramAccount()
@@ -318,8 +329,8 @@ namespace Api.Socioboard.Services
                         //    return true;
 
                         bool exist = session.Query<Domain.Socioboard.Domain.InstagramAccount>()
-                                .Any(x => x.InstagramId == InsUserId && x.UserId==Userid);
-                                return exist;
+                                .Any(x => x.InstagramId == InsUserId && x.UserId == Userid);
+                        return exist;
 
                     }
                     catch (Exception ex)
@@ -425,7 +436,7 @@ namespace Api.Socioboard.Services
         public void UpdateInstagramAccountFollowerFirst(Domain.Socioboard.Domain.InstagramUserDetails insert)
         {
             //Domain.Socioboard.Domain.InstagramUserDetails insert = (Domain.Socioboard.Domain.InstagramUserDetails)new JavaScriptSerializer().Deserialize(_Insta, typeof(Domain.Socioboard.Domain.InstagramUserDetails));
-         
+
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
@@ -471,8 +482,8 @@ namespace Api.Socioboard.Services
         }
 
         public int GetInstagramVideosCount(string ProfileIds, int days)
-        { 
-             //Creates a database connection and opens up a session
+        {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try
@@ -486,7 +497,7 @@ namespace Api.Socioboard.Services
                     return 0;
                 }
             }
-        
+
         }
 
         public int GetInstagramImagesCount(string ProfileIds, int days)
@@ -509,8 +520,8 @@ namespace Api.Socioboard.Services
         }
 
         public int GetInstagramLikesCount(string ProfileIds, int days)
-        { 
-         //Creates a database connection and opens up a session
+        {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 try

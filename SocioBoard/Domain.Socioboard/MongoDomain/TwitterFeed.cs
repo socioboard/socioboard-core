@@ -27,5 +27,7 @@ namespace Domain.Socioboard.MongoDomain
         public string SourceUrl { get; set; }
         public string FromScreenName { get; set; }
         public string MediaUrl { get; set; }
+        public double Positive { get; set; }
+        public double Negative { get; set; }
     }
 }

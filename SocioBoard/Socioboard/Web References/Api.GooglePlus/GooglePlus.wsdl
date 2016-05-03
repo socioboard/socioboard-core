@@ -36,6 +36,18 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetGooglePlusComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="feedId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGooglePlusCommentsResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -50,6 +62,12 @@
   </wsdl:message>
   <wsdl:message name="GetGPusDataSoapOut">
     <wsdl:part name="parameters" element="tns:GetGPusDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGooglePlusComments" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGooglePlusCommentsResponse" />
   </wsdl:message>
   <wsdl:message name="AddGPlusAccountHttpGetIn">
     <wsdl:part name="client_id" type="s:string" />
@@ -69,6 +87,12 @@
   <wsdl:message name="GetGPusDataHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsHttpGetIn">
+    <wsdl:part name="feedId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="profileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsHttpGetOut" />
   <wsdl:message name="AddGPlusAccountHttpPostIn">
     <wsdl:part name="client_id" type="s:string" />
     <wsdl:part name="client_secret" type="s:string" />
@@ -87,6 +111,12 @@
   <wsdl:message name="GetGPusDataHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsHttpPostIn">
+    <wsdl:part name="feedId" type="s:string" />
+    <wsdl:part name="AccessToken" type="s:string" />
+    <wsdl:part name="profileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGooglePlusCommentsHttpPostOut" />
   <wsdl:portType name="GooglePlusSoap">
     <wsdl:operation name="AddGPlusAccount">
       <wsdl:input message="tns:AddGPlusAccountSoapIn" />
@@ -95,6 +125,10 @@
     <wsdl:operation name="GetGPusData">
       <wsdl:input message="tns:GetGPusDataSoapIn" />
       <wsdl:output message="tns:GetGPusDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <wsdl:input message="tns:GetGooglePlusCommentsSoapIn" />
+      <wsdl:output message="tns:GetGooglePlusCommentsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GooglePlusHttpGet">
@@ -106,6 +140,10 @@
       <wsdl:input message="tns:GetGPusDataHttpGetIn" />
       <wsdl:output message="tns:GetGPusDataHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <wsdl:input message="tns:GetGooglePlusCommentsHttpGetIn" />
+      <wsdl:output message="tns:GetGooglePlusCommentsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="GooglePlusHttpPost">
     <wsdl:operation name="AddGPlusAccount">
@@ -115,6 +153,10 @@
     <wsdl:operation name="GetGPusData">
       <wsdl:input message="tns:GetGPusDataHttpPostIn" />
       <wsdl:output message="tns:GetGPusDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <wsdl:input message="tns:GetGooglePlusCommentsHttpPostIn" />
+      <wsdl:output message="tns:GetGooglePlusCommentsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="GooglePlusSoap" type="tns:GooglePlusSoap">
@@ -130,6 +172,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetGPusData">
       <soap:operation soapAction="http://tempuri.org/GetGPusData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <soap:operation soapAction="http://tempuri.org/GetGooglePlusComments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -158,6 +209,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <soap12:operation soapAction="http://tempuri.org/GetGooglePlusComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GooglePlusHttpGet" type="tns:GooglePlusHttpGet">
     <http:binding verb="GET" />
@@ -179,6 +239,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <http:operation location="/GetGooglePlusComments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GooglePlusHttpPost" type="tns:GooglePlusHttpPost">
     <http:binding verb="POST" />
@@ -199,6 +266,13 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGooglePlusComments">
+      <http:operation location="/GetGooglePlusComments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="GooglePlus">

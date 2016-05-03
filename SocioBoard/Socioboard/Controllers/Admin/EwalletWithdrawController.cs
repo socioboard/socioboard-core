@@ -14,22 +14,20 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult Index()
         {
+           
             if (Session["User"] != null)
             {
                 Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
-                if (_User.UserType == "SuperAdmin")
+                if (_User.UserType != "SuperAdmin")
                 {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Index");
                 }
             }
             else
             {
                 return RedirectToAction("Index", "Index");
             }
+            return View();
         }
 
         //
@@ -37,6 +35,19 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult Details()
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
@@ -46,6 +57,19 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult Updatepaymentstatus() 
         {
+            if (Session["User"] != null)
+            {
+                Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+                if (_User.UserType != "SuperAdmin")
+                {
+                    return RedirectToAction("Index", "Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
+            }
+
             Api.Affiliates.Affiliates ApiAffiliates=new Api.Affiliates.Affiliates();
             string status = Request.Form["Status"].ToString();
             string id = Request.Form["Id"].ToString();

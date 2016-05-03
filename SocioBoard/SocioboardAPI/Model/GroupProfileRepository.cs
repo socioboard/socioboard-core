@@ -5,7 +5,7 @@ using System.Linq;
 using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class GroupProfileRepository:IGroupProfilesRepository
     {
@@ -35,7 +35,7 @@ namespace Api.Socioboard.Services
         /// <param name="profileid">Profile id(String)</param>
         /// <param name="groupId">Id of group(Guid)</param>
         /// <returns>Return 1 when Data  is deleted Otherwise retun 0. (int)</returns>
-        public int DeleteGroupProfile(Guid userid,string profileid,Guid groupId)
+        public int DeleteGroupProfile(Guid userid, string profileid, Guid groupId, string ProfileType)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -46,10 +46,11 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to delete data 
-                        NHibernate.IQuery query = session.CreateQuery("delete from GroupProfile where GroupOwnerId = :userid and ProfileId = :id and GroupId = :groupid")
+                        NHibernate.IQuery query = session.CreateQuery("delete from GroupProfile where GroupOwnerId = :userid and ProfileId = :id and GroupId = :groupid and ProfileType =:ProfileType")
                                         .SetParameter("id", profileid)
                                         .SetParameter("groupid",groupId)
-                                        .SetParameter("userid", userid);
+                                        .SetParameter("userid", userid)
+                                        .SetParameter("ProfileType", ProfileType);
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
                         return isUpdated;
@@ -293,6 +294,8 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+       
+
         /// <checkGroupProfileExists>
         /// Check the existing group profile
         /// </summary>
@@ -328,6 +331,87 @@ namespace Api.Socioboard.Services
                     }
                 }//End Transaction
             }//End Session
+        }
+
+        public List<Domain.Socioboard.Domain.GroupProfile> GetAllGroupProfilesByProfileType(Guid groupid , string profileType)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to find details of group by user id and group id.
+                    List<Domain.Socioboard.Domain.GroupProfile> alstFBAccounts = session.CreateQuery("from GroupProfile where GroupId =:groupid and ProfileType =:ProfileType")
+                    .SetParameter("groupid", groupid)
+                    .SetParameter("ProfileType", profileType)
+                    .List<Domain.Socioboard.Domain.GroupProfile>()
+                    .ToList<Domain.Socioboard.Domain.GroupProfile>();
+
+                    #region oldcode
+                    //List<GroupProfile> alstFBAccounts = new List<GroupProfile>();
+
+                    //foreach (GroupProfile item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //} 
+                    #endregion
+                    return alstFBAccounts;
+
+                }//End Transaction
+            }//End Session
+        }
+
+        public bool DeleteGroupReport(Guid groupId)
+        {
+            try
+            {
+                //Creates a database connection and opens up a session
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    //After Session creation, start Transaction.
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from GroupReports where GroupId = :id")
+                                           .SetParameter("id", groupId);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookGroupReport_15 where GroupId = :id")
+                                           .SetParameter("id", groupId);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookGroupReport_30 where GroupId = :id")
+                                           .SetParameter("id", groupId);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookGroupReport_60 where GroupId = :id")
+                                           .SetParameter("id", groupId);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookGroupReport_90 where GroupId = :id")
+                                           .SetParameter("id", groupId);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

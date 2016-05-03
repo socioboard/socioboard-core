@@ -96,5 +96,14 @@ namespace GlobusInstagramLib.Instagram.Core.MediaMethods
             return json;
         }
 
+        public string UserResentFeeds(string userId, string accessToken)
+        {
+            string url = "https://api.instagram.com/v1/users/" + userId + "/media/recent?access_token=" + accessToken;
+            string json = oAuthIns.RequestGetToUrl(url, null);
+            if (string.IsNullOrEmpty(json))
+                return null;
+            return json;
+        }
+
     }
 }

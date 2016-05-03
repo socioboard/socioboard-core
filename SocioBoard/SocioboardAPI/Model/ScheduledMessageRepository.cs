@@ -7,7 +7,8 @@ using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 using Domain.Socioboard.Helper;
 using NHibernate.Criterion;
-
+using NHibernate.Linq;
+using NHibernate.Transform;
 
 namespace Api.Socioboard.Services
 {
@@ -904,6 +905,40 @@ namespace Api.Socioboard.Services
         }
 
 
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllMessagesDetailsByDate(string profileid, Guid userid, DateTime StartDate, DateTime EndDate)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where  UserId=:userid and ScheduleTime > date('" + StartDate.ToString("yyyy-MM-dd HH':'mm':'ss") + "') and ScheduleTime < date('" + EndDate.ToString("yyyy-MM-dd HH':'mm':'ss") + "') and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc ";
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
 
 
 
@@ -1230,49 +1265,57 @@ namespace Api.Socioboard.Services
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
                     //After Session creation, start Transaction.
-                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    //using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    //{
+                    try
                     {
-                        try
-                        {
-                            //Proceed action, to get all schedule data.
-                            var res = session.CreateQuery("select count(Id), UserId from ScheduledMessage group by UserId order by ScheduleTime desc").SetMaxResults(100);
+                        //Proceed action, to get all schedule data.
+                        //var res = session.CreateQuery("select count(Id), UserId from ScheduledMessage group by UserId order by ScheduleTime desc").SetMaxResults(10);
 
-                            //Get the the all returned values from res
-                            foreach (Object[] item in res.Enumerable())
-                            {
-                                try
-                                {
-                                    //add values in ScheduledTracker class object
-                                    // set the values in class property
-                                    // and add in List for returning list of objects. 
-                                    // Type type = item.GetType();
-                                    ScheduledTracker objscheduledTracker = new ScheduledTracker();
-                                    objscheduledTracker.Count = Convert.ToInt32(item[item.Length - 2]);
-                                    objscheduledTracker.Id = Convert.ToString(item[item.Length - 1]);
+                        ////Get the the all returned values from res
+                        //foreach (Object[] item in res.Enumerable())
+                        //{
+                        //    try
+                        //    {
+                        //        //add values in ScheduledTracker class object
+                        //        // set the values in class property
+                        //        // and add in List for returning list of objects. 
+                        //        // Type type = item.GetType();
+                        //        ScheduledTracker objscheduledTracker = new ScheduledTracker();
+                        //        objscheduledTracker.Count = Convert.ToInt32(item[item.Length - 2]);
+                        //        objscheduledTracker.Id = Convert.ToString(item[item.Length - 1]);
 
-                                    //Add class object in List.
-                                    lstScheduledTracker.Add(objscheduledTracker);
+                        //        //Add class object in List.
+                        //        lstScheduledTracker.Add(objscheduledTracker);
 
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error : " + ex.StackTrace);
-                                }
-                            }
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        Console.WriteLine("Error : " + ex.StackTrace);
+                        //    }
 
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                            //return null;
-                        }
-                    }//End Transaction
+
+
+                        //}
+                        //List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessage = session.Query<Domain.Socioboard.Domain.ScheduledMessage>().ToList();
+
+                        List<ScheduledMessageDetails> lstScheduledMessage = session.CreateSQLQuery("select a.Status, a.UserId, b.UserName, b.ProfileUrl from ScheduledMessage a, User b where a.UserId = b.Id").SetResultTransformer(Transformers.AliasToBean<ScheduledMessageDetails>()).List<ScheduledMessageDetails>().ToList();
+
+                        dynamic data = lstScheduledMessage.GroupBy(t => t.UserId).Select(g => new ScheduledTracker(g.Count(), g.Where(t => t.Status == 1).Count(), g.Where(t => t.Status == 0).Count(), g.First().UserName, g.First().UserId, g.First().ProfileUrl)).ToList();
+                        lstScheduledTracker = (List<ScheduledTracker>)data;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        lstScheduledTracker = new List<ScheduledTracker>();
+                    }
+                    //}//End Transaction
                 }//End Session
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                //return null;
+                lstScheduledTracker = new List<ScheduledTracker>();
             }
 
             return lstScheduledTracker;

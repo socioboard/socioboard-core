@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Api.Socioboard.Helper;
+using Domain.Socioboard.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
 
 namespace SocioBoard.Model
 {
-    public class Blog_PostsRepository : IBlog_PostsRepository
+    public class Blog_PostsRepository 
     {
 
         /// <GetAllBlogPosts>
@@ -15,7 +15,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="blog_Posts"></param>
         /// <returns>Icollection of Blog post data objects </returns>
-        public ICollection<Blog_Posts> GetAllBlogPosts(Blog_Posts blog_Posts)
+        public ICollection<Domain.Socioboard.Domain.Blog_Posts> GetAllBlogPosts(Blog_Posts blog_Posts)
         {
             ICollection<Blog_Posts> iCol = null;
             try

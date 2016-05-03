@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="PluginInfo" table="plugininfo" lazy="false">
+    <id name="id" column="id">
+      <generator class="guid"/>
+    </id>
+    <property name="url">
+      <column name="url" />
+    </property>
+    <property name="imageurl">
+      <column name="imageurl" />
+    </property>
+    <property name="description">
+      <column name="description"  />
+    </property>
+    <property name="title">
+      <column name="title"  />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -182,5 +182,50 @@ namespace Api.Socioboard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+        public List<LinkedinCompanyPage> GetAllComapnayPage()
+        {
+
+            using (NHibernate.ISession sesion = SessionFactory.GetNewSession())
+            {
+
+                using (NHibernate.ITransaction transaction = sesion.BeginTransaction())
+                {
+                    try
+                    {
+                        List<LinkedinCompanyPage> lstCompanyPage = sesion.CreateQuery("from LinkedinCompanyPage").List<LinkedinCompanyPage>().ToList<LinkedinCompanyPage>();
+                        return lstCompanyPage;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.StackTrace);
+                        return new List<LinkedinCompanyPage>();
+                    }
+                }
+            }
+        }
+
+        public int DeleteLinkedinCompanyPage(Guid userId)
+        {
+            using (NHibernate.ISession sesion = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = sesion.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = sesion.CreateQuery("delete from LinkedinCompanyPage where UserId = :userid")
+                                                    .SetParameter("userid", userId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }   

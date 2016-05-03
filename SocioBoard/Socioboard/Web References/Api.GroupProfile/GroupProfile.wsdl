@@ -40,6 +40,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -91,6 +92,7 @@
     <wsdl:part name="profileid" type="s:string" />
     <wsdl:part name="groupid" type="s:string" />
     <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteProfileFromGroupHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -115,6 +117,7 @@
     <wsdl:part name="profileid" type="s:string" />
     <wsdl:part name="groupid" type="s:string" />
     <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteProfileFromGroupHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />

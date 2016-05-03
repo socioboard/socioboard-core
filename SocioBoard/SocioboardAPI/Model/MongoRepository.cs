@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using log4net;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System;
@@ -16,7 +17,7 @@ namespace Api.Socioboard.Model
     {
         //private IMongo _provider;
         private IMongoDatabase _db;
-
+        ILog logger = LogManager.GetLogger(typeof(MongoRepository));
         private MongoCollectionSettings settings;
         private string collecionName;
 
@@ -30,14 +31,16 @@ namespace Api.Socioboard.Model
             //};
             //MongoClient client = new MongoClient(clientsettings);
 
-            MongoClient client = new MongoClient(System.Configuration.ConfigurationManager.AppSettings["MongoDbConnectionString"]);
-            
+            // MongoClient client = new MongoClient(System.Configuration.ConfigurationManager.AppSettings["MongoDbConnectionString"]);
+
+            MongoClient client = new MongoClient();
+
             _db = client.GetDatabase(System.Configuration.ConfigurationManager.AppSettings["MongoDbName"]);
 
 
             //MongoClient client = new MongoClient();
 
-            ////var server = client.GetServer();
+            //var server = client.GetServer();
             //_db = client.GetDatabase("Socioboard");
             this.collecionName = CollectionName;
 
@@ -57,12 +60,28 @@ namespace Api.Socioboard.Model
 
         public void Delete<T>(FilterDefinition<T> filter) where T : class, new()
         {
-            _db.GetCollection<T>(collecionName, settings).DeleteOneAsync(filter);
+            try
+            {
+                _db.GetCollection<T>(collecionName, settings).DeleteOneAsync(filter);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+                logger.Error(ex.Message);
+            }
         }
 
         public void DeleteAll<T>() where T : class, new()
         {
-            _db.DropCollectionAsync(typeof(T).Name);
+            try
+            {
+                _db.DropCollectionAsync(typeof(T).Name);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+                logger.Error(ex.Message);
+            }
         }
 
         public async Task<IList<T>> Find<T>(Expression<Func<T, bool>> query) where T : class, new()
@@ -76,6 +95,8 @@ namespace Api.Socioboard.Model
             }
             catch (Exception e) 
             {
+                logger.Error(e.Message);
+                logger.Error(e.StackTrace);
                 return null;
             }
         }
@@ -89,6 +110,8 @@ namespace Api.Socioboard.Model
             }
             catch (Exception e)
             {
+                logger.Error(e.StackTrace);
+                logger.Error(e.Message);
                 return null;
             }
         }
@@ -113,8 +136,17 @@ namespace Api.Socioboard.Model
         public System.Threading.Tasks.Task Add<T>(T item) where T : class, new()
         {
             var document = BsonDocument.Parse(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(item));
-            var collection = _db.GetCollection<BsonDocument>(collecionName);
-            return collection.InsertOneAsync(document);
+            try
+            {
+                var collection = _db.GetCollection<BsonDocument>(collecionName);
+                return collection.InsertOneAsync(document);
+            }
+            catch (Exception ex)
+            { 
+              logger.Error(ex.StackTrace);
+            logger.Error(ex.Message);
+            return null;
+            }
         }
 
         public void Add<T>(IEnumerable<T> items) where T : class, new()
@@ -128,8 +160,17 @@ namespace Api.Socioboard.Model
         public System.Threading.Tasks.Task Update<T>(UpdateDefinition<BsonDocument> document, FilterDefinition<BsonDocument> filter) 
         {
             //var document = BsonDocument.Parse(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(item));
-            var collection = _db.GetCollection<BsonDocument>(collecionName);
-            return collection.UpdateOneAsync(filter, document);
+            try
+            {
+                var collection = _db.GetCollection<BsonDocument>(collecionName);
+                return collection.UpdateManyAsync(filter, document);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+                logger.Error(ex.Message);
+                return null;
+            }
         }
 
         public System.Threading.Tasks.Task AddList<T>(IEnumerable<T> items) where T : class, new()

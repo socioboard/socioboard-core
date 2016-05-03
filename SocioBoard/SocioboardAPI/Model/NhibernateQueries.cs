@@ -1,8 +1,8 @@
-﻿using Api.Socioboard.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Api.Socioboard.Helper;
 
 namespace SocioBoard.Model
 {

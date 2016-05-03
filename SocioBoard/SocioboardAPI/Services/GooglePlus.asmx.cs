@@ -14,6 +14,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Api.Socioboard.Model;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Api.Socioboard.Services
 {
@@ -37,6 +38,7 @@ namespace Api.Socioboard.Services
         
         MongoRepository gplusFeedRepo = new MongoRepository("GoogleplusFeed");
         MongoRepository gplusCommentRepo = new MongoRepository("GoogleplusComments");
+        private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -151,40 +153,53 @@ namespace Api.Socioboard.Services
                 if (!objGooglePlusAccountRepository.checkGooglePlusUserExists(_GooglePlusAccount.GpUserId, _GooglePlusAccount.UserId))
                 {
                     objGooglePlusAccountRepository.addGooglePlusUser(_GooglePlusAccount);
-                    #region Add TeamMemberProfile
-                    Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                    objTeamMemberProfile.Id = Guid.NewGuid();
-                    objTeamMemberProfile.TeamId = objTeam.Id;
-                    objTeamMemberProfile.Status = 1;
-                    objTeamMemberProfile.ProfileType = "gplus";
-                    objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                    objTeamMemberProfile.ProfileId = _GooglePlusAccount.GpUserId;
-                    objTeamMemberProfile.ProfilePicUrl = _GooglePlusAccount.GpProfileImage;
-                    objTeamMemberProfile.ProfileName = _GooglePlusAccount.GpUserName;
-                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
-                    #endregion
-                    #region SocialProfile
-                    Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
-                    objSocialProfile.Id = Guid.NewGuid();
-                    objSocialProfile.ProfileType = "gplus";
-                    objSocialProfile.ProfileId = _GooglePlusAccount.GpUserId;
-                    objSocialProfile.UserId = Guid.Parse(UserId);
-                    objSocialProfile.ProfileDate = DateTime.Now;
-                    objSocialProfile.ProfileStatus = 1;
-                    if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
-                    {
-                        objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
-                    }
-                    #endregion
+                }
+                
+                #region Add TeamMemberProfile
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                //objTeamMemberProfile.Id = Guid.NewGuid();
+                //objTeamMemberProfile.TeamId = objTeam.Id;
+                //objTeamMemberProfile.Status = 1;
+                //objTeamMemberProfile.ProfileType = "gplus";
+                //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                //objTeamMemberProfile.ProfileId = _GooglePlusAccount.GpUserId;
+                //objTeamMemberProfile.ProfilePicUrl = _GooglePlusAccount.GpProfileImage;
+                //objTeamMemberProfile.ProfileName = _GooglePlusAccount.GpUserName;
 
+
+                Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+                grpProfile.Id = Guid.NewGuid();
+                grpProfile.EntryDate = DateTime.UtcNow;
+                grpProfile.GroupId = Guid.Parse(GroupId);
+                grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                grpProfile.ProfileId = _GooglePlusAccount.GpUserId;
+                grpProfile.ProfileType = "gplus";
+                grpProfile.ProfileName = _GooglePlusAccount.GpUserName;
+                grpProfile.ProfilePic = _GooglePlusAccount.GpProfileImage;
+               
+                #endregion
+                #region SocialProfile
+                Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                objSocialProfile.Id = Guid.NewGuid();
+                objSocialProfile.ProfileType = "gplus";
+                objSocialProfile.ProfileId = _GooglePlusAccount.GpUserId;
+                objSocialProfile.UserId = Guid.Parse(UserId);
+                objSocialProfile.ProfileDate = DateTime.Now;
+                objSocialProfile.ProfileStatus = 1;
+                if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                {
+                    //objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    grpProfileRepo.AddGroupProfile(grpProfile);
+
+                    objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
                     ret = "Account Added Successfully";
                 }
                 else
                 {
                     ret = "Account already Exist !";
                 }
-
+                #endregion
                 #endregion
                 GetUserActivities(UserId, _GooglePlusAccount.GpUserId, access_token,1);
                 return new JavaScriptSerializer().Serialize(_GooglePlusAccount);
@@ -332,9 +347,14 @@ namespace Api.Socioboard.Services
                         var update = Builders<BsonDocument>.Update.Set("PlusonersCount", _GooglePlusActivities.PlusonersCount).Set("RepliesCount", _GooglePlusActivities.RepliesCount).Set("ResharersCount", _GooglePlusActivities.ResharersCount);
                         gplusFeedRepo.Update<Domain.Socioboard.MongoDomain.GoogleplusFeed>(update, filter);
                     }
+                    new Thread(delegate(){
+                        GetGooglePlusComments(_GooglePlusActivities.ActivityId, AcessToken, ProfileId);
+                    }).Start();
 
-                    GetGooglePlusComments(_GooglePlusActivities.ActivityId, AcessToken, ProfileId);
-                    GetGooglePlusLikes(_GooglePlusActivities.ActivityId, AcessToken, ProfileId, status);
+                    new Thread(delegate()
+                    {
+                        GetGooglePlusLikes(_GooglePlusActivities.ActivityId, AcessToken, ProfileId, status);
+                    }).Start();
                 }
             }
             catch (Exception ex)
@@ -347,12 +367,27 @@ namespace Api.Socioboard.Services
         public string GetGPusData(string UserId, string ProfileId)
         {
             Domain.Socioboard.Domain.GooglePlusAccount _GooglePlusAccount = objGooglePlusAccountRepository.GetGooglePlusAccount(Guid.Parse(UserId), ProfileId);
-            GetGoogleplusCircles(UserId, ProfileId);
-            GetUserActivities(_GooglePlusAccount.UserId.ToString(), _GooglePlusAccount.GpUserId, _GooglePlusAccount.AccessToken,0);
+            //oAuthToken objToken = new oAuthToken();
+            oAuthTokenGPlus objToken = new oAuthTokenGPlus();
+            string finalToken=string.Empty;
+            string finaltoken = objToken.GetAccessToken(_GooglePlusAccount.RefreshToken);
+                try
+                {
+                    JObject objArray = JObject.Parse(finaltoken);
+                    finalToken = objArray["access_token"].ToString();
+                    GetGoogleplusCircles(UserId, ProfileId, finalToken);
+                    GetUserActivities(_GooglePlusAccount.UserId.ToString(), _GooglePlusAccount.GpUserId, finalToken, 0);
+                    // break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+               
             return "Gplus Account Updated Successfully";
         }
 
-        public void GetGoogleplusCircles(string UserId, string ProfileId)
+        public void GetGoogleplusCircles(string UserId, string ProfileId,string access_token)
         {
             try
             {
@@ -363,7 +398,7 @@ namespace Api.Socioboard.Services
                 #region Get_InYourCircles
                 try
                 {
-                    string _InyourCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleList.Replace("[userId]", _GooglePlusAccount.GpUserId).Replace("[collection]", "visible") + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), _GooglePlusAccount.AccessToken);
+                    string _InyourCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleList.Replace("[userId]", _GooglePlusAccount.GpUserId).Replace("[collection]", "visible") + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), access_token);
                     JObject J_InyourCircles = JObject.Parse(_InyourCircles);
                     _GooglePlusAccount.InYourCircles = Convert.ToInt32(J_InyourCircles["totalItems"].ToString());
                 }
@@ -376,7 +411,7 @@ namespace Api.Socioboard.Services
                 #region Get_HaveYouInCircles
                 try
                 {
-                    string _HaveYouInCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleProfile + _GooglePlusAccount.GpUserId + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), _GooglePlusAccount.AccessToken);
+                    string _HaveYouInCircles = ObjoAuthTokenGPlus.APIWebRequestToGetUserInfo(Globals.strGetPeopleProfile + _GooglePlusAccount.GpUserId + "?key=" + ConfigurationManager.AppSettings["Api_Key"].ToString(), access_token);
                     JObject J_HaveYouInCircles = JObject.Parse(_HaveYouInCircles);
                     _GooglePlusAccount.HaveYouInCircles = Convert.ToInt32(J_HaveYouInCircles["circledByCount"].ToString());
                 }

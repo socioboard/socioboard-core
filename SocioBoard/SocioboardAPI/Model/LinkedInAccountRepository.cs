@@ -6,7 +6,7 @@ using Domain.Socioboard.Domain;
 using System.Collections;
 using Api.Socioboard.Helper;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class LinkedInAccountRepository : ILinkedInAccountRepository
     {
@@ -256,6 +256,23 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+        public List<Domain.Socioboard.Domain.LinkedInAccount> GetAllLinkedinAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.LinkedInAccount> lstLinkedInAccount = session.CreateQuery("from LinkedInAccount").List<Domain.Socioboard.Domain.LinkedInAccount>().ToList();
+                    return lstLinkedInAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<LinkedInAccount>();
+                }
+            }
+        }
+
         /// <getLinkedinAccountDetailsById>
         /// Get linkedin account details by id
         /// </summary>

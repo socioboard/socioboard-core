@@ -10,7 +10,9 @@ namespace Domain.Socioboard.Domain
         public Guid Id { get; set; }
         public Guid GroupOwnerId{get;set;}
         public string ProfileType { get; set; }
+        public string ProfileName { get; set; }
         public string ProfileId { get; set; }
+        public string ProfilePic { get; set; }
         public Guid GroupId { get; set; }
         public DateTime EntryDate { get; set; }
     }

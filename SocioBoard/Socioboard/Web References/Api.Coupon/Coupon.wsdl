@@ -337,16 +337,16 @@
   </wsdl:binding>
   <wsdl:service name="Coupon">
     <wsdl:port name="CouponSoap" binding="tns:CouponSoap">
-      <soap:address location="http://localhost:6361/services/Coupon.asmx" />
+      <soap:address location="http://localhost:6361/Services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponSoap12" binding="tns:CouponSoap12">
-      <soap12:address location="http://localhost:6361/services/Coupon.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponHttpGet" binding="tns:CouponHttpGet">
-      <http:address location="http://localhost:6361/services/Coupon.asmx" />
+      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponHttpPost" binding="tns:CouponHttpPost">
-      <http:address location="http://localhost:6361/services/Coupon.asmx" />
+      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

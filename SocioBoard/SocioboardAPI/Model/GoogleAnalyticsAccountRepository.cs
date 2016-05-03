@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections;
-using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
-
-namespace SocioBoard.Model
+using NHibernate.Linq;
+namespace Api.Socioboard.Services
 {
-    public class GoogleAnalyticsAccountRepository :IGoogleAnalyticsAccountRepository
+    public class GoogleAnalyticsAccountRepository
     {
 
         /// <addGoogleAnalyticsUser>
         /// Add New Google Analytics User
         /// </summary>
         /// <param name="gaaccount">Set Values in a GoogleAnalyticsAccount Class Property and Pass the same Object of GoogleAnalyticsAccount Class.(Domain.GoogleAnalyticsAccount)</param>
-        public void addGoogleAnalyticsUser(GoogleAnalyticsAccount gaaccount)
+        public void Add(Domain.Socioboard.Domain.GoogleAnalyticsAccount _GoogleAnalyticsAccount)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -24,7 +23,7 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to save data.
-                    session.Save(gaaccount);
+                    session.Save(_GoogleAnalyticsAccount);
                     transaction.Commit();
                 }//End Transaction
             }//End Session
@@ -37,7 +36,7 @@ namespace SocioBoard.Model
         /// <param name="gauserid">Id of the google account.(String)</param>
         /// <param name="userid">Id of the user.(Guid)</param>
         /// <returns>Return int value when successfullt deleted it's return 1 , otherwise return 0</returns>
-        public int deleteGoogelAnalyticsUser(string gauserid, Guid userid)
+        public int deleteGoogelAnalyticsUser(string Profileid, Guid userid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -48,8 +47,8 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to delete user account.
-                        NHibernate.IQuery query = session.CreateQuery("delete from GoogleAnalyticsAccount where GaAccountId = :gauserid and UserId = :userid")
-                                        .SetParameter("gauserid", gauserid)
+                        NHibernate.IQuery query = session.CreateQuery("delete from GoogleAnalyticsAccount where GaProfileId = :gauserid and UserId = :userid")
+                                        .SetParameter("gauserid", Profileid)
                                         .SetParameter("userid", userid);
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
@@ -69,7 +68,7 @@ namespace SocioBoard.Model
         /// update Googel Analytics User Details
         /// </summary>
         /// <param name="gaaccount">Set Values in a GoogleAnalyticsAccount Class Property and Pass the same Object of GoogleAnalyticsAccount Class.(Domain.GoogleAnalyticsAccount)</param>
-        public void updateGoogelAnalyticsUser(GoogleAnalyticsAccount gaaccount)
+        public void updateGoogelAnalyticsUser(string ProfileId, double visit, double pageView, double twtMention, double articleAndBlog)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -80,19 +79,12 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to update google account deatils.
-                        session.CreateQuery("Update GoogleAnalyticsAccount set GaAccountName =:gausername,GaProfileId=:gaprofileid,GaProfileName=:gaprofilename,AccessToken =:access,RefreshToken=:refreshtoken,EmailId=:emailid,IsActive=:status where GaAccountId = :gauserid and UserId = :userid")
-                            .SetParameter("gausername", gaaccount.GaAccountName)
-                            .SetParameter("gaprofilename",gaaccount.GaProfileName)
-                            .SetParameter("gaprofileid",gaaccount.GaProfileId)
-                            .SetParameter("access", gaaccount.AccessToken)
-                            .SetParameter("refreshtoken",gaaccount.RefreshToken)
-                            //.SetParameter("visits", gaaccount.Visits)
-                            //.SetParameter("newvisits", gaaccount.NewVisits)
-                            //.SetParameter("avgvisits", gaaccount.AvgVisits)
-                            .SetParameter("emailid", gaaccount.EmailId)
-                            .SetParameter("gauserid", gaaccount.GaAccountId)
-                            .SetParameter("userid", gaaccount.UserId)
-                            .SetParameter("status", gaaccount.IsActive)
+                        session.CreateQuery("Update GoogleAnalyticsAccount set Visits =: Visits, Views=: Views, TwitterPosts =: TwitterPosts, WebMentions =: WebMentions where GaProfileId=:gaprofileid")
+                            .SetParameter("gaprofileid", ProfileId)
+                            .SetParameter("Visits", visit)
+                            .SetParameter("Views", pageView)
+                            .SetParameter("TwitterPosts", twtMention)
+                            .SetParameter("WebMentions", articleAndBlog)
                             .ExecuteUpdate();
                         transaction.Commit();
 
@@ -113,26 +105,16 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="UserId">Id of user (Guid)</param>
         /// <returns>Return all google accounts details of related user.(ArrayList) </returns>
-        public ArrayList getGoogelAnalyticsAccountsOfUser(Guid UserId)
+        public List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> getGoogelAnalyticsAccountsByUser(Guid UserId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    //Proceed action, to get deatils.
-                    NHibernate.IQuery query = session.CreateSQLQuery("Select distinct GaAccountId,GaAccountName from GoogleAnalyticsAccount where UserId = :userid");
-                    query.SetParameter("userid", UserId);
-                    ArrayList alstFBAccounts = new ArrayList();
-                    
-                    foreach (var item in query.List())
-                    {
-                        alstFBAccounts.Add(item);
-                    }
-                    return alstFBAccounts;
+                //Proceed action, to get deatils.
+                List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> lstGoogleAnalyticsAccount = session.CreateQuery("from GoogleAnalyticsAccount where UserId = :userid")
+                    .SetParameter("userid", UserId).List<Domain.Socioboard.Domain.GoogleAnalyticsAccount>().ToList();
+                return lstGoogleAnalyticsAccount;
 
-                }//End Transaction
             }//End Session
         }
 
@@ -204,25 +186,14 @@ namespace SocioBoard.Model
         /// Get All Details of Google Analytics Accounts
         /// </summary>
         /// <returns>List of array(Arraylist)</returns>
-        public ArrayList getAllGoogleAnalyticsAccounts()
+        public List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> getAllGoogleAnalyticsAccounts()
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    //Proceed action, to get all google account details.
-                    NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount");
-                    ArrayList alstFBAccounts = new ArrayList();
-
-                    foreach (var item in query.Enumerable())
-                    {
-                        alstFBAccounts.Add(item);
-                    }
-                    return alstFBAccounts;
-
-                }//End transaction
+                //Proceed action, to get all google account details.
+                List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> lstGoogleAnalyticsAccount = session.Query<Domain.Socioboard.Domain.GoogleAnalyticsAccount>().GroupBy(t => t.GaProfileId).Select(g=>g.First()).ToList();
+                return lstGoogleAnalyticsAccount;
             }//End Session
         }
 
@@ -233,21 +204,18 @@ namespace SocioBoard.Model
         /// <param name="gauserid">Id of goole accont(String)</param>
         /// <param name="userId">Id of user(Guid)</param>
         /// <returns>Return object of Google analytic class.(Domein.GoogleAnalyticsAccount)</returns>
-        public GoogleAnalyticsAccount getGoogelAnalyticsAccountDetailsById(string gauserid, Guid userId)
+        public Domain.Socioboard.Domain.GoogleAnalyticsAccount getGoogleAnalyticsAccountDetailsById(string gauserid, Guid userId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    //Proceed action, to get deatils of account
-                    NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where GaProfileId = :GaAccountId and UserId=:userId");
-                    query.SetParameter("GaAccountId", gauserid);
-                    query.SetParameter("userId", userId);
-                    GoogleAnalyticsAccount result = (GoogleAnalyticsAccount)query.UniqueResult();
-                    return result;
-                }//End Trnsaction
+                //Proceed action, to get deatils of account
+                NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where GaProfileId = :GaAccountId and UserId=:userId")
+                .SetParameter("GaAccountId", gauserid)
+                .SetParameter("userId", userId);
+                Domain.Socioboard.Domain.GoogleAnalyticsAccount result = (Domain.Socioboard.Domain.GoogleAnalyticsAccount)query.UniqueResult();
+                return result;
+
             }//End Session
         }
 
@@ -328,7 +296,7 @@ namespace SocioBoard.Model
         /// <param name="gaUserId">Id of google account(string)</param>
         /// <param name="Userid">Id of user (Guid)</param>
         /// <returns>Google account is exist for a user its returns tru otherwise False(Bool)</returns>
-        public bool checkGoogelAnalyticsUserExists(string gaUserId, Guid Userid)
+        public bool checkGoogelAnalyticsUserExists(string gaProfileId, string gaAccount, Guid Userid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -339,11 +307,11 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to to get account by user id and google account id.
-                        NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where UserId = :userid and GaAccountId = :gaUserId");
+                        NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where UserId = :userid and GaAccountId = :gaUserId and GaProfileId =: gaProfileId");
                         query.SetParameter("userid", Userid);
-                        query.SetParameter("gaUserId", gaUserId);
+                        query.SetParameter("gaUserId", gaAccount);
+                        query.SetParameter("gaProfileId", gaProfileId);
                         var result = query.UniqueResult();
-
                         if (result == null)
                             return false;
                         else
@@ -367,7 +335,7 @@ namespace SocioBoard.Model
         /// <param name="gaProfileId">Id of Google profile id(String)</param>
         /// <param name="Userid">Id of user (Guid)</param>
         /// <returns>If the propfile is exist its returns True or otherwise it retuns False(True or False)</returns>
-        public bool checkGoogelAnalyticsProfileExists(string gaUserId,string gaProfileId, Guid Userid)
+        public bool checkGoogelAnalyticsProfileExists(string gaUserId, string gaProfileId, Guid Userid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -380,7 +348,7 @@ namespace SocioBoard.Model
                         NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where UserId = :userid and GaAccountId = :gaUserId and GaProfileId=:gaProfileId");
                         query.SetParameter("userid", Userid);
                         query.SetParameter("gaUserId", gaUserId);
-                        query.SetParameter("gaProfileId",gaProfileId);
+                        query.SetParameter("gaProfileId", gaProfileId);
                         var result = query.UniqueResult();
 
                         if (result == null)
@@ -404,7 +372,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="gaUserId">Id of google account(String)</param>
         /// <returns>Return object of Google analytic class.(Domein.GoogleAnalyticsAccount)</returns>
-        public GoogleAnalyticsAccount getUserDetails(string gaUserId)
+        public Domain.Socioboard.Domain.GoogleAnalyticsAccount getUserDetails(string gaUserId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -418,15 +386,15 @@ namespace SocioBoard.Model
                         NHibernate.IQuery query = session.CreateQuery("from GoogleAnalyticsAccount where GaAccountId = :gaUserId");
 
                         query.SetParameter("gaUserId", gaUserId);
-                        List<GoogleAnalyticsAccount> lst = new List<GoogleAnalyticsAccount>();
+                        List<Domain.Socioboard.Domain.GoogleAnalyticsAccount> lst = new List<Domain.Socioboard.Domain.GoogleAnalyticsAccount>();
 
-                        foreach (GoogleAnalyticsAccount item in query.Enumerable())
+                        foreach (Domain.Socioboard.Domain.GoogleAnalyticsAccount item in query.Enumerable())
                         {
 
                             lst.Add(item);
                             break;
                         }
-                        GoogleAnalyticsAccount fbacc = lst[0];
+                        Domain.Socioboard.Domain.GoogleAnalyticsAccount fbacc = lst[0];
                         return fbacc;
                     }
                     catch (Exception ex)
@@ -446,15 +414,12 @@ namespace SocioBoard.Model
         /// <returns>Return 1 for successfully deleted Or 0 for not deleted.(Int)</returns>
         public int DeleteGoogleAnalyticsAccountByUserid(Guid userid)
         {
-            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction.
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
-                        //Proceed action, to delete account
                         NHibernate.IQuery query = session.CreateQuery("delete from GoogleAnalyticsAccount where UserId = :userid")
                                         .SetParameter("userid", userid);
                         int isUpdated = query.ExecuteUpdate();
@@ -463,13 +428,63 @@ namespace SocioBoard.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
                         return 0;
                     }
-                }//End transaction
-            }//End Session
+                }
+            }
         }
 
+        public void AddGoogleAnalyticsReport(Domain.Socioboard.Domain.GoogleAnalyticsReport _GoogleAnalyticsReport)
+        { 
+         //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                bool exist = session.Query<Domain.Socioboard.Domain.GoogleAnalyticsReport>().Any(t => t.GaProfileId == _GoogleAnalyticsReport.GaProfileId);
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    if (!exist)
+                    {
+                        session.Save(_GoogleAnalyticsReport);
+                        transaction.Commit();
+                    }
+                    else 
+                    {
+                        try
+                        {
+                            session.CreateQuery("Update GoogleAnalyticsReport set Visits=:Visits, Views=:Views,TwitterMention=:TwitterMention, Article_Blogs =: Article_Blogs where GaProfileId =: GaProfileId")
+                                                    .SetParameter("Visits", _GoogleAnalyticsReport.Visits)
+                                                    .SetParameter("Views", _GoogleAnalyticsReport.Views)
+                                                    .SetParameter("GaProfileId", _GoogleAnalyticsReport.GaProfileId)
+                                                    .SetParameter("TwitterMention", _GoogleAnalyticsReport.TwitterMention)
+                                                    .SetParameter("Article_Blogs", _GoogleAnalyticsReport.Article_Blogs)
+                                                    .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                    }
+                }
+            }
+        
+        }
 
+        public Domain.Socioboard.Domain.GoogleAnalyticsReport GetGoogleAnalyticsReport(string ProfileId)
+        {
+            Domain.Socioboard.Domain.GoogleAnalyticsReport _GoogleAnalyticsReport;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    _GoogleAnalyticsReport = session.Query<Domain.Socioboard.Domain.GoogleAnalyticsReport>().Where(t => t.GaProfileId == ProfileId).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    _GoogleAnalyticsReport = new Domain.Socioboard.Domain.GoogleAnalyticsReport();
+                }
+            }
+            return _GoogleAnalyticsReport;
+        }
     }
 }

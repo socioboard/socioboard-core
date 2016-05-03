@@ -53,7 +53,7 @@ namespace GlobusTwitterLib.Twitter.Core.SearchMethods
         }
 
 
-        #endregion 
+        #endregion
 
         #endregion
 
@@ -69,8 +69,8 @@ namespace GlobusTwitterLib.Twitter.Core.SearchMethods
         public XmlDocument SearchMethod(oAuthTwitter OAuth, string SearchKey, string pageindex)
         {
             TwitterWebRequest twtWebReq = new TwitterWebRequest();
-            string RequestUrl = Globals.SearchUrl + SearchKey + "&page=" + pageindex; 
-            string response = OAuth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl,string.Empty);
+            string RequestUrl = Globals.SearchUrl + SearchKey + "&page=" + pageindex;
+            string response = OAuth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, string.Empty);
             xmlResult.Load(new StringReader(response));
             return xmlResult;
         }
@@ -117,11 +117,29 @@ namespace GlobusTwitterLib.Twitter.Core.SearchMethods
             string RequestUrl = Globals.GetSearchTweetsUrl;
             SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
             strdic.Add("q", SearchKeyword);
-            strdic.Add("count","20");
+            strdic.Add("count", "20");
             string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, strdic);
             if (!response.StartsWith("["))
                 response = "[" + response + "]";
             return JArray.Parse(response);
+        }
+        #endregion
+
+
+        #region Get_Search_Tweets_geolocation
+
+        public JArray Get_Search_Tweets(oAuthTwitter oAuth, string SearchKeyword, string geoCode)
+        {
+            string RequestUrl = Globals.GetSearchTweetsUrl;
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            strdic.Add("q", SearchKeyword);
+            strdic.Add("geocode",geoCode);
+            strdic.Add("count", "20");
+            string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, strdic);
+            if (!response.StartsWith("["))
+                response = "[" + response + "]";
+            return JArray.Parse(response);
+          
         }
         #endregion
     }

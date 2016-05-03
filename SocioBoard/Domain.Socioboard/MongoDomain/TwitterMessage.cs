@@ -27,6 +27,8 @@ namespace Domain.Socioboard.MongoDomain
         public string FromScreenName { get; set; }
         public int ReadStatus { get; set; }
         public int IsArchived { get; set; }
+        public double Positive { get; set; }
+        public double Negative { get; set; }
 
         public string ProfileType
         {

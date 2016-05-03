@@ -335,6 +335,31 @@ namespace Api.Socioboard.Services
 
         }
 
+        public int DeleteDraftByGroupId(Guid groupId)
+        { 
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from Drafts where GroupId = :GroupId")
+                                                       .SetParameter("GroupId", groupId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+
+                }
+            }
+        }
+
     }
 
 

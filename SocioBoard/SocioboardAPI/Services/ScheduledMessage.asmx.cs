@@ -516,8 +516,10 @@ namespace Api.Socioboard.Services
                 Guid userid = Guid.Parse(UserId);
                 Guid groupid = Guid.Parse(GroupId);
                 List<Domain.Socioboard.Domain.ScheduledMessage> lstfianlscoailqueue = new List<Domain.Socioboard.Domain.ScheduledMessage>();
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(groupid);
-                List<Domain.Socioboard.Domain.TeamMemberProfile> allprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(objTeam.Id);
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(groupid);
+                //List<Domain.Socioboard.Domain.TeamMemberProfile> allprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(objTeam.Id);
+                 GroupProfileRepository grpProfileRepo = new GroupProfileRepository();
+                 List<Domain.Socioboard.Domain.GroupProfile> allprofiles = grpProfileRepo.GetAllGroupProfiles(groupid);
                 ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
                 List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessages = new List<Domain.Socioboard.Domain.ScheduledMessage>();
                 Dictionary<string, List<Domain.Socioboard.Domain.ScheduledMessage>> objdic = new Dictionary<string, List<Domain.Socioboard.Domain.ScheduledMessage>>();
@@ -593,7 +595,7 @@ namespace Api.Socioboard.Services
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
     
-        public string AddAllScheduledMessage(string typeandid, string ShareMessage, string ClientTime, string scheduleddate, string scheduletime, string UserId, string PicUrl)
+        public string AddAllScheduledMessage(string typeandid, string ShareMessage, string ClientTime, string scheduleddate, string scheduletime, string UserId, string PicUrl, string url)
         {
             string[] datearr = scheduleddate.Split(',');
             foreach (var date in datearr)
@@ -617,6 +619,7 @@ namespace Api.Socioboard.Services
                     objScheduledMessage.ShareMessage = ShareMessage;
                     objScheduledMessage.UserId = Guid.Parse(UserId);
                     objScheduledMessage.Status = false;
+                    objScheduledMessage.Url = url;
                     if (!objScheduledMessageRepository.checkMessageExistsAtTime(objScheduledMessage.UserId, objScheduledMessage.ShareMessage, objScheduledMessage.ScheduleTime, objScheduledMessage.ProfileId))
                     {
                         objScheduledMessageRepository.addNewMessage(objScheduledMessage);
@@ -760,6 +763,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllScheduledDetails()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             List<Domain.Socioboard.Helper.ScheduledTracker> _AllScheduledMessage = new List<Domain.Socioboard.Helper.ScheduledTracker>();
             try
             {
@@ -769,9 +774,8 @@ namespace Api.Socioboard.Services
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
-            return new JavaScriptSerializer().Serialize(_AllScheduledMessage);
+            return serializer.Serialize(_AllScheduledMessage);
         }
 
         [WebMethod]
@@ -819,5 +823,61 @@ namespace Api.Socioboard.Services
         }
 
 
+
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetSociaoQueueMessageByUserIdAndGroupIdBetweenDates(string UserId, string GroupId, string StartDate, string EndDate)
+        {
+            string profileid = string.Empty;
+            DateTime stDate = DateTime.Parse(StartDate);
+            DateTime endDate = DateTime.Parse(EndDate);
+           // TeamRepository objTeamRepository = new TeamRepository();
+            try
+            {
+                Guid userid = Guid.Parse(UserId);
+                Guid groupid = Guid.Parse(GroupId);
+                List<Domain.Socioboard.Domain.ScheduledMessage> lstfianlscoailqueue = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+
+
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(groupid);
+                //List<Domain.Socioboard.Domain.TeamMemberProfile> allprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(objTeam.Id);
+                GroupProfileRepository grpProfileRepo = new GroupProfileRepository();
+                List<Domain.Socioboard.Domain.GroupProfile> allprofiles = new List<Domain.Socioboard.Domain.GroupProfile>();
+                allprofiles = grpProfileRepo.GetAllGroupProfiles(groupid);
+                
+
+                ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+                List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessages = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+                Dictionary<string, List<Domain.Socioboard.Domain.ScheduledMessage>> objdic = new Dictionary<string, List<Domain.Socioboard.Domain.ScheduledMessage>>();
+                foreach (var item in allprofiles)
+                {
+                    lstScheduledMessages = objScheduledMessageRepository.getAllMessagesDetailsByDate(item.ProfileId, userid,stDate,endDate);
+                    if (lstScheduledMessages.Count > 0)
+                    {
+                        objdic.Add(item.ProfileId, lstScheduledMessages);
+                    }
+
+                }
+                foreach (var item in objdic)
+                {
+                    foreach (var ScheduledMessage in item.Value)
+                    {
+                        lstfianlscoailqueue.Add(ScheduledMessage);
+                    }
+                }
+                //FacebookAccountRepository facebookAccountRepo = new FacebookAccountRepository();
+                // FacebookAccount facebook = facebookAccountRepo.getFacebookAccountDetailsById(FacebookId, userid);
+                return new JavaScriptSerializer().Serialize(lstfianlscoailqueue);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Please try Again");
+            }
+
+        }
     }
 }

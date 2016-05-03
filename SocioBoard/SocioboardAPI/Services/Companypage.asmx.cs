@@ -327,7 +327,7 @@ namespace Api.Socioboard.Services
             //GlobusHttpHelper HttpHelper = fbUser.globusHttpHelper;
 
             //ScraperHasTage(ref fbUser, HashTag, BoardfbPageId);
-        //    ScraperHasTage(HashTag, BoardfbPageId);
+            //    ScraperHasTage(HashTag, BoardfbPageId);
 
             return "";
 
@@ -373,7 +373,7 @@ namespace Api.Socioboard.Services
             //GlobusHttpHelper HttpHelper = fbUser.globusHttpHelper;
 
             //ScraperHasTage(ref fbUser, HashTag, BoardfbPageId);
-          //  ScraperHasTageNongo(HashTag, BoardfbPageId);
+            //  ScraperHasTageNongo(HashTag, BoardfbPageId);
 
             return "";
 
@@ -427,7 +427,7 @@ namespace Api.Socioboard.Services
         public string getFacebookPage(string PageId)
         {
             //string accesstoken = getfacebookActiveAceessTokenFromDb();
-            string pageUrl = "http://graph.facebook.com/"+ PageId.ToString();
+            string pageUrl = "http://graph.facebook.com/" + PageId.ToString();
             var fbpage = (HttpWebRequest)WebRequest.Create(pageUrl);
             fbpage.Method = "GET";
             string Outputpage = string.Empty;
@@ -579,7 +579,7 @@ namespace Api.Socioboard.Services
         public string Twitterapponlykey()
         {
             string retvalu = string.Empty;
-           // var oauth_consumer_key = "yNt3tISGJji5poVSgSO1Og";
+            // var oauth_consumer_key = "yNt3tISGJji5poVSgSO1Og";
             //var oauth_consumer_secret = "BvJQlpnjBxN7rtiGF6fIbcGlTgmRac8O3cOamwmr8X4";
             //var oauth_consumer_key = "TiECZTnrqkQe512mcL15fYqMR";
             //var oauth_consumer_secret = "zk3t6YPUi6JBXd4b2mwhBhtCbZI06uYunAZydoc3i3NCs2iHMc";
@@ -807,7 +807,7 @@ namespace Api.Socioboard.Services
 
             return output.ToString();
         }
-      
+
         public string TwitterUserTimeLine(string ScreenName, string LastTweetId)
         {
             JArray output = new JArray();
@@ -936,11 +936,11 @@ namespace Api.Socioboard.Services
                 {
                     oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=mixed&count=95&max_id=" + MaxTweetId.ToString();
                 }
-                else 
+                else
                 {
                     oauth_url = " https://api.twitter.com/1.1/search/tweets.json?q=%23" + Hashtag.TrimStart() + "&result_type=mixed";
                 }
-              
+
                 var headerFormat = "Bearer {0}";
                 var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAEB7gwAAAAAA2Jk7qBC%2BWVA5tHGEoNn2Z9bayGU%3DNn0MsaxfRaMIsZ0b5UeHymBwl61Sc9TjBR0FokROqonw5a1t3F");
 
@@ -1285,9 +1285,9 @@ namespace Api.Socioboard.Services
         public string getInstagramUserPreviousFeeds(string UserId, string MaxId, string AccessToken)
         {
             string InstagramUrl = string.Empty;
-            if (!string.IsNullOrEmpty(MaxId)) 
+            if (!string.IsNullOrEmpty(MaxId))
             {
-                InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?access_token=" + AccessToken + "&MAX_ID="+ MaxId;
+                InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?access_token=" + AccessToken + "&MAX_ID=" + MaxId;
             }
             var Instagramlistpagerequest = (HttpWebRequest)WebRequest.Create(InstagramUrl);
             Instagramlistpagerequest.Method = "GET";
@@ -1309,7 +1309,7 @@ namespace Api.Socioboard.Services
             catch (Exception e) { }
             return outputface;
         }
-      
+
         public string getInstagramUserRecentActivities(string UserId)
         {
             string InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?client_id=" + ConfigurationManager.AppSettings["InstagramClientKey"];
@@ -1400,7 +1400,7 @@ namespace Api.Socioboard.Services
             {
                 instagrmHastagSearchURL = "https://api.instagram.com/v1/tags/" + TagName.TrimStart() + "/media/recent?access_token=" + accesstoken + "COUNT=95&MaxId=" + MaxId;
             }
-            else 
+            else
             {
                 instagrmHastagSearchURL = "https://api.instagram.com/v1/tags/" + TagName.TrimStart() + "/media/recent?access_token=" + accesstoken + "&COUNT=95";
             }
@@ -2166,7 +2166,7 @@ namespace Api.Socioboard.Services
         }
 
         #endregion
-        
+
 
     }
 }

@@ -16,7 +16,7 @@ using GlobusInstagramLib.App.Core;
 using log4net;
 using System.Collections;
 using GlobusInstagramLib.Instagram.Core.CommentsMethods;
-using Microsoft.Security.Application;
+//using Microsoft.Security.Application;
 using System.Net;
 using NHibernate.Linq;
 using System.IO;
@@ -24,7 +24,6 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Api.Socioboard.Model;
 using System.Threading.Tasks;
-using MongoDB.Driver.Builders;
 using GlobusInstagramLib.Instagram.Core.RelationshipMethods;
 
 //using System.Text;
@@ -55,6 +54,10 @@ namespace Api.Socioboard.Services
         Domain.Socioboard.MongoDomain.InstagramFeed objInstagramFeed = new Domain.Socioboard.MongoDomain.InstagramFeed();
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
+        private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
+
+
+
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -78,11 +81,11 @@ namespace Api.Socioboard.Services
             GetInstagramPostComments(objInstagramAccount.InstagramId, objInstagramAccount.AccessToken);
             //GetInstagramUserPosts(objInstagramAccount.InstagramId, objInstagramAccount.AccessToken);
             #region UpdateTeammemberprofile
-            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-            objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
-            objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
-            objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
-            objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+            //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+            //objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
+            //objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
+            //objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
+            //objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
             #endregion
             return "Instagram Info is Updated successfully";
         }
@@ -130,7 +133,7 @@ namespace Api.Socioboard.Services
                     logger.Error(e.StackTrace);
                 }
             }
-            return new JavaScriptSerializer().Serialize(accounts);
+            return new JavaScriptSerializer().Serialize(accounts);  
         }
 
 
@@ -160,12 +163,13 @@ namespace Api.Socioboard.Services
             AccessToken access = new AccessToken();
             access = _api.AuthGetAccessToken(code);
 
-            logger.Error("AddInstagramAccount == >>" + access.user.id + "===" + access.access_token);
+            
 
 
             UserController objusercontroller = new UserController();
             try
             {
+                logger.Error("AddInstagramAccount == >>" + access.access_token);
                 #region InstagramAccount
                 InstagramResponse<GlobusInstagramLib.App.Core.User> objuser = objusercontroller.GetUserDetails(access.user.id, access.access_token);
 
@@ -220,20 +224,35 @@ namespace Api.Socioboard.Services
                 {
                     objInstagramAccountRepository.addInstagramUser(objInstagramAccount);
                     #region Add TeamMemberProfile
-                    Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                    objTeamMemberProfile.Id = Guid.NewGuid();
-                    objTeamMemberProfile.TeamId = objTeam.Id;
-                    objTeamMemberProfile.Status = 1;
-                    objTeamMemberProfile.ProfileType = "instagram";
-                    objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                    objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
+                    //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    //objTeamMemberProfile.Id = Guid.NewGuid();
+                    //objTeamMemberProfile.TeamId = objTeam.Id;
+                    //objTeamMemberProfile.Status = 1;
+                    //objTeamMemberProfile.ProfileType = "instagram";
+                    //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                    //objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
 
-                    //Modified [13-02-15]
-                    objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
-                    objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
+                    ////Modified [13-02-15]
+                    //objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
+                    //objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
 
-                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    //objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+
+                    Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+                    grpProfile.Id = Guid.NewGuid();
+                    grpProfile.EntryDate = DateTime.UtcNow;
+                    grpProfile.GroupId = Guid.Parse(GroupId);
+                    grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                    grpProfile.ProfileId = objInstagramAccount.InstagramId;
+                    grpProfile.ProfileType = "instagram";
+                    grpProfile.ProfileName = objInstagramAccount.InsUserName;
+                    grpProfile.ProfilePic = objInstagramAccount.ProfileUrl;
+                    grpProfileRepo.AddGroupProfile(grpProfile);
+
+
+
+
                     #endregion
                     #region SocialProfile
                     Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
@@ -590,15 +609,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllInstagramAccounts()
         {
+            JavaScriptSerializer serializer=new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
-                ArrayList lstLiAcc = objInstagramAccountRepository.getAllInstagramAccounts();
-                return new JavaScriptSerializer().Serialize(lstLiAcc);
+                List<Domain.Socioboard.Domain.InstagramAccount> lstLiAcc = objInstagramAccountRepository.GetAllInstagramAccounts();
+                return serializer.Serialize(lstLiAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.InstagramAccount>());
             }
         }
 
@@ -957,7 +978,7 @@ namespace Api.Socioboard.Services
                             }
 
                             send_data.Id = Id;
-
+                            send_data.User_name = user_name;
                             send_data.ProfileId = profile_id;
                             send_data.FeedId = feed_id;
                             send_data.Accesstoken = access_token;
@@ -1044,6 +1065,7 @@ namespace Api.Socioboard.Services
                                             }
                                         }
                                         send_data.Id = Id;
+                                        send_data.User_name = user_name;
                                         send_data.ProfileId = profile_id;
                                         send_data.FeedId = feed_id;
                                         send_data.Accesstoken = access_token;
@@ -1076,7 +1098,182 @@ namespace Api.Socioboard.Services
             return code_status;
         }
 
+        public void GetInstagramSelfFeeds(string instagramId, string accessToken)
+        {
+            MongoRepository instagarmCommentRepo = new MongoRepository("InstagramComment");
+            MongoRepository instagramFeedRepo = new MongoRepository("InstagramFeed");
+            try
+            {
+                GlobusInstagramLib.Instagram.Core.UsersMethods.Users userInstagram = new GlobusInstagramLib.Instagram.Core.UsersMethods.Users();
+                GlobusInstagramLib.Instagram.Core.MediaMethods.Media _Media = new GlobusInstagramLib.Instagram.Core.MediaMethods.Media();
+                InstagramResponse<Comment[]> usercmts = new InstagramResponse<Comment[]>();
+                CommentController objComment = new CommentController();
+                LikesController objLikes = new LikesController();
+                string feeds = _Media.UserResentFeeds(instagramId, accessToken);
+                if (feeds != null)
+                {
+                    JObject feed_data = JObject.Parse(feeds);
 
+                    foreach (var item in feed_data["data"])
+                    {
+                        try
+                        {
+                            Domain.Socioboard.MongoDomain.InstagramFeed objInstagramFeed = new Domain.Socioboard.MongoDomain.InstagramFeed();
+                            try
+                            {
+                                objInstagramFeed.FeedDate = item["created_time"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.FeedId = item["id"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.Type = item["type"].ToString();
+                                if (objInstagramFeed.Type == "video")
+                                {
+                                    objInstagramFeed.VideoUrl = item["videos"]["standard_resolution"]["url"].ToString();
+                                }
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.FeedImageUrl = item["images"]["standard_resolution"]["url"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.InstagramId = instagramId;
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.LikeCount = Int32.Parse(item["likes"]["count"].ToString());
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.CommentCount = Int32.Parse(item["comments"]["count"].ToString());
+                            }
+                            catch { }
+                            try
+                            {
+                                string str = item["user_has_liked"].ToString();
+                                if (str.ToLower() == "false")
+                                {
+                                    objInstagramFeed.IsLike = 0;
+                                }
+                                else { objInstagramFeed.IsLike = 1; }
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.AdminUser = item["user"]["username"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.Feed = item["caption"]["text"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.ImageUrl = item["user"]["profile_picture"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.FromId = item["user"]["id"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                objInstagramFeed.FeedUrl = item["link"].ToString();
+                            }
+                            catch { }
+
+                            var ret = instagramFeedRepo.Find<Domain.Socioboard.MongoDomain.InstagramFeed>(t => t.FeedId.Equals(objInstagramFeed.FeedId) && t.InstagramId.Equals(objInstagramFeed.InstagramId));
+                            var task = Task.Run(async () =>
+                            {
+                                return await ret;
+                            });
+                            int count = task.Result.Count;
+
+                            if (count < 1)
+                            {
+                                instagramFeedRepo.Add(objInstagramFeed);
+                            }
+                            else
+                            {
+                                FilterDefinition<BsonDocument> filter = new BsonDocument("FeedId", objInstagramFeed.FeedId);
+                                var update = Builders<BsonDocument>.Update.Set("IsLike", objInstagramFeed.IsLike).Set("CommentCount", objInstagramFeed.CommentCount).Set("LikeCount", objInstagramFeed.LikeCount).Set("Type", objInstagramFeed.Type).Set("VideoUrl", objInstagramFeed.VideoUrl);
+                                instagramFeedRepo.Update<Domain.Socioboard.MongoDomain.InstagramFeed>(update, filter);
+                            }
+                            List<Domain.Socioboard.MongoDomain.InstagramComment> lstInstagramComment = new List<Domain.Socioboard.MongoDomain.InstagramComment>();
+                            usercmts = objComment.GetComment(objInstagramFeed.FeedId, accessToken);
+                            for (int cmt = 0; cmt < usercmts.data.Count(); cmt++)
+                            {
+                                try
+                                {
+                                    Domain.Socioboard.MongoDomain.InstagramComment objInstagramComment = new Domain.Socioboard.MongoDomain.InstagramComment();
+                                    try
+                                    {
+                                        objInstagramComment.Comment = usercmts.data[cmt].text;
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        objInstagramComment.CommentDate = usercmts.data[cmt].created_time.ToString();
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        objInstagramComment.CommentId = usercmts.data[cmt].id;
+                                    }
+                                    catch { }
+
+                                    try
+                                    {
+                                        objInstagramComment.FeedId = objInstagramFeed.FeedId;
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        objInstagramComment.InstagramId = instagramId;
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        objInstagramComment.FromName = usercmts.data[cmt].from.username;
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        objInstagramComment.FromProfilePic = usercmts.data[cmt].from.profile_picture;
+                                    }
+                                    catch { }
+
+                                    lstInstagramComment.Add(objInstagramComment);
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                            instagarmCommentRepo.AddList(lstInstagramComment);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
 
         public string ApiInstagramHttp(string url)
@@ -1370,7 +1567,7 @@ namespace Api.Socioboard.Services
                         }
 
                         send_data.Id = Id;
-
+                        send_data.User_name = user_name;
                         send_data.ProfileId = profile_id;
                         send_data.FeedId = feed_id;
                         send_data.Accesstoken = access_token;
@@ -1877,6 +2074,8 @@ namespace Api.Socioboard.Services
                             insertuserdetails(insert);
                         }
                     }
+
+
 
                     //insertuserdetails(insert);
                     code_status = "true";

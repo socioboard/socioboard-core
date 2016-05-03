@@ -30,15 +30,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllGooglePlusAccounts()
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = 2147483647;
             try
             {
-                ArrayList lstGooglePlusAcc = ObjGooglePlusAccountsRepo.getAllGooglePlusAccounts();
-                return new JavaScriptSerializer().Serialize(lstGooglePlusAcc);
+                List<Domain.Socioboard.Domain.GooglePlusAccount> lstGooglePlusAcc = ObjGooglePlusAccountsRepo.GetAllGooglePlusAccounts();
+                return serializer.Serialize(lstGooglePlusAcc);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
+                return serializer.Serialize(new List<Domain.Socioboard.Domain.GooglePlusAccount>());
             }
         }
 
@@ -106,14 +108,14 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void DeleteGplusAccount(string UserId, string ProfileId, string GroupId)
+        public void DeleteGplusAccount(string UserId, string ProfileId, string GroupId,string profiletype)
         {
             try
             {
                 ObjGooglePlusAccountsRepo.deleteGooglePlusUser(ProfileId, Guid.Parse(UserId));
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId, profiletype);
             }
             catch (Exception ex)
             {

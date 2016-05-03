@@ -853,16 +853,16 @@
   </wsdl:binding>
   <wsdl:service name="MailSender">
     <wsdl:port name="MailSenderSoap" binding="tns:MailSenderSoap">
-      <soap:address location="http://localhost:6361/services/MailSender.asmx" />
+      <soap:address location="http://localhost:6361/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderSoap12" binding="tns:MailSenderSoap12">
-      <soap12:address location="http://localhost:6361/services/MailSender.asmx" />
+      <soap12:address location="http://localhost:6361/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderHttpGet" binding="tns:MailSenderHttpGet">
-      <http:address location="http://localhost:6361/services/MailSender.asmx" />
+      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderHttpPost" binding="tns:MailSenderHttpPost">
-      <http:address location="http://localhost:6361/services/MailSender.asmx" />
+      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

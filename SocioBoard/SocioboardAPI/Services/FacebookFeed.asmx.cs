@@ -388,7 +388,7 @@ namespace Api.Socioboard.Services
             try
             {
 
-                var result = boardrepo.Find<MongoFacebookFeed>(x =>  x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(ProfileId)&&x.FeedDescription.Contains(keyword)).ConfigureAwait(false);
+                var result = boardrepo.Find<MongoFacebookFeed>(x =>  x.UserId.Equals(UserId) && x.ProfileId.Equals(ProfileId)&&x.FeedDescription.Contains(keyword)).ConfigureAwait(false);
 
                 var task = Task.Run(async () =>
                 {
@@ -428,6 +428,30 @@ namespace Api.Socioboard.Services
             }catch(Exception ex){
                 return 0;
             }
+        }
+
+        [WebMethod]
+        public string GetFacebookFeedWithSentiments(string userId, string profileId, string noOfDataToSkip, string count)
+        {
+            List<Domain.Socioboard.Domain.MongoFacebookFeed> lstDomainMongoFacebookFeed;
+            string[] arrId=profileId.Split(',');
+            MongoRepository boardrepo = new MongoRepository("MongoFacebookFeed");
+            try
+            {
+                var ret = boardrepo.Find<Domain.Socioboard.Domain.MongoFacebookFeed>(t => t.UserId.Equals(userId) && arrId.Contains(t.ProfileId));
+                var task = Task.Run(async () =>
+                {
+                    return await ret;
+
+                });
+                IList<Domain.Socioboard.Domain.MongoFacebookFeed> _lstDomainMongoFacebookFeed = task.Result;
+                lstDomainMongoFacebookFeed = _lstDomainMongoFacebookFeed.Where(t => t.Positive != 0).OrderByDescending(t => t.FeedDate).Skip(Int32.Parse(noOfDataToSkip)).Take(Int32.Parse(count)).ToList();
+            }
+            catch (Exception ex)
+            {
+                lstDomainMongoFacebookFeed = new List<MongoFacebookFeed>();
+            }
+            return new JavaScriptSerializer().Serialize(lstDomainMongoFacebookFeed);
         }
 
     }

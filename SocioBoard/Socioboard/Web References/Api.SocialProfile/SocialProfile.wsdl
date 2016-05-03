@@ -24,6 +24,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -114,6 +115,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllTwitterAndfacebookProfileOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTwitterAndfacebookProfileOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTwitterAndfacebookProfileOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -165,6 +180,12 @@
   <wsdl:message name="GetAllSocialProfilesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllSocialProfilesResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAndfacebookProfileOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAndfacebookProfileOfUserResponse" />
+  </wsdl:message>
   <wsdl:message name="AddSocialProfileHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -177,6 +198,7 @@
   <wsdl:message name="DeleteProfileByProfileIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteProfileByProfileIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -215,6 +237,12 @@
   <wsdl:message name="GetAllSocialProfilesHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserHttpGetIn">
+    <wsdl:part name="userId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="AddSocialProfileHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -227,6 +255,7 @@
   <wsdl:message name="DeleteProfileByProfileIdHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteProfileByProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -265,6 +294,12 @@
   <wsdl:message name="GetAllSocialProfilesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAndfacebookProfileOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="SocialProfileSoap">
     <wsdl:operation name="AddSocialProfile">
       <wsdl:input message="tns:AddSocialProfileSoapIn" />
@@ -297,6 +332,10 @@
     <wsdl:operation name="GetAllSocialProfiles">
       <wsdl:input message="tns:GetAllSocialProfilesSoapIn" />
       <wsdl:output message="tns:GetAllSocialProfilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <wsdl:input message="tns:GetAllTwitterAndfacebookProfileOfUserSoapIn" />
+      <wsdl:output message="tns:GetAllTwitterAndfacebookProfileOfUserSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="SocialProfileHttpGet">
@@ -332,6 +371,10 @@
       <wsdl:input message="tns:GetAllSocialProfilesHttpGetIn" />
       <wsdl:output message="tns:GetAllSocialProfilesHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <wsdl:input message="tns:GetAllTwitterAndfacebookProfileOfUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllTwitterAndfacebookProfileOfUserHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="SocialProfileHttpPost">
     <wsdl:operation name="AddSocialProfile">
@@ -365,6 +408,10 @@
     <wsdl:operation name="GetAllSocialProfiles">
       <wsdl:input message="tns:GetAllSocialProfilesHttpPostIn" />
       <wsdl:output message="tns:GetAllSocialProfilesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <wsdl:input message="tns:GetAllTwitterAndfacebookProfileOfUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllTwitterAndfacebookProfileOfUserHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SocialProfileSoap" type="tns:SocialProfileSoap">
@@ -434,6 +481,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllSocialProfiles">
       <soap:operation soapAction="http://tempuri.org/GetAllSocialProfiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllTwitterAndfacebookProfileOfUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -516,6 +572,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTwitterAndfacebookProfileOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SocialProfileHttpGet" type="tns:SocialProfileHttpGet">
     <http:binding verb="GET" />
@@ -591,6 +656,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <http:operation location="/GetAllTwitterAndfacebookProfileOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SocialProfileHttpPost" type="tns:SocialProfileHttpPost">
     <http:binding verb="POST" />
@@ -659,6 +733,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllSocialProfiles">
       <http:operation location="/GetAllSocialProfiles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAndfacebookProfileOfUser">
+      <http:operation location="/GetAllTwitterAndfacebookProfileOfUser" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

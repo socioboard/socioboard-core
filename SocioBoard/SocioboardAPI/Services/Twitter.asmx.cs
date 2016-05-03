@@ -22,6 +22,7 @@ using SocioBoard.Model;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using GlobusTwitterLib.Twitter.Core.FriendshipMethods;
 
 namespace Api.Socioboard.Services
 {
@@ -53,6 +54,8 @@ namespace Api.Socioboard.Services
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         InboxMessagesRepository objInboxMessagesRepository = new InboxMessagesRepository();
+        GroupProfileRepository grpProfileRepo = new GroupProfileRepository();
+       
         MongoRepository twitterMessageRepo = new MongoRepository("TwitterMessage");
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -196,19 +199,31 @@ namespace Api.Socioboard.Services
                     {
                         objTwitterAccountRepository.addTwitterkUser(objTwitterAccount);
                         #region Add TeamMemberProfile
-                        Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                        objTeamMemberProfile.Id = Guid.NewGuid();
-                        objTeamMemberProfile.TeamId = objTeam.Id;
-                        objTeamMemberProfile.Status = 1;
-                        objTeamMemberProfile.ProfileType = "twitter";
-                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                        objTeamMemberProfile.ProfileId = objTwitterAccount.TwitterUserId;
+                        //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                        //Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                        //objTeamMemberProfile.Id = Guid.NewGuid();
+                        //objTeamMemberProfile.TeamId = objTeam.Id;
+                        //objTeamMemberProfile.Status = 1;
+                        //objTeamMemberProfile.ProfileType = "twitter";
+                        //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        //objTeamMemberProfile.ProfileId = objTwitterAccount.TwitterUserId;
 
-                        objTeamMemberProfile.ProfileName = objTwitterAccount.TwitterScreenName;
-                        objTeamMemberProfile.ProfilePicUrl = objTwitterAccount.ProfileImageUrl;
+                        //objTeamMemberProfile.ProfileName = objTwitterAccount.TwitterScreenName;
+                        //objTeamMemberProfile.ProfilePicUrl = objTwitterAccount.ProfileImageUrl;
 
-                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                        //objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+
+                        Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+                        grpProfile.Id = Guid.NewGuid();
+                        grpProfile.EntryDate = DateTime.UtcNow;
+                        grpProfile.GroupId = Guid.Parse(GroupId);
+                        grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                        grpProfile.ProfileId = objTwitterAccount.TwitterUserId;
+                        grpProfile.ProfileType = "twitter";
+                        grpProfile.ProfileName = objTwitterAccount.TwitterScreenName;
+                        grpProfile.ProfilePic = objTwitterAccount.ProfileImageUrl;
+                        grpProfileRepo.AddGroupProfile(grpProfile);
+
                         #endregion
                         #region SocialProfile
                         Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
@@ -570,9 +585,9 @@ namespace Api.Socioboard.Services
                 JArray Timeline = twtuser.GetStatuses_User_Timeline(OAuth);
                 //TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
                 //TwitterMessage twtmsg = new TwitterMessage();
-                objTwitterMessage = new Domain.Socioboard.MongoDomain.TwitterMessage();
                 foreach (var item in Timeline)
                 {
+                    objTwitterMessage = new Domain.Socioboard.MongoDomain.TwitterMessage();
                     //objTwitterMessage.UserId = Guid.Parse(UserId);
                     objTwitterMessage.Id = ObjectId.GenerateNewId();
                     objTwitterMessage.Type = "twt_usertweets";
@@ -1993,7 +2008,7 @@ namespace Api.Socioboard.Services
             string str = "";
             int Twtsc = 0;
             Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
-            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            oAuthTwitter OAuthTwt = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
             OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
             OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
             OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
@@ -2022,11 +2037,28 @@ namespace Api.Socioboard.Services
                 if (isScheduled)
                 {
                     Twtsc++;
-                    str = "Message post on twitter for Id :" + objTwitterAccount.TwitterUserId + " and Message: " + objScheduledMessage.ShareMessage;
-                    ScheduledMessage schmsg = new ScheduledMessage();
-                    schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
-                    logger.Error("PostTwitterMessageCount>>>"+Twtsc);
+                    str = "Message post on twitter for Id :" + objTwitterAccount.TwitterUserId + " and Message: " + message;
+                    //ScheduledMessage schmsg = new ScheduledMessage();
+                    //schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                    
+                    objScheduledMessageRepository.UpdateScheduledMessage(Guid.Parse(sscheduledmsgguid));
+                    logger.Error("PostTwitterMessageCount>>>" + Twtsc);
                 }
+                else {
+                    //Domain.Socioboard.Domain.ScheduledMessage _ScheduledMessage = new Domain.Socioboard.Domain.ScheduledMessage();
+                    //_ScheduledMessage.Id = Guid.NewGuid();
+                    //_ScheduledMessage.CreateTime = DateTime.Now;
+                    //_ScheduledMessage.ClientTime = DateTime.Now;
+                    //_ScheduledMessage.PicUrl = picurl;
+                    //_ScheduledMessage.ProfileId = objTwitterAccount.TwitterUserId;
+                    //_ScheduledMessage.ProfileType = "twitter";
+                    //_ScheduledMessage.ScheduleTime = DateTime.Now;
+                    //_ScheduledMessage.ShareMessage = message;
+                    //_ScheduledMessage.Status = true;
+                    //_ScheduledMessage.UserId = Guid.Parse(userid);
+                    //objScheduledMessageRepository.addNewMessage(_ScheduledMessage);
+                }
+               
             }
             else
             {
@@ -2127,14 +2159,21 @@ namespace Api.Socioboard.Services
         public string TwitterReplyUpdate(string message, string userid, string profileid, string statusid)
         {
             Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
-            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            oAuthTwitter OAuthTwt = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
             OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
             OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
             OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
             OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
             this.SetCofigDetailsForTwitter(OAuthTwt);
             Tweet twt = new Tweet();
-            JArray replypost = twt.Post_StatusesUpdate(OAuthTwt, message, statusid);
+            JArray replypost = new JArray();
+            if (!string.IsNullOrEmpty(statusid))
+            {
+                replypost = twt.Post_StatusesUpdate(OAuthTwt, message, statusid);
+            }
+            else {
+                replypost = twt.Post_StatusesUpdate(OAuthTwt, message);
+            }
             return new JavaScriptSerializer().Serialize(replypost);
         }
 
@@ -3040,6 +3079,83 @@ namespace Api.Socioboard.Services
                 logger.Error("twtuser.GetDirect_Messages_Sent ex.Message >> " + ex.Message);
             }
             #endregion
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string PostTwitterDirectmessage(string message, string userId, string fromId, string toId)
+        {
+            Domain.Socioboard.Domain.TwitterDirectMessages _TwitterDirectMessages = new Domain.Socioboard.Domain.TwitterDirectMessages();
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userId), fromId);
+            oAuthTwitter OAuthTwt = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+            OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
+            OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
+            OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
+            OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
+          
+            TwitterUser twtuser = new TwitterUser();
+            JArray ret = new JArray();
+            try
+            {
+                ret = twtuser.PostDirect_Messages_New(OAuthTwt, message, toId);
+                _TwitterDirectMessages.MessageId = ret[0]["id_str"].ToString();
+                _TwitterDirectMessages.Message = ret[0]["text"].ToString();
+                _TwitterDirectMessages.CreatedDate = Utility.ParseTwitterTime(ret[0]["created_at"].ToString());
+                _TwitterDirectMessages.EntryDate = DateTime.Now;
+                _TwitterDirectMessages.RecipientId = ret[0]["recipient"]["id_str"].ToString();
+                _TwitterDirectMessages.RecipientProfileUrl = ret[0]["recipient"]["profile_image_url_https"].ToString();
+                _TwitterDirectMessages.RecipientScreenName = ret[0]["recipient"]["screen_name"].ToString();
+                _TwitterDirectMessages.SenderId = ret[0]["sender"]["id_str"].ToString();
+                _TwitterDirectMessages.SenderProfileUrl = ret[0]["sender"]["profile_image_url_https"].ToString();
+                _TwitterDirectMessages.SenderScreenName = ret[0]["sender"]["screen_name"].ToString();
+                _TwitterDirectMessages.Type = "twt_directmessages_sent";
+                _TwitterDirectMessages.UserId = Guid.Parse(userId);
+                objTwitterDirectMessageRepository.addNewDirectMessage(_TwitterDirectMessages);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return ret.ToString();
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string PostFollow(string _OAuthToken, string OAuthSecret, string TwitterScreenName, string TwitterUserId, string toId, string toName)
+        {
+            JArray ret = new JArray();
+            try
+            {
+                oAuthTwitter OAuthTwt = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+                OAuthTwt.AccessToken = _OAuthToken;
+                OAuthTwt.AccessTokenSecret = OAuthSecret;
+                OAuthTwt.TwitterScreenName = TwitterScreenName;
+                OAuthTwt.TwitterUserId = TwitterUserId;
+                Friendship _TwitterFriends = new Friendship();
+                ret = _TwitterFriends.Post_Friendships_Create(OAuthTwt, toId);
+            }
+            catch (Exception ex)
+            {
+            }
+            return ret.ToString();
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string PostUnFollow(string _OAuthToken, string OAuthSecret, string TwitterScreenName, string TwitterUserId, string toId, string toName)
+        {
+            JArray ret = new JArray();
+            try
+            {
+                oAuthTwitter OAuthTwt = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+                OAuthTwt.AccessToken = _OAuthToken;
+                OAuthTwt.AccessTokenSecret = OAuthSecret;
+                OAuthTwt.TwitterScreenName = TwitterScreenName;
+                OAuthTwt.TwitterUserId = TwitterUserId;
+                Friendship _TwitterFriends = new Friendship();
+                ret = _TwitterFriends.Post_Friendship_Destroy(OAuthTwt, toId);
+            }
+            catch (Exception ex)
+            {
+            }
+            return ret.ToString();
         }
 
         public void getTwitterFollowerData(oAuthTwitter OAuth, string TwitterUserId)

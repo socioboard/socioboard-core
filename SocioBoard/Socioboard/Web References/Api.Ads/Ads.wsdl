@@ -412,16 +412,16 @@
   </wsdl:binding>
   <wsdl:service name="Ads">
     <wsdl:port name="AdsSoap" binding="tns:AdsSoap">
-      <soap:address location="http://localhost:6361/services/Ads.asmx" />
+      <soap:address location="http://localhost:6361/Services/Ads.asmx" />
     </wsdl:port>
     <wsdl:port name="AdsSoap12" binding="tns:AdsSoap12">
-      <soap12:address location="http://localhost:6361/services/Ads.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Ads.asmx" />
     </wsdl:port>
     <wsdl:port name="AdsHttpGet" binding="tns:AdsHttpGet">
-      <http:address location="http://localhost:6361/services/Ads.asmx" />
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
     </wsdl:port>
     <wsdl:port name="AdsHttpPost" binding="tns:AdsHttpPost">
-      <http:address location="http://localhost:6361/services/Ads.asmx" />
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -16,6 +16,7 @@ using SocioBoard.Model;
 using Api.Socioboard.Model;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using Newtonsoft.Json.Linq;
 namespace Api.Socioboard.Services
 {
     /// <summary>
@@ -45,6 +46,9 @@ namespace Api.Socioboard.Services
         LinkedInMessageRepository objLinkedInMessageRepository = new LinkedInMessageRepository();
         //Domain.Socioboard.Domain.LinkedInMessage objLinkedInMessage;
 
+        private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
+
+
         MongoRepository linkedinFeedRepo = new MongoRepository("LinkedInFeed");
         MongoRepository linkedinMessageRepo = new MongoRepository("LinkedInMessage");
 
@@ -70,6 +74,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string AddLinkedinAccount(string oauth_token, string oauth_verifier, string reuqestTokenSecret, string consumerKey, string consumerSecret, string UserId, string GroupId)
         {
+            Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+
             try
             {
                 logger.Error("AddLinkedinAccount()");
@@ -203,16 +209,25 @@ namespace Api.Socioboard.Services
                     #region Add TeamMemberProfile
                     try
                     {
-                        Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                        objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                        objTeamMemberProfile.Id = Guid.NewGuid();
-                        objTeamMemberProfile.TeamId = objTeam.Id;
-                        objTeamMemberProfile.Status = 1;
-                        objTeamMemberProfile.ProfileType = "linkedin";
-                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                        objTeamMemberProfile.ProfileId = objLinkedInAccount.LinkedinUserId;
-                        objTeamMemberProfile.ProfileName = objLinkedInAccount.LinkedinUserName;
-                        objTeamMemberProfile.ProfilePicUrl = objLinkedInAccount.ProfileImageUrl;
+                        //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                        //objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                        //objTeamMemberProfile.Id = Guid.NewGuid();
+                        //objTeamMemberProfile.TeamId = objTeam.Id;
+                        //objTeamMemberProfile.Status = 1;
+                        //objTeamMemberProfile.ProfileType = "linkedin";
+                        //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        //objTeamMemberProfile.ProfileId = objLinkedInAccount.LinkedinUserId;
+                        //objTeamMemberProfile.ProfileName = objLinkedInAccount.LinkedinUserName;
+                        //objTeamMemberProfile.ProfilePicUrl = objLinkedInAccount.ProfileImageUrl;
+
+                        grpProfile.Id = Guid.NewGuid();
+                        grpProfile.EntryDate = DateTime.UtcNow;
+                        grpProfile.GroupId = Guid.Parse(GroupId);
+                        grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                        grpProfile.ProfileId = objLinkedInAccount.LinkedinUserId;
+                        grpProfile.ProfileType = "linkedin";
+                        grpProfile.ProfileName = objLinkedInAccount.LinkedinUserName;
+                        grpProfile.ProfilePic = objLinkedInAccount.ProfileImageUrl;
 
                     }
                     catch (Exception ex)
@@ -241,9 +256,11 @@ namespace Api.Socioboard.Services
                     {
                         objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
                     }
-                    if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeamMemberProfile.TeamId, objLinkedInAccount.LinkedinUserId))
+                    if (!grpProfileRepo.checkProfileExistsingroup(Guid.Parse(GroupId), objLinkedInAccount.LinkedinUserId))
                     {
-                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                        grpProfileRepo.AddGroupProfile(grpProfile);
+
                     }
 
                     #region Add LinkedIn Feeds
@@ -369,8 +386,8 @@ namespace Api.Socioboard.Services
                 linkacc = linkedinAccRepo.getUserInformation(profileid);
             }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
-            oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
-            oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
+            oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LinkedinApiKey"];
+            oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LinkedinSecretKey"];
             oauthlin.FirstName = linkacc.LinkedinUserName;
             oauthlin.Id = linkacc.LinkedinUserId;
             oauthlin.Token = linkacc.OAuthToken;
@@ -1100,15 +1117,155 @@ namespace Api.Socioboard.Services
                  return ret = "Message Could Not Posted";
              }
          }
-        //[WebMethod]
-        // public string AddLinkedinAccountNew(string UserId, string GroupId, string Code)
-        // {
-        //     oAuthLinkedIn _oauth = new oAuthLinkedIn();
-        //     string url = "https://linkedin.com/uas/oauth2/accessToken";
-        //     string post = "grant_type=authorization_code&code=" + Code + "&redirect_uri=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LinkedinCallBackURL"]) + "&client_id=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LiApiKey"]) + "&client_secret=" + HttpUtility.UrlEncode(ConfigurationManager.AppSettings["LiSecretKey"]);
-        //     string ret = _oauth.ApiWebRequest(url, post);
-        //     return "";
-        // }
+         [WebMethod]
+         public string AddLinkedinAccountNew(string UserId, string GroupId, string Code)
+         {
+             oAuthLinkedIn _oauth = new oAuthLinkedIn();
+             string access_token_Url = "https://www.linkedin.com/uas/oauth2/accessToken";
+             string access_token_postData = "grant_type=authorization_code&code=" + Code + "&redirect_uri=" + "http%3a%2f%2flocalhost%3a9821%2fLinkedinManager%2fLinkedinRedirect" + "&client_id=754ysxdp72ulk5&client_secret=vbU52SjK7xS6cT8H";
+             LinkedInProfile.UserProfile objUserProfile = new LinkedInProfile.UserProfile();
+             string token = _oauth.APIWebRequest("POST", access_token_Url, access_token_postData);
+             var oathtoken = JObject.Parse(token);
+             _oauth.Token = oathtoken["access_token"].ToString().TrimStart('"').TrimEnd('"');
+             LinkedInProfile objProfile = new LinkedInProfile();
+              string ret = string.Empty;
+             #region Get linkedin Profile data from Api
+             try
+             {
+                 _oauth.ConsumerKey = "754ysxdp72ulk5";
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.Message);
+                 logger.Error(ex.Message);
+             }
+            
+             try
+             {
+                 _oauth.ConsumerSecret = "vbU52SjK7xS6cT8H";
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.Message);
+                 logger.Error(ex.Message);
+             }
+             try
+             {
+                 objUserProfile = objProfile.GetUserProfile(_oauth);
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.Message);
+                 logger.Error(ex.Message);
+             }
+             #endregion
+              dynamic data = objUserProfile;
+                try
+                {
+                    #region LinkedInAccount
+                    objLinkedInAccount.UserId = Guid.Parse(UserId);
+                    objLinkedInAccount.LinkedinUserId = data.id.ToString();
+                    try
+                    {
+                        objLinkedInAccount.EmailId = data.email.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    objLinkedInAccount.LinkedinUserName = data.first_name.ToString() + data.last_name.ToString();
+                    objLinkedInAccount.OAuthToken = _oauth.Token;
+                    objLinkedInAccount.OAuthSecret = _oauth.TokenSecret;
+                    objLinkedInAccount.OAuthVerifier = _oauth.Verifier;
+                    try
+                    {
+                        objLinkedInAccount.ProfileImageUrl = data.picture_url.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objLinkedInAccount.ProfileUrl = data.profile_url.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    #endregion
+                    #region SocialProfiles
+                    try
+                    {
+                        objLinkedInAccount.Connections = data.connections;
+                        objLinkedInAccount.IsActive = true;
+                        objSocialProfile.UserId = Guid.Parse(UserId);
+                        objSocialProfile.ProfileType = "linkedin";
+                        objSocialProfile.ProfileId = data.id.ToString();
+                        objSocialProfile.ProfileStatus = 1;
+                        objSocialProfile.ProfileDate = DateTime.Now;
+                        objSocialProfile.Id = Guid.NewGuid();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+                    #endregion SocialProfiles
+                    #region Add TeamMemberProfile
+                    try
+                    {
+                        Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                        objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                        objTeamMemberProfile.Id = Guid.NewGuid();
+                        objTeamMemberProfile.TeamId = objTeam.Id;
+                        objTeamMemberProfile.Status = 1;
+                        objTeamMemberProfile.ProfileType = "linkedin";
+                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                        objTeamMemberProfile.ProfileId = objLinkedInAccount.LinkedinUserId;
+                        objTeamMemberProfile.ProfileName = objLinkedInAccount.LinkedinUserName;
+                        objTeamMemberProfile.ProfilePicUrl = objLinkedInAccount.ProfileImageUrl;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+                    #endregion
+
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.StackTrace);
+                }
+                try
+                {
+                    if (!objLinkedInAccountRepository.checkLinkedinUserExists(objLinkedInAccount.LinkedinUserId, Guid.Parse(UserId)))
+                    {
+                        objLinkedInAccountRepository.addLinkedinUser(objLinkedInAccount);
+                        ret = "LinkedIn Account Added Successfully";
+                    }
+                    else
+                    {
+                        ret = "LinkedIn Account Already Exist";
+                    }
+                    if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                    {
+                        objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+                    }
+                    if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeamMemberProfile.TeamId, objLinkedInAccount.LinkedinUserId))
+                    {
+                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.StackTrace);
+                }
+                return "";
+            }
+            
+         
 
     }
 }

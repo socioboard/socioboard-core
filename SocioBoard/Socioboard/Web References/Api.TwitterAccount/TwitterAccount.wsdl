@@ -23,6 +23,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -123,6 +124,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="retrievetwitterdata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievetwitterdataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrievetwitterdataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -174,6 +189,12 @@
   <wsdl:message name="AddTwitterAccountFromTweetBoardSoapOut">
     <wsdl:part name="parameters" element="tns:AddTwitterAccountFromTweetBoardResponse" />
   </wsdl:message>
+  <wsdl:message name="retrievetwitterdataSoapIn">
+    <wsdl:part name="parameters" element="tns:retrievetwitterdata" />
+  </wsdl:message>
+  <wsdl:message name="retrievetwitterdataSoapOut">
+    <wsdl:part name="parameters" element="tns:retrievetwitterdataResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -185,6 +206,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteTwitterAccountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -233,6 +255,12 @@
   <wsdl:message name="AddTwitterAccountFromTweetBoardHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="retrievetwitterdataHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievetwitterdataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -244,6 +272,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteTwitterAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -292,6 +321,12 @@
   <wsdl:message name="AddTwitterAccountFromTweetBoardHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="retrievetwitterdataHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="retrievetwitterdataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterAccountSoap">
     <wsdl:operation name="GetTwitterAccountDetailsById">
       <wsdl:input message="tns:GetTwitterAccountDetailsByIdSoapIn" />
@@ -324,6 +359,10 @@
     <wsdl:operation name="AddTwitterAccountFromTweetBoard">
       <wsdl:input message="tns:AddTwitterAccountFromTweetBoardSoapIn" />
       <wsdl:output message="tns:AddTwitterAccountFromTweetBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <wsdl:input message="tns:retrievetwitterdataSoapIn" />
+      <wsdl:output message="tns:retrievetwitterdataSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterAccountHttpGet">
@@ -359,6 +398,10 @@
       <wsdl:input message="tns:AddTwitterAccountFromTweetBoardHttpGetIn" />
       <wsdl:output message="tns:AddTwitterAccountFromTweetBoardHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <wsdl:input message="tns:retrievetwitterdataHttpGetIn" />
+      <wsdl:output message="tns:retrievetwitterdataHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterAccountHttpPost">
     <wsdl:operation name="GetTwitterAccountDetailsById">
@@ -392,6 +435,10 @@
     <wsdl:operation name="AddTwitterAccountFromTweetBoard">
       <wsdl:input message="tns:AddTwitterAccountFromTweetBoardHttpPostIn" />
       <wsdl:output message="tns:AddTwitterAccountFromTweetBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <wsdl:input message="tns:retrievetwitterdataHttpPostIn" />
+      <wsdl:output message="tns:retrievetwitterdataHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterAccountSoap" type="tns:TwitterAccountSoap">
@@ -461,6 +508,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddTwitterAccountFromTweetBoard">
       <soap:operation soapAction="http://tempuri.org/AddTwitterAccountFromTweetBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <soap:operation soapAction="http://tempuri.org/retrievetwitterdata" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -543,6 +599,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <soap12:operation soapAction="http://tempuri.org/retrievetwitterdata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterAccountHttpGet" type="tns:TwitterAccountHttpGet">
     <http:binding verb="GET" />
@@ -618,6 +683,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <http:operation location="/retrievetwitterdata" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterAccountHttpPost" type="tns:TwitterAccountHttpPost">
     <http:binding verb="POST" />
@@ -686,6 +760,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddTwitterAccountFromTweetBoard">
       <http:operation location="/AddTwitterAccountFromTweetBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievetwitterdata">
+      <http:operation location="/retrievetwitterdata" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

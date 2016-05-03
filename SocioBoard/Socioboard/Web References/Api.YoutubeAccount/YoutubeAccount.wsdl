@@ -37,6 +37,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profiletype" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -122,6 +123,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteYoutubeAccountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -154,6 +156,7 @@
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="profiletype" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteYoutubeAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />

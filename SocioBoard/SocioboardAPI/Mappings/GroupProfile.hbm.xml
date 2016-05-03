@@ -20,6 +20,12 @@
     <property name="ProfileType">
       <column name="ProfileType"  />
     </property>
+    <property name="ProfileName">
+      <column name="ProfileName"  />
+    </property>
+    <property name="ProfilePic">
+      <column name="ProfilePic"  />
+    </property>
     <property name="EntryDate">
       <column name="EntryDate"  />
     </property>

@@ -14,6 +14,7 @@ using System.Web.Security;
 using Socioboard.Helper;
 using Socioboard.App_Start;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Socioboard.Controllers
 {
@@ -21,17 +22,14 @@ namespace Socioboard.Controllers
     public class FacebookManagerController : BaseController
     {
         ILog logger = LogManager.GetLogger(typeof(FacebookManagerController));
-        //
-        // GET: /FacebookManager/
-
+        Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
+        Api.User.User ApiobjUser = new Api.User.User();
+        Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+        public int daysremaining = 0;
+       
+        
         //[CustomAuthorize]
-        public ActionResult Index()
-        {
-
-            return View();
-        }
-        [CustomAuthorize]
-        public ActionResult Facebook(string code)
+        public async Task<ActionResult> Facebook(string code)
         {
             if (Session["fblogin"] != null)
             {
@@ -45,31 +43,15 @@ namespace Socioboard.Controllers
                     }
                     Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
                     Domain.Socioboard.Domain.User checkuserexist = (Domain.Socioboard.Domain.User)Session["User"];
-                    // string facebookcode = Request.QueryString["code"].ToString();
                     string facebookcode = code;
-                    Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
-                    Api.User.User ApiobjUser = new Api.User.User();
+                    
                     string fbloginreturn = apiobjFacebook.FacebookLogin(code);
                     string[] arrfbloginreturn = Regex.Split(fbloginreturn, "_#_");
-
-                    //objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
                     objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(arrfbloginreturn[0], typeof(Domain.Socioboard.Domain.User)));
                     Session["AccesstokenFblogin"] = arrfbloginreturn[1];
                     Session["fblogin"] = "fblogin";
                     try
                     {
-                        Response.Write("Facebook Returned email : " + objUser.EmailId);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        logger.Error(ex.StackTrace);
-                        logger.Error(ex.Message);
-                    }
-
-                    try
-                    {
-                        // objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
                         checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
                         FormsAuthentication.SetAuthCookie(checkuserexist.UserName, false);
                     }
@@ -79,9 +61,21 @@ namespace Socioboard.Controllers
                     }
                     if (checkuserexist != null)
                     {
+                        objUser = checkuserexist;
                         Session["User"] = checkuserexist;
-                        int daysremaining = 0;
+                        Session["group"] = await SBHelper.LoadGroups(objUser.Id);
+                        Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider(System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"] + "/token");
+                        try
+                        {
+                            Dictionary<string, string> re = await ac.GetTokenDictionary(checkuserexist.EmailId, checkuserexist.Password);
+                            Session["access_token"] = re["access_token"];
+                        }
+                        catch (Exception e)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
 
+                        daysremaining = 0;
                         daysremaining = (checkuserexist.ExpiryDate.Date - DateTime.Now.Date).Days;
                         if (daysremaining > 0)
                         {
@@ -89,12 +83,11 @@ namespace Socioboard.Controllers
                             try
                             {
                                 Session["Paid_User"] = "Paid";
-                                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
                                 Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                logger.Error(ex.StackTrace);
                             }
                             #endregion
                         }
@@ -103,6 +96,14 @@ namespace Socioboard.Controllers
                             Session["Paid_User"] = "Unpaid";
                         }
                         ApiobjUser.UpdateLastLoginTime(checkuserexist.Id.ToString());
+
+                        HttpCookie myCookie = new HttpCookie("referal_url");
+                        myCookie = Request.Cookies["referal_url"];
+                        if (myCookie != null)
+                        {
+                            Response.Redirect(".." + myCookie.Value);
+                        }
+
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -131,6 +132,85 @@ namespace Socioboard.Controllers
                     Session["fbgrp"] = lstAddFacebookGroup;
                     return RedirectToAction("Index", "Home", new { hint = "fbgrp" });
                 }
+                else if ((string)Session["fblogin"] == "fbplugin")
+                {
+                    Session["fblogin"] = null;
+                    if (String.IsNullOrEmpty(code))
+                    {
+                        return RedirectToAction("Index", "Index", new { hint = "plugin" });
+                    }
+                    Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                    Domain.Socioboard.Domain.User checkuserexist = (Domain.Socioboard.Domain.User)Session["User"];
+                    Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
+                    Api.User.User ApiobjUser = new Api.User.User();
+                    string fbloginreturn = apiobjFacebook.FacebookLogin(code);
+                    string[] arrfbloginreturn = Regex.Split(fbloginreturn, "_#_");
+
+                    objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(arrfbloginreturn[0], typeof(Domain.Socioboard.Domain.User)));
+                    Session["AccesstokenFblogin"] = arrfbloginreturn[1];
+                    try
+                    {
+                        checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                        FormsAuthentication.SetAuthCookie(checkuserexist.UserName, false);
+                    }
+                    catch (Exception e)
+                    {
+                        checkuserexist = null;
+                    }
+                    if (checkuserexist != null)
+                    {
+                        objUser = checkuserexist;
+                        Session["User"] = checkuserexist;
+                        ApiobjUser.UpdateLastLoginTime(checkuserexist.Id.ToString());
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(objUser.EmailId))
+                        {
+                            string user = ApiobjUser.Register(objUser.EmailId, "", "Free", objUser.UserName, "1");
+                            objUser = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(user, typeof(Domain.Socioboard.Domain.User));
+                            Session["User"] = objUser;
+                        }
+                        else {
+                            return RedirectToAction("Index", "Index", new { hint = "plugin" });
+                        }
+                    }
+                    Session["group"] = await SBHelper.LoadGroups(objUser.Id);
+                    Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider(System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"] + "/token");
+                    try
+                    {
+                        Dictionary<string, string> re = await ac.GetTokenDictionary(checkuserexist.EmailId, checkuserexist.Password);
+                        Session["access_token"] = re["access_token"];
+                    }
+                    catch (Exception e)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    #region Count Used Accounts
+                    try
+                    {
+                        Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                        Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
+                    }
+                    catch (Exception ex)
+                    {
+                        Session["ProfileCount"] = 0;
+                        Session["TotalAccount"] = 0;
+                    }
+                    #endregion
+                    daysremaining = 0;
+                    daysremaining = (objUser.ExpiryDate.Date - DateTime.Now.Date).Days;
+                    if (daysremaining > 0)
+                    {
+                        Session["Paid_User"] = "Paid";
+                    }
+                    else
+                    {
+                        Session["Paid_User"] = "Unpaid";
+                    }
+                    Session["fblogin"] = "fbplugin";
+                    return RedirectToAction("Index", "Home", new { hint = "plugin" });
+                }
             }
             else
             {
@@ -154,9 +234,9 @@ namespace Socioboard.Controllers
                     }
                     catch (Exception)
                     {
-                        
+
                     }
-                    
+
                 }
                 catch (Exception)
                 {
@@ -227,6 +307,14 @@ namespace Socioboard.Controllers
                     //string aksdjf =  System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
 
                 }
+                else if (op == "fbplugin")
+                {
+                    Session["fblogin"] = op;
+                    facebookurl = Helper.SBUtils.GetFacebookRedirectLink();
+                }
+
+
+
             }
             else
             {
@@ -254,8 +342,8 @@ namespace Socioboard.Controllers
                             logger.Error("ex.StackTrace : " + ex.StackTrace);
                         }
 
-                        if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
-                        {
+                        //if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
+                        //{
                             if (profilecount < totalaccount)
                             {
                                 Session["fbSocial"] = "a";
@@ -272,7 +360,7 @@ namespace Socioboard.Controllers
                             {
                                 Response.Redirect("../Home/Index");
                             }
-                        }
+                        //}
                     }
                     catch (Exception ex)
                     {
@@ -311,17 +399,16 @@ namespace Socioboard.Controllers
             return Content(ret);
         }
 
-        public ActionResult AddFbPage(string profileid, string accesstoken, string email)
+        public ActionResult AddFbPage(string arrId)
         {
             Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();
-            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
-            objUser = (Domain.Socioboard.Domain.User)Session["User"];
-            //objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
-            //objApiFacebook.AddFacebookPagesInfoAsync(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
-
-            //Api.Facebook.Facebook objApiFacebook1 = new Api.Facebook.Facebook();
-            objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
-            return Content("");
+            Domain.Socioboard.Domain.User objUser =(Domain.Socioboard.Domain.User)Session["User"];
+            string[] arrProfiles = arrId.Split(',');
+            List<Domain.Socioboard.Domain.AddFacebookPage> lstAddFacebookPage = (List<Domain.Socioboard.Domain.AddFacebookPage>)Session["fbpage"];
+            lstAddFacebookPage = lstAddFacebookPage.Where(t => arrProfiles.Contains(t.ProfilePageId)).ToList();
+            string strlstAddFacebookPage = new JavaScriptSerializer().Serialize(lstAddFacebookPage);
+            objApiFacebook.AddFacebookPagesInfo(strlstAddFacebookPage, objUser.Id.ToString(), Session["group"].ToString());
+            return Content("Success");
         }
 
         public ActionResult GetFBGroup()
@@ -365,6 +452,7 @@ namespace Socioboard.Controllers
         public ActionResult Addfacebookpagebyurl(string type, string url, string name)
         {
             var pageid = "";
+            string strdata = string.Empty;
             if (type == "fanpage")
             {
                 try
@@ -374,75 +462,55 @@ namespace Socioboard.Controllers
                     {
                         Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
                         logger.Error("Enter in try Addfacebookpagebyurl 1");
-
                         dynamic data = string.Empty;
-                        string strdata = string.Empty;
                         try
                         {
                             Domain.Socioboard.Domain.AddFacebookPage objAddFacebookPage = (Domain.Socioboard.Domain.AddFacebookPage)(new JavaScriptSerializer().Deserialize(apiobjFacebook.GetFbPageDetails(url), typeof(Domain.Socioboard.Domain.AddFacebookPage)));
                             pageid = objAddFacebookPage.ProfilePageId;
-                        }
-                        catch (Exception ex)
-                        {
-                            logger.Error(strdata);
-                            logger.Error(data);
-                            logger.Error(ex.Message);
-                            logger.Error(ex.StackTrace);
-                        }
-                        {
-                            logger.Error("data = fb.Get");
-                            logger.Error(pageid);
-                            string Accestoken = string.Empty;
-                            string mail = string.Empty;
-                            if (pageid != null)
+                            name = objAddFacebookPage.Name;
+                            if (!string.IsNullOrEmpty(pageid))
                             {
                                 try
                                 {
-                                    logger.Error("Inside apiobjFacebook.AddFacebookPagesByUrl");
                                     Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
                                     apiobjFacebook.AddFacebookPagesByUrl(objUser.Id.ToString(), pageid, Session["group"].ToString(), name);
+                                    strdata = "success";
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine(ex.StackTrace);
-                                    logger.Error("error1");
-                                    logger.Error(ex.Message);
                                     logger.Error(ex.StackTrace);
                                 }
                             }
                             else
                             {
+                                strdata = "invalid";
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            strdata = "invalid";
+                            logger.Error(ex.StackTrace);
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
-                        logger.Error("dynamic data");
-                        logger.Error(ex.Message);
                         logger.Error(ex.StackTrace);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error(ex.Message);
                     logger.Error(ex.StackTrace);
                 }
             }
-
             else
             {
-
             }
-
-
-            return Content("");
+            return Content(strdata);
 
         }
 
 
-        
+
 
 
     }

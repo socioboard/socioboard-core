@@ -7,6 +7,8 @@ using Domain.Socioboard.Domain;
 using Socioboard.Helper;
 using System.Web.Script.Serialization;
 using Socioboard.App_Start;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Socioboard.Controllers
 {
@@ -61,20 +63,38 @@ namespace Socioboard.Controllers
             dict_Socialprofiled = SBUtils.GetAllUserProfiles();
             return PartialView("_UserProfilesPartial", dict_Socialprofiled);
         }
-        public ActionResult AddGroup(string groupname)
+        public async Task<ActionResult> AddGroup(string groupname)
         {
+            string accesstoken = string.Empty;
             User objUser = (User)Session["User"];
-            Socioboard.Api.Groups.Groups objApiGroups = new Socioboard.Api.Groups.Groups();
-            //Domain.Socioboard.Domain.Groups objgroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.AddGroup(groupname, objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            string ret = objApiGroups.AddGroup(groupname, objUser.Id.ToString());
+            string ret = string.Empty;
+            //Socioboard.Api.Groups.Groups objApiGroups = new Socioboard.Api.Groups.Groups();
+            ////Domain.Socioboard.Domain.Groups objgroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.AddGroup(groupname, objUser.Id.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            //string ret = objApiGroups.AddGroup(groupname, objUser.Id.ToString());
+            List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+            Parameters.Add(new KeyValuePair<string, string>("GroupName", groupname));
+            Parameters.Add(new KeyValuePair<string, string>("UserId", objUser.Id.ToString()));
+            Parameters.Add(new KeyValuePair<string, string>("Id", Guid.NewGuid().ToString()));
+
+            if (Session["access_token"] != null)
+            {
+                accesstoken = Session["access_token"].ToString();
+            }
+
+            HttpResponseMessage response = await WebApiReq.PostReq("api/ApiGroups/AddGroup", Parameters, "Bearer", accesstoken);
+            if (response.IsSuccessStatusCode)
+            {
+                ret = await response.Content.ReadAsAsync<string>();
+            }
+
             return Content(ret);
         }
-        public ActionResult connectedprofilestothisgroup(string selectedgroupid)
+        public async Task<ActionResult> connectedprofilestothisgroup(string selectedgroupid)
         {
             Session["selectedgroupid"] = selectedgroupid;
             Dictionary<GroupProfile, object> dict_ProfileConnected = new Dictionary<GroupProfile, object>();
 
-            dict_ProfileConnected = SBUtils.GetProfilesConnectedwithgroup();
+            dict_ProfileConnected = await SBHelper.GetGroupProfilesByGroupId(selectedgroupid);
             return PartialView("_ProfilesConnectedToGroupPartial", dict_ProfileConnected);
         }
         public ActionResult AddprofileToCurrentGroup(string profileid, string network)
@@ -85,12 +105,21 @@ namespace Socioboard.Controllers
             ApiobjGroupProfile.AddProfileToGroup(profileid, network, selectedgroupid, objUser.Id.ToString());
             return Content("");
         }
-        public ActionResult DeleteprofileFromCurrentGroup(string profileid)
+        public async Task<ActionResult> DeleteprofileFromCurrentGroup(string profileid)
         {
             User objUser = (User)Session["User"];
             string selectedgroupid = Session["selectedgroupid"].ToString();
-            Api.GroupProfile.GroupProfile ApiobjGroupProfile = new Api.GroupProfile.GroupProfile();
-            ApiobjGroupProfile.DeleteProfileFromGroup(profileid, selectedgroupid, objUser.Id.ToString());
+            string output = string.Empty;
+
+            HttpResponseMessage response = await WebApiReq.DelReq("api/ApiGroupProfiles/DeleteProfileFromGroup?profileid=" + profileid + "&groupid=" + selectedgroupid + "&userid=" + objUser.Id, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                output = await response.Content.ReadAsAsync<string>();
+            }
+
+
+            //Api.GroupProfile.GroupProfile ApiobjGroupProfile = new Api.GroupProfile.GroupProfile();
+            //ApiobjGroupProfile.DeleteProfileFromGroup(profileid, selectedgroupid, objUser.Id.ToString());
             return Content("");
         }
         public ActionResult DeleteGroup(string Groupid)
@@ -101,21 +130,36 @@ namespace Socioboard.Controllers
             return Content("");
         }
 
-        public ActionResult PendingUser(string Groupid)
+        public async Task<ActionResult> PendingUser(string Groupid)
         {
             User objUser = (User)Session["User"];
             string selectedgroupid = Session["selectedgroupid"].ToString();
-            Api.Team.Team ApiobjTeam = new Api.Team.Team();
-            List<Domain.Socioboard.Domain.Team> lstteam = (List<Domain.Socioboard.Domain.Team>)(new JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByStatus(selectedgroupid, objUser.Id.ToString(), "0"), typeof(List<Domain.Socioboard.Domain.Team>)));
-            return PartialView("_PendingUserPartial", lstteam);
+            IEnumerable<Domain.Socioboard.Domain.Groupmembers> lstGroupMembers = new List<Domain.Socioboard.Domain.Groupmembers>();
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/GetPendingGroupMembers?GroupId=" + selectedgroupid, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroupMembers = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groupmembers>>();
+            }
+
+
+            //Api.Team.Team ApiobjTeam = new Api.Team.Team();
+            //List<Domain.Socioboard.Domain.Team> lstteam = (List<Domain.Socioboard.Domain.Team>)(new JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByStatus(selectedgroupid, objUser.Id.ToString(), "0"), typeof(List<Domain.Socioboard.Domain.Team>)));
+            return PartialView("_PendingUserPartial", lstGroupMembers);
         }
-        public ActionResult AcceptedUser(string Groupid)
+        public async Task<ActionResult> AcceptedUser(string Groupid)
         {
+
             User objUser = (User)Session["User"];
             string selectedgroupid = Session["selectedgroupid"].ToString();
-            Api.Team.Team ApiobjTeam = new Api.Team.Team();
-            List<Domain.Socioboard.Domain.Team> lstteam = (List<Domain.Socioboard.Domain.Team>)(new JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByStatus(selectedgroupid, objUser.Id.ToString(), "1"), typeof(List<Domain.Socioboard.Domain.Team>)));
-            return PartialView("_AcceptedUserPartial", lstteam);
+            IEnumerable<Domain.Socioboard.Domain.Groupmembers> lstGroupMembers = new List<Domain.Socioboard.Domain.Groupmembers>();
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/GetAcceptedGroupMembers?GroupId=" + selectedgroupid, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                lstGroupMembers = await response.Content.ReadAsAsync<IEnumerable<Domain.Socioboard.Domain.Groupmembers>>();
+            }
+
+
+            return PartialView("_AcceptedUserPartial", lstGroupMembers);
         }
         //public ActionResult AddTeamMember(string email)
         //{
@@ -147,82 +191,24 @@ namespace Socioboard.Controllers
 
         // Edited by Antima[6/11/2014]
 
-        public ActionResult AddTeamMember(string email)
+        public async Task<ActionResult> AddTeamMember(string email)
         {
-            //string[] arr = new string[]{};
+            string selectedgroupid = string.Empty;
             string SentMails = string.Empty;
-            try
+            User objUser = (User)Session["user"];
+            if (Session["selectedgroupid"] == null || Session["selectedgroupid"] == "")
             {
-                List<string> arr = new List<string>();
-                string[] arr1 = new string[] { };
-                string NotSentMails = string.Empty;
-                User objUser = (User)Session["User"];
-                string selectedgroupid = string.Empty;
-                if (Session["selectedgroupid"] == null || Session["selectedgroupid"] == "")
-                {
-                    selectedgroupid = Request.QueryString["groupid"];
-                }
-                else
-                {
-                    selectedgroupid = Session["selectedgroupid"].ToString();
-                }
-                Api.Team.Team ApiobjTeam = new Api.Team.Team();
-                Api.User.User ApiobjUser = new Api.User.User();
-                if (email.Contains(','))
-                {
-                    arr = email.Split(',').ToList();
-                }
-                else
-                {
-                    //arr[0] = email;
-                    arr.Add(email);
-                }
-
-                foreach (var item in arr)
-                {
-                    if (item.Contains(':'))
-                    {
-                        arr1 = item.Split(':');
-                    }
-
-                    string res = "";
-                    User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(arr1[0]), typeof(User)));
-
-                    if (objuserinfo != null)
-                    {
-                        string[] name = objuserinfo.UserName.Split(' ');
-                        string fname = name[0];
-                        string lname = string.Empty;
-                        for (int i = 1; i < name.Length; i++)
-                        {
-                            lname += name[i];
-                        }
-
-                        res = ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
-                    }
-                    else
-                    {
-                        res = ApiobjTeam.AddTeam(objUser.Id.ToString(), "0", arr1[1], arr1[2], arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
-                    }
-                    //SentMails += res + ',';
-
-                    if (!string.IsNullOrEmpty(res) && SentMails != "Something Went Wrong")
-                    {
-                        Domain.Socioboard.Domain.Team objDomainTeam = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(res, typeof(Domain.Socioboard.Domain.Team));
-                        if (objDomainTeam != null)
-                        {
-                            SentMails += objDomainTeam.EmailId + ',';
-                        }
-                    }
-                    else
-                    {
-                        NotSentMails += arr1[0] + ',';
-                    }
-                }
-                SentMails = "{\"SentMails\":" + "\"" + SentMails + "\",\"NotSentMails\":" + "\"" + NotSentMails + "\"}";
+                selectedgroupid = Request.QueryString["groupid"];
             }
-            catch (Exception ex)
+            else
             {
+                selectedgroupid = Session["selectedgroupid"].ToString();
+            }
+
+            HttpResponseMessage response = await WebApiReq.GetReq("api/ApiGroupMembers/AddGroupMembers?Emails=" + email + "&GroupId=" + selectedgroupid + "&UserId=" + objUser.Id, "Bearer", Session["access_token"].ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                SentMails = await response.Content.ReadAsAsync<string>();
             }
 
             return Content(SentMails);

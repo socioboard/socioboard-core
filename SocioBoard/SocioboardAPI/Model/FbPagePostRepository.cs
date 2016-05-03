@@ -9,7 +9,7 @@ using System.Data;
 using NHibernate.Linq;
 using Api.Socioboard.Helper;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class FbPagePostRepository
     {
@@ -157,6 +157,53 @@ namespace Api.Socioboard.Services
                 }
             }
         }
+
+
+        public List<Domain.Socioboard.Domain.FbPagePost> GetPostsByDate(DateTime date, string pageId, Guid userid) 
+        {
+            DateTime stDate = date.Date;
+            DateTime endDate = date.AddDays(1).Date;
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                List<Domain.Socioboard.Domain.FbPagePost> alst = session.Query<Domain.Socioboard.Domain.FbPagePost>().Where(x => x.UserId == userid && x.PageId == pageId && x.PostDate >= stDate && x.PostDate <= endDate).ToList();
+
+                return alst;
+            }
+        }
+
+        //public List<Domain.Socioboard.Domain.FbPagePost> GetPostsByDate(DateTime date, string pageId,Guid userid) 
+        //{
+        //    //Creates a database connection and opens up a session
+        //    using (NHibernate.ISession session = SessionFactory.GetNewSession())
+        //    {
+        //        //After Session creation, start Transaction.
+        //        using (NHibernate.ITransaction transaction = session.BeginTransaction())
+        //        {
+        //            try
+        //            {
+
+        //                //Proceed action to get all Facebook Message of User.
+        //                List<Domain.Socioboard.Domain.FbPagePost> alst = session.CreateQuery("from FbPagePost where UserId = :userid and PageId = :profileId and PostDate >=: stDate and PostDate <=: enDate")
+        //                 .SetParameter("userid", userid)
+        //                 .SetParameter("profileId", pageId)
+        //                 .SetParameter("stDate", date.ToString("yyyy-MM-dd"))
+        //                 .SetParameter("enDate", date.AddDays(1).ToString("yyyy-MM-dd"))
+        //                 .List<Domain.Socioboard.Domain.FbPagePost>()
+        //                 .ToList<Domain.Socioboard.Domain.FbPagePost>();
+
+        //                return alst;
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //                return null;
+        //            }
+
+        //        }//End Transaction
+        //    }//End session
+        //}
 
     }
 }

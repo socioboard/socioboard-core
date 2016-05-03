@@ -6,11 +6,13 @@ using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using NHibernate.Linq;
+using log4net;
 
-namespace Api.Socioboard.Services
+namespace Api.Socioboard.Model
 {
     public class FacebookAccountRepository : IFacebookAccountRepository
     {
+        ILog logger = LogManager.GetLogger(typeof(FacebookAccountRepository));
         /// <addFacebookUser>
         /// Add new facebok user in  database.
         /// </summary>
@@ -273,7 +275,7 @@ namespace Api.Socioboard.Services
 
                         // Proceed action to Update Data.
                         // And Set the reuired paremeters to find the specific values.
-                        session.CreateQuery("Update FacebookAccount set FbUserName =:fbusername,AccessToken =:access,Friends =:friends,EmailId=:emailid,IsActive=:status where FbUserId = :fbuserid and UserId = :userid")
+                        session.CreateQuery("Update FacebookAccount set FbUserName =:fbusername,AccessToken =:access,Friends =:friends,EmailId=:emailid,IsActive=:status,LastScraped=:LastScraped where FbUserId = :fbuserid and UserId = :userid")
                             .SetParameter("fbusername", fbaccount.FbUserName)
                             .SetParameter("access", fbaccount.AccessToken)
                             .SetParameter("friends", fbaccount.Friends)
@@ -281,6 +283,7 @@ namespace Api.Socioboard.Services
                             .SetParameter("fbuserid", fbaccount.FbUserId)
                             .SetParameter("userid", fbaccount.UserId)
                             .SetParameter("status", fbaccount.IsActive)
+                            .SetParameter("LastScraped",DateTime.Now)
                             .ExecuteUpdate();
                         transaction.Commit();
 
@@ -456,7 +459,21 @@ namespace Api.Socioboard.Services
             }//End session
 
         }
-
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetAllFacebookAccounts()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                try
+                {
+                    List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = session.CreateQuery("from FacebookAccount").List<Domain.Socioboard.Domain.FacebookAccount>().ToList<Domain.Socioboard.Domain.FacebookAccount>();
+                    return lstFacebookAccount;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Domain.Socioboard.Domain.FacebookAccount>();
+                }
+            }
+        }
 
         /// <getFacebookAccountsOfUser>
         /// Get all Facebook Account of User by UserId(Guid)
@@ -516,7 +533,24 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public Domain.Socioboard.Domain.FacebookAccount getFacebookAccountDetailsByUserProfileId(string Fbuserid, Guid userId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
 
+                    // proceed action, to get all Facebook Account of User by UserId(Guid) and FbUserId(string).
+                    NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where FbUserId = :Fbuserid and UserId=:userId");
+                    query.SetParameter("Fbuserid", Fbuserid);
+                    query.SetParameter("userId", userId);
+                    Domain.Socioboard.Domain.FacebookAccount result = (Domain.Socioboard.Domain.FacebookAccount)query.UniqueResult();
+                    return result;
+                }//End Transaction
+            }//End session
+        }
 
         public Domain.Socioboard.Domain.FacebookAccount getFacebookAccountDetailsById(string Fbuserid)
         {
@@ -559,19 +593,22 @@ namespace Api.Socioboard.Services
                         string[] arrsrt = profileid.Split(',');
                         foreach (string sstr in arrsrt)
                         {
-                            str += Convert.ToInt64(sstr) + ",";
+                          //  str += Convert.ToInt64(sstr) + ",";
+                            str += sstr + ",";
                         }
                         str = str.Substring(0, str.Length - 1);
                         str += ") group by FbUserId";
                         List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery(str).SetParameter("userid",userid)
                        .List<Domain.Socioboard.Domain.FacebookAccount>()
                        .ToList<Domain.Socioboard.Domain.FacebookAccount>();
+                        logger.Error(alst);
+                        logger.Error("fbacc");
                         return alst;
-
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
+                        logger.Error(ex.StackTrace);
                         return null;
                     }
 
@@ -598,17 +635,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
-                        // And Set the reuired paremeters to find the specific values.
-                       // List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery("from FacebookAccount where UserId = :userid and FbUserId = :fbuserid")
-                       // .SetParameter("userid", Userid)
-                       // .SetParameter("fbuserid", FbUserId)
-                       // .List<Domain.Socioboard.Domain.FacebookAccount>()
-                       //.ToList<Domain.Socioboard.Domain.FacebookAccount>();
-                       // if (alst.Count==0 || alst == null)
-                       //     return false;
-                       // else
-                       //     return true;
+                       
                         bool exist = session.Query<Domain.Socioboard.Domain.FacebookAccount>()
                                 .Any(x => x.UserId == Userid && x.FbUserId==FbUserId);
                         return exist;
@@ -1034,5 +1061,109 @@ namespace Api.Socioboard.Services
             }
         }
 
+
+        public Domain.Socioboard.Domain.FacebookAccount getFbAccount(Guid Id)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        //Proceed action to, Get User's all Detail from FacebookAccount by FbUserId.
+                        NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where Id = :fbuserid");
+
+                        query.SetParameter("fbuserid", Id);
+                        List<Domain.Socioboard.Domain.FacebookAccount> lst = new List<Domain.Socioboard.Domain.FacebookAccount>();
+
+                        foreach (Domain.Socioboard.Domain.FacebookAccount item in query.Enumerable())
+                        {
+
+                            lst.Add(item);
+                            break;
+                        }
+                        Domain.Socioboard.Domain.FacebookAccount fbacc = lst[0];
+                        return fbacc;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
+        public int DeleteAllFacebookAccount(Guid userId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+              
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookAccount where UserId = :userid")
+                                        .SetParameter("userid", userId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+
+
+
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetAllFacebookPublicPages()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(x => (x.AccessToken == "") && (x.Type == "Page" || x.Type == "page")).ToList();
+
+                return lstFacebookAccount;
+            }
+        }
+
+
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetAllFacebookPublicPagesOfUser(Guid UserID)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(x => (x.AccessToken == "") &&x.UserId == UserID &&(x.Type == "Page" || x.Type == "page")).ToList();
+
+                return lstFacebookAccount;
+            }
+        }
+
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetFacebookAccounrForDataServices()
+        {
+            List<FacebookAccount> lstFacebookAccount =new List<FacebookAccount>();
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                lstFacebookAccount = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(t => t.IsActive == 1 && (t.LastScraped < DateTime.Now.AddHours(-1) || t.LastScraped == null) && t.ProfileType == "account").ToList(); 
+            }
+            return lstFacebookAccount;
+        }
+
+        public List<Domain.Socioboard.Domain.FacebookAccount> GetFacebookPagesForDataServices()
+        {
+            List<FacebookAccount> lstFacebookAccount = new List<FacebookAccount>();
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                lstFacebookAccount = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(t => !string.IsNullOrEmpty(t.AccessToken) && (t.LastScraped < DateTime.Now.AddHours(-1) || t.LastScraped == null) && (t.ProfileType == "Page" || t.ProfileType == "page")).ToList();
+            }
+            return lstFacebookAccount;
+        }
     }
 }

@@ -127,6 +127,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTwitterFeedWithSentiments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="count" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterFeedWithSentimentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterFeedWithSentimentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -177,6 +193,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterFeedWithSentiments" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterFeedWithSentimentsResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -237,6 +259,14 @@
     <wsdl:part name="count" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsHttpGetIn">
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileIdHttpPostIn">
@@ -300,6 +330,14 @@
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsHttpPostIn">
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterFeedWithSentimentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterFeedSoap">
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId">
       <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileIdSoapIn" />
@@ -332,6 +370,10 @@
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
       <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapIn" />
       <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <wsdl:input message="tns:GetTwitterFeedWithSentimentsSoapIn" />
+      <wsdl:output message="tns:GetTwitterFeedWithSentimentsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterFeedHttpGet">
@@ -367,6 +409,10 @@
       <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetIn" />
       <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <wsdl:input message="tns:GetTwitterFeedWithSentimentsHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterFeedWithSentimentsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterFeedHttpPost">
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId">
@@ -400,6 +446,10 @@
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
       <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostIn" />
       <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <wsdl:input message="tns:GetTwitterFeedWithSentimentsHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterFeedWithSentimentsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterFeedSoap" type="tns:TwitterFeedSoap">
@@ -469,6 +519,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
       <soap:operation soapAction="http://tempuri.org/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterFeedWithSentiments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -551,6 +610,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterFeedWithSentiments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterFeedHttpGet" type="tns:TwitterFeedHttpGet">
     <http:binding verb="GET" />
@@ -626,6 +694,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <http:operation location="/GetTwitterFeedWithSentiments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterFeedHttpPost" type="tns:TwitterFeedHttpPost">
     <http:binding verb="POST" />
@@ -694,6 +771,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
       <http:operation location="/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTwitterFeedWithSentiments">
+      <http:operation location="/GetTwitterFeedWithSentiments" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

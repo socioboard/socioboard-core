@@ -20,6 +20,8 @@
     <property name="PostedTime">
       <column name="PostedTime"  />
     </property>
-    
+    <property name="Facebookpagename">
+      <column name="Facebookpagename"  />
+    </property>
   </class>
 </hibernate-mapping>

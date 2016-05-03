@@ -46,6 +46,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="ChilkatDotNet2">
+      <HintPath>..\..\..\..\SVN\Socioboard\bin\ChilkatDotNet2.dll</HintPath>
+    </Reference>
     <Reference Include="DataStreams, Version=5.14.0.0, Culture=neutral, PublicKeyToken=9c9b03c227e1bea6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DataStreams.dll</HintPath>
@@ -60,6 +63,9 @@
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dev.socioboard.com\trunk\Socioboard\bin\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\..\SVN\Socioboard\bin\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
@@ -273,7 +279,9 @@
     <Compile Include="Helper\Enterprise.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\Payment.cs" />
+    <Compile Include="Helper\PluginHelper.cs" />
     <Compile Include="Helper\PricingModelHelper.cs" />
+    <Compile Include="Helper\SBHelper.cs" />
     <Compile Include="Helper\SBUtils.cs" />
     <Compile Include="Helper\SocialAccountsAPIHelper.cs" />
     <Compile Include="Helper\TwitterHelper.cs" />
@@ -392,6 +400,16 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.FbPagePost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.GoogleAnalyticsAccount\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.GoogleAnalytics\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -2956,6 +2974,16 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\Api.GoogleAnalyticsAccount\GoogleAnalyticsAccount.wsdl" />
+    <None Include="Web References\Api.GoogleAnalyticsAccount\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.GoogleAnalytics\GoogleAnalytics.wsdl" />
+    <Content Include="Web References\Api.GoogleAnalytics\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web References\Api.GooglePlusAccount\GooglePlusAccount.wsdl" />
     <None Include="Web References\Api.GooglePlusAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -3220,6 +3248,8 @@
     <None Include="Web References\Api.User\user.disco" />
     <None Include="Web References\Api.LinkedinMessage\linkedinmessage.disco" />
     <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
+    <None Include="Web References\Api.GoogleAnalyticsAccount\GoogleAnalyticsAccount.disco" />
+    <None Include="Web References\Api.GoogleAnalytics\GoogleAnalytics.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3366,6 +3396,28 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/services/GoogleAnalytics.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GoogleAnalytics\</RelPath>
+      <UpdateFromURL>http://localhost:6361/services/GoogleAnalytics.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GoogleAnalytics_GoogleAnalytics</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/services/GoogleAnalyticsAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GoogleAnalyticsAccount\</RelPath>
+      <UpdateFromURL>http://localhost:6361/services/GoogleAnalyticsAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GoogleAnalyticsAccount_GoogleAnalyticsAccount</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/GooglePlus.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

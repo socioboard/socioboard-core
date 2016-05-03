@@ -41,6 +41,9 @@ namespace Api.Socioboard.Services
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         LinkedinCompanyPageRepository objLinkedCmpnyPgeRepo = new LinkedinCompanyPageRepository();
 
+        private GroupProfileRepository grpProfileRepo = new Model.GroupProfileRepository();
+
+
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -154,6 +157,8 @@ namespace Api.Socioboard.Services
             SocialProfilesRepository socioprofilerepo = new SocialProfilesRepository();
             Domain.Socioboard.Domain.LinkedinCompanyPage objLinkedincmpnypage = new Domain.Socioboard.Domain.LinkedinCompanyPage();
             LinkedinCompanyPageRepository objLinkedCmpnyPgeRepo = new LinkedinCompanyPageRepository();
+            Domain.Socioboard.Domain.GroupProfile grpProfile = new Domain.Socioboard.Domain.GroupProfile();
+
             try
             {
                 objLinkedincmpnypage.UserId = Guid.Parse(UserId);
@@ -260,14 +265,23 @@ namespace Api.Socioboard.Services
                 #endregion
 
                 #region TeamMemberProfile
-                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-                objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                objTeamMemberProfile.Id = Guid.NewGuid();
-                objTeamMemberProfile.TeamId = objTeam.Id;
-                objTeamMemberProfile.Status = 1;
-                objTeamMemberProfile.ProfileType = "linkedincompanypage";
-                objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                objTeamMemberProfile.ProfileId = socioprofile.ProfileId;
+                //Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                //objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                //objTeamMemberProfile.Id = Guid.NewGuid();
+                //objTeamMemberProfile.TeamId = objTeam.Id;
+                //objTeamMemberProfile.Status = 1;
+                //objTeamMemberProfile.ProfileType = "linkedincompanypage";
+                //objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                //objTeamMemberProfile.ProfileId = socioprofile.ProfileId;
+
+
+                grpProfile.Id = Guid.NewGuid();
+                grpProfile.EntryDate = DateTime.UtcNow;
+                grpProfile.GroupId = Guid.Parse(GroupId);
+                grpProfile.GroupOwnerId = Guid.Parse(UserId);
+                grpProfile.ProfileId = socioprofile.ProfileId;
+                grpProfile.ProfileType = "linkedincompanypage";
+               // grpProfile.ProfilePic 
                 #endregion
             }
             catch
@@ -279,10 +293,17 @@ namespace Api.Socioboard.Services
                 {
                     objSocialProfilesRepository.addNewProfileForUser(socioprofile);
                 }
-                if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeamMemberProfile.TeamId, objLinkedincmpnypage.LinkedinPageId))
+                //if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeamMemberProfile.TeamId, objLinkedincmpnypage.LinkedinPageId))
+                //{
+                //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                //}
+                if (!grpProfileRepo.checkProfileExistsingroup(Guid.Parse(GroupId), socioprofile.ProfileId))
                 {
-                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    grpProfileRepo.AddGroupProfile(grpProfile);
+
                 }
+
                 if (!objLinkedCmpnyPgeRepo.checkLinkedinPageExists(CompanyPageId, Guid.Parse(UserId)))
                 {
                     objLinkedCmpnyPgeRepo.addLinkenCompanyPage(objLinkedincmpnypage);
@@ -334,10 +355,27 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetLinkedinPagePostComment(string Oauth, string updatekey)
+        public string GetLinkedinPagePostComment(string Oauth, string updatekey, string PageId)
         {
             oAuthLinkedIn _OAuth = new oAuthLinkedIn();
             _OAuth = (oAuthLinkedIn)(new JavaScriptSerializer().Deserialize(Oauth, typeof(oAuthLinkedIn)));
+            try
+            {
+                _OAuth.ConsumerKey = ConfigurationManager.AppSettings["LinkedinApiKey"];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                _OAuth.ConsumerSecret = ConfigurationManager.AppSettings["LinkedinSecretKey"];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             List<Domain.Socioboard.Domain.LinkdeinPageComment> objLiPageComment = new List<Domain.Socioboard.Domain.LinkdeinPageComment>();
 
             try
@@ -346,7 +384,7 @@ namespace Api.Socioboard.Services
 
                 List<LinkedinPageComment.CompanyPageComment> objLiPostcmnt = new List<LinkedinPageComment.CompanyPageComment>();
 
-                objLiPostcmnt = objLiPagePostCmnt.GetPagePostscomment(_OAuth, updatekey);
+                objLiPostcmnt = objLiPagePostCmnt.GetPagePostscomment(_OAuth, updatekey, PageId);
 
 
 
@@ -415,6 +453,23 @@ namespace Api.Socioboard.Services
                 Domain.Socioboard.Domain.LinkedinCompanyPage objlicompanypage = new Domain.Socioboard.Domain.LinkedinCompanyPage();
                 objlicompanypage = objLinkedCmpnyPgeRepo.getCompanyPageInformation(PageId);
                 oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
+                try
+                {
+                    Linkedin_oauth.ConsumerKey = ConfigurationManager.AppSettings["LinkedinApiKey"];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                try
+                {
+                    Linkedin_oauth.ConsumerSecret = ConfigurationManager.AppSettings["LinkedinSecretKey"];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 Linkedin_oauth.Verifier = objlicompanypage.OAuthVerifier;
                 Linkedin_oauth.TokenSecret = objlicompanypage.OAuthSecret;
                 Linkedin_oauth.Token = objlicompanypage.OAuthToken;
@@ -439,7 +494,7 @@ namespace Api.Socioboard.Services
             try
             {
                 string msg = string.Empty;
-
+                oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
                 int isLike = Convert.ToInt16(IsLike);
 
                 if (isLike == 1)
@@ -448,10 +503,27 @@ namespace Api.Socioboard.Services
                 }
                 else
                 { msg = "true"; }
+                try
+                {
+                    Linkedin_oauth.ConsumerKey = ConfigurationManager.AppSettings["LinkedinApiKey"];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                try
+                {
+                    Linkedin_oauth.ConsumerSecret = ConfigurationManager.AppSettings["LinkedinSecretKey"];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
                 Domain.Socioboard.Domain.LinkedinCompanyPage objlicompanypage = new Domain.Socioboard.Domain.LinkedinCompanyPage();
                 objlicompanypage = objLinkedCmpnyPgeRepo.getCompanyPageInformation(PageId);
-                oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
+                
                 Linkedin_oauth.Verifier = objlicompanypage.OAuthVerifier;
                 Linkedin_oauth.TokenSecret = objlicompanypage.OAuthSecret;
                 Linkedin_oauth.Token = objlicompanypage.OAuthToken;
@@ -480,7 +552,7 @@ namespace Api.Socioboard.Services
                 objlinkedpagepostrepo.deleteAllPostOfPage(LinkedinPageId, Guid.Parse(UserId));
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(LinkedinPageId, objTeam.Id);
-                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), LinkedinPageId);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), LinkedinPageId,"");
                 return new JavaScriptSerializer().Serialize("");
             }
             catch (Exception ex)
