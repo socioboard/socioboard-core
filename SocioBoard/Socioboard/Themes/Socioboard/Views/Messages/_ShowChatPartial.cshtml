@@ -1,41 +1,113 @@
 ﻿@{
     List<Domain.Socioboard.Domain.TwitterDirectMessages> _TwitterDirectMessages = (List<Domain.Socioboard.Domain.TwitterDirectMessages>)Model;
-    
+    string toId = string.Empty;
 }
-@foreach (Domain.Socioboard.Domain.TwitterDirectMessages msg in _TwitterDirectMessages)
-{
-    if (ViewBag.ProfileId == msg.SenderId)
+<ul class="chat-thread" id="chat-ul-thread">
+    @foreach (Domain.Socioboard.Domain.TwitterDirectMessages msg in _TwitterDirectMessages)
     {
-    <li class="msg col-md-9" title="@msg.CreatedDate">@msg.Message
-        @if (!string.IsNullOrEmpty(msg.Image))
-        { 
-            <img src="@msg.Image" />
+        string stream = string.Empty;
+        if (!string.IsNullOrEmpty(msg.Message))
+        {
+            try
+            {
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(msg.Message);
+                foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                                stream += "<a target=\"_blank\" href=\"" + substritem + "\"> " + substritem + " </a>";
+                            }
+                            else
+                            {
+                                stream += substritem;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                stream = msg.Message;
+            }
         }
-    </li>
-    <style>
+        if (ViewBag.ProfileId == msg.SenderId)
+        {
+            <li class="msg col-md-9" title="@msg.CreatedDate">
+                @Html.Raw(HttpUtility.HtmlDecode(stream.Trim()))
+                @if (!string.IsNullOrEmpty(msg.Image))
+                {
+                    <img src="@msg.Image" />
+                }
+            </li>
+            <style>
        .chat-thread .msg:before {
         background-image:url(@msg.SenderProfileUrl);
        }
-         </style>
-     
-    }
-    else
-    {
-    <li class="reply col-md-9" title="@msg.CreatedDate">@msg.Message
-        @if (!string.IsNullOrEmpty(msg.Image))
-        { 
-            <img src="@msg.Image" />
+            </style>
+                toId = msg.RecipientId;
+
         }
-    </li>
-    <style>
+        else
+        {
+            <li class="reply col-md-9" title="@msg.CreatedDate">
+                @Html.Raw(HttpUtility.HtmlDecode(stream.Trim()))
+                @if (!string.IsNullOrEmpty(msg.Image))
+                {
+                    <img src="@msg.Image" />
+                }
+            </li>
+            <style>
        .chat-thread .reply:before {
         background-image:url(@msg.SenderProfileUrl);
        }
-         </style>
-    
+            </style>
+                toId = msg.SenderId;
+
+        }
+
+
+
     }
+</ul>
+<div class="">
+    <div class="col-md-10">
+        <input class="form-control" id="direct-message" onkeypress="if (event.keyCode == 13) { addTwitterDirectMessage('@ViewBag.ProfileId','@toId'); return false; }" />
+    </div>
+    <div class="col-md-2">
+        <input type="button" value="Send" class="btn btn-primary" id="btn-direct-msg" onclick="addTwitterDirectMessage('@ViewBag.ProfileId', '@toId')" />
+    </div>
+</div>
+<script>
+    function addTwitterDirectMessage(fromId, toId)
+    {
+        debugger;
+        var message = $("#direct-message").val();
+        $.ajax({
+            url: "../Messages/SendDirectMessage?message=" + encodeURIComponent(message) + "&fromId=" + fromId + "&toId=" + toId,
+            type: "post",
+            beforeSend: function ()
+            {
+                $("#btn-direct-msg").attr("disabled",true);
+                $("#btn-direct-msg").val("wait..");
+            },
+            success: function (data)
+            {
+                if (data != "") {
+                    $("#direct-message").val("");
+                
+                    $("#chat-ul-thread").append(data);
+                } 
+                $("#btn-direct-msg").val("Send");
+                $("#btn-direct-msg").removeAttr("disabled");
+            }
+        });
 
-
-
-}
-
+    }
+</script>

@@ -256,6 +256,7 @@
     <Compile Include="Controllers\MultilanguageController.cs" />
     <Compile Include="Controllers\PersonalSettingController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
+    <Compile Include="Controllers\SentimentalAnalysisController.cs" />
     <Compile Include="Controllers\ShareathonController.cs" />
     <Compile Include="Controllers\SocialManagerController.cs" />
     <Compile Include="Controllers\TumblrManagerController.cs" />
@@ -2759,6 +2760,17 @@
     <Content Include="Themes\Socioboard\Views\Shareathon\GroupShareathonEdit.cshtml" />
     <Content Include="Themes\Socioboard\Views\Shareathon\Index.cshtml" />
     <Content Include="Themes\Socioboard\Views\Shareathon\_facebookgrouppartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\GroupMember.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\Internal.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\LoadGroups.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\MyTickets.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_FBPagePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_GAProfilesPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_InstagramContactPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_InstagramProfilePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_TicketsPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_TwitterContactPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\_TwitterProfilePartial.cshtml" />
     <None Include="Web References\Api.AdminNews\AdminNews.disco" />
     <None Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.disco" />
     <None Include="Web References\Api.AdminUserDetails\AdminUserDetails.disco" />

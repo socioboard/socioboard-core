@@ -1,0 +1,85 @@
+﻿                      @using Domain.Socioboard.Domain;
+
+@{
+    Layout = null;
+    string groupname = string.Empty;
+    string groupId = string.Empty;
+}
+
+
+@if (Session["group"] == null)
+{
+
+    @*<ul class="dropdown-menu slidedown">*@
+    <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>@GlobusMultiLanguageLib.Resources.Shared_LoadGroupPartial_Groups</b></div></li>
+    foreach (Groups item in Model)
+    {
+        try
+        {
+            if (item.GroupName.Equals(System.Configuration.ConfigurationManager.AppSettings["DefaultGroupName"].ToString()))
+            {
+                groupname = @item.GroupName;
+                <li>
+                    <a href="#" class="groupclk" style="background: #428bca;" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+                string groupid = item.Id.ToString();
+                HttpContext.Current.Session["group"] = groupid;
+            }
+            else
+            {
+                <li>
+                    <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+                groupId = item.Id.ToString();
+            }
+        }
+        catch (Exception)
+        {
+
+        }
+
+
+    }
+    if (HttpContext.Current.Session["group"] == null && !string.IsNullOrEmpty(groupId))
+    {
+        HttpContext.Current.Session["group"] = groupId;
+    }
+    @*</ul>
+        <div class="pull-right"><strong><i class="fa fa-fw"></i>Socioboard</strong></div>*@
+}
+else
+{
+    @*<ul class="dropdown-menu slidedown">*@
+    <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>Groups</b></div></li>
+    foreach (Groups item in Model)
+    {
+        if (item != null)
+        {
+            if (item.Id.ToString() == (Session["group"].ToString()))
+            {
+                groupname = @item.GroupName;
+                <li>
+                    <a href="#" style="background: #428bca" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+                HttpContext.Current.Session["group"] = item.Id;
+            }
+            else
+            {
+
+                <li>
+                    <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+            }
+        }
+    }
+    @*</ul>
+        <div class="pull-right"><strong><i class="fa fa-fw"></i>@groupname</strong></div>*@
+}

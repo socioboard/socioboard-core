@@ -2732,10 +2732,6 @@ C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\M
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\ShareathonGroup.hbm.xml
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\SharethonGroupPost.hbm.xml
 C:\Users\GLB-007\Documents\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\SharethonPost.hbm.xml
-D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.csproj.App.config
-D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
-D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.dll
-D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\User.hbm.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\Groups.hbm.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
@@ -2941,3 +2937,8 @@ D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\System.Web.WebPage
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\System.Web.WebPages.Deployment.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\System.Web.WebPages.Razor.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Zlib.Portable.xml
+D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.csproj.App.config
+D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
+D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.dll
+D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
+D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\bin\Mappings\Groupmembers.hbm.xml

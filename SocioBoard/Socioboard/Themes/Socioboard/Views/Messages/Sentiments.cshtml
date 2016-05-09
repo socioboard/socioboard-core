@@ -1,0 +1,228 @@
+﻿
+@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+<link href="~/Themes/@path/Contents/css/smartinbox.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="~/Themes/@path/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+
+
+<div id="page-wrapper">
+    <div class="container-fluid" style="margin-top: 6%;">
+        <div class="col-md-9">
+            <section class="sectionClass" style="margin-left: -5%; margin-top: -5%;height:600px" onscroll="MessageonScroll()">
+                <div class="chat">
+                    <ul id="ul-inbox-message">
+                        <div>
+                            <center>
+                                <img src="~/Themes/@path/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section>
+                <div class="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Filter</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h5>PROFILES</h5>
+                            <div id="div-user-profiles">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif" />
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#SocialProfilesModal">Connect a Profile </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <h5>MESSAGE TYPES</h5>
+                            <div id="div-user-message">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif" />
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
+<script src="~/Themes/@path/Contents/js/Helper.js"></script>
+<script src="~/Themes/@path/Contents/js/underscore.js"></script>
+
+<script src="/Themes/@path/Contents/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/Themes/@path/Contents/js/jquD97C.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+
+    var throttled = _.throttle(scrollInboxSentimentMessages, 3000);
+
+    $(document).ready(function () {
+        debugger;
+
+        bindInboxSentimentMessages();
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+        $("#msg-index").removeClass('active');
+        $("#msg-task").removeClass('active');
+        $("#msg-sentmsg").removeClass('active');
+        $("#msg-sentiments").addClass('active');
+
+        $("#messagetype").click(function () {
+            $('#profile').addClass('collapsed');
+        });
+        $("#profile").click(function () {
+            $('#messagetype').addClass('collapsed');
+        });
+
+        (function ($) {
+            $(window).load(function () {
+                debugger;
+                $(".sectionClass").mCustomScrollbar({ theme: "minimal" });
+            });
+        })(jQuery);
+
+    });
+
+    function MessageonScroll() {
+        throttled();
+    }
+
+    function scrollInboxSentimentMessages() {
+        debugger;
+        arrid = new Array();
+        arrmsgtype = new Array();
+        try {
+            $("#div-user-message .cls-user-message").each(function () {
+                debugger;
+                var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+                if (document.getElementById(attrId).checked == false) {
+                    var index = arrmsgtype.indexOf(attrId);
+                    if (index > -1) {
+                        arrmsgtype.splice(index, 1);
+                    }
+                } else {
+                    arrmsgtype.push(attrId);
+                }
+            });
+        } catch (e) {
+
+        }
+        debugger;
+        try {
+            $("#div-user-profiles .cls-user-profile").each(function () {
+                debugger;
+                var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+                if (document.getElementById(attrId).checked == false) {
+                    var index = arrmsgtype.indexOf(attrId);
+                    if (index > -1) {
+                        arrid.splice(index, 1);
+                    }
+                } else {
+                    arrid.push(attrId);
+                }
+            });
+        } catch (e) {
+
+        }
+        $.ajax({
+            type: "GET",
+            url: "../Messages/BindSentiments?load=scroll&arrmsgtype=" + arrmsgtype + "&arrid=" + arrid,
+            datatype: "html",
+            success: function (msg) {
+                if (msg != "no_data") {
+                    $("#ul-inbox-message").append(msg);
+                }
+            },
+            async: false
+        });
+    }
+
+
+    function facebookLikeUnlike(msgguid, profileid, fbmsgid) {
+        debugger;
+        try {
+            var status = $("#fblike_" + fbmsgid).attr('status');
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/FacebookLike?fbid=" + fbmsgid + "&profileid=" + profileid + "&msgid=" + msgguid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                success: function (e) {
+                    if (status == "likes") {
+                        $("#fblike_" + fbmsgid).attr('status', 'unlike');
+                        $("#fblike_" + fbmsgid).attr('title', 'Unlike this');
+                        $("#fblike_" + fbmsgid).html('Unlike');
+                        alertify.success("Liked Successfully");
+                    }
+                    else {
+                        $("#fblike_" + fbmsgid).attr('status', 'likes');
+                        $("#fblike_" + fbmsgid).attr('title', 'Like this');
+                        $("#fblike_" + fbmsgid).html('Like');
+                        alertify.success("Unliked Successfully");
+                    }
+                }
+            });
+        } catch (e) { }
+    }
+</script>
+
+
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script>
+    $('.chatLinks').hide();
+    $('.chatLinks1').hide();
+
+    $('.message1').mouseover(function () {
+        $('.chatLinks').show();
+        $('.chatLinks1').show();
+    });
+    $('.message1').mouseout(function () {
+        $('.chatLinks').hide();
+        $('.chatLinks1').hide();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+

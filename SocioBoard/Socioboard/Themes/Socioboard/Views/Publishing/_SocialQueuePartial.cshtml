@@ -16,22 +16,25 @@
     TumblrAccount objTumblrAccount = new TumblrAccount();
 
 }
+
 @if (!string.IsNullOrEmpty(objuser.ProfileUrl))
 {
     try
     {
         string[] profileUrl = objuser.ProfileUrl.Split(new string[] { path }, StringSplitOptions.None);
-        string imgurl = "/Themes/" + path + "/" + profileUrl[1];
-        //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
-        ProfileUrl = imgurl;
+        ProfileUrl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + profileUrl[2];
     }
-    catch
+    catch (Exception ex)
     {
-        ProfileUrl = objuser.ProfileUrl;
+        ProfileUrl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
     }
+
 }
+else
+{
+    ProfileUrl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
 
-
+}
 
 <thead>
     <tr>
@@ -119,24 +122,52 @@
                         @objuser.UserName<br>
                         @*@item.ScheduleTime</span>*@
                         @ScheduleTime(item.ClientTime.ToLocalTime(), @item.CreateTime, @item.ScheduleTime)
+                        @*@Socioboard.Helper.DateExtension.ToClientTime(item.ScheduleTime)*@
                     </span>
                 </div>
             </td>
-            @if ((item.ShareMessage).Contains("$%^_^%$"))
+            @if (!string.IsNullOrEmpty(item.ShareMessage))
             {
-                <td>@item.ShareMessage.Replace("$%^_^%$", "  ")</td>
+                if ((item.ShareMessage).Contains("$%^_^%$"))
+                {
+                    <td>@item.ShareMessage.Replace("$%^_^%$", "  ")</td>
+                }
+                else
+                {
+                    <td>
+                        @item.ShareMessage
+                        @if (!string.IsNullOrEmpty(item.PicUrl))
+                        {
+                            if (item.PicUrl.Contains("Themes") && item.PicUrl.Contains("wwwroot"))
+                            {
+                                picturearry = item.PicUrl.Split(new string[] { "Themes" }, StringSplitOptions.None);
+                                <img style="height: 150px;margin: auto;" src="/Themes/@picturearry[1]" class="img-responsive">
+                            }
+                            else
+                            {
+                                <img style="height: 150px;margin: auto;" src="@item.PicUrl" class="img-responsive">
+                            }
+                        }
+                    </td>
+                }
             }
             else
             {
-                <td>
-                    @item.ShareMessage
-                    @if (!string.IsNullOrEmpty(item.PicUrl))
-                    {
-                        picturearry = item.PicUrl.Split(new string[] { "Themes" }, StringSplitOptions.None);
-                        <img style="height: 150px;margin: auto;" src="/Themes/@picturearry[1]" class="img-responsive">
+                if (!string.IsNullOrEmpty(item.PicUrl))
+                {
+                    <td>
+                        @if (item.PicUrl.Contains("Themes") && item.PicUrl.Contains("wwwroot"))
+                        {
+                            picturearry = item.PicUrl.Split(new string[] { "Themes" }, StringSplitOptions.None);
+                            <img style="height: 150px;margin: auto;" src="/Themes/@picturearry[1]" class="img-responsive" />
+                        }
+                        else
+                        {
+                            <img style="height: 150px;margin: auto;" src="@item.PicUrl" class="img-responsive" />
+                        }
+                    </td>
+                }
 
-                    }
-                </td>
             }
             <td class=" text-center ">
                 <img src="@sendtoprofileimage" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
@@ -154,7 +185,7 @@
 
             <td class="center">@status</td>
             <td class="center">
-                <button type="button" class="btn btn-danger btn-circle" onclick="deletesocialqueuemsg('@item.Id')"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-danger btn-circle" data-target="#deletesociaoqueue" data-toggle="modal" onclick="deletesocialqueuemsg('@item.Id')"><i class="fa fa-times"></i></button>
             </td>
             @{
                 string picurl = string.Empty;
@@ -167,12 +198,12 @@
             <td>
                 @if (!string.IsNullOrEmpty(picurl))
                 {
-                    <button type="button" data-pic="/Themes/@picurl" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage',this)"><i class="fa fa-pencil"></i></button>
+                    <button type="button" data-pic="/Themes/@picurl" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage',this)" data-target="#editsociaoqueue" data-toggle="modal"><i class="fa fa-pencil"></i></button>
 
                 }
                 else
                 {
-                    <button type="button" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage',this)"><i class="fa fa-pencil"></i></button>
+                    <button type="button" data-pic="@item.PicUrl" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage',this)" data-target="#editsociaoqueue" data-toggle="modal"><i class="fa fa-pencil"></i></button>
                 }
             </td>
         </tr>

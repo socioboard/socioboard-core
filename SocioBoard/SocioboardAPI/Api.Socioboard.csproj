@@ -253,12 +253,29 @@
     <Compile Include="App_Start\apiClientProvider.cs" />
     <Compile Include="App_Start\ApplicationOAuthServerProvider.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="App_Start\CustomAuthorize.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiFacebookAccountController.cs" />
+    <Compile Include="Controllers\ApiFbPublicPageReportsController.cs" />
+    <Compile Include="Controllers\ApiGoogleAnalyticsAccountController.cs" />
+    <Compile Include="Controllers\ApiGooglePlusAccountController.cs" />
+    <Compile Include="Controllers\ApiGroupMembersController.cs" />
+    <Compile Include="Controllers\ApiGroupProfilesController.cs" />
+    <Compile Include="Controllers\ApiGroupsController.cs" />
+    <Compile Include="Controllers\ApiHomeController.cs" />
+    <Compile Include="Controllers\ApiInstagramAccountController.cs" />
+    <Compile Include="Controllers\ApiLinkedinAccountController.cs" />
+    <Compile Include="Controllers\ApiLinkedinCompanyPageController.cs" />
+    <Compile Include="Controllers\ApiLinkedInController.cs" />
+    <Compile Include="Controllers\ApiNewsLetterController.cs" />
     <Compile Include="Controllers\ApiShareathonController.cs" />
+    <Compile Include="Controllers\ApiTumblrAccountController.cs" />
+    <Compile Include="Controllers\ApiTwitterAccountController.cs" />
+    <Compile Include="Controllers\ApiUserController.cs" />
+    <Compile Include="Controllers\ApiYoutubeAccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +284,7 @@
     <Compile Include="Helper\FacebookHelper.cs" />
     <Compile Include="Helper\FacebookUser.cs" />
     <Compile Include="Helper\FbDiscoverySearchHelper.cs" />
+    <Compile Include="Helper\FbPublicPageHelper.cs" />
     <Compile Include="Helper\Globals.cs" />
     <Compile Include="Helper\GlobusHttpHelper.cs" />
     <Compile Include="Helper\GoogleAnalyticsAuthenticationHelper.cs" />
@@ -1176,6 +1194,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\SharethonPost.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Groupmembers.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="obj\Debug\Api.Socioboard.dll" />

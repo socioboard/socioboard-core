@@ -15,7 +15,7 @@
                 <div class="col-md-7">
                     <textarea class="form-control" cols="7" id="txtPostofPage" placeholder="Share an Update"></textarea>
                     <div class="fileUpload attach">
-    				    <input type="file" class="upload" />
+                        <input type="file" class="upload" id="fileuploadforpost" />
 				    </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="col-md-12">
                     <div class="chat-panel panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>News Feeds<a href="#"><i class="fa fa-refresh pull-right"></i></a></h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>News Feeds</h3>
                         </div>
                         <div class="panel-body">
                             <ul class="chat">
@@ -80,11 +80,11 @@
                                 Linkedin_oauth.Id = objcompanypageInfo.LinkedinPageId;
                                 Linkedin_oauth.FirstName = objcompanypageInfo.LinkedinPageName;
 
-                                objLinkedinPageLike = objLiPageupdate.GetPostLike(Linkedin_oauth, item.UpdateKey, objcompanypageInfo.LinkedinPageId);
-                                
+                                //objLinkedinPageLike = objLiPageupdate.GetPostLike(Linkedin_oauth, item.UpdateKey, objcompanypageInfo.LinkedinPageId);
+
                                 string linkedinoauth = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Linkedin_oauth);
                                 Socioboard.Api.LinkedinCompanyPage.LinkedinCompanyPage objLinkedinCompanypage = new Socioboard.Api.LinkedinCompanyPage.LinkedinCompanyPage();
-                                objLipagepostComnt = (List<Domain.Socioboard.Domain.LinkdeinPageComment>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objLinkedinCompanypage.GetLinkedinPagePostComment(linkedinoauth,item.UpdateKey), typeof(List<Domain.Socioboard.Domain.LinkdeinPageComment>)));
+                                objLipagepostComnt = (List<Domain.Socioboard.Domain.LinkdeinPageComment>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objLinkedinCompanypage.GetLinkedinPagePostComment(linkedinoauth,item.UpdateKey,item.PageId), typeof(List<Domain.Socioboard.Domain.LinkdeinPageComment>)));
                                 int cnt = objLipagepostComnt.Count();
                             
                             if (count % 2 == 0)
@@ -97,7 +97,7 @@
                                     <div class="chat-body clearfix">
                                         <div>
                                             <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i>@TimeOfPost(item.PostDate)</small>
+                                                <i class="fa fa-clock-o fa-fw"></i>@Socioboard.Helper.DateExtension.CalculateTimeDiff(item.PostDate)</small>
                                             <strong class="pull-right primary-font"><a target="_blank" href="https://www.linkedin.com/company/@objcompanypageInfo.LinkedinPageId">@objcompanypageInfo.LinkedinPageName</a></strong>
                                         </div>
                                         <p>
@@ -108,24 +108,24 @@
                                             @item.Posts
                                         </p>
                                     </div>
-                                    <div class="input-group">
-                                        <input id="lipgcmntbx_@item.UpdateKey" type="text" class="form-control input-sm" placeholder="Type your comment here...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-warning btn-sm" id="btn-chat" onclick="licomntonpagepost("'@objcompanypageInfo.LinkedinPageId'","'@item.UpdateKey'")">
-                                                Comment <span class="badge">@item.Comments</span>
-                                            </button>
-                                            <button type="button" class="btn btn-info btn-circle" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
-                                                @if (objLinkedinPageLike.isLiked==0)
-                                                {
-                                                    <i class="fa fa-thumbs-o-up"></i><span class="badge">@item.Likes</span>
-                                                }
-                                                else
-                                                {
-                                                    <i class="fa fa-thumbs-o-down"></i><span class="badge">@item.Likes</span>
-                                                } 
-                                            </button>
-                                        </span>
-                                    </div>
+                                     <div class="input-group" style="margin-top: 1%; margin-bottom: 1%;">
+                                         <input id="lipgcmntbx_@item.UpdateKey" type="text" class="form-control input-sm" placeholder="Type your comment here...">
+                                         <span class="input-group-btn">
+                                             <button class="btn btn-warning btn-sm" id="btn-chat" onclick="licomntonpagepost('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey')">
+                                                 Comment <span class="badge">@item.Comments</span>
+                                             </button>
+                                             <button type="button" class="btn btn-info btn-circle" style="padding-right: 28%; padding-left: 2%;" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
+                                                 @if (objLinkedinPageLike.isLiked == 0)
+                                                 {
+                                                     <i class="fa fa-thumbs-o-up"></i><span class="badge">@item.Likes</span>
+                                                 }
+                                                 else
+                                                 {
+                                                     <i class="fa fa-thumbs-o-down"></i><span class="badge">@item.Likes</span>
+                                                 }
+                                             </button>
+                                         </span>
+                                     </div>
                                      @if (cnt > 0)
                                      {
                                           <a id="cmntlink_@item.UpdateKey" onclick="viewallcomentlink('@item.UpdateKey','@cnt')">View all Comments</a>
@@ -137,7 +137,7 @@
                                               <ul class="list-unstyled">
                                              @foreach (Domain.Socioboard.Domain.LinkdeinPageComment postcomnt in objLipagepostComnt)
                                              {
-                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@TimeOfPost(postcomnt.CommentTime)</div></div></div></div></li>
+                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@Socioboard.Helper.DateExtension.CalculateTimeDiff(postcomnt.CommentTime)</div></div></div></div></li>
                                                     
                                              }
                                              </ul>
@@ -159,7 +159,7 @@
                                         <div>
                                             <strong class="primary-font"><a target="_blank" href="https://www.linkedin.com/company/@objcompanypageInfo.LinkedinPageId">@objcompanypageInfo.LinkedinPageName</a></strong>
                                             <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i>@TimeOfPost(item.PostDate)
+                                                <i class="fa fa-clock-o fa-fw"></i>@Socioboard.Helper.DateExtension.CalculateTimeDiff(item.PostDate)
                                             </small>
                                         </div>
                                         <p>
@@ -171,21 +171,21 @@
                                         </p>
                                     </div>
 
-                                    <div class="input-group">
+                                    <div class="input-group" style="margin-top: 1%; margin-bottom: 1%;">
                                         <input id="lipgcmntbx_@item.UpdateKey" type="text" class="form-control input-sm" placeholder="Type your comment here...">
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm" id="btn-chat" onclick="licomntonpagepost('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey')">
                                                 Comment <span class="badge">@item.Comments</span>
                                             </button>
-                                            <button type="button" class="btn btn-info btn-circle" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
-                                                 @if (objLinkedinPageLike.isLiked==0)
+                                            <button type="button" class="btn btn-info btn-circle" style="padding-right: 28%; padding-left: 2%;" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
+                                                @if (objLinkedinPageLike.isLiked == 0)
                                                 {
                                                     <i class="fa fa-thumbs-o-up"></i><span class="badge">@item.Likes</span>
                                                 }
                                                 else
                                                 {
                                                     <i class="fa fa-thumbs-o-down"></i><span class="badge">@item.Likes</span>
-                                                } 
+                                                }
                                             </button>
                                         </span>
                                     </div>
@@ -199,7 +199,7 @@
                                               <ul class="list-unstyled">
                                              @foreach (Domain.Socioboard.Domain.LinkdeinPageComment postcomnt in objLipagepostComnt)
                                              {
-                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@TimeOfPost(postcomnt.CommentTime)</div></div></div></div></li>
+                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@Socioboard.Helper.DateExtension.CalculateTimeDiff(postcomnt.CommentTime)</div></div></div></div></li>
                                                     
                                              }
                                              </ul>

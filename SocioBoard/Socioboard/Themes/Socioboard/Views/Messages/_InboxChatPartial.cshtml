@@ -10,10 +10,10 @@
 @foreach(Domain.Socioboard.Domain.TwitterDirectMessages msg in lstTwitterDirectMessages)
 {
 <li class="you">
-        <a href="#" class="user">
-            <img src="@msg.SenderProfileUrl" alt="">
-        </a>
-        <div class="date"><a data-toggle="tooltip" title="">@msg.SenderScreenName</a> @msg.CreatedDate</div>
+    <a href="https://twitter.com/@msg.SenderScreenName" class="user" target="_blank">
+        <img src="@msg.SenderProfileUrl" alt="">
+    </a>
+        <div class="date"><a data-toggle="tooltip" title="" href="https://twitter.com/@msg.SenderScreenName" target="_blank">@msg.SenderScreenName</a> @msg.CreatedDate</div>
         <div class="message">
             <p id="msg_@msg.Id" onclick="opnchatmsg('@msg.SenderId','@msg.RecipientId')" data-target="#chatModal" data-toggle="modal">@msg.Message
            @if (!string.IsNullOrEmpty(msg.Image))

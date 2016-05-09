@@ -104,7 +104,7 @@
         else {
             debugger;
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "../Feeds/SendFeedMail?emailId=" + emailId + "&feed=" + encodeURIComponent(feed) + "&fromname=" + fromname,
                 data: '',
                 success: function (msg) {

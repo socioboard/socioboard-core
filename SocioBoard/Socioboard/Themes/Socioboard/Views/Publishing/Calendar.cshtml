@@ -1,0 +1,203 @@
+﻿@using Domain.Socioboard.Domain;
+
+<link rel='stylesheet' href='~/Themes/Socioboard/Contents/plugins/fullcalendar/lib/cupertino/jquery-ui.min.css' />
+<link rel="stylesheet" type="text/css" href="~/Themes/Socioboard/Contents/plugins/fullcalendar/fullcalendar.css">
+<link rel="stylesheet" type="text/css" href="~/Themes/Socioboard/Contents/plugins/fullcalendar/fullcalendar.print.css" media='print'>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" />
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <h1 class="page-header">Schedule Message</h1>
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="calendar"></div>
+                </div>
+                <div class="col-md-3">
+                    <section>
+                        <div class="">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3>Filter</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <h5>PROFILES</h5>
+                                    <div id="">
+
+                                        @foreach (var item in (Dictionary<GroupProfile, object>)Model)
+                                        {
+                                            if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
+                                            {
+                                                FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+                                                string src = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+                                                if (objFacebookAccount.AccessToken != "")
+                                                {
+
+                                                    <div class="row cls-user-profile">
+                                                        <div class="col-md-2">
+                                                            <i class="fa fa-facebook" style="color: #4e69a2;"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <a href="#">@objFacebookAccount.FbUserName </a>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <input type="checkbox" name="fb_461696283991910" data-pid="@objFacebookAccount.FbUserId" class="css-checkbox" title="checked" onchange="filterevents(this)" onclick="filterevents(this)" checked>
+                                                            <label for="461696283991910" class="css-label"></label>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                }
+                                            }
+                                            if (item.Key.ProfileType == "twitter")
+                                            {
+                                                TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
+                                                <div class="row cls-user-profile">
+                                                    <div class="col-md-2">
+                                                        <i class="fa fa-twitter" style="color: #4e69a2;"></i>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <a href="#">@objTwitterAccount.TwitterScreenName </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="checkbox" name="fb_461696283991910" data-pid="@objTwitterAccount.TwitterUserId" class="css-checkbox" title="checked" onchange="filterevents(this)" onclick="filterinboxmessages(this.id)" checked="">
+                                                        <label for="461696283991910" class="css-label"></label>
+                                                    </div>
+                                                </div>
+                                            }
+                                            if (item.Key.ProfileType == "linkedin")
+                                            {
+                                                LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
+
+
+                                                <div class="row cls-user-profile">
+                                                    <div class="col-md-2">
+                                                        <i class="fa fa-linkedin" style="color: #4e69a2;"></i>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <a href="#">@objLinkedInAccount.LinkedinUserName </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="checkbox" name="fb_461696283991910" data-pid="@objLinkedInAccount.LinkedinUserId" class="css-checkbox" title="checked" onchange="filterevents(this)" onclick="filterinboxmessages(this.id)" checked="">
+                                                        <label for="461696283991910" class="css-label"></label>
+                                                    </div>
+                                                </div>
+
+
+                                            }
+                                            if (item.Key.ProfileType == "instagram")
+                                            {
+                                                InstagramAccount objInstagramAccount = (InstagramAccount)item.Value;
+
+                                            }
+                                            if (item.Key.ProfileType == "tumblr")
+                                            {
+                                                TumblrAccount objTumblrAccount = (TumblrAccount)item.Value;
+                                                string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+                                                <div class="row cls-user-profile">
+                                                    <div class="col-md-2">
+                                                        <i class="fa fa-tumblr" style="color: #4e69a2;"></i>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <a href="#">@objTumblrAccount.tblrUserName </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="checkbox" name="fb_461696283991910" data-pid="@objTumblrAccount.tblrUserName" class="css-checkbox" title="checked" onchange="filterevents(this)" onclick="filterinboxmessages(this.id)" checked="">
+                                                        <label for="461696283991910" class="css-label"></label>
+                                                    </div>
+                                                </div>
+                                            }
+                                            if (item.Key.ProfileType == "youtube")
+                                            {
+                                                YoutubeAccount objYoutubeAccount = (YoutubeAccount)item.Value;
+
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+    {
+
+
+    <script type="text/javascript" src="~/Themes/Socioboard/Contents/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script type="text/javascript" src="~/Themes/Socioboard/Contents/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js"></script>
+    <script src="~/Themes/Socioboard/Contents/js/Caledar.js"></script>
+    <script>
+        function filterevents(ele)
+        {
+            var profile = "[data-profileid= " + $(ele).data("pid") + " ]"
+            if ($(ele).is(':checked')) {
+                $(profile)
+                .each(function(){
+                    $(this).show();
+                });
+            }
+            else
+            {
+                $(profile)
+                   .each(function () {
+                       $(this).hide();
+                   });
+            }
+        }
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+            Calendar.init();
+
+
+
+
+            //  $('#calendar').fullCalendar({
+            //      theme: true,
+            //      header: {
+            //          left: 'prev,next today',
+            //          center: 'title',
+            //          right: 'month,agendaWeek,agendaDay'
+            //      },
+            //      defaultDate: '2015-12-12',
+            //      editable: true,
+            //      eventLimit: true, // allow "more" link when too many events
+            //      eventSources: [
+
+            //// your event source
+            //{
+            //    //url: Path,
+            //    url: '/Publishing/GetBatch',
+            //    type: 'GET',
+            //    data: {
+            //        //KeyWord: getUrlParameters("KeyWord", "", true),
+            //        //id: getUrlParameters("id", "", true),
+            //        //Area: getUrlParameters("Area", "", true),
+            //        //City: getUrlParameters("City", "", true)
+
+            //    },
+            //    error: function () {
+            //        alert('there was an error while fetching events!');
+            //    }
+
+            //}],
+            //  });
+
+        });
+
+    </script>
+}

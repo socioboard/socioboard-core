@@ -134,7 +134,6 @@ D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLan
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\bin\Debug\System.Net.Http.Formatting.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\bin\Debug\System.Web.Http.xml
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\bin\Debug\System.Web.Http.WebHost.xml
-D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.csprojResolveAssemblyReference.cache
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.Resources.resources
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.Resources.hi.resources
 D:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Library\GlobusMultiLanguageLib\obj\Debug\GlobusMultiLanguageLib.Resources.it.resources

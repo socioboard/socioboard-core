@@ -1,6 +1,6 @@
 ﻿@using System.Web.Script.Serialization;
 @{
-    List<Domain.Socioboard.Domain.TeamMemberProfile> allprofileofuser = (List<Domain.Socioboard.Domain.TeamMemberProfile>)Model;
+    List<Domain.Socioboard.Domain.GroupProfile> allprofileofuser = (List<Domain.Socioboard.Domain.GroupProfile>)Model;
     Domain.Socioboard.Domain.User _User=(Domain.Socioboard.Domain.User)Session["User"];
     }
 
@@ -10,7 +10,7 @@
                 {
                     //Domain.Socioboard.Domain.TeamMemberProfile item = (Domain.Socioboard.Domain.TeamMemberProfile)(profile.Value);
                     Socioboard.Api.FacebookAccount.FacebookAccount apiFacebookAccount=new Socioboard.Api.FacebookAccount.FacebookAccount();
-                    Domain.Socioboard.Domain.FacebookAccount _FacebookAccount= (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(apiFacebookAccount.GetAllFacebookAccountDetails(item.ProfileId,_User.Id.ToString()),typeof(Domain.Socioboard.Domain.FacebookAccount));
+                    Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(apiFacebookAccount.getFacebookAccountDetailsById( _User.Id.ToString(),item.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
                     if (item.ProfileType == "facebook_page" && !string.IsNullOrEmpty(_FacebookAccount.AccessToken))
                     {
                         <div class="row cls-user-profile">

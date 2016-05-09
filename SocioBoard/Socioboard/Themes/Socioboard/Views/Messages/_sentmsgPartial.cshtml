@@ -62,7 +62,7 @@
                                             ScreenName = objTwitterAccount.TwitterScreenName;
                                             ProfileImageUrl = objTwitterAccount.ProfileImageUrl;
                                         }
-                                        else if (item.ProfileType == "facebook")
+                                        else if (item.ProfileType == "facebook" || item.ProfileType=="facebook_page")
                                         {
                                             icon = "fb_icon.png";
                                             onClick = "getFacebookProfiles";
@@ -108,6 +108,17 @@
                                         </div>
                                         <div class="panel-body">
                                             <p>@item.ShareMessage</p>
+                                            @if (!string.IsNullOrEmpty(item.PicUrl))
+                                            {
+                                                try
+                                                {
+                                                    string[] profileUrl = item.PicUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                                                    string imgurl = "/Themes/Socioboard" + profileUrl[2];
+                                                    <img src="@imgurl" class="img-responsive"/>
+                                                }
+                                                catch { }
+
+                                            }
                                         </div>
                                         <div class="panel-footer">
                                            @* <a href="#">

@@ -2,7 +2,7 @@
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
-@foreach (var item in (Dictionary<TeamMemberProfile, object>)Model)
+@foreach (var item in (Dictionary<GroupProfile, object>)Model)
 {
     if (item.Key.ProfileType == "facebook" || item.Key.ProfileType=="facebook_page")
     {

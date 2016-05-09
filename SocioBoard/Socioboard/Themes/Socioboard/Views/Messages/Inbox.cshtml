@@ -4,6 +4,7 @@
 @using System.Web.Script.Serialization;
 @{
     Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string groupId = Session["group"].ToString();
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }    
 
@@ -47,40 +48,8 @@
                                     <i class="fa fa-user-plus"></i>
                                 </div>
                                 <div class="col-md-8">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect a Profile </a>
-                                    <ul class="dropdown-menu slidedown">
-                                        <li data-target="#facebookpopup" data-toggle="modal">
-                                            <a href="#">
-                                                <i class="fa fa-facebook-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Facebook
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="../TwitterManager/AuthenticateTwitter">
-                                                <i class="fa fa-twitter-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Twitter
-                                            </a>
-                                        </li>
-                                        <li onclick="linkedinpopup()">
-                                            <a href="#">
-                                                <i class="fa fa-linkedin-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Linkedin
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="../InstagramManager/AuthenticateInstagram">
-                                                <i class="fa fa-instagram fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Instagram
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="../TumblrManager/AuthenticateTumblr">
-                                                <i class="fa fa-tumblr-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Tumblr
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="../YoutubeManager/AuthenticateYoutube">
-                                                <i class="fa fa-youtube-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Youtube
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#SocialProfilesModal">Connect a Profile </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -107,35 +76,38 @@
                 <div class="col-md-4">
                     <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_AssignTaskTo</strong></h5>
                     @{
-                        try
-                        {
-                            Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
-                            Domain.Socioboard.Domain.Team team = Socioboard.Helper.SBUtils.GetTeamFromGroupId();
-                            Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
-                            BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(team.GroupId), typeof(BusinessSetting));
-                            if (objbsns.AssigningTasks == true || team.UserId == user.Id)
-                            {
-                                Socioboard.Api.Team.Team objApiTeam = new Socioboard.Api.Team.Team();
-                                List<Domain.Socioboard.Domain.Team> result = (List<Domain.Socioboard.Domain.Team>)new JavaScriptSerializer().Deserialize(objApiTeam.getAllTeamsOfUser(user.Id.ToString(), team.GroupId.ToString(), user.EmailId), typeof(List<Domain.Socioboard.Domain.Team>));
-                                foreach (Team item in result)
-                                {
-                                    try
-                                    {
-                                        Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
-                                        User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(item.EmailId), typeof(User));
-                        @:<div class="radio">
-@:<label>
-                                            @:<input type="radio" name="optionsRadios" id="customerid_@objdetails.Id + "" value="customerid_@objdetails.Id" @*checked*@>
-                                            @objdetails.UserName
-                                        @:</label>
-                                    @:</div>
-                                                                                }
-                                    catch { }
-                                }
-                            }
-                        }
-                        catch { }
-                    }
+    try
+    {
+        Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
+        //Domain.Socioboard.Domain.Team team = Socioboard.Helper.SBUtils.GetTeamFromGroupId();
+        Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+        BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(Guid.Parse(groupId)), typeof(BusinessSetting));
+        if (objbsns.AssigningTasks == true)
+        {
+            foreach (Groupmembers grpMember in Model)
+            {
+                try
+                {
+                    Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+                    User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(grpMember.Emailid), typeof(User));
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="customerid_@objdetails.Id" value="customerid_@objdetails.Id" />
+                            @objdetails.UserName
+
+                        </label>
+
+                    </div>
+                }
+                catch { }
+            }
+
+
+
+        }
+    }
+    catch { }
+}
                 </div>
             </div>
             <div class="modal-footer">
@@ -157,10 +129,12 @@
       				</div>
                 	<div class="modal-body">
                     	<div class="row" style="margin-top:-40px">
-                        	<div class="col-md-12">
-                            	<ul class="chat-thread" id="chat-conversation">
-                                  
-                                </ul>
+                            <div class="col-md-12" id="chat-conversation">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/@path/Contents/img/sb-loader-profiles.gif" />
+                                    </center>
+                                </div>
                             </div>
                         </div>
                     </div>

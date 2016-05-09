@@ -1,5 +1,6 @@
 ﻿@{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+
     }
 <link href="../Themes/@path/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="../Themes/@path/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
@@ -59,12 +60,7 @@
 
     }
     
-    function opnReply(messageid, ProfileId) {
-        debugger;
-        var buttonhtm = "<button type=\"button\" class=\"btn btn-primary\" onclick=\"saveCommentReply('twitter','" + messageid + "','" + ProfileId + "')\">Reply</button>";
-        $("#leaveCommentReply").html(buttonhtm);
-        //$("#Reply").modal('show');
-    }
+
     $(document).ready(function () {
         loadfeesmenu();
         $('#side-menu a').removeClass('active');
@@ -101,24 +97,7 @@
 <div id="page-wrapper" style="min-height: 278px;">
 </div>
 
-<div class="modal fade" id="Reply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header model_head">
-                 
-                <button id="closecommentpopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Tweet</h4>
-            </div>
-            <div class="modal-body">
-                <textarea id="comment_text" class="form-control" rows="3" placeholder="Write your message here"></textarea>
-            </div>
-            <div id="leaveCommentReply" class="modal-footer">
-                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary ">Reply</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <div class="modal fade" id="twtmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -211,7 +190,7 @@ function imagebind() {
         $("#title_paneltab3").html("Status");
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/Feeds/FacebookStatus",
             data: { "profileid": nwtid },
             contentType: "application/json; charset=utf-8",
@@ -241,7 +220,7 @@ function imagebind() {
         $("#title_paneltab3").html("Tags");
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/Feeds/FacebookTag",
             data: { profileid: nwtid },
             contentType: "application/json; charset=utf-8",
@@ -316,7 +295,7 @@ function imagebind() {
         $("#" + feedid).val('');
         $.ajax({
             url: "../Feeds/AddInstagramComment?FeedId=" + feedid + "&Text=" + encodeURIComponent(text) + "&InstagramId=" + instagramid,
-            type: "Get",
+            type: "POST",
             success: function (msg)
             {
                 

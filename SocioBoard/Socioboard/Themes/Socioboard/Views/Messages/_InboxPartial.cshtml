@@ -8,11 +8,49 @@
 
 @foreach (Domain.Socioboard.Domain.InboxMessages msg in lstmsg)
 {
+    string stream = string.Empty;
+    if (msg.MessageType == "twt_retweet" || msg.MessageType == "twt_mention")
+    {
+        
+        if (!string.IsNullOrEmpty(msg.Message))
+        {
+            try
+            {
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(msg.Message);
+                foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                                stream += "<a target=\"_blank\" target=\"_blank\" style=\"color: #fff; text-decoration: none\" href=\"" + substritem + "\"> " + substritem + " </a>";
+                            }
+                            else
+                            {
+                                //stream += substritem;
+                                stream += "<a target=\"_blank\" style=\"color: #fff; text-decoration: none\" href=\"https://twitter.com/" + msg.FromName + "/status/" + msg.MessageId + "\">" + substritem + "</a>";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                stream = "<a target=\"_blank\" style=\"color: #fff; text-decoration: none\" href=\"https://twitter.com/" + msg.FromName + "/status/" + msg.MessageId + "\">" + msg.Message + "</a>";
+            }
+        }
+    }
+    
     if (msg.MessageType == "twt_followers")
     {
     <li class="you">
-        <a href="#" class="user">
-            <img src="@msg.FromImageUrl" alt="">
+        <a href="https://twitter.com/@msg.FromName" class="user" target="_blank"> 
+            <img src="@msg.FromImageUrl" alt="@msg.FromName">
         </a>
         @{string date="";
             try{
@@ -29,28 +67,34 @@
             <small>Bio: @msg.Message
 
             </small>
-            <div class="pull-right chatLinks col-md-2">
+            <div class="pull-right chatLinks col-md-4">
                @* <a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
                 <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
-                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Email Message" data-target="#msgmailpopup" data-toggle="modal" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Reply" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('','@msg.ProfileId','@msg.FromName')">
+                    <i class="fa fa-share fa-fw"></i>
+                </a>
             </div>
         </div>
     </li>}
     else if (msg.MessageType == "twt_retweet")
     {
     <li class="you">
-        <a href="#" class="user">
-            <img src="@msg.RecipientImageUrl" alt="">
+        <a href="https://twitter.com/@msg.FromName" class="user" target="_blank">
+            <img src="@msg.RecipientImageUrl" alt="@msg.FromName">
         </a>
-        <div class="date"><a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="@msg.RecipientName">@msg.RecipientName</a> @msg.CreatedTime, retweeted by <a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="@msg.FromName">@msg.FromName</a></div>
+        <div class="date"><a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="@msg.RecipientName">@msg.RecipientName</a> @msg.CreatedTime, retweeted <a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="@msg.FromName">@msg.FromName</a></div>
         <div class="message">
-            <p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName/status/@msg.MessageId" target="_blank" style="color: #fff; text-decoration: none">@msg.Message</a></p>
-            <div class="pull-right chatLinks col-md-2">
+            <p id="msg_@msg.Id">@Html.Raw(stream)</p>
+            <div class="pull-right chatLinks col-md-4">
                 @*<a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
                 <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
-                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Email Message" data-target="#msgmailpopup" data-toggle="modal" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Reply" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('','@msg.ProfileId','@msg.FromName')">
+                    <i class="fa fa-share fa-fw"></i>
+                </a>
             </div>
         </div>
      </li>}
@@ -58,16 +102,16 @@
     {
     <li class="you">
         <a href="#" class="user">
-            <img src="@msg.FromImageUrl" alt="">
+            <img src="@msg.FromImageUrl" alt="@msg.FromName">
         </a>
         <div class="date">@msg.CreatedTime</div>
         <div class="message">
             <p id="msg_@msg.Id">@msg.Message</p>
-            <div class="pull-right chatLinks col-md-2">
+            <div class="pull-right chatLinks col-md-4">
                @* <a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
                 <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
-                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Email Message" data-target="#msgmailpopup" data-toggle="modal" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
             </div>
         </div>
 
@@ -77,17 +121,21 @@
     else if (msg.MessageType == "twt_mention")
     {
     <li class="you">
-        <a href="#" class="user">
-            <img src="@msg.FromImageUrl" alt="">
+        <a href="https://twitter.com/@msg.FromName" class="user" target="_blank">
+            <img src="@msg.FromImageUrl" alt="@msg.FromName">
         </a>
         <div class="date"><a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="">@msg.FromName</a> @msg.CreatedTime, mention <a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="">@msg.RecipientName</a></div>
         <div class="message">
-            <p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName/status/@msg.MessageId" target="_blank" style="color: #fff; text-decoration: none">@msg.Message</a></p>
-            <div class="pull-right chatLinks col-md-2">
+            @*<p id="msg_@msg.Id"><a href="https://twitter.com/@msg.FromName/status/@msg.MessageId" target="_blank" style="color: #fff; text-decoration: none">@msg.Message</a></p>*@
+            <p id="msg_@msg.Id">@Html.Raw(stream)</p>
+            <div class="pull-right chatLinks col-md-4">
                 @*<a href="#"><i class="fa fa-user-plus"></i></a>
                 <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
                 <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
-                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Email Message" data-target="#msgmailpopup" data-toggle="modal" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Reply" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('@msg.MessageId','@msg.ProfileId','@msg.FromName')">
+                    <i class="fa fa-share fa-fw"></i>
+                </a>
             </div>
         </div>
     </li>}

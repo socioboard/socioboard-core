@@ -16,13 +16,15 @@ namespace Api.Socioboard
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            AreaRegistration.RegisterAllAreas();
             log4net.Config.XmlConfigurator.Configure();
-           GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalFilters.Filters.Add(new Api.Socioboard.App_Start.CustomAuthorize());
+            System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
+           // GlobalFilters.Filters.Add(new Api.Socioboard.App_Start.CustomAuthorize());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AuthConfig.RegisterAuth();
-
+            Console.SetOut(new System.IO.StreamWriter(System.IO.Stream.Null));
+            Console.SetError(new System.IO.StreamWriter(System.IO.Stream.Null));
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -1,0 +1,67 @@
+﻿@*@foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
+{
+<div id="@item.FromName" class="row"><div class="col-xs-11"><a href="https://twitter.com/@item.FromName" target="_blank" class="btn btn-default btn-md btn-block"><i class="fa fa-twitter-square fa-fw"></i>@item.FromName</a> </div><div class="col-xs-1"><a href="#" onclick="removesearch('@item.FromName')">X</a></div></div>
+
+}*@
+
+<table class="table">
+    <tbody>
+        @foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
+        {
+            <tr>
+                <td><img class="img-responsive headerProfilePic" src="@item.ProfileImageUrl"></td>
+                <td><a href="https://twitter.com/@item.FromName" target="_blank">@item.FromName</a></td>
+                <td align="center">
+                    <button autocomplete="off" aria-pressed="false" data-toggle="button" class="btn btn-primary btn-xs" type="button" onclick="followtwt('@item.FromId','@item.FromName')" id="@item.FromId">
+                        Follow
+                    </button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+
+    function followtwt(id, name) {
+        var arrid = new Array();
+      
+        $(".twitter-profile-id").each(function () {
+            var attrId = $(this).attr('id');
+            if (document.getElementById(attrId).checked == false) {
+                var index = arrid.indexOf(attrId);
+                if (index > -1) {
+                    arrid.splice(index, 1);
+                }
+            } else {
+                arrid.push(attrId);
+            }
+        });
+        if (arrid.length < 1) {
+            alertify.error("select at least one twitter account");
+            return;
+        }
+        var type = $("#" + id).html().trim();
+        if (type == 'Follow') {
+            $.ajax({
+                type: "Post",
+                url: "../Home/FollowTwitterUser?fromId=" + arrid + "&toId=" + id + "&toName=" + name,
+                success: function (msg) {
+                    $("#" + id).html("Following");
+                    $("#" + id).removeClass("btn-primary");
+                    $("#" + id).addClass("btn-success");
+                }
+            });
+        } else {
+            $.ajax({
+                type: "Post",
+                url: "../Home/UnfollowTwitterUser?fromId=" + arrid + "&toId=" + id + "&toName=" + name,
+                success: function (msg) {
+                    $("#" + id).html("Follow");
+                    $("#" + id).removeClass("btn-success");
+                    $("#" + id).addClass("btn-primary");
+                }
+            });
+        }
+    }
+</script>

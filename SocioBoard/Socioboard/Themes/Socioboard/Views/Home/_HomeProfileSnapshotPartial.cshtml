@@ -17,7 +17,7 @@
         {
 
         }
-        Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> dict = (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model;
+        Dictionary<Domain.Socioboard.Domain.GroupProfile, Dictionary<object, List<object>>> dict = (Dictionary<Domain.Socioboard.Domain.GroupProfile, Dictionary<object, List<object>>>)Model;
         if (dict.Count == 0)
         {
         @:<script >
@@ -25,7 +25,7 @@
                   
               @:</script>
                 }
-        foreach (var item in (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model)
+        foreach (var item in (Dictionary<Domain.Socioboard.Domain.GroupProfile, Dictionary<object, List<object>>>)Model)
         {
             int feedcount = 0;
             int days = 0;
@@ -166,7 +166,7 @@
                                 {
                                     ms = item_FbPagePost.Post;
                                 }
-                            <li class="list-group-item">
+                         <li class="list-group-item">
                             <img class="commentsmallsize" src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small"><span class="commentmargin" title="@item_FbPagePost.Post">@ms</span>
                         </li>
                                 if (j == 3)
@@ -257,7 +257,7 @@
 
 
             }
-            if (item.Key.ProfileType == "linkedin")
+            @*if (item.Key.ProfileType == "linkedin")
             {
                 divcounter++;
                 var dic_profileinfo = item.Value.ElementAt(counter);
@@ -266,8 +266,8 @@
                 feedcount = lstdic.Count;
                 if (feedcount != 0)
                 {
-                    Domain.Socioboard.Domain.LinkedInFeed objLDFeed = (Domain.Socioboard.Domain.LinkedInFeed)lstdic[feedcount - 1];
-                    days = (DateTime.Now.Date - objLDFeed.FeedsDate.Date).Days;
+                    Domain.Socioboard.MongoDomain.LinkedInFeed objLDFeed = (Domain.Socioboard.MongoDomain.LinkedInFeed)lstdic[feedcount - 1];
+                    days = (DateTime.Now.Date - DateTime.ParseExact(objLDFeed.FeedsDate,formate,provider).Date).Days;
                     if (days == 0)
                     {
                         days = 1;
@@ -275,7 +275,7 @@
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
-                List<Domain.Socioboard.Domain.LinkedInFeed> lstLinkedInFeed = new List<Domain.Socioboard.Domain.LinkedInFeed>();
+                List<Domain.Socioboard.MongoDomain.LinkedInFeed> lstLinkedInFeed = new List<Domain.Socioboard.MongoDomain.LinkedInFeed>();
                 int linkedinConcount = 0;
                 try
                 {
@@ -297,7 +297,7 @@
                         <div class="col-xs-3">
                             <img title="@objLinkedInAccount.LinkedinUserName" src="@pp" class="img-circle profilePic" >
                             <img src="/Themes/@path/Contents/img/link_icon.png" class="iconPoss">
-                           @* <span>@objLinkedInAccount.LinkedinUserName</span>*@
+                          <span>@objLinkedInAccount.LinkedinUserName</span>
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@linkedinConcount</strong>
@@ -309,11 +309,11 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent Messages</p>
-                    <ul class="list-group recent_height">
+                    <p>Linkedin is enhancing user privacy with its new API, and Newsfeed streams will no longer be available.</p>
+                   <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
-                            Domain.Socioboard.Domain.LinkedInFeed objLinkedInFeed = ((Domain.Socioboard.Domain.LinkedInFeed)lstdic[i]);
+                            Domain.Socioboard.MongoDomain.LinkedInFeed objLinkedInFeed = ((Domain.Socioboard.MongoDomain.LinkedInFeed)lstdic[i]);
                             string ms = string.Empty;
                             if (objLinkedInFeed.Feeds.Length > 23)
                             {
@@ -345,7 +345,7 @@
             </div>
         </div>
 
-            }
+            }*@
             if (item.Key.ProfileType == "instagram")
             {
                 divcounter++;
@@ -544,7 +544,7 @@
                 </div>
                 <div class="panel-body">
                     <p>Recent Messages</p>
-                    <ul class="list-group">
+                    <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
                             Domain.Socioboard.Domain.LinkedinCompanyPagePosts objLinkedInPagePost = ((Domain.Socioboard.Domain.LinkedinCompanyPagePosts)lstdic[i]);
@@ -558,16 +558,23 @@
                             {
                                 ms = objLinkedInPagePost.Posts;
                             }
-                        <li class="list-group-item">
-                            <img class="commentsmallsize" src="@objLinkedInPagePost.PostImageUrl"><span class="commentmargin">@ms</span>
-                        </li>
-                            if (lstdic.Count > 3)
-                            {
-                                if (i == 2)
+                            <li class="list-group-item">
+                                @if (!string.IsNullOrEmpty(objLinkedInPagePost.PostImageUrl))
                                 {
-                                    break;
+                                    <img class="commentsmallsize" src="@objLinkedInPagePost.PostImageUrl"><span class="commentmargin">@ms</span>
                                 }
-                            }
+                                else
+                                {
+                                    <img class="commentsmallsize" src="http://dev.socioboard.com/Themes/Socioboard/Contents/img/anonymousUser.jpg"><span class="commentmargin">@ms</span>
+                                }
+                            </li>
+                                if (lstdic.Count > 4)
+                                {
+                                    if (i == 3)
+                                    {
+                                        break;
+                                    }
+                                }
                         }
                     </ul>
                 </div>
@@ -606,6 +613,49 @@
                                           <li class="list-group-item">
                                             <span class="badge">@objGooglePlusAccount.InYourCircles</span>
                                             In Your Circles
+                                          </li>
+                                          
+                                        </ul>
+                                    </div>
+               
+            </div>
+        </div>
+                }
+                catch (Exception ex)
+                {
+                    divcounter = divcounter - 1;
+                }
+            }
+            if (item.Key.ProfileType == "googleanalytics") {
+            try
+                {
+                    divcounter++;
+                    var dic_profileinfo = item.Value.ElementAt(counter);
+                    //  var item = dictionary.ElementAt(index);
+                    Domain.Socioboard.Domain.GoogleAnalyticsAccount objGoogleAnalyticsAccount = (Domain.Socioboard.Domain.GoogleAnalyticsAccount)dic_profileinfo.Key;
+              
+                    <div id="mid_@objGoogleAnalyticsAccount.GaProfileName" class="col-lg-4 col-md-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img title="@objGoogleAnalyticsAccount.GaProfileName" src="@objGoogleAnalyticsAccount.ProfilePicUrl" class="img-circle profilePic" >
+                            <img src="/Themes/@path/Contents/img/GA-icon.png" class="iconPoss">
+                         @*   <span>@objTumblrAccount.tblrUserName</span>*@
+                        </div>
+                        <span class="col-md-12">@objGoogleAnalyticsAccount.GaProfileName</span>
+                    </div>
+                </div>
+               <div class="panel-body">
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
+                                        <ul class="list-group recent_height">
+                                          <li class="list-group-item">
+                                            <span class="badge">@objGoogleAnalyticsAccount.Views</span>
+                                              Views
+                                          </li>
+                                          <li class="list-group-item">
+                                            <span class="badge">@objGoogleAnalyticsAccount.Visits</span>
+                                              Visits
                                           </li>
                                           
                                         </ul>

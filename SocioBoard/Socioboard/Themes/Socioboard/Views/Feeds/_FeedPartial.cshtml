@@ -66,6 +66,78 @@ else if (networktype == "youtube")
         </div>
     </div>
 }
+else if(networktype == "facebook")
+{
+     <div class="container-fluid" style="margin-top: 25px">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h1>@GlobusMultiLanguageLib.Resources.Feeds_FeedsPartial_LiveFeeds</h1>
+            </div>
+            <div class="col-md-8" id="feedsfilter">
+
+               <div class="pull-right" style="margin-top:25px;cursor:pointer;margin-right:70px"> 
+                    <a id="search_Feeds" style="display: block;" data-target="#FeedsSearchModal" data-toggle="modal" title="Search Feeds"><i class="fa fa-search fa-2x"></i></a>
+                </div>
+
+            </div>
+        </div>
+        <div id="feedsdata" class="row">
+            @*<div class="col-md-6">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span>
+                                <img id="img_paneltab1" /></span>&nbsp;&nbsp;<span id="title_paneltab1"></span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel1" class="pull-right" /></a></h3>
+                        
+
+                    </div>
+                  <div onscroll="ccc()" class="panel-body">
+                        <div id="data_paneltab1">
+                            <div id="ldr-data_paneltab1">
+                                <center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" /></center>
+                            </div>
+                        </div>
+                        <div id="img-loader-feed-panel1" style="display: none">
+                            <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </div>
+
+                </div>
+            </div>*@
+
+            <div class="col-md-12">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span>
+                                <img id="img_paneltab2" src="../Themes/Socioboard/Contents/img/admin/1.png" /></span>&nbsp;&nbsp;<span id="title_paneltab2">Wall posts</span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel2" nwt="fb" nwtid="@Id" class="pull-right" /></a></h3>
+                        
+                    </div>
+                    <div onscroll="feedbind()" class="panel-body">
+                        <div id="data_paneltab2" network="facebook">
+                            <div id="ldr-data_paneltab2">
+                                <center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" /></center>
+                            </div>
+                        </div>
+                        <div id="img-loader-feed-panel2" style="display: none">
+                            <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+            <small class=" text-muted"></small>
+        </div>
+       
+        <small class=" text-muted"></small>
+    </div>
+}
 else
 {
     <div class="container-fluid" style="margin-top: 25px">
@@ -79,28 +151,6 @@ else
                 <h1>@GlobusMultiLanguageLib.Resources.Feeds_FeedsPartial_LiveFeeds</h1>
             </div>
             <div class="col-md-8" id="feedsfilter">
-
-                <div class="fbfeedsfilter" id="fbfeedsfilter" style="display: none">
-                    @*
-                    <h3 title="User Feeds" class="btn btn-default btn-lg col-md-3" id="btnUserFeeds" onclick="FacebookUserFeeds('@ViewBag.id')" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>User Feeds </h3>*@
-                   @*  <h3 title="User Feeds" class="btn btn-default btn-lg col-md-3" id="btnUserFeeds" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Userfeeds </h3>
-
-                   <h3 title="Status" class="btn btn-default btn-lg col-md-3" id="btnStatus" style="background-color: #428bca; color: white; margin: 20px"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Status</h3>
-                    <h3 title="Tags" class="btn btn-default btn-lg col-md-3" id="btnTag" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Tag </h3>*@
-                </div>
-
-                @*<div class="twtfeedsfilter" id="twtfeedsfilter" style="display: none">
-                    <h3 class="btn btn-default btn-lg col-md-3" id="btnUserTweet" onclick="TwitterUserTweet('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_UserTweet </h3>
-                    <h3 class="btn btn-default btn-lg col-md-3" id="btnRetweets" onclick="TwitterRetweets('@ViewBag.id')" style="background-color: #428bca;color:white; margin:20px"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Retweets</h3>
-                    <h3 class="btn btn-default btn-lg col-md-3" id="btnMentions" onclick="TwitterMentions('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
-                        <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Mention </h3>
-                </div>*@
 
                <div class="pull-right" style="margin-top:25px;cursor:pointer;margin-right:70px"> 
                     <a id="search_Feeds" style="display: block;" data-target="#FeedsSearchModal" data-toggle="modal" title="Search Feeds"><i class="fa fa-search fa-2x"></i></a>
@@ -174,7 +224,7 @@ else
         @*<div id="Button1" class="btn btn-default" type="button" value="button" onclick="FacebookLoadNewNewsFeeds()">button</div>*@
         <small class=" text-muted"></small>
     </div>
-    
+}
     
     <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
     
@@ -217,8 +267,8 @@ else
                 }
                 else {
                     if (nwt == "fb") {
-                        //refreshFeedsFacebook(nwtid);
-                        FacebookLoadNewNewsFeeds();
+                        refreshFeedsFacebook(nwtid);
+                        //FacebookLoadNewNewsFeeds();
                         //FacebookLoadNewUserHome();
                     }
                     if (nwt == "twt") {
@@ -288,5 +338,5 @@ else
         });
     </script>
     
-}
+
 

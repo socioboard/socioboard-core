@@ -1,5 +1,5 @@
 ﻿@{
-    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
 
 <script src="~/Themes/@path/Contents/js/underscore.js"></script>
@@ -20,7 +20,7 @@
             <div class="modal-body col-md-12">
                 <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
                     @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
-                    <textarea id="twtNotes" class="form-control" rows="4" style="resize: none">Hey guys am using this amazing software &#64;socioboard for managing my twitter account</textarea>
+                    <textarea id="twtNotes" class="form-control" rows="4" style="resize: none">Hey guys, I am using this amazing software &#64;socioboard for managing my twitter account</textarea>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
             <div class="modal-body col-md-12">
                 <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
                     @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
-                    <textarea id="fbNotes" class="form-control" rows="4" style="resize: none">Hey guys am using this amazing software #socioboard for managing my facebook account</textarea>
+                    <textarea id="fbNotes" class="form-control" rows="4" style="resize: none">Hey guys, I am using this amazing software #socioboard for managing my facebook account</textarea>
                 </div>
             </div>
 
@@ -135,13 +135,13 @@
                     </div>
                 </div>
             </div>
-       
+            <a href="../Report/Twitter">
                 <div class="panel-footer">
                     <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
-          
+            </a>
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
@@ -157,13 +157,13 @@
                     </div>
                 </div>
             </div>
-       
+            <a href="../Report/Facebook">
                 <div class="panel-footer">
                     <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
-          
+            </a>
         </div>
     </div>
     </div>
@@ -236,7 +236,7 @@
     }
 
     function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
-$('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').append('       plaese wait while we are fetching page data');
+$('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').append('please wait while we are fetching page data');
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
@@ -282,7 +282,18 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
             contentType: false,
             success: function (msg) {
                 if (msg !== "") {
-                    alertify.alert(msg);
+
+                    var accounttype=msg.split("##")[0];
+                    var daysremain=msg.split("##")[1];
+                    var message="";
+                    if(daysremain=="0")
+                    {
+                        message="@GlobusMultiLanguageLib.Resources.Home_Index_YourTrial " + accounttype + " @GlobusMultiLanguageLib.Resources.Home_Index_accountwillexpireToday";
+                    }else{
+                        message="@GlobusMultiLanguageLib.Resources.Home_Index_YourTrial " + accounttype + " @GlobusMultiLanguageLib.Resources.Home_Index_accountwillexpirein " + daysremain + " @GlobusMultiLanguageLib.Resources.Home_Index_dayspleaseupgradetopaidplan";
+                    }
+                    alertify.alert(message);
+                
                 }
             }
         });
@@ -344,57 +355,67 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
         $("#AttachProfile").html('Attach YouTube Profile');
         $("#AttachProfile").attr('href', '../YoutubeManager/AuthenticateYoutube');
     }
-	
+    var isProcessing = false;
 	function LoadMoreProfileSnapshot() {
         debugger;
-        //$('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
-        $('#img-loader-profile').css("display", "block");
-		$.ajax({
-            type: 'GET',
-            url: '../Home/ProfileSnapshot?op=scroll',
-            success: function (msg) {
-                //$('#ldr-home-profile').remove();
-				$('#img-loader-profile').css("display", "none");
-                $('#div_Home_ProfileSnapshot').append(msg);
-            },
-			//async: false
-        });
-    }
+        if (!isProcessing) {
+            isProcessing = true;
+            $('#img-loader-profile').css("display", "block");
+            $.ajax({
+                type: 'GET',
+                url: '../Home/ProfileSnapshot?op=scroll',
+                success: function (msg) {
+                    isProcessing = false;
+                    $('#img-loader-profile').css("display", "none");
+                    $('#div_Home_ProfileSnapshot').append(msg);
+                },error:function (msg) {
+                    isProcessing = false;
+                 
+                    $('#img-loader-profile').css("display", "none");
+                    $('#div_Home_ProfileSnapshot').append(msg);
+                },
+                timeout: 10000
+            });
+        }
+	}
+    
+   
 
     $(document).ready(function (e) {
         debugger
-		
+     //   loadpro();
 		 var throttled = _.throttle(LoadMoreProfileSnapshot, 3000);
 
-        $(window).scroll(throttled);
+		 $(window).scroll(throttled);
 		
+
         var hint = getParameterByName("hint");
         if (hint != "" || hint != null) {
             if (hint == "fbpage") {
                 $.ajax({
                     type: 'POST',
-                    url: '../FacebookManager/GetFBPage',
-                    success: function (msg) {
+                    url: '../Home/BindFBPage',
+                    success: function (data) {
+                        $("#ga-modal").html(data);
+                        $('#ga-modal').modal('show');
+                      //  if (msg==null || msg=="") {
+                      //      $('#fbpagebind').append("<center>No page found</center>");
+                      //  }else{
+                      //      var fbpagearr = msg.split('~');
+                      //      for (var i = 0; i < fbpagearr.length; i++) {
+                      //          var fbpageinfoarr = fbpagearr[i].split('`');
+                      //          try {
+                      //              var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
+                      //              $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
+                      //          } catch (e) {
 
-                        if (msg==null || msg=="") {
-                            $('#fbpagebind').append("<center>No page found</center>");
-                        }else{
-                            var fbpagearr = msg.split('~');
-                            for (var i = 0; i < fbpagearr.length; i++) {
-                                var fbpageinfoarr = fbpagearr[i].split('`');
-                                try {
-                                    var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
-                                    $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
-                                } catch (e) {
-
-                                }
-                            }
-                        }
-                        $('#facebookpageinfo').css({ 'display': 'block' });
-                      //  jQuery.noConflict();
-                        $('#facebookpopup').modal('show');
-                    },
-                    async: false
+                      //          }
+                      //      }
+                      //  }
+                      //  $('#facebookpageinfo').css({ 'display': 'block' });
+                      ////  jQuery.noConflict();
+                      //  $('#facebookpopup').modal('show');
+                    }
                 });
 
             }
@@ -451,6 +472,19 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
                     async: false
                 });
 
+            }else if(hint=="gaprofile"){
+                $.ajax({
+                    typr:'Post',
+                    url:'../Home/BindGAProfiles',
+                    success:function(data)
+                    {
+                        $("#ga-modal").html(data);
+                        $('#ga-modal').modal('show');
+                    }
+                });
+            }else if(hint=="plugin"){
+            
+                window.close();
             }
         }
 
@@ -513,7 +547,17 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
 <input type="hidden" id="acctype" value="@ViewBag.AccountType" />
 
 <script>
-
+    function ShowAllTwitterProfile()
+    {
+        $.ajax({
+            type: 'POST',
+            url:'../Message/ShowTwitterProfile',
+            success: function(msg)
+            {
+                $("#twt-profiles").html(msg);
+            }
+        });
+        }
     function SendTweet() {
         debugger;
 
@@ -574,7 +618,7 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
 
         });
     }
-
+   
     $(document).ready(function () {
         if ($('#acctype').val() == "Premium") {
             $('#PremiumAccount').hide();
@@ -588,8 +632,6 @@ $('#fbpagebind').html('<img src="../Themes/@path/Contents/img/360.gif" />').appe
             debugger;
             $('#twtModal').modal('show');
         }
-       
-
     });
 
 

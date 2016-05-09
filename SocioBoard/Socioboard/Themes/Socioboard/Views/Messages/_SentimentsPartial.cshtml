@@ -1,0 +1,155 @@
+﻿
+@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    List<Domain.Socioboard.Domain.InboxMessages> lstmsg = (List<Domain.Socioboard.Domain.InboxMessages>)Model;
+}
+
+@foreach (Domain.Socioboard.Domain.InboxMessages msg in lstmsg)
+{
+    string Positive = string.Empty;
+    string Negative = string.Empty;
+    string stream = string.Empty;
+    if (msg.MessageType == "twt_retweet" || msg.MessageType == "twt_mention")
+    {
+
+        if (!string.IsNullOrEmpty(msg.Message))
+        {
+            try
+            {
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(msg.Message);
+                foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                                stream += "<a target=\"_blank\" target=\"_blank\" style=\"color: #fff; text-decoration: none\" href=\"" + substritem + "\"> " + substritem + " </a>";
+                            }
+                            else
+                            {
+                                //stream += substritem;
+                                stream += "<a target=\"_blank\" style=\"color: #fff; text-decoration: none\" href=\"https://twitter.com/" + msg.FromName + "/status/" + msg.MessageId + "\">" + substritem + "</a>";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                stream = msg.Message;
+            }
+        }
+        Positive = String.Format("{0:0.00}", msg.Positive * 100) + "%";
+        Negative = String.Format("{0:0.00}", msg.Negative * 100) + "%";
+    }
+
+    if (msg.MessageType == "twt_retweet")
+    {
+        <li class="you you-sentiments">
+            <a href="https://twitter.com/@msg.FromName" class="user" target="_blank">
+                <img src="@msg.RecipientImageUrl" alt="@msg.FromName">
+            </a>
+            <div class="date"><a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="@msg.RecipientName">@msg.RecipientName</a> @msg.CreatedTime, retweeted <a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="@msg.FromName">@msg.FromName</a></div>
+            <div class="message">
+                <p id="msg_@msg.Id">@Html.Raw(stream)</p>
+                <div class="row" style="margin-top:3%">
+                    <div class="col-md-3 col-md-offset-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading sentiments-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center">
+                                        <h4 style="margin: 0px;">+ @Positive</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <h4 style="margin: 0px;">38%</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="col-md-3">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading sentiments-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center">
+                                        <h4 style="margin: 0px;">- @Negative</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>}
+
+    else if (msg.MessageType == "twt_mention")
+    {
+        <li class="you you-sentiments">
+            <a href="https://twitter.com/@msg.FromName" class="user" target="_blank">
+                <img src="@msg.FromImageUrl" alt="@msg.FromName">
+            </a>
+            <div class="date"><a href="https://twitter.com/@msg.FromName" target="_blank" data-toggle="tooltip" title="">@msg.FromName</a> @msg.CreatedTime, mention <a href="https://twitter.com/@msg.RecipientName" target="_blank" data-toggle="tooltip" title="">@msg.RecipientName</a></div>
+            <div class="message">
+
+                <p id="msg_@msg.Id">@Html.Raw(stream)</p>
+                <div class="row" style="margin-top:3%">
+                    <div class="col-md-3 col-md-offset-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading sentiments-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center">
+                                        <h4 style="margin: 0px;">+ @Positive</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <h4 style="margin: 0px;">38%</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="col-md-3">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading sentiments-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center">
+                                        <h4 style="margin: 0px;">- @Negative</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>}
+
+}
+

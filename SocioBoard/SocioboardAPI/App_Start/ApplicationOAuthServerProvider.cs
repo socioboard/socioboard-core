@@ -62,19 +62,26 @@ namespace Api.Socioboard.App_Start
             
                 UserRepository userrepo = new UserRepository();
                 try {
-                    Domain.Socioboard.Domain.User user = userrepo.GetUserInfo(context.UserName, Utility.MD5Hash(context.Password));
+                    Domain.Socioboard.Domain.User user = userrepo.GetUserInfo(context.UserName, context.Password);
                     if (user != null)
                     {
 
-                        Api.Socioboard.Helper.UserManager.User apiUser = new Api.Socioboard.Helper.UserManager.User();
-                        apiUser.UserName = user.UserName;
-                        apiUser.EmailId = user.EmailId;
-                        apiUser.Id = user.Id;
 
                         ClaimsIdentity identity = new ClaimsIdentity("User");
 
-                        identity.AddClaim(new Claim(ClaimTypes.Name, apiUser.Id.ToString()));
-                        
+                        identity.AddClaim(new Claim(ClaimTypes.Name, user.Id.ToString()));
+                        if (string.IsNullOrEmpty(user.UserType)) 
+                        {
+                            identity.AddClaim(new Claim(ClaimTypes.Role, "User")); 
+                        }
+                        else if (!string.IsNullOrEmpty(user.UserType) && user.UserType.Equals("SuperAdmin"))
+                        {
+                            identity.AddClaim(new Claim(ClaimTypes.Role, "SuperAdmin"));
+                        }
+                        else
+                        {
+                            identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
+                        }
                         //foreach (string claim in user.Claims)
                         //{
                         //    identity.AddClaim(new Claim("Claim", claim));

@@ -7,7 +7,11 @@
     System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
     string formate = "yyyy/MM/dd HH:mm:ss";
 }
-
+<style>
+    .file-preview-image {
+        width:100% !important;
+    }
+</style>
 <ul class="chat">
     @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
     {
@@ -251,7 +255,7 @@
                                 @*<li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>*@
                                 @*<li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-star fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>*@
                                 <li><a onclick="QuoteMessagePopup('@item.ProfileId','@item.MessageId');" data-target="#QuoteCompose" data-toggle="modal" id="QuoteMessagePopup_@item.MessageId" status="@item.Feed"><i class="fa fa-comment fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
-                                <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-envelope fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
+                                <li><a onClick="MailPopUpTwt('@item.strId');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-envelope fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
                                 <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-ban fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
                             </ul>
                         </div>
@@ -306,7 +310,7 @@
                 }
               
                 <div>
-                <a title="" data-placement="top" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('@item.MessageId','@item.ProfileId')" data-original-title="Reply">
+                <a title="" data-placement="top" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('@item.MessageId','@item.ProfileId','@item.FromScreenName')" data-original-title="Reply">
                     <i class="fa fa-share fa-fw"></i>
                 </a>
                 <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Retweet" onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId')">
@@ -560,11 +564,11 @@
                     </div>
                     <div class="form-group">
                         <br>
-                        <div id="showRemove" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="ImageDelete()">
-                            <span style="float: right; margin-left: 5px"></span>
-                            <label style="float: right; font-size: small; display: block;">Remove Image x </label>
-                        </div>
-                        <input type="file" accept="image/*" name="" class="btn btn-default col-md-3" onchange="Addimage()" name="" id="uploadImage" style="">
+                        @*<div id="showRemove" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="ImageDelete()">
+        <span style="float: right; margin-left: 5px"></span>
+        <label style="float: right; font-size: small; display: block;">Remove Image x </label>
+    </div>*@
+                        <input type="file" accept="image/*" class="file-loading" multiple name="input4[]" id="uploadImage">
                     </div>
                 </div>
                 <div class="col-md-1" id="compose_count">140</div>
@@ -578,7 +582,8 @@
         </div>
     </div>
 </div>
-
+<link href="~/Themes/@path/Contents/css/fileinput.min.css" rel="stylesheet" />
+<script src="~/Themes/@path/Contents/js/fileinput.min.js"></script>
 <script type="text/javascript">
 
     function mail(ProfileId, Id) {
@@ -601,5 +606,11 @@
             }
         });
     }
-
+    $(document).ready(function () {
+        $("#uploadImage").fileinput({
+            showCaption: false,
+            showUpload: false,
+        showRemove: false
+        });
+    });
 </script>

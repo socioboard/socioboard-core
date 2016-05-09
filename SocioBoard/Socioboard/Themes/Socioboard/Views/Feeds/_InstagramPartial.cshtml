@@ -32,7 +32,12 @@
                             <a href="http://instagram.com/@item.AdminUser" target="_blank"><b>@item.AdminUser</b></a>
                         </div>
                         <div class="col-md-3" style="margin-top: 4%;">
-                            @Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate)).CalculateTimeDiff()
+                            @{
+                                DateTime feeddate = Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate));
+                                }
+                            <a href="@item.FeedUrl" target="_blank" title="@feeddate.ToString("MMM dd, yyyy")">
+                            @feeddate.CalculateTimeDiff()
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +63,7 @@
                             <b id="count_@item.FeedId">@item.LikeCount likes</b>
                         </div>
                         <div class="col-md-12" style="margin-top: 3%;">
-                            <a href="http://instagram.com/@item.AdminUser" target="_blank"><b>@item.AdminUser</b></a><p>@HttpUtility.HtmlDecode(item.Feed)</p>
+                            <a href="http://instagram.com/@item.AdminUser" target="_blank"><b>@item.AdminUser</b></a><p style="word-wrap:break-word">@HttpUtility.HtmlDecode(item.Feed)</p>
                         </div>
 
                         @if (items.Value.Count > 0)

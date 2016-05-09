@@ -2,9 +2,64 @@
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     }
 
-<div id="page-wrapper" style="min-height: 385px;">
+<div style="min-height: 287px;" id="page-wrapper">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="col-md-9" id="page-wrapper-load">
 
-   
+            </div>
+
+            <div class="col-md-3">
+                <div style="margin-top: 102px;" class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ManageTasks
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <ul class="list-group">
+
+
+                            <li class="list-group-item">
+                                <div class="radio">
+                                    <label class="radio">
+                                        <input type="radio" value="option1" id="rdMyTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_MyTask
+
+                                    </label>
+                                    <div class="divder"></div>
+                                    <label class="radio">
+                                        <input type="radio" value="option2" id="rdTeamTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TeamTask
+
+                                    </label>
+                                    <div class="divder"></div>
+                                    <label class="radio">
+                                        <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_PendingTask
+
+                                    </label>
+                                    <div class="divder"></div>
+                                    <label class="radio">
+                                        <input type="radio" value="option2" id="rdCompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_CompleteTask
+
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- /.panel-body -->
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
 </div>
 
 
@@ -13,7 +68,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-       $('#page-wrapper').load('../Messages/loadtask');
+        //$('#page-wrapper-load').load('../Messages/loadtask');
+        $.ajax({
+            url: "../Messages/loadtask",
+            type: "post",
+            success: function (data)
+            {
+                $('#page-wrapper-load').html(data);
+            }
+        });
         $('#side-menu a').removeClass('active');
         $("#message").addClass('active');
         $("#message").children().addClass('active');
@@ -33,16 +96,16 @@
     function TaskFilteration(Id) {
         debugger;
         if (Id == "rdMyTask") {
-            $('#page-wrapper').load('../Messages/loadtask');
+            $('#page-wrapper-load').load('../Messages/loadtask');
         }
         if (Id == "rdIncompleteTask") {
-            $('#page-wrapper').load('../Messages/LoadIncompleteTask');
+            $('#page-wrapper-load').load('../Messages/LoadIncompleteTask');
         }
         if (Id == "rdCompleteTask") {
-            $('#page-wrapper').load('../Messages/LoadCompleteTask');
+            $('#page-wrapper-load').load('../Messages/LoadCompleteTask');
         }
         if (Id == "rdTeamTask") {
-            $('#page-wrapper').load('../Messages/LoadTeamTask');
+            $('#page-wrapper-load').load('../Messages/LoadTeamTask');
         }
     }
 

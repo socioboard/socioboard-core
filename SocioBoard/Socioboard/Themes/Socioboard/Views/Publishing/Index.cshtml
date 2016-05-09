@@ -170,13 +170,16 @@
     }
 
     function bindfrofiles(network, name, profileid) {
+        debugger;
         var totalmessagewords = 0;
+        var length = ('#MessageCount').length;
         if (checkisuserexist(profileid + "~" + network) == false) {
             arrbinduser.push(profileid + "~" + network);
             $('#bindcomposescheduledprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof" onclick="removebindfrofiles(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
             $('#' + profileid).fadeIn(250);
 
             totalmessagewords = BindChracterAccordingProfile(network);
+            totalmessagewords = totalmessagewords - length;
             $('#MessageCount').html(totalmessagewords);
 
 
@@ -336,6 +339,7 @@
         //});
 
         $('#scheduled').click(function () {
+            debugger;
             $('#scheduled').hide();
             $('#ScheduleLoadimg').show();
             var curdate = new Date();
@@ -481,7 +485,15 @@
                     }
                 }
             }
-			
+            var arrdate = scheduleddate.split(',');
+            for (var i = 0; i < arrdate.length; i++) {
+                if (Date.parse(new Date()) >= Date.parse(new Date(arrdate[i] + ' ' + scheduledtime))) {
+                    alertify.error("Schedule time should be greater than current time");
+                    $('#scheduled').show();
+                    $('#ScheduleLoadimg').hide();
+                    return;
+                }
+            }
 			
 			
             allprofiles = allprofiles.substr(0, allprofiles.length - 3);

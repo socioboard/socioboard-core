@@ -23,19 +23,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4>EDIT MESSAGE</h4>
                                     @*<img src="Contents/img/photo.png" class="img-circle">
                                     <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h4>EDIT MESSAGE</h4>
-                                            <textarea id="txteditsocioqueue" class="form-control" rows="6" placeholder=""></textarea>
+                                           
+                                            <textarea id="txteditsocioqueue" class="form-control" rows="5" placeholder=""></textarea>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="text-center margin-top-10 ">
+                                            <div class="text-center margin-top-9">
                                                 <img class="img-responsive" id="PostImage" src="https://scontent-sin1-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/11401469_1591336734452249_8507447769430920566_n.jpg?oh=ecc13d685d06637f591edfe2a9b5dadf&oe=562617E4" style="margin: auto;">
-                                                @*<a href="javascript:pixlr.overlay.show({image:'http://localhost:9821/Themes/Socioboard/Contents/img/upload/flower29.jpg', title:'inline editing using php mysql jquery and twitter bootstrap'});"><i class="fa fa-pencil fa-fw"></i>Edit your IMg</a>*@
                                             </div>
                                         </div>
                                     </div>
@@ -103,18 +103,32 @@
     };
 
     function deletesocialqueuemsg(msgid) {
-        $('#deletesociaoqueue').modal('show');
+        //$('#deletesociaoqueue').modal('show');
         $('#deletebtnsocioqueue').attr('msgid', msgid);
 
     };
 
 
     function editsocialqueuemsg(msgid, msg,obj) {
-        $('#editsociaoqueue').modal('show');
+        //$('#editsociaoqueue').modal('show');
         $('#savebtnsocioqueue').attr('msgid', msgid);
         $('#txteditsocioqueue').val(msg);
-        
-        $("#PostImage").attr('src', $(obj).data('pic'));
+        if ($(obj).data('pic') != "") {
+            if ($("#txteditsocioqueue").parent().hasClass("col-md-12")) {
+                $("#txteditsocioqueue").parent().removeClass("col-md-12");
+                $("#txteditsocioqueue").parent().addClass("col-md-6");
+            }
+            $("#PostImage").css("display", "block");
+            $("#PostImage").attr('src', $(obj).data('pic'));
+        } else {
+            if ($("#txteditsocioqueue").parent().hasClass("col-md-6"))
+            {
+                $("#txteditsocioqueue").parent().removeClass("col-md-6");
+                $("#txteditsocioqueue").parent().addClass("col-md-12");
+            }
+            
+            $("#PostImage").css("display", "none");
+        }
     };
 
 
@@ -191,7 +205,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>*@
 <script src="~/Themes/Socioboard/Contents/js/pixlr.js"></script>
 <script type="text/javascript">
     pixlr.settings.target = 'http://demo.smarttutorials.net/pixlr-editor/save.php';

@@ -1,0 +1,259 @@
+﻿@{
+    List<Domain.Socioboard.Domain.AddFacebookPage> lstAddFacebookPage = new List<Domain.Socioboard.Domain.AddFacebookPage>();
+    try
+    {
+        lstAddFacebookPage = (List<Domain.Socioboard.Domain.AddFacebookPage>)Session["fbpage"];
+    }
+    catch (Exception ex)
+    {
+        lstAddFacebookPage = new List<Domain.Socioboard.Domain.AddFacebookPage>();
+    }
+    List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = (List<Domain.Socioboard.Domain.FacebookAccount>)Model;
+    int profilecount = 0;
+    int totalaccount = 0;
+    int profileAllowed = 0;
+    try
+    {
+        profilecount = (Int16)(Session["ProfileCount"]);
+        totalaccount = (Int16)Session["TotalAccount"];
+        profileAllowed = totalaccount - profilecount;
+    }
+    catch (Exception ex)
+    {
+
+    }
+}
+
+<style>
+    .modal-body {
+        overflow-y: auto;
+        max-height: 500px;
+    }
+    .modal-content {
+        border-radius:2px;
+    }
+        .tasks; {
+        /*margin: 50px auto;
+            width: 240px;*/
+        background: white;
+        /*border: 1px solid #cdd3d7;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);*/
+    }
+
+    .tasks-title {
+        line-height: inherit;
+        font-size: 14px;
+        font-weight: bold;
+        color: inherit;
+    }
+
+    .tasks-lists {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        margin-top: -11px;
+        padding: 10px 4px;
+        width: 19px;
+        height: 3px;
+        font: 0/0 serif;
+        text-shadow: none;
+        color: transparent;
+    }
+
+    .tasks-list .desabled {
+        opacity: 0.4;
+    }
+
+    .tasks-lists:before {
+        content: '';
+        display: block;
+        height: 3px;
+        background: #8c959d;
+        border-radius: 1px;
+        -webkit-box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+        box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+    }
+
+    .tasks-list-item {
+        display: block;
+        line-height: 24px;
+        padding: 12px 15px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        .tasks-list-item + .tasks-list-item {
+            border-top: 1px solid #f0f2f3;
+        }
+
+    .tasks-list-cb {
+        display: none;
+    }
+
+    .tasks-list-mark {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 12px;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #c4cbd2;
+        border-radius: 12px;
+        float: right;
+        margin-top: 1%;
+    }
+
+        .tasks-list-mark:before {
+            content: '';
+            display: none;
+            position: absolute;
+            top: 39%;
+            left: 50%;
+            margin: -5px 0 0 -6px;
+            height: 9px;
+            width: 18px;
+            border: solid rgb(73, 101, 159);
+            border-width: 0 0 4px 4px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+    .tasks-list-cb:checked ~ .tasks-list-mark {
+        border-color: rgb(73, 101, 159);
+    }
+
+        .tasks-list-cb:checked ~ .tasks-list-mark:before {
+            display: block;
+        }
+
+    .tasks-list-desc {
+        font-weight: bold;
+        color: #8a9a9b;
+    }
+
+    .tasks-list-cb:checked ~ label.tasks-list-item {
+        color: #34bf6e;
+        opacity: 1;
+    }
+
+    .link-text {
+        max-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+    }
+
+    .title-text {
+        max-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .cancel-text {
+        color: #999;
+        cursor: pointer;
+        font-weight: bold;
+        margin-right: 2%;
+    }
+</style>
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">CHOOSE FACEBOOK PAGES TO CONNECT</h4>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12" id="message-upgrade" style="display:none">
+                <p class="text-danger" style="position: absolute;top: -12px;font-size:13px;">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    Please upgrade your socioboard account to add more account.
+                </p>
+            </div>
+            <section class="tasks">
+                <fieldset class="tasks-list">
+                    @foreach (var item in lstAddFacebookPage)
+                    {
+                        if (!lstFacebookAccount.Any(t => t.FbUserId == item.ProfilePageId))
+                        {
+                            <label class="tasks-list-item">
+                                <input type="checkbox" name="ga-profile" value="@item.ProfilePageId" id="@item.ProfilePageId" class="tasks-list-cb ga-filter-div">
+                                <span class="tasks-list-mark"></span>
+                                <div style="display: inline-flex;">
+                                    <img src="https://graph.facebook.com/@item.ProfilePageId/picture?type=small" class="img-thumbnail" />
+                                    <div style="left:18%; position:absolute;">
+                                        <span class="tasks-list-desc title-text">@item.Name</span>
+                                        <br /><small></small>
+                                    </div>
+                                    @*<span class="tasks-list-desc link-text"><a href="javascript:;">@item.WebsiteUrl</a></span>*@
+                                </div>
+                            </label>
+                        }
+                        else
+                        {
+                            <label class="tasks-list-item desabled">
+                                <input type="checkbox" name="ga-profile" value="@item.ProfilePageId" class="tasks-list-cb" checked disabled>
+                                <span class="tasks-list-mark"></span>
+                                <div style="display: inline-flex;">
+                                    <img src="https://graph.facebook.com/@item.ProfilePageId/picture?type=small" class="img-thumbnail" />
+                                    <div style="left:18%; position:absolute;">
+                                        <span class="tasks-list-desc title-text">@item.Name</span>
+                                        <br /><small>Connected</small>
+                                    </div>
+                                    @*<span class="tasks-list-desc link-text"><a href="javascript:;">@item.WebsiteUrl</a></span>*@
+                                </div>
+                            </label>
+                        }
+
+                    }
+                    @if (lstAddFacebookPage.Count == 0)
+                    {
+                        <center><strong>No Facebook Page found.</strong></center>
+                    }
+                </fieldset>
+            </section>
+        </div>
+        <div class="modal-footer">
+            <small class="cancel-text" data-dismiss="modal">Cancel</small>
+            <button type="button" class="btn btn-primary" onclick="AddFbPage()" id="btn-add-ga" disabled>CONNECT</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".ga-filter-div").click(function (e) {
+        var allow = '@profileAllowed';
+        var count = 0;
+        debugger;
+        $('.ga-filter-div').each(function () {
+            var attrId = $(this).attr("id");
+            if (document.getElementById(attrId).checked == true) {
+                count++;
+            }
+
+            if (+count > 0) {
+                $("#btn-add-ga").removeAttr("disabled");
+            } else {
+                $("#btn-add-ga").attr("disabled", true);
+            }
+        });
+        if (+count > +allow) {
+            $(this).removeAttr("checked");
+            $("#message-upgrade").css("display", "block");
+        }
+        else {
+            $("#message-upgrade").css("display", "none");
+        }
+    });
+</script>

@@ -1,0 +1,43 @@
+﻿@foreach (var item in (List<Domain.Socioboard.Domain.InstagramAccount>)Session["AllInstagramAccount"])
+{
+    <li>
+        <a href="#">
+            <div class="checkbox">
+                <label>
+                    <input class="instagram-profile-id" type="checkbox" value="@item.InstagramId" id="@item.InstagramId" /><i class="fa fa-user fa-fw"></i>@item.InsUserName
+                </label>
+            </div>
+        </a>
+    </li>
+
+}
+@if (((List<Domain.Socioboard.Domain.InstagramAccount>)Session["AllInstagramAccount"]).Count > 1)
+{
+    <li class="divider"></li>
+    <li>
+        <a href="#">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="all" id="all-insts-account"><i class="fa fa-group fa-fw"></i> All Accounts
+                </label>
+            </div>
+        </a>
+    </li>
+}
+<script>
+    $("#all-insts-account").click(function () {
+        debugger;
+        if (document.getElementById("all-insts-account").checked == false) {
+            $(".instagram-profile-id").prop('checked', false);
+        } else {
+            $(".instagram-profile-id").prop('checked', true);
+        }
+    });
+    $(".instagram-profile-id").click(function () {
+        debugger;
+        var attid = $(this).attr("id");
+        if (document.getElementById(attid).checked == false) {
+            $("#all-insts-account").prop('checked', false);
+        } 
+    });
+</script>

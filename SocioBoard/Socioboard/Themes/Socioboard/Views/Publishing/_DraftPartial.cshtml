@@ -23,12 +23,20 @@ TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                 @{string imgurl = objuser.ProfileUrl;}
                 @if (!string.IsNullOrEmpty(imgurl))
                 {
-                    string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-                     imgurl = "/Themes/Socioboard" + profileUrl[1];
+                    try
+                    {
+                        string[] profileUrl = objuser.ProfileUrl.Split(new string[] { path }, StringSplitOptions.None);
+                        imgurl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + profileUrl[2];
+                    }
+                    catch (Exception ex)
+                    {
+                        imgurl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
+                    }
                     <img src="@imgurl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
                 }
                 else 
                 {
+                    imgurl = System.Configuration.ConfigurationManager.AppSettings["DomainName"] + "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
                     <img src="@imgurl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
                 }
                 
@@ -40,10 +48,10 @@ TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
         </td>
         <td>@item.Message</td>
         <td>
-            <button  type="button" class="btn btn-warning btn-circle" onclick="editdraft('@item.Id','@item.Message')"><i class="fa fa-pencil"></i></button>
+            <button type="button" class="btn btn-warning btn-circle" onclick="editdraft('@item.Id','@item.Message')" data-target="#Editdraftmodal" data-toggle="modal"><i class="fa fa-pencil"></i></button>
         </td>
         <td class="center ">
-                    <button onclick="deletedraftmsg('@item.Id')" class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i></button>
+            <button onclick="deletedraftmsg('@item.Id')" class="btn btn-danger btn-circle" type="button" data-target="#deleteconfirmationmodal" data-toggle="modal"><i class="fa fa-times"></i></button>
                 </td>
         <td class="center">
             <a href="../Publishing/Index?Message=@item.Message"  class="btn btn-success btn-circle" type="button"><i class="fa fa-check"></i></a>

@@ -195,6 +195,7 @@
     <Compile Include="Domain\LinkedinCompanyPagePosts.cs" />
     <Compile Include="Domain\LinkedInFeed.cs" />
     <Compile Include="Domain\LinkedInGroup.cs" />
+    <Compile Include="Domain\LinkedInManager.cs" />
     <Compile Include="Domain\LinkedInMessage.cs" />
     <Compile Include="Domain\LinkedinPageComment.cs" />
     <Compile Include="Domain\LinkedInUser.cs" />

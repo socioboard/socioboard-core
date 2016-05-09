@@ -8,6 +8,73 @@
     System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
     string formate = "yyyy/MM/dd HH:mm:ss";
 }
+
+<style type="text/css">
+       /*
+    *  Usage:
+    *
+    *    <div class="sk-spinner sk-spinner-three-bounce">
+    *      <div class="sk-bounce1"></div>
+    *      <div class="sk-bounce2"></div>
+    *      <div class="sk-bounce3"></div>
+    *    </div>
+    *
+    */
+       .sk-spinner-three-bounce.sk-spinner {
+           margin: 0 auto;
+           width: 70px;
+           text-align: center;
+       }
+
+       .sk-spinner-three-bounce div {
+           width: 18px;
+           height: 18px;
+           background-color: #333;
+           border-radius: 100%;
+           display: inline-block;
+           -webkit-animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
+           animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
+           /* Prevent first frame from flickering when animation starts */
+           -webkit-animation-fill-mode: both;
+           animation-fill-mode: both;
+       }
+
+       .sk-spinner-three-bounce .sk-bounce1 {
+           -webkit-animation-delay: -0.32s;
+           animation-delay: -0.32s;
+       }
+
+       .sk-spinner-three-bounce .sk-bounce2 {
+           -webkit-animation-delay: -0.16s;
+           animation-delay: -0.16s;
+       }
+
+       @@-webkit-keyframes sk-threeBounceDelay {
+           0%, 80%, 100% {
+               -webkit-transform: scale(0);
+               transform: scale(0);
+           }
+
+           40% {
+               -webkit-transform: scale(1);
+               transform: scale(1);
+           }
+       }
+
+       @@keyframes sk-threeBounceDelay {
+           0%, 80%, 100% {
+               -webkit-transform: scale(0);
+               transform: scale(0);
+           }
+
+           40% {
+               -webkit-transform: scale(1);
+               transform: scale(1);
+           }
+       }
+</style>
+
+
 <ul class="chat">
     @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
     {
@@ -18,107 +85,142 @@
             {
                 MongoFacebookFeed item = (MongoFacebookFeed)facebookmsg;
                 string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.FeedDescription);
-        <li class="left clearfix">
-            <span class="chat-img pull-left">
-                <img alt="User Avatar" class="img-circle profilePic" src="https://graph.facebook.com/@item.FromId/picture?type=small"/>
-            </span>
-            <div class="chat-body clearfix">
-                <div>
-                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
-                    <small class="text-muted">
-                         @{
-                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.FeedDate,formate,provider).ToString());
-                        }
-                        @messagedate
-                    </small>
-                </div>
+                <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img alt="User Avatar" class="img-circle profilePic" src="https://graph.facebook.com/@item.FromId/picture?type=small" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div>
+                            <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
+                            <small class="text-muted">
+                                @{
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.FeedDate, formate, provider).ToString());
+                                }
+                                @messagedate
+                            </small>
+                        </div>
 
-                 <div style="margin-top: 2%;">
-                       @if (str != null)
-                    {
-                        foreach (string substritem in str)
-                        {
-                            try
+                        <div style="margin-top: 2%;">
+                            @if (str != null)
                             {
-                                if (!string.IsNullOrEmpty(substritem))
+                                foreach (string substritem in str)
                                 {
-                                    if (substritem.Contains("http"))
+                                    try
                                     {
-                        <a target="_blank" href="@substritem ">@substritem</a>
+                                        if (!string.IsNullOrEmpty(substritem))
+                                        {
+                                            if (substritem.Contains("http"))
+                                            {
+                                                <a target="_blank" href="@substritem ">@substritem</a>
+                                            }
+                                            else
+                                            {
+                                                string hrefPost = string.Empty;
+                                                try
+                                                {
+                                                    hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                                }
+                                                if (!string.IsNullOrEmpty(hrefPost))
+                                                {
+                                                    <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                                                }
+                                                else
+                                                {
+                                                    @substritem;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                {
+                                    string hrefPost = string.Empty;
+                                    try
+                                    {
+                                        hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("Error : " + ex.StackTrace);
+                                    }
+                                    if (!string.IsNullOrEmpty(hrefPost))
+                                    {
+                                        <a target="_blank" href="@hrefPost" style="color:#333">@item.FeedDescription</a>
                                     }
                                     else
                                     {
-                                        string hrefPost = string.Empty;
-                                        try
-                                        {
-                                            hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Console.WriteLine("Error : " + ex.StackTrace);
-                                        }
-                                        if (!string.IsNullOrEmpty(hrefPost))
-                                        {
-                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
-                                        }
-                                        else
-                                        {
-                        @substritem;
-                                        }
+                                        @item.FeedDescription;
                                     }
+                                }
+                            }
+
+
+                            @*Display image of post*@
+                            @try
+                            {
+                                if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
+                                {
+                                    <br />
+                                    <img src="@item.Picture" style="margin-top: 3%;" />
                                 }
                             }
                             catch (Exception ex)
                             {
+                                Console.WriteLine(ex.Message);
+                                Console.WriteLine(ex.StackTrace);
                             }
-                        }
-                    }
-                    else
-                    {
-                        {
-                            string hrefPost = string.Empty;
-                            try
-                            {
-                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error : " + ex.StackTrace);
-                            }
-                            if (!string.IsNullOrEmpty(hrefPost))
-                            {
-                        <a target="_blank" href="@hrefPost" style="color:#333">@item.FeedDescription</a>
-                            }
-                            else
-                            {
-                        @item.FeedDescription;
-                            }
-                        }
-                    }
-               
 
-                @*Display image of post*@
-                @try
-                {
-                    if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
-                    {
-                        <br />
-                    <img src="@item.Picture" style="margin-top: 3%;"/> 
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.StackTrace);
-                }
+                        </div>
+                        <br>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-loaded="false" data-postid="@item.FeedId" onclick="LoadComments(this)" data-collapseid="collapseOne_@item.FeedId" href="#collapseOne_@item.FeedId" class="collapsed">Comments</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne_@item.FeedId" class="panel-collapse collapse" style="height: 0px;">
+                            <div class="panel-body">
+                                <div class="sk-spinner sk-spinner-three-bounce">
+                                    <div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                     </div>
-                <br>
-            </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" placeholder="Type your comment here...">
+                        <span class="input-group-btn">
+                            <div class="btn btn-warning btn-sm" data-loaded="false" data-postid="@item.FeedId"  data-collapseid="collapseOne_@item.FeedId"  data-profileid="@item.FromId" onclick="FbCommnet(this)">
+                                Comment
+                            </div>
+                            @*<div class="sk-spinner sk-spinner-wave hide" >
+                                    <div class="sk-rect1"></div>
+                                    <div class="sk-rect2"></div>
+                                    <div class="sk-rect3"></div>
+                                    <div class="sk-rect4"></div>
+                                    <div class="sk-rect5"></div>
+                                </div>*@
+                            @*<button type="button" class="btn btn-info btn-circle">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                </button>*@
+                        </span>
+                    </div>
 
-          
 
-        </li>
+
+
+
+                </li>
             }
         }
 
@@ -130,22 +232,22 @@
             {
                 Domain.Socioboard.MongoDomain.TwitterMessage item = (Domain.Socioboard.MongoDomain.TwitterMessage)twittermsg;
                 string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.TwitterMsg);
-        <li class="left clearfix" >
-            <span class="chat-img pull-left">
-                <img id="user_avtar" alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl"/>
-            </span>
-            <div class="chat-body clearfix">
-                <div>
-                    <a target="_blank" href="http://www.twitter.com/@item.FromScreenName"><strong class="primary-font">@item.FromName</strong></a><br />
-                    <small class="text-muted">
-                       
-                        @{
+                <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img id="user_avtar" alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div>
+                            <a target="_blank" href="http://www.twitter.com/@item.FromScreenName"><strong class="primary-font">@item.FromName</strong></a><br />
+                            <small class="text-muted">
+
+                                @{
                 string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime,DateTime.ParseExact(item.MessageDate,formate,provider).ToString());
-                        }
-                        @messagedate
-                    </small>
-                </div>
-                   @if(str != null && str.Length>0){
+                                }
+                                @messagedate
+                            </small>
+                        </div>
+                        @if(str != null && str.Length>0){
                 foreach (string substritem in str)
                 {
                     try
@@ -154,9 +256,9 @@
                         {
                             if (substritem.Contains("http"))
                             {
-                    <div class="pull-left" @*style="text-align:justify;"*@>
-                        <a target="_blank" href="@substritem ">@substritem</a>
-                    </div>
+                <div class="pull-left" @*style="text-align:justify;"*@>
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                </div>
                             }
                             else
                             {
@@ -171,13 +273,13 @@
                                 }
                                 if (!string.IsNullOrEmpty(hrefPost))
                                 {
-                    <div class="pull-left" style="text-align: justify;">
-                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
-                    </div>
+                <div class="pull-left" style="text-align: justify;">
+                    <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                </div>
                                 }
                                 else
                                 {
-                    @substritem;
+                @substritem;
                                 }
                             }
                         }
@@ -188,10 +290,10 @@
                 }
                 }
 
-             
-            </div>
-        </li>
-                
+
+                    </div>
+                </li>
+
             }
         }
 
@@ -204,34 +306,34 @@
             foreach (var linkedinmsg in lstdic)
             {
                 Domain.Socioboard.MongoDomain.LinkedInMessage item = (Domain.Socioboard.MongoDomain.LinkedInMessage)linkedinmsg;
-                Domain.Socioboard.Domain.User _user=(Domain.Socioboard.Domain.User)Session["User"];
+                Domain.Socioboard.Domain.User _user = (Domain.Socioboard.Domain.User)Session["User"];
                 string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Message);
                 Domain.Socioboard.Domain.LinkedInAccount _LinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiLinkedinAccount.UserInformation(_user.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.LinkedInAccount));
                 string picurl = string.Empty;
                 if (string.IsNullOrEmpty(_LinkedInAccount.ProfileImageUrl))
                 {
-                    picurl = "../Themes/"+ path +"/Contents/img/anonymousUser.jpg";
+                    picurl = "../Themes/" + path + "/Contents/img/anonymousUser.jpg";
                 }
                 else
                 {
                     picurl = _LinkedInAccount.ProfileImageUrl;
                 }
-        <li class="left clearfix">
-            <span class="chat-img pull-left">
-                <img alt="User Avatar" class="img-circle profilePic" src="@picurl"/>
-            </span>
-            <div class="chat-body clearfix">
-                <div>
-                     <a href="@item.ProfileUrl" target="_blank"><strong class="primary-font">@item.ProfileName</strong></a><br />
-                    <small class="text-muted">
-                        @*<i class="fa fa-clock-o fa-fw"></i>*@
-                       @{
+                <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img alt="User Avatar" class="img-circle profilePic" src="@picurl" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div>
+                            <a href="@item.ProfileUrl" target="_blank"><strong class="primary-font">@item.ProfileName</strong></a><br />
+                            <small class="text-muted">
+                                @*<i class="fa fa-clock-o fa-fw"></i>*@
+                                @{
                 string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, DateTime.ParseExact(item.CreatedDate, formate, provider).ToString());
-                        }
-                        @messagedate
-                    </small>
-                </div>
-               @foreach (string substritem in str)
+                                }
+                                @messagedate
+                            </small>
+                        </div>
+                        @foreach (string substritem in str)
                 {
                     try
                     {
@@ -239,22 +341,22 @@
                         {
                             if (substritem.Contains("http"))
                             {
-                    <div class="pull-left" @*style="text-align:justify;"*@>
-                        <a target="_blank" href="@substritem ">@substritem</a>
-                    </div>
+                <div class="pull-left" @*style="text-align:justify;"*@>
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                </div>
                             }
                             else
                             {
                                 string hrefPost = string.Empty;
                                 if (!string.IsNullOrEmpty(hrefPost))
                                 {
-                    <div class="pull-left" style="text-align: justify;">
-                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
-                    </div>
+                <div class="pull-left" style="text-align: justify;">
+                    <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                </div>
                                 }
                                 else
                                 {
-                    @substritem;
+                @substritem;
                                 }
                             }
                         }
@@ -263,17 +365,91 @@
                     {
                     }
                 }
-                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
                 {
-                    <br />
-                    <img src="@item.ImageUrl" style="margin-top: 3%; height:100px;" /> 
+                <br />
+                <img src="@item.ImageUrl" style="margin-top: 3%; height:100px;" />
                 }
-              
-            </div>
-        </li>
-                
+
+                    </div>
+                </li>
+
             }
         }
 
     }
 </ul>
+<script>
+    function FbCommnet(ele) {
+        var comment = $(ele).parent().parent().find('input').val();
+        var PostId = $(ele).attr('data-postId');
+        var profileId = $(ele).attr('data-ProfileId');
+        $(ele).html("");
+        $(ele).removeClass("btn btn-warning btn-sm");
+        $(ele).addClass("sk-spinner sk-spinner-three-bounce");
+        $(ele).html('<div class="sk-bounce1"></div><div class="sk-bounce2"></div><div class="sk-bounce3"></div>');
+        $.ajax({
+
+            type: 'GET',
+
+            url: '../Feeds/FbPostComment?Message=' + comment + '&ProfileId=' + profileId + '&PostId=' + PostId,
+
+            success: function (msg) {
+                if (msg != "NotCommented") {
+                    $(ele).parent().parent().find('input').val("");
+                    $(ele).addClass("btn btn-warning btn-sm");
+                    $(ele).removeClass("sk-spinner sk-spinner-three-bounce");
+                    $(ele).html("Comment");
+
+                    alertify.set({ delay: 5000 });
+
+                    alertify.success("Comment Posted Successfully");
+                    LoadComments(ele);
+
+                }
+                else {
+                    $(ele).addClass("btn btn-warning btn-sm");
+                    $(ele).removeClass("sk-spinner sk-spinner-three-bounce");
+                    $(ele).html("Comment");
+
+                    alertify.set({ delay: 5000 });
+                    alertify.error("Failed to post Comment ");
+                }
+
+            }
+
+
+
+        });
+
+    }
+
+
+    function LoadComments(ele) {
+        var IsLoaded = $(ele).attr('data-loaded');
+        var divToLoadData = $(ele).attr('data-collapseid');
+        if (IsLoaded == "false") {
+            var PostId = $(ele).attr('data-postId');
+
+            $.ajax({
+
+                type: 'GET',
+
+                url: '../Feeds/LoadComments?PostId=' + PostId,
+
+                success: function (msg) {
+                    $('#'+divToLoadData).html(msg);
+                    $(ele).attr('data-loaded', 'true');
+
+                }
+
+
+
+            });
+
+        }
+    }
+</script>
+
+
+
