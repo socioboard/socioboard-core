@@ -13,22 +13,47 @@
     @foreach (Domain.Socioboard.Helper.ScheduledTracker item in (List<Domain.Socioboard.Helper.ScheduledTracker>)Model)
     {
 
-        Socioboard.Api.ScheduledMessage.ScheduledMessage ApiobjSchMsg = new Socioboard.Api.ScheduledMessage.ScheduledMessage();
-        List<ScheduledMessage> lstUnsentScheduledMessage = (List<ScheduledMessage>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjSchMsg.GetAllUnSentMessagesOfUser(item.Id), typeof(List<ScheduledMessage>)));
+        //Socioboard.Api.ScheduledMessage.ScheduledMessage ApiobjSchMsg = new Socioboard.Api.ScheduledMessage.ScheduledMessage();
+        //List<ScheduledMessage> lstUnsentScheduledMessage = (List<ScheduledMessage>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjSchMsg.GetAllUnSentMessagesOfUser(item.Id), typeof(List<ScheduledMessage>)));
 
-        Socioboard.Api.User.User ApiobjUser = new Socioboard.Api.User.User();
-        User ObjUser = (User)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(item.Id), typeof(User)));
+        //ocioboard.Api.User.User ApiobjUser = new Socioboard.Api.User.User();
+        //User ObjUser = (User)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(item.Id, Session["access_token"].ToString()), typeof(User)));
+
+        string imgurl = "";
+        if (!string.IsNullOrEmpty(item.PicUrl))
+        {
+            try
+            {
+                string[] profileUrl = item.PicUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                imgurl = "/Themes/Socioboard" + profileUrl[2];
+            }
+            catch (Exception ex)
+            {
+                imgurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+            }
+        }
+        else
+        {
+            imgurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+        }
         
-        
-        
-        
-        
+
+
         <tr class="odd gradeX">
-            <td><a href="../Services/SchedulingDetails?Id=@ObjUser.Id"     style="cursor:pointer">@ObjUser.UserName</a></td>
+            <td>
+                <div class="profile">
+                    <img style="height: 30px; width: 30px; float: left;" src="https://www.socioboard.com/@imgurl" class="img-responsive" alt="@item.Name"><span style="vertical-align: middle; padding-left: 10px;">
+                        <a href="../Services/SchedulingDetails?Id=@item.UserId" title="@item.Name">@item.Name</a>
+                    </span>
+                </div>
+
+
+                @*<a href="../Services/SchedulingDetails?Id=@item.UserId" style="cursor:pointer"></a>*@
+            </td>
             <td>@item.Count</td>
-            <td>@(item.Count-lstUnsentScheduledMessage.Count())</td>
-            <td>@lstUnsentScheduledMessage.Count()</td>
+            <td>@item.SentCount</td>
+            <td>@item.RemainingCount</td>
         </tr>
-    }
-</tbody>
+        }
+    </tbody>
 

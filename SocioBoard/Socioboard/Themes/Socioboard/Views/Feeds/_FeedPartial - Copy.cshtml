@@ -1,0 +1,200 @@
+﻿@{
+    Layout = null;
+    string networktype = (string)Model;
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];              // Edited by Antima
+    var Id = ViewBag.id;
+}
+@if (networktype == "instagram" || networktype == "tumblr" || networktype == "youtube")
+{
+    <div class="container-fluid" style="margin-top: 25px">
+        <div id="feedimages" class="row">
+            <div style="margin-top: 50px">
+                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+                Loading . . .
+            </div>
+        </div>
+    </div>
+}
+else
+{ 
+    <div class="container-fluid" style="margin-top: 25px">
+
+        @*Edited by Antima*@
+
+        @*<h1 class="page-header">Live Feeds</h1>*@
+
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Live Feeds</h1>
+            </div>
+            <div class="col-md-8" id="feedsfilter">
+
+                <div class="fbfeedsfilter" id="fbfeedsfilter" style="display: none">
+                    @*
+                    <h3 title="User Feeds" class="btn btn-default btn-lg col-md-3" id="btnUserFeeds" onclick="FacebookUserFeeds('@ViewBag.id')" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>User Feeds </h3>*@
+                    <h3 title=" User Feeds" class="btn btn-default btn-lg col-md-3" id="btnUserFeeds" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>User Feeds </h3>
+                    @*
+                    <h3 title="Status" class="btn btn-default btn-lg col-md-3" id="btnStatus" onclick="FacebookStatus('@ViewBag.id')" style="background-color: #428bca; color: white; margin: 20px"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>Status </h3>
+                    <h3 class="btn btn-default btn-lg col-md-3" id="btnTag" onclick="FacebookTag('@ViewBag.id')" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i>Tag </h3>*@
+
+                    <h3 title=" Status" class="btn btn-default btn-lg col-md-3" id="btnStatus" style="background-color: #428bca; color: white; margin: 20px"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i> Status </h3>
+                    <h3 title=" Tags" class="btn btn-default btn-lg col-md-3" id="btnTag" style="background-color: #428bca; color: white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/1.png"></i> Tag </h3>
+                </div>
+
+                <div class="twtfeedsfilter" id="twtfeedsfilter" style="display: none">
+                    <h3 class="btn btn-default btn-lg col-md-3" id="btnUserTweet" onclick="TwitterUserTweet('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/2.png"></i>User Tweet </h3>
+                    <h3 class="btn btn-default btn-lg col-md-3" id="btnRetweets" onclick="TwitterRetweets('@ViewBag.id')" style="background-color: #428bca;color:white; margin:20px"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/2.png"></i> Retweets </h3>
+                    <h3 class="btn btn-default btn-lg col-md-3" id="btnMentions" onclick="TwitterMentions('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
+                        <img src="../Themes/@path/Contents/img/admin/2.png"></i> Mentions </h3>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="feedsdata" class="row">
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <span>
+                                <img id="img_paneltab1" /></span>&nbsp;&nbsp;<span id="title_paneltab1"></span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel1" class="pull-right" /></a></h3>
+                        @*<img src="" id="img_paneltab1" /></i><span id="title_paneltab1"></span><a href="#"><i id="refreshpanel1" class="fa fa-refresh pull-right"></i></a></h3>*@
+
+                    </div>
+                    <div id="data_paneltab1" onscroll="ccc()" class="panel-body">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <span>
+                                <img id="img_paneltab2" /></span>&nbsp;&nbsp;<span id="title_paneltab2"></span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel2" class="pull-right" /></a></h3>
+                        @*<img src="" id="img_paneltab2" /></i><span id="title_paneltab2"></span><a href="#"><i id="refreshpanel2" class="fa fa-refresh pull-right"></i></a></h3>*@
+                    </div>
+                    <div id="data_paneltab2" onscroll="feedbind()" class="panel-body">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <span>
+                                <img id="img_paneltab3" /></span>&nbsp;&nbsp;<span id="title_paneltab3"></span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel3" class="pull-right" /></a></h3>
+                        @*<img src="" id="img_paneltab3" /></i><span id="title_paneltab3"></span><a href="#"><i id="refreshpanel3" class="fa fa-refresh pull-right"></i></a></h3>*@
+                    </div>
+                    <div id="data_paneltab3" class="panel-body">
+                    </div>
+                </div>
+            </div>
+            <small class=" text-muted"></small>
+        </div>
+        <small class=" text-muted"></small>
+    </div>
+    
+    
+    <script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+
+            $("#data_paneltab1").scroll(ccc);
+
+            $("#data_paneltab2").scroll(feedbind);
+
+            $('#refreshpanel1').click(function () {
+                //  alert('asdasd');
+                var nwt = $('#refreshpanel1').attr('nwt');
+                var nwtid = $('#refreshpanel1').attr('nwtid');
+                if (nwt == '' && nwtid == '') {
+                    alert('Please select any account first');
+                }
+                else {
+                    if (nwt == "fb") {
+                        refreshWallpostFacebook(nwtid);
+                    }
+                    if (nwt == "twt") {
+                        refreshWallpostTwitter(nwtid);
+                    }
+                    if (nwt == "linkedin") {
+                        refreshWallpostLinkedin(nwtid);
+                    }
+                }
+            });
+            $('#refreshpanel2').click(function () {
+                debugger;
+                var nwt = $('#refreshpanel2').attr('nwt');
+                var nwtid = $('#refreshpanel2').attr('nwtid');
+                if (nwt == '' && nwtid == '') {
+                    alert('Please select any account first');
+                }
+                else {
+                    if (nwt == "fb") {
+                        refreshFeedsFacebook(nwtid);
+                    }
+                    if (nwt == "twt") {
+                        refreshFeedsTwitter(nwtid);
+                    }
+                    if (nwt == "linkedin") {
+                        refreshFeedsLinkedin(nwtid);
+                    }
+                }
+            });
+            $('#refreshpanel3').click(function () {
+                debugger;
+                var nwt = $('#refreshpanel3').attr('nwt');
+                var nwtid = $('#refreshpanel3').attr('nwtid');
+                if (nwt == '' && nwtid == '') {
+                    alert('Please select any account first');
+                }
+                else {
+                    if (nwt == "fb") {
+                        refreshSchedularMessageFacebook(nwtid);
+                    }
+                    if (nwt == "twt") {
+                        refreshSchedularMessageTwitter(nwtid);
+                    }
+                    if (nwt == "linkedin") {
+                        refreshSchedularMessageLinkedin(nwtid);
+                    }
+                }
+            });
+
+            $('.ytvideo').on('click', function () {
+                //alert('asdasdasd');
+            });
+
+            $('#btnUserFeeds').click(function () {
+                // alert("Userfeed");
+                var nwtid = $('#refreshpanel2').attr('nwtid');
+                FacebookUserFeeds(nwtid);
+            });
+
+            $('#btnStatus').click(function () {
+                //   alert("Userfeed");
+                FacebookStatus();
+            });
+
+            $('#btnTag').click(function () {
+                //  alert("Userfeed");
+                FacebookTag();
+            });
+        });
+    </script>
+    
+}
+

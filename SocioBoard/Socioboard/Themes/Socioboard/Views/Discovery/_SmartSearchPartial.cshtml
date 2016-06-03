@@ -1,0 +1,31 @@
+﻿@using Socioboard.Helper;
+@{
+    List<Domain.Socioboard.Helper.Discovery> lstDiscovery = (List<Domain.Socioboard.Helper.Discovery>)Model;
+    
+}
+
+            @foreach (var item in lstDiscovery)
+            { 
+ <li class="you">
+        <a href="https://twitter.com/@item.screan_name" class="user" target="_blank">
+            <img src="@item.profile_image_url" alt="@item.screan_name">
+        </a>
+        <div class="date"><a href="https://twitter.com/@item.screan_name" target="_blank" data-toggle="tooltip" title="@item.name">@item.name</a> @item.created_at.CalculateTimeDiff()</div>
+        <div class="message">
+            <p id="msg_@item.tweet_id">@Html.Raw(item.text)</p>
+            <div class="pull-right chatLinks col-md-2">
+                
+                    <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@item.tweet_id','@item.created_at')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                    
+                @*<a href="#"><i class="fa fa-user-plus"></i></a>
+                <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
+                @*<a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                <a title="Email Message" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+                <a title="Reply" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('','@msg.ProfileId','@msg.FromName')">
+                    <i class="fa fa-share fa-fw"></i>
+                </a>*@
+            </div>
+        </div>
+     </li>
+            }
+        

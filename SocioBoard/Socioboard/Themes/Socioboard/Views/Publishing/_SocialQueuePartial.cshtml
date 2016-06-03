@@ -52,7 +52,7 @@ else
     {
         string[] picturearry = null;
         objGroups = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-        if (item.ProfileType == "facebook")
+        if (item.ProfileType == "facebook"|| item.ProfileType=="facebook_page")
         {
             Socioboard.Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
             objFacebookAccount = (FacebookAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));

@@ -1,9 +1,9 @@
-﻿ @using Domain.Socioboard.Domain;
+﻿@using Domain.Socioboard.Domain;
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-    }
+}
 @{
-    
+    NewsLetterSetting _NewsLetterSetting = (NewsLetterSetting)ViewBag.NewsLetterSetting;
     User objUser = (User)Model;
     string[] fnamelname = objUser.UserName.Split(' ');
     string fname = fnamelname[0];
@@ -16,184 +16,300 @@
     //string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
     if (!string.IsNullOrEmpty(objUser.ProfileUrl))
     {
-        try{
-        profileurl = System.Text.RegularExpressions.Regex.Split(objUser.ProfileUrl, "wwwroot")[1]; 
+        string imgurl = "";
+
+        try
+        {
+            string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+            profileurl = "/Themes/Socioboard" + profileUrl[2];
         }
-        catch{
-            profileurl = objUser.ProfileUrl;
+        catch (Exception ex)
+        {
+            profileurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
         }
+        //try{
+        //profileurl = System.Text.RegularExpressions.Regex.Split(objUser.ProfileUrl, "wwwroot")[2];
+        //}
+        //catch{
+        //    profileurl = objUser.ProfileUrl;
+        //}
     }
 }
-    
 
-<div class="container-fluid">
-    <h1 class="page-header">Settings</h1>
+
+<div class="container-fluid" style="margin-top:5%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-            @objUser.UserName
-                       
+            <h4 class="title">Personal Settings</h4>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <!-- Nav tabs -->
-            
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="Personal">
-                    
+            <form role="form" class="">
+                <div class="row">
                     <div class="col-md-6">
-                        <form role="form" class="form-horizontal">
-                            <div class="form-group">
-                               @* <span class="input-group-addon">First Name</span>
-                                <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
-                                <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
-                        <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                              @*  <span class="input-group-addon">Last Name</span>
-                                <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
-                                 <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
-                        <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">
-                            </div>
-                            <div class="form-group">
-                                @*<span class="input-group-addon">Email Address</span>
-                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
-                                 <label for="username-email">E-mail Address</label><span class="pull-right text-danger">*</span>
-                        <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control" readonly="true">
-                            </div>
-                            <div class="form-group">
-                                @* Commented & Edited by Sumit Gupta [27/01/15] *@
-                            @*<button type="reset" class="btn btn-primary" data-toggle="modal" data-target="#ResetModal">Change Password</button>*@
+                        <div class="form-group">
+                            <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                            <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="username-email">E-mail Address</label><span class="pull-right text-danger">*</span>
+                            <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control" readonly="true">
+                        </div>
+                        <div class="form-group">
                             <button type="reset" class="btn btn-primary" data-toggle="modal" @*onclick="SendResetPasswordMail()"*@ data-target="#ResetModal">Change Password</button>
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ConfirmPassword">Reset Email</button>
-                                </div>
-                          
-                            @*<div class="form-group">
-                                <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">
-                                <label>Team members will see the avatar you have set.</label>
-                                <div><input id="uploadImage" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
-                            </div>*@
-
-                            <div class="form-group">
-                               @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
-                                <label>Team members will see the avatar you have set.</label>
-                                <div><input  id="input-24" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ConfirmPassword">Reset Email</button>
+                        </div>
+                        <div class="form-group">
+                            @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
+                            <label>Team members will see the avatar you have set.</label>
+                            <div><input id="input-24" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
+                            <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="time_zone">Time Zone</label>
+                            <div class="ps_select">
+                                <select id="ContentPlaceHolder1_ddlTimeZone" class="select form-control">
+                                    @foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
+                                    {
+                                        if (timeZoneInfo.StandardName == objUser.TimeZone)
+                                        {
+                                            <option selected value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
+                                        }
+                                    }
+                                </select>
                             </div>
-
-                            <div class="form-group">
-
-                                <div class="time_zone">
-                                  <label for="time_zone">Time Zone</label>  
-                                </div>
-                                <div class="ps_select">
-                                    <select id="ContentPlaceHolder1_ddlTimeZone" class="select form-control">
-                                         @foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
-                                         {
-                                             if (timeZoneInfo.StandardName == objUser.TimeZone)
-                                             {
-                                                 <option selected value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
-                                             }
-                                             else
-                                             { 
-                                             <option value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
-                                             }
-                                         }
-                                    </select>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group pull-right">
                             <button onclick="changesetting('@objUser.Id')" id="savepersonalsetting" type="button" class="btn btn-warning">Save</button>
-                        
-                         @*<button id="MonthlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to Monthly plan</button>*@
-						 <a id="MonthlyUpgrade" href="../PersonalSetting/Billing" class="btn btn-success" type="submit">Upgrade to Monthly plan</a>
-                            <button id="YearlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to yearly plan</button>
-                        
-                        
-                        </form>
+                            <a id="MonthlyUpgrade" href="../PersonalSetting/Billing" class="btn btn-success" type="submit">Upgrade to Monthly plan</a>
+                            @*<button id="YearlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to yearly plan</button>*@
+                        </div>
                     </div>
                 </div>
+            </form>
+        </div>        <!-- /.panel-body -->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="title">Newsletter Subscription Settings</h4>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div role="alert" class="alert alert-danger alert-dismissible">
+                        <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                        <strong style="font-size:12px;">Please follow the instructions below to change your Newsletter subscriptions</strong>
+                    </div>
+                    <p>Uncheck the lists you no longer wish to be on and then click the button below to complete your unsubscription.</p>
+                    <ul class="list-unstyled">
+                        @if (_NewsLetterSetting != null)
+                        {
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_Daily == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_daily" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_daily">
+                                }
+                                Daily Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_7 == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_7" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_7">
+                                }
+                                Weekly Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_15 == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_15" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_15">
+                                }
+                                15 Days Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_30 == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_30" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_30">
+                                }
+                                Monthly Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_60 == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_60" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_60">
+                                }
 
+                                60 Days Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.groupReport_90 == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_90" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_90">
+                                }
+
+                                90 Days Group Report Summary
+                            </li>
+                            <li>
+                                @if (_NewsLetterSetting.others == 1)
+                                {
+                                    <input type="checkbox" name="" class="" id="_others" checked>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="" class="" id="_others">
+                                }
+                                Other Newsletters
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="checkbox" name="" class="" id="_daily" checked>
+                                Daily Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_7" checked>
+                                Weekly Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_15" checked>
+                                15 Days Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_30" checked>
+                                Monthly Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_60" checked>
+                                60 Days Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_90" checked>
+                                90 Days Group Report Summary
+                            </li>
+                            <li>
+                                <input type="checkbox" name="" class="" id="_others" checked>
+                                Other Newsletters
+                            </li>
+                        }
+
+                    </ul>
+                    <p>Click the button to confirm you wish to unsubscribe.</p>
+                    <div class="form-group">
+                        <button class="btn btn-warning" id="update-newsletter-setting">Update my subscription</button>
+                    </div>
+                </div>
             </div>
-
-
-
-          
         </div>
     </div>
-    <!-- /.panel-body -->
 </div>
 @* start Reset password modal *@
 <div class="modal fade" id="ResetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
-      </div>
-      <form class="modal-body">
-                           @* <div class="form-group input-group">
-                                <span class="input-group-addon"></span>
-                                <input id="oldpass" value="" type="password" class="form-control" placeholder="Old Password">
-                            </div>*@
-                            <div class="form-group input-group">
-                                <span class="input-group-addon"></span>
-                                <input id="newpass" value="" type="password" class="form-control" placeholder="New Password">
-                            </div>
-            <div class="form-group input-group">
-                                <span class="input-group-addon"></span>
-                                <input id="confirmpass" value="" type="password" class="form-control" placeholder="Confirm Password">
-                            </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button onclick="changePassword('@objUser.EmailId')" type="button" class="btn btn-primary">Save changes</button>
-          </form>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <form class="modal-body">
+                @* <div class="form-group input-group">
+                        <span class="input-group-addon"></span>
+                        <input id="oldpass" value="" type="password" class="form-control" placeholder="Old Password">
+                    </div>*@
+                <div class="form-group input-group">
+                    <span class="input-group-addon"></span>
+                    <input id="newpass" value="" type="password" class="form-control" placeholder="New Password">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"></span>
+                    <input id="confirmpass" value="" type="password" class="form-control" placeholder="Confirm Password">
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button onclick="changePassword('@objUser.EmailId')" type="button" class="btn btn-primary">Save changes</button>
+            </form>
+        </div>
     </div>
-  </div>
+</div>
 
 @* End Reset password modal  *@
 
 @* start Reset Email modal *@
 <div class="modal fade" id="ResetMail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Reset Email</h4>
-      </div>
-      <div class="modal-body">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon"></span>
-                                <input id="newemail" value="" type="Email" class="form-control" placeholder="New Email">
-                            </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="ChangeMail" onclick="ResetEmailId()" class="btn btn-primary">Save changes</button>
-          </div>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reset Email</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"></span>
+                    <input id="newemail" value="" type="Email" class="form-control" placeholder="New Email">
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="ChangeMail" onclick="ResetEmailId()" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
 @* End Reset Email modal  *@
 
 @* start Password modal *@
 <div class="modal fade" id="ConfirmPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Please Re-enter Your Password</h4>
-      </div>
-      <div class="modal-body">
-          <h5>For your security, you must re-enter your password to continue.</h5>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">PassWord</span>
-                                <input id="CnfrmPassword" value="" type="Password" class="form-control" placeholder="Password">
-                            </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="ConfrmPassword" onclick="ConfirmPassword()" class="btn btn-primary">Submit</button>
-          </div>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Please Re-enter Your Password</h4>
+            </div>
+            <div class="modal-body">
+                <h5>For your security, you must re-enter your password to continue.</h5>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">PassWord</span>
+                    <input id="CnfrmPassword" value="" type="Password" class="form-control" placeholder="Password">
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="ConfrmPassword" onclick="ConfirmPassword()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
 @* End Password modal  *@
 
@@ -208,10 +324,10 @@
             @if(!string.IsNullOrEmpty(objUser.ProfileUrl))
             {
                 string[] profileUrl = objUser.ProfileUrl.Split(new string[] { path }, StringSplitOptions.None);
-                string imgurl=string.Empty; 
-                try 
-	            {	        
-		            imgurl = "/Themes/"+ path +"/"+ profileUrl[1];
+                string imgurl=string.Empty;
+                try
+	            {
+		            imgurl = "/Themes/"+ path +"/"+ profileUrl[2];
 	            }
 	            catch (Exception)
 	            {
@@ -221,7 +337,7 @@
 "<img src='@imgurl' class='file-preview-image' >",
             ],</text>
             }
-           
+
         });
     });
 
@@ -242,8 +358,42 @@
             $("#ChangeMail").click();
         }
     });
+    $('#update-newsletter-setting').on('click', function () {
+        debugger;
+        var _daily=0;
+        var _15=0;
+        var _30=0;
+        var _60=0;
+        var _90=0;
+        var _others = 0;
+        if ($('#_daily').prop('checked') == true) {
+            _daily = 1;
+        }
+        if ($('#_15').prop('checked') == true) {
+            _15 = 1;
+        }
+        if ($('#_30').prop('checked') == true) {
+            _30 = 1;
+        }
+        if ($('#_60').prop('checked') == true) {
+            _60 = 1;
+        }
+        if ($('#_90').prop('checked') == true) {
+            _90 = 1;
+        }
+        if ($('#_others').prop('checked') == true) {
+            _others = 1;
+        }
+        $.ajax({
+            url: "../PersonalSetting/UpdateNewsLatter?_daily=" + _daily + "&_15=" + _15 + "&_30=" + _30 + "&_60=" + _60 + "&_90=" + _90 + "&_others=" + _others,
+            type: "Post",
+            success: function (data)
+            {
+                alertify.success("Newsletter setting successfuly updated.");
+            }
+        });
 
-   
+    });
 
 </script>
 @* End scripts upload image *@

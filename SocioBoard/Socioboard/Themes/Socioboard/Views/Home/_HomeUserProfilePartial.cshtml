@@ -42,7 +42,7 @@
                         if (item.GroupName != path)
                         {
                             <li>
-                                <a style="Cursor:pointer" onclick="inviteteammember('@item.UserId','@item.Id')">
+                                <a style="Cursor:pointer" onclick="inviteteammember('@item.UserId','@item.Id')" data-target="#inviteteammember" data-toggle="modal">
                                     @*      <a href="../UserGroup/Index">*@
                                     <i class="fa fa-plus fa-fw"></i>@item.GroupName
                                 </a>

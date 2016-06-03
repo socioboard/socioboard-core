@@ -1,0 +1,67 @@
+﻿@{
+    bool check = true;
+    List<Domain.Socioboard.MongoDomain.InstagramFeed> lstfeed = (List<Domain.Socioboard.MongoDomain.InstagramFeed>)Model;
+}
+@if (lstfeed.Count > 0) { 
+foreach (var item in (List<Domain.Socioboard.MongoDomain.InstagramFeed>)Model)
+{
+    if (check == true)
+    {
+    <li class="left clearfix">
+        <span class="chat-img pull-left">
+            <img src="@item.ImageUrl" class="img-circle profilePic" alt="User Avatar">
+        </span>
+        <div class="chat-body clearfix">
+            <div>
+                <strong class="primary-font"><a href="https://instagram.com/@item.AdminUser" target="_blank">@item.AdminUser</a></strong>
+                <small class="pull-right text-muted">
+                    <i class="fa fa-clock-o fa-fw"></i>@Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate))
+                                            </small>
+            </div>
+            <p class="chat-tags">
+                <a href="@item.FeedUrl" target="_blank">@item.Feed</a>
+
+            </p>
+        </div>
+    </li>
+        check = false;
+    }
+    else
+    {
+    <li class="right clearfix">
+        <span class="chat-img pull-right">
+            <img src="@item.ImageUrl" class="img-circle profilePic" alt="User Avatar">
+        </span>
+        <div class="chat-body clearfix">
+            <div>
+                <strong class="primary-font pull-right"><a href="https://instagram.com/@item.AdminUser" target="_blank">@item.AdminUser</a></strong>
+                <small class="pull-left text-muted">
+                    <i class="fa fa-clock-o fa-fw"></i>@Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item.FeedDate))
+                                            </small>
+            </div><br />
+            <p class="pull-right chat-tags">
+                <a href="@item.FeedUrl" target="_blank">@item.Feed</a>
+
+            </p>
+        </div>
+    </li>
+        check = true;
+    }
+}
+}
+else { 
+        <div class="panel-body">
+                <ul id="twitterdiscovery" class="chat">
+                    No Result Found,Try With Another Keywords
+                </ul>
+                <div>
+                </div>
+            </div>
+
+}
+
+<style>
+    .chat-tags a {
+        word-wrap: break-word;
+    }
+</style>

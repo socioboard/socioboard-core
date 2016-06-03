@@ -1,8 +1,10 @@
 ﻿@{
     bool check = true;
+    List<Domain.Socioboard.Domain.DiscoverySearch> lstfeed = (List<Domain.Socioboard.Domain.DiscoverySearch>)Model;
 }
-
-@foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
+@if (lstfeed.Count > 0)
+{
+foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
 {
     if (check == true)
     {
@@ -46,4 +48,14 @@
     </li>
         check = true;
     }
+}}
+else {
+<div class="panel-body">
+    <ul id="twitterdiscovery" class="chat">
+        No Result Found,Try With Another Keywords
+    </ul>
+    <div>
+    </div>
+</div>
+
 }

@@ -63,13 +63,12 @@
             });
         }
 
-        // Edited by Antima
 
         function AddImage() {
             debugger;
             var filesinput = $('#input-24');
             //     var filesinput = $('#uploadImage');
-            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'JPG', 'JPEG', 'PNG', 'GIF', 'BMP'];
             if (filesinput != undefined && filesinput[0].files[0] != null) {
                 if (hasExtension('input-24', fileExtension)) {
                     $('#showRemoveImage').css('display', 'block');
@@ -199,11 +198,14 @@
                             $('#ResetModal').modal('hide');
                         }
                         else if (msg == "Invalid EmailId or Password") {
-                            alertify.success('Invalid EmailId or Password');
+                            alertify.error('Invalid EmailId or Password');
                         }
                         else if (msg == "New Password and Confirm Password mismatch") {
-                            alertify.success("New Password and Confirm Password mismatch");
+                            alertify.error("New Password and Confirm Password mismatch");
 
+                        }
+                        else if (msg == "New Password and Old Password is same") {
+                            alertify.error(msg);
                         }
                         else {
                             alertify.error('Error please check');
@@ -222,6 +224,7 @@
         }
 
         function ResetEmailId(Id) {
+            debugger;
             var email = $('#newemail').val();
             if (email == "") {
                 alertify.error('Please enter New EmailId');
@@ -241,7 +244,7 @@
                                 alertify.success('Mail Send Successfully');
                                 $('#ResetMail').modal('hide');
                             }
-                            else if (msg == "Email Id alredy Exist") {
+                            else if (msg == "EmailId already Exist") {
                                 alertify.error('Email Id already Exist');
                             }
                             else if (msg == "Failed") {
@@ -251,9 +254,8 @@
                                 alertify.error('Error please check');
                             }
                             $('#newemail').val('');
-                            window.location = '../personalSettings/LoadPersonalSetting';
-                        },
-                        async: false
+                          
+                        }
                     });
                 }
             }
