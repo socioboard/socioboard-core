@@ -10353,3 +10353,48 @@ ERROR2016-05-09 04:19:14 Class:Api.Socioboard.Global Method:Application_BeginReq
 Parameter name: length
 ERROR2016-05-09 04:19:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
    at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:20:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:20:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:20:14 Class:Api.Socioboard.Services.Groups Method:GetGroupDetailsByGroupId Line #: 80  – GetGroupDetailsByGroupId inside function
+ERROR2016-05-09 04:20:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:20:14 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:20:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:20:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:20:15 Class:Api.Socioboard.Services.Groups Method:GetGroupDetailsByGroupId Line #: 80  – GetGroupDetailsByGroupId inside function
+ERROR2016-05-09 04:20:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:20:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:21:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:21:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:21:16 Class:Api.Socioboard.Services.Groups Method:GetGroupDetailsByGroupId Line #: 80  – GetGroupDetailsByGroupId inside function
+ERROR2016-05-09 04:21:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:21:16 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:22:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:22:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:22:15 Class:Api.Socioboard.Services.Groups Method:GetGroupDetailsByGroupId Line #: 80  – GetGroupDetailsByGroupId inside function
+ERROR2016-05-09 04:22:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:22:15 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:22:17 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:22:17 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76
+ERROR2016-05-09 04:22:17 Class:Api.Socioboard.Services.Groups Method:GetGroupDetailsByGroupId Line #: 80  – GetGroupDetailsByGroupId inside function
+ERROR2016-05-09 04:22:17 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 81  – Length cannot be less than zero.
+Parameter name: length
+ERROR2016-05-09 04:22:17 Class:Api.Socioboard.Global Method:Application_BeginRequest Line #: 82  –    at System.String.Substring(Int32 startIndex, Int32 length)
+   at Api.Socioboard.Global.Application_BeginRequest(Object sender, EventArgs e) in d:\Suresh\GitHub\socioboard-core\SocioBoard\SocioboardAPI\Global.asax.cs:line 76

@@ -1,8 +1,12 @@
-﻿@{
+﻿@using Socioboard.Helper;
+@using Domain.Socioboard.Helper;
+@{
     bool check = true;
+ List<Domain.Socioboard.Domain.DiscoverySearch> lstfeed = (List<Domain.Socioboard.Domain.DiscoverySearch>)Model;
 }
-
-@foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
+@if (lstfeed.Count > 0)
+{
+foreach (var item in (List<Domain.Socioboard.Domain.DiscoverySearch>)Model)
 {
     if (check == true)
     {
@@ -14,10 +18,10 @@
                 <div>
                    <strong class="primary-font"><a href="http://plus.google.com/@item.FromId" target="_blank">@item.FromName</a></strong>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.CreatedTime
+                        <i class="fa fa-clock-o fa-fw"></i>@DateExtension.CalculateTimeDiff(item.CreatedTime);
                     </small>
                 </div>
-                <p>
+                <p class="chat-tags">
                     <a href="@item.MessageId" target="_blank">@item.Message</a>
 
                 </p>
@@ -35,10 +39,10 @@
                 <div>
                     <strong class="primary-font pull-right"><a href="http://plus.google.com/@item.FromId" target="_blank">@item.FromName</a></strong>
                     <small class="pull-left text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.CreatedTime
+                        <i class="fa fa-clock-o fa-fw"></i>@DateExtension.CalculateTimeDiff(item.CreatedTime);
                     </small>
                 </div><br />
-                <p class="pull-right">
+                <p class="pull-right chat-tags">
                     <a href="@item.MessageId" target="_blank">@item.Message</a>
 
                 </p>
@@ -47,3 +51,19 @@
         check = true;
     }
 }
+}
+else {
+<div class="panel-body">
+    <ul id="twitterdiscovery" class="chat">
+        No Result Found,Try With Another Keywords
+    </ul>
+    <div>
+    </div>
+</div>
+
+}
+<style>
+    .chat-tags a {
+        word-wrap: break-word;
+    }
+</style>

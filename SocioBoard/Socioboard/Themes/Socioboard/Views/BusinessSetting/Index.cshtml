@@ -189,15 +189,15 @@
         }
         else
         {
-            DefaultMessage = "Sorry, The Buisness Page of this Group is Not Created!";
+            DefaultMessage = " Business Settings is disabled for the Default group!!! Please Select the other groups created";
         }
     }
     else
     {
-        DefaultMessage = "Sorry, you are not able to Setting in Default Group";
+        DefaultMessage = " Business Settings is disabled for the Default group!!! Please Select the other groups created";
     }
     }
-    @if (DefaultMessage != null || DefaultMessage != "")
+    @if (!string.IsNullOrEmpty(DefaultMessage))
     {
         
     @:<div style="min-height: 382px;" id="page-wrapper">
@@ -251,11 +251,13 @@
 
 <script type="text/javascript">
 
-    var BsnsStng = new FormData();
-    var IsTaskAssigned = null;
-    var IsNotificationEnabled = null;
-    var BuisnessName = $("#txtBuisnessName").val();
+  
     function UpdateBuisnessSetting(id) {
+
+        var BsnsStng = new FormData();
+        var IsTaskAssigned = null;
+        var IsNotificationEnabled = null;
+        var BuisnessName = $("#txtBuisnessName").val();
         debugger;
         if ($('#rdTaskDisable').is(':checked')) {
             IsTaskAssigned = false;
@@ -285,13 +287,12 @@
             data: BsnsStng,
             processData: false,
             contentType: false,
-            dataType: "json",
+            //dataType: "json",
             success: function (msg) {
                 if (msg = "Updated Successfully") {
-                    aleryify.success("Business Setting Updated Successfully.");
+                    alertify.success("Business Setting Updated Successfully.");
                 }
-            },
-            async: false
+            }
         });
     }
 

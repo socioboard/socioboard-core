@@ -13,7 +13,7 @@
                         <div class="panel-body">
                             
 
-                                    <form role="form">
+                                    @*<form role="form">*@
                                         <div class="form-group">
                                             <label>Subject</label>
                                             <input class="form-control" id="txtNewsLatterSubject" placeholder="Enter Subject">
@@ -79,7 +79,7 @@
                                             @foreach (var item in (List<User>)Model)
                                             {
                                                 <div class="col-md-4">
-                                                <input type="checkbox" name="checkboxlist" class="scheckboxs" id="AllUsersMails" value="@item.Id" data-Paystatus="@item.PaymentStatus"data-PackageType="@item.AccountType" /> 
+                                                <input type="checkbox" name="checkboxlist" class="scheckboxs" value="@item.Id" data-email="@item.EmailId" data-name="@item.UserName" data-Paystatus="@item.PaymentStatus"data-PackageType="@item.AccountType" /> 
                                                 @item.UserName
                                                 </div>
                                             }
@@ -88,7 +88,7 @@
                                         <div>
                                         <button type="submit" class="btn btn-default" onclick="SendNewsLatter();">Add News Latter</button>
                                             </div>
-                                    </form>
+                                    @*</form>*@
                             
                             <!-- /.table-responsive -->
                         </div>
@@ -194,6 +194,7 @@
     function SendNewsLatter()
     {
         debugger;
+
         var Subject = $("#txtNewsLatterSubject").val();
         var NewsBody = $("#txtNewslatterEditor").val();
         var SendDate = $("#NewsLatterSendDate").val();
@@ -201,6 +202,15 @@
         var UserIds = $('input[name=checkboxlist]:checked').map(function () {
             return $(this).val();
         }).get();
+
+        var UserEmails = $('input[name=checkboxlist]:checked').map(function () {
+            return $(this).attr("data-email");
+        }).get();
+
+        var UserNames = $('input[name=checkboxlist]:checked').map(function () {
+            return $(this).attr("data-name");
+        }).get();
+
         if (UserIds == "" || UserIds == null)
         {
             alertify.error("Please Select at least one User to send Add news latter!");
@@ -220,14 +230,16 @@
         }
         $.ajax({
             type: 'POST',
-            url: '../AddNewsLatter/SendAddNewsLatter?Subject=' + Subject + '&NewsBody=' + NewsBody + '&SendDate=' + SendDate + '&UserIds=' + UserIds,
+            url: '../AddNewsLatter/SendAddNewsLatter?Subject=' + Subject + '&NewsBody=' + NewsBody + '&SendDate=' + SendDate + '&UserIds=' + UserIds + "&UserEmails=" + UserEmails + "&UserNames=" + UserNames,
             success: function (msg) {
                 if (msg == "Success") {
                     alertify.success('Successfully Added');
-                    window.top.location.href = "../AddNewsLatter/LoadAddNewsLatter";
+                    //window.top.location.href = "../AddNewsLatter/LoadAddNewsLatter";
+                    $('.scheckboxs').prop("checked", false);
                 }
                 else {
                     alertify.error('Error please check');
+                    $('.scheckboxs').prop("checked", false);
                 }
             },
             async: false

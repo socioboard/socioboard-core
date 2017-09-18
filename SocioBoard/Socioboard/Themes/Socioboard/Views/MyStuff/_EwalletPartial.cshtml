@@ -10,13 +10,11 @@
     try
     {
         string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-        string imgurl = "/Themes/" + path + profileUrl[1];
-        //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
-        ProfileUrl = imgurl;
+        ProfileUrl = "/Themes/Socioboard" + profileUrl[2];
     }
-    catch
+    catch (Exception ex)
     {
-        ProfileUrl = objuser.ProfileUrl;
+        ProfileUrl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
     }
 }
 @*<div class="panel-body">*@

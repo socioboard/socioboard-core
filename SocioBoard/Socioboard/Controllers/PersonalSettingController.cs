@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Web.UI;
 
 namespace Socioboard.Controllers
 {
@@ -22,7 +23,7 @@ namespace Socioboard.Controllers
     {
         //
         // GET: /PersonalSetting/
-
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
             //if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
@@ -58,6 +59,7 @@ namespace Socioboard.Controllers
         }
 
         //vikash [20/11/2014]
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Billing()
         {
             return View();

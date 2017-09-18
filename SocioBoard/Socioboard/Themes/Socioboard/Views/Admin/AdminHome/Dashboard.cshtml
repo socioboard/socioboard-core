@@ -1,10 +1,10 @@
 ﻿@{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-    string pm = @ViewBag.PaidMonth;
-    string PaidMonth = pm.Replace("'", "");
+    //string pm = @ViewBag.PaidMonth;
+    //string PaidMonth = pm.Replace("'", "");
 
-    string Um = @ViewBag.UnPaidMonth;
-    string UnpaidMonth = Um.Replace("'", "");
+    //string Um = @ViewBag.UnPaidMonth;
+    //string UnpaidMonth = Um.Replace("'", "");
 }
 <div id="page-wrapper">
     <div class="asd">
@@ -22,65 +22,65 @@
 
 
     $(function () {
-        var pm = "@PaidMonth";
-            var paidMonths = new Array();
-            paidMonths = pm.split(',');
+        var pm = "@ViewBag.Month";
+        var paidMonths = new Array();
+        paidMonths = pm.split(',');
 
-            $('#container').highcharts({
-                chart: {
-                    type: 'areaspline'
-                },
+        $('#container').highcharts({
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: 'Paid User Graph'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 150,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+            },
+            xAxis: {
+                //categories: [
+                //    'Monday',
+                //    'Tuesday',
+                //    'Wednesday',
+                //    'Thursday',
+                //    'Friday',
+                //    'Saturday',
+                //    'Sunday'
+                //],
+                categories: paidMonths,
+                plotBands: [{ // visualize the weekend
+                    from: 4.5,
+                    to: 6.5,
+                    color: 'rgba(68, 170, 213, .2)'
+                }]
+            },
+            yAxis: {
                 title: {
-                    text: 'Paid User Graph'
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    verticalAlign: 'top',
-                    x: 150,
-                    y: 100,
-                    floating: true,
-                    borderWidth: 1,
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-                },
-                xAxis: {
-                    //categories: [
-                    //    'Monday',
-                    //    'Tuesday',
-                    //    'Wednesday',
-                    //    'Thursday',
-                    //    'Friday',
-                    //    'Saturday',
-                    //    'Sunday'
-                    //],
-                    categories: paidMonths,
-                    plotBands: [{ // visualize the weekend
-                        from: 4.5,
-                        to: 6.5,
-                        color: 'rgba(68, 170, 213, .2)'
-                    }]
-                },
-                yAxis: {
-                    title: {
-                        text: 'No. of Users'
-                    }
-                },
-                tooltip: {
-                    shared: true,
-                    valueSuffix: ' User'
-                },
-                credits: {
-                    enabled: false
-                },
-                plotOptions: {
-                    areaspline: {
-                        fillOpacity: 0.5
-                    }
-                },
-                series: [{
-                    name: 'PaidUer',
-                    //data: [3, 4, 3, 5, 4, 10, 12]
-                    data: [@ViewBag.paidUser]
+                    text: 'No. of Users'
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' User'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            },
+            series: [{
+                name: 'PaidUer',
+                //data: [3, 4, 3, 5, 4, 10, 12]
+                data: [@ViewBag.paidUser]
                 }, ]
             });
         });
@@ -91,7 +91,7 @@
 
 
         $(function () {
-            var Um = "@UnpaidMonth";
+           var Um = "@ViewBag.Month";
             var UnpaidMonths = new Array();
             UnpaidMonths = Um.split(',');
             $('#container1').highcharts({
@@ -149,9 +149,9 @@
                     name: 'UnpaidUser',
                     //data: [3, 4, 3, 5, 4, 10, 12]
                     data: [@ViewBag.UnPaidUser]
-                }, ]
-            });
+            }, ]
         });
+    });
 </script>
 
 

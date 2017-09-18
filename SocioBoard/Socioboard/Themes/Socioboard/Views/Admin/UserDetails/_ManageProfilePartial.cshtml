@@ -11,8 +11,11 @@
 
 <tbody>
     @{
+        System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+        serializer.MaxJsonLength = 2147483647;
         Socioboard.Api.FacebookAccount.FacebookAccount objfbAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
-        List<FacebookAccount> arrlstfbacc = (List<FacebookAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objfbAccount.GetAllFacebookAccounts(), typeof(List<FacebookAccount>)));
+        objfbAccount.Timeout = -1;
+        List<FacebookAccount> arrlstfbacc = (List<FacebookAccount>)(serializer.Deserialize(objfbAccount.GetAllFacebookAccounts(), typeof(List<FacebookAccount>)));
         foreach (FacebookAccount item in arrlstfbacc)
         { 
             <tr class="odd gradeX">
@@ -27,7 +30,8 @@
 
 
         Socioboard.Api.TwitterAccount.TwitterAccount objTwtrAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
-        List<TwitterAccount> lstwtacc = (List<TwitterAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objTwtrAccount.GetAllTwitterAccounts(), typeof(List<TwitterAccount>)));
+        objTwtrAccount.Timeout = -1;
+        List<TwitterAccount> lstwtacc = (List<TwitterAccount>)(serializer.Deserialize(objTwtrAccount.GetAllTwitterAccounts(), typeof(List<TwitterAccount>)));
         foreach (TwitterAccount item in lstwtacc)
         { 
             <tr class="odd gradeX">
@@ -41,7 +45,8 @@
         }
 
         Socioboard.Api.LinkedinAccount.LinkedinAccount objLiAcc = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
-        List<LinkedInAccount> lsLiacc = (List<LinkedInAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objLiAcc.GetAllLinkedinAccounts(), typeof(List<LinkedInAccount>)));
+        objLiAcc.Timeout = -1;
+        List<LinkedInAccount> lsLiacc = (List<LinkedInAccount>)(serializer.Deserialize(objLiAcc.GetAllLinkedinAccounts(), typeof(List<LinkedInAccount>)));
         foreach (LinkedInAccount item in lsLiacc)
         { 
             <tr class="odd gradeX">
@@ -55,7 +60,8 @@
         }
 
         Socioboard.Api.Instagram.Instagram objInstgrmAccount = new Socioboard.Api.Instagram.Instagram();
-        List<InstagramAccount> lstInsAcc = (List<InstagramAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objInstgrmAccount.GetAllInstagramAccounts(), typeof(List<InstagramAccount>)));
+        objInstgrmAccount.Timeout = -1;
+        List<InstagramAccount> lstInsAcc = (List<InstagramAccount>)(serializer.Deserialize(objInstgrmAccount.GetAllInstagramAccounts(), typeof(List<InstagramAccount>)));
         foreach (InstagramAccount item in lstInsAcc)
         { 
             <tr class="odd gradeX">
@@ -69,7 +75,8 @@
         }
 
         Socioboard.Api.TumblrAccount.TumblrAccount objTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
-        List<TumblrAccount> lstTumblrAcc = (List<TumblrAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objTumblrAccount.GetAllTumblrAccounts(), typeof(List<TumblrAccount>)));
+        objTumblrAccount.Timeout = -1;
+        List<TumblrAccount> lstTumblrAcc = (List<TumblrAccount>)(serializer.Deserialize(objTumblrAccount.GetAllTumblrAccounts(), typeof(List<TumblrAccount>)));
         foreach (TumblrAccount item in lstTumblrAcc)
         { 
             <tr class="odd gradeX">
@@ -84,7 +91,8 @@
         }
 
         Socioboard.Api.YoutubeAccount.YoutubeAccount objYoutubeAccount = new Socioboard.Api.YoutubeAccount.YoutubeAccount();
-        List<YoutubeAccount> lstYoutubeAcc = (List<YoutubeAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objYoutubeAccount.GetAllYoutubeAccounts(), typeof(List<YoutubeAccount>)));
+        objYoutubeAccount.Timeout = -1;
+        List<YoutubeAccount> lstYoutubeAcc = (List<YoutubeAccount>)(serializer.Deserialize(objYoutubeAccount.GetAllYoutubeAccounts(), typeof(List<YoutubeAccount>)));
         foreach (YoutubeAccount item in lstYoutubeAcc)
         { 
             <tr class="odd gradeX">
@@ -98,7 +106,8 @@
         }
 
         Socioboard.Api.GooglePlusAccount.GooglePlusAccount objGPAccount = new Socioboard.Api.GooglePlusAccount.GooglePlusAccount();
-        List<GooglePlusAccount> lstGPacc = (List<GooglePlusAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objGPAccount.GetAllGooglePlusAccounts(), typeof(List<GooglePlusAccount>)));
+        objGPAccount.Timeout = -1;
+        List<GooglePlusAccount> lstGPacc = (List<GooglePlusAccount>)(serializer.Deserialize(objGPAccount.GetAllGooglePlusAccounts(), typeof(List<GooglePlusAccount>)));
         foreach (GooglePlusAccount item in lstGPacc)
         { 
             <tr class="odd gradeX">

@@ -60,22 +60,51 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <div class="ps_select">
+                                                <label for="username-email">Peyment Status</label><span class="pull-right text-danger">*</span>
+                                                <select id="ddlUserPaymentStatus" class="select form-control">
+                                                   @{
+                                                        if (objUser.PaymentStatus == "paid" || objUser.PaymentStatus == "Paid")
+                                                        {
+                                                            <option selected value="paid">Paid</option>
+                                                            <option value="unpaid">Unpaid</option>
+                                                        }
+                                                        else
+                                                        {
+                                                             <option value="paid">Paid</option>
+                                                             <option selected value="unpaid">Unpaid</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+
 
                                         <div class="form-group">
                                             <div class="ps_select">
                                                 <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
                                                 <select id="ddlUserStatus" class="select form-control">
                                                     @{
-                                                        if (objUser.UserStatus == 1)
+                                                            if (objUser.ActivationStatus == "1")
                                                             {
                                                                 <option selected value="1">Enable</option>
-                                                                <option  value="0">Disable</option>
+                                                                <option value="2">Disable</option>
+                                                                                                                        
                                                             }
-                                                         else
-                                                         { 
-                                                                <option  value="1">Enable</option>
-                                                                <option selected value="0">Disable</option>
-                                                         }
+                                                            else if (objUser.ActivationStatus == "0")
+                                                            {
+                                                                <option selected value="0">InActive</option>
+                                                                <option value="1">Enable</option>
+                                                                <option value="2">Disable</option>
+                                                            }
+                                                            else
+                                                            { 
+                                                                <option value="1">Enable</option>
+                                                                <option selected value="2">Disable</option>
+                                                            }
                                             
                                             
                                                     }
@@ -107,6 +136,7 @@
         var UserEmail = $("#UserEmail").val();
         var Package = $('#ddlUserPackage :selected').text();
         var Status = $('#ddlUserStatus :selected').val();
+        var paymentStatus = $('#ddlUserPaymentStatus :selected').val();
         if (UserName == "") {
             alertify.error('Please enter User Name');
             return false;
@@ -120,7 +150,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '../UserDetails/UpdateUserDetails?Id=' + Id + '&UserName=' + UserName + '&EmailId=' + UserEmail + '&Package=' + Package + '&Status=' + Status,
+            url: '../UserDetails/UpdateUserDetails?Id=' + Id + '&UserName=' + UserName + '&EmailId=' + UserEmail + '&Package=' + Package + '&Status=' + Status + '&PaymentStatus=' + paymentStatus,
             success: function (msg) {
                 if (msg == "Update Successfully") {
                     alertify.success('Update Successfully');

@@ -15,6 +15,18 @@
                     <div class="row"></div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="ManageUserDataTable">
+                            <thead>
+                                <tr>
+                                    <td>Edit</td>
+                                    <td>Delete</td>
+                                    <th>Name</th>
+                                    <th>Account Type</th>
+                                    <th>Create Date</th>
+                                    <th>Email Id</th>
+                                    <th>User Status</th>
+                                </tr>
+                            </thead>
+
                         </table>
                     </div>
                     <!-- /.table-responsive -->
@@ -33,7 +45,11 @@
 
 
 
-<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+@*<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>*@
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/tabletools/2.2.4/css/dataTables.tableTools.css" />
 <script type="text/javascript">
 
     function bindmanageuser() {
@@ -50,12 +66,11 @@
         });
     }
     function EditUserDetails(id) {
-        
-                window.top.location.href = "../UserDetails/EditUserDetails?Id=" + id;
-        
+
+        window.top.location.href = "../UserDetails/EditUserDetails?Id=" + id;
+
     }
-    function DeleteUserDetails(id)
-    {
+    function DeleteUserDetails(id) {
 
         alertify.confirm("Are you Sure want to delete this Account ?", function (e) {
             if (e) {
@@ -65,18 +80,58 @@
                     success: function (msg) {
                         if (msg == 1) {
                             alertify.success('Delete Successfully');
-                            location.reload();
+                            //location.reload();
+                            debugger;
+                            $('#'+id).closest('tr').fadeOut();
                         }
                         else {
                             alertify.error('Please Try Again');
                         }
-
                     },
                 });
             }
         });
     }
     $(document).ready(function () {
-        bindmanageuser();
+        //bindmanageuser();
+       var table = $("#ManageUserDataTable").dataTable({
+            columns: [{ 'data': 'Edit' },
+                      { 'data': 'Delete' },
+                      { 'data': 'UserName' },
+                      { 'data': 'AccountType' },
+                      { 'data': 'CreateDate' },
+                      { 'data': 'EmailId' },
+                      { 'data': 'UserStatus' },
+            ],
+            bJQueryUI: true,
+            sPaginationType: "full_numbers",
+            bServerSide: true,
+            sAjaxSource: '../UserDetails/LoadServerSideDataTable'
+         
+    
+        });
+       var tableTools = new $.fn.dataTable.TableTools(table, {
+           'sSwfPath': '//cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf',
+           'aButtons': [
+               {
+                   'sExtends' : 'copy',
+                   'mColumns': [2, 3, 4, 5, 6]
+               },
+               {
+                   'sExtends': 'csv',
+                   'mColumns': [2, 3, 4, 5, 6]
+               },
+               {
+                   'sExtends': 'xls',
+                   'mColumns': [2, 3, 4, 5, 6]
+               },
+               {
+                   'sExtends': 'pdf',
+                   'mColumns': [2, 3, 4, 5, 6]
+               }
+           ]
+       });
+       $(tableTools.fnContainer()).insertBefore("#ManageUserDataTable_wrapper");
+       $('<div class="row"></div>').insertBefore("#ManageUserDataTable_wrapper");
     });
 </script>

@@ -1,0 +1,373 @@
+﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+<link href="~/Themes/@path/Contents/css/smartinbox.css" rel="stylesheet" />
+<style type="text/css">
+    .btn-select {
+        position: relative;
+        padding: 0;
+        min-width: 236px;
+        width: 100%;
+        border-radius: 0;
+        margin-bottom: 20px;
+    }
+
+        .btn-select .btn-select-value {
+            padding: 6px 12px;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 34px;
+            text-align: left;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            border-top: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
+        }
+
+        .btn-select .btn-select-arrow {
+            float: right;
+            line-height: 20px;
+            padding: 6px 10px;
+            top: 0;
+        }
+
+        .btn-select ul {
+            display: none;
+            background-color: white;
+            color: black;
+            clear: both;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: none !important;
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            top: 33px;
+            z-index: 999;
+        }
+
+            .btn-select ul li {
+                padding: 3px 6px;
+                text-align: left;
+            }
+
+                .btn-select ul li:hover {
+                    background-color: #f4f4f4;
+                }
+
+                .btn-select ul li.selected {
+                    color: white;
+                }
+
+        /* Default Start */
+        .btn-select.btn-default:hover, .btn-select.btn-default:active, .btn-select.btn-default.active {
+            border-color: #ccc;
+        }
+
+        .btn-select.btn-default ul li.selected {
+            background-color: #ccc;
+        }
+
+        .btn-select.btn-default ul, .btn-select.btn-default .btn-select-value {
+            background-color: white;
+            border: #ccc 1px solid;
+        }
+
+        .btn-select.btn-default:hover, .btn-select.btn-default.active {
+            background-color: #e6e6e6;
+        }
+    /* Default End */
+    .location_wrap {
+        margin-bottom: 20px;
+    }
+</style>
+<div id="page-wrapper">
+    <h1 class="page-header">Smart Search allows you to find new customers by searching with keywords around your business.</h1>
+    <div class="container-fluid" style="margin-top: 6%">
+        <div class="col-md-9">
+            <div class="row" id="search-discovery">
+                <div class="col-lg-10">
+                    <input id="txtsearch" type="text" placeholder="Type your Keyword here..." class="form-control">
+                </div>
+                <div class="col-lg-2">
+                    <a class="btn btn-primary btn-block" id="save_search" title="Search" href="javascript:void(0)" onclick="searchKeyword()">Search</a>
+                </div>
+            </div>
+            <section class="sectionClass" style="margin-left: -5%; margin-top: -5%;height:600px;display:none" id="sectionClass-smart-search">
+                <div class="chat">
+                    <ul id="smart-search"></ul>
+                </div>
+            </section>
+            <div class="row" id="search-discovery-loader" style="display:none">
+                <center>
+                    <img src="~/Themes/@path/Contents/img/43px_on_transparent.gif" />
+                </center>
+            </div>
+        </div>
+
+        <div class="col-md-3 well well-sm">
+            <h3>Discovery</h3>
+
+            @*<label class="control-label">Search</label>
+                <a class="btn btn-default btn-select btn-select-light">
+                    <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                    <span class="btn-select-value">Search</span>
+                    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
+                    <ul>
+                        <li> <i class="fa fa-comments-o"></i> Keyword Search</li>
+                        <li><i class="fa fa-user"></i> People Search</li>
+                        <li><i class="fa fa-search"></i> Search Result</li>
+                        <li><i class="fa fa-search"></i> Search Options</li>
+                    </ul>
+                </a>*@
+            <label class="control-label">Near this place </label>
+            <div class="location_wrap">
+                <input type="search" placeholder="Enter a Location" value="" name="search_text[]" id="search_location" class="form-control">
+            </div>
+            <a class="btn btn-default btn-select btn-select-light">
+                <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                <span class="btn-select-value" id="radius-select">Within 25</span>
+                <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
+                <ul>
+                    <li>Within 5</li>
+                    <li>Within 10</li>
+                    <li>Within 25</li>
+                    <li>Within 50</li>
+                    <li>Within 100</li>
+                    <li>Within 250</li>
+                    <li>Within 500</li>
+                    <li>Within 1000</li>
+                </ul>
+            </a>
+            <a class="btn btn-default btn-select btn-select-light">
+                <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                <span class="btn-select-value" id="type-select">Miles</span>
+                <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
+                <ul>
+                    <li>Miles</li>
+                    <li>Kilometers</li>
+                </ul>
+            </a>
+            <a id="new_search" title="New Search" href="javascript:void(0)">New Search ›</a>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header model_head" style="height: 48px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create Task</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="col-md-8">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</strong></h5>
+                    <textarea id="txtsavetask" class="form-control" rows="3" placeholder="Your comment (viewable only to team members)"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_AssignTaskTo</strong></h5>
+                    @{
+                        try
+                        {
+                            Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
+                            Domain.Socioboard.Domain.Team team = Socioboard.Helper.SBUtils.GetTeamFromGroupId();
+                            Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+                            BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(team.GroupId), typeof(BusinessSetting));
+                            if (objbsns.AssigningTasks == true || team.UserId == user.Id)
+                            {
+                                Socioboard.Api.Team.Team objApiTeam = new Socioboard.Api.Team.Team();
+                                List<Domain.Socioboard.Domain.Team> result = (List<Domain.Socioboard.Domain.Team>)new JavaScriptSerializer().Deserialize(objApiTeam.getAllTeamsOfUser(user.Id.ToString(), team.GroupId.ToString(), user.EmailId), typeof(List<Domain.Socioboard.Domain.Team>));
+                                foreach (Team item in result)
+                                {
+                                    try
+                                    {
+                                        Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+                                        User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(item.EmailId), typeof(User));
+                                        @:<div class="radio">
+                                            @:<label>
+                                            @:<input type="radio" name="optionsRadios" id="customerid_@objdetails.Id" value="customerid_@objdetails.Id" />
+                                            @objdetails.UserName
+                                            @:</label>
+                                            @:</div>
+                                    }
+                                    catch { }
+                                }
+                            }
+                        }
+                        catch { }
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="savetask" type="button" class="btn btn-primary" onclick="savetask()">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Save</button>
+                <button id="closeTaskModal" data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookClose</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<script src="~/Themes/@path/Contents/js/Helper.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+
+    $("#new_search").click(function () {
+        $('#search-discovery-loader').css("display", "none");
+        $('#search-discovery').css("display", "block");
+        $("#sectionClass-smart-search").css("display", "none");
+        $("#search_location").val('');
+        $("#radius-select").html('');
+        $("#type-select").html('');
+        $("#txtsearch").val('');
+    });
+
+    function searchKeyword() {
+        debugger;
+
+        var address = $("#search_location").val();
+        var radius = $("#radius-select").html();
+        var type = $("#type-select").html();
+        var typ = "";
+        var rds = "";
+        if (type == "Miles")
+        { typ = "mi"; } else { typ = "km"; }
+        if (radius == "Within 5")
+        { rds = "5" } else if (radius == "Within 10") {
+            rds = 10;
+        } else if (radius == "Within 25") {
+            rds = "25";
+        } else if (radius == "Within 50") {
+            rds = "50";
+        } else if (radius == "Within 100") {
+            rds = "100";
+        } else if (radius == "Within 250") {
+            rds = "250";
+        } else if (radius == "Within 500") {
+            rds = "500";
+        } else if (radius == "Within 1000") {
+            rds = "1000";
+        }
+        var geoLocation = "";
+        var lat = "";
+        var lng = "";
+
+        var keyword = $('#txtsearch').val();
+        if (keyword == "")
+        {
+            return;
+        }
+
+        if (address == "" || address == null || address == undefined) {
+            $.ajax({
+                type: 'GET',
+                url: '../Discovery/Searchtweets?q=' + keyword + "&geoLocation=" + geoLocation,
+                beforeSend: function () {
+                    $('#search-discovery-loader').css("display", "block");
+                },
+                success: function (msg) {
+                    $('#search-discovery-loader').css("display", "none");
+                    $('#search-discovery').css("display", "none");
+                    $("#sectionClass-smart-search").css("display", "block");
+                    if (msg == "no_data") {
+                        $("#smart-search").html("<div><center><h3>No Data Found.</h3></center></div>");
+                    } else {
+                        $('#smart-search').html(msg);
+                    }
+                }
+            });
+        } else {
+            console.log("test");
+            var geocoder = new google.maps.Geocoder();
+            //$(document).ready(function () {
+                console.log("test1");
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    console.log(status);
+                    var location = results[0].geometry.location;
+                    lat = location.lat();
+                    console.log("lat" + lat);
+                    lng = location.lng();
+                    geoLocation = lat + ',' + lng + ',' + rds + typ;
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '../Discovery/Searchtweets?q=' + keyword + "&geoLocation=" + geoLocation,
+                        beforeSend: function () {
+                            $('#search-discovery-loader').css("display", "block");
+                        },
+                        success: function (msg) {
+                            debugger;
+                            $('#search-discovery-loader').css("display", "none");
+                            $('#search-discovery').css("display", "none");
+                            $("#sectionClass-smart-search").css("display", "block");
+                            if (msg == "no_data") {
+                                //$("#smart-search").html("<div><center><h3>No Data Found.</h3></center></div>");
+                                $(".chat").children("#smart-search").html("<div><center><h3>No Data Found.</h3></center></div>");
+                            } else {
+                                //$('#smart-search').html(msg);
+                                $(".chat").children("#smart-search").html(msg);
+                            }
+                        }
+                    });
+
+                //});
+
+            });
+
+        }
+
+
+
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".btn-select").each(function (e) {
+            var value = $(this).find("ul li.selected").html();
+            if (value != undefined) {
+                $(this).find(".btn-select-input").val(value);
+                $(this).find(".btn-select-value").html(value);
+            }
+        });
+    });
+
+    $(document).on('click', '.btn-select', function (e) {
+        e.preventDefault();
+        var ul = $(this).find("ul");
+        if ($(this).hasClass("active")) {
+            if (ul.find("li").is(e.target)) {
+                var target = $(e.target);
+                target.addClass("selected").siblings().removeClass("selected");
+                var value = target.html();
+                $(this).find(".btn-select-input").val(value);
+                $(this).find(".btn-select-value").html(value);
+            }
+            ul.hide();
+            $(this).removeClass("active");
+        }
+        else {
+            $('.btn-select').not(this).each(function () {
+                $(this).removeClass("active").find("ul").hide();
+            });
+            ul.slideDown(300);
+            $(this).addClass("active");
+        }
+    });
+
+    $(document).on('click', function (e) {
+        var target = $(e.target).closest(".btn-select");
+        if (!target.length) {
+            $(".btn-select").removeClass("active").find("ul").hide();
+        }
+    });
+</script>

@@ -122,31 +122,15 @@
                                                                        
                                                                          @:<li id="task_comment_@item.Id" + "_" + @taskComment.Id class=" list-group-item assign_comments">
                                                                             <img class="commentsmallsize" src="@imgpath"><span class=" commentmargin">@taskComment.Comment</span>
-                                                                         @{
+                                                            
                                                                             string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, taskComment.CommentDate.ToString());
-                                }
+
                                                                             <span class="pull-right">By @objcomntUserDetails.UserName at @messagedate</span>
 
                                                                         
                                                                             @:</li>
-                                                                            }
+                                                                    }
 
-                                                                    @*  <li class="list-group-item">
-                                                                            <img class="commentsmallsize" src="Contents/img/photo.png"><span class="commentmargin">Hello all chanchal</span>
-                                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                                        </li>*@
-                                                                    @* <li class="list-group-item">
-                                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
-                                                                            hit http://t. like
-
-                                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                                        </li>
-                                                                        <li class="list-group-item">
-                                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
-                                                                            Hi everyone
-
-                                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                                                        </li>*@
                                                                 </ul>
 
                                                                 <div class="col-md-3">
@@ -155,7 +139,7 @@
                                                                     <span>@objdetails.UserName</span>
                                                                 </div>
                                                                 <div class="col-md-9">
-                                                                    <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                                                    <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" style="resize:none" class="form-control"></textarea>
                                                                     <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
                                                                     <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
                                                                 </div>
@@ -234,7 +218,7 @@
                             <div class="col-md-9">
                                 <p>Hey check this out.</p>
                                 <span>By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
-                                <textarea placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                <textarea placeholder="Leave a comment" rows="3" style="resize:none" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

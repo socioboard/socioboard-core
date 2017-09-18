@@ -1,0 +1,168 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    int divcount = 0;
+    string picurl = string.Empty;
+}
+<h2 class="page-header">Live Feeds</h2>
+<div class="col-xs-12">
+
+    @foreach (var dicitem in (Dictionary<string, Dictionary<object, List<object>>>)Model)
+    {
+        if (dicitem.Key == "instagram")
+        {
+            foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
+            {
+                object obj = (object)items.Key;
+
+                InstagramFeed item = (InstagramFeed)obj;
+                if (divcount == 0)
+                { 
+                    
+                  
+                    
+        @:<div class="row">
+}
+                divcount++; 
+                  <div class="col-lg-4 col-md-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <img style="width:290px;height:170px;" class="img-rounded img-responsive galleryImgSize" src="@item.FeedImageUrl">
+                            </div>
+                            <div class="panel-body">
+                                <div class="pull-left">
+                                    <i style="margin-right:3px;margin-left:3px;" title="Like Count" class="fa fa-heart fa-fw"></i>
+                                    <span id="count_@item.FeedId">@item.LikeCount</span>
+                                     <i style="margin-right:3px;margin-left:3px;"title="Comment Count" class="fa fa-comment fa-fw"></i>
+                                    <span>@item.CommentCount</span>
+                                </div>
+                               
+                                <div class="pull-left">
+                                   @if(@item.IsLike==0)
+                                    {
+                                    <i style="cursor:pointer; padding-left:13px; margin-top:3px;" id="@item.FeedId" onClick="LikeUnlikeInstagramPost('@item.LikeCount','@item.IsLike','@item.FeedId','@item.InstagramId')" title="Like" class="fa fa-heart-o fa-fw"></i>
+                                   }
+                                    else{
+                                     <i style="cursor:pointer; padding-left:13px; margin-top:3px;" id="@item.FeedId" onClick="LikeUnlikeInstagramPost('@item.LikeCount','@item.IsLike','@item.FeedId','@item.InstagramId')" title="UnLike" class="fa fa-heart fa-fw"></i>
+                                     }
+                                </div>
+                            </div>
+                            <div style="height:100px;overflow-y:scroll;"  class="panel-footer">
+
+           @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
+           {
+                                <div class="row">
+                                    <div style="float: left;">
+                                       <img width="30" alt="" src="@item_value.FromProfilePic">
+                                    </div>
+                                    <div class="col-md-10 pull-left">
+                                       <div class="spacetop">
+                                            <a href="#">@item_value.FromName </a>
+                                            <span class="mar_img">@item_value.Comment</span>
+                                                 <span class="mar_img">@Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item_value.CommentDate))</span>
+                                          
+                                       </div>
+                                    </div>
+                                </div>
+           }
+                            </div>
+                        </div>
+                    </div>
+           if (divcount == 3)
+           {
+               divcount = 0; 
+                 @:</div>
+                                                                             }
+
+            }
+        }
+        if (dicitem.Key == "tumblr")
+        {
+            foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
+            {
+                object obj = (object)items.Key;
+                TumblrFeed item = (TumblrFeed)obj;
+                if (divcount == 0)
+                { 
+        @:<div class="row">
+}
+                divcount++;
+
+                  <div class="col-lg-4 col-md-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                 @if (string.IsNullOrEmpty(item.imageurl))
+                                 {
+                                     picurl = "/Themes/Socioboard/Contents/img/blankimg.png";
+                                 }
+                                 else
+                                 {
+                                     picurl = item.imageurl;
+                                 }
+                                <img style="width:290px;height:170px;" class="img-rounded img-responsive galleryImgSize" src="@picurl">
+                            </div>
+                            <div class="panel-body">
+                                <div class="pull-left">
+                                    <i class="fa fa-heart fa-fw"></i>
+                                    <span>@item.notes</span>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <h4></h4>
+                                <h6></h6>
+                            </div>
+                        </div>
+                    </div>
+                                 if (divcount == 3)
+                                 {
+                                     divcount = 0; 
+                 @:</div>
+                                                                         }
+
+            }
+        }
+
+
+        if (dicitem.Key == "youtube")
+        {
+            foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
+            {
+                object obj = (object)items.Key;
+
+                string item = (string)obj;
+                if (divcount == 0)
+                { 
+        @:<div class="row">
+}
+                divcount++;
+
+                  <div class="col-lg-3 col-md-9">
+                        <div class="panel panel-default">
+                            @if (string.IsNullOrEmpty(item))
+                            {
+                                picurl = "/Themes/Socioboard/Contents/img/blankimg.png";
+                            }
+                            else
+                            {
+                                picurl = item;
+                            }
+                            <div class="panel-heading" onclick="ytvideo('@picurl')";>
+                                 
+                                <img class="img-rounded img-responsive galleryImgSize" src="@picurl">
+                            </div>
+                            
+                            <div class="panel-footer">
+                                <h4></h4>
+                                <h6></h6>
+                            </div>
+                        </div>
+                    </div>
+                            if (divcount == 4)
+                            {
+                                divcount = 0; 
+               @:</div>
+                  }
+
+            }
+        }
+    }
+</div>
